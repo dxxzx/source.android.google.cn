@@ -1,0 +1,1293 @@
+<!doctype html>
+<html  lang="zh_cn">
+  
+<!-- Mirrored from source.android.google.cn/devices/tech/dalvik/instruction-formats.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:41:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Dalvik 可执行指令格式 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Dalvik 可执行指令格式 &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="instruction-formats.html">
+
+  <meta property="og:locale" content="zh_cn">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="instruction-formats.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设置"
+   >
+  设置
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设计"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设计"
+   >
+  设计
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="安全性"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 安全性"
+   >
+  安全性
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../audio0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="开发"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 开发"
+   >
+  开发
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../dalvik0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="配置"
+   aria-label="配置, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: 配置"
+   >
+  配置
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="参考"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 参考"
+   >
+  参考
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="搜索"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="搜索框">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          转到源代码
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../dalvik0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            配置
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab active>
+          <a href="../dalvik0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="ART"
+   aria-label="ART, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: ART"
+   >
+  ART
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../datausage0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="数据流量"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 数据流量"
+   >
+  数据流量
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../admin0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="企业"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 企业"
+   >
+  企业
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../health0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="性能"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 性能"
+   >
+  性能
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../config/perms-whitelist0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="权限"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 权限"
+   >
+  权限
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../power0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="电耗"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 电耗"
+   >
+  电耗
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../ota0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="更新"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 更新"
+   >
+  更新
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设置">
+      <span class="devsite-nav-text" >设置</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设计">
+      <span class="devsite-nav-text" >设计</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 安全性">
+      <span class="devsite-nav-text" >安全性</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 开发">
+      <span class="devsite-nav-text" >开发</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 配置">
+      <span class="devsite-nav-text" >配置</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../dalvik.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: ART">
+      <span class="devsite-nav-text" menu="_book">ART</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../datausage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 数据流量">
+      <span class="devsite-nav-text" >数据流量</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../admin.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 企业">
+      <span class="devsite-nav-text" >企业</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../health.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 性能">
+      <span class="devsite-nav-text" >性能</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../config/perms-whitelist.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 权限">
+      <span class="devsite-nav-text" >权限</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../power.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 电耗">
+      <span class="devsite-nav-text" >电耗</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../ota.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 更新">
+      <span class="devsite-nav-text" >更新</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 参考">
+      <span class="devsite-nav-text" >参考</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 转到源代码">
+      <span class="devsite-nav-text" >转到源代码</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../dalvik.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li>
+                          <li class="devsite-nav-item"><a href="improvements.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="改进">改进</span></a></li>
+                          <li class="devsite-nav-item"><a href="dalvik-bytecode.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="字节码格式">字节码格式</span></a></li>
+                          <li class="devsite-nav-item"><a href="dex-format.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Dex 格式">Dex 格式</span></a></li>
+                          <li class="devsite-nav-item"><a href="instruction-formats.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="说明格式">说明格式</span></a></li>
+                          <li class="devsite-nav-item"><a href="constraints.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="限制">限制</span></a></li>
+                          <li class="devsite-nav-item"><a href="configure.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="配置">配置</span></a></li>
+                          <li class="devsite-nav-item"><a href="gc-debug.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="垃圾回收">垃圾回收</span></a></li>
+                          <li class="devsite-nav-item"><a href="jit-compiler.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="JIT 编译">JIT 编译</span></a></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../dalvik0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            配置
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../dalvik0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            ART
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Dalvik 可执行指令格式</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2018 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>本页面列出了 Dalvik 可执行格式和 Dalvik 字节码使用的指令格式。本页面需要结合<a href="dalvik-bytecode0b8e.html?hl=zh-cn">字节码参考文档</a>使用。</p>
+
+<h2 id="bitwise">按位描述</h2>
+
+<p>格式表的第一列列出了格式的按位布局。它由一个或多个空格分隔的“单词”组成，每个单词描述一个 16 位代码单元。单词中的每个字符代表四位，从高位往低位读取，并使用竖线 (“<code>|</code>”) 分隔以方便阅读。从“<code>A</code>”开始的大写字母用于表示格式中的字段，这些字段随后由语法列做进一步定义。“<code>op</code>”一词用于表示格式内八位操作码的位置。带斜划的零（“<code>Ø</code>”）用于表示所有在指示位置的位必须为零。</p>
+
+<p>一般而言，在一个代码单元内，字母的顺序为，较早的代码单元对应的字母在前，后期的代码单元对应的字母在后，按照从低阶到高阶排序。但是，这种一般规则存在一些例外情况，主要是为了让含义相似的部分在不同的指令格式中使用相同的命名。格式说明对这些情况进行了明确的描述。</p>
+
+<p>例如，“<code>B|A|<i>op</i> CCCC</code>”格式表示其包含两个 16 位代码单元。第一个字由低 8 位中的操作码和高 8 位中的两个四位值组成；第二个字由单个 16 位值组成。</p>
+
+<h2 id="format-ids">格式 ID</h2>
+
+<p>格式表中的第二列表示格式的短标识符，用于在其他文档和代码中识别该格式。</p>
+
+<p>大多数格式 ID 包含三个字符：前两个是十进制数，最后一个是字母。第一个十进制数表示格式中 16 位代码单元的数量。第二个十进制数表示格式包含的最大寄存器数量（使用最大值是因为某些格式可容纳的寄存器数量为可变值），特殊标识“<code>r</code>”表示已对寄存器的数量范围进行编码。最后一个字母以半助记符的形式表示该格式编码的任何其他数据类型。例如，“<code>21t</code>”格式的长度为 2，包含一个寄存器引用，另外还有一个分支目标。</p>
+
+<p>建议使用的静态链接格式有一个额外的“<code>s</code>”后缀，因此加上后缀一共是四个字符。同样，建议使用的“内联”链接格式也有一个额外的“<code>i</code>”后缀。（在这种情况下，内联链接与静态链接类似，但它与机器实现具有更直接的联系。）最后，几个建议使用的奇怪格式（例如，“<code>20bc</code>”）包含两个数据块，它们均体现在格式 ID 中。</p>
+
+<p>类型代码字母的完整列表如下。请注意，由于格式上的差异，部分形式的大小可能有所不同：</p>
+
+<table class="letters">
+<thead>
+<tr>
+  <th>助记符</th>
+  <th>位数</th>
+  <th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>b</td>
+  <td>8</td>
+  <td>有符号立即数（<b>字节</b>）</td>
+</tr>
+<tr>
+  <td>c</td>
+  <td>16、32</td>
+  <td><b>常量</b>池索引</td>
+</tr>
+<tr>
+  <td>f</td>
+  <td>16</td>
+  <td><b>接口</b>常量（仅对静态链接格式有效）</td>
+</tr>
+<tr>
+  <td>h</td>
+  <td>16</td>
+  <td>有符号立即数<b></b>（32 位或 64 位值的高阶位，低阶位全为 <code>0</code>）
+  </td>
+</tr>
+<tr>
+  <td>i</td>
+  <td>32</td>
+  <td>有符号立即数（<b>整型</b>）或 32 位浮点数</td>
+</tr>
+<tr>
+  <td>l</td>
+  <td>64</td>
+  <td>有符号立即数（<b>长整型</b>）或 64 位双精度浮点数</td>
+</tr>
+<tr>
+  <td>m</td>
+  <td>16</td>
+  <td><b>方法</b>常量（仅对静态链接格式有效）</td>
+</tr>
+<tr>
+  <td>n</td>
+  <td>4</td>
+  <td>有符号立即数（<b>半字节</b>）</td>
+</tr>
+<tr>
+  <td>s</td>
+  <td>16</td>
+  <td>有符号立即数（<b>短整型</b>）</td>
+</tr>
+<tr>
+  <td>t</td>
+  <td>8、16、32</td>
+  <td>分支<b>目标</b></td>
+</tr>
+<tr>
+  <td>x</td>
+  <td>0</td>
+  <td>无额外数据</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="syntax">语法</h2>
+
+<p>格式表的第三列指出了指令中所使用的人类可识别的语法。每个指令以命名的操作码开始，后面可选择使用一个或多个参数，并且参数之间用逗号分隔。</p>
+
+<p>当参数指第一列中的某个字段时，该字段的字母将在语法中出现，并在字段中每四位重复一次。例如，第一列中标记为“<code>BB</code>”的八位字段在语法列中也将标记为“<code>BB</code>”。</p>
+
+<p>命名寄存器的参数形式为“<code>v<i>X</i></code>”。选择“<code>v</code>”而不是更常用的“<code>r</code>”作为前缀，是因为这样可避免与可能会在其上实现 Dalvik 可执行格式的（非虚拟）架构（其寄存器使用“<code>r</code>”作为前缀）出现冲突。（也就是说，我们可以直截了当地同时讨论虚拟和实际寄存器。）</p>
+
+<p>表示字面值的参数形式为“<code>#+<i>X</i></code>”。有些格式表示高阶位仅为非零位的字面量；对于这种类型的字面量，在语法表示时会明确写出后面的 0，但是在按位表示时这些 0 会被省略。</p>
+
+<p>表示相对指令地址偏移量的参数形式为“<code>+<i>X</i></code>”。</p>
+
+<p>表示字面量常量池索引的参数形式为“<code><i>kind</i>@<i>X</i></code>”，其中“<code><i>kind</i></code>”表示正在引用的常量池。每个使用此类格式的操作码明确地表示只允许使用一种常量；请查看操作码参考，找出对应关系。常量池的种类包括“<code>string</code>”（字符串池索引）、“<code>type</code>”（类型池索引）、“<code>field</code>”（字段池索引）、“<code>meth</code>”（方法池索引）和“<code>site</code>”（调用点索引）。</p>
+
+<p>此外还可使用一些建议的可选形式，它们与常量池索引的表示类似，表示预链接的偏移量或索引。可以使用两种类型的建议预链接值：vtable 偏移（表示为“<code>vtaboff</code>”）和字段偏移（表示为“<code>fieldoff</code>”）。</p>
+
+<p>如果格式值并非明确地包含在语法中，而是选择使用某种变体，则每个变体都以“<code>[<i>X</i>=<i>N</i>]</code>”（例如，“<code>[A=2]</code>”）为前缀来表示对应关系。</p>
+
+<h2 id="formats">格式</h2>
+
+<table class="format">
+<thead>
+<tr>
+  <th>格式</th>
+  <th>ID</th>
+  <th>语法</th>
+  <th>包含的重要操作码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><i>无</i></td>
+  <td>00x</td>
+  <td><i><code>N/A</code></i></td>
+  <td><i>用于未使用操作码的伪格式；建议用作断点操作码的标称格式</i></td>
+</tr>
+<tr>
+  <td>ØØ|<i>op</i></td>
+  <td>10x</td>
+  <td><i><code>op</code></i></td>
+  <td> </td>
+</tr>
+<tr>
+  <td rowspan="2">B|A|<i>op</i></td>
+  <td>12x</td>
+  <td><i><code>op</code></i> vA, vB</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>11n</td>
+  <td><i><code>op</code></i> vA, #+B</td>
+  <td> </td>
+</tr>
+<tr>
+  <td rowspan="2">AA|<i>op</i></td>
+  <td>11x</td>
+  <td><i><code>op</code></i> vAA</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>10t</td>
+  <td><i><code>op</code></i> +AA</td>
+  <td>goto</td>
+</tr>
+<tr>
+  <td>ØØ|<i>op</i> AAAA</td>
+  <td>20t</td>
+  <td><i><code>op</code></i> +AAAA</td>
+  <td>goto/16</td>
+</tr>
+<tr>
+  <td>AA|<i>op</i> BBBB</td>
+  <td>20bc</td>
+  <td><i><code>op</code></i> AA, kind@BBBB</td>
+  <td><i>静态确定验证错误的建议格式；其中，A 表示错误类型，B 表示适当类型的表索引（例如，出现“不存在这种方法”错误时的方法引用）</i></td>
+</tr>
+<tr>
+  <td rowspan="5">AA|<i>op</i> BBBB</td>
+  <td>22x</td>
+  <td><i><code>op</code></i> vAA, vBBBB</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>21t</td>
+  <td><i><code>op</code></i> vAA, +BBBB</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>21s</td>
+  <td><i><code>op</code></i> vAA, #+BBBB</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>21h</td>
+  <td><i><code>op</code></i> vAA, #+BBBB0000<br />
+    <i><code>op</code></i> vAA, #+BBBB000000000000
+  </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>21c</td>
+  <td><i><code>op</code></i> vAA, type@BBBB<br />
+    <i><code>op</code></i> vAA, field@BBBB<br />
+    <i><code>op</code></i> vAA, method_handle@BBBB<br />
+    <i><code>op</code></i> vAA, proto@BBBB<br />
+    <i><code>op</code></i> vAA, string@BBBB
+  </td>
+  <td>check-cast<br />
+    const-class<br />
+    const-method-handle<br />
+    const-method-type<br />
+    const-string
+  </td>
+</tr>
+<tr>
+  <td rowspan="2">AA|<i>op</i> CC|BB</td>
+  <td>23x</td>
+  <td><i><code>op</code></i> vAA, vBB, vCC</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>22b</td>
+  <td><i><code>op</code></i> vAA, vBB, #+CC</td>
+  <td> </td>
+</tr>
+<tr>
+  <td rowspan="4">B|A|<i>op</i> CCCC</td>
+  <td>22t</td>
+  <td><i><code>op</code></i> vA, vB, +CCCC</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>22s</td>
+  <td><i><code>op</code></i> vA, vB, #+CCCC</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>22c</td>
+  <td><i><code>op</code></i> vA, vB, type@CCCC<br />
+    <i><code>op</code></i> vA, vB, field@CCCC
+  </td>
+  <td>instance-of</td>
+</tr>
+<tr>
+  <td>22cs</td>
+  <td><i><code>op</code></i> vA, vB, fieldoff@CCCC</td>
+  <td><i>22c 格式的静态链接字段访问指令的建议格式</i>
+  </td>
+</tr>
+<tr>
+  <td>ØØ|<i>op</i> AAAA<sub>lo</sub> AAAA<sub>hi</sub></td>
+  <td>30t</td>
+  <td><i><code>op</code></i> +AAAAAAAA</td>
+  <td>goto/32</td>
+</tr>
+<tr>
+  <td>ØØ|<i>op</i> AAAA BBBB</td>
+  <td>32x</td>
+  <td><i><code>op</code></i> vAAAA, vBBBB</td>
+  <td> </td>
+</tr>
+<tr>
+  <td rowspan="3">AA|<i>op</i> BBBB<sub>lo</sub> BBBB<sub>hi</sub></td>
+  <td>31i</td>
+  <td><i><code>op</code></i> vAA, #+BBBBBBBB</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>31t</td>
+  <td><i><code>op</code></i> vAA, +BBBBBBBB</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>31c</td>
+  <td><i><code>op</code></i> vAA, string@BBBBBBBB</td>
+  <td>const-string/jumbo</td>
+</tr>
+<tr>
+  <td rowspan="3">A|G|<i>op</i> BBBB F|E|D|C</td>
+  <td>35c</td>
+  <td><i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG},
+    meth@BBBB<br />
+    <i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG},
+    site@BBBB<br />
+    <i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG},
+    type@BBBB<br />
+    <i>[<code>A=4</code>] <code>op</code></i> {vC, vD, vE, vF},
+    <i><code>kind</code></i>@BBBB<br />
+    <i>[<code>A=3</code>] <code>op</code></i> {vC, vD, vE},
+    <i><code>kind</code></i>@BBBB<br />
+    <i>[<code>A=2</code>] <code>op</code></i> {vC, vD},
+    <i><code>kind</code></i>@BBBB<br />
+    <i>[<code>A=1</code>] <code>op</code></i> {vC},
+    <i><code>kind</code></i>@BBBB<br />
+    <i>[<code>A=0</code>] <code>op</code></i> {},
+    <i><code>kind</code></i>@BBBB<br />
+    <p><i>此处的特殊字母选择反映出其目的在于使计数和引用索引的标签与 3rc 格式中的标签一样。</i></p>
+  </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>35ms</td>
+  <td><i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG},
+    vtaboff@BBBB<br />
+    <i>[<code>A=4</code>] <code>op</code></i> {vC, vD, vE, vF},
+    vtaboff@BBBB<br />
+    <i>[<code>A=3</code>] <code>op</code></i> {vC, vD, vE},
+    vtaboff@BBBB<br />
+    <i>[<code>A=2</code>] <code>op</code></i> {vC, vD},
+    vtaboff@BBBB<br />
+    <i>[<code>A=1</code>] <code>op</code></i> {vC},
+    vtaboff@BBBB<br />
+    <p><i>此处的特殊字母选择反映出其目的在于使计数和引用索引的标签与 3rms 格式中的标签一样。</i></p>
+  </td>
+  <td><i>35c 格式的静态链接 <code>invoke-virtual</code> 和 <code>invoke-super</code> 指令的建议格式</i>
+  </td>
+</tr>
+<tr>
+  <td>35mi</td>
+  <td><i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG},
+    inline@BBBB<br />
+    <i>[<code>A=4</code>] <code>op</code></i> {vC, vD, vE, vF},
+    inline@BBBB<br />
+    <i>[<code>A=3</code>] <code>op</code></i> {vC, vD, vE},
+    inline@BBBB<br />
+    <i>[<code>A=2</code>] <code>op</code></i> {vC, vD},
+    inline@BBBB<br />
+    <i>[<code>A=1</code>] <code>op</code></i> {vC},
+    inline@BBBB<br />
+    <p><i>此处的特殊字母选择反映出其目的在于使计数和引用索引的标签与 3rmi 格式中的标签一样。</i></p>
+  </td>
+  <td><i>35c 格式内联链接 <code>invoke-static</code> 和 <code>invoke-virtual</code> 指令的建议格式</i>
+  </td>
+</tr>
+<tr>
+  <td rowspan="3">AA|<i>op</i> BBBB CCCC</td>
+  <td>3rc</td>
+  <td><i><code>op</code></i> {vCCCC .. vNNNN}, meth@BBBB<br />
+    <i><code>op</code></i> {vCCCC .. vNNNN}, site@BBBB<br />
+    <i><code>op</code></i> {vCCCC .. vNNNN}, type@BBBB<br />
+    <p><i>其中 <code>NNNN = CCCC+AA-1</code>，即 <code>A</code> 确定计数 <code>0..255</code>，<code>C</code> 确定第一个寄存器</i></p>
+  </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>3rms</td>
+  <td><i><code>op</code></i> {vCCCC .. vNNNN}, vtaboff@BBBB<br />
+    <p><i>其中 <code>NNNN = CCCC+AA-1</code>，即 <code>A</code> 确定计数 <code>0..255</code>，<code>C</code> 确定第一个寄存器</i></p>
+  </td>
+  <td><i><code>3rc</code> 格式的静态链接 <code>invoke-virtual</code> 和 <code>invoke-super</code> 指令的建议格式
+</i>
+  </td>
+</tr>
+<tr>
+  <td>3rmi</td>
+  <td><i><code>op</code></i> {vCCCC .. vNNNN}, inline@BBBB<br />
+    <p><i>其中 <code>NNNN = CCCC+AA-1</code>，即 <code>A</code> 确定计数 <code>0..255</code>，<code>C</code> 确定第一个寄存器</i></p>
+  </td>
+  <td><i>3rc 格式的内联链接 <code>invoke-static</code> 和 <code>invoke-virtual</code> 指令的建议格式</i>
+  </td>
+</tr>
+<tr>
+  <td>A|G|<i>op</i> BBBB F|E|D|C HHHH
+  </td><td>45cc</td>
+  <td>
+    <i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG}, meth@BBBB, proto@HHHH<br />
+    <i>[<code>A=4</code>] <code>op</code></i> {vC, vD, vE, vF}, meth@BBBB, proto@HHHH<br />
+    <i>[<code>A=3</code>] <code>op</code></i> {vC, vD, vE}, meth@BBBB, proto@HHHH<br />
+    <i>[<code>A=2</code>] <code>op</code></i> {vC, vD}, meth@BBBB, proto@HHHH<br />
+    <i>[<code>A=1</code>] <code>op</code></i> {vC}, meth@BBBB, proto@HHHH
+  </td>
+  <td>invoke-polymorphic
+  </td>
+</tr>
+<tr>
+  <td>AA|<i>op</i> BBBB CCCC HHHH
+  </td><td>4rcc</td>
+  <td>
+    <code>op&gt;</code> {vCCCC .. vNNNN}, meth@BBBB, proto@HHHH
+    <p><i>其中 <code>NNNN = CCCC+AA-1</code>，即 <code>A</code> 确定计数 <code>0..255</code>，<code>C</code> 确定第一个寄存器</i></p>
+  </td>
+  <td>invoke-polymorphic/range
+  </td>
+</tr>
+<tr>
+  <td>AA|<i>op</i> BBBB<sub>lo</sub> BBBB BBBB BBBB<sub>hi</sub></td>
+  <td>51l</td>
+  <td><i><code>op</code></i> vAA, #+BBBBBBBBBBBBBBBB</td>
+  <td>const-wide</td>
+</tr>
+</tbody>
+</table>
+
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">构建</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 代码库
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            要求
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            下载
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            预览二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            出厂映像
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            驱动程序二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">关注</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            在 Twitter 上 @Android
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            在 Twitter 上 @AndroidDev
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android 博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google 安全博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google 网上论坛上的 Android 平台论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Google 网上论坛上的 Android 构建论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Google 网上论坛上的 Android 移植论坛
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">获取帮助</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            问题跟踪器
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          关于 Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/community0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          社区
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          法律条款
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          许可
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          隐私权政策
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476&amp;hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          网站反馈
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'zh_cn',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/tech/dalvik/instruction-formats.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:41:32 GMT -->
+</html>

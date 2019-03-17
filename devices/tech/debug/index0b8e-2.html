@@ -1,0 +1,1270 @@
+<!doctype html>
+<html  lang="zh_cn">
+  
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/index.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:48:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>调试 Android 平台原生代码 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="调试 Android 平台原生代码 &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="../debug.html">
+
+  <meta property="og:locale" content="zh_cn">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="../debug.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设置"
+   >
+  设置
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../../compatibility0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设计"
+   aria-label="设计, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: 设计"
+   >
+  设计
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="安全性"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 安全性"
+   >
+  安全性
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../audio0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="开发"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 开发"
+   >
+  开发
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../dalvik0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="配置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 配置"
+   >
+  配置
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="参考"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 参考"
+   >
+  参考
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="搜索"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="搜索框">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          转到源代码
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../compatibility0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            设计
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../compatibility0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="概览"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 概览"
+   >
+  概览
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../architecture0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="架构"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 架构"
+   >
+  架构
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility/overview0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="兼容性"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 兼容性"
+   >
+  兼容性
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../display0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="显示"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 显示"
+   >
+  显示
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../settings/settings-guidelines0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设置"
+   >
+  设置
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../../compatibility/tests0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="测试"
+   aria-label="测试, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: 测试"
+   >
+  测试
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设置">
+      <span class="devsite-nav-text" >设置</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设计">
+      <span class="devsite-nav-text" >设计</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 概览">
+      <span class="devsite-nav-text" >概览</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../architecture.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 架构">
+      <span class="devsite-nav-text" >架构</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility/overview-2.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 兼容性">
+      <span class="devsite-nav-text" >兼容性</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../display.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 显示">
+      <span class="devsite-nav-text" >显示</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../settings/settings-guidelines.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设置">
+      <span class="devsite-nav-text" >设置</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility/tests.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 测试">
+      <span class="devsite-nav-text" menu="_book">测试</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 安全性">
+      <span class="devsite-nav-text" >安全性</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 开发">
+      <span class="devsite-nav-text" >开发</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 配置">
+      <span class="devsite-nav-text" >配置</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 参考">
+      <span class="devsite-nav-text" >参考</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 转到源代码">
+      <span class="devsite-nav-text" >转到源代码</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../../../compatibility/tests.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="测试开发工作流程">测试开发工作流程</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/blueprints.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="简单配置">简单配置</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/test-config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="复杂配置">复杂配置</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="插桩测试">插桩测试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/instrumentation.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/instr-self-e2e.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="自插桩测试">自插桩测试</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/instr-app-e2e.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="定位应用">定位应用</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="原生测试">原生测试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/native.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/native-func-e2e.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="添加新的原生测试">添加新的原生测试</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/metrics.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="原生指标测试">原生指标测试</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/jar.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="JAR 主机测试">JAR 主机测试</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/test-mapping.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="映射测试">映射测试</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/atest.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="运行测试 (Atest)">运行测试 (Atest)</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="兼容性测试套件 (CTS)">兼容性测试套件 (CTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/setup.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="设置 CTS">设置 CTS</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/run.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="运行 CTS">运行 CTS</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="运行 CTS 验证程序">运行 CTS 验证程序</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/verifier.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/audio-framework.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="音频框架">音频框架</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/near-ultrasound.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="近超声测试">近超声测试</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/rotation-vector.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="旋转矢量交叉检验">旋转矢量交叉检验</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/usb-audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="USB 音频 CTS 测试">USB 音频 CTS 测试</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="相机测试">相机测试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="相机 HAL 测试">相机 HAL 测试</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="相机盒装 ITS">相机盒装 ITS</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-its-box.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-its-box-assembly.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="常规视野盒装 ITS">常规视野盒装 ITS</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-wfov-box-assembly.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="宽视野盒装 ITS">宽视野盒装 ITS</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="传感器融合盒">传感器融合盒</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/sensor-fusion-quick-start.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="传感器融合盒快速入门">传感器融合盒快速入门</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/sensor-fusion-box-assembly.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="传感器融合盒详细信息">传感器融合盒详细信息</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/secure-element.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="安全要素">安全要素</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/interpret.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="解读结果">解读结果</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/development.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="CTS 开发">CTS 开发</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/downloads-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="下载次数">下载次数</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="供应商测试套件 (VTS)">供应商测试套件 (VTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/codelab-video.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Codelab 和视频教程">Codelab 和视频教程</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/systems.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="使用 VTS 进行系统测试">使用 VTS 进行系统测试</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="测试框架">测试框架</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/shell-commands.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="设备 shell 命令">设备 shell 命令</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/test-templates.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="测试模板">测试模板</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/sna-hal-testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="服务名称感知 HAL 测试">服务名称感知 HAL 测试</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/hal-testability.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="HAL 可测试性检查">HAL 可测试性检查</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/multi-device-testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="多设备测试">多设备测试</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="VTS 信息中心">VTS 信息中心</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/setup.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="设置">设置</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/database.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="数据库">数据库</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/ui.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="界面">界面</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="实验室基础架构">实验室基础架构</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/automated-test-infra.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="自动化测试基础架构">自动化测试基础架构</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/host-controller.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="主机控制器架构">主机控制器架构</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/performance.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="性能测试">性能测试</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Trade Federation 自动化测试框架">Trade Federation 自动化测试框架</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="开始使用">开始使用</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/machine_setup.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="机器设置">机器设置</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/devices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="测试设备">测试设备</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/lifecycle.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="测试生命周期">测试生命周期</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/options.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="选项处理">选项处理</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/full_example.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="端到端示例">端到端示例</span></a></li><li class="devsite-nav-item"><a href="../../../reference/tradefed.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="软件包索引">软件包索引</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="调试">调试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../debug.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="native-crash.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="诊断原生代码崩溃问题">诊断原生代码崩溃问题</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="评估性能">评估性能</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="eval_perf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="systrace.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="了解 systrace">了解 systrace</span></a></li><li class="devsite-nav-item"><a href="ftrace.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="使用 ftrace">使用 ftrace</span></a></li><li class="devsite-nav-item"><a href="jank_capacity.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="识别与负载能力相关的卡顿">识别与负载能力相关的卡顿</span></a></li><li class="devsite-nav-item"><a href="jank_jitter.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="识别与系统行为相关的卡顿">识别与系统行为相关的卡顿</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="gdb.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="使用 GDB">使用 GDB</span></a></li><li class="devsite-nav-item"><a href="native_stack_dump.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="转储用户和内核堆栈">转储用户和内核堆栈</span></a></li><li class="devsite-nav-item"><a href="native-memory.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="本地内存使用情况">本地内存使用情况</span></a></li><li class="devsite-nav-item"><a href="../connect/connect_tests.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="网络连接测试">网络连接测试</span></a></li><li class="devsite-nav-item"><a href="rescue-party-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="救援程序">救援程序</span></a></li><li class="devsite-nav-item"><a href="storaged-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Storaged">Storaged</span></a></li><li class="devsite-nav-item"><a href="strace.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Strace">Strace</span></a></li><li class="devsite-nav-item"><a href="valgrind.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Valgrind">Valgrind</span></a></li></ul></devsite-expandable-nav></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../../compatibility0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            设计
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../../compatibility/tests0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            测试
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">调试 Android 平台原生代码</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>本部分总结了开发平台级功能时，可用于调试、跟踪和分析原生 Android 平台代码的实用工具和相关命令。</p>
+
+<p class="note"><strong>注意</strong>：本部分和本网站其他部分的页面建议您配合使用 <code>adb</code> 与 <code>setprop</code> 参数来调试 Android 的某些方面。请注意，在 Android 操作系统的 O 版本之前，属性名称的长度上限为 32 个字符。也就是说，要创建一个包含应用名称的 wrap 属性，您需要截断该名称以使其符合字符数限制。在 Android O 及更高版本中，此字符数上限值要大得多，应该不需要截断。</p>
+
+<p>本页面中介绍了与崩溃转储有关的基本信息（可以在 logcat 输出中找到）；其他页面更详细地介绍了如何<a href="native-crash0b8e.html?hl=zh-cn">诊断原生代码崩溃问题</a>，如何通过<a href="https://developer.android.google.cn/studio/command-line/dumpsys.html?hl=zh-cn"> <code>dumpsys</code></a> 了解系统服务状况，如何查看<a href="native-memory0b8e.html?hl=zh-cn">本地内存</a>、<a href="https://developer.android.google.cn/studio/command-line/dumpsys.html?hl=zh-cn#network">网络</a>和 <a href="https://developer.android.google.cn/studio/command-line/dumpsys.html?hl=zh-cn#procstats">RAM</a> 使用情况，如何使用 <a href="asan0b8e.html?hl=zh-cn">AddressSanitizer</a> 检测原生代码中的内存错误，如何评估<a href="eval_perf0b8e.html?hl=zh-cn">性能问题</a>（包括 <a href="systrace0b8e.html?hl=zh-cn">systrace</a>），以及如何使用 <a href="gdb0b8e.html?hl=zh-cn">GNU 调试程序 (GDB)</a> 和其他调试工具。</p>
+
+<h2 id="debuggerd">崩溃转储</h2>
+
+<p>当动态链接的可执行文件启动时，系统会注册多个信号处理程序，这些处理程序会在出现崩溃时将基本崩溃转储写入 logcat，并将更详细的“tombstone”文件写入 <code>/data/tombstones/</code>。
+tombstone 是一个包含与崩溃进程相关的额外数据的文件。需要特别指出的是，它包含对以下内容进行的堆栈跟踪：崩溃进程中的所有线程（而不只是捕捉到信号的线程）、完整的内存映射，以及所有打开的文件描述符的列表。</p>
+
+在 Android 8.0 之前，崩溃由 <code>debuggerd</code> 和 <code>debuggerd64</code> 守护进程处理。在 Android O 和更高版本中，<code>crash_dump32</code> 和 <code>crash_dump64</code> 是根据需要生成的。<p></p>
+
+<p>崩溃转储程序仅在未连接任何其他内容时才可连接。这意味着，在使用 <code>strace</code> 或 <code>gdb</code> 等工具时，将无法进行崩溃转储。</p>
+
+<p>输出示例（已去除时间戳和无关信息）：</p>
+
+<pre class="devsite-click-to-copy">
+*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+Build fingerprint: 'Android/aosp_angler/angler:7.1.1/NYC/enh12211018:eng/test-keys'
+Revision: '0'
+ABI: 'arm'
+pid: 17946, tid: 17949, name: crasher  &gt;&gt;&gt; crasher &lt;&lt;&lt;
+signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0xc
+    r0 0000000c  r1 00000000  r2 00000000  r3 00000000
+    r4 00000000  r5 0000000c  r6 eccdd920  r7 00000078
+    r8 0000461a  r9 ffc78c19  sl ab209441  fp fffff924
+    ip ed01b834  sp eccdd800  lr ecfa9a1f  pc ecfd693e  cpsr 600e0030
+
+backtrace:
+    #00 pc 0004793e  /system/lib/libc.so (pthread_mutex_lock+1)
+    #01 pc 0001aa1b  /system/lib/libc.so (readdir+10)
+    #02 pc 00001b91  /system/xbin/crasher (readdir_null+20)
+    #03 pc 0000184b  /system/xbin/crasher (do_action+978)
+    #04 pc 00001459  /system/xbin/crasher (thread_callback+24)
+    #05 pc 00047317  /system/lib/libc.so (_ZL15__pthread_startPv+22)
+    #06 pc 0001a7e5  /system/lib/libc.so (__start_thread+34)
+Tombstone written to: /data/tombstones/tombstone_06
+</pre>
+
+<p>输出的最后一行提供了完整 tombstone 在磁盘上的位置。<em></em></p>
+
+<p>假设您有可用的未剥离二进制文件，则可以将堆栈粘贴到 <code>development/scripts/stack</code> 中，从而获取更详细的展开信息（包含行号信息）：</p>
+
+<p class="key-point"><strong>提示</strong>：为方便起见，如果您已运行 <code>lunch</code>，<code>stack</code> 将自动包含在您的 $PATH 中，因此您无需提供完整的路径。</p>
+
+<pre class="devsite-terminal devsite-click-to-copy">
+development/scripts/stack
+</pre>
+
+<p>输出示例（基于上述 logcat 输出）：</p>
+<pre class="devsite-click-to-copy">
+Reading native crash info from stdin
+03-02 23:53:49.477 17951 17951 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+03-02 23:53:49.477 17951 17951 F DEBUG   : Build fingerprint: 'Android/aosp_angler/angler:7.1.1/NYC/enh12211018:eng/test-keys'
+03-02 23:53:49.477 17951 17951 F DEBUG   : Revision: '0'
+03-02 23:53:49.477 17951 17951 F DEBUG   : ABI: 'arm'
+03-02 23:53:49.478 17951 17951 F DEBUG   : pid: 17946, tid: 17949, name: crasher  &gt;&gt;&gt; crasher &lt;&lt;&lt;
+03-02 23:53:49.478 17951 17951 F DEBUG   : signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0xc
+03-02 23:53:49.478 17951 17951 F DEBUG   :     r0 0000000c  r1 00000000  r2 00000000  r3 00000000
+03-02 23:53:49.478 17951 17951 F DEBUG   :     r4 00000000  r5 0000000c  r6 eccdd920  r7 00000078
+03-02 23:53:49.478 17951 17951 F DEBUG   :     r8 0000461a  r9 ffc78c19  sl ab209441  fp fffff924
+03-02 23:53:49.478 17951 17951 F DEBUG   :     ip ed01b834  sp eccdd800  lr ecfa9a1f  pc ecfd693e  cpsr 600e0030
+03-02 23:53:49.491 17951 17951 F DEBUG   :
+03-02 23:53:49.491 17951 17951 F DEBUG   : backtrace:
+03-02 23:53:49.492 17951 17951 F DEBUG   :     #00 pc 0004793e  /system/lib/libc.so (pthread_mutex_lock+1)
+03-02 23:53:49.492 17951 17951 F DEBUG   :     #01 pc 0001aa1b  /system/lib/libc.so (readdir+10)
+03-02 23:53:49.492 17951 17951 F DEBUG   :     #02 pc 00001b91  /system/xbin/crasher (readdir_null+20)
+03-02 23:53:49.492 17951 17951 F DEBUG   :     #03 pc 0000184b  /system/xbin/crasher (do_action+978)
+03-02 23:53:49.492 17951 17951 F DEBUG   :     #04 pc 00001459  /system/xbin/crasher (thread_callback+24)
+03-02 23:53:49.492 17951 17951 F DEBUG   :     #05 pc 00047317  /system/lib/libc.so (_ZL15__pthread_startPv+22)
+03-02 23:53:49.492 17951 17951 F DEBUG   :     #06 pc 0001a7e5  /system/lib/libc.so (__start_thread+34)
+03-02 23:53:49.492 17951 17951 F DEBUG   :     Tombstone written to: /data/tombstones/tombstone_06
+Reading symbols from /huge-ssd/aosp-arm64/out/target/product/angler/symbols
+Revision: '0'
+pid: 17946, tid: 17949, name: crasher  &gt;&gt;&gt; crasher &lt;&lt;&lt;
+signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0xc
+     r0 0000000c  r1 00000000  r2 00000000  r3 00000000
+     r4 00000000  r5 0000000c  r6 eccdd920  r7 00000078
+     r8 0000461a  r9 ffc78c19  sl ab209441  fp fffff924
+     ip ed01b834  sp eccdd800  lr ecfa9a1f  pc ecfd693e  cpsr 600e0030
+Using arm toolchain from: /huge-ssd/aosp-arm64/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/
+
+Stack Trace:
+  RELADDR   FUNCTION                   FILE:LINE
+  0004793e  pthread_mutex_lock+2       bionic/libc/bionic/pthread_mutex.cpp:515
+  v------&gt;  ScopedPthreadMutexLocker   bionic/libc/private/ScopedPthreadMutexLocker.h:27
+  0001aa1b  readdir+10                 bionic/libc/bionic/dirent.cpp:120
+  00001b91  readdir_null+20            system/core/debuggerd/crasher.cpp:131
+  0000184b  do_action+978              system/core/debuggerd/crasher.cpp:228
+  00001459  thread_callback+24         system/core/debuggerd/crasher.cpp:90
+  00047317  __pthread_start(void*)+22  bionic/libc/bionic/pthread_create.cpp:202 (discriminator 1)
+  0001a7e5  __start_thread+34          bionic/libc/bionic/clone.cpp:46 (discriminator 1)
+</pre>
+
+<p class="note"><strong>注意</strong>：有些系统库是使用 <code>LOCAL_STRIP_MODULE := keep_symbols</code> 编译的，可直接提供可用的回溯，而不会像未剥离版本那样占用较大的空间。</p>
+
+<p>您也可以 <code>stack</code> 整个 tombstone。示例：</p>
+<pre class="devsite-terminal devsite-click-to-copy">
+stack &lt; FS/data/tombstones/tombstone_05
+</pre>
+<p>如果您刚刚在当前目录中解压过错误报告，这将非常有用。要详细了解如何诊断原生代码崩溃和 tombstone，请参阅<a href="native-crash0b8e.html?hl=zh-cn">诊断原生代码崩溃</a>。
+</p>
+
+<h2 id="tombstone">从正在运行的进程获取堆栈跟踪/tombstone</h2>
+
+<p>您也可以使用 <code>debuggerd</code> 工具从正在运行的进程获取堆栈转储。
+在命令行中，使用进程 ID (PID) 调用 <code>debuggerd</code>，以将完整的 tombstone 转储至 <code>stdout</code>。要确切获取进程中每个线程的堆栈，请添加 <code>-b</code> 或 <code>--backtrace</code> 标记。</p>
+
+<h2 id="complex">理解复杂的展开信息</h2>
+
+<p>当应用崩溃时，堆栈往往会非常复杂。以下详细示例突出显示了诸多复杂性：</p>
+
+<pre class="devsite-click-to-copy">
+    #00 pc 00000000007e6918  /system/priv-app/Velvet/Velvet.apk (offset 0x346b000)
+    #01 pc 00000000001845cc  /system/priv-app/Velvet/Velvet.apk (offset 0x346b000)
+    #02 pc 00000000001847e4  /system/priv-app/Velvet/Velvet.apk (offset 0x346b000)
+    #03 pc 00000000001805c0  /system/priv-app/Velvet/Velvet.apk (offset 0x346b000) (Java_com_google_speech_recognizer_AbstractRecognizer_nativeRun+176)
+</pre>
+
+<p>框架 #00-#03 来自原生 JNI 代码，该代码以未压缩的形式存储在 APK 中（以节省磁盘空间），而不是提取到单独的 <code>.so</code> 文件中。Android 9 中的堆栈展开程序不需要提取的 <code>.so</code> 文件也能够应对这种常见的 Android 特定情况。</p>
+
+<p>框架 #00-#02 没有符号名称，因为开发者已将其剥离。</p>
+
+<p>框架 #03 显示了有符号可用的情况，在这种情况下，展开程序会使用这些符号。</p>
+
+<pre class="devsite-click-to-copy">
+    #04 pc 0000000000117550  /data/dalvik-cache/arm64/system@priv-app@Velvet@Velvet.apk@classes.dex (offset 0x108000) (com.google.speech.recognizer.AbstractRecognizer.nativeRun+160)
+</pre>
+
+<p>框架 #04 是预先编译的 Java 代码。旧的展开程序会在此终止，无法通过 Java 展开。</p>
+
+<pre class="devsite-click-to-copy">
+    #05 pc 0000000000559f88  /system/lib64/libart.so (art_quick_invoke_stub+584)
+    #06 pc 00000000000ced40  /system/lib64/libart.so (art::ArtMethod::Invoke(art::Thread*, unsigned int*, unsigned int, art::JValue*, char const*)+200)
+    #07 pc 0000000000280cf0  /system/lib64/libart.so (art::interpreter::ArtInterpreterToCompiledCodeBridge(art::Thread*, art::ArtMethod*, art::ShadowFrame*, unsigned short, art::JValue*)+344)
+    #08 pc 000000000027acac  /system/lib64/libart.so (bool art::interpreter::DoCall<false, false>(art::ArtMethod*, art::Thread*, art::ShadowFrame&amp;, art::Instruction const*, unsigned short, art::JValue*)+948)
+    #09 pc 000000000052abc0  /system/lib64/libart.so (MterpInvokeDirect+296)
+    #10 pc 000000000054c614  /system/lib64/libart.so (ExecuteMterpImpl+14484)
+</false,></pre>
+
+<p>框架 #05-#10 来自 ART 解释器实现。Android 9 之前的版本中的堆栈展开程序会显示这些框架，而不含框架 #11 的上下文（说明解释器正在解释哪些代码）。如果您要对 ART 本身进行调试，这些框架会非常有用。如果您要调试某个应用，则可以忽略这些框架。某些工具（如 <code>simpleperf</code>）会自动忽略这些框架。</p>
+
+<pre class="devsite-click-to-copy">
+    #11 pc 00000000001992d6  /system/priv-app/Velvet/Velvet.apk (offset 0x26cf000) (com.google.speech.recognizer.AbstractRecognizer.run+18)
+</pre>
+
+<p>框架 #11 是正在解释的 Java 代码。</p>
+
+<pre class="devsite-click-to-copy">
+    #12 pc 00000000002547a8  /system/lib64/libart.so (_ZN3art11interpreterL7ExecuteEPNS_6ThreadERKNS_20CodeItemDataAccessorERNS_11ShadowFrameENS_6JValueEb.llvm.780698333+496)
+    #13 pc 000000000025a328  /system/lib64/libart.so (art::interpreter::ArtInterpreterToInterpreterBridge(art::Thread*, art::CodeItemDataAccessor const&amp;, art::ShadowFrame*, art::JValue*)+216)
+    #14 pc 000000000027ac90  /system/lib64/libart.so (bool art::interpreter::DoCall<false, false>(art::ArtMethod*, art::Thread*, art::ShadowFrame&amp;, art::Instruction const*, unsigned short, art::JValue*)+920)
+    #15 pc 0000000000529880  /system/lib64/libart.so (MterpInvokeVirtual+584)
+    #16 pc 000000000054c514  /system/lib64/libart.so (ExecuteMterpImpl+14228)
+</false,></pre>
+
+<p>框架 #12-#16 更像是解释器实现本身。</p>
+
+<pre class="devsite-click-to-copy">
+    #17 pc 00000000002454a0  /system/priv-app/Velvet/Velvet.apk (offset 0x1322000) (com.google.android.apps.gsa.speech.e.c.c.call+28)
+</pre>
+
+<p>框架 #17 更像是正在解释的 Java 代码。该 Java 方法与解释器框架 #12-#16 相对应。</p>
+
+<pre class="devsite-click-to-copy">
+    #18 pc 00000000002547a8  /system/lib64/libart.so (_ZN3art11interpreterL7ExecuteEPNS_6ThreadERKNS_20CodeItemDataAccessorERNS_11ShadowFrameENS_6JValueEb.llvm.780698333+496)
+    #19 pc 0000000000519fd8  /system/lib64/libart.so (artQuickToInterpreterBridge+1032)
+    #20 pc 00000000005630fc  /system/lib64/libart.so (art_quick_to_interpreter_bridge+92)
+</pre>
+
+<p>框架 #18-#20 更像是虚拟机本身，可用于编码以将代码从编译的 Java 代码转换为解释的 Java 代码。</p>
+
+<pre class="devsite-click-to-copy">
+    #21 pc 00000000002ce44c  /system/framework/arm64/boot.oat (offset 0xdc000) (java.util.concurrent.FutureTask.run+204)
+</pre>
+
+<p>框架 #21 是编译的 Java 方法，可调用框架 #17 中的 Java 方法。</p>
+
+<pre class="devsite-click-to-copy">
+    #22 pc 0000000000559f88  /system/lib64/libart.so (art_quick_invoke_stub+584)
+    #23 pc 00000000000ced40  /system/lib64/libart.so (art::ArtMethod::Invoke(art::Thread*, unsigned int*, unsigned int, art::JValue*, char const*)+200)
+    #24 pc 0000000000280cf0  /system/lib64/libart.so (art::interpreter::ArtInterpreterToCompiledCodeBridge(art::Thread*, art::ArtMethod*, art::ShadowFrame*, unsigned short, art::JValue*)+344)
+    #25 pc 000000000027acac  /system/lib64/libart.so (bool art::interpreter::DoCall<false, false>(art::ArtMethod*, art::Thread*, art::ShadowFrame&amp;, art::Instruction const*, unsigned short, art::JValue*)+948)
+    #26 pc 0000000000529880  /system/lib64/libart.so (MterpInvokeVirtual+584)
+    #27 pc 000000000054c514  /system/lib64/libart.so (ExecuteMterpImpl+14228)
+</false,></pre>
+
+<p>框架 #22-#27 是解释器实现，可执行从解释的代码到编译方法的方法调用。</p>
+
+<pre class="devsite-click-to-copy">
+    #28 pc 00000000003ed69e  /system/priv-app/Velvet/Velvet.apk (com.google.android.apps.gsa.shared.util.concurrent.b.e.run+22)
+</pre>
+
+<p>框架 #28 是正在解释的 Java 代码。</p>
+
+<pre class="devsite-click-to-copy">
+    #29 pc 00000000002547a8  /system/lib64/libart.so (_ZN3art11interpreterL7ExecuteEPNS_6ThreadERKNS_20CodeItemDataAccessorERNS_11ShadowFrameENS_6JValueEb.llvm.780698333+496)
+    #30 pc 0000000000519fd8  /system/lib64/libart.so (artQuickToInterpreterBridge+1032)
+    #31 pc 00000000005630fc  /system/lib64/libart.so (art_quick_to_interpreter_bridge+92)
+</pre>
+
+<p>框架 #29-#31 是编译代码和解释代码之间的另一种转换。</p>
+
+<pre class="devsite-click-to-copy">
+    #32 pc 0000000000329284  /system/framework/arm64/boot.oat (offset 0xdc000) (java.util.concurrent.ThreadPoolExecutor.runWorker+996)
+    #33 pc 00000000003262a0  /system/framework/arm64/boot.oat (offset 0xdc000) (java.util.concurrent.ThreadPoolExecutor$Worker.run+64)
+    #34 pc 00000000002037e8  /system/framework/arm64/boot.oat (offset 0xdc000) (java.lang.Thread.run+72)
+</pre>
+
+<p>框架 #32-#34 是可直接相互调用的编译 Java 框架。在此例中，原生调用堆栈与 Java 调用堆栈是相同的。</p>
+
+<pre class="devsite-click-to-copy">
+    #35 pc 0000000000559f88  /system/lib64/libart.so (art_quick_invoke_stub+584)
+    #36 pc 00000000000ced40  /system/lib64/libart.so (art::ArtMethod::Invoke(art::Thread*, unsigned int*, unsigned int, art::JValue*, char const*)+200)
+    #37 pc 0000000000280cf0  /system/lib64/libart.so (art::interpreter::ArtInterpreterToCompiledCodeBridge(art::Thread*, art::ArtMethod*, art::ShadowFrame*, unsigned short, art::JValue*)+344)
+    #38 pc 000000000027acac  /system/lib64/libart.so (bool art::interpreter::DoCall<false, false>(art::ArtMethod*, art::Thread*, art::ShadowFrame&amp;, art::Instruction const*, unsigned short, art::JValue*)+948)
+    #39 pc 0000000000529f10  /system/lib64/libart.so (MterpInvokeSuper+1408)
+    #40 pc 000000000054c594  /system/lib64/libart.so (ExecuteMterpImpl+14356)
+</false,></pre>
+
+<p>框架 #35-#40 是解释器本身。</p>
+
+<pre class="devsite-click-to-copy">
+    #41 pc 00000000003ed8e0  /system/priv-app/Velvet/Velvet.apk (com.google.android.apps.gsa.shared.util.concurrent.b.i.run+20)
+</pre>
+
+<p>框架 #41 是正在解释的 Java 代码。</p>
+
+<pre class="devsite-click-to-copy">
+    #42 pc 00000000002547a8  /system/lib64/libart.so (_ZN3art11interpreterL7ExecuteEPNS_6ThreadERKNS_20CodeItemDataAccessorERNS_11ShadowFrameENS_6JValueEb.llvm.780698333+496)
+    #43 pc 0000000000519fd8  /system/lib64/libart.so (artQuickToInterpreterBridge+1032)
+    #44 pc 00000000005630fc  /system/lib64/libart.so (art_quick_to_interpreter_bridge+92)
+    #45 pc 0000000000559f88  /system/lib64/libart.so (art_quick_invoke_stub+584)
+    #46 pc 00000000000ced40  /system/lib64/libart.so (art::ArtMethod::Invoke(art::Thread*, unsigned int*, unsigned int, art::JValue*, char const*)+200)
+    #47 pc 0000000000460d18  /system/lib64/libart.so (art::(anonymous namespace)::InvokeWithArgArray(art::ScopedObjectAccessAlreadyRunnable const&amp;, art::ArtMethod*, art::(anonymous namespace)::ArgArray*, art::JValue*, char const*)+104)
+    #48 pc 0000000000461de0  /system/lib64/libart.so (art::InvokeVirtualOrInterfaceWithJValues(art::ScopedObjectAccessAlreadyRunnable const&amp;, _jobject*, _jmethodID*, jvalue*)+424)
+    #49 pc 000000000048ccb0  /system/lib64/libart.so (art::Thread::CreateCallback(void*)+1120)
+</pre>
+
+<p>框架 #42-#49 是虚拟机本身。这次，它是开始在新线程上运行 Java 的代码。</p>
+
+<pre class="devsite-click-to-copy">
+    #50 pc 0000000000082e24  /system/lib64/libc.so (__pthread_start(void*)+36)
+    #51 pc 00000000000233bc  /system/lib64/libc.so (__start_thread+68)
+</pre>
+
+<p>框架 #50-#51 是所有线程实际应启动的方式。这是 <code>libc</code> 新线程启动代码。便利提示：如果您看到这些框架，即表示您拥有的展开信息有效且完整。只要您未在堆栈的底部看到这些调用帧，就应怀疑您查看的堆栈是否被截断或损坏；如果堆栈未在底部显示这些调用帧，切勿盲目地认为它正确无误。</p>
+
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">构建</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 代码库
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            要求
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            下载
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            预览二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            出厂映像
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            驱动程序二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">关注</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            在 Twitter 上 @Android
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            在 Twitter 上 @AndroidDev
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android 博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google 安全博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google 网上论坛上的 Android 平台论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Google 网上论坛上的 Android 构建论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Google 网上论坛上的 Android 移植论坛
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">获取帮助</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            问题跟踪器
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          关于 Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/community0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          社区
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          法律条款
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          许可
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          隐私权政策
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476&amp;hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          网站反馈
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'zh_cn',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !0,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/index.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:48:26 GMT -->
+</html>

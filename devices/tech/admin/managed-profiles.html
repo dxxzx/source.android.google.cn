@@ -1,0 +1,1329 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/devices/tech/admin/managed-profiles by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:31:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Employing Managed Profiles &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Employing Managed Profiles &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="managed-profiles.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="managed-profiles.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+   aria-label="Configure, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Configure
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="ART"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: ART"
+   >
+  ART
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../datausage.html"
+   class="gc-analytics-event"
+   title="Data"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Data"
+   >
+  Data
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../admin.html"
+   class="gc-analytics-event"
+   title="Enterprise"
+   aria-label="Enterprise, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Enterprise"
+   >
+  Enterprise
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../health.html"
+   class="gc-analytics-event"
+   title="Performance"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Performance"
+   >
+  Performance
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../config/perms-whitelist.html"
+   class="gc-analytics-event"
+   title="Permissions"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Permissions"
+   >
+  Permissions
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../power.html"
+   class="gc-analytics-event"
+   title="Power"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Power"
+   >
+  Power
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../ota.html"
+   class="gc-analytics-event"
+   title="Updates"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Updates"
+   >
+  Updates
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: ART">
+      <span class="devsite-nav-text" >ART</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../datausage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Data">
+      <span class="devsite-nav-text" >Data</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../admin.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Enterprise">
+      <span class="devsite-nav-text" menu="_book">Enterprise</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../health.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Performance">
+      <span class="devsite-nav-text" >Performance</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../config/perms-whitelist.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Permissions">
+      <span class="devsite-nav-text" >Permissions</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../power.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Power">
+      <span class="devsite-nav-text" >Power</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../ota.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Updates">
+      <span class="devsite-nav-text" >Updates</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../admin.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item"><a href="implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementation">Implementation</span></a></li>
+                          <li class="devsite-nav-item"><a href="multi-user.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multiple Users">Multiple Users</span></a></li>
+                          <li class="devsite-nav-item"><a href="managed-profiles.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Managed Profiles">Managed Profiles</span></a></li>
+                          <li class="devsite-nav-item"><a href="provision.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Provisioning">Provisioning</span></a></li>
+                          <li class="devsite-nav-item"><a href="multiuser-apps.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multiuser Apps">Multiuser Apps</span></a></li>
+                          <li class="devsite-nav-item"><a href="enterprise-telephony.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Enterprise Telephony">Enterprise Telephony</span></a></li>
+                          <li class="devsite-nav-item"><a href="testing-provision.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Testing Device Provisioning">Testing Device Provisioning</span></a></li>
+                          <li class="devsite-nav-item"><a href="testing-setup.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Testing Device Administration">Testing Device Administration</span></a></li>
+                          <li class="devsite-nav-item"><a href="ota-updates.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Enterprise OTA Updates">Enterprise OTA Updates</span></a></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Configure
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../admin.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Enterprise
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Employing Managed Profiles</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>A <em>managed profile</em> or <em>work profile</em> is an Android <a
+href="multi-user-2.html">user</a> with additional special
+properties around management and visual aesthetic.</p>
+
+<p>The primary goal of a managed profile is to create a segregated and secure
+space for managed data (such as corporate data) to reside. The administrator of
+the profile has full control over scope, ingress, and egress of data as well as
+its lifetime. These policies offer great powers and therefore fall upon the
+managed profile instead of the device administrator.</p>
+
+<ul>
+  <li><strong>Creation</strong>. Managed profiles can be created by any
+  application in the primary user. The user is notified of managed profile
+  behaviors and policy enforcement before creation.</li>
+  <li><strong>Management</strong>. Management is performed by applications that
+  programmatically invoke APIs in the
+  <a href="http://developer.android.google.cn/reference/android/app/admin/DevicePolicyManager.html"
+  class="external">DevicePolicyManager</a>
+  class to restrict use. Such applications are referred to as <em>profile
+  owners</em> and are defined at initial profile setup. Policies unique to
+  managed profile involve app restrictions, updatability, and intent behaviors.
+  </li>
+  <li><strong>Visual treatment</strong>. Applications, notifications, and
+  widgets from the managed profile are always badged and typically made
+  available inline with user interface (UI) elements from the primary user.</li>
+</ul>
+
+<h2 id="data_segregation">Data segregation</h2>
+<p>Managed profiles use the following data segregation rules.</p>
+
+<h3 id="applications">Applications</h3>
+
+<p>Applications are scoped with their own segregated data when the same app
+exists in the primary user and managed profile. Generally, applications act
+independently of one another and cannot communicate directly with one another
+across the profile-user boundary.</p>
+
+<h3 id="accounts">Accounts</h3>
+
+<p>
+Accounts in the managed profile are distinctly unique from the primary user.
+There is no way to access credentials across the profile-user boundary. Only
+apps in their respective context are able to access their respective accounts.
+</p>
+
+<h3 id="intents">Intents</h3>
+
+<p>The administrator controls whether intents are resolved in/out of managed
+profile or not. Applications from the managed profile are default scoped to
+stay within the managed profile exception of the Device Policy API.</p>
+
+<h3 id="settings">Settings</h3>
+
+<p>Enforcement of settings is generally scoped to the managed profile, with
+exceptions for lockscreen and encryption settings that are still scoped
+to the device and shared between the primary user and managed profile.
+Otherwise, a profile owner does not have any device administrator privileges
+outside the managed profile.</p>
+
+<p>
+Managed profiles are implemented as a new kind of secondary user, such that:
+</p>
+
+<pre class="devsite-click-to-copy">
+uid = 100000 * userid + appid
+</pre>
+
+<p>They have separate app data like regular users:</p>
+
+<pre class="devsite-click-to-copy">
+/data/user/&lt;userid&gt;
+</pre>
+
+<p>The UserId is calculated for all system requests using
+<code>Binder.getCallingUid()</code>, and all system state and responses are
+separated by userId. You may consider instead using
+<code>Binder.getCallingUserHandle</code> rather than <code>getCallingUid</code>
+to avoid confusion between uid and userId.</p>
+
+<p>The AccountManagerService maintains a separate list of accounts for each
+user. The main differences between a managed profile and a regular secondary
+user are as follows:</p>
+
+<ul>
+  <li>The managed profile is associated with its parent user and started
+  alongside the primary user at boot time.</li>
+  <li>Notifications for managed profiles are enabled by ActivityManagerService
+  allowing the managed profile to share the activity stack with the primary
+  user.</li>
+  <li>Other shared system services include IME, A11Y services, Wi-Fi, and NFC.
+  </li>
+  <li>New Launcher APIs allow launchers to display badged apps and whitelisted
+  widgets from the managed profile alongside apps in the primary profile without
+  switching users.</li>
+</ul>
+
+<h2 id="device_administration">Device administration</h2>
+
+<p>Android device administration includes the following types of device
+administrators for enterprises:</p>
+
+<ul>
+  <li><em>Profile owner</em>. Designed for bring your own device (BYOD)
+  environments</li>
+  <li><em>Device Owner</em>. Designed for corp-liable environments</li>
+</ul>
+
+<p>The majority of the new device administrator APIs added for Android 5.0 are
+available only to profile or device owners. Traditional device administrators
+remain but are applicable to the simpler consumer-only case (e.g., find my
+device).</p>
+
+<h3 id="profile_owners">Profile owners</h3>
+
+<p>A Device Policy Client (DPC) app typically functions as the profile owner.
+The DPC app is typically provided by an enterprise mobility management (EMM)
+partner, such as Google Apps Device Policy.</p>
+
+<p>The profile owner app creates a managed profile on the device by sending the
+<code>ACTION_PROVISION_MANAGED_PROFILE</code> intent. This profile is
+distinguished by the appearance of badged instances of
+apps, as well as personal instances. That badge, or Android device
+administration icon, identifies which apps are work apps.</p>
+
+<p>The EMM has control only over the managed profile (not personal space) with
+some exceptions, such as enforcing the lock screen.</p>
+
+<h3 id="device_owners">Device owners</h3>
+
+<p>The device owner can be set only in an unprovisioned device:</p>
+
+<ul>
+  <li>Can be provisioned only at initial device setup</li>
+  <li>Enforced disclosure always displayed in quick-settings</li>
+</ul>
+
+<p>Device owners can conduct some tasks profile owners cannot, such as:</p>
+
+<ul>
+  <li>Wipe device data</li>
+  <li>Disable Wi-Fi/Bluetooth</li>
+  <li>Control <code>setGlobalSetting</code></li>
+  <li><code>setLockTaskPackages</code> (the ability to whitelist packages that
+  can pin themselves to the foreground)</li>
+  <li>Set <code>DISALLOW_MOUNT_PHYSICAL_MEDIA</code> (<code>FALSE</code> by
+  default). When <code>TRUE</code>, physical media, both portable and adoptable,
+  cannot be mounted.</li>
+</ul>
+
+<h3 id="dpm_api">DevicePolicyManager APIs</h3>
+
+<p>Android 5.0 and higher offers a greatly improved DevicePolicyManager with
+dozens of new APIs to support both corporate-owned and bring your own device
+(BYOD) administration use cases. Examples include app restrictions, silent
+installation of certificates, and cross-profile sharing intent access control.
+Use the sample Device Policy Client (DPC) app
+<a href="https://developer.android.google.cn/samples/BasicManagedProfile/index.html"
+class="external">BasicManagedProfile.apk</a>
+as a starting point. For details, refer to
+<a href="https://developer.android.google.cn/training/enterprise/work-policy-ctrl.html"
+class="external">Building
+a Work Policy Controller</a>.</p>
+
+<h2 id="user-experience">Managed profile user experience</h2>
+
+  <p>
+  Android 9 creates a tighter integration between
+  managed profiles and the platform, making it easier for users to keep their
+  work and personal information separate on their devices. These managed
+  profile user experience changes appear in the Launcher. Implementing the UX
+  managed profile changes creates a consistent user experience across managed
+  devices.
+  </p>
+
+  <h3 id="ux-changes-app-tray">UX changes for devices with an app tray</h3>
+
+    <p>
+      The managed profile UX changes for Launcher 3 in Android
+      9 help users maintain separate personal and
+      managed profiles. The apps drawer provides a tabbed view to distinguish
+      between personal profile apps. When users first view the managed profile
+      tab, they are presented with an educational view to help them navigate
+      the managed profile. Users can also turn the managed profile on and off
+      by using a toggle in the Launcher's work tab.
+    </p>
+
+    <h4 id="tabbed-profile-views">Tabbed profile views</h4>
+
+      <p>
+        In Android 9, the managed profile lets users
+        switch between personal and managed app lists in the apps drawer. When
+        the managed profile is enabled, the app views are separated into two
+        distinct
+        <a
+          href="https://developer.android.google.cn/reference/android/support/v7/widget/RecyclerView.html"
+          class="external"><code>RecyclerViews</code></a>, managed by a
+        <a
+          href="https://developer.android.google.cn/reference/android/support/v4/view/ViewPager.html"
+          class="external"><code>ViewPager</code></a>. Users can switch between
+        the different profiles' views by using profile tabs at the top of the
+        app drawer. The <code>PersonalWorkSlidingTabStrip</code> class
+        provides a reference implementation of the tabbed profile indicator.
+        The tabbed view is implemented as part of the Launcher3 class
+        <a
+          href="https://android.googlesource.com/platform/packages/apps/Launcher3/+/master/src/com/android/launcher3/allapps/AllAppsContainerView.java"
+          class="external"><code>AllAppsContainerView</code></a>.
+      </p>
+
+      <table>
+        <tr>
+          <td width="50%">
+            <img src="images/Work-profile0.png" width=""
+            alt="Personal tab view" title="image_tooltip">
+          </td>
+          <td width="50%">
+            <img src="images/Work-profile1.png" width=""
+            alt="Managed profile toggle" title="image_tooltip">
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Figure 1.</strong> Personal tab view</td>
+          <td><strong>Figure 2.</strong> Work tab view with the managed profile
+            toggle at the bottom of the screen
+          </td>
+        </tr>
+      </table>
+
+    <h4 id="educational-view">Educational view</h4>
+
+      <p>
+      Launcher3 also has the option of presenting an educational view at the
+      bottom of the screen when users first open the work tab, as seen in
+      <strong>Figure 3</strong>. Use the educational view to inform users of
+      the purpose of the work tab and how to make work apps easier to access.
+      </p>
+
+      <p>
+      The educational view is defined in Android 9
+      and higher by the class
+      <code>BottomUserEducationView</code> with the layout controlled by
+      <code>work_tab_tottom_user_education_view.xml</code>. Within
+      <code>BottomUserEducationView</code>, the
+      <code>KEY_SHOWED_BOTTOM_USER_EDUCATION</code> boolean is set to
+      <code>false</code> by default. When the user dismisses the educational
+      view, the boolean is set to <code>true</code>.
+      </p>
+
+      <p>
+        <img src="images/Work-profile2.png" width="50%"
+        alt="Educational view" title="image_tooltip">
+        <p class="img-caption">
+          <strong>Figure 3.</strong> Educational view in work tab
+        </p>
+      </p>
+
+    <h4 id="toggle-to-enable-disable">
+      Toggle to enable/disable managed profiles
+    </h4>
+
+      <p>
+      Within the work tab, managed device administrators can present a toggle
+      in the footer view for users to enable or disable the managed profile as
+      seen in <strong>Figure 2</strong> above. The source for the toggle can be
+      found in <code>WorkFooterContainer</code>, starting in Android
+      9. Enabling and disabling the managed profile
+      is done asynchronously and applied to all valid user profiles. This
+      process is controlled by the<code>WorkModeSwitch</code> class in Android
+      9.
+      </p>
+
+  <h3 id="ux-changes-without-an-app-tray">
+    UX changes for devices without an app tray
+  </h3>
+
+    <p>
+    For launchers without an app tray, it is recommended to continue placing
+    shortcuts to the managed profile apps in the work folder.
+    </p>
+
+    <p>
+    If the work folder fails to populate correctly, and newly installed apps
+    are not added to the folder, apply the following change in the
+    <code>onAllAppsLoaded</code> method in the
+    <a
+      href="https://android.googlesource.com/platform/packages/apps/Launcher3/+/master/src/com/android/launcher3/util/ManagedProfileHeuristic.java"
+      class="external"><code>ManagedProfileHeuristic</code></a> class:
+    </p>
+
+<pre class="prettyprint">for (LauncherActivityInfo app : apps) {
+        // Queue all items which should go in the work folder.
+        if (app.getFirstInstallTime() &lt; Long.MAX_VALUE) {
+                InstallShortcutReceiver.queueActivityInfo(app, context);
+        }
+}</pre>
+
+
+  <h3 id="validating-ux-changes">Validating UX changes</h3>
+
+    <p>
+    Test the managed profile UX implementation using the TestDPC app.
+    </p>
+
+    <ol>
+      <li>Install the
+        <a
+          href="https://play.google.com/store/apps/details?id=com.afwsamples.testdpc"
+          class="external">TestDPC</a> app from the Google Play Store.
+      </li>
+      <li>
+        Open the launcher or app drawer and select the <strong>Set up
+          TestDPC</strong> icon.
+      </li>
+      <li>Follow the on-screen instructions to set up a managed profile.</li>
+      <li>
+        Open the launcher or app drawer and verify that there is a work tab
+        there.
+      </li>
+      <li>
+        Verify that there is a managed profile footer under the work tab.
+      </li>
+      <li>
+        Verify that you can toggle the managed profile switch on and off. The
+        managed profile should be enabled and disabled accordingly.
+      </li>
+    </ol>
+
+    <table>
+      <tr>
+        <td width="33%">
+          <img src="images/Work-profile3.png" width=""
+          alt="TestDPC profile setup" title="image_tooltip">
+        </td>
+        <td width="33%">
+          <img src="images/Work-profile4.png" width=""
+          alt="TestDPC add accounts" title="image_tooltip">
+        </td>
+        <td width="33%">
+          <img src="images/Work-profile5.png" width=""
+          alt="TestDPC setup complete" title="image_tooltip">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Figure 4.</strong> Setting up a managed profile in <strong>Set up TestDPC</strong>
+        </td>
+        <td>
+          <strong>Figure 5.</strong> Add accounts in <strong>Set up TestDPC</strong>
+        </td>
+        <td>
+          <strong>Figure 6.</strong> Set up complete
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td width="50%">
+          <img src="images/Work-profile6.png" width=""
+          alt="App drawer work tab toggle on" title="image_tooltip">
+        </td>
+        <td width="50%">
+          <img src="images/Work-profile7.png" width=""
+          alt="App drawer work tab toggle off" title="image_tooltip">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Figure 7.</strong> App drawer with a work tab. The managed
+          profile footer switch is <strong>ON</strong>, and the managed profile
+          is enabled.
+        </td>
+        <td>
+          <strong>Figure 8.</strong> App drawer with a work tab. The managed
+          profile footer switch is <strong>OFF</strong>, and the managed
+          profile is disabled.
+        </td>
+      </tr>
+    </table>
+
+  <h3 id="managed-profile-app-badge">Managed profile app badge</h3>
+
+  <p>
+  For accessibility reasons, the color of the work badge changes from
+  orange to blue (#1A73E8) in Android 9.
+  </p>
+
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/tech/admin/managed-profiles by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:31:59 GMT -->
+</html>

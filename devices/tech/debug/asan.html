@@ -1,0 +1,1131 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/asan by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:28:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>AddressSanitizer &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="AddressSanitizer &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="asan.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="asan.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+   aria-label="Secure, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../security.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Secure
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../security.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security/bulletin.html"
+   class="gc-analytics-event"
+   title="Bulletins"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Bulletins"
+   >
+  Bulletins
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security/app-sandbox.html"
+   class="gc-analytics-event"
+   title="Features"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Features"
+   >
+  Features
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="fuzz-sanitize.html"
+   class="gc-analytics-event"
+   title="Testing"
+   aria-label="Testing, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Testing"
+   >
+  Testing
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security/best-practices.html"
+   class="gc-analytics-event"
+   title="Best Practices"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Best Practices"
+   >
+  Best Practices
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security/bulletin.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Bulletins">
+      <span class="devsite-nav-text" >Bulletins</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security/app-sandbox.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Features">
+      <span class="devsite-nav-text" >Features</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="fuzz-sanitize.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Testing">
+      <span class="devsite-nav-text" menu="_book">Testing</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security/best-practices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Best Practices">
+      <span class="devsite-nav-text" >Best Practices</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="fuzz-sanitize.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item"><a href="asan.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AddressSanitizer">AddressSanitizer</span></a></li>
+                          <li class="devsite-nav-item"><a href="sanitizers-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="LLVM Sanitizers">LLVM Sanitizers</span></a></li>
+                          <li class="devsite-nav-item"><a href="kasan-kcov.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Build Kernel with KASAN+KCOV">Build Kernel with KASAN+KCOV</span></a></li>
+                          <li class="devsite-nav-item"><a href="libfuzzer.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Fuzzing with libFuzzer">Fuzzing with libFuzzer</span></a></li>
+                          <li class="devsite-nav-item"><a href="cfi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Control Flow Integrity (CFI)">Control Flow Integrity (CFI)</span></a></li>
+                          <li class="devsite-nav-item"><a href="kcfi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Kernel CFI">Kernel CFI</span></a></li>
+                          <li class="devsite-nav-item"><a href="intsan.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Integer Overflow Sanitization">Integer Overflow Sanitization</span></a></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../../security.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Secure
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="fuzz-sanitize.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Testing
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">AddressSanitizer</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>AddressSanitizer (ASan) is a fast compiler-based tool for detecting memory bugs
+in native code. Android supports both regular ASan and hardware-accelerated ASan (HWASan).
+HWAsan is based on memory tagging and is only available on AArch64 because it relies on
+the Top-Byte-Ignore feature.</p>
+
+<p>These tools detect:</p>
+<ul>
+<li>Stack and heap buffer overflow/underflow.
+<li>Heap use after free.
+<li>Stack use outside scope.
+<li>Stack use after return (HWAsan only on Android).
+<li>Double free/wild free.
+</ul>
+
+<p>ASan runs on both 32-bit and 64-bit ARM, plus x86 and x86-64. ASan's CPU overhead
+is roughly 2x, code size overhead is between 50% and 2x, and a large memory overhead
+(dependent on your allocation patterns, but on the order of 2x).</p>
+
+<p>HWASan has similar CPU and code size overheads, but a much smaller RAM overhead (15%).
+HWASan is non-deterministic. There are only 256 possible tag values, so there is a flat 0.4%
+probability of missing any bug. HWAsan does not have ASan's limited-size redzones for
+detecting overflows and limited-capacity quarantine for detecting use-after-free,
+so it does not matter to HWAsan how large the overflow is or how long ago the memory
+was deallocated. This makes HWASan better than ASan. You can read more about
+<a href="http://clang.llvm.org/docs/HardwareAssistedAddressSanitizerDesign.html" class="external">the design of HWAsan</a>.</p>
+
+<p>Valgrind's Memcheck tool is similar, but ASan also detects stack/global overflows
+in addition to heap overflows, and is much faster with less memory overhead. Conversely,
+Valgrind detects uninitialized reads and memory leaks that ASan does not.
+Valgrind may be useful for debugging apps but is not practical for the entire OS,
+which is why the Android team uses ASan instead.</p>
+
+<p>This document describes how to build and run parts/all of the Android OS itself with
+AddressSanitizer. If you are building an SDK/NDK application with AddressSanitizer, see
+<a href="https://github.com/google/sanitizers/wiki/AddressSanitizerOnAndroid" class="external">AddressSanitizerOnAndroid</a>
+instead.</p>
+
+
+<h2 id="using-hwasan">Using HWAsan</h2>
+
+<p>As of February 2019 only Pixel 2 and Pixel 2 XL support HWAsan. The Android team is working on
+getting the necessary patches into the common kernel, but for now supporting another device requires
+backporting these kernel patches:</p>
+<ul>
+<li><a href="https://lore.kernel.org/patchwork/project/lkml/list/?series=375855" class="external">arm64: untag user pointers passed to the kernel</a></li>
+<li><a href="https://lore.kernel.org/patchwork/project/lkml/list/?series=375865" class="external">arm64 relaxed ABI</a></li>
+</ul>
+
+<p>You may also need to remove some optional extras to make room on your system partition for the
+larger libraries. See the <code>walleye_hwasan</code> target for an example.</p>
+
+<p>Use the following commands to build the entire platform using HWASan:</p>
+
+<pre class="prettyprint">
+<code class="devsite-terminal">lunch walleye_hwasan-userdebug</code>
+<code class="devsite-terminal">make SANITIZE_TARGET=hwaddress</code>
+</pre>
+
+<p>Unlike ASan, with HWASan there's no need to build twice, incremental builds just work,
+there are no special flashing instructions or wiping, static executables are supported,
+and it's okay to skip sanitization of any library other than <code>libc</code>.
+There's also no requirement that if a library is sanitized, any executable that links
+to it must also be sanitized.
+
+<p>To skip sanitization of a module, use <code>LOCAL_NOSANITIZE := hwaddress</code> or
+<code>sanitize: { hwaddress: false }</code>.</p>
+
+<aside class="note">
+<strong>Note:</strong> Currently there is no support for sanitizing individual modules with HWASan. Use ASan to sanitize individual modules.
+</aside>
+
+<h2 id="sanitizing_individual_executables_with_asan">Sanitizing individual executables with ASan</h2>
+
+<p>Add <code>LOCAL_SANITIZE:=address</code> or <code>sanitize: { address: true } }</code> to
+the build rule for the executable. You can search the code for existing examples or to find
+the other available sanitizers.</p>
+
+<p>When a bug is detected, ASan prints a verbose report both to the standard
+output and to <code>logcat</code> and then crashes the process.</p>
+
+<h2 id="sanitizing_shared_libraries_with_asan">Sanitizing shared libraries with ASan</h2>
+
+<p>Due to the way ASan works, a library built with ASan cannot be used by an
+executable that's built without ASan.</p>
+
+<p class="note"><strong>Note</strong>: In runtime situations where an ASan library is
+loaded into an incorrect process, you will see unresolved symbol messages
+starting with <code>_asan</code> or <code>_sanitizer</code>.</p>
+
+<p>To sanitize a shared library that is used in multiple executables, not all of
+which are built with ASan, you'll need two copies of the library. The
+recommended way to do this is to add the following to <code>Android.mk</code>
+for the module in question:</p>
+
+<pre class="devsite-click-to-copy">
+LOCAL_SANITIZE:=address
+LOCAL_MODULE_RELATIVE_PATH := asan
+</pre>
+
+<p>This puts the library in <code>/system/lib/asan</code> instead of
+<code>/system/lib</code>. Then, run your executable with:
+<code>LD_LIBRARY_PATH=/system/lib/asan</code></p>
+
+<p>For system daemons, add the following to the appropriate section of
+<code>/init.rc</code> or <code>/init.$device$.rc</code>.</p>
+
+<pre class="devsite-click-to-copy">
+setenv LD_LIBRARY_PATH /system/lib/asan
+</pre>
+
+<p class="warning"><strong>Warning</strong>: The <code>LOCAL_MODULE_RELATIVE_PATH</code>
+setting <strong>moves</strong> your library to <code>/system/lib/asan</code>,
+meaning that clobbering and rebuilding from scratch will result in the
+library missing from <code>/system/lib</code>, and probably an unbootable
+image. That's an unfortunate limitation of the
+current build system. Don't clobber; do <code>make -j $N</code> and <code>adb
+sync</code>.</p>
+
+<p>Verify the process is using libraries from <code>/system/lib/asan</code>
+when present by reading <code>/proc/$PID/maps</code>. If it's not, you may need
+to disable SELinux, like so:</p>
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal">adb root</code>
+<code class="devsite-terminal">adb shell setenforce 0</code>
+# restart the process with adb shell kill $PID
+# if it is a system service, or may be adb shell stop; adb shell start.
+</pre>
+
+<h2 id=better_stack_traces>Better stack traces</h2>
+
+<p>AddressSanitizer uses a fast, frame-pointer-based unwinder to record a stack
+trace for every memory allocation and deallocation event in the program. Most
+of Android is built without frame pointers. As a result, you will often get
+only one or two meaningful frames. To fix this, either rebuild the library with
+ASan (recommended!), or with:</p>
+
+<pre class="devsite-click-to-copy">
+LOCAL_CFLAGS:=-fno-omit-frame-pointer
+LOCAL_ARM_MODE:=arm
+</pre>
+
+<p>Or set <code>ASAN_OPTIONS=fast_unwind_on_malloc=0</code> in the process
+environment. The latter can be very CPU-intensive, depending on
+the load.</p>
+
+<h2 id=symbolization>Symbolization</h2>
+
+<p>Initially, ASan reports contain references to offsets in binaries and shared
+libraries. There are two ways to obtain source file and line information:</p>
+
+<ul>
+  <li>Ensure llvm-symbolizer binary is present in <code>/system/bin</code>.
+Llvm-symbolizer is built from sources in:
+<code>third_party/llvm/tools/llvm-symbolizer</code> <li>Filter the report
+through the <code>external/compiler-rt/lib/asan/scripts/symbolize.py</code>
+script.
+</ul>
+
+<p>The second approach can provide more data (i.e. file:line locations) because of
+the availability of symbolized libraries on the host.</p>
+
+<h2 id=addresssanitizer_in_the_apps>AddressSanitizer in apps</h2>
+
+<p>AddressSanitizer cannot see into Java code, but it can detect bugs in the JNI
+libraries. For that, you'll need to build the executable with ASan, which in
+this case is <code>/system/bin/app_process(<em>32|64</em>)</code>. This will
+enable ASan in all apps on the device at the same time, which is a
+bit stressful, but nothing that a 2GB RAM device cannot handle.</p>
+
+<p>Add the usual <code>LOCAL_SANITIZE:=address</code> to
+the app_process build rule in <code>frameworks/base/cmds/app_process</code>. Ignore
+the <code>app_process__asan</code> target in the same file for now (if it is
+still there at the time you read
+this). Edit the Zygote record in
+<code>system/core/rootdir/init.zygote(<em>32|64</em>).rc</code> to add the
+following lines:</p>
+
+<pre class="devsite-click-to-copy">
+setenv LD_LIBRARY_PATH /system/lib/asan:/system/lib
+setenv ASAN_OPTIONS
+allow_user_segv_handler=true
+</pre>
+
+<p>Build, adb sync, fastboot flash boot, reboot.</p>
+
+<h2 id=using_the_wrap_property>Using the wrap property</h2>
+
+<p>The approach in the previous section puts AddressSanitizer into every
+application in the system (actually, into every descendant of the Zygote
+process). It is possible to run only one (or several) applications with ASan,
+trading some memory overhead for slower application startup.</p>
+
+<p>This can be done by starting your app with the “wrap.” property, the same one
+that’s used to run apps under Valgrind. The following example runs the Gmail app
+under ASan:</p>
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal">adb root</code>
+<code class="devsite-terminal">adb shell setenforce 0  # disable SELinux</code>
+<code class="devsite-terminal">adb shell setprop wrap.com.google.android.gm "asanwrapper"</code>
+</pre>
+
+<p>In this context, asanwrapper rewrites <code>/system/bin/app_process</code>
+to <code>/system/bin/asan/app_process</code>, which is built with
+AddressSanitizer. It also adds <code>/system/lib/asan</code> at the start of
+the dynamic library search path. This way ASan-instrumented
+libraries from <code>/system/lib/asan</code> are preferred to normal libraries
+in <code>/system/lib</code> when running with asanwrapper.</p>
+
+<p>Again, if a bug is found, the app will crash, and the report will be printed to
+the log.</p>
+
+<h2 id=sanitize_target>SANITIZE_TARGET</h2>
+
+<p>Since Android 7.0 Nougat, there is support for building the entire Android platform with
+ASan at once. (If you're building a release newer than Android 9.0 Pie, HWASan is a better choice.)</p>
+
+<p>Run the following commands in the same build tree.</p>
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal">make -j42</code>
+<code class="devsite-terminal">SANITIZE_TARGET=address make -j42</code>
+</pre>
+
+<p>In this mode, <code>userdata.img</code> contains extra libraries and must be
+flashed to the device as well. Use the following command line:</p>
+
+<pre class="devsite-terminal devsite-click-to-copy">
+fastboot flash userdata && fastboot flashall
+</pre>
+
+<p>This works by building two sets of shared libraries: normal in
+<code>/system/lib</code> (the first make invocation), ASan-instrumented in
+<code>/data/asan/lib</code> (the second make invocation). Executables from the
+second build overwrite the ones from the first build. ASan-instrumented
+executables get a different library search path that includes
+<code>/data/asan/lib</code> before <code>/system/lib</code> through the use of
+"/system/bin/linker_asan" in PT_INTERP.</p>
+
+<p>The build system clobbers intermediate object directories when the
+<code>$SANITIZE_TARGET</code> value has changed. This forces a rebuild of all
+targets while preserving installed binaries under <code>/system/lib</code>.</p>
+
+<p>Some targets cannot be built with ASan:</p>
+
+<ul>
+  <li>Statically linked executables.
+  <li><code>LOCAL_CLANG:=false</code> targets
+  <li><code>LOCAL_SANITIZE:=false</code> will not be ASan'd for <code>SANITIZE_TARGET=address</code>
+</ul>
+
+<p>Executables like these are skipped in the SANITIZE_TARGET build, and the
+version from the first make invocation is left in <code>/system/bin</code>.</p>
+
+<p>Libraries like this are simply built without ASan. They can contain some ASan
+code anyway from the static libraries they depend upon.</p>
+
+<h2 id=supporting_documentation>Supporting documentation</h2>
+
+<p><a href="https://github.com/google/sanitizers/wiki/AddressSanitizerOnAndroid">AddressSanitizerOnAndroid</a> public project site</p>
+<p><a href="https://www.chromium.org/developers/testing/addresssanitizer">AddressSanitizer and Chromium</a></p>
+<p><a href="https://github.com/google/sanitizers">Other Google Sanitizers</a></p>
+
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/asan by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:28:37 GMT -->
+</html>

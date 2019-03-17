@@ -1,0 +1,1252 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/kasan-kcov by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:28:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Building a Pixel kernel with KASAN+KCOV &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Building a Pixel kernel with KASAN+KCOV &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="kasan-kcov.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="kasan-kcov.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+   aria-label="Secure, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../security.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Secure
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../security.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security/bulletin.html"
+   class="gc-analytics-event"
+   title="Bulletins"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Bulletins"
+   >
+  Bulletins
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security/app-sandbox.html"
+   class="gc-analytics-event"
+   title="Features"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Features"
+   >
+  Features
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="fuzz-sanitize.html"
+   class="gc-analytics-event"
+   title="Testing"
+   aria-label="Testing, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Testing"
+   >
+  Testing
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security/best-practices.html"
+   class="gc-analytics-event"
+   title="Best Practices"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Best Practices"
+   >
+  Best Practices
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security/bulletin.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Bulletins">
+      <span class="devsite-nav-text" >Bulletins</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security/app-sandbox.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Features">
+      <span class="devsite-nav-text" >Features</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="fuzz-sanitize.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Testing">
+      <span class="devsite-nav-text" menu="_book">Testing</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security/best-practices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Best Practices">
+      <span class="devsite-nav-text" >Best Practices</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="fuzz-sanitize.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item"><a href="asan.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AddressSanitizer">AddressSanitizer</span></a></li>
+                          <li class="devsite-nav-item"><a href="sanitizers-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="LLVM Sanitizers">LLVM Sanitizers</span></a></li>
+                          <li class="devsite-nav-item"><a href="kasan-kcov.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Build Kernel with KASAN+KCOV">Build Kernel with KASAN+KCOV</span></a></li>
+                          <li class="devsite-nav-item"><a href="libfuzzer.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Fuzzing with libFuzzer">Fuzzing with libFuzzer</span></a></li>
+                          <li class="devsite-nav-item"><a href="cfi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Control Flow Integrity (CFI)">Control Flow Integrity (CFI)</span></a></li>
+                          <li class="devsite-nav-item"><a href="kcfi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Kernel CFI">Kernel CFI</span></a></li>
+                          <li class="devsite-nav-item"><a href="intsan.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Integer Overflow Sanitization">Integer Overflow Sanitization</span></a></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../../security.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Secure
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="fuzz-sanitize.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Testing
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Building a Pixel kernel with KASAN+KCOV</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>
+Kernel Address Sanitizer (<a
+href="https://www.kernel.org/doc/html/latest/dev-tools/kasan.html">KASAN</a>)
+helps kernel developers and testers find runtime memory-related bugs, such as
+out-of-bound read or write operations, and use-after-free issues. While KASAN
+isn't enabled on production builds due to its runtime performance
+penalties and memory usage increment, it is still a valuable tool for testing
+debug builds.
+</p>
+<p>
+When used with another runtime tool called Kernel Coverage (<a
+href="https://lwn.net/Articles/671640/">KCOV</a>), KASAN-sanitized and
+KCOV-instrumented code helps developers and testers to detect runtime memory
+errors and obtain code coverage information. In the scenario of kernel fuzz
+testing, e.g. via <a href="https://github.com/google/syzkaller">syzkaller</a>,
+KASAN helps to determine the root cause of crashes, and KCOV provides code
+coverage information to the fuzzing engine to help in test-case or corpus
+deduplication.
+</p>
+<p>
+This page does not discuss the inner workings or mechanics of KASAN. Rather, it
+serves as a guide to build and modify the Android Open Soure Project (AOSP) and
+Pixel's kernel source to boot with KASAN and KCOV turned on.
+</p>
+<h2 id="setting-up-your-build-environment">Setting up your build
+environment</h2>
+<p>
+Follow the steps in the <a
+href="../../../setup/build/requirements.html">Downloading and
+Building</a> section to set up your build environment.
+</p>
+<h2 id="building-aosp">Building AOSP</h2>
+<p>
+Download the <a href="../../../setup/build/downloading.html">Android source code</a>. For the
+purpose of building KASAN images, choose a stable build that is not in active
+development. Often, the latest available release/stable branch is a good choice.
+More information about build and branch can be found at <a
+href="../../../setup/build-numbers-2.html#source-code-tags-and-builds">Source
+Code Tags and Builds</a>.
+</p>
+
+<p>
+After you have successfully checked out the source code, download the necessary
+device blobs that correspond to the device and branch you are using from <a
+href="https://developers.google.cn/android/drivers">Driver Binaries for
+Nexus and Pixel Devices</a>. Download both the vendor image and the set of
+binaries from the System-on-Chip (SOC) manufacturer. Then, unarchive the
+downloaded tarballs, run the scripts they contain, and accept the licenses.
+</p>
+<aside class="note">
+<strong>Tip</strong>: Double check that you have the <a
+href="../../../setup/initializing-2.html#installing-the-jdk">right
+version of JDK</a> installed on your system before proceeding further.
+</aside>
+<p>
+Then clean up, set up your build environment, and choose your build target,
+following the steps in
+<a href="../../../setup/build/building.html#cleaning-up">Preparing to Build</a>.
+</p>
+
+<p>
+To establish a working base, make your first build without modifications:
+</p>
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal" data-terminal-prefix="~/src/aosp$ ">make -j48</code>
+</pre>
+<p>
+Flash your build result to a test device (for example, marlin) and let it boot:
+</p>
+
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal" data-terminal-prefix="~/src/aosp$ ">cd out/target/product/marlin</code>
+<code class="devsite-terminal" data-terminal-prefix="~/src/aosp/out/target/product/marlin$ ">ANDROID_PRODUCT_OUT=`pwd` fastboot flashall -w</code>
+</pre>
+<p>
+After booting to the homescreen, you might see a pop-up that says:
+</p>
+<p>
+<code>There's an internal problem with your device. Contact your manufacturer
+for details.</code> This pop-up likely means that the build fingerprint of your
+vendor and your system partition do not match. Because this build is just for
+development and testing, and not a release build, just ignore it.
+</p>
+<h2 id="building-the-kernel">Building the kernel</h2>
+<p>To build the kernel, you need to check out the correct source code,
+cross-compile it, and then build the kernel image in the correct AOSP
+directory.</p>
+<h3 id="checking-out-kernel-source-code">Checking out kernel source code</h3>
+<p>
+Create a directory to store the kernel source code and clone the AOSP kernel git
+repository to your local storage.
+</p>
+
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal devsite-click-to-copy">mkdir ~/src/marlin-kernel-src</code>
+<code class="devsite-terminal devsite-click-to-copy">cd ~/src/marlin-kernel-src</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="~/src/marlin-kernel-src$ ">git clone https://android.googlesource.com/kernel/msm</code>
+</pre>
+<p>
+After you are done, there should be an empty directory named <code>msm</code>.
+</p>
+<p>
+Enter the <code>msm</code> directory and <code>git checkout</code> the branch
+that corresponds to the source code you are building. For the list of available
+branches and tags, see the <a href="https://android.googlesource.com/kernel/msm/">Android msm
+kernel source tree</a>.
+</p>
+
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="~/src/marlin-kernel-src$ ">cd msm</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="~/src/marlin-kernel-src$ ">git checkout <var>TAG_NAME</var></code>
+</pre>
+<p>
+After completing this step, the <code>msm</code> directory should have content.
+</p>
+<h3 id="performing-cross-compilation">Performing cross compilation</h3>
+<p>
+Next you need to compile the Android kernel.
+</p>
+<h5 id="setting-up-your-cross-compiler">Setting up your cross-compiler</h5>
+<p>
+To build the kernel, you need to set up a cross-compiler. The current
+recommended and tested toolchain is Android's NDK toolchain latest stable
+version. To download the Android NDK, visit the official <a
+href="https://developer.android.google.cn/ndk/downloads/index.html">Android NDK
+website</a>. Download the appropriate zip archive for your platform, and unzip
+it. This results in a directory resembling
+<code>android-ndk-<var>NDK_VERSION</var></code>.
+</p>
+<h5 id="downloading-the-lz4c-tool">Downloading the LZ4c tool</h5>
+<p>
+The Pixel kernel uses <a hre="//lz4.github.io/lz4/">LZ4 compression</a>,
+so the <code>lz4c</code> tool is required when you build your kernel. If you
+use Ubuntu, install the <code>lz4c</code> tool by:
+</p>
+
+
+<pre class="devsite-terminal devsite-click-to-copy">sudo apt-get install liblz4-tool
+</pre>
+<h4 id="building-your-kernel">Building your kernel</h4>
+<p>
+Set up your build environment from the <code>marlin-kernel-src/msm</code>
+directory with:
+</p>
+
+
+<pre>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src/msm$ ">export ARCH=arm64</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src/msm$ ">export CROSS_COMPILE=<var>PATH_TO_NDK</var>/android-ndk-<var>NDK_VERSION</var>/toolchains/aarch64-linux-android-<var>TOOLCHAIN_VERSION</var>/prebuilt/linux-x86_64/bin/aarch64-linux-android-</code>
+</pre>
+<p>
+Then build an unmodified version of your kernel to establish a working base:
+</p>
+
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src/msm$ ">make marlin_defconfig</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src/msm$ ">make -j48</code>
+</pre>
+<p>
+The result of the build process can be found at:
+<code>arch/arm64/boot/Image.lz4-dtb</code>
+</p>
+<h4 id="rebuilding-the-boot-image-in-aosp">Rebuilding the boot image in
+AOSP</h4>
+<p>
+After you have built the kernel image, copy the result over into AOSP's
+<code>device/google/marlin-kernel</code> directory, with:
+</p>
+
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="~/src/aosp$ ">cp ${marlin-kernel-src}/msm/arch/arm64/boot/Image.lz4-dtb device/google/marlin-kernel</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="~/src/aosp$ ">source build/envsetup.sh</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="~/src/aosp$ ">lunch aosp_marlin-userdebug</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="~/src/aosp$ ">make -j48</code>
+</pre>
+<p>
+After a successful build, flash the target device with:
+</p>
+
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="~/src/aosp$ ">cd out/target/product/marlin</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="~/src/aosp/out/target/product/marlin$ ">fastboot flashall -w</code>
+</pre>
+<p>
+After flashing, your device should boot. Verify the image you flashed to
+the device is the kernel image you built by checking <code>Kernel
+version</code> under <code>Settings -&gt; System -&gt; About phone</code>
+after the device finishes booting.
+</p>
+<h2 id="modifying-the-kernel">Modifying the kernel</h2>
+<h3 id="enabling-kasan-and-kcov-compile-options">Enabling KASAN and KCOV compile
+options</h3>
+<p>
+KASAN and KCOV codes are guarded by compilation flags, which are not turned on
+for normal builds. To enable them, add KASAN and KCOV options to the config
+file, but drop the LZ4 config.
+</p>
+<p>
+To do this, make a copy of the default config file, for example,
+<code>marlin_defconfig</code>:
+</p>
+
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src/msm$ ">cd arch/arm64/configs</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src/msm/arch/arm64/configs$ ">cp marlin_defconfig marlin-kasan_defconfig</code>
+</pre>
+<p>
+In the new config file, remove this flag <code>CONFIG_KERNEL_LZ4=y</code> and
+add these flags:
+</p>
+
+<pre class="devsite-click-to-copy">CONFIG_KASAN=y
+CONFIG_KASAN_INLINE=y
+CONFIG_KCOV=y
+CONFIG_SLUB=y
+CONFIG_SLUB_DEBUG=y
+</pre>
+
+<h2 id="recompiling-the-kernel-with-new-configuration">Recompiling the kernel
+with new configuration</h2>
+<p>
+After you've finished modifying your copy of the config file, recompile the
+kernel.
+</p>
+<h3 id="reconfiguring-the-kernel">Reconfiguring the kernel</h3>
+<p>
+Set up your <a href="../../../setup/build/building-kernels.html#building">build environment</a>.
+Build your modified <code>defconfig</code> and check if the newly added flags
+are present in the produced <code>.config</code> file.
+</p>
+
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src/msm$ ">make marlin-kasan_defconfig</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src/msm$ ">grep KASAN .config
+CONFIG_HAVE_ARCH_<strong>KASAN</strong>=y
+CONFIG_<strong>KASAN</strong>=y
+# CONFIG_<strong>KASAN</strong>_OUTLINE is not set
+CONFIG_<strong>KASAN</strong>_INLINE=y</code>
+</pre>
+<p>
+You should see the KASAN flags. Compile your kernel:
+</p>
+
+
+<pre class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src/msm$ ">make -j48
+</pre>
+<h3 id="checking-the-modified-kernel-image">Checking the modified kernel
+image</h3>
+<p>
+After a successful compilation, navigate to the <code>arch/arm64/boot</code>
+directory to view the compilation results. Generally, the
+<code>Image.gz-dtb</code> is about 23MB and larger than that of a standard build.
+</p>
+
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src/msm$ ">cd arch/arm64/boot</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src/msm/arch/arm64/boot$ ">ls -lh Image.gz-dtb
+-rw-r--r-- 1 username groupname 23M Aug 11 13:59 Image.gz-dtb</code>
+</pre>
+<p>
+To see if KCOV was properly compiled, perform additional analysis on the
+produced <code>vmlinux</code> at the root of the kernel source tree. If you run
+an <code>objdump</code> on vmlinux, you should see numerous calls to
+<code>__sanitizer_cov_trace_pc()</code>.
+</p>
+
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="marlin-kernel-src$ ">sh -c '${CROSS_COMPILE}objdump -d vmlinux' | grep sanitizer
+ffffffc000082030:    94040658    bl    ffffffc000183990 &lt;__sanitizer_cov_trace_pc&gt;
+ffffffc000082050:    94040650    bl    ffffffc000183990 &lt;__sanitizer_cov_trace_pc&gt;
+ffffffc000082078:    94040646    bl    ffffffc000183990 &lt;__sanitizer_cov_trace_pc&gt;
+ffffffc000082080:    94040644    bl    ffffffc000183990 &lt;__sanitizer_cov_trace_pc&gt;
+ffffffc0000820ac:    94040639    bl    ffffffc000183990 &lt;__sanitizer_cov_trace_pc&gt;
+</code></pre>
+<h2 id="modifying-aosp-code">Modifying AOSP code</h2>
+<p>
+Before plugging in the new boot image, you need to adjust certain parameters in
+AOSP's source code that govern how the device boots. This is mainly necessary to
+ensure the new (inflated) image boots properly.
+</p>
+<h3 id="adjusting-board-parameters">Adjusting board parameters</h3>
+<p>
+Adjust the boot parameters defined in the device's <code>BoardConfig.mk</code>
+file. It is located at <code>device/google/marlin/marlin</code> relative to the
+root of your AOSP source code.
+</p>
+
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="~/src/aosp$ ">cd device/google/marlin/marlin</code>
+<code class="devsite-terminal devsite-click-to-copy" data-terminal-prefix="~/src/aosp/device/google/marlin/marlin$ ">vim BoardConfig.mk</code>
+</pre>
+<aside class="caution">
+<p>
+<strong>Caution</strong>: Make sure you have a backup of the original
+<code>BoardConfig.mk</code> file before proceeding, in case something goes
+wrong.
+</p>
+<p>
+The adjustments to be made can be summarized as follows through a
+<code>git diff</code> result:
+</p>
+
+
+<pre>diff --git a/marlin/BoardConfig.mk b/marlin/BoardConfig.mk
+index 31533fb9..81caf05d 100644
+--- a/marlin/BoardConfig.mk
++++ b/marlin/BoardConfig.mk
+@@ -116,15 +116,10 @@ BOARD_EGL_CFG := device/google/marlin/egl.cfg
+
+ BOARD_KERNEL_BASE        := 0x80000000
+ BOARD_KERNEL_PAGESIZE    := 4096
+<var>-ifneq ($(filter marlin_kasan, $(TARGET_PRODUCT)),)</var>
+ BOARD_KERNEL_OFFSET      := 0x80000
+ BOARD_KERNEL_TAGS_OFFSET := 0x02500000
+ BOARD_RAMDISK_OFFSET     := 0x02700000
+ BOARD_MKBOOTIMG_ARGS     := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+<var>-else
+-BOARD_KERNEL_TAGS_OFFSET := 0x02000000
+-BOARD_RAMDISK_OFFSET     := 0x02200000
+-endif</var>
+
+ TARGET_KERNEL_ARCH := arm64
+ TARGET_KERNEL_HEADER_ARCH := arm64
+</pre>
+</aside>
+
+<p>
+If you do not wish to modify the <code>BoardConfig.mk</code>
+file, you could instead create a new lunch target that contains the name
+<code>marlin_kasan</code>. For more information about this process, see
+<a href="../../../setup/add-device-2.html">Adding a New Device</a>.
+</p>
+
+<h3 id="adjusting-the-kernel-target-in-the-local-makefile">Adjusting the kernel
+target in the local Makefile</h3>
+<p>
+The new kernel uses LZ4 compression to improve speed, but KASAN requires gzip
+for better compression ratio. To accommodate this, tell the build machinery
+which kernel to bundle into the final target by modifying where the
+<code>LOCAL_KERNEL</code> variable points to in
+<code>device/google/marlin/device-common.mk</code>.
+</p>
+<h2 id="rebuilding-boot-image">Rebuilding the boot image</h2>
+<p>
+To rebuild the boot image, copy the new kernel image into the AOSP tree in the
+device-specific folder (e.g. <code>device/google/marlin-kernel</code>). Make
+sure this is where the build system expects the kernel target image to be
+at, according to how you modified it earlier.
+</p>
+<p>
+Next, rebuild your flashable images, similar to how you <a
+href="#building-aosp">built AOSP</a> earlier. Upon successful build, flash all
+built images as usual.
+</p>
+<h2 id="booting-your-device-with-a-modified-kernel-image">Booting your device
+with a modified kernel image</h2>
+<p>
+You should now have a build that boots and enters the home screen. From here,
+check the device's <code>dmesg</code> output for a "<code>KernelAddressSanitizer
+initialized</code>" message in the very early boot stage. That message means
+KASAN is initialized during boot time. Also, you can confirm
+<code>/sys/kernel/debug/kcov</code> is present on the device (you will have to
+be root to do that).
+</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>
+You can experiment with different kernel versions, starting with a standard
+build as a working base, before turning on KASAN+KCOV compile options. When
+things break, first check if the bootloader and baseband version on your device
+matches those required by the new build. Finally, you might have to
+catch up with a newer branch of the Android tree altogether if you venture too
+far ahead with the kernel version.
+</p>
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/kasan-kcov by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:28:44 GMT -->
+</html>

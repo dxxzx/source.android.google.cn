@@ -1,0 +1,1152 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/devices/tech/connect/third-party-call-apps by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:29:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Supporting Third-Party Calling Apps &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Supporting Third-Party Calling Apps &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="third-party-call-apps.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+  
+
+  
+
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="third-party-call-apps.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+   aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Develop
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../audio.html"
+   class="gc-analytics-event"
+   title="Audio"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Audio"
+   >
+  Audio
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../camera.html"
+   class="gc-analytics-event"
+   title="Camera"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Camera"
+   >
+  Camera
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../connect.html"
+   class="gc-analytics-event"
+   title="Connectivity"
+   aria-label="Connectivity, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Connectivity"
+   >
+  Connectivity
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../graphics.html"
+   class="gc-analytics-event"
+   title="Graphics"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Graphics"
+   >
+  Graphics
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../input.html"
+   class="gc-analytics-event"
+   title="Interaction"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Interaction"
+   >
+  Interaction
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../media.html"
+   class="gc-analytics-event"
+   title="Media"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Media"
+   >
+  Media
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../storage.html"
+   class="gc-analytics-event"
+   title="Storage"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Storage"
+   >
+  Storage
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Audio">
+      <span class="devsite-nav-text" >Audio</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../camera.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Camera">
+      <span class="devsite-nav-text" >Camera</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../connect.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Connectivity">
+      <span class="devsite-nav-text" menu="_book">Connectivity</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../graphics.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Graphics">
+      <span class="devsite-nav-text" >Graphics</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../input.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Interaction">
+      <span class="devsite-nav-text" >Interaction</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../media.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Media">
+      <span class="devsite-nav-text" >Media</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../storage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Storage">
+      <span class="devsite-nav-text" >Storage</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../connect.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bluetooth and NFC">Bluetooth and NFC</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bluetooth.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/services-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Bluetooth Services">Bluetooth Services</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/ble.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Bluetooth Low Energy">Bluetooth Low Energy</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/asha.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Hearing Aids over BLE">Hearing Aids over BLE</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/ble_advertising-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="BLE Advertising">BLE Advertising</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/verifying_debugging-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Verifying and Debugging Bluetooth">Verifying and Debugging Bluetooth</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/hci_requirements.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Bluetooth HCI Requirements">Bluetooth HCI Requirements</span></a></li><li class="devsite-nav-item"><a href="felica.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="NFC Host Card Emulation of FeliCa">NFC Host Card Emulation of FeliCa</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Calling and Messaging">Calling and Messaging</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="block-numbers.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Block Phone Numbers">Block Phone Numbers</span></a></li><li class="devsite-nav-item"><a href="call-notification.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Call Notifications">Call Notifications</span></a></li><li class="devsite-nav-item"><a href="emergency-affordance.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Emergency Affordance">Emergency Affordance</span></a></li><li class="devsite-nav-item"><a href="ims.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="IP Multimedia Subsystem (IMS)">IP Multimedia Subsystem (IMS)</span></a></li><li class="devsite-nav-item"><a href="rtt.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Real-Time Text (RTT)">Real-Time Text (RTT)</span></a></li><li class="devsite-nav-item"><a href="third-party-call-apps.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Third-Party Calling Apps">Third-Party Calling Apps</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Carrier">Carrier</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../config/carrier.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../config/update.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="APN and CarrierConfig">APN and CarrierConfig</span></a></li><li class="devsite-nav-item"><a href="../config/carrierid.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Carrier Identification">Carrier Identification</span></a></li><li class="devsite-nav-item"><a href="data-plans.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Plans">Data Plans</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="eSIM">eSIM</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="esim-overview.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing eSIM">Implementing eSIM</span></a></li><li class="devsite-nav-item"><a href="esim-modem-requirements.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Modem Requirements">Modem Requirements</span></a></li><li class="devsite-nav-item"><a href="esim-euicc-api.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="eUICC APIs">eUICC APIs</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="oob-users-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Out-of-Balance Users">Out-of-Balance Users</span></a></li><li class="devsite-nav-item"><a href="ril.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Radio Interface Layer (RIL)">Radio Interface Layer (RIL)</span></a></li><li class="devsite-nav-item"><a href="../config/uicc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="UICC">UICC</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Wi-Fi">Wi-Fi</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="wifi-overview.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="wifi-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi HAL">Wi-Fi HAL</span></a></li><li class="devsite-nav-item"><a href="wifi-infrastructure.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Infrastructure Features">Wi-Fi Infrastructure Features</span></a></li><li class="devsite-nav-item"><a href="wifi-sta-ap-concurrency.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="STA/AP Concurrency">STA/AP Concurrency</span></a></li><li class="devsite-nav-item"><a href="wifi-mac-randomization.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="MAC Randomization">MAC Randomization</span></a></li><li class="devsite-nav-item"><a href="wifi-passpoint.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Passpoint R1">Passpoint R1</span></a></li><li class="devsite-nav-item"><a href="carrier-wifi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Carrier Wi-Fi">Carrier Wi-Fi</span></a></li><li class="devsite-nav-item"><a href="wifi-aware.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Aware">Wi-Fi Aware</span></a></li><li class="devsite-nav-item"><a href="wifi-rtt.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Round Trip Time (RTT)">Wi-Fi Round Trip Time (RTT)</span></a></li><li class="devsite-nav-item"><a href="wifi-debug.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Testing, Debugging, and Tuning Wi-Fi">Testing, Debugging, and Tuning Wi-Fi</span></a></li></ul></devsite-expandable-nav></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Develop
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../connect.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Connectivity
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Supporting Third-Party Calling Apps</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  Copyright 2018 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+
+
+<p>Android 9 provides APIs to better support third-party
+(3P) calling apps. 3P calling apps typically rely on Telephony APIs such as the
+<code>PHONE_STATE</code> broadcast to co-exist alongside carrier phone calls. As a
+consequence, 3P calling apps must give carrier calls priority and often resort
+to silently rejecting incoming calls in the app, or terminating an ongoing call
+to make way for a carrier call.</p>
+
+<p>The APIs in Android 9 support concurrent calling
+scenarios between 3P apps and carrier calls. This makes it possible, for
+example, to receive an incoming 3P call while engaged in a carrier call. The
+framework assumes responsibility for ensuring the carrier call is held when the
+user engages in the 3P call.</p>
+
+<p>In Android 9, 3P calling apps are encouraged to
+implement the self-managed <code>ConnectionService</code> API. For more information on how
+to build a calling app using this API, see
+<a href="https://developer.android.google.cn/guide/topics/connectivity/telecom/selfManaged" class="external">Build a calling app</a>.</p>
+
+<p>The self-managed <code>ConnectionService</code> API also gives developers the opportunity
+to opt-in to having calls in their app logged in the system call log (see
+<a href="https://developer.android.google.cn/reference/android/telecom/PhoneAccount#EXTRA_LOG_SELF_MANAGED_CALLS" class="external"><code>EXTRA_LOG_SELF_MANAGED_CALLS</code></a>).
+Per the requirements in the
+<a href="../../../compatibility/android-cdd-2.html#7_4_data_connectivity">Android Compatibility Definition Document (CDD)</a>
+(section 7.4.1.2), you should ensure your dialer/phone app displays these
+call log entries and shows the name of the 3P calling app where the call
+originated (for an example of how the AOSP dialer app meets this requirement,
+see
+<a href="#call_log_entries_from_3p_calling_apps">Call log entries from 3P calling apps</a>).</p>
+
+<p>Apps are responsible for setting
+<a href="https://developer.android.google.cn/reference/android/telecom/Connection.html#CAPABILITY_SUPPORT_HOLD" class="external"><code>CAPABILITY_SUPPORT_HOLD</code></a> 
+and
+<a href="https://developer.android.google.cn/reference/android/telecom/Connection.html#CAPABILITY_HOLD" class="external"><code>CAPABILITY_HOLD</code></a> 
+on their apps&#39; connections. However, it is possible that an app cannot hold a
+call in some circumstances. The framework includes provisions for resolving
+these types of cases.</p>
+
+<h2 id="scenarios">Scenarios</h2>
+
+<p>You should modify your dialer app to handle the following scenarios.</p>
+
+<h3 id="handling_incoming_calls_which_disconnect_an_ongoing_call">Handling incoming calls which disconnect an ongoing call</h3>
+
+<p>In a scenario where there is an ongoing 3P call (e.g. in a SuperCaller call)
+that does not support hold, and the user receives a mobile call (e.g. via their
+carrier FooCom), your Dialer/Phone app should indicate to the user that
+answering the mobile network call will end the ongoing 3P call.</p>
+
+<p>This user experience is important as a 3P calling app may have an ongoing call
+that cannot be held by the framework. Answering a new mobile call causes the
+ongoing 3P call to be disconnected.</p>
+
+<p>See the user interface below for an example:</p>
+
+<figure id="incoming-call-3p-call-app">
+  <img src="images/incoming-call-3p-call-app.png"
+    width="250" class="screenshot"
+    alt="Incoming call disconnecting an ongoing 3P call">
+  <figcaption><strong>Figure 1.</strong> Incoming call which disconnects an
+  ongoing 3P call</figcaption>
+</figure>
+
+<p>Your dialer app can check if an incoming call causes another call to be
+disconnected by checking the
+<a href="https://developer.android.google.cn/reference/android/telecom/Call.Details.html#getExtras()" class="external">call extras</a>.
+Make sure that
+<a href="https://developer.android.google.cn/reference/android/telecom/Connection.html#EXTRA_ANSWERING_DROPS_FG_CALL" class="external"><code>EXTRA_ANSWERING_DROPS_FG_CALL</code></a> 
+is set to <code>TRUE</code>, and
+<a href="https://developer.android.google.cn/reference/android/telecom/Connection.html#EXTRA_ANSWERING_DROPS_FG_CALL_APP_NAME" class="external"><code>EXTRA_ANSWERING_DROPS_FG_CALL_APP_NAME</code></a> 
+is set to the name of the app whose call is disconnected upon answering the
+incoming mobile call.</p>
+
+<h3 id="call_log_entries_from_3p_calling_apps">Call log entries from 3P calling apps</h3>
+
+<p>Developers of 3P calling apps can opt-in to having calls in their app logged in
+the system call log (see
+<a href="https://developer.android.google.cn/reference/android/telecom/PhoneAccount#EXTRA_LOG_SELF_MANAGED_CALLS" class="external"><code>EXTRA_LOG_SELF_MANAGED_CALLS</code></a>).
+This means that it is possible to have entries in the call log that are not for
+mobile network calls.</p>
+
+<p>When the AOSP dialer app displays call log entries related to a 3P calling app,
+the name of the app where the call took place is displayed in the call log, as
+illustrated below:</p>
+
+<figure id="call-log-entry-3p">
+  <img src="images/call-log-entry-3p.png"
+    width="400" class="screenshot"
+    alt="Call log entry with 3P calling app">
+  <figcaption><strong>Figure 2.</strong> Call log entry with name of 3P calling
+  app on dialer app</figcaption>
+</figure>
+
+<p>To determine the name of an app associated with a call log entry, use the
+<a href="https://developer.android.google.cn/reference/android/provider/CallLog.Calls.html#PHONE_ACCOUNT_COMPONENT_NAME" class="external"><code>PHONE_ACCOUNT_COMPONENT_NAME</code></a> 
+and
+<a href="https://developer.android.google.cn/reference/android/provider/CallLog.Calls.html#PHONE_ACCOUNT_ID" class="external"><code>PHONE_ACCOUNT_ID</code></a> 
+columns in the call log provider to create an instance of
+<a href="https://developer.android.google.cn/reference/android/telecom/PhoneAccountHandle.html#PhoneAccountHandle(android.content.ComponentName,%20java.lang.String)" class="external"><code>PhoneAccountHandle</code></a>,
+which identifies the source of a call log entry. Query
+<a href="https://developer.android.google.cn/reference/android/telecom/TelecomManager.html#getPhoneAccount(android.telecom.PhoneAccountHandle)" class="external"><code>TelecomManager</code></a>
+to get the details for the PhoneAccount. <br>
+To determine if a call log entry is from a 3P calling app, check
+<a href="https://developer.android.google.cn/reference/android/telecom/PhoneAccount.html#getCapabilities()" class="external"><code>PhoneAccount</code> capabilities </a>
+to see if
+<a href="https://developer.android.google.cn/reference/android/telecom/PhoneAccount.html#CAPABILITY_SELF_MANAGED" class="external"><code>CAPABILITY_SELF_MANAGED</code></a> 
+is set.</p>
+
+<p>The
+<a href="https://developer.android.google.cn/reference/android/telecom/PhoneAccount.html#getLabel()" class="external"><code>getLabel</code></a>
+method of the returned <code>PhoneAccount</code> returns the name of the app associated
+with a call log entry from the 3P calling app.</p>
+
+<h2 id="validation">Validation</h2>
+
+<p>To test that your device supports 3P calling apps, use the Telecomm test
+application, which implements the self-managed ConnectionService API. The
+application is located in
+<a href="https://android.googlesource.com/platform/packages/services/Telecomm/+/master/testapps/" class="external"><code>/packages/services/Telecomm/testapps/</code></a>.</p>
+
+<ol>
+<li><p>Build the test app from the root of your Android source repository using:</p>
+
+<p><code>mmma packages/services/Telecomm/testapps/</code></p></li>
+<li><p>Install the build apk using <code>adb install -g -r &lt;apk path&gt;</code>. A Self-Managed
+Sample icon is then added to your launcher.</p></li>
+<li><p>Tap the icon to open the test application.</p></li>
+</ol>
+
+<h3 id="handling_incoming_calls_which_disconnect_an_ongoing_call_2">Handling incoming calls which disconnect an ongoing call</h3>
+
+<p>Follow these steps to verify that an incoming call disconnects an ongoing 3P
+call.</p>
+
+<figure id="test-app-3p-call">
+  <img src="images/test-app-3p-call.png"
+    width="250" class="screenshot"
+    alt="Test application for 3P calling apps">
+  <figcaption><strong>Figure 3.</strong> Test application with sample
+  implementations of the self-managed ConnectionService API</figcaption>
+</figure>
+
+<ol>
+<li>Uncheck the <strong>Holdable</strong> option.</li>
+<li>Tap <strong>OUTGOING</strong> to start a new sample outgoing call.</li>
+<li>Tap the <strong>ACTIVE</strong> button to make the call go active.</li>
+<li>Call the phone number of the device under test with another phone. This
+invokes the scenario where your dialer is provided with the name of an app,
+which will have its call disconnected.</li>
+<li>When you are finished, tap the <strong>DISCONNECT</strong> button in the test app.</li>
+</ol>
+
+<h3 id="call_log_entries_from_3p_calling_apps_2">Call log entries from 3P calling apps</h3>
+
+<p>After completing the steps above, the test app should have logged a call to the
+system call log. To confirm the device logs calls from 3P calling apps,
+open your dialer app and confirm the call appears in the system call log.</p>
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/tech/connect/third-party-call-apps by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:29:23 GMT -->
+</html>

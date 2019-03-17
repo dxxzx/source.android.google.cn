@@ -1,0 +1,1158 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/devices/tech/ota/nonab/inside_packages.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 15:09:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Inside OTA Packages &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Inside OTA Packages &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="inside_packages.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="inside_packages.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+   aria-label="Configure, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Configure
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../dalvik.html"
+   class="gc-analytics-event"
+   title="ART"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: ART"
+   >
+  ART
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../datausage.html"
+   class="gc-analytics-event"
+   title="Data"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Data"
+   >
+  Data
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../admin.html"
+   class="gc-analytics-event"
+   title="Enterprise"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Enterprise"
+   >
+  Enterprise
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../health.html"
+   class="gc-analytics-event"
+   title="Performance"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Performance"
+   >
+  Performance
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../config/perms-whitelist.html"
+   class="gc-analytics-event"
+   title="Permissions"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Permissions"
+   >
+  Permissions
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../power.html"
+   class="gc-analytics-event"
+   title="Power"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Power"
+   >
+  Power
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../ota.html"
+   class="gc-analytics-event"
+   title="Updates"
+   aria-label="Updates, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Updates"
+   >
+  Updates
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: ART">
+      <span class="devsite-nav-text" >ART</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../datausage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Data">
+      <span class="devsite-nav-text" >Data</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../admin.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Enterprise">
+      <span class="devsite-nav-text" >Enterprise</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../health.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Performance">
+      <span class="devsite-nav-text" >Performance</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../config/perms-whitelist.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Permissions">
+      <span class="devsite-nav-text" >Permissions</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../power.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Power">
+      <span class="devsite-nav-text" >Power</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../ota.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Updates">
+      <span class="devsite-nav-text" menu="_book">Updates</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../../ota.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item"><a href="../tools.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="OTA Tools">OTA Tools</span></a></li>
+                          <li class="devsite-nav-item"><a href="../sign_builds.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Signing Builds for Release">Signing Builds for Release</span></a></li>
+                          <li class="devsite-nav-item"><a href="../reduce_size.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reducing OTA Size">Reducing OTA Size</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="A/B System Updates">A/B System Updates</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../ab.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../ab/ab_implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing A/B Updates">Implementing A/B Updates</span></a></li><li class="devsite-nav-item"><a href="../ab/ab_faqs-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Frequently Asked Questions">Frequently Asked Questions</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Non-A/B System Updates">Non-A/B System Updates</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../nonab.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="block.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Block-Based OTA">Block-Based OTA</span></a></li><li class="devsite-nav-item"><a href="inside_packages.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Inside OTA Packages">Inside OTA Packages</span></a></li><li class="devsite-nav-item"><a href="device_code.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device-Specific Code">Device-Specific Code</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item"><a href="../../config/timezone-rules.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Time Zone Rules">Time Zone Rules</span></a></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Configure
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../ota.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Updates
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Inside OTA Packages</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+
+
+<p>The system builds the updater binary from <code>bootable/recovery/updater
+</code> and uses it in an OTA package.</p>The package itself is a .zip file
+(<code>ota_update.zip</code>, <code>incremental_ota_update.zip</code>) that
+contains the executable binary <code>META-INF/com/google/android/update-binary
+</code>.
+
+<p>Updater contains several builtin functions and an interpreter for an
+extensible scripting language (<b>edify</b>) that supports commands for typical
+update-related tasks. Updater looks in the package .zip file for a script in the
+file <code>META-INF/com/google/android/updater-script</code>.</p>
+
+<p class="note"><strong>Note:</strong> Using the edify script and/or builtin
+functions is not a common activity, but can be helpful if you need to debug the
+update file.</p>
+
+<h2 id="edify-syntax">Edify syntax</h2>
+<p>An edify script is a single expression in which all values are strings.
+Empty strings are <i>false</i> in a Boolean context and all other strings are
+<i>true</i>. Edify supports the following operators (with the usual meanings):
+</p>
+
+<pre>
+(<i>expr</i> )
+ <i>expr</i> <b>+</b> <i>expr</i>  # string concatenation, not integer addition
+ <i>expr</i> <b>==</b> <i>expr</i>
+ <i>expr</i> <b>!=</b> <i>expr</i>
+ <i>expr</i> <b>&amp;&amp;</b> <i>expr</i>
+ <i>expr</i> <b>||</b> <i>expr</i>
+ ! <i>expr</i>
+ if <i>expr</i> <b>then</b> <i>expr</i> <b>endif</b>
+ if <i>expr</i> <b>then</b> <i>expr</i> <b>else</b> <i>expr</i> <b>endif</b>
+ <i>function_name</i><b>(</b><i>expr</i><b>,</b> <i>expr</i><b>,</b><i>...</i><b>)</b>
+ <i>expr</i><b>;</b> <i>expr</i>
+</pre>
+
+<p>Any string of the characters <i>a-z, A-Z, 0-9, _, :, /, .</i> that isn't a
+reserved word is considered a string literal. (Reserved words are <b>if else
+</b> then <b>endif.</b>) String literals may also appear in double-quotes;
+this is how to create values with whitespace and other characters not in the
+above set. \n, \t, \", and \\ serve as escapes within quoted strings, as does
+\x<i>##</i>.</p>
+<p>The &amp;&amp; and || operators are short-circuiting; the right side is not
+evaluated if the logical result is determined by the left side. The
+following are equivalent:</p>
+<pre>
+<i>e1</i> <b>&amp;&amp;</b> <i>e2</i>
+<b>if</b> <i>e1</i> <b>then</b> <i>e2</i> <b>endif</b></pre>
+<p>The ; operator is a sequence point; it means to evaluate first the left
+side and then the right side. Its value is the value of the right-side
+expression. A semicolon can also appear after an expression, so the effect
+simulates C-style statements:</p>
+
+<pre>
+<b>prepare();
+do_other_thing("argument");
+finish_up();</b>
+</pre>
+
+<h2 id="builtin-functions">Built-in functions</h2>
+<p>Most update functionality is contained in the functions available for
+execution by scripts. (Strictly speaking these are <i>macros</i> rather than
+<i>functions</i> in the Lisp sense, since they need not evaluate all of their
+arguments.) Unless otherwise noted, functions return <b>true</b> on success
+and <b>false</b> on error. If you want errors to abort execution of the
+script, use the <code>abort()</code> and/or <code>assert()</code> functions.
+The set of functions available in updater can also be extended to provide
+<a href="device_code-2.html">device-specific
+functionality</a>.
+
+<dl>
+<dt><code>abort([<i>msg</i>])</code></dt>
+<dd>Aborts execution of the script immediately, with the optional <i>msg</i>.
+If the user has turned on text display, <i>msg</i> appears in the recovery log
+and on-screen.</dd>
+<dt><code>assert(<i>expr</i>[, <i>expr</i>, ...])</code></dt>
+<dd>Evaluates each <i>expr</i> in turn. If any is false, immediately aborts
+execution with the message "assert failed" and the source text of the failed
+expression.</dd>
+<dt><code>apply_patch(<i>src_file</i>, <i>tgt_file</i>, <i>tgt_sha1</i>, <i>
+tgt_size</i>, <i>patch1_sha1</i>, <i>patch1_blob</i>, [...])</code></dt>
+<dd>Applies a binary patch to the <i>src_file</i> to produce the <i>tgt_file
+</i>. If the desired target is the same as the source, pass "-" for <i>tgt_file
+</i>. <i>tgt_sha1</i> and <i>tgt_size</i> are the expected final SHA1 hash and
+size of the target file. The remaining arguments must come in pairs: a SHA1
+hash (a 40-character hex string) and a blob. The blob is the patch to be
+applied when the source file's current contents have the given SHA1.
+<p>The patching is done in a safe manner that guarantees the target file
+either has the desired SHA1 hash and size, or it is untouched—it will not be
+left in an unrecoverable intermediate state. If the process is interrupted
+during patching, the target file may be in an intermediate state; a copy exists
+in the cache partition so restarting the update can successfully update the
+file.</p>
+<p>Special syntax is supported to treat the contents of Memory Technology
+Device (MTD) partitions as files, allowing patching of raw partitions such as
+boot. To read an MTD partition, you must know how much data you want to read
+since the partition does not have an end-of-file notion. You can use the
+string "MTD:<i>partition</i>:<i>size_1</i>:<i>sha1_1</i>:<i>size_2</i>:<i>
+sha1_2</i>" as a filename to read the given partition. You must specify at
+least one <i>(size, sha-1)</i> pair; you can specify more than one if there
+are multiple possibilities for what you expect to read.</p></dd>
+<dt><code>apply_patch_check(<i>filename</i>, <i>sha1</i>[, <i>sha1</i>, ...])
+</code></dt>
+<dd>Returns true if the contents of <i>filename</i> or the temporary copy in
+the cache partition (if present) have a SHA1 checksum equal to one of the
+given <i>sha1</i> values. <i>sha1</i> values are specified as 40 hex digits.
+This function differs from <code>sha1_check(read_file(<i>filename</i>),
+<i>sha1</i> [, ...])</code> in that it knows to check the cache partition copy,
+so <code>apply_patch_check()</code> will succeed even if the file was corrupted
+by an interrupted <code>apply_patch() update</code>.</dd>
+<dt><code>apply_patch_space(<i>bytes</i>)</code></dt>
+<dd>Returns true if at least <i>bytes</i> of scratch space is available for
+applying binary patches.</dd>
+<dt><code>concat(<i>expr</i>[, <i>expr</i>, ...])</code></dt>
+<dd>Evaluates each expression and concatenates them. The + operator is
+syntactic sugar for this function in the special case of two arguments (but
+the function form can take any number of expressions). The expressions must be
+strings; it can't concatenate blobs.</dd>
+<dt><code>file_getprop(<i>filename</i>, <i>key</i>)</code></dt>
+<dd>Reads the given <i>filename</i>, interprets it as a properties file (e.g.
+<code>/system/build.prop</code>), and returns the value of the given <i>key</i>
+, or the empty string if <i>key</i> is not present.</dd>
+<dt><code>format(<i>fs_type</i>, <i>partition_type</i>, <i>location</i>, <i>
+fs_size</i>, <i>mount_point</i>)</code></dt>
+<dd>Reformats a given partition. Supported partition types:
+<ul>
+<li>fs_type="yaffs2" and partition_type="MTD". Location must be the name of
+the MTD partition; an empty yaffs2 filesystem is constructed there. Remaining
+arguments are unused.</li>
+<li>fs_type="ext4" and partition_type="EMMC". Location must be the device file
+for the partition. An empty ext4 filesystem is constructed there. If
+<i>fs_size</i> is zero, the filesystem takes up the entire partition. If
+<i>fs_size</i> is a positive number, the filesystem takes the first
+<i>fs_size</i> bytes of the partition. If <i>fs_size</i> is a
+negative number, the filesystem takes all except the last <i>|fs_size|</i>
+bytes of the partition.</li>
+<li>fs_type="f2fs" and partition_type="EMMC". Location must be the device file
+for the partition. <i>fs_size</i> must be a non-negative number. If
+<i>fs_size</i> is zero, the filesystem takes up the entire partition. If
+<i>fs_size</i> is a positive number, the filesystem takes the first
+<i>fs_size</i> bytes of the partition.</li>
+<li>mount_point should be the future mount point for the filesystem.</li></ul>
+</dd>
+<dt><code>getprop(<i>key</i>)</code></dt>
+<dd>Returns the value of system property <i>key</i> (or the empty string, if
+it's not defined). The system property values defined by the recovery
+partition are not necessarily the same as those of the main system. This
+function returns the value in recovery.</dd>
+<dt><code>greater_than_int(<i>a</i>, <i>b</i>)</code></dt>
+<dd>Returns true if and only if (iff) <i>a</i> (interpreted as an integer) is
+greater than <i>b</i> (interpreted as an integer).</dd>
+<dt><code>ifelse(<i>cond</i>, <i>e1</i>[, <i>e2</i>])</code></dt>
+<dd>Evaluates <i>cond</i>, and if it is true evaluates and returns the value
+of <i>e1</i>, otherwise it evaluates and returns <i>e2</i> (if present). The
+"if ... else ... then ... endif" construct is just syntactic sugar for this
+function.</dd>
+<dt><code>is_mounted(<i>mount_point</i>)</code></dt>
+<dd>Returns true iff there is a filesystem mounted at <i>mount_point</i>.</dd>
+<dt><code>is_substring(<i>needle</i>, <i>haystack</i>)</b></code></dt>
+<dd>Returns true iff <i>needle</i> is a substring of <i>haystack</i>.</dd>
+<dt><code>less_than_int(<i>a</i>, <i>b</i>)</code></dt>
+<dd>Returns true iff <i>a</i> (interpreted as an integer) is less than <i>b</i>
+(interpreted as an integer).</dd>
+<dt><code>mount(<i>fs_type</i>, <i>partition_type</i>, <i>name</i>,
+<i>mount_point</i>)</code></dt>
+<dd>Mounts a filesystem of <i>fs_type</i> at <i>mount_point</i>.
+<i>partition_type</i> must be one of:
+<ul>
+<li><b>MTD</b>. Name is the name of an MTD partition (e.g., system, userdata;
+see <code>/proc/mtd</code> on the device for a complete list).</li>
+<li><b>EMMC.</b></li>
+</ul>
+<p>Recovery does not mount any filesystems by default (except the SD card if
+the user is doing a manual install of a package from the SD card); your script
+must mount any partitions it needs to modify.</p></dd>
+<dt><code>package_extract_dir(<i>package_dir</i>, <i>dest_dir</i>)</code></dt>
+<dd>Extracts all files from the package underneath <i>package_dir</i> and
+writes them to the corresponding tree beneath <i>dest_dir</i>. Any existing
+files are overwritten.</dd>
+<dt><code>package_extract_file(<i>package_file</i>[, <i>dest_file</i>])</code>
+</dt>
+<dd>Extracts a single <i>package_file</i> from the update package and writes
+it to <i>dest_file</i>, overwriting existing files if necessary. Without the
+<i>dest_file</i> argument, returns the contents of the package file as a
+binary blob.</dd>
+<dt><code>read_file(<i>filename</i>)</code></dt>
+<dd>Reads <i>filename</i> and returns its contents as a binary blob.</dd>
+<dt><code>run_program(<i>path</i>[, <i>arg</i>, ...])</code></dt>
+<dd>Executes the binary at <i>path</i>, passing <i>arg</i>s. Returns the
+program's exit status.</dd>
+<dt><code>set_progress(<i>frac</i>)</code></dt>
+<dd>Sets the position of the progress meter within the chunk defined by the
+most recent <code>show_progress()</code> call. <i>frac</i> must be in the
+range [0.0, 1.0]. The progress meter never moves backwards; attempts to make
+it do so are ignored.</dd>
+<dt><code>sha1_check(<i>blob</i>[, <i>sha1</i>])</code></dt>
+<dd>The <i>blob</i> argument is a blob of the type returned by <code>
+read_file()</code> or the one-argument form of <code>package_extract_file()
+</code>. With no <i>sha1</i> arguments, this function returns the SHA1 hash of
+the blob (as a 40-digit hex string). With one or more <i>sha1</i> arguments,
+this function returns the SHA1 hash if it equals one of the arguments, or the
+empty string if it does not equal any of them.</dd>
+<dt><code>show_progress(<i>frac</i>, <i>secs</i>)</code></dt>
+<dd>Advances the progress meter over the next <i>frac</i> of its length over
+the <i>secs</i> seconds (must be an integer). <i>secs</i> may be 0, in which
+case the meter is not advanced automatically but by use of the <code>
+set_progress()</code> function defined above.</dd>
+<dt><code>sleep(<i>secs</i>)</code></dt>
+<dd>Sleeps for <i>secs</i> seconds (must be an integer).</dd>
+<dt><code>stdout(<i>expr</i>[, <i>expr</i>, ...])</code></dt>
+<dd>Evaluates each expression and dumps its value to stdout. Useful for
+debugging.</dd>
+<dt><code>tune2fs(<i>device</i>[, <i>arg</i>, …])</code></dt>
+<dd>Adjusts tunable parameters <i>args</i> on <i>device</i>.</dd>
+<dt><code>ui_print([<i>text</i>, ...])</code></dt>
+<dd>Concatenates all <i>text</i> arguments and prints the result to the UI
+(where it will be visible if the user has turned on the text display).</dd>
+<dt><code>unmount(<i>mount_point</i>)</code></dt>
+<dd>Unmounts the filesystem mounted at <i>mount_point</i>.</dd>
+<dt><code>wipe_block_device(<i>block_dev</i>, <i>len</i>)</code></dt>
+<dd>Wipes the <i>len</i> bytes of the given block device <i>block_dev</i>.</dd>
+<dt><code>wipe_cache()</code></dt>
+<dd>Causes the cache partition to be wiped at the end of a successful
+installation.</dd>
+<dt><code>write_raw_image(<i>filename_or_blob</i>, <i>partition</i>)</code>
+</dt>
+<dd>Writes the image in <i>filename_or_blob</i> to the MTD <i>partition</i>.
+<i>filename_or_blob</i> can be a string naming a local file or a blob-valued
+argument containing the data to write. To copy a file from the OTA package to
+a partition, use:
+<code>write_raw_image(package_extract_file("zip_filename"), "partition_name");
+</code>
+</dd>
+</dl>
+
+<p class="note"><strong>Note:</strong> Prior to Android 4.1, only filenames
+were accepted, so to accomplish this the data first had to be unzipped into a
+temporary local file.</p>
+
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/tech/ota/nonab/inside_packages.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 15:09:29 GMT -->
+</html>

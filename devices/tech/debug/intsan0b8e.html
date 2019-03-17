@@ -1,0 +1,996 @@
+<!doctype html>
+<html  lang="zh_cn">
+  
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/intsan?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:41:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>整数溢出排错功能 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="整数溢出排错功能 &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="intsan.html">
+
+  <meta property="og:locale" content="zh_cn">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="intsan.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设置"
+   >
+  设置
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设计"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设计"
+   >
+  设计
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../../security0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="安全性"
+   aria-label="安全性, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: 安全性"
+   >
+  安全性
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../audio0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="开发"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 开发"
+   >
+  开发
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../dalvik0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="配置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 配置"
+   >
+  配置
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="参考"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 参考"
+   >
+  参考
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="搜索"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="搜索框">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          转到源代码
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../security0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            安全性
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../security0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="概览"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 概览"
+   >
+  概览
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security/bulletin0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="公告"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 公告"
+   >
+  公告
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security/app-sandbox0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="功能"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 功能"
+   >
+  功能
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="fuzz-sanitize0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="测试"
+   aria-label="测试, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: 测试"
+   >
+  测试
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security/best-practices0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="最佳做法"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 最佳做法"
+   >
+  最佳做法
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设置">
+      <span class="devsite-nav-text" >设置</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设计">
+      <span class="devsite-nav-text" >设计</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 安全性">
+      <span class="devsite-nav-text" >安全性</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 概览">
+      <span class="devsite-nav-text" >概览</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security/bulletin.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 公告">
+      <span class="devsite-nav-text" >公告</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security/app-sandbox.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 功能">
+      <span class="devsite-nav-text" >功能</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="fuzz-sanitize.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 测试">
+      <span class="devsite-nav-text" menu="_book">测试</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../security/best-practices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 最佳做法">
+      <span class="devsite-nav-text" >最佳做法</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 开发">
+      <span class="devsite-nav-text" >开发</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 配置">
+      <span class="devsite-nav-text" >配置</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 参考">
+      <span class="devsite-nav-text" >参考</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 转到源代码">
+      <span class="devsite-nav-text" >转到源代码</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="fuzz-sanitize.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li>
+                          <li class="devsite-nav-item"><a href="asan.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AddressSanitizer">AddressSanitizer</span></a></li>
+                          <li class="devsite-nav-item"><a href="sanitizers-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="LLVM 排错程序">LLVM 排错程序</span></a></li>
+                          <li class="devsite-nav-item"><a href="kasan-kcov.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="使用 KASAN + KCOV 编译内核">使用 KASAN + KCOV 编译内核</span></a></li>
+                          <li class="devsite-nav-item"><a href="libfuzzer.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="通过 libFuzzer 进行模糊测试">通过 libFuzzer 进行模糊测试</span></a></li>
+                          <li class="devsite-nav-item"><a href="cfi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="控制流完整性 (CFI)">控制流完整性 (CFI)</span></a></li>
+                          <li class="devsite-nav-item"><a href="kcfi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="内核 CFI">内核 CFI</span></a></li>
+                          <li class="devsite-nav-item"><a href="intsan.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="整数溢出清理">整数溢出清理</span></a></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../../security0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            安全性
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="fuzz-sanitize0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            测试
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">整数溢出排错功能</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2018 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          //www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>
+如果发生意外的整数溢出，可能会导致内存损坏，或导致与内存访问或内存分配关联的变量中出现信息披露漏洞。为了解决这个问题，我们在 Android 7.0 中添加了 Clang 的 <a href="https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html">UndefinedBehaviorSanitizer</a> (UBSan) 有符号和无符号整数溢出排错程序，以<a href="https://android-developers.googleblog.com/2016/05/hardening-media-stack.html">强化媒体框架</a>。在 Android 9 中，我们<a href="https://android-developers.googleblog.com/2018/06/compiler-based-security-mitigations-in.html">将 UBSan 扩展为涵盖更多组件</a>，并改进了对它的编译系统支持。
+</p>
+<p>
+这旨在增加对算术运算/指令（可能溢出）的检查，以便在实际发生溢出时安全地终止进程。这些排错程序可以减少主要是由整数溢出导致的各种内存损坏和信息披露漏洞，例如原始 Stagefright 漏洞。
+</p>
+<h2 id="examples-and-source">示例和源代码</h2>
+<p>
+整数溢出排错功能 (IntSan) 由编译器提供，可在编译期间将 Instrumentation 添加到二进制文件中，以便检测算法溢出。在整个平台的各个组件（例如 <a href="https://android.googlesource.com/platform/external/libnl/+/master/Android.bp#64"><code>/platform/external/libnl/Android.bp</code></a>）中，该功能会默认处于启用状态。
+</p>
+
+<h2 id="implementation">实现</h2>
+<p>
+IntSan 使用了 UBSan 的有符号和无符号整数溢出排错程序。该缓解功能是在各个模块级别启用，有助于确保 Android 关键组件的安全性，因此不应停用。
+</p>
+<p>
+强烈建议您为更多组件启用整数溢出排错功能。理想的候选组件是特权原生代码或可解析不可信用户输入的原生代码。系统会产生一小笔与排错程序关联的性能开销，具体取决于代码的使用情况和算术运算的普遍性。预计开销所占的百分比会较小，您可以测试性能是否存在问题。
+</p>
+<h3 id="intsan-in-makefiles">在 Makefile 中支持 IntSan</h3>
+<p>
+要在 Makefile 中启用 IntSan，请添加以下代码：
+</p>
+
+<pre class="prettyprint">LOCAL_SANITIZE := integer_overflow
+# Optional features
+LOCAL_SANITIZE_DIAG := integer_overflow
+LOCAL_SANITIZE_BLACKLIST := modulename_blacklist.txt</pre>
+<ul>
+  <li><code>LOCAL_SANITIZE</code> 会收到一个以英文逗号分隔的排错程序列表，其中 <code>integer_overflow</code> 是一组预封装的选项，用于各个有符号和无符号整数溢出排错程序，且具有<a href="https://android.googlesource.com/platform/build/soong/+/master/cc/config/integer_overflow_blacklist.txt">默认黑名单</a>。</li>
+  <li><code>LOCAL_SANITIZE_DIAG</code> 用于为排错程序启用诊断模式。请仅在测试期间使用诊断模式，因为它不会在溢出发生时中止，而这会完全抹杀缓解功能的安全优势。如需更多详细信息，请参阅<a href="#troubleshooting">问题排查</a>。</li>
+  <li><code>LOCAL_SANITIZE_BLACKLIST</code> 用于指定黑名单文件，以防止函数和源文件成为排错对象。如需更多详细信息，请参阅<a href="#troubleshooting">问题排查</a>。</li>
+</ul>
+<p>
+如果您想要进行更精细的控制，请使用一个或两个标志逐个启用排错程序：
+</p>
+
+<pre class="prettyprint">LOCAL_SANITIZE := signed-integer-overflow, unsigned-integer-overflow
+LOCAL_SANITIZE_DIAG := signed-integer-overflow, unsigned-integer-overflow</pre>
+
+<aside class="caution"><strong>注意</strong>：<strong>必须</strong>按照上文所述为静态二进制文件/库指定各个排错程序；<code>integer_overflow</code> 标志不支持静态二进制文件/库。在逐个指定时，请同时使用有符号和无符号排错程序。</aside>
+
+<h3 id="intsan-in-bp">在蓝图文件中支持 IntSan</h3>
+<p>
+要在 Blueprint 文件（例如 <a href="https://android.googlesource.com/platform/external/libnl/+/master/Android.bp#64"><code>/platform/external/libnl/Android.bp</code></a>）中启用整数溢出排错功能，请添加以下代码：
+</p>
+
+<pre class="prettyprint">   sanitize: {
+      integer_overflow: true,
+      diag: {
+          integer_overflow: true,
+      },
+      blacklist: "modulename_blacklist.txt",
+   },</pre>
+<p>
+与 Makefile 一样，<code>integer_overflow</code> 属性是一组预封装的选项，用于各个有符号和无符号整数溢出排错程序，且具有<a href="https://android.googlesource.com/platform/build/soong/+/master/cc/config/integer_overflow_blacklist.txt">默认黑名单</a>。
+</p>
+<p>
+<code>diag</code> 属性集用于为排错程序启用诊断模式。请仅在测试期间使用诊断模式。诊断模式不会在溢出发生时中止，而这会完全抹杀用户细分版本中缓解功能的安全优势。如需更多详细信息，请参阅<a href="#troubleshooting">问题排查</a>。
+</p>
+<p>
+<code>blacklist</code> 属性用于指定黑名单文件，以便开发者防止函数和源文件成为排错对象。如需更多详细信息，请参阅<a href="#troubleshooting">问题排查</a>。
+</p>
+<p>
+要逐个启用排错程序，请使用以下代码：
+</p>
+
+<pre class="prettyprint">   sanitize: {
+      misc_undefined: ["signed-integer-overflow", "unsigned-integer-overflow"],
+      diag: {
+          misc_undefined: ["signed-integer-overflow",
+                           "unsigned-integer-overflow",],
+      },
+      blacklist: "modulename_blacklist.txt",
+   },</pre>
+<aside class="caution"><strong>注意</strong>：在 Android 9 中，<strong>必须</strong>按照上文所述为静态二进制文件/库指定各个排错程序；<code>integer_overflow</code> 标记不支持静态二进制文件/库。在逐个指定时，请同时使用有符号和无符号排错程序。</aside>
+
+<h3 id="troubleshooting">问题排查</h3>
+<p>
+如果要在新组件中启用整数溢出排错功能，或者依赖于启用了整数溢出排错功能的平台库，则可能会遇到良性整数溢出导致进程中止的一些问题。您应测试启用了排错功能的组件，以确保可以发现良性溢出。
+</p>
+<p>
+要查找由用户细分版本中的排错功能导致的进程中止，请搜索带 Abort 消息（指示 UBSan 捕获了溢出）的 <code>SIGABRT</code> 崩溃，例如：
+</p>
+
+<pre class="prettyprint">pid: ###, tid: ###, name: Binder:###  &gt;&gt;&gt; /system/bin/surfaceflinger &lt;&lt;&lt;
+signal 6 (SIGABRT), code -6 (SI_TKILL), fault addr --------
+Abort message: 'ubsan: sub-overflow'</pre>
+
+<p>
+堆栈轨迹应包括导致进程中止的函数，不过，内联函数中发生的溢出在堆栈轨迹中可能不明显。
+</p>
+<p>
+为了更轻松地确定根本原因，请在触发中止的库中启用诊断功能，尝试重现错误。<strong>启用诊断功能后，进程将不会中止</strong>，而是会继续运行。进程不中止有助于最大限度增加特定执行路径中良性溢出的数量，而无需在更正每个错误后重新进行编译。诊断功能会生成一条错误消息，其中包含导致进程中止的行号和源文件信息：
+</p>
+
+<pre class="prettyprint">frameworks/native/services/surfaceflinger/SurfaceFlinger.cpp:2188:32: runtime error: unsigned integer overflow: 0 - 1 cannot be represented in type 'size_t' (aka 'unsigned long')</pre>
+<p>
+一旦找到存在问题的算术运算，请确保溢出是良性的且符合预期（例如没有安全隐患）。您可以通过以下方式解决排错程序中止问题：
+</p>
+<ul>
+<li>重构代码以避免溢出（<a href="https://android-review.googlesource.com/c/platform/frameworks/av/+/572808">示例</a>）
+</li><li>通过 Clang 的 <a href="https://clang.llvm.org/docs/LanguageExtensions.html#checked-arithmetic-builtins">__builtin_*_overflow</a> 函数实现显式溢出（<a href="https://android-review.googlesource.com/c/platform/frameworks/av/+/588160">示例</a>）
+</li><li>通过指定 <code>no_sanitize</code> 属性来停用函数中的排错功能（<a href="https://android-review.googlesource.com/c/platform/frameworks/base/+/531720">示例</a>）
+</li><li>通过黑名单文件来禁止对函数或源文件进行排错（<a href="https://android-review.googlesource.com/c/platform/frameworks/base/+/574222">示例</a>）
+</li></ul>
+<p>
+您应尽可能使用最精细的解决方案。例如，如果某大型函数具有多个算术运算和单个溢出运算，则应对单个溢出运算进行重构，而不是将整个函数列入黑名单。
+</p>
+<p>
+可能导致良性溢出的常见模式包括：
+</p>
+<ul>
+<li>在转换为有符号类型之前发生无符号溢出的<a href="http://www.cplusplus.com/doc/tutorial/typecasting/" class="external">隐式类型转换</a>（<a href="https://android-review.googlesource.com/c/platform/frameworks/av/+/574011">示例</a>）
+</li><li>删除关联的列表，且删除时循环索引会递减（<a href="https://android-review.googlesource.com/c/platform/frameworks/base/+/588158">示例</a>）
+</li><li>将无符号类型指定为 -1，而不是指定实际最大值（<a href="https://android-review.googlesource.com/c/platform/frameworks/native/+/574088/1/services/surfaceflinger/Layer.cpp">示例</a>）</li><li>在条件中使无符号整数递减的循环（<a href="https://android-review.googlesource.com/c/platform/frameworks/native/+/573763/1/services/inputflinger/InputReader.cpp">示例</a>、<a href="https://android-review.googlesource.com/c/platform/frameworks/rs/+/572756">示例</a>）</li></ul>
+<p>
+在停用排错功能之前，开发者最好是确保排错程序检测到的溢出确实是良性的，并且没有意外的副作用或安全隐患。
+</p>
+<h3 id="disabling-intsan">停用 IntSan</h3>
+<p>
+您可以使用黑名单或函数属性来停用 IntSan。请仅在重构代码不合理或者存在有问题的性能开销时，谨慎停用 IntSan。
+</p>
+<p>
+要详细了解如何使用<a href="https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html#disabling-instrumentation-with-attribute-no-sanitize-undefined">函数属性</a>和<a href="https://clang.llvm.org/docs/SanitizerSpecialCaseList.html">黑名单文件格式设置</a>停用 IntSan，请参阅上游 Clang 文档。应将黑名单的作用范围限定为特定的排错程序，方法是使用区块名称指定目标排错程序，以免影响其他排错程序。
+</p>
+<h2 id="validation">验证</h2>
+<p>目前没有专门针对整数溢出排错功能的 CTS 测试。因此请确保 CTS 测试在启用或未启用 IntSan 的情况下均能通过，以证明它不会给设备带来影响。
+</p>
+
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">构建</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 代码库
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            要求
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            下载
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            预览二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            出厂映像
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            驱动程序二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">关注</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            在 Twitter 上 @Android
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            在 Twitter 上 @AndroidDev
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android 博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google 安全博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google 网上论坛上的 Android 平台论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Google 网上论坛上的 Android 构建论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Google 网上论坛上的 Android 移植论坛
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">获取帮助</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            问题跟踪器
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          关于 Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/community0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          社区
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          法律条款
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          许可
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          隐私权政策
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476&amp;hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          网站反馈
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'zh_cn',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/intsan?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:41:15 GMT -->
+</html>
