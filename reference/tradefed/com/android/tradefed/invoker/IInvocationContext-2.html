@@ -1,0 +1,2479 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/reference/tradefed/com/android/tradefed/invoker/IInvocationContext by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 15:16:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>IInvocationContext &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="IInvocationContext &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="IInvocationContext-2.html">
+
+  <meta property="og:locale" content="en">
+
+
+  
+    
+    
+    
+
+
+
+
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="IInvocationContext-2.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../../../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../devices/audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../devices/tech/dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+          devsite-header-no-lower-tabs
+    ">
+    <div class="devsite-header-background">
+                              </div>  </div></div>
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars hidden>
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../devices/audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../devices/tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+                        has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner"><style type="text/css">/* Fixes issues with templates-sdk on devsite */
+
+/* indention for class inheritance */
+.jd-inheritance-table .jd-inheritance-space {
+  width: 1em;
+}
+
+/* header for known subclasses table */
+.jd-sumtable td > span {
+  display: inline-block;
+  font-size: 1.15em;
+  padding: 8px 8px 0 8px;
+}
+</style>    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+        
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+              devsite-no-page-title
+        ">
+
+              
+
+<div itemscope itemtype="http://developers.google.com/ReferenceObject">
+<!-- This DIV closes at the end of the BODY -->
+  <meta itemprop="name" content="com.android.tradefed.invoker.IInvocationContext" />
+  
+
+
+
+
+<div id="jd-content"  >
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<h1 class="api-title">IInvocationContext</h1>
+<p>
+<code class="api-signature">
+  public
+  
+  
+  
+  interface
+  IInvocationContext
+</code>
+<br>
+
+
+<code class="api-signature">
+  
+  
+      implements
+      
+        Serializable
+      
+  
+  
+</code>
+
+</p><table class="jd-inheritance-table">
+
+
+  <tr>
+    
+    <td colspan="1" class="jd-inheritance-class-cell">com.android.tradefed.invoker.IInvocationContext
+    </td>
+  </tr>
+  
+
+</table>
+  
+  <table class="jd-sumtable jd-sumtable-subclasses">
+    <tr>
+      <td>
+        <div class="expandable">
+          <span class="expand-control">Known indirect subclasses</span>
+          
+  <div id="subclasses-indirect" class="showalways" > <a href="InvocationContext.html">InvocationContext</a>
+  </div>
+  <div id="subclasses-indirect-summary" >
+    
+  
+  <table class="jd-sumtable-expando">
+    
+      <tr  >
+        <td class="jd-linkcol"><a href="InvocationContext.html">InvocationContext</a></td>
+        <td class="jd-descrcol" width="100%">
+          Generic implementation of a <code><a href="IInvocationContext.html">IInvocationContext</a></code>.&nbsp;
+          
+    
+
+        </td>
+      </tr>
+      
+    
+  </table>
+
+  </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+    
+
+<br><hr>
+
+
+  <p>Holds information about the Invocation for the tests to access if needed. Tests should not modify
+ the context contained here so only getters will be available, except for the context attributes
+ for reporting purpose.
+</p>
+
+
+
+
+
+
+
+
+
+<h2 class="api-section">Summary</h2>
+
+
+
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<table id="nestedclasses" class="responsive">
+<tr><th colspan="2"><h3>Nested classes</h3></th></tr>
+
+
+  
+    <tr  >
+      <td class="jd-typecol"><code>
+        
+        
+        
+        
+        enum</code></td>
+      <td class="jd-descrcol" width="100%">
+        <code><a href="IInvocationContext.TimingEvent.html">IInvocationContext.TimingEvent</a></code>
+        <p>&nbsp;
+        
+    
+</p>
+      </td>
+    </tr>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="responsive methods">
+<tr><th colspan="2"><h3>Public methods</h3></th></tr>
+
+
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#addAllocatedDevice(java.util.Map<java.lang.String,%20com.android.tradefed.device.ITestDevice>)">addAllocatedDevice</a>(Map&lt;String,&nbsp;<a href="../device/ITestDevice.html">ITestDevice</a>&gt; deviceWithName)
+      </code>
+      
+        <p>Track a map of configuration device name associated to a <code><a href="../device/ITestDevice.html">ITestDevice</a></code>.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#addAllocatedDevice(java.lang.String,%20com.android.tradefed.device.ITestDevice)">addAllocatedDevice</a>(String deviceName, <a href="../device/ITestDevice.html">ITestDevice</a> testDevice)
+      </code>
+      
+        <p>Add a ITestDevice to be tracked by the meta data when the device is allocated.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#addDeviceBuildInfo(java.lang.String,%20com.android.tradefed.build.IBuildInfo)">addDeviceBuildInfo</a>(String deviceName, <a href="../build/IBuildInfo.html">IBuildInfo</a> buildinfo)
+      </code>
+      
+        <p>Add a <code><a href="../build/IBuildInfo.html">IBuildInfo</a></code> to be tracked with the device configuration name.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#addInvocationAttribute(java.lang.String,%20java.lang.String)">addInvocationAttribute</a>(String attributeName, String attributeValue)
+      </code>
+      
+        <p>Add an Invocation attribute.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#addInvocationAttributes(com.android.tradefed.util.UniqueMultiMap<java.lang.String,%20java.lang.String>)">addInvocationAttributes</a>(<a href="../util/UniqueMultiMap.html">UniqueMultiMap</a>&lt;String,&nbsp;String&gt; attributesMap)
+      </code>
+      
+        <p>Add several invocation attributes at once through a <code><a href="../util/UniqueMultiMap.html">UniqueMultiMap</a></code>.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#addInvocationTimingMetric(com.android.tradefed.invoker.IInvocationContext.TimingEvent,%20java.lang.Long)">addInvocationTimingMetric</a>(<a href="IInvocationContext.TimingEvent.html">IInvocationContext.TimingEvent</a> timingEvent, Long durationMillis)
+      </code>
+      
+        <p>Add a invocation timing metric.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#addSerialsFromShard(java.lang.Integer,%20java.util.List<java.lang.String>)">addSerialsFromShard</a>(Integer index, List&lt;String&gt; serials)
+      </code>
+      
+        <p>Add a serial to be tracked as assigned to one of the shard running some tests.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        <a href="../util/MultiMap.html">MultiMap</a>&lt;String,&nbsp;String&gt;</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getAttributes()">getAttributes</a>()
+      </code>
+      
+        <p>Returns a copy of the map containing all the invocation attributes.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        <a href="../build/IBuildInfo.html">IBuildInfo</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getBuildInfo(java.lang.String)">getBuildInfo</a>(String deviceName)
+      </code>
+      
+        <p>Return the <code><a href="../build/IBuildInfo.html">IBuildInfo</a></code> associated with the device configuration name provided.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        <a href="../build/IBuildInfo.html">IBuildInfo</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getBuildInfo(com.android.tradefed.device.ITestDevice)">getBuildInfo</a>(<a href="../device/ITestDevice.html">ITestDevice</a> testDevice)
+      </code>
+      
+        <p>Return the <code><a href="../build/IBuildInfo.html">IBuildInfo</a></code> associated with the <code><a href="../device/ITestDevice.html">ITestDevice</a></code>
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        List&lt;<a href="../build/IBuildInfo.html">IBuildInfo</a>&gt;</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getBuildInfos()">getBuildInfos</a>()
+      </code>
+      
+        <p>Return all the <code><a href="../build/IBuildInfo.html">IBuildInfo</a></code> tracked for this invocation.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        <a href="../config/ConfigurationDescriptor.html">ConfigurationDescriptor</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getConfigurationDescriptor()">getConfigurationDescriptor</a>()
+      </code>
+      
+        <p>Returns the descriptor associated with the test configuration that launched the invocation
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        <a href="../device/ITestDevice.html">ITestDevice</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getDevice(java.lang.String)">getDevice</a>(String deviceName)
+      </code>
+      
+        <p>Return the <code><a href="../device/ITestDevice.html">ITestDevice</a></code> associated with the device configuration name provided.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        Map&lt;<a href="../device/ITestDevice.html">ITestDevice</a>,&nbsp;<a href="../build/IBuildInfo.html">IBuildInfo</a>&gt;</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getDeviceBuildMap()">getDeviceBuildMap</a>()
+      </code>
+      
+        <p>Return the map of Device/build info association
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        <a href="../device/ITestDevice.html">ITestDevice</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getDeviceBySerial(java.lang.String)">getDeviceBySerial</a>(String serial)
+      </code>
+      
+        <p>Returns the <code><a href="../device/ITestDevice.html">ITestDevice</a></code> associated with the serial provided.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        List&lt;String&gt;</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getDeviceConfigNames()">getDeviceConfigNames</a>()
+      </code>
+      
+        <p>Return the list of device config names of the device tracked in this invocation
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getDeviceName(com.android.tradefed.device.ITestDevice)">getDeviceName</a>(<a href="../device/ITestDevice.html">ITestDevice</a> device)
+      </code>
+      
+        <p>Returns the name of the device set in the xml configuration from the <code><a href="../device/ITestDevice.html">ITestDevice</a></code>.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        List&lt;<a href="../device/ITestDevice.html">ITestDevice</a>&gt;</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getDevices()">getDevices</a>()
+      </code>
+      
+        <p>Return all the allocated device tracked for this invocation.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        Map&lt;<a href="IInvocationContext.TimingEvent.html">IInvocationContext.TimingEvent</a>,&nbsp;Long&gt;</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getInvocationTimingMetrics()">getInvocationTimingMetrics</a>()
+      </code>
+      
+        <p>Returns the map containing the invocation timing metrics.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        <a href="IInvocationContext.html">IInvocationContext</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getModuleInvocationContext()">getModuleInvocationContext</a>()
+      </code>
+      
+        <p>Returns the invocation context of module while being executed as part of a <code><a href="../testtype/suite/ITestSuite.html">ITestSuite</a></code>
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        int</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getNumDevicesAllocated()">getNumDevicesAllocated</a>()
+      </code>
+      
+        <p>Return the number of devices allocated for the invocation.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        List&lt;String&gt;</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getSerials()">getSerials</a>()
+      </code>
+      
+        <p>Return the list of serials of the device tracked in this invocation
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        Map&lt;Integer,&nbsp;List&lt;String&gt;&gt;</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getShardsSerials()">getShardsSerials</a>()
+      </code>
+      
+        <p>Returns the Map of all tracked serials and their shard involved in sharding.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#getTestTag()">getTestTag</a>()
+      </code>
+      
+        <p>Returns the invocation test-tag.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#setConfigurationDescriptor(com.android.tradefed.config.ConfigurationDescriptor)">setConfigurationDescriptor</a>(<a href="../config/ConfigurationDescriptor.html">ConfigurationDescriptor</a> configurationDescriptor)
+      </code>
+      
+        <p>Sets the descriptor associated with the test configuration that launched the invocation 
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#setModuleInvocationContext(com.android.tradefed.invoker.IInvocationContext)">setModuleInvocationContext</a>(<a href="IInvocationContext.html">IInvocationContext</a> invocationContext)
+      </code>
+      
+        <p>Sets the invocation context of module while being executed as part of a <code><a href="../testtype/suite/ITestSuite.html">ITestSuite</a></code>
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#setRecoveryModeForAllDevices(com.android.tradefed.device.ITestDevice.RecoveryMode)">setRecoveryModeForAllDevices</a>(<a href="../device/ITestDevice.RecoveryMode.html">ITestDevice.RecoveryMode</a> mode)
+      </code>
+      
+        <p>Sets the <code><a href="../device/ITestDevice.RecoveryMode.html">ITestDevice.RecoveryMode</a></code> of all the devices part of the context
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IInvocationContext.html#setTestTag(java.lang.String)">setTestTag</a>(String testTag)
+      </code>
+      
+        <p>Sets the invocation test-tag.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+
+</table>
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2 class="api-section">Public methods</h2>
+
+
+<div >
+    <h3 class="api-name" id="addAllocatedDevice(java.util.Map<java.lang.String,%20com.android.tradefed.device.ITestDevice>)">addAllocatedDevice</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void addAllocatedDevice (Map&lt;String,&nbsp;<a href="../device/ITestDevice.html">ITestDevice</a>&gt; deviceWithName)</pre>
+    
+    
+
+    
+  <p>Track a map of configuration device name associated to a <code><a href="../device/ITestDevice.html">ITestDevice</a></code>. Doesn't clear
+ the previous tracking before adding.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>deviceWithName</code></td>
+        <td width="100%">
+          <code>Map</code>: the <code><a href="../../../../java/util/Map.html">Map</a></code> of additional device to track
+</p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="addAllocatedDevice(java.lang.String,%20com.android.tradefed.device.ITestDevice)">addAllocatedDevice</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void addAllocatedDevice (String deviceName, 
+                <a href="../device/ITestDevice.html">ITestDevice</a> testDevice)</pre>
+    
+    
+
+    
+  <p>Add a ITestDevice to be tracked by the meta data when the device is allocated.
+ will set the build info to null in the map.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>deviceName</code></td>
+        <td width="100%">
+          <code>String</code>: the device configuration name to associate with the <code><a href="../device/ITestDevice.html">ITestDevice</a></code></p></td>
+      </tr>
+      <tr>
+        <td><code>testDevice</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: to be added to the allocated devices.
+</p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="addDeviceBuildInfo(java.lang.String,%20com.android.tradefed.build.IBuildInfo)">addDeviceBuildInfo</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void addDeviceBuildInfo (String deviceName, 
+                <a href="../build/IBuildInfo.html">IBuildInfo</a> buildinfo)</pre>
+    
+    
+
+    
+  <p>Add a <code><a href="../build/IBuildInfo.html">IBuildInfo</a></code> to be tracked with the device configuration name.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>deviceName</code></td>
+        <td width="100%">
+          <code>String</code>: the device configuration name</p></td>
+      </tr>
+      <tr>
+        <td><code>buildinfo</code></td>
+        <td width="100%">
+          <code>IBuildInfo</code>: a <code><a href="../build/IBuildInfo.html">IBuildInfo</a></code> associated to the device configuration name.
+</p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="addInvocationAttribute(java.lang.String,%20java.lang.String)">addInvocationAttribute</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void addInvocationAttribute (String attributeName, 
+                String attributeValue)</pre>
+    
+    
+
+    
+  <p>Add an Invocation attribute.
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>attributeName</code></td>
+        <td width="100%">
+          <code>String</code> <!-- no parameter comment --></p></td>
+      </tr>
+      <tr>
+        <td><code>attributeValue</code></td>
+        <td width="100%">
+          <code>String</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="addInvocationAttributes(com.android.tradefed.util.UniqueMultiMap<java.lang.String,%20java.lang.String>)">addInvocationAttributes</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void addInvocationAttributes (<a href="../util/UniqueMultiMap.html">UniqueMultiMap</a>&lt;String,&nbsp;String&gt; attributesMap)</pre>
+    
+    
+
+    
+  <p>Add several invocation attributes at once through a <code><a href="../util/UniqueMultiMap.html">UniqueMultiMap</a></code>. </p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>attributesMap</code></td>
+        <td width="100%">
+          <code>UniqueMultiMap</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="addInvocationTimingMetric(com.android.tradefed.invoker.IInvocationContext.TimingEvent,%20java.lang.Long)">addInvocationTimingMetric</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void addInvocationTimingMetric (<a href="IInvocationContext.TimingEvent.html">IInvocationContext.TimingEvent</a> timingEvent, 
+                Long durationMillis)</pre>
+    
+    
+
+    
+  <p>Add a invocation timing metric. </p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>timingEvent</code></td>
+        <td width="100%">
+          <code>IInvocationContext.TimingEvent</code> <!-- no parameter comment --></p></td>
+      </tr>
+      <tr>
+        <td><code>durationMillis</code></td>
+        <td width="100%">
+          <code>Long</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="addSerialsFromShard(java.lang.Integer,%20java.util.List<java.lang.String>)">addSerialsFromShard</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void addSerialsFromShard (Integer index, 
+                List&lt;String&gt; serials)</pre>
+    
+    
+
+    
+  <p>Add a serial to be tracked as assigned to one of the shard running some tests.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>index</code></td>
+        <td width="100%">
+          <code>Integer</code>: the index of the shard using the serials</p></td>
+      </tr>
+      <tr>
+        <td><code>serials</code></td>
+        <td width="100%">
+          <code>List</code>: The list of serials to be tracked.
+</p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getAttributes()">getAttributes</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract <a href="../util/MultiMap.html">MultiMap</a>&lt;String,&nbsp;String&gt; getAttributes ()</pre>
+    
+    
+
+    
+  <p>Returns a copy of the map containing all the invocation attributes. </p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="../util/MultiMap.html">MultiMap</a>&lt;String,&nbsp;String&gt;</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getBuildInfo(java.lang.String)">getBuildInfo</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract <a href="../build/IBuildInfo.html">IBuildInfo</a> getBuildInfo (String deviceName)</pre>
+    
+    
+
+    
+  <p>Return the <code><a href="../build/IBuildInfo.html">IBuildInfo</a></code> associated with the device configuration name provided. Returns
+ null, if the deviceName cannot be matched.
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>deviceName</code></td>
+        <td width="100%">
+          <code>String</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="../build/IBuildInfo.html">IBuildInfo</a></code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getBuildInfo(com.android.tradefed.device.ITestDevice)">getBuildInfo</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract <a href="../build/IBuildInfo.html">IBuildInfo</a> getBuildInfo (<a href="../device/ITestDevice.html">ITestDevice</a> testDevice)</pre>
+    
+    
+
+    
+  <p>Return the <code><a href="../build/IBuildInfo.html">IBuildInfo</a></code> associated with the <code><a href="../device/ITestDevice.html">ITestDevice</a></code>
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>testDevice</code></td>
+        <td width="100%">
+          <code>ITestDevice</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="../build/IBuildInfo.html">IBuildInfo</a></code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getBuildInfos()">getBuildInfos</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract List&lt;<a href="../build/IBuildInfo.html">IBuildInfo</a>&gt; getBuildInfos ()</pre>
+    
+    
+
+    
+  <p>Return all the <code><a href="../build/IBuildInfo.html">IBuildInfo</a></code> tracked for this invocation.
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>List&lt;<a href="../build/IBuildInfo.html">IBuildInfo</a>&gt;</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getConfigurationDescriptor()">getConfigurationDescriptor</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract <a href="../config/ConfigurationDescriptor.html">ConfigurationDescriptor</a> getConfigurationDescriptor ()</pre>
+    
+    
+
+    
+  <p>Returns the descriptor associated with the test configuration that launched the invocation
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="../config/ConfigurationDescriptor.html">ConfigurationDescriptor</a></code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getDevice(java.lang.String)">getDevice</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract <a href="../device/ITestDevice.html">ITestDevice</a> getDevice (String deviceName)</pre>
+    
+    
+
+    
+  <p>Return the <code><a href="../device/ITestDevice.html">ITestDevice</a></code> associated with the device configuration name provided.
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>deviceName</code></td>
+        <td width="100%">
+          <code>String</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="../device/ITestDevice.html">ITestDevice</a></code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getDeviceBuildMap()">getDeviceBuildMap</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract Map&lt;<a href="../device/ITestDevice.html">ITestDevice</a>,&nbsp;<a href="../build/IBuildInfo.html">IBuildInfo</a>&gt; getDeviceBuildMap ()</pre>
+    
+    
+
+    
+  <p>Return the map of Device/build info association
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>Map&lt;<a href="../device/ITestDevice.html">ITestDevice</a>,&nbsp;<a href="../build/IBuildInfo.html">IBuildInfo</a>&gt;</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getDeviceBySerial(java.lang.String)">getDeviceBySerial</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract <a href="../device/ITestDevice.html">ITestDevice</a> getDeviceBySerial (String serial)</pre>
+    
+    
+
+    
+  <p>Returns the <code><a href="../device/ITestDevice.html">ITestDevice</a></code> associated with the serial provided.
+ Refrain from using too much as it's not the fastest lookup.
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>serial</code></td>
+        <td width="100%">
+          <code>String</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="../device/ITestDevice.html">ITestDevice</a></code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getDeviceConfigNames()">getDeviceConfigNames</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract List&lt;String&gt; getDeviceConfigNames ()</pre>
+    
+    
+
+    
+  <p>Return the list of device config names of the device tracked in this invocation
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>List&lt;String&gt;</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getDeviceName(com.android.tradefed.device.ITestDevice)">getDeviceName</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract String getDeviceName (<a href="../device/ITestDevice.html">ITestDevice</a> device)</pre>
+    
+    
+
+    
+  <p>Returns the name of the device set in the xml configuration from the <code><a href="../device/ITestDevice.html">ITestDevice</a></code>.
+ Returns null, if ITestDevice cannot be matched.
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getDevices()">getDevices</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract List&lt;<a href="../device/ITestDevice.html">ITestDevice</a>&gt; getDevices ()</pre>
+    
+    
+
+    
+  <p>Return all the allocated device tracked for this invocation.
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>List&lt;<a href="../device/ITestDevice.html">ITestDevice</a>&gt;</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getInvocationTimingMetrics()">getInvocationTimingMetrics</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract Map&lt;<a href="IInvocationContext.TimingEvent.html">IInvocationContext.TimingEvent</a>,&nbsp;Long&gt; getInvocationTimingMetrics ()</pre>
+    
+    
+
+    
+  <p>Returns the map containing the invocation timing metrics. </p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>Map&lt;<a href="IInvocationContext.TimingEvent.html">IInvocationContext.TimingEvent</a>,&nbsp;Long&gt;</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getModuleInvocationContext()">getModuleInvocationContext</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract <a href="IInvocationContext.html">IInvocationContext</a> getModuleInvocationContext ()</pre>
+    
+    
+
+    
+  <p>Returns the invocation context of module while being executed as part of a <code><a href="../testtype/suite/ITestSuite.html">ITestSuite</a></code>
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="IInvocationContext.html">IInvocationContext</a></code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getNumDevicesAllocated()">getNumDevicesAllocated</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract int getNumDevicesAllocated ()</pre>
+    
+    
+
+    
+  <p>Return the number of devices allocated for the invocation.
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>int</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getSerials()">getSerials</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract List&lt;String&gt; getSerials ()</pre>
+    
+    
+
+    
+  <p>Return the list of serials of the device tracked in this invocation
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>List&lt;String&gt;</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getShardsSerials()">getShardsSerials</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract Map&lt;Integer,&nbsp;List&lt;String&gt;&gt; getShardsSerials ()</pre>
+    
+    
+
+    
+  <p>Returns the Map of all tracked serials and their shard involved in sharding. Empty if not a
+ sharded invocation.
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>Map&lt;Integer,&nbsp;List&lt;String&gt;&gt;</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getTestTag()">getTestTag</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract String getTestTag ()</pre>
+    
+    
+
+    
+  <p>Returns the invocation test-tag. </p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setConfigurationDescriptor(com.android.tradefed.config.ConfigurationDescriptor)">setConfigurationDescriptor</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void setConfigurationDescriptor (<a href="../config/ConfigurationDescriptor.html">ConfigurationDescriptor</a> configurationDescriptor)</pre>
+    
+    
+
+    
+  <p>Sets the descriptor associated with the test configuration that launched the invocation </p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>configurationDescriptor</code></td>
+        <td width="100%">
+          <code>ConfigurationDescriptor</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setModuleInvocationContext(com.android.tradefed.invoker.IInvocationContext)">setModuleInvocationContext</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void setModuleInvocationContext (<a href="IInvocationContext.html">IInvocationContext</a> invocationContext)</pre>
+    
+    
+
+    
+  <p>Sets the invocation context of module while being executed as part of a <code><a href="../testtype/suite/ITestSuite.html">ITestSuite</a></code>
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>invocationContext</code></td>
+        <td width="100%">
+          <code>IInvocationContext</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setRecoveryModeForAllDevices(com.android.tradefed.device.ITestDevice.RecoveryMode)">setRecoveryModeForAllDevices</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void setRecoveryModeForAllDevices (<a href="../device/ITestDevice.RecoveryMode.html">ITestDevice.RecoveryMode</a> mode)</pre>
+    
+    
+
+    
+  <p>Sets the <code><a href="../device/ITestDevice.RecoveryMode.html">ITestDevice.RecoveryMode</a></code> of all the devices part of the context
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>mode</code></td>
+        <td width="100%">
+          <code>ITestDevice.RecoveryMode</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setTestTag(java.lang.String)">setTestTag</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void setTestTag (String testTag)</pre>
+    
+    
+
+    
+  <p>Sets the invocation test-tag.
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>testTag</code></td>
+        <td width="100%">
+          <code>String</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+
+</div><!-- end jd-content -->
+
+
+
+<div class="data-reference-resources-wrapper">
+  
+  <ul data-reference-resources>
+    
+    
+    <li><h2 class="hide-from-toc">Interfaces</h2>
+      <ul>
+          <li class="selected"><a href="IInvocationContext.html">IInvocationContext</a></li>
+          <li><a href="IInvocationExecution.html">IInvocationExecution</a></li>
+          <li><a href="IRescheduler.html">IRescheduler</a></li>
+          <li><a href="ITestInvocation.html">ITestInvocation</a></li>
+      </ul>
+    </li>
+    
+    <li><h2 class="hide-from-toc">Classes</h2>
+      <ul>
+          <li><a href="InvocationContext.html">InvocationContext</a></li>
+          <li><a href="InvocationExecution.html">InvocationExecution</a></li>
+          <li><a href="ShardListener.html">ShardListener</a></li>
+          <li><a href="ShardMasterResultForwarder.html">ShardMasterResultForwarder</a></li>
+          <li><a href="TestInvocation.html">TestInvocation</a></li>
+      </ul>
+    </li>
+    
+    <li><h2 class="hide-from-toc">Enums</h2>
+      <ul>
+          <li><a href="IInvocationContext.TimingEvent.html">IInvocationContext.TimingEvent</a></li>
+          <li><a href="TestInvocation.Stage.html">TestInvocation.Stage</a></li>
+      </ul>
+    </li>
+    
+    
+  </ul>
+  
+</div>
+
+
+
+</div><!-- end devsite ReferenceObject -->
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/reference/tradefed/com/android/tradefed/invoker/IInvocationContext by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 15:16:12 GMT -->
+</html>

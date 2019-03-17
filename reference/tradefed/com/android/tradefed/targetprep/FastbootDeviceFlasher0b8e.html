@@ -1,0 +1,3670 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/reference/tradefed/com/android/tradefed/targetprep/FastbootDeviceFlasher.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:56:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>FastbootDeviceFlasher &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="FastbootDeviceFlasher &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="FastbootDeviceFlasher-2.html">
+
+  <meta property="og:locale" content="en">
+
+
+  
+    
+    
+    
+
+
+
+
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="FastbootDeviceFlasher-2.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../../../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../../../../setup0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../compatibility0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../security0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../devices/audio0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../devices/tech/dalvik0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../reference0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="参考"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 参考"
+   >
+  参考
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="搜索"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="搜索框">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          转到源代码
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+          devsite-header-no-lower-tabs
+    ">
+    <div class="devsite-header-background">
+                              </div>  </div></div>
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars hidden>
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../devices/audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../devices/tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 参考">
+      <span class="devsite-nav-text" >参考</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 转到源代码">
+      <span class="devsite-nav-text" >转到源代码</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+                        has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner"><style type="text/css">/* Fixes issues with templates-sdk on devsite */
+
+/* indention for class inheritance */
+.jd-inheritance-table .jd-inheritance-space {
+  width: 1em;
+}
+
+/* header for known subclasses table */
+.jd-sumtable td > span {
+  display: inline-block;
+  font-size: 1.15em;
+  padding: 8px 8px 0 8px;
+}
+</style>    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../../../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+        
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+              devsite-no-page-title
+        ">
+
+              
+
+<div itemscope itemtype="http://developers.google.com/ReferenceObject">
+<!-- This DIV closes at the end of the BODY -->
+  <meta itemprop="name" content="com.android.tradefed.targetprep.FastbootDeviceFlasher" />
+  
+
+
+
+
+<div id="jd-content"  >
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<h1 class="api-title">FastbootDeviceFlasher</h1>
+<p>
+<code class="api-signature">
+  public
+  
+  
+  
+  class
+  FastbootDeviceFlasher
+</code>
+<br>
+
+
+<code class="api-signature">
+  
+    extends Object
+  
+  
+  
+</code>
+
+<code class="api-signature">
+  
+  
+      implements
+      
+        <a href="IDeviceFlasher0b8e.html?hl=zh-cn">IDeviceFlasher</a>
+      
+  
+  
+</code>
+
+</p><table class="jd-inheritance-table">
+
+
+  <tr>
+    
+    <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object
+    </td>
+  </tr>
+  
+
+  <tr>
+    
+      <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+    
+    <td colspan="1" class="jd-inheritance-class-cell">com.android.tradefed.targetprep.FastbootDeviceFlasher
+    </td>
+  </tr>
+  
+
+</table>
+  <table class="jd-sumtable jd-sumtable-subclasses">
+    <tr>
+      <td>
+        <div class="expandable">
+          <span class="expand-control">Known direct subclasses</span>
+          
+  <div id="subclasses-direct" class="showalways" > <a href="CdmaDeviceFlasher0b8e.html?hl=zh-cn">CdmaDeviceFlasher</a>
+  </div>
+  <div id="subclasses-direct-summary" >
+    
+  
+  <table class="jd-sumtable-expando">
+    
+      <tr  >
+        <td class="jd-linkcol"><a href="CdmaDeviceFlasher0b8e.html?hl=zh-cn">CdmaDeviceFlasher</a></td>
+        <td class="jd-descrcol" width="100%">
+          A class that flashes an image on a physical Android device with a CDMA radio.&nbsp;
+          
+    
+
+        </td>
+      </tr>
+      
+    
+  </table>
+
+  </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  
+  
+
+    
+
+<br><hr>
+
+
+  <p>A class that relies on fastboot to flash an image on physical Android hardware.
+</p>
+
+
+
+
+
+
+
+
+
+<h2 class="api-section">Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="constants" class="responsive constants">
+<tr><th colspan="2"><h3>Constants</h3></th></tr>
+
+
+    
+    <tr  >
+        <td><code>String</code></td>
+        <td width="100%">
+          <code><a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#BASEBAND_IMAGE_NAME">BASEBAND_IMAGE_NAME</a></code>
+          <p>
+          
+    
+</p>
+        </td>
+    </tr>
+    
+    
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="responsive constructors">
+<tr><th colspan="2"><h3>Public constructors</h3></th></tr>
+
+
+
+  <tr  >
+  
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#FastbootDeviceFlasher()">FastbootDeviceFlasher</a>()
+      </code>
+      
+    </td>
+  </tr>
+  
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="responsive methods">
+<tr><th colspan="2"><h3>Public methods</h3></th></tr>
+
+
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#flash(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">flash</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)
+      </code>
+      
+        <p>Flashes build on device.
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        <a href="../util/CommandStatus0b8e.html?hl=zh-cn">CommandStatus</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#getSystemFlashingStatus()">getSystemFlashingStatus</a>()
+      </code>
+      
+        <p>Retrieve the command execution status for flashing primary system partitions.
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        <a href="IDeviceFlasher.UserDataFlashOption0b8e.html?hl=zh-cn">IDeviceFlasher.UserDataFlashOption</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#getUserDataFlashOption()">getUserDataFlashOption</a>()
+      </code>
+      
+        <p>Gets whether the user data image should be flashed, wiped, or retained
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#overrideDeviceOptions(com.android.tradefed.device.ITestDevice)">overrideDeviceOptions</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device)
+      </code>
+      
+        <p>Override options for a device.
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#setDataWipeSkipList(java.util.Collection<java.lang.String>)">setDataWipeSkipList</a>(Collection&lt;String&gt; dataWipeSkipList)
+      </code>
+      
+        <p>Sets the list of paths under <code>/data</code> to avoid clearing when using
+ <code><a href="ITestsZipInstaller0b8e.html?hl=zh-cn">ITestsZipInstaller</a></code>
+ <p />
+ Note that the granularity of the skip list is direct children of <code>/data</code>.
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#setFlashOptions(java.util.Collection<java.lang.String>)">setFlashOptions</a>(Collection&lt;String&gt; flashOptions)
+      </code>
+      
+        <p>Sets a list of options to pass with flash/update commands.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#setFlashingResourcesRetriever(com.android.tradefed.targetprep.IFlashingResourcesRetriever)">setFlashingResourcesRetriever</a>(<a href="IFlashingResourcesRetriever0b8e.html?hl=zh-cn">IFlashingResourcesRetriever</a> retriever)
+      </code>
+      
+        <p>Sets the mechanism by which the flasher can retrieve resource files for flashing.
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#setForceSystemFlash(boolean)">setForceSystemFlash</a>(boolean forceSystemFlash)
+      </code>
+      
+        <p>Sets if system should always be flashed even if running current build
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#setUserDataFlashOption(com.android.tradefed.targetprep.IDeviceFlasher.UserDataFlashOption)">setUserDataFlashOption</a>(<a href="IDeviceFlasher.UserDataFlashOption0b8e.html?hl=zh-cn">IDeviceFlasher.UserDataFlashOption</a> flashOption)
+      </code>
+      
+        <p>Toggles whether the user data image should be flashed, wiped, or retained
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#setWipeTimeout(long)">setWipeTimeout</a>(long timeout)
+      </code>
+      
+        <p>Set the timeout for wiping the data.
+
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+
+</table>
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="promethods" class="reponsive methods">
+<tr><th colspan="2"><h3>Protected methods</h3></th></tr>
+
+
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#checkAndFlashBaseband(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">checkAndFlashBaseband</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)
+      </code>
+      
+        <p>If needed, flash the baseband image on device.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        boolean</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#checkAndFlashBootloader(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">checkAndFlashBootloader</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)
+      </code>
+      
+        <p>If needed, flash the bootloader image on device.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        boolean</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#checkAndFlashSystem(com.android.tradefed.device.ITestDevice,%20java.lang.String,%20java.lang.String,%20com.android.tradefed.build.IDeviceBuildInfo)">checkAndFlashSystem</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, String systemBuildId, String systemBuildFlavor, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)
+      </code>
+      
+        <p>If needed, flash the system image on device.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        boolean</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#checkShouldFlashBaseband(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">checkShouldFlashBaseband</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)
+      </code>
+      
+        <p>Check if the baseband on the provided device needs to be flashed.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        <a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#createFlashingResourcesParser(com.android.tradefed.build.IDeviceBuildInfo,%20com.android.tradefed.command.remote.DeviceDescriptor)">createFlashingResourcesParser</a>(<a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> localBuild, DeviceDescriptor descriptor)
+      </code>
+      
+        <p>Factory method for creating a <code><a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a></code>.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#downloadExtraImageFiles(com.android.tradefed.targetprep.IFlashingResourcesParser,%20com.android.tradefed.targetprep.IFlashingResourcesRetriever,%20com.android.tradefed.build.IDeviceBuildInfo)">downloadExtraImageFiles</a>(<a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a> resourceParser, <a href="IFlashingResourcesRetriever0b8e.html?hl=zh-cn">IFlashingResourcesRetriever</a> retriever, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> localBuild)
+      </code>
+      
+        <p>Hook to allow subclasses to download extra custom image files if needed.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#downloadFlashingResources(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">downloadFlashingResources</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> localBuild)
+      </code>
+      
+        <p>Downloads extra flashing image files needed
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#executeFastbootCmd(com.android.tradefed.device.ITestDevice,%20java.lang.String...)">executeFastbootCmd</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, String... cmdArgs)
+      </code>
+      
+        <p>Helper method to execute fastboot command.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#executeLongFastbootCmd(com.android.tradefed.device.ITestDevice,%20java.lang.String...)">executeLongFastbootCmd</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, String... cmdArgs)
+      </code>
+      
+        <p>Helper method to execute a long-running fastboot command.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#flashBaseband(com.android.tradefed.device.ITestDevice,%20java.io.File)">flashBaseband</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, File basebandImageFile)
+      </code>
+      
+        <p>Flashes the given baseband image and reboot back into bootloader
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#flashBootloader(com.android.tradefed.device.ITestDevice,%20java.io.File)">flashBootloader</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, File bootloaderImageFile)
+      </code>
+      
+        <p>Flashes the given bootloader image and reboots back into bootloader
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#flashExtraImages(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">flashExtraImages</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)
+      </code>
+      
+        <p>Flash any device specific partitions before flashing system and rebooting.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#flashPartition(com.android.tradefed.device.ITestDevice,%20java.io.File,%20java.lang.String)">flashPartition</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, File imgFile, String partition)
+      </code>
+      
+        <p>Flash an individual partition of a device
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#flashSystem(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">flashSystem</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)
+      </code>
+      
+        <p>Flash the system image on device.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#flashUserData(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">flashUserData</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)
+      </code>
+      
+        <p>Flash userdata partition on device.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#flashUserDataFromDeviceImageFile(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">flashUserDataFromDeviceImageFile</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)
+      </code>
+      
+        <p>Extracts the userdata.img from device image file and flashes it onto device
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#getBootPartitionName()">getBootPartitionName</a>()
+      </code>
+      
+        <p>Get the boot partition name for this device flasher.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#getBootloaderFilePrefix(com.android.tradefed.device.ITestDevice)">getBootloaderFilePrefix</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device)
+      </code>
+      
+        <p>Get the bootloader file prefix.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#getCurrentSlot(com.android.tradefed.device.ITestDevice)">getCurrentSlot</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device)
+      </code>
+      
+        <p>Helper method to retrieve the current slot (for A/B capable devices).
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        <a href="IFlashingResourcesRetriever0b8e.html?hl=zh-cn">IFlashingResourcesRetriever</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#getFlashingResourcesRetriever()">getFlashingResourcesRetriever</a>()
+      </code>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#getImageVersion(com.android.tradefed.device.ITestDevice,%20java.lang.String)">getImageVersion</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, String imageName)
+      </code>
+      
+        <p>Helper method to get the current image version on device.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        <a href="../util/IRunUtil0b8e.html?hl=zh-cn">IRunUtil</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#getRunUtil()">getRunUtil</a>()
+      </code>
+      
+        <p>Exposed for testing.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#handleUserDataFlashing(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">handleUserDataFlashing</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)
+      </code>
+      
+        <p>Handle flashing of userdata/cache partition
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        boolean</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#hasPartition(com.android.tradefed.device.ITestDevice,%20java.lang.String)">hasPartition</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, String partition)
+      </code>
+      
+        <p>Checks with the bootloader if the specified partition exists or not
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#preFlashSetup(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">preFlashSetup</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)
+      </code>
+      
+        <p>Perform any additional pre-flashing setup required.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#verifyRequiredBoards(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.targetprep.IFlashingResourcesParser,%20java.lang.String)">verifyRequiredBoards</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, <a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a> resourceParser, String deviceProductType)
+      </code>
+      
+        <p>Verify that the device's product type supports the build-to-be-flashed.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#wipeCache(com.android.tradefed.device.ITestDevice)">wipeCache</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device)
+      </code>
+      
+        <p>Wipe the cache partition on device.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#wipePartition(com.android.tradefed.device.ITestDevice,%20java.lang.String)">wipePartition</a>(<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, String partition)
+      </code>
+      
+        <p>Wipe the specified partition with `fastboot erase &lt;name&gt;`
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+
+</table>
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- ========= ENUM CONSTANTS DETAIL ======== -->
+<h2 class="api-section">Constants</h2>
+
+
+<div  >
+    <h3 class="api-name" id="BASEBAND_IMAGE_NAME">BASEBAND_IMAGE_NAME</h3>
+    <div class="api-level">
+      
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public static final String BASEBAND_IMAGE_NAME</pre>
+    
+    
+
+    
+  <p></p></p>
+
+    
+      <p>Constant Value:
+      
+          "radio"
+      
+    
+</div>
+
+
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2 class="api-section">Public constructors</h2>
+
+
+<div >
+    <h3 class="api-name" id="FastbootDeviceFlasher()">FastbootDeviceFlasher</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public FastbootDeviceFlasher ()</pre>
+    
+    
+
+    
+  <p></p></p>
+
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2 class="api-section">Public methods</h2>
+
+
+<div >
+    <h3 class="api-name" id="flash(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">flash</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void flash (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)</pre>
+    
+    
+
+    
+  <p>Flashes build on device.
+ <p/>
+ Returns immediately after flashing is complete. Callers should wait for device to be
+ online and available before proceeding with testing.
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>deviceBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> to flash</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%"></td>
+        </tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getSystemFlashingStatus()">getSystemFlashingStatus</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public <a href="../util/CommandStatus0b8e.html?hl=zh-cn">CommandStatus</a> getSystemFlashingStatus ()</pre>
+    
+    
+
+    
+  <p>Retrieve the command execution status for flashing primary system partitions.
+ <p>
+ Note that if system partitions are not flashed (system already has the build to be flashed)
+ the command status may be <code>null</code>
+
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="../util/CommandStatus0b8e.html?hl=zh-cn">CommandStatus</a></code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getUserDataFlashOption()">getUserDataFlashOption</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public <a href="IDeviceFlasher.UserDataFlashOption0b8e.html?hl=zh-cn">IDeviceFlasher.UserDataFlashOption</a> getUserDataFlashOption ()</pre>
+    
+    
+
+    
+  <p>Gets whether the user data image should be flashed, wiped, or retained
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="IDeviceFlasher.UserDataFlashOption0b8e.html?hl=zh-cn">IDeviceFlasher.UserDataFlashOption</a></code></td>
+        <td width="100%">Whether the user data image should be flashed, wiped, or retained
+</p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="overrideDeviceOptions(com.android.tradefed.device.ITestDevice)">overrideDeviceOptions</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void overrideDeviceOptions (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device)</pre>
+    
+    
+
+    
+  <p>Override options for a device. Used to override default option values if the defaults are not
+ supported by a particular device.
+</p></p>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setDataWipeSkipList(java.util.Collection<java.lang.String>)">setDataWipeSkipList</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void setDataWipeSkipList (Collection&lt;String&gt; dataWipeSkipList)</pre>
+    
+    
+
+    
+  <p>Sets the list of paths under <code>/data</code> to avoid clearing when using
+ <code><a href="ITestsZipInstaller0b8e.html?hl=zh-cn">ITestsZipInstaller</a></code>
+ <p />
+ Note that the granularity of the skip list is direct children of <code>/data</code>.
+
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>dataWipeSkipList</code></td>
+        <td width="100%">
+          <code>Collection</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setFlashOptions(java.util.Collection<java.lang.String>)">setFlashOptions</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void setFlashOptions (Collection&lt;String&gt; flashOptions)</pre>
+    
+    
+
+    
+  <p>Sets a list of options to pass with flash/update commands.</p></p>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setFlashingResourcesRetriever(com.android.tradefed.targetprep.IFlashingResourcesRetriever)">setFlashingResourcesRetriever</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void setFlashingResourcesRetriever (<a href="IFlashingResourcesRetriever0b8e.html?hl=zh-cn">IFlashingResourcesRetriever</a> retriever)</pre>
+    
+    
+
+    
+  <p>Sets the mechanism by which the flasher can retrieve resource files for flashing.
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>retriever</code></td>
+        <td width="100%">
+          <code>IFlashingResourcesRetriever</code>: the <code><a href="IFlashingResourcesRetriever0b8e.html?hl=zh-cn">IFlashingResourcesRetriever</a></code> to use
+</p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setForceSystemFlash(boolean)">setForceSystemFlash</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void setForceSystemFlash (boolean forceSystemFlash)</pre>
+    
+    
+
+    
+  <p>Sets if system should always be flashed even if running current build
+</p></p>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setUserDataFlashOption(com.android.tradefed.targetprep.IDeviceFlasher.UserDataFlashOption)">setUserDataFlashOption</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void setUserDataFlashOption (<a href="IDeviceFlasher.UserDataFlashOption0b8e.html?hl=zh-cn">IDeviceFlasher.UserDataFlashOption</a> flashOption)</pre>
+    
+    
+
+    
+  <p>Toggles whether the user data image should be flashed, wiped, or retained
+</p></p>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setWipeTimeout(long)">setWipeTimeout</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void setWipeTimeout (long timeout)</pre>
+    
+    
+
+    
+  <p>Set the timeout for wiping the data.
+
+</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>timeout</code></td>
+        <td width="100%">
+          <code>long</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+<h2 class="api-section">Protected methods</h2>
+
+
+<div >
+    <h3 class="api-name" id="checkAndFlashBaseband(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">checkAndFlashBaseband</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void checkAndFlashBaseband (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)</pre>
+    
+    
+
+    
+  <p>If needed, flash the baseband image on device. Will only flash baseband if current version
+ on device != required version</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>deviceBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> that contains the baseband image to flash</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if failed to flash baseband
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="checkAndFlashBootloader(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">checkAndFlashBootloader</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected boolean checkAndFlashBootloader (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)</pre>
+    
+    
+
+    
+  <p>If needed, flash the bootloader image on device.
+ <p/>
+ Will only flash bootloader if current version on device != required version.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>deviceBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> that contains the bootloader image to flash</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>boolean</code></td>
+        <td width="100%"><code>true</code> if bootloader was flashed, <code>false</code> if it was skipped</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if failed to flash bootloader
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="checkAndFlashSystem(com.android.tradefed.device.ITestDevice,%20java.lang.String,%20java.lang.String,%20com.android.tradefed.build.IDeviceBuildInfo)">checkAndFlashSystem</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected boolean checkAndFlashSystem (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                String systemBuildId, 
+                String systemBuildFlavor, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)</pre>
+    
+    
+
+    
+  <p>If needed, flash the system image on device.
+
+ <p>Please look at <code><a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#shouldFlashSystem(java.lang.String,%20java.lang.String,%20com.android.tradefed.build.IDeviceBuildInfo)">shouldFlashSystem(String, String, IDeviceBuildInfo)</a></code>
+
+ <p>Regardless of path chosen, after method execution device should be booting into userspace.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>systemBuildId</code></td>
+        <td width="100%">
+          <code>String</code>: the current build id running on the device</p></td>
+      </tr>
+      <tr>
+        <td><code>systemBuildFlavor</code></td>
+        <td width="100%">
+          <code>String</code>: the current build flavor running on the device</p></td>
+      </tr>
+      <tr>
+        <td><code>deviceBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> that contains the system image to flash</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>boolean</code></td>
+        <td width="100%"><code>true</code> if system was flashed, <code>false</code> if it was skipped</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if failed to flash bootloader
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="checkShouldFlashBaseband(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">checkShouldFlashBaseband</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected boolean checkShouldFlashBaseband (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)</pre>
+    
+    
+
+    
+  <p>Check if the baseband on the provided device needs to be flashed.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to check</p></td>
+      </tr>
+      <tr>
+        <td><code>deviceBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> that contains the baseband image to check</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>boolean</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if failed to flash baseband
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="createFlashingResourcesParser(com.android.tradefed.build.IDeviceBuildInfo,%20com.android.tradefed.command.remote.DeviceDescriptor)">createFlashingResourcesParser</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected <a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a> createFlashingResourcesParser (<a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> localBuild, 
+                DeviceDescriptor descriptor)</pre>
+    
+    
+
+    
+  <p>Factory method for creating a <code><a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a></code>.
+ <p/>
+ Exposed for unit testing.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>localBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> to parse</p></td>
+      </tr>
+      <tr>
+        <td><code>descriptor</code></td>
+        <td width="100%">
+          <code>DeviceDescriptor</code>: the descriptor of the device being flashed.</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a></code></td>
+        <td width="100%">a <code><a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a></code> created by the factory method.</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="downloadExtraImageFiles(com.android.tradefed.targetprep.IFlashingResourcesParser,%20com.android.tradefed.targetprep.IFlashingResourcesRetriever,%20com.android.tradefed.build.IDeviceBuildInfo)">downloadExtraImageFiles</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void downloadExtraImageFiles (<a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a> resourceParser, 
+                <a href="IFlashingResourcesRetriever0b8e.html?hl=zh-cn">IFlashingResourcesRetriever</a> retriever, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> localBuild)</pre>
+    
+    
+
+    
+  <p>Hook to allow subclasses to download extra custom image files if needed.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>resourceParser</code></td>
+        <td width="100%">
+          <code>IFlashingResourcesParser</code>: the <code><a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a></code></p></td>
+      </tr>
+      <tr>
+        <td><code>retriever</code></td>
+        <td width="100%">
+          <code>IFlashingResourcesRetriever</code>: the <code><a href="IFlashingResourcesRetriever0b8e.html?hl=zh-cn">IFlashingResourcesRetriever</a></code></p></td>
+      </tr>
+      <tr>
+        <td><code>localBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code></p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="downloadFlashingResources(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">downloadFlashingResources</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void downloadFlashingResources (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> localBuild)</pre>
+    
+    
+
+    
+  <p>Downloads extra flashing image files needed</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to download resources for</p></td>
+      </tr>
+      <tr>
+        <td><code>localBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> to populate. Assumes device image file is
+ already set</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if failed to retrieve resources
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="executeFastbootCmd(com.android.tradefed.device.ITestDevice,%20java.lang.String...)">executeFastbootCmd</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected String executeFastbootCmd (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                String... cmdArgs)</pre>
+    
+    
+
+    
+  <p>Helper method to execute fastboot command.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to execute command on</p></td>
+      </tr>
+      <tr>
+        <td><code>cmdArgs</code></td>
+        <td width="100%">
+          <code>String</code>: the arguments to provide to fastboot</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%">String the stderr output from command if non-empty. Otherwise returns the stdout
+ Some fastboot commands are weird in that they dump output to stderr on success case</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if fastboot command fails
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="executeLongFastbootCmd(com.android.tradefed.device.ITestDevice,%20java.lang.String...)">executeLongFastbootCmd</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected String executeLongFastbootCmd (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                String... cmdArgs)</pre>
+    
+    
+
+    
+  <p>Helper method to execute a long-running fastboot command.
+ <p/>
+ Note: Most fastboot commands normally execute within the timeout allowed by
+ <code><a href="../device/INativeDevice0b8e.html?hl=zh-cn#executeFastbootCommand(java.lang.String...)">INativeDevice.executeFastbootCommand(String)</a></code>. However, when multiple devices are
+ flashing devices at once, fastboot commands can take much longer than normal.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to execute command on</p></td>
+      </tr>
+      <tr>
+        <td><code>cmdArgs</code></td>
+        <td width="100%">
+          <code>String</code>: the arguments to provide to fastboot</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%">String the stderr output from command if non-empty. Otherwise returns the stdout
+ Some fastboot commands are weird in that they dump output to stderr on success case</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if fastboot command fails
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="flashBaseband(com.android.tradefed.device.ITestDevice,%20java.io.File)">flashBaseband</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void flashBaseband (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                File basebandImageFile)</pre>
+    
+    
+
+    
+  <p>Flashes the given baseband image and reboot back into bootloader</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>basebandImageFile</code></td>
+        <td width="100%">
+          <code>File</code>: the baseband image <code><a href="../../../../java/io/File0b8e.html?hl=zh-cn">File</a></code></p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if failed to flash baseband
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="flashBootloader(com.android.tradefed.device.ITestDevice,%20java.io.File)">flashBootloader</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void flashBootloader (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                File bootloaderImageFile)</pre>
+    
+    
+
+    
+  <p>Flashes the given bootloader image and reboots back into bootloader</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>bootloaderImageFile</code></td>
+        <td width="100%">
+          <code>File</code>: the bootloader image <code><a href="../../../../java/io/File0b8e.html?hl=zh-cn">File</a></code></p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if failed to flash
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="flashExtraImages(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">flashExtraImages</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void flashExtraImages (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)</pre>
+    
+    
+
+    
+  <p>Flash any device specific partitions before flashing system and rebooting. No-op unless
+ overridden.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>deviceBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> containing the build files</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code></code></td>
+          <td width="100%">DeviceNotAvailableException</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%"></td>
+        </tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="flashPartition(com.android.tradefed.device.ITestDevice,%20java.io.File,%20java.lang.String)">flashPartition</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void flashPartition (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                File imgFile, 
+                String partition)</pre>
+    
+    
+
+    
+  <p>Flash an individual partition of a device</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>imgFile</code></td>
+        <td width="100%">
+          <code>File</code>: a <code><a href="../../../../java/io/File0b8e.html?hl=zh-cn">File</a></code> pointing to the image to be flashed</p></td>
+      </tr>
+      <tr>
+        <td><code>partition</code></td>
+        <td width="100%">
+          <code>String</code>: the name of the partition to be flashed
+</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%"></td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="flashSystem(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">flashSystem</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void flashSystem (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)</pre>
+    
+    
+
+    
+  <p>Flash the system image on device.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>deviceBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> to flash</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if fastboot command fails
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="flashUserData(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">flashUserData</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void flashUserData (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)</pre>
+    
+    
+
+    
+  <p>Flash userdata partition on device.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>deviceBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> that contains the files to flash</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if failed to flash user data
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="flashUserDataFromDeviceImageFile(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">flashUserDataFromDeviceImageFile</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void flashUserDataFromDeviceImageFile (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)</pre>
+    
+    
+
+    
+  <p>Extracts the userdata.img from device image file and flashes it onto device</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>deviceBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> that contains the files to flash</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if failed to extract or flash user data
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getBootPartitionName()">getBootPartitionName</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected String getBootPartitionName ()</pre>
+    
+    
+
+    
+  <p>Get the boot partition name for this device flasher.
+ <p/>
+ Defaults to 'hboot'. Subclasses should override if necessary.
+</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getBootloaderFilePrefix(com.android.tradefed.device.ITestDevice)">getBootloaderFilePrefix</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected String getBootloaderFilePrefix (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device)</pre>
+    
+    
+
+    
+  <p>Get the bootloader file prefix.
+ <p/>
+ Defaults to <code><a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn#getBootPartitionName()">getBootPartitionName()</a></code>. Subclasses should override if necessary.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if failed to get prefix
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getCurrentSlot(com.android.tradefed.device.ITestDevice)">getCurrentSlot</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected String getCurrentSlot (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device)</pre>
+    
+    
+
+    
+  <p>Helper method to retrieve the current slot (for A/B capable devices).</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to execute command on.</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%">"a", "b" or null (if device is not A/B capable)</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code></code></td>
+          <td width="100%">DeviceNotAvailableException</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%"></td>
+        </tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getFlashingResourcesRetriever()">getFlashingResourcesRetriever</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected <a href="IFlashingResourcesRetriever0b8e.html?hl=zh-cn">IFlashingResourcesRetriever</a> getFlashingResourcesRetriever ()</pre>
+    
+    
+
+    
+  <p></p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="IFlashingResourcesRetriever0b8e.html?hl=zh-cn">IFlashingResourcesRetriever</a></code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getImageVersion(com.android.tradefed.device.ITestDevice,%20java.lang.String)">getImageVersion</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected String getImageVersion (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                String imageName)</pre>
+    
+    
+
+    
+  <p>Helper method to get the current image version on device.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to execute command on</p></td>
+      </tr>
+      <tr>
+        <td><code>imageName</code></td>
+        <td width="100%">
+          <code>String</code>: the name of image to get.</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%">String the stdout output from command</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if fastboot command fails or version could not be determined
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getRunUtil()">getRunUtil</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected <a href="../util/IRunUtil0b8e.html?hl=zh-cn">IRunUtil</a> getRunUtil ()</pre>
+    
+    
+
+    
+  <p>Exposed for testing. </p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="../util/IRunUtil0b8e.html?hl=zh-cn">IRunUtil</a></code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="handleUserDataFlashing(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">handleUserDataFlashing</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void handleUserDataFlashing (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)</pre>
+    
+    
+
+    
+  <p>Handle flashing of userdata/cache partition</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+      <tr>
+        <td><code>deviceBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> that contains the files to flash</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code></code></td>
+          <td width="100%">DeviceNotAvailableException</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%"></td>
+        </tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="hasPartition(com.android.tradefed.device.ITestDevice,%20java.lang.String)">hasPartition</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected boolean hasPartition (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                String partition)</pre>
+    
+    
+
+    
+  <p>Checks with the bootloader if the specified partition exists or not</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to operate on</p></td>
+      </tr>
+      <tr>
+        <td><code>partition</code></td>
+        <td width="100%">
+          <code>String</code>: the name of the partition to be checked
+</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>boolean</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="preFlashSetup(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.build.IDeviceBuildInfo)">preFlashSetup</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void preFlashSetup (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a> deviceBuild)</pre>
+    
+    
+
+    
+  <p>Perform any additional pre-flashing setup required. No-op unless overridden.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to prepare</p></td>
+      </tr>
+      <tr>
+        <td><code>deviceBuild</code></td>
+        <td width="100%">
+          <code>IDeviceBuildInfo</code>: the <code><a href="../build/IDeviceBuildInfo0b8e.html?hl=zh-cn">IDeviceBuildInfo</a></code> containing the build files</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code></code></td>
+          <td width="100%">DeviceNotAvailableException</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%"></td>
+        </tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="verifyRequiredBoards(com.android.tradefed.device.ITestDevice,%20com.android.tradefed.targetprep.IFlashingResourcesParser,%20java.lang.String)">verifyRequiredBoards</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void verifyRequiredBoards (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                <a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a> resourceParser, 
+                String deviceProductType)</pre>
+    
+    
+
+    
+  <p>Verify that the device's product type supports the build-to-be-flashed.
+ <p/>
+ The base implementation will verify that the deviceProductType is included in the
+ <code><a href="IFlashingResourcesParser0b8e.html?hl=zh-cn#getRequiredBoards()">IFlashingResourcesParser.getRequiredBoards()</a></code> collection. Subclasses may override
+ as desired.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to be flashed</p></td>
+      </tr>
+      <tr>
+        <td><code>resourceParser</code></td>
+        <td width="100%">
+          <code>IFlashingResourcesParser</code>: the <code><a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a></code></p></td>
+      </tr>
+      <tr>
+        <td><code>deviceProductType</code></td>
+        <td width="100%">
+          <code>String</code>: the <var>device</var>'s product type</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if the build's required board info did not match the device
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="wipeCache(com.android.tradefed.device.ITestDevice)">wipeCache</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void wipeCache (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device)</pre>
+    
+    
+
+    
+  <p>Wipe the cache partition on device.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to flash</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%">if device is not available</td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%">if failed to flash cache
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="wipePartition(com.android.tradefed.device.ITestDevice,%20java.lang.String)">wipePartition</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void wipePartition (<a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a> device, 
+                String partition)</pre>
+    
+    
+
+    
+  <p>Wipe the specified partition with `fastboot erase &lt;name&gt;`</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>device</code></td>
+        <td width="100%">
+          <code>ITestDevice</code>: the <code><a href="../device/ITestDevice0b8e.html?hl=zh-cn">ITestDevice</a></code> to operate on</p></td>
+      </tr>
+      <tr>
+        <td><code>partition</code></td>
+        <td width="100%">
+          <code>String</code>: the name of the partition to be wiped
+</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code><a href="../device/DeviceNotAvailableException0b8e.html?hl=zh-cn">DeviceNotAvailableException</a></code></td>
+          <td width="100%"></td>
+        </tr>
+        <tr>
+          <td><code><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></code></td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+  
+
+</div>
+
+
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+
+</div><!-- end jd-content -->
+
+
+
+<div class="data-reference-resources-wrapper">
+  
+  <ul data-reference-resources>
+    
+    
+    <li><h2 class="hide-from-toc">Interfaces</h2>
+      <ul>
+          <li><a href="FlashingResourcesParser.Constraint0b8e.html?hl=zh-cn">FlashingResourcesParser.Constraint</a></li>
+          <li><a href="IDeviceFlasher0b8e.html?hl=zh-cn">IDeviceFlasher</a></li>
+          <li><a href="IFlashingResourcesParser0b8e.html?hl=zh-cn">IFlashingResourcesParser</a></li>
+          <li><a href="IFlashingResourcesRetriever0b8e.html?hl=zh-cn">IFlashingResourcesRetriever</a></li>
+          <li><a href="IHostCleaner0b8e.html?hl=zh-cn">IHostCleaner</a></li>
+          <li><a href="ITargetCleaner0b8e.html?hl=zh-cn">ITargetCleaner</a></li>
+          <li><a href="ITargetPreparer0b8e.html?hl=zh-cn">ITargetPreparer</a></li>
+          <li><a href="ITestsZipInstaller0b8e.html?hl=zh-cn">ITestsZipInstaller</a></li>
+          <li><a href="RunHostCommandTargetPreparer.BgCommandLog0b8e.html?hl=zh-cn">RunHostCommandTargetPreparer.BgCommandLog</a></li>
+      </ul>
+    </li>
+    
+    <li><h2 class="hide-from-toc">Classes</h2>
+      <ul>
+          <li><a href="AbstractTargetCleaner0b8e.html?hl=zh-cn">AbstractTargetCleaner</a></li>
+          <li><a href="AdditionalFilesInstaller0b8e.html?hl=zh-cn">AdditionalFilesInstaller</a></li>
+          <li><a href="AllTestAppsInstallSetup0b8e.html?hl=zh-cn">AllTestAppsInstallSetup</a></li>
+          <li><a href="AppSetup0b8e.html?hl=zh-cn">AppSetup</a></li>
+          <li><a href="BaseTargetPreparer0b8e.html?hl=zh-cn">BaseTargetPreparer</a></li>
+          <li><a href="BuildInfoAttributePreparer0b8e.html?hl=zh-cn">BuildInfoAttributePreparer</a></li>
+          <li><a href="BuildInfoRecorder0b8e.html?hl=zh-cn">BuildInfoRecorder</a></li>
+          <li><a href="CdmaDeviceFlasher0b8e.html?hl=zh-cn">CdmaDeviceFlasher</a></li>
+          <li><a href="ConnectionChecker0b8e.html?hl=zh-cn">ConnectionChecker</a></li>
+          <li><a href="CpuThrottlingWaiter0b8e.html?hl=zh-cn">CpuThrottlingWaiter</a></li>
+          <li><a href="CrashCollector0b8e.html?hl=zh-cn">CrashCollector</a></li>
+          <li><a href="DefaultTestsZipInstaller0b8e.html?hl=zh-cn">DefaultTestsZipInstaller</a></li>
+          <li><a href="DeviceBuildInfoInjector0b8e.html?hl=zh-cn">DeviceBuildInfoInjector</a></li>
+          <li><a href="DeviceCleaner0b8e.html?hl=zh-cn">DeviceCleaner</a></li>
+          <li><a href="DeviceFlashPreparer0b8e.html?hl=zh-cn">DeviceFlashPreparer</a></li>
+          <li><a href="DeviceSetup0b8e.html?hl=zh-cn">DeviceSetup</a></li>
+          <li><a href="DeviceStorageFiller0b8e.html?hl=zh-cn">DeviceStorageFiller</a></li>
+          <li><a href="DeviceStringPusher0b8e.html?hl=zh-cn">DeviceStringPusher</a></li>
+          <li><a href="DeviceWiper0b8e.html?hl=zh-cn">DeviceWiper</a></li>
+          <li><a href="EraseUserDataPreparer0b8e.html?hl=zh-cn">EraseUserDataPreparer</a></li>
+          <li class="selected"><a href="FastbootDeviceFlasher0b8e.html?hl=zh-cn">FastbootDeviceFlasher</a></li>
+          <li><a href="FileCleaner0b8e.html?hl=zh-cn">FileCleaner</a></li>
+          <li><a href="FlashingResourcesParser0b8e.html?hl=zh-cn">FlashingResourcesParser</a></li>
+          <li><a href="FlashingResourcesParser.AndroidInfo0b8e.html?hl=zh-cn">FlashingResourcesParser.AndroidInfo</a></li>
+          <li><a href="FolderSaver0b8e.html?hl=zh-cn">FolderSaver</a></li>
+          <li><a href="InstallAllTestZipAppsSetup0b8e.html?hl=zh-cn">InstallAllTestZipAppsSetup</a></li>
+          <li><a href="InstallApkSetup0b8e.html?hl=zh-cn">InstallApkSetup</a></li>
+          <li><a href="InstallBuildEnvApkSetup0b8e.html?hl=zh-cn">InstallBuildEnvApkSetup</a></li>
+          <li><a href="InstrumentationPreparer0b8e.html?hl=zh-cn">InstrumentationPreparer</a></li>
+          <li><a href="KernelFlashPreparer0b8e.html?hl=zh-cn">KernelFlashPreparer</a></li>
+          <li><a href="KeyValueConfigPreparer0b8e.html?hl=zh-cn">KeyValueConfigPreparer</a></li>
+          <li><a href="LocalSdkAvdPreparer0b8e.html?hl=zh-cn">LocalSdkAvdPreparer</a></li>
+          <li><a href="NativeLeakCollector0b8e.html?hl=zh-cn">NativeLeakCollector</a></li>
+          <li><a href="PreloadedClassesPreparer0b8e.html?hl=zh-cn">PreloadedClassesPreparer</a></li>
+          <li><a href="PushFileInvoker0b8e.html?hl=zh-cn">PushFileInvoker</a></li>
+          <li><a href="PushFilePreparer0b8e.html?hl=zh-cn">PushFilePreparer</a></li>
+          <li><a href="PythonVirtualenvPreparer0b8e.html?hl=zh-cn">PythonVirtualenvPreparer</a></li>
+          <li><a href="RebootTargetPreparer0b8e.html?hl=zh-cn">RebootTargetPreparer</a></li>
+          <li><a href="RemoveSystemAppPreparer0b8e.html?hl=zh-cn">RemoveSystemAppPreparer</a></li>
+          <li><a href="RestartSystemServerTargetPreparer0b8e.html?hl=zh-cn">RestartSystemServerTargetPreparer</a></li>
+          <li><a href="RootTargetPreparer0b8e.html?hl=zh-cn">RootTargetPreparer</a></li>
+          <li><a href="RunCommandTargetPreparer0b8e.html?hl=zh-cn">RunCommandTargetPreparer</a></li>
+          <li><a href="RunHostCommandTargetPreparer0b8e.html?hl=zh-cn">RunHostCommandTargetPreparer</a></li>
+          <li><a href="SdkAvdPreparer0b8e.html?hl=zh-cn">SdkAvdPreparer</a></li>
+          <li><a href="StopServicesSetup0b8e.html?hl=zh-cn">StopServicesSetup</a></li>
+          <li><a href="StubTargetPreparer0b8e.html?hl=zh-cn">StubTargetPreparer</a></li>
+          <li><a href="SystemUpdaterDeviceFlasher0b8e.html?hl=zh-cn">SystemUpdaterDeviceFlasher</a></li>
+          <li><a href="TearDownPassThroughPreparer0b8e.html?hl=zh-cn">TearDownPassThroughPreparer</a></li>
+          <li><a href="TemperatureThrottlingWaiter0b8e.html?hl=zh-cn">TemperatureThrottlingWaiter</a></li>
+          <li><a href="TestAppInstallSetup0b8e.html?hl=zh-cn">TestAppInstallSetup</a></li>
+          <li><a href="TestFilePushSetup0b8e.html?hl=zh-cn">TestFilePushSetup</a></li>
+          <li><a href="TestSystemAppInstallSetup0b8e.html?hl=zh-cn">TestSystemAppInstallSetup</a></li>
+          <li><a href="TimeSetterTargetPreparer0b8e.html?hl=zh-cn">TimeSetterTargetPreparer</a></li>
+          <li><a href="TimeWaster0b8e.html?hl=zh-cn">TimeWaster</a></li>
+          <li><a href="WaitForDeviceDatetimePreparer0b8e.html?hl=zh-cn">WaitForDeviceDatetimePreparer</a></li>
+          <li><a href="WifiPreparer0b8e.html?hl=zh-cn">WifiPreparer</a></li>
+      </ul>
+    </li>
+    
+    <li><h2 class="hide-from-toc">Enums</h2>
+      <ul>
+          <li><a href="AltDirBehavior0b8e.html?hl=zh-cn">AltDirBehavior</a></li>
+          <li><a href="DeviceCleaner.CleanupAction0b8e.html?hl=zh-cn">DeviceCleaner.CleanupAction</a></li>
+          <li><a href="DeviceCleaner.PostCleanupAction0b8e.html?hl=zh-cn">DeviceCleaner.PostCleanupAction</a></li>
+          <li><a href="DeviceFlashPreparer.EncryptionOptions0b8e.html?hl=zh-cn">DeviceFlashPreparer.EncryptionOptions</a></li>
+          <li><a href="IDeviceFlasher.UserDataFlashOption0b8e.html?hl=zh-cn">IDeviceFlasher.UserDataFlashOption</a></li>
+      </ul>
+    </li>
+    
+    <li><h2 class="hide-from-toc">Exceptions</h2>
+      <ul>
+          <li><a href="BuildError0b8e.html?hl=zh-cn">BuildError</a></li>
+          <li><a href="DeviceFailedToBootError0b8e.html?hl=zh-cn">DeviceFailedToBootError</a></li>
+          <li><a href="TargetSetupError0b8e.html?hl=zh-cn">TargetSetupError</a></li>
+      </ul>
+    </li>
+    
+  </ul>
+  
+</div>
+
+
+
+</div><!-- end devsite ReferenceObject -->
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../../../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">构建</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 代码库
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            要求
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            下载
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            预览二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            出厂映像
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            驱动程序二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">关注</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            在 Twitter 上 @Android
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            在 Twitter 上 @AndroidDev
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android 博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google 安全博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google 网上论坛上的 Android 平台论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Google 网上论坛上的 Android 构建论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Google 网上论坛上的 Android 移植论坛
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">获取帮助</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            问题跟踪器
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../source/index0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          关于 Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../source/community0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          社区
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../legal0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          法律条款
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../license0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          许可
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          隐私权政策
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476&amp;hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          网站反馈
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'zh_cn',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/reference/tradefed/com/android/tradefed/targetprep/FastbootDeviceFlasher.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:56:57 GMT -->
+</html>

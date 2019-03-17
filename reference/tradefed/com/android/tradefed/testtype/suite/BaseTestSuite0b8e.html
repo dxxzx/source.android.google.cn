@@ -1,0 +1,1879 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/reference/tradefed/com/android/tradefed/testtype/suite/BaseTestSuite.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:56:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>BaseTestSuite &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="BaseTestSuite &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="BaseTestSuite-2.html">
+
+  <meta property="og:locale" content="en">
+
+
+  
+    
+    
+    
+
+
+
+
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../../../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="BaseTestSuite-2.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../../../../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../../../../../setup0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设置"
+   >
+  设置
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../../compatibility0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设计"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设计"
+   >
+  设计
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../../security0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="安全性"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 安全性"
+   >
+  安全性
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../../devices/audio0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="开发"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 开发"
+   >
+  开发
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../../devices/tech/dalvik0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="配置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 配置"
+   >
+  配置
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../../reference0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="参考"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 参考"
+   >
+  参考
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="搜索"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="搜索框">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          转到源代码
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+          devsite-header-no-lower-tabs
+    ">
+    <div class="devsite-header-background">
+                              </div>  </div></div>
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars hidden>
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设置">
+      <span class="devsite-nav-text" >设置</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设计">
+      <span class="devsite-nav-text" >设计</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 安全性">
+      <span class="devsite-nav-text" >安全性</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../devices/audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 开发">
+      <span class="devsite-nav-text" >开发</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../devices/tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 配置">
+      <span class="devsite-nav-text" >配置</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 参考">
+      <span class="devsite-nav-text" >参考</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 转到源代码">
+      <span class="devsite-nav-text" >转到源代码</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+                        has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner"><style type="text/css">/* Fixes issues with templates-sdk on devsite */
+
+/* indention for class inheritance */
+.jd-inheritance-table .jd-inheritance-space {
+  width: 1em;
+}
+
+/* header for known subclasses table */
+.jd-sumtable td > span {
+  display: inline-block;
+  font-size: 1.15em;
+  padding: 8px 8px 0 8px;
+}
+</style>    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../../../../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+        
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+              devsite-no-page-title
+        ">
+
+              
+
+<div itemscope itemtype="http://developers.google.com/ReferenceObject">
+<!-- This DIV closes at the end of the BODY -->
+  <meta itemprop="name" content="com.android.tradefed.testtype.suite.BaseTestSuite" />
+  
+
+
+
+
+<div id="jd-content"  >
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<h1 class="api-title">BaseTestSuite</h1>
+<p>
+<code class="api-signature">
+  public
+  
+  
+  
+  class
+  BaseTestSuite
+</code>
+<br>
+
+
+<code class="api-signature">
+  
+  
+  
+</code>
+
+<code class="api-signature">
+  
+    extends <a href="ITestSuite0b8e.html?hl=zh-cn">ITestSuite</a>
+  
+  
+  
+</code>
+
+<code class="api-signature">
+  
+  
+  
+</code>
+
+</p><table class="jd-inheritance-table">
+
+
+  <tr>
+    
+    <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object
+    </td>
+  </tr>
+  
+
+  <tr>
+    
+      <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+    
+    <td colspan="2" class="jd-inheritance-class-cell"><a href="ITestSuite0b8e.html?hl=zh-cn">com.android.tradefed.testtype.suite.ITestSuite</a>
+    </td>
+  </tr>
+  
+
+  <tr>
+    
+      <td class="jd-inheritance-space">&nbsp;</td>
+    
+      <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+    
+    <td colspan="1" class="jd-inheritance-class-cell">com.android.tradefed.testtype.suite.BaseTestSuite
+    </td>
+  </tr>
+  
+
+</table>
+  <table class="jd-sumtable jd-sumtable-subclasses">
+    <tr>
+      <td>
+        <div class="expandable">
+          <span class="expand-control">Known direct subclasses</span>
+          
+  <div id="subclasses-direct" class="showalways" > <a href="AtestRunner0b8e.html?hl=zh-cn">AtestRunner</a>, <a href="TestMappingSuiteRunner0b8e.html?hl=zh-cn">TestMappingSuiteRunner</a>
+  </div>
+  <div id="subclasses-direct-summary" >
+    
+  
+  <table class="jd-sumtable-expando">
+    
+      <tr  >
+        <td class="jd-linkcol"><a href="AtestRunner0b8e.html?hl=zh-cn">AtestRunner</a></td>
+        <td class="jd-descrcol" width="100%">
+          Implementation of <code><a href="ITestSuite0b8e.html?hl=zh-cn">ITestSuite</a></code> &nbsp;
+          
+    
+
+        </td>
+      </tr>
+      
+    
+      <tr  >
+        <td class="jd-linkcol"><a href="TestMappingSuiteRunner0b8e.html?hl=zh-cn">TestMappingSuiteRunner</a></td>
+        <td class="jd-descrcol" width="100%">
+          Implementation of <code><a href="BaseTestSuite0b8e.html?hl=zh-cn">BaseTestSuite</a></code> to run tests specified by option include-filter, or
+ TEST_MAPPING files from build, as a suite.&nbsp;
+          
+    
+
+        </td>
+      </tr>
+      
+    
+  </table>
+
+  </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  
+  
+
+    
+
+<br><hr>
+
+
+  <p>A Test for running Compatibility Test Suite with new suite system. </p>
+
+
+
+
+
+
+
+
+
+<h2 class="api-section">Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="constants" class="responsive constants">
+<tr><th colspan="2"><h3>Constants</h3></th></tr>
+
+
+    
+    <tr  >
+        <td><code>String</code></td>
+        <td width="100%">
+          <code><a href="BaseTestSuite0b8e.html?hl=zh-cn#EXCLUDE_FILTER_OPTION">EXCLUDE_FILTER_OPTION</a></code>
+          <p>
+          
+    
+</p>
+        </td>
+    </tr>
+    
+    
+    <tr  >
+        <td><code>String</code></td>
+        <td width="100%">
+          <code><a href="BaseTestSuite0b8e.html?hl=zh-cn#INCLUDE_FILTER_OPTION">INCLUDE_FILTER_OPTION</a></code>
+          <p>
+          
+    
+</p>
+        </td>
+    </tr>
+    
+    
+    <tr  >
+        <td><code>String</code></td>
+        <td width="100%">
+          <code><a href="BaseTestSuite0b8e.html?hl=zh-cn#MODULE_OPTION">MODULE_OPTION</a></code>
+          <p>
+          
+    
+</p>
+        </td>
+    </tr>
+    
+    
+    <tr  >
+        <td><code>String</code></td>
+        <td width="100%">
+          <code><a href="BaseTestSuite0b8e.html?hl=zh-cn#TEST_ARG_OPTION">TEST_ARG_OPTION</a></code>
+          <p>
+          
+    
+</p>
+        </td>
+    </tr>
+    
+    
+    <tr  >
+        <td><code>String</code></td>
+        <td width="100%">
+          <code><a href="BaseTestSuite0b8e.html?hl=zh-cn#TEST_OPTION">TEST_OPTION</a></code>
+          <p>
+          
+    
+</p>
+        </td>
+    </tr>
+    
+    
+    <tr  >
+        <td><code>char</code></td>
+        <td width="100%">
+          <code><a href="BaseTestSuite0b8e.html?hl=zh-cn#TEST_OPTION_SHORT_NAME">TEST_OPTION_SHORT_NAME</a></code>
+          <p>
+          
+    
+</p>
+        </td>
+    </tr>
+    
+    
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="responsive constructors">
+<tr><th colspan="2"><h3>Public constructors</h3></th></tr>
+
+
+
+  <tr  >
+  
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#BaseTestSuite()">BaseTestSuite</a>()
+      </code>
+      
+    </td>
+  </tr>
+  
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="responsive methods">
+<tr><th colspan="2"><h3>Public methods</h3></th></tr>
+
+
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#addModuleArgs(java.util.Set<java.lang.String>)">addModuleArgs</a>(Set&lt;String&gt; moduleArgs)
+      </code>
+      
+        <p>Adds module args 
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        <a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#createModuleLoader(java.util.Map<java.lang.String,%20java.util.List<com.android.tradefed.testtype.suite.SuiteTestFilter>>,%20java.util.Map<java.lang.String,%20java.util.List<com.android.tradefed.testtype.suite.SuiteTestFilter>>,%20java.util.List<java.lang.String>,%20java.util.List<java.lang.String>)">createModuleLoader</a>(Map&lt;String,&nbsp;List&lt;<a href="SuiteTestFilter0b8e.html?hl=zh-cn">SuiteTestFilter</a>&gt;&gt; includeFiltersFormatted, Map&lt;String,&nbsp;List&lt;<a href="SuiteTestFilter0b8e.html?hl=zh-cn">SuiteTestFilter</a>&gt;&gt; excludeFiltersFormatted, List&lt;String&gt; testArgs, List&lt;String&gt; moduleArgs)
+      </code>
+      
+        <p>Create the <code><a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a></code> responsible to load the <code><a href="../../config/IConfiguration0b8e.html?hl=zh-cn">IConfiguration</a></code> and
+ assign them some of the options.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        <a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a></code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#getModuleLoader()">getModuleLoader</a>()
+      </code>
+      
+        <p>Returns the current <code><a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a></code>.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        File</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#getTestsDir()">getTestsDir</a>()
+      </code>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        LinkedHashMap&lt;String,&nbsp;<a href="../../config/IConfiguration0b8e.html?hl=zh-cn">IConfiguration</a>&gt;</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#loadTests()">loadTests</a>()
+      </code>
+      
+        <p>Abstract method to load the tests configuration that will be run. 
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        LinkedHashMap&lt;String,&nbsp;<a href="../../config/IConfiguration0b8e.html?hl=zh-cn">IConfiguration</a>&gt;</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#loadingStrategy(java.util.Set<com.android.tradefed.testtype.IAbi>,%20java.io.File,%20java.lang.String,%20java.lang.String)">loadingStrategy</a>(Set&lt;<a href="../IAbi0b8e.html?hl=zh-cn">IAbi</a>&gt; abis, File testsDir, String suitePrefix, String suiteTag)
+      </code>
+      
+        <p>Default loading strategy will load from the resources and the tests directory.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#setBuild(com.android.tradefed.build.IBuildInfo)">setBuild</a>(<a href="../../build/IBuildInfo0b8e.html?hl=zh-cn">IBuildInfo</a> buildInfo)
+      </code>
+      
+        <p>
+ 
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#setExcludeFilter(java.util.Set<java.lang.String>)">setExcludeFilter</a>(Set&lt;String&gt; excludeFilters)
+      </code>
+      
+        <p>Sets exclude-filters for the compatibility test 
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#setIncludeFilter(java.util.Set<java.lang.String>)">setIncludeFilter</a>(Set&lt;String&gt; includeFilters)
+      </code>
+      
+        <p>Sets include-filters for the compatibility test 
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+
+</table>
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="promethods" class="reponsive methods">
+<tr><th colspan="2"><h3>Protected methods</h3></th></tr>
+
+
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        Set&lt;String&gt;</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#getIncludeFilter()">getIncludeFilter</a>()
+      </code>
+      
+        <p>Gets a copy of include-filters for the compatibility test 
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="BaseTestSuite0b8e.html?hl=zh-cn#setupFilters(java.io.File)">setupFilters</a>(File testsDir)
+      </code>
+      
+        <p>Sets the include/exclude filters up based on if a module name was given.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+
+</table>
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- ========= ENUM CONSTANTS DETAIL ======== -->
+<h2 class="api-section">Constants</h2>
+
+
+<div  >
+    <h3 class="api-name" id="EXCLUDE_FILTER_OPTION">EXCLUDE_FILTER_OPTION</h3>
+    <div class="api-level">
+      
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public static final String EXCLUDE_FILTER_OPTION</pre>
+    
+    
+
+    
+  <p></p></p>
+
+    
+      <p>Constant Value:
+      
+          "exclude-filter"
+      
+    
+</div>
+
+<div  >
+    <h3 class="api-name" id="INCLUDE_FILTER_OPTION">INCLUDE_FILTER_OPTION</h3>
+    <div class="api-level">
+      
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public static final String INCLUDE_FILTER_OPTION</pre>
+    
+    
+
+    
+  <p></p></p>
+
+    
+      <p>Constant Value:
+      
+          "include-filter"
+      
+    
+</div>
+
+<div  >
+    <h3 class="api-name" id="MODULE_OPTION">MODULE_OPTION</h3>
+    <div class="api-level">
+      
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public static final String MODULE_OPTION</pre>
+    
+    
+
+    
+  <p></p></p>
+
+    
+      <p>Constant Value:
+      
+          "module"
+      
+    
+</div>
+
+<div  >
+    <h3 class="api-name" id="TEST_ARG_OPTION">TEST_ARG_OPTION</h3>
+    <div class="api-level">
+      
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public static final String TEST_ARG_OPTION</pre>
+    
+    
+
+    
+  <p></p></p>
+
+    
+      <p>Constant Value:
+      
+          "test-arg"
+      
+    
+</div>
+
+<div  >
+    <h3 class="api-name" id="TEST_OPTION">TEST_OPTION</h3>
+    <div class="api-level">
+      
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public static final String TEST_OPTION</pre>
+    
+    
+
+    
+  <p></p></p>
+
+    
+      <p>Constant Value:
+      
+          "test"
+      
+    
+</div>
+
+<div  >
+    <h3 class="api-name" id="TEST_OPTION_SHORT_NAME">TEST_OPTION_SHORT_NAME</h3>
+    <div class="api-level">
+      
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public static final char TEST_OPTION_SHORT_NAME</pre>
+    
+    
+
+    
+  <p></p></p>
+
+    
+      <p>Constant Value:
+      
+          116
+          (0x00000074)
+      
+    
+</div>
+
+
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2 class="api-section">Public constructors</h2>
+
+
+<div >
+    <h3 class="api-name" id="BaseTestSuite()">BaseTestSuite</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public BaseTestSuite ()</pre>
+    
+    
+
+    
+  <p></p></p>
+
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2 class="api-section">Public methods</h2>
+
+
+<div >
+    <h3 class="api-name" id="addModuleArgs(java.util.Set<java.lang.String>)">addModuleArgs</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void addModuleArgs (Set&lt;String&gt; moduleArgs)</pre>
+    
+    
+
+    
+  <p>Adds module args </p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>moduleArgs</code></td>
+        <td width="100%">
+          <code>Set</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="createModuleLoader(java.util.Map<java.lang.String,%20java.util.List<com.android.tradefed.testtype.suite.SuiteTestFilter>>,%20java.util.Map<java.lang.String,%20java.util.List<com.android.tradefed.testtype.suite.SuiteTestFilter>>,%20java.util.List<java.lang.String>,%20java.util.List<java.lang.String>)">createModuleLoader</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public <a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a> createModuleLoader (Map&lt;String,&nbsp;List&lt;<a href="SuiteTestFilter0b8e.html?hl=zh-cn">SuiteTestFilter</a>&gt;&gt; includeFiltersFormatted, 
+                Map&lt;String,&nbsp;List&lt;<a href="SuiteTestFilter0b8e.html?hl=zh-cn">SuiteTestFilter</a>&gt;&gt; excludeFiltersFormatted, 
+                List&lt;String&gt; testArgs, 
+                List&lt;String&gt; moduleArgs)</pre>
+    
+    
+
+    
+  <p>Create the <code><a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a></code> responsible to load the <code><a href="../../config/IConfiguration0b8e.html?hl=zh-cn">IConfiguration</a></code> and
+ assign them some of the options.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>includeFiltersFormatted</code></td>
+        <td width="100%">
+          <code>Map</code>: The formatted and parsed include filters.</p></td>
+      </tr>
+      <tr>
+        <td><code>excludeFiltersFormatted</code></td>
+        <td width="100%">
+          <code>Map</code>: The formatted and parsed exclude filters.</p></td>
+      </tr>
+      <tr>
+        <td><code>testArgs</code></td>
+        <td width="100%">
+          <code>List</code>: the list of test (<code><a href="../IRemoteTest0b8e.html?hl=zh-cn">IRemoteTest</a></code>) arguments.</p></td>
+      </tr>
+      <tr>
+        <td><code>moduleArgs</code></td>
+        <td width="100%">
+          <code>List</code>: the list of module arguments.</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a></code></td>
+        <td width="100%">the created <code><a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a></code>.
+</p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getModuleLoader()">getModuleLoader</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public <a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a> getModuleLoader ()</pre>
+    
+    
+
+    
+  <p>Returns the current <code><a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a></code>. </p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code><a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a></code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getTestsDir()">getTestsDir</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public File getTestsDir ()</pre>
+    
+    
+
+    
+  <p></p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>File</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>FileNotFoundException</code></td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="loadTests()">loadTests</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public LinkedHashMap&lt;String,&nbsp;<a href="../../config/IConfiguration0b8e.html?hl=zh-cn">IConfiguration</a>&gt; loadTests ()</pre>
+    
+    
+
+    
+  <p>Abstract method to load the tests configuration that will be run. Each tests is defined by a
+ <code><a href="../../config/IConfiguration0b8e.html?hl=zh-cn">IConfiguration</a></code> and a unique name under which it will report results.
+ </p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>LinkedHashMap&lt;String,&nbsp;<a href="../../config/IConfiguration0b8e.html?hl=zh-cn">IConfiguration</a>&gt;</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="loadingStrategy(java.util.Set<com.android.tradefed.testtype.IAbi>,%20java.io.File,%20java.lang.String,%20java.lang.String)">loadingStrategy</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public LinkedHashMap&lt;String,&nbsp;<a href="../../config/IConfiguration0b8e.html?hl=zh-cn">IConfiguration</a>&gt; loadingStrategy (Set&lt;<a href="../IAbi0b8e.html?hl=zh-cn">IAbi</a>&gt; abis, 
+                File testsDir, 
+                String suitePrefix, 
+                String suiteTag)</pre>
+    
+    
+
+    
+  <p>Default loading strategy will load from the resources and the tests directory. Can be
+ extended or replaced.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>abis</code></td>
+        <td width="100%">
+          <code>Set</code>: The set of abis to run against.</p></td>
+      </tr>
+      <tr>
+        <td><code>testsDir</code></td>
+        <td width="100%">
+          <code>File</code>: The tests directory.</p></td>
+      </tr>
+      <tr>
+        <td><code>suitePrefix</code></td>
+        <td width="100%">
+          <code>String</code>: A prefix to filter the resource directory.</p></td>
+      </tr>
+      <tr>
+        <td><code>suiteTag</code></td>
+        <td width="100%">
+          <code>String</code>: The suite tag a module should have to be included. Can be null.</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>LinkedHashMap&lt;String,&nbsp;<a href="../../config/IConfiguration0b8e.html?hl=zh-cn">IConfiguration</a>&gt;</code></td>
+        <td width="100%">A list of loaded configuration for the suite.
+</p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setBuild(com.android.tradefed.build.IBuildInfo)">setBuild</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void setBuild (<a href="../../build/IBuildInfo0b8e.html?hl=zh-cn">IBuildInfo</a> buildInfo)</pre>
+    
+    
+
+    
+  <p>
+ </p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>buildInfo</code></td>
+        <td width="100%">
+          <code>IBuildInfo</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setExcludeFilter(java.util.Set<java.lang.String>)">setExcludeFilter</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void setExcludeFilter (Set&lt;String&gt; excludeFilters)</pre>
+    
+    
+
+    
+  <p>Sets exclude-filters for the compatibility test </p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>excludeFilters</code></td>
+        <td width="100%">
+          <code>Set</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setIncludeFilter(java.util.Set<java.lang.String>)">setIncludeFilter</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public void setIncludeFilter (Set&lt;String&gt; includeFilters)</pre>
+    
+    
+
+    
+  <p>Sets include-filters for the compatibility test </p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>includeFilters</code></td>
+        <td width="100%">
+          <code>Set</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+<h2 class="api-section">Protected methods</h2>
+
+
+<div >
+    <h3 class="api-name" id="getIncludeFilter()">getIncludeFilter</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected Set&lt;String&gt; getIncludeFilter ()</pre>
+    
+    
+
+    
+  <p>Gets a copy of include-filters for the compatibility test </p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>Set&lt;String&gt;</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setupFilters(java.io.File)">setupFilters</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+protected void setupFilters (File testsDir)</pre>
+    
+    
+
+    
+  <p>Sets the include/exclude filters up based on if a module name was given.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>testsDir</code></td>
+        <td width="100%">
+          <code>File</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>FileNotFoundException</code></td>
+          <td width="100%">if any file is not found.
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+
+</div><!-- end jd-content -->
+
+
+
+<div class="data-reference-resources-wrapper">
+  
+  <ul data-reference-resources>
+    
+    
+    
+    <li><h2 class="hide-from-toc">Classes</h2>
+      <ul>
+          <li><a href="AtestRunner0b8e.html?hl=zh-cn">AtestRunner</a></li>
+          <li class="selected"><a href="BaseTestSuite0b8e.html?hl=zh-cn">BaseTestSuite</a></li>
+          <li><a href="GranularRetriableTestWrapper0b8e.html?hl=zh-cn">GranularRetriableTestWrapper</a></li>
+          <li><a href="ITestSuite0b8e.html?hl=zh-cn">ITestSuite</a></li>
+          <li><a href="ModuleDefinition0b8e.html?hl=zh-cn">ModuleDefinition</a></li>
+          <li><a href="ModuleListener0b8e.html?hl=zh-cn">ModuleListener</a></li>
+          <li><a href="ModuleMerger0b8e.html?hl=zh-cn">ModuleMerger</a></li>
+          <li><a href="ModuleSplitter0b8e.html?hl=zh-cn">ModuleSplitter</a></li>
+          <li><a href="SuiteModuleLoader0b8e.html?hl=zh-cn">SuiteModuleLoader</a></li>
+          <li><a href="SuiteModuleLoader.ConfigFilter0b8e.html?hl=zh-cn">SuiteModuleLoader.ConfigFilter</a></li>
+          <li><a href="SuiteTestFilter0b8e.html?hl=zh-cn">SuiteTestFilter</a></li>
+          <li><a href="TestFailureListener0b8e.html?hl=zh-cn">TestFailureListener</a></li>
+          <li><a href="TestMappingSuiteRunner0b8e.html?hl=zh-cn">TestMappingSuiteRunner</a></li>
+          <li><a href="TestSuiteInfo0b8e.html?hl=zh-cn">TestSuiteInfo</a></li>
+          <li><a href="TfSuiteRunner0b8e.html?hl=zh-cn">TfSuiteRunner</a></li>
+          <li><a href="ValidateSuiteConfigHelper0b8e.html?hl=zh-cn">ValidateSuiteConfigHelper</a></li>
+      </ul>
+    </li>
+    
+    
+    
+  </ul>
+  
+</div>
+
+
+
+</div><!-- end devsite ReferenceObject -->
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../../../../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">构建</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 代码库
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            要求
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            下载
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            预览二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            出厂映像
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            驱动程序二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">关注</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            在 Twitter 上 @Android
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            在 Twitter 上 @AndroidDev
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android 博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google 安全博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google 网上论坛上的 Android 平台论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Google 网上论坛上的 Android 构建论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Google 网上论坛上的 Android 移植论坛
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">获取帮助</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            问题跟踪器
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../../source/index0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          关于 Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../../source/community0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          社区
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../../legal0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          法律条款
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../../license0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          许可
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          隐私权政策
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476&amp;hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          网站反馈
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'zh_cn',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/reference/tradefed/com/android/tradefed/testtype/suite/BaseTestSuite.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:56:44 GMT -->
+</html>

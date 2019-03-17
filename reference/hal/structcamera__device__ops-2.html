@@ -1,0 +1,2045 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/reference/hal/structcamera__device__ops by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 18:43:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Android Hardware Abstraction Layer: camera_device_ops Struct Reference &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Android Hardware Abstraction Layer: camera_device_ops Struct Reference &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="structcamera__device__ops-2.html">
+
+  <meta property="og:locale" content="en">
+
+
+  
+  
+  
+  
+
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="structcamera__device__ops-2.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/tech/dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+          devsite-header-no-lower-tabs
+    ">
+    <div class="devsite-header-background">
+                              </div>  </div></div>
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars hidden>
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices/audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices/tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+                        has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+        
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+              devsite-no-page-title
+        ">
+
+              
+  <div id="top"><!-- do not remove this div --></div>
+  <h1><div class="title">camera_device_ops Struct Reference</div></h1>
+
+<div id="doc-content">
+<div class="header">
+ <div class="summary">
+  <a href="#pub-attribs">
+   Data Fields
+  </a>
+ </div>
+ <div class="headertitle">
+  <div class="title">
+   camera_device_ops Struct Reference
+  </div>
+ </div>
+</div>
+<!--header-->
+<div class="contents">
+ <p>
+  <code>
+   #include &lt;
+   <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+    camera.h
+   </a>
+   &gt;
+  </code>
+ </p>
+ <table class="memberdecls">
+  <tr class="heading">
+   <td colspan="2">
+    <h2 class="groupheader">
+     <a name="pub-attribs">
+     </a>
+     Data Fields
+    </h2>
+   </td>
+  </tr>
+  <tr class="memitem:a98787866b3170541e5f957701ca939cd">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a98787866b3170541e5f957701ca939cd">
+     set_preview_window
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *, struct
+    <a class="el" href="structpreview__stream__ops.html">
+     preview_stream_ops
+    </a>
+    *window)
+   </td>
+  </tr>
+  <tr class="separator:a98787866b3170541e5f957701ca939cd">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:ac5137410f8d36190e8dd147cc127ef1b">
+   <td class="memItemLeft" align="right" valign="top">
+    void(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#ac5137410f8d36190e8dd147cc127ef1b">
+     set_callbacks
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *,
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera_notify_callback
+    </a>
+    notify_cb,
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera_data_callback
+    </a>
+    data_cb,
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera_data_timestamp_callback
+    </a>
+    data_cb_timestamp,
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera_request_memory
+    </a>
+    get_memory, void *user)
+   </td>
+  </tr>
+  <tr class="separator:ac5137410f8d36190e8dd147cc127ef1b">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a1835806683077942826deb959f5895be">
+   <td class="memItemLeft" align="right" valign="top">
+    void(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a1835806683077942826deb959f5895be">
+     enable_msg_type
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *, int32_t msg_type)
+   </td>
+  </tr>
+  <tr class="separator:a1835806683077942826deb959f5895be">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a3074e26895d340fb9e534ee249db2e91">
+   <td class="memItemLeft" align="right" valign="top">
+    void(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a3074e26895d340fb9e534ee249db2e91">
+     disable_msg_type
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *, int32_t msg_type)
+   </td>
+  </tr>
+  <tr class="separator:a3074e26895d340fb9e534ee249db2e91">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:ab4edb6977fe037a6179baf66e90abf8d">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#ab4edb6977fe037a6179baf66e90abf8d">
+     msg_type_enabled
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *, int32_t msg_type)
+   </td>
+  </tr>
+  <tr class="separator:ab4edb6977fe037a6179baf66e90abf8d">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a6f6feb78089de5e6ba26edd411cc00b3">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a6f6feb78089de5e6ba26edd411cc00b3">
+     start_preview
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:a6f6feb78089de5e6ba26edd411cc00b3">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a0f13609873825d9ecfb0a29d4c8af8e1">
+   <td class="memItemLeft" align="right" valign="top">
+    void(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a0f13609873825d9ecfb0a29d4c8af8e1">
+     stop_preview
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:a0f13609873825d9ecfb0a29d4c8af8e1">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a43369d25620c2a322fa956a2ec075087">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a43369d25620c2a322fa956a2ec075087">
+     preview_enabled
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:a43369d25620c2a322fa956a2ec075087">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a601da1fffb83b440c9a92f02b4131d2f">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a601da1fffb83b440c9a92f02b4131d2f">
+     store_meta_data_in_buffers
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *, int enable)
+   </td>
+  </tr>
+  <tr class="separator:a601da1fffb83b440c9a92f02b4131d2f">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a96b33a47608eac0dfb531720ebe98444">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a96b33a47608eac0dfb531720ebe98444">
+     start_recording
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:a96b33a47608eac0dfb531720ebe98444">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a4c7ab7efa632bd4c15a289dbc427652c">
+   <td class="memItemLeft" align="right" valign="top">
+    void(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a4c7ab7efa632bd4c15a289dbc427652c">
+     stop_recording
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:a4c7ab7efa632bd4c15a289dbc427652c">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a5ba55542ca72ffb926149712b487a9df">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a5ba55542ca72ffb926149712b487a9df">
+     recording_enabled
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:a5ba55542ca72ffb926149712b487a9df">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a0ef70c5314c4c1cd711e884a12996d3f">
+   <td class="memItemLeft" align="right" valign="top">
+    void(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a0ef70c5314c4c1cd711e884a12996d3f">
+     release_recording_frame
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *, const void *opaque)
+   </td>
+  </tr>
+  <tr class="separator:a0ef70c5314c4c1cd711e884a12996d3f">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a7356499aebf70e023b2b4eb36ebe0190">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a7356499aebf70e023b2b4eb36ebe0190">
+     auto_focus
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:a7356499aebf70e023b2b4eb36ebe0190">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a9298fe515800d56b5663536229344929">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a9298fe515800d56b5663536229344929">
+     cancel_auto_focus
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:a9298fe515800d56b5663536229344929">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a685431e04eaa6a2811aec44e8c637a59">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a685431e04eaa6a2811aec44e8c637a59">
+     take_picture
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:a685431e04eaa6a2811aec44e8c637a59">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:af16356410ebad1310b874309ee95fb46">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#af16356410ebad1310b874309ee95fb46">
+     cancel_picture
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:af16356410ebad1310b874309ee95fb46">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:aa67f63aefad0ed0def94e91058539346">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#aa67f63aefad0ed0def94e91058539346">
+     set_parameters
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *, const char *parms)
+   </td>
+  </tr>
+  <tr class="separator:aa67f63aefad0ed0def94e91058539346">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a2606cb586d4aebd87788c73ddcbf2ce0">
+   <td class="memItemLeft" align="right" valign="top">
+    char *(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a2606cb586d4aebd87788c73ddcbf2ce0">
+     get_parameters
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:a2606cb586d4aebd87788c73ddcbf2ce0">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a0e9e604dfb53c675daea77cd6cdfdba6">
+   <td class="memItemLeft" align="right" valign="top">
+    void(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a0e9e604dfb53c675daea77cd6cdfdba6">
+     put_parameters
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *, char *)
+   </td>
+  </tr>
+  <tr class="separator:a0e9e604dfb53c675daea77cd6cdfdba6">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a6151ab1fcfb36d1b3c6b395b354fdb98">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a6151ab1fcfb36d1b3c6b395b354fdb98">
+     send_command
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *, int32_t cmd, int32_t arg1, int32_t arg2)
+   </td>
+  </tr>
+  <tr class="separator:a6151ab1fcfb36d1b3c6b395b354fdb98">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a900dc37e7a2970bf8e0f97d2c2530daa">
+   <td class="memItemLeft" align="right" valign="top">
+    void(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a900dc37e7a2970bf8e0f97d2c2530daa">
+     release
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *)
+   </td>
+  </tr>
+  <tr class="separator:a900dc37e7a2970bf8e0f97d2c2530daa">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+  <tr class="memitem:a254ca689a3230d9f8b01392b6c9b41e3">
+   <td class="memItemLeft" align="right" valign="top">
+    int(*&#160;
+   </td>
+   <td class="memItemRight" valign="bottom">
+    <a class="el" href="structcamera__device__ops.html#a254ca689a3230d9f8b01392b6c9b41e3">
+     dump
+    </a>
+    )(struct
+    <a class="el" href="structcamera__device.html">
+     camera_device
+    </a>
+    *, int fd)
+   </td>
+  </tr>
+  <tr class="separator:a254ca689a3230d9f8b01392b6c9b41e3">
+   <td class="memSeparator" colspan="2">
+    &#160;
+   </td>
+  </tr>
+ </table>
+ <a name="details" id="details">
+ </a>
+ <h2 class="groupheader">
+  Detailed Description
+ </h2>
+ <div class="textblock">
+  <p>
+   Definition at line
+   <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+    99
+   </a>
+   of file
+   <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+    camera.h
+   </a>
+   .
+  </p>
+ </div>
+ <h2 class="groupheader">
+  Field Documentation
+ </h2>
+ <a class="anchor" id="a7356499aebf70e023b2b4eb36ebe0190">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* auto_focus)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Start auto focus, the notification callback routine is called with CAMERA_MSG_FOCUS once when focusing is complete. autoFocus() will be called again if another auto focus is needed.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     227
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a9298fe515800d56b5663536229344929">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* cancel_auto_focus)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Cancels auto-focus function. If the auto-focus is still in progress, this function will cancel it. Whether the auto-focus is in progress or not, this function will return the focus position to the default. If the camera does not support auto-focus, this is a no-op.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     235
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="af16356410ebad1310b874309ee95fb46">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* cancel_picture)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Cancel a picture that was started with takePicture. Calling this method when no picture is being taken is a no-op.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     246
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a3074e26895d340fb9e534ee249db2e91">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      void(* disable_msg_type)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *, int32_t msg_type)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Disable a message, or a set of messages.
+   </p>
+   <p>
+    Once received a call to disableMsgType(CAMERA_MSG_VIDEO_FRAME), camera HAL should not rely on its client to call releaseRecordingFrame() to release video recording frames sent out by the cameral HAL before and after the disableMsgType(CAMERA_MSG_VIDEO_FRAME) call. Camera HAL clients must not modify/access any video recording frame after calling disableMsgType(CAMERA_MSG_VIDEO_FRAME).
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     132
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a254ca689a3230d9f8b01392b6c9b41e3">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* dump)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *, int fd)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Dump state of the camera hardware
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     282
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a1835806683077942826deb959f5895be">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      void(* enable_msg_type)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *, int32_t msg_type)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    The following three functions all take a msg_type, which is a bitmask of the messages defined in include/ui/Camera.h Enable a message, or set of messages.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     120
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a2606cb586d4aebd87788c73ddcbf2ce0">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      char*(* get_parameters)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Retrieve the camera parameters. The buffer returned by the camera HAL must be returned back to it with put_parameters, if put_parameters is not NULL.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     258
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="ab4edb6977fe037a6179baf66e90abf8d">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* msg_type_enabled)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *, int32_t msg_type)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Query whether a message, or a set of messages, is enabled. Note that this is operates as an AND, if any of the messages queried are off, this will return false.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     139
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a43369d25620c2a322fa956a2ec075087">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* preview_enabled)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Returns true if preview is enabled.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     154
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a0e9e604dfb53c675daea77cd6cdfdba6">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      void(* put_parameters)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *, char *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    The camera HAL uses its own memory to pass us the parameters when we call get_parameters. Use this function to return the memory back to the camera HAL, if put_parameters is not NULL. If put_parameters is NULL, then you have to use free() to release the memory.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     265
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a5ba55542ca72ffb926149712b487a9df">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* recording_enabled)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Returns true if recording is enabled.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     208
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a900dc37e7a2970bf8e0f97d2c2530daa">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      void(* release)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Release the hardware resources owned by this object. Note that this is
+    <em>
+     not
+    </em>
+    done in the destructor.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     277
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a0ef70c5314c4c1cd711e884a12996d3f">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      void(* release_recording_frame)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *, const void *opaque)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Release a record frame previously returned by CAMERA_MSG_VIDEO_FRAME.
+   </p>
+   <p>
+    It is camera HAL client's responsibility to release video recording frames sent out by the camera HAL before the camera HAL receives a call to disableMsgType(CAMERA_MSG_VIDEO_FRAME). After it receives the call to disableMsgType(CAMERA_MSG_VIDEO_FRAME), it is the camera HAL's responsibility to manage the life-cycle of the video recording frames.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     219
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a6151ab1fcfb36d1b3c6b395b354fdb98">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* send_command)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *, int32_t cmd, int32_t arg1, int32_t arg2)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Send command to camera driver.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     270
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="ac5137410f8d36190e8dd147cc127ef1b">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      void(* set_callbacks)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *,
+      <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+       camera_notify_callback
+      </a>
+      notify_cb,
+      <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+       camera_data_callback
+      </a>
+      data_cb,
+      <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+       camera_data_timestamp_callback
+      </a>
+      data_cb_timestamp,
+      <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+       camera_request_memory
+      </a>
+      get_memory, void *user)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Set the notification and data callbacks
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     105
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="aa67f63aefad0ed0def94e91058539346">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* set_parameters)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *, const char *parms)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Set the camera parameters. This returns BAD_VALUE if any parameter is invalid or not supported.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     252
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a98787866b3170541e5f957701ca939cd">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* set_preview_window)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *, struct
+      <a class="el" href="structpreview__stream__ops.html">
+       preview_stream_ops
+      </a>
+      *window)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Set the ANativeWindow to which preview frames are sent
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     101
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a6f6feb78089de5e6ba26edd411cc00b3">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* start_preview)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Start preview mode.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     144
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a96b33a47608eac0dfb531720ebe98444">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* start_recording)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Start record mode. When a record image is available, a CAMERA_MSG_VIDEO_FRAME message is sent with the corresponding frame. Every record frame must be released by a camera HAL client via releaseRecordingFrame() before the client calls disableMsgType(CAMERA_MSG_VIDEO_FRAME). After the client calls disableMsgType(CAMERA_MSG_VIDEO_FRAME), it is the camera HAL's responsibility to manage the life-cycle of the video recording frames, and the client must not modify/access any video recording frames.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     198
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a0f13609873825d9ecfb0a29d4c8af8e1">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      void(* stop_preview)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Stop a previously started preview.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     149
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a4c7ab7efa632bd4c15a289dbc427652c">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      void(* stop_recording)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Stop a previously started recording.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     203
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a601da1fffb83b440c9a92f02b4131d2f">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* store_meta_data_in_buffers)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *, int enable)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Request the camera HAL to store meta data or real YUV data in the video buffers sent out via CAMERA_MSG_VIDEO_FRAME for a recording session. If it is not called, the default camera HAL behavior is to store real YUV data in the video buffers.
+   </p>
+   <p>
+    This method should be called before startRecording() in order to be effective.
+   </p>
+   <p>
+    If meta data is stored in the video buffers, it is up to the receiver of the video buffers to interpret the contents and to find the actual frame data with the help of the meta data in the buffer. How this is done is outside of the scope of this method.
+   </p>
+   <p>
+    Some camera HALs may not support storing meta data in the video buffers, but all camera HALs should support storing real YUV data in the video buffers. If the camera HAL does not support storing the meta data in the video buffers when it is requested to do do, INVALID_OPERATION must be returned. It is very useful for the camera HAL to pass meta data rather than the actual frame data directly to the video encoder, since the amount of the uncompressed frame data can be very large if video size is large.
+   </p>
+   <dl class="params">
+    <dt>
+     Parameters
+    </dt>
+    <dd>
+     <table class="params">
+      <tr>
+       <td class="paramname">
+        enable
+       </td>
+       <td>
+        if true to instruct the camera HAL to store meta data in the video buffers; false to instruct the camera HAL to store real YUV data in the video buffers.
+       </td>
+      </tr>
+     </table>
+    </dd>
+   </dl>
+   <dl class="section return">
+    <dt>
+     Returns
+    </dt>
+    <dd>
+     OK on success.
+    </dd>
+   </dl>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     186
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <a class="anchor" id="a685431e04eaa6a2811aec44e8c637a59">
+ </a>
+ <div class="memitem">
+  <div class="memproto">
+   <table class="memname">
+    <tr>
+     <td class="memname">
+      int(* take_picture)(struct
+      <a class="el" href="structcamera__device.html">
+       camera_device
+      </a>
+      *)
+     </td>
+    </tr>
+   </table>
+  </div>
+  <div class="memdoc">
+   <p>
+    Take a picture.
+   </p>
+   <p>
+    Definition at line
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     240
+    </a>
+    of file
+    <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+     camera.h
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <hr />
+ The documentation for this struct was generated from the following file:
+ <ul>
+  <li>
+   hardware/libhardware/include/hardware/
+   <a class="el" href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/camera.h">
+    camera.h
+   </a>
+  </li>
+ </ul>
+</div>
+<!-- contents -->
+</div>
+
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/reference/hal/structcamera__device__ops by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 18:43:43 GMT -->
+</html>

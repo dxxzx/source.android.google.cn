@@ -1,0 +1,2344 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/reference/tradefed/com/android/tradefed/util/net/IHttpHelper.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:57:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>IHttpHelper &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="IHttpHelper &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="IHttpHelper-2.html">
+
+  <meta property="og:locale" content="en">
+
+
+  
+    
+    
+    
+
+
+
+
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../../../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="IHttpHelper-2.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../../../../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../../../../../setup0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../../compatibility0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../../security0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../../devices/audio0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../../devices/tech/dalvik0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../../../../reference0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="参考"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 参考"
+   >
+  参考
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="搜索"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="搜索框">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          转到源代码
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+          devsite-header-no-lower-tabs
+    ">
+    <div class="devsite-header-background">
+                              </div>  </div></div>
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars hidden>
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../devices/audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../devices/tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 参考">
+      <span class="devsite-nav-text" >参考</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 转到源代码">
+      <span class="devsite-nav-text" >转到源代码</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+                        has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner"><style type="text/css">/* Fixes issues with templates-sdk on devsite */
+
+/* indention for class inheritance */
+.jd-inheritance-table .jd-inheritance-space {
+  width: 1em;
+}
+
+/* header for known subclasses table */
+.jd-sumtable td > span {
+  display: inline-block;
+  font-size: 1.15em;
+  padding: 8px 8px 0 8px;
+}
+</style>    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../../../../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+        
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+              devsite-no-page-title
+        ">
+
+              
+
+<div itemscope itemtype="http://developers.google.com/ReferenceObject">
+<!-- This DIV closes at the end of the BODY -->
+  <meta itemprop="name" content="com.android.tradefed.util.net.IHttpHelper" />
+  
+
+
+
+
+<div id="jd-content"  >
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<h1 class="api-title">IHttpHelper</h1>
+<p>
+<code class="api-signature">
+  public
+  
+  
+  
+  interface
+  IHttpHelper
+</code>
+<br>
+
+
+<code class="api-signature">
+  
+  
+  
+</code>
+
+</p><table class="jd-inheritance-table">
+
+
+  <tr>
+    
+    <td colspan="1" class="jd-inheritance-class-cell">com.android.tradefed.util.net.IHttpHelper
+    </td>
+  </tr>
+  
+
+</table>
+  
+  <table class="jd-sumtable jd-sumtable-subclasses">
+    <tr>
+      <td>
+        <div class="expandable">
+          <span class="expand-control">Known indirect subclasses</span>
+          
+  <div id="subclasses-indirect" class="showalways" > <a href="HttpHelper0b8e.html?hl=zh-cn">HttpHelper</a>
+  </div>
+  <div id="subclasses-indirect-summary" >
+    
+  
+  <table class="jd-sumtable-expando">
+    
+      <tr  >
+        <td class="jd-linkcol"><a href="HttpHelper0b8e.html?hl=zh-cn">HttpHelper</a></td>
+        <td class="jd-descrcol" width="100%">
+          Contains helper methods for making http requests
+&nbsp;
+          
+    
+
+        </td>
+      </tr>
+      
+    
+  </table>
+
+  </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+    
+
+<br><hr>
+
+
+  <p>Helper methods for performing http requests.
+</p>
+
+
+
+
+
+
+
+
+
+<h2 class="api-section">Summary</h2>
+
+
+
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<table id="nestedclasses" class="responsive">
+<tr><th colspan="2"><h3>Nested classes</h3></th></tr>
+
+
+  
+    <tr  >
+      <td class="jd-typecol"><code>
+        
+        
+        
+        
+        class</code></td>
+      <td class="jd-descrcol" width="100%">
+        <code><a href="IHttpHelper.DataSizeException0b8e.html?hl=zh-cn">IHttpHelper.DataSizeException</a></code>
+        <p>&nbsp;
+        
+    
+</p>
+      </td>
+    </tr>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="constants" class="responsive constants">
+<tr><th colspan="2"><h3>Constants</h3></th></tr>
+
+
+    
+    <tr  >
+        <td><code>int</code></td>
+        <td width="100%">
+          <code><a href="IHttpHelper0b8e.html?hl=zh-cn#MAX_DATA_SIZE">MAX_DATA_SIZE</a></code>
+          <p>
+          
+    
+</p>
+        </td>
+    </tr>
+    
+    
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="responsive methods">
+<tr><th colspan="2"><h3>Public methods</h3></th></tr>
+
+
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#buildParameters(com.android.tradefed.util.MultiMap<java.lang.String,%20java.lang.String>)">buildParameters</a>(<a href="../MultiMap0b8e.html?hl=zh-cn">MultiMap</a>&lt;String,&nbsp;String&gt; paramMap)
+      </code>
+      
+        <p>Build the encoded parameter string.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#buildUrl(java.lang.String,%20com.android.tradefed.util.MultiMap<java.lang.String,%20java.lang.String>)">buildUrl</a>(String url, <a href="../MultiMap0b8e.html?hl=zh-cn">MultiMap</a>&lt;String,&nbsp;String&gt; paramMap)
+      </code>
+      
+        <p>Build the full encoded URL request string.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        HttpURLConnection</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#createConnection(java.net.URL,%20java.lang.String,%20java.lang.String)">createConnection</a>(URL url, String method, String contentType)
+      </code>
+      
+        <p>Create a to given url.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        HttpURLConnection</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#createJsonConnection(java.net.URL,%20java.lang.String)">createJsonConnection</a>(URL url, String method)
+      </code>
+      
+        <p>Creates a connection to given URL for passing json data.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        HttpURLConnection</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#createXmlConnection(java.net.URL,%20java.lang.String)">createXmlConnection</a>(URL url, String method)
+      </code>
+      
+        <p>Creates a connection to given URL for passing xml data.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#doGet(java.lang.String)">doGet</a>(String url)
+      </code>
+      
+        <p>Performs a GET HTTP request method for a given URL and returns it as a <code><a href="../../../../../java/lang/String0b8e.html?hl=zh-cn">String</a></code>.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#doGet(java.lang.String,%20java.io.OutputStream)">doGet</a>(String url, OutputStream outputStream)
+      </code>
+      
+        <p>Performs a GET HTTP request method for a given URL and streams result to a
+ <code><a href="../../../../../java/io/OutputStream0b8e.html?hl=zh-cn">OutputStream</a></code>.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#doGetIgnore(java.lang.String)">doGetIgnore</a>(String url)
+      </code>
+      
+        <p>Performs a GET for a given URL, with the given URL parameters ignoring the result.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#doGetIgnoreWithRetry(java.lang.String)">doGetIgnoreWithRetry</a>(String url)
+      </code>
+      
+        <p>Performs {<code><a href="IHttpHelper0b8e.html?hl=zh-cn#doGetIgnore(java.lang.String)">doGetIgnore(String)</a></code> retrying upon failure.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#doGetWithRetry(java.lang.String)">doGetWithRetry</a>(String url)
+      </code>
+      
+        <p>Performs {<code><a href="IHttpHelper0b8e.html?hl=zh-cn#doGet(java.lang.String)">doGet(String)</a></code> retrying upon failure.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#doPostWithRetry(java.lang.String,%20java.lang.String)">doPostWithRetry</a>(String url, String postData)
+      </code>
+      
+        <p>Performs a POST HTTP request method for a given URL and returns it as a <code><a href="../../../../../java/lang/String0b8e.html?hl=zh-cn">String</a></code>,
+ retrying upon failure.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        String</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#doPostWithRetry(java.lang.String,%20java.lang.String,%20java.lang.String)">doPostWithRetry</a>(String url, String postData, String contentType)
+      </code>
+      
+        <p>Performs a POST HTTP request method for a given URL and returns it as a <code><a href="../../../../../java/lang/String0b8e.html?hl=zh-cn">String</a></code>,
+ retrying upon failure.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        int</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#getInitialPollInterval()">getInitialPollInterval</a>()
+      </code>
+      
+        <p>Get the initial poll interval in ms.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        int</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#getMaxPollInterval()">getMaxPollInterval</a>()
+      </code>
+      
+        <p>Get the max poll interval in ms.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        int</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#getMaxTime()">getMaxTime</a>()
+      </code>
+      
+        <p>Get the maximum time to keep trying the request in ms.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        int</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#getOpTimeout()">getOpTimeout</a>()
+      </code>
+      
+        <p>Get the operation timeout in ms.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#setInitialPollInterval(int)">setInitialPollInterval</a>(int time)
+      </code>
+      
+        <p>Set the initial poll interval in ms.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#setMaxPollInterval(int)">setMaxPollInterval</a>(int time)
+      </code>
+      
+        <p>Set the initial poll interval in ms.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#setMaxTime(int)">setMaxTime</a>(int time)
+      </code>
+      
+        <p>Set the maximum time to keep trying the request in ms.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+  <tr  >
+  
+  
+    <td><code>
+        abstract
+        
+        
+        
+        
+        void</code>
+    </td>
+  
+    <td width="100%">
+      <code>
+      <a href="IHttpHelper0b8e.html?hl=zh-cn#setOpTimeout(int)">setOpTimeout</a>(int time)
+      </code>
+      
+        <p>Set the operation timeout in ms.
+        
+    
+</p>
+      
+    </td>
+  </tr>
+  
+
+
+</table>
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- ========= ENUM CONSTANTS DETAIL ======== -->
+<h2 class="api-section">Constants</h2>
+
+
+<div  >
+    <h3 class="api-name" id="MAX_DATA_SIZE">MAX_DATA_SIZE</h3>
+    <div class="api-level">
+      
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public static final int MAX_DATA_SIZE</pre>
+    
+    
+
+    
+  <p></p></p>
+
+    
+      <p>Constant Value:
+      
+          65536
+          (0x00010000)
+      
+    
+</div>
+
+
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2 class="api-section">Public methods</h2>
+
+
+<div >
+    <h3 class="api-name" id="buildParameters(com.android.tradefed.util.MultiMap<java.lang.String,%20java.lang.String>)">buildParameters</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract String buildParameters (<a href="../MultiMap0b8e.html?hl=zh-cn">MultiMap</a>&lt;String,&nbsp;String&gt; paramMap)</pre>
+    
+    
+
+    
+  <p>Build the encoded parameter string.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>paramMap</code></td>
+        <td width="100%">
+          <code>MultiMap</code>: the URL parameters</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%">the encoded parameter string</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IllegalArgumentException</code></td>
+          <td width="100%">if an exception occurs encoding the parameters.
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="buildUrl(java.lang.String,%20com.android.tradefed.util.MultiMap<java.lang.String,%20java.lang.String>)">buildUrl</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract String buildUrl (String url, 
+                <a href="../MultiMap0b8e.html?hl=zh-cn">MultiMap</a>&lt;String,&nbsp;String&gt; paramMap)</pre>
+    
+    
+
+    
+  <p>Build the full encoded URL request string.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>url</code></td>
+        <td width="100%">
+          <code>String</code>: the base URL</p></td>
+      </tr>
+      <tr>
+        <td><code>paramMap</code></td>
+        <td width="100%">
+          <code>MultiMap</code>: the URL parameters</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%">the constructed URL</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IllegalArgumentException</code></td>
+          <td width="100%">if an exception occurs encoding the parameters.
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="createConnection(java.net.URL,%20java.lang.String,%20java.lang.String)">createConnection</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract HttpURLConnection createConnection (URL url, 
+                String method, 
+                String contentType)</pre>
+    
+    
+
+    
+  <p>Create a to given url.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>url</code></td>
+        <td width="100%">
+          <code>URL</code>: the <code><a href="../../../../../java/net/URL0b8e.html?hl=zh-cn">URL</a></code> to connect to.</p></td>
+      </tr>
+      <tr>
+        <td><code>method</code></td>
+        <td width="100%">
+          <code>String</code>: the HTTP request method. For example, GET or POST.</p></td>
+      </tr>
+      <tr>
+        <td><code>contentType</code></td>
+        <td width="100%">
+          <code>String</code>: the content type. For example, "text/html".</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>HttpURLConnection</code></td>
+        <td width="100%">The HttpURLConnection</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IOException</code></td>
+          <td width="100%">if an IOException occurs.
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="createJsonConnection(java.net.URL,%20java.lang.String)">createJsonConnection</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract HttpURLConnection createJsonConnection (URL url, 
+                String method)</pre>
+    
+    
+
+    
+  <p>Creates a connection to given URL for passing json data.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>url</code></td>
+        <td width="100%">
+          <code>URL</code>: the <code><a href="../../../../../java/net/URL0b8e.html?hl=zh-cn">URL</a></code> to connect to.</p></td>
+      </tr>
+      <tr>
+        <td><code>method</code></td>
+        <td width="100%">
+          <code>String</code>: the HTTP request method. For example, GET or POST.</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>HttpURLConnection</code></td>
+        <td width="100%">the <code><a href="../../../../../java/net/HttpURLConnection0b8e.html?hl=zh-cn">HttpURLConnection</a></code></p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IOException</code></td>
+          <td width="100%">if failed to make connection
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="createXmlConnection(java.net.URL,%20java.lang.String)">createXmlConnection</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract HttpURLConnection createXmlConnection (URL url, 
+                String method)</pre>
+    
+    
+
+    
+  <p>Creates a connection to given URL for passing xml data.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>url</code></td>
+        <td width="100%">
+          <code>URL</code>: the <code><a href="../../../../../java/net/URL0b8e.html?hl=zh-cn">URL</a></code> to connect to.</p></td>
+      </tr>
+      <tr>
+        <td><code>method</code></td>
+        <td width="100%">
+          <code>String</code>: the HTTP request method. For example, GET or POST.</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>HttpURLConnection</code></td>
+        <td width="100%">the <code><a href="../../../../../java/net/HttpURLConnection0b8e.html?hl=zh-cn">HttpURLConnection</a></code></p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IOException</code></td>
+          <td width="100%">if failed to make connection
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="doGet(java.lang.String)">doGet</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract String doGet (String url)</pre>
+    
+    
+
+    
+  <p>Performs a GET HTTP request method for a given URL and returns it as a <code><a href="../../../../../java/lang/String0b8e.html?hl=zh-cn">String</a></code>.
+ <p>
+ Because remote contents are loaded into memory, this method should only be used for
+ relatively small data sizes.
+ </p><p>
+ References:
+ </p><ul>
+ <li>Java URL Connection:
+ <a href="http://java.sun.com/docs/books/tutorial/networking/urls/readingWriting.html">
+ http://java.sun.com/docs/books/tutorial/networking/urls/readingWriting.html</a></li>
+ <li>Java URL Reader:
+ <a href="http://java.sun.com/docs/books/tutorial/networking/urls/readingURL.html">
+ http://java.sun.com/docs/books/tutorial/networking/urls/readingURL.html</a></li>
+ <li>Java set Proxy:
+ <a href="http://java.sun.com/docs/books/tutorial/networking/urls/_setProxy.html">
+ http://java.sun.com/docs/books/tutorial/networking/urls/_setProxy.html</a></li>
+ </ul></p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>url</code></td>
+        <td width="100%">
+          <code>String</code>: the URL</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%">the <code><a href="../../../../../java/lang/String0b8e.html?hl=zh-cn">String</a></code> remote contents</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IOException</code></td>
+          <td width="100%">if failed to retrieve data</td>
+        </tr>
+        <tr>
+          <td><code><a href="IHttpHelper.DataSizeException0b8e.html?hl=zh-cn">IHttpHelper.DataSizeException</a></code></td>
+          <td width="100%">if retrieved data is > <code><a href="IHttpHelper0b8e.html?hl=zh-cn#MAX_DATA_SIZE">MAX_DATA_SIZE</a></code>
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="doGet(java.lang.String,%20java.io.OutputStream)">doGet</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void doGet (String url, 
+                OutputStream outputStream)</pre>
+    
+    
+
+    
+  <p>Performs a GET HTTP request method for a given URL and streams result to a
+ <code><a href="../../../../../java/io/OutputStream0b8e.html?hl=zh-cn">OutputStream</a></code>.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>url</code></td>
+        <td width="100%">
+          <code>String</code>: the URL</p></td>
+      </tr>
+      <tr>
+        <td><code>outputStream</code></td>
+        <td width="100%">
+          <code>OutputStream</code>: stream of the response data</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IOException</code></td>
+          <td width="100%">if failed to retrieve data
+</td>
+        </tr>
+      </table>
+  
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="IHttpHelper0b8e.html?hl=zh-cn#doGet(java.lang.String)">doGet(String)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="doGetIgnore(java.lang.String)">doGetIgnore</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void doGetIgnore (String url)</pre>
+    
+    
+
+    
+  <p>Performs a GET for a given URL, with the given URL parameters ignoring the result.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>url</code></td>
+        <td width="100%">
+          <code>String</code>: the URL</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IOException</code></td>
+          <td width="100%">if failed to retrieve data
+</td>
+        </tr>
+      </table>
+  
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="IHttpHelper0b8e.html?hl=zh-cn#doGet(java.lang.String)">doGet(String)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="doGetIgnoreWithRetry(java.lang.String)">doGetIgnoreWithRetry</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void doGetIgnoreWithRetry (String url)</pre>
+    
+    
+
+    
+  <p>Performs {<code><a href="IHttpHelper0b8e.html?hl=zh-cn#doGetIgnore(java.lang.String)">doGetIgnore(String)</a></code> retrying upon failure.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>url</code></td>
+        <td width="100%">
+          <code>String</code>: the URL</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IOException</code></td>
+          <td width="100%">if failed to retrieve data
+</td>
+        </tr>
+      </table>
+  
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="../IRunUtil0b8e.html?hl=zh-cn#runEscalatingTimedRetry(long,%20long,%20long,%20long,%20com.android.tradefed.util.IRunUtil.IRunnableResult)">IRunUtil.runEscalatingTimedRetry(long, long, long, long, com.android.tradefed.util.IRunUtil.IRunnableResult)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="doGetWithRetry(java.lang.String)">doGetWithRetry</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract String doGetWithRetry (String url)</pre>
+    
+    
+
+    
+  <p>Performs {<code><a href="IHttpHelper0b8e.html?hl=zh-cn#doGet(java.lang.String)">doGet(String)</a></code> retrying upon failure.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>url</code></td>
+        <td width="100%">
+          <code>String</code>: the URL</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%">the <code><a href="../../../../../java/lang/String0b8e.html?hl=zh-cn">String</a></code> remote contents</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IOException</code></td>
+          <td width="100%">if failed to retrieve data</td>
+        </tr>
+        <tr>
+          <td><code><a href="IHttpHelper.DataSizeException0b8e.html?hl=zh-cn">IHttpHelper.DataSizeException</a></code></td>
+          <td width="100%">if retrieved data is > <code><a href="IHttpHelper0b8e.html?hl=zh-cn#MAX_DATA_SIZE">MAX_DATA_SIZE</a></code>
+</td>
+        </tr>
+      </table>
+  
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="../IRunUtil0b8e.html?hl=zh-cn#runEscalatingTimedRetry(long,%20long,%20long,%20long,%20com.android.tradefed.util.IRunUtil.IRunnableResult)">IRunUtil.runEscalatingTimedRetry(long, long, long, long, com.android.tradefed.util.IRunUtil.IRunnableResult)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="doPostWithRetry(java.lang.String,%20java.lang.String)">doPostWithRetry</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract String doPostWithRetry (String url, 
+                String postData)</pre>
+    
+    
+
+    
+  <p>Performs a POST HTTP request method for a given URL and returns it as a <code><a href="../../../../../java/lang/String0b8e.html?hl=zh-cn">String</a></code>,
+ retrying upon failure.
+ <p>
+ Because remote contents are loaded into memory, this method should only be used for
+ relatively small data sizes.
+ </p></p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>url</code></td>
+        <td width="100%">
+          <code>String</code>: the URL</p></td>
+      </tr>
+      <tr>
+        <td><code>postData</code></td>
+        <td width="100%">
+          <code>String</code>: the data to be posted once the connection is open</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%">the <code><a href="../../../../../java/lang/String0b8e.html?hl=zh-cn">String</a></code> remote contents</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IOException</code></td>
+          <td width="100%">if failed to retrieve data</td>
+        </tr>
+        <tr>
+          <td><code><a href="IHttpHelper.DataSizeException0b8e.html?hl=zh-cn">IHttpHelper.DataSizeException</a></code></td>
+          <td width="100%">if retrieved data is > <code><a href="IHttpHelper0b8e.html?hl=zh-cn#MAX_DATA_SIZE">MAX_DATA_SIZE</a></code>
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="doPostWithRetry(java.lang.String,%20java.lang.String,%20java.lang.String)">doPostWithRetry</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract String doPostWithRetry (String url, 
+                String postData, 
+                String contentType)</pre>
+    
+    
+
+    
+  <p>Performs a POST HTTP request method for a given URL and returns it as a <code><a href="../../../../../java/lang/String0b8e.html?hl=zh-cn">String</a></code>,
+ retrying upon failure.
+ <p>
+ Because remote contents are loaded into memory, this method should only be used for
+ relatively small data sizes.
+ </p></p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>url</code></td>
+        <td width="100%">
+          <code>String</code>: the URL</p></td>
+      </tr>
+      <tr>
+        <td><code>postData</code></td>
+        <td width="100%">
+          <code>String</code>: the data to be posted once the connection is open</p></td>
+      </tr>
+      <tr>
+        <td><code>contentType</code></td>
+        <td width="100%">
+          <code>String</code>: the content type. For example, "text/html".</p></td>
+      </tr>
+    </table>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>String</code></td>
+        <td width="100%">the <code><a href="../../../../../java/lang/String0b8e.html?hl=zh-cn">String</a></code> remote contents</p></td>
+      </tr>
+    </table>
+      <table class="responsive">
+      <tr><th colspan=2>Throws</th></tr>
+        <tr>
+          <td><code>IOException</code></td>
+          <td width="100%">if failed to retrieve data</td>
+        </tr>
+        <tr>
+          <td><code><a href="IHttpHelper.DataSizeException0b8e.html?hl=zh-cn">IHttpHelper.DataSizeException</a></code></td>
+          <td width="100%">if retrieved data is > <code><a href="IHttpHelper0b8e.html?hl=zh-cn#MAX_DATA_SIZE">MAX_DATA_SIZE</a></code>
+</td>
+        </tr>
+      </table>
+  
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getInitialPollInterval()">getInitialPollInterval</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract int getInitialPollInterval ()</pre>
+    
+    
+
+    
+  <p>Get the initial poll interval in ms.</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>int</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="../IRunUtil0b8e.html?hl=zh-cn#runEscalatingTimedRetry(long,%20long,%20long,%20long,%20com.android.tradefed.util.IRunUtil.IRunnableResult)">IRunUtil.runEscalatingTimedRetry(long, long, long, long, com.android.tradefed.util.IRunUtil.IRunnableResult)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getMaxPollInterval()">getMaxPollInterval</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract int getMaxPollInterval ()</pre>
+    
+    
+
+    
+  <p>Get the max poll interval in ms.</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>int</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="../IRunUtil0b8e.html?hl=zh-cn#runEscalatingTimedRetry(long,%20long,%20long,%20long,%20com.android.tradefed.util.IRunUtil.IRunnableResult)">IRunUtil.runEscalatingTimedRetry(long, long, long, long, com.android.tradefed.util.IRunUtil.IRunnableResult)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getMaxTime()">getMaxTime</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract int getMaxTime ()</pre>
+    
+    
+
+    
+  <p>Get the maximum time to keep trying the request in ms.</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>int</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="../IRunUtil0b8e.html?hl=zh-cn#runEscalatingTimedRetry(long,%20long,%20long,%20long,%20com.android.tradefed.util.IRunUtil.IRunnableResult)">IRunUtil.runEscalatingTimedRetry(long, long, long, long, com.android.tradefed.util.IRunUtil.IRunnableResult)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="getOpTimeout()">getOpTimeout</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract int getOpTimeout ()</pre>
+    
+    
+
+    
+  <p>Get the operation timeout in ms.</p></p>
+    <table class="responsive">
+      <tr><th colspan=2>Returns</th></tr>
+      <tr>
+        <td><code>int</code></td>
+        <td width="100%"><!-- no returns description in source --></p></td>
+      </tr>
+    </table>
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="../IRunUtil0b8e.html?hl=zh-cn#runEscalatingTimedRetry(long,%20long,%20long,%20long,%20com.android.tradefed.util.IRunUtil.IRunnableResult)">IRunUtil.runEscalatingTimedRetry(long, long, long, long, com.android.tradefed.util.IRunUtil.IRunnableResult)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setInitialPollInterval(int)">setInitialPollInterval</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void setInitialPollInterval (int time)</pre>
+    
+    
+
+    
+  <p>Set the initial poll interval in ms.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>time</code></td>
+        <td width="100%">
+          <code>int</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="../IRunUtil0b8e.html?hl=zh-cn#runEscalatingTimedRetry(long,%20long,%20long,%20long,%20com.android.tradefed.util.IRunUtil.IRunnableResult)">IRunUtil.runEscalatingTimedRetry(long, long, long, long, com.android.tradefed.util.IRunUtil.IRunnableResult)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setMaxPollInterval(int)">setMaxPollInterval</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void setMaxPollInterval (int time)</pre>
+    
+    
+
+    
+  <p>Set the initial poll interval in ms.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>time</code></td>
+        <td width="100%">
+          <code>int</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="../IRunUtil0b8e.html?hl=zh-cn#runEscalatingTimedRetry(long,%20long,%20long,%20long,%20com.android.tradefed.util.IRunUtil.IRunnableResult)">IRunUtil.runEscalatingTimedRetry(long, long, long, long, com.android.tradefed.util.IRunUtil.IRunnableResult)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setMaxTime(int)">setMaxTime</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void setMaxTime (int time)</pre>
+    
+    
+
+    
+  <p>Set the maximum time to keep trying the request in ms.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>time</code></td>
+        <td width="100%">
+          <code>int</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="../IRunUtil0b8e.html?hl=zh-cn#runEscalatingTimedRetry(long,%20long,%20long,%20long,%20com.android.tradefed.util.IRunUtil.IRunnableResult)">IRunUtil.runEscalatingTimedRetry(long, long, long, long, com.android.tradefed.util.IRunUtil.IRunnableResult)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+<div >
+    <h3 class="api-name" id="setOpTimeout(int)">setOpTimeout</h3>
+    <div class="api-level">
+      <div></div>
+      
+  
+
+    </div>
+<pre class="api-signature no-pretty-print">
+public abstract void setOpTimeout (int time)</pre>
+    
+    
+
+    
+  <p>Set the operation timeout in ms.</p></p>
+    <table class="responsive">
+    <tr><th colspan=2>Parameters</th></tr>
+      <tr>
+        <td><code>time</code></td>
+        <td width="100%">
+          <code>int</code> <!-- no parameter comment --></p></td>
+      </tr>
+    </table>
+  <div>
+      <p><b>See also:</b></p>
+      <ul class="nolist"><li><code><a href="../IRunUtil0b8e.html?hl=zh-cn#runEscalatingTimedRetry(long,%20long,%20long,%20long,%20com.android.tradefed.util.IRunUtil.IRunnableResult)">IRunUtil.runEscalatingTimedRetry(long, long, long, long, com.android.tradefed.util.IRunUtil.IRunnableResult)</a></code></li>
+      </ul>
+  </div>
+
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+
+</div><!-- end jd-content -->
+
+
+
+<div class="data-reference-resources-wrapper">
+  
+  <ul data-reference-resources>
+    
+    
+    <li><h2 class="hide-from-toc">Interfaces</h2>
+      <ul>
+          <li class="selected"><a href="IHttpHelper0b8e.html?hl=zh-cn">IHttpHelper</a></li>
+      </ul>
+    </li>
+    
+    <li><h2 class="hide-from-toc">Classes</h2>
+      <ul>
+          <li><a href="HttpHelper0b8e.html?hl=zh-cn">HttpHelper</a></li>
+          <li><a href="HttpHelper.RequestRunnable0b8e.html?hl=zh-cn">HttpHelper.RequestRunnable</a></li>
+          <li><a href="HttpMultipartPost0b8e.html?hl=zh-cn">HttpMultipartPost</a></li>
+          <li><a href="XmlRpcHelper0b8e.html?hl=zh-cn">XmlRpcHelper</a></li>
+      </ul>
+    </li>
+    
+    
+    <li><h2 class="hide-from-toc">Exceptions</h2>
+      <ul>
+          <li><a href="IHttpHelper.DataSizeException0b8e.html?hl=zh-cn">IHttpHelper.DataSizeException</a></li>
+      </ul>
+    </li>
+    
+  </ul>
+  
+</div>
+
+
+
+</div><!-- end devsite ReferenceObject -->
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../../../../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">构建</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 代码库
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            要求
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            下载
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            预览二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            出厂映像
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            驱动程序二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">关注</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            在 Twitter 上 @Android
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            在 Twitter 上 @AndroidDev
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android 博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google 安全博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google 网上论坛上的 Android 平台论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Google 网上论坛上的 Android 构建论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Google 网上论坛上的 Android 移植论坛
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">获取帮助</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            问题跟踪器
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../../source/index0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          关于 Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../../source/community0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          社区
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../../legal0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          法律条款
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../../../../license0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          许可
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          隐私权政策
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476&amp;hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          网站反馈
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'zh_cn',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/reference/tradefed/com/android/tradefed/util/net/IHttpHelper.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:57:11 GMT -->
+</html>
