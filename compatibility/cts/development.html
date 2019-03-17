@@ -1,0 +1,1309 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/compatibility/cts/development by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:21:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>CTS Development &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="CTS Development &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="development.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="development.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+   aria-label="Design, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/tech/dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Design
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/architecture.html"
+   class="gc-analytics-event"
+   title="Architecture"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Architecture"
+   >
+  Architecture
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../overview-2.html"
+   class="gc-analytics-event"
+   title="Compatibility"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Compatibility"
+   >
+  Compatibility
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/tech/display.html"
+   class="gc-analytics-event"
+   title="Display"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Display"
+   >
+  Display
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/tech/settings/settings-guidelines.html"
+   class="gc-analytics-event"
+   title="Settings"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Settings"
+   >
+  Settings
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../tests.html"
+   class="gc-analytics-event"
+   title="Tests"
+   aria-label="Tests, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Tests"
+   >
+  Tests
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices/architecture.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Architecture">
+      <span class="devsite-nav-text" >Architecture</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../overview-2.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Compatibility">
+      <span class="devsite-nav-text" >Compatibility</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices/tech/display.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Display">
+      <span class="devsite-nav-text" >Display</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices/tech/settings/settings-guidelines.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Settings">
+      <span class="devsite-nav-text" >Settings</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../tests.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Tests">
+      <span class="devsite-nav-text" menu="_book">Tests</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices/audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices/tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../tests.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Test Development Workflow">Test Development Workflow</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tests/development"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../tests/development/blueprints.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Simple Configuration">Simple Configuration</span></a></li><li class="devsite-nav-item"><a href="../tests/development/test-config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Complex Configuration">Complex Configuration</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Instrumentation Tests">Instrumentation Tests</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tests/development/instrumentation.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../tests/development/instr-self-e2e.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Self-Instrumenting Tests">Self-Instrumenting Tests</span></a></li><li class="devsite-nav-item"><a href="../tests/development/instr-app-e2e.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Targeting an Application">Targeting an Application</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Native Tests">Native Tests</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tests/development/native.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../tests/development/native-func-e2e.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Adding a New Native Test">Adding a New Native Test</span></a></li><li class="devsite-nav-item"><a href="../tests/development/metrics.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Native Metric Tests">Native Metric Tests</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../tests/development/jar.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="JAR Host Tests">JAR Host Tests</span></a></li><li class="devsite-nav-item"><a href="../tests/development/test-mapping.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Mapping Tests">Mapping Tests</span></a></li><li class="devsite-nav-item"><a href="../tests/development/atest.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Running Tests (Atest)">Running Tests (Atest)</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Compatibility Test Suite (CTS)">Compatibility Test Suite (CTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../cts.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="setup.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Set up CTS">Set up CTS</span></a></li><li class="devsite-nav-item"><a href="run.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Run CTS">Run CTS</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Run CTS Verifier">Run CTS Verifier</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="verifier.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="audio-framework.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Audio Framework">Audio Framework</span></a></li><li class="devsite-nav-item"><a href="near-ultrasound.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Near Ultrasound Tests">Near Ultrasound Tests</span></a></li><li class="devsite-nav-item"><a href="rotation-vector.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Rotation Vector Crosscheck">Rotation Vector Crosscheck</span></a></li><li class="devsite-nav-item"><a href="usb-audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="USB Audio CTS Tests">USB Audio CTS Tests</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Camera Testing">Camera Testing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="camera-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Camera HAL Testing">Camera HAL Testing</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Camera ITS-in-a-Box">Camera ITS-in-a-Box</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="camera-its-box.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="camera-its-box-assembly.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Regular Field of View Box">Regular Field of View Box</span></a></li><li class="devsite-nav-item"><a href="camera-wfov-box-assembly.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wide Field of View Box">Wide Field of View Box</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensor Fusion Box">Sensor Fusion Box</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="sensor-fusion-quick-start.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Fusion Box Quick Start">Sensor Fusion Box Quick Start</span></a></li><li class="devsite-nav-item"><a href="sensor-fusion-box-assembly.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Fusion Box Details">Sensor Fusion Box Details</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="secure-element.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Secure Element">Secure Element</span></a></li><li class="devsite-nav-item"><a href="interpret.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interpret Results">Interpret Results</span></a></li><li class="devsite-nav-item"><a href="development.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Develop CTS">Develop CTS</span></a></li><li class="devsite-nav-item"><a href="downloads-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Downloads">Downloads</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor Test Suite (VTS)">Vendor Test Suite (VTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vts.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../vts/codelab-video.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Codelab and Video Tutorials">Codelab and Video Tutorials</span></a></li><li class="devsite-nav-item"><a href="../vts/systems.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Systems Testing with VTS">Systems Testing with VTS</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Test Framework">Test Framework</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vts/shell-commands.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Shell Commands">Device Shell Commands</span></a></li><li class="devsite-nav-item"><a href="../vts/test-templates.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Test Templates">Test Templates</span></a></li><li class="devsite-nav-item"><a href="../vts/sna-hal-testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Service Name Aware HAL Testing">Service Name Aware HAL Testing</span></a></li><li class="devsite-nav-item"><a href="../vts/hal-testability.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="HAL Testability Check">HAL Testability Check</span></a></li><li class="devsite-nav-item"><a href="../vts/multi-device-testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multi-Device Testing">Multi-Device Testing</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="VTS Dashboard">VTS Dashboard</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vts/setup.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Setup">Setup</span></a></li><li class="devsite-nav-item"><a href="../vts/database.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Database">Database</span></a></li><li class="devsite-nav-item"><a href="../vts/ui.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="User Interface">User Interface</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Lab Infrastructure">Lab Infrastructure</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vts/automated-test-infra.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Automated Testing Infrastructure">Automated Testing Infrastructure</span></a></li><li class="devsite-nav-item"><a href="../vts/host-controller.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Host Controller Architecture">Host Controller Architecture</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../vts/performance.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Performance Testing">Performance Testing</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Trade Federation Test Harness">Trade Federation Test Harness</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../devices/tech/test_infra/tradefed.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/test_infra/tradefed/fundamentals.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Start Here">Start Here</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/test_infra/tradefed/fundamentals/machine_setup.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Machine Setup">Machine Setup</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/test_infra/tradefed/fundamentals/devices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Working with Devices">Working with Devices</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/test_infra/tradefed/fundamentals/lifecycle.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Test Lifecycle">Test Lifecycle</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/test_infra/tradefed/fundamentals/options.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Option Handling">Option Handling</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/test_infra/tradefed/full_example.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="An End-to-End Example">An End-to-End Example</span></a></li><li class="devsite-nav-item"><a href="../../reference/tradefed.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Package Index">Package Index</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Debugging">Debugging</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../devices/tech/debug.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/native-crash.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Diagnosing Native Crashes">Diagnosing Native Crashes</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Evaluating Performance">Evaluating Performance</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../devices/tech/debug/eval_perf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/systrace.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Understanding systrace">Understanding systrace</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/ftrace.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Using ftrace">Using ftrace</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/jank_capacity.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Identifying Capacity Jank">Identifying Capacity Jank</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/jank_jitter.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Identifying Jitter Jank">Identifying Jitter Jank</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/gdb.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Using GDB">Using GDB</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/native_stack_dump.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Dumping User &amp; Kernel Stacks">Dumping User &amp; Kernel Stacks</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/native-memory.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Native Memory Use">Native Memory Use</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/connect/connect_tests.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Network Connectivity Tests">Network Connectivity Tests</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/rescue-party-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Rescue Party">Rescue Party</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/storaged-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Storaged">Storaged</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/strace.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Strace">Strace</span></a></li><li class="devsite-nav-item"><a href="../../devices/tech/debug/valgrind.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Valgrind">Valgrind</span></a></li></ul></devsite-expandable-nav></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Design
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../tests.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Tests
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">CTS Development</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+
+
+<h2 id="initializing-your-repo-client">Initializing your Repo client</h2>
+<p>Follow the <a href="../../setup/build/downloading.html">instructions</a>
+to get and build the Android source code but specify a particular CTS branch
+name, for example<code>-b android-5.0_r2</code>, when issuing the <code>repo
+init</code> command. This assures your CTS changes will be included in the
+next CTS release and beyond.</p>
+
+<h2 id="building-and-running-cts">Building and running CTS</h2>
+
+<p>Execute the following commands to build CTS and start the interactive
+CTS console:</p>
+<p class="note"><strong>Note:</strong> You may supply one of these other values
+for <code>TARGET_PRODUCT</code> to build for different architectures:
+<code>aosp_x86_64</code> or <code>aosp_mips</code></p>
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal">cd <em>/path/to/android/root</em></code>
+<code class="devsite-terminal">make cts -j32 TARGET_PRODUCT=aosp_arm64</code>
+<code class="devsite-terminal">cts-tradefed</code>
+</pre>
+
+<p>At the cts-tf console, enter e.g.:</p>
+<pre class="devsite-click-to-copy">
+tf&gt; run cts --plan CTS
+</pre>
+
+<h2 id="writing-cts-tests">Writing CTS tests</h2>
+
+<p>CTS tests use JUnit and the Android testing APIs. Review the
+<a href="https://developer.android.google.cn/tools/testing/testing_android.html">Testing and Instrumentation</a>
+tutorial while perusing the existing tests under the
+<code>cts/tests</code> directory. You will see that CTS tests mostly follow the same
+conventions used in other Android tests.</p>
+
+<p>Since CTS runs across many production devices, the tests must follow
+these rules:</p>
+<ul>
+<li>Must take into account varying screen sizes, orientations, and keyboard layouts.</li>
+<li>Only use public API methods. In other words, avoid all classes, methods, and fields that are annotated with the "hide" annotation.</li>
+<li>Avoid relying upon particular view layouts or depend on the dimensions of assets that may not be on some device.</li>
+<li>Don't rely upon root privileges.</li>
+</ul>
+
+<h3 id="test-naming-and-location">Test naming and location</h3>
+
+<p> Most CTS test cases target a specific class in the Android API. These tests
+have Java package names with a <code>cts</code> suffix and class names with the
+<code>Test</code> suffix. Each test case consists of multiple tests, where each
+test usually exercises a particular method of the class being tested.
+These tests are arranged in a directory structure where tests are grouped into
+different categories such as "widgets" and "views." </p>
+
+<p>
+For example, the CTS test for the Java package
+<code>android.widget.TextView</code> is
+<code>android.widget.cts.TextViewTest</code> with its Java package name as
+<code>android.widget.cts</code> and its class name as
+<code>TextViewTest</code>.  </p>
+
+<ul>
+<li><strong>Java package name</strong><br/>The Java package name for the CTS tests
+is the package name of the class that the test is testing, followed by ".cts".
+For our example, the package name would be <code>android.widget.cts</code>.
+
+<li><strong>Class name</strong><br/>The class name for CTS tests is <strong>
+</strong>name of the class that the test is testing with "Test" appended. (For
+example,  if a test is targeting <code>TextView</code>, the class name should be
+<code>TextViewTest</code>.)
+
+<li><strong>Module name (CTS v2 only)</strong><br/>CTS v2 organizes tests by module.
+ The module name is usually the second string of the Java package name (in our
+example, <code>widget</code>), although it does not have to be.</li>
+</ul>
+
+<p>
+The directory structure and sample code depend on whether you are using CTS v1
+or CTS v2.
+</p>
+<h4 id="cts-v1">CTS v1</h4>
+<p>
+For Android 6.0 and earlier, use CTS v1.  For CTS v1, the sample code is at
+<code>cts/tests/tests/example</code>.
+</p>
+<p>
+The directory structure in CTS v1 tests looks like this:
+</p>
+<pre class="devsite-click-to-copy">
+cts/
+  tests/
+    tests/
+      <em>package-name</em>/
+        Android.mk
+        AndroidManifest.xml
+        src/
+          android/
+            <em>package-name</em>/
+              SampleDeviceActivity.java
+              cts/
+                SampleDeviceTest.java
+</pre>
+<h4 id="cts-v2">CTS v2</h4>
+<p>
+For Android 7.0 and later, use CTS v2.  For details, see <a
+href="https://android.googlesource.com/platform/cts/+/master/tests/sample/">the
+sample test in AOSP</a>.
+</p>
+<p>
+The CTS v2 directory structure looks like this:
+</p>
+
+<pre class="devsite-click-to-copy">
+cts/
+  tests/
+    <em>module-name</em>/
+      Android.mk
+      AndroidManifest.xml
+      src/
+        android/
+          <em>package-name</em>/
+            SampleDeviceActivity.java
+            cts/
+              SampleDeviceTest.java
+</pre>
+
+<h3 id="new-sample-packages">New sample packages</h3>
+
+<p>When adding new tests, there may not be an existing directory to place your
+test.  In those cases, you'll need to create the directory and copy the
+appropriate sample files.</p>
+
+<h4 id="cts-v1">CTS v1</h4>
+
+<p> If you are using CTS v1, refer to the example under
+<code>cts/tests/tests/example</code> and create a new directory. Also,
+make sure to add your new package's module name from its <code>Android.mk</code>
+to <code>CTS_COVERAGE_TEST_CASE_LIST</code>  in
+<code>cts/CtsTestCaseList.mk</code>. This Makefile is used by
+<code>build/core/tasks/cts.mk</code> to combine all the tests together to create
+the final CTS package.  </p>
+
+<h4 id="cts-v2">CTS v2</h4>
+<p>
+Use the sample test
+<code><a href="https://android.googlesource.com/platform/cts/+/master/tests/sample/">/cts/tests/sample/</a></code>
+to quick start your new test module with following steps:
+</p>
+
+<ol>
+  <li>Run this command to create the test directory and copy sample files to it:
+    <pre class="devsite-terminal devsite-click-to-copy">mkdir cts/tests/<i>module-name</i> && cp -r cts/tests/sample/* cts/tests/<i>module-name</i></pre>
+  <li>Navigate to <code>cts/tests/<em>module-name</em></code> and substitute all instances of
+"[Ss]ample" following the recommended naming convention from above.
+  <li>Update <code>SampleDeviceActivity</code> to exercise the feature you're testing.
+  <li>Update <code>SampleDeviceTest</code> to ensure the activity succeeds or logs its
+errors.</li>
+</ol>
+
+<h4>Additional directories</h4>
+
+<p> Other Android directories such as <code>assets</code>, <code>jni</code>,
+<code>libs</code> and <code>res</code> can also be added. To add JNI code,
+create a directory in the root of the project next to <code>src</code> with the native
+code and an <code>Android.mk</code> in it.</p>
+
+<p>
+The makefile typically contains the following settings:
+</p>
+<pre class="devsite-click-to-copy">
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+LOCAL_MODULE := libCtsSample_jni
+
+# don't include this package in any target
+LOCAL_MODULE_TAGS := optional
+LOCAL_SRC_FILES := <i>list of source code files</i>
+LOCAL_C_INCLUDES := $(JNI_H_INCLUDE)
+
+# Tag this module as a cts test artifact
+LOCAL_COMPATIBILITY_SUITE := cts
+LOCAL_SHARED_LIBRARIES := libnativehelper
+LOCAL_SDK_VERSION := current
+include $(BUILD_SHARED_LIBRARY)
+</pre>
+
+<h4>Android.mk file</h4>
+
+<p> Finally, the <code>Android.mk</code> file in the root of the project will
+need to be modified to build the native code and depend on it, as shown
+below:</p>
+
+<pre class="devsite-click-to-copy">
+# All tests should include android.test.runner.
+LOCAL_JAVA_LIBRARIES := android.test.runner
+
+# Includes the jni code as a shared library
+LOCAL_JNI_SHARED_LIBRARIES := libCtsSample_jni
+
+# Include for InstrumentationCtsTestRunner
+LOCAL_STATIC_JAVA_LIBRARIES := ctstestrunner...
+LOCAL_SDK_VERSION := currentinclude $(BUILD_CTS_PACKAGE)
+
+#Tells make to look in subdirectories for more make files to include
+include $(call all-makefiles-under,$(LOCAL_PATH))
+</pre>
+
+<h2 id="Fix-remove-tests">Fix or remove tests</h2>
+<p>Besides adding new tests there are other ways to contribute to CTS: Fix or
+remove tests annotated with "BrokenTest" or "KnownFailure."</p>
+
+<h2 id="submitting-your-changes">Submitting your changes</h2>
+<p>Follow the <a href="../../setup/submit-patches.html">Submitting Patches workflow</a>
+to contribute changes to CTS. A reviewer
+will be assigned to your change, and your change should be reviewed shortly!</p>
+
+<h2 id="release-schedule">Release schedule and branch information</h2>
+
+<p>CTS releases follow this schedule.</p>
+
+<p class="note"><strong>Note</strong>: This schedule is tentative and may be
+updated from time to time as CTS for the given Android version matures.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Version</th>
+  <th>Branch</th>
+  <th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>9</td>
+    <td>pie-cts-dev</td>
+      <td>Monthly</td>
+      </tr>
+<tr>
+  <td>8.1</td>
+    <td>oreo-mr1-cts-dev</td>
+      <td>Monthly</td>
+      </tr>
+<tr>
+  <td>8.0</td>
+    <td>oreo-cts-dev</td>
+      <td>Monthly</td>
+      </tr>
+<tr>
+  <td>7.1</td>
+    <td>nougat-mr1-cts-dev</td>
+      <td>Monthly</td>
+      </tr>
+<tr>
+  <td>7.0</td>
+    <td>nougat-cts-dev</td>
+      <td>Monthly</td>
+      </tr>
+
+<tr>
+  <td colspan="3">No releases are planned for 6.0, 5.1, 5.0, 4.4, 4.3 and 4.2.</td>
+</tr>
+</table>
+
+<h3 id="important-dates">Important Dates during month of the release</h3>
+
+<ul>
+  <li><strong>End of 1st Week</strong>: Code Freeze.  At this point,
+submissions on the current branch will no longer be accepted and will not be
+included in the next version of CTS.  Once we have chosen a candidate for
+release, the branch will again be open and accepting new submissions.
+
+  <li><strong>Second or third week</strong>: CTS is published in the Android
+Open Source Project (AOSP).
+</ul>
+
+<h3 id="auto-merge">Auto-merge flow</h3>
+
+<p>CTS development branches have been set up so that changes submitted to each
+branch will automatically merge as below:<br>
+nougat-cts-dev -> nougat-mr1-cts-dev -> oreo-cts-dev -> oreo-mr1-cts-dev -> pie-cts-dev -> &lt;private-development-branch for Android Q&gt;</p>
+
+<p>If a changelist (CL) fails to merge correctly, the author of the CL will get
+an email with instructions on how to resolve the conflict. In most of the
+cases, the author of the CL can use the instructions to skip the auto-merge of
+the conflicting CL.</p>
+
+<p>Additionally, if an older branch requires the change, then the CL needs to be
+  cherry-picked from the newer branch.</p>
+
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/compatibility/cts/development by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:21:39 GMT -->
+</html>
