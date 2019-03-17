@@ -1,0 +1,1200 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/devices/audio/midi_test by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 13:35:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>MIDI Test Procedure &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="MIDI Test Procedure &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="midi_test.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="midi_test.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+   aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech/dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Develop
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab active>
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Audio"
+   aria-label="Audio, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Audio"
+   >
+  Audio
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../camera.html"
+   class="gc-analytics-event"
+   title="Camera"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Camera"
+   >
+  Camera
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech/connect.html"
+   class="gc-analytics-event"
+   title="Connectivity"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Connectivity"
+   >
+  Connectivity
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../graphics.html"
+   class="gc-analytics-event"
+   title="Graphics"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Graphics"
+   >
+  Graphics
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../input.html"
+   class="gc-analytics-event"
+   title="Interaction"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Interaction"
+   >
+  Interaction
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../media.html"
+   class="gc-analytics-event"
+   title="Media"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Media"
+   >
+  Media
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../storage.html"
+   class="gc-analytics-event"
+   title="Storage"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Storage"
+   >
+  Storage
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../audio.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Audio">
+      <span class="devsite-nav-text" menu="_book">Audio</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../camera.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Camera">
+      <span class="devsite-nav-text" >Camera</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../tech/connect.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Connectivity">
+      <span class="devsite-nav-text" >Connectivity</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../graphics.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Graphics">
+      <span class="devsite-nav-text" >Graphics</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../input.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Interaction">
+      <span class="devsite-nav-text" >Interaction</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../media.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Media">
+      <span class="devsite-nav-text" >Media</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../storage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Storage">
+      <span class="devsite-nav-text" >Storage</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item"><a href="terminology.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Terminology">Terminology</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Implementation">Implementation</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-policy.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Policy Configuration">Policy Configuration</span></a></li><li class="devsite-nav-item"><a href="implement-shared-library.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Shared Library">Shared Library</span></a></li><li class="devsite-nav-item"><a href="implement-pre-processing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Pre-processing Effects">Pre-processing Effects</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item"><a href="data_formats.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Formats">Data Formats</span></a></li>
+                          <li class="devsite-nav-item"><a href="attributes.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Attributes">Attributes</span></a></li>
+                          <li class="devsite-nav-item"><a href="highres-effects.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="High-Resolution Effects">High-Resolution Effects</span></a></li>
+                          <li class="devsite-nav-item"><a href="aaudio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AAudio and MMAP">AAudio and MMAP</span></a></li>
+                          <li class="devsite-nav-item"><a href="warmup.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Warmup">Warmup</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Latency">Latency</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="latency/latency.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="latency/contrib.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Contributors">Contributors</span></a></li><li class="devsite-nav-item"><a href="latency/design.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Design">Design</span></a></li><li class="devsite-nav-item"><a href="latency/measure.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Measure">Measure</span></a></li><li class="devsite-nav-item"><a href="latency/testing_circuit.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Light Testing Circuit">Light Testing Circuit</span></a></li><li class="devsite-nav-item"><a href="latency/loopback.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Audio Loopback Dongle">Audio Loopback Dongle</span></a></li><li class="devsite-nav-item"><a href="latency/measurements.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Measurements">Measurements</span></a></li><li class="devsite-nav-item"><a href="latency/app.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Applications">Applications</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item"><a href="avoiding_pi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Priority Inversion">Priority Inversion</span></a></li>
+                          <li class="devsite-nav-item"><a href="src.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sample Rate Conversion">Sample Rate Conversion</span></a></li>
+                          <li class="devsite-nav-item"><a href="debugging.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Debugging">Debugging</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="MIDI">MIDI</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="midi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="midi_arch.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="MIDI Architecture">MIDI Architecture</span></a></li><li class="devsite-nav-item"><a href="midi_test.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="MIDI Test Procedure">MIDI Test Procedure</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item"><a href="usb.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="USB Digital Audio">USB Digital Audio</span></a></li>
+                          <li class="devsite-nav-item"><a href="tv.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="TV Audio">TV Audio</span></a></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Develop
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Audio
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">MIDI Test Procedure</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+
+
+<p>These tests may be used to validate the MIDI feature on Android devices.
+Successful execution of these tests is a prerequisite to
+<a href="midi-2.html#claim-feature">claim the MIDI feature</a>.
+</p>
+
+<h2 id="preparation">Preparation</h2>
+
+
+<h3 id="hardware">Hardware</h3>
+
+<p>
+The following hardware is needed for the tests.
+</p>
+
+<ul>
+  <li> MIDI keyboard with USB connector, e.g. the <a href="http://www.akaipro.com/product/lpk25">Akai LPK25</a></li>
+  <li> MIDI keyboard with Bluetooth Low Energy (BLE) support, e.g. the <a href="http://miselu.com/">Miselu C.24</a></li>
+  <li> USB cables</li>
+  <li> USB On-The-Go (OTG) adapter to convert a female USB-A to male micro-USB or USB-C</li>
+  <li> Android device running Android 6.0 Marshmallow or later release</li>
+  <li> Optional: desktop computer</li>
+</ul>
+
+<h3 id="apps">Apps</h3>
+
+<p>
+Several apps are used by this test procedure.
+The apps are available in source code on GitHub project
+<a href="https://github.com/philburk/android-midisuite">android-midisuite</a>,
+and via <em>Google Play</em>&trade; at links in the following table.
+</p>
+
+<table>
+<tr>
+  <th>Source code</th>
+  <th>Google&nbsp;Play&trade;</th>
+  <th>Description</th>
+</tr>
+<tr>
+  <td><a href="https://github.com/philburk/android-midisuite/tree/master/MidiScope">MidiScope</a> or
+    <a href="https://github.com/googlesamples/android-MidiScope">MidiScope</a></td>
+  <td><a href="https://play.google.com/store/apps/details?id=com.mobileer.example.midiscope">MIDI Scope</a></td>
+  <td>displays MIDI messages on-screen</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/philburk/android-midisuite/tree/master/MidiKeyboard">MidiKeyboard</a></td>
+  <td><a href="https://play.google.com/store/apps/details?id=com.mobileer.midikeyboard">MIDI Keyboard</a></td>
+  <td>sends MIDI messages by pressing an on-screen music keyboard</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/philburk/android-midisuite/tree/master/MidiSynthExample">MidiSynthExample</a> or
+    <br /><a href="https://github.com/googlesamples/android-MidiSynth">MidiSynth</a></td>
+  <td><a href="https://play.google.com/store/apps/details?id=com.mobileer.midisynthexample">MIDI Synth Ex</a></td>
+  <td>simple MIDI synthesizer that uses sawtooth oscillators</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/philburk/android-midisuite/tree/master/MidiBtlePairing">MidiBtlePairing</a></td>
+  <td><a href="https://play.google.com/store/apps/details?id=com.mobileer.example.midibtlepairing">MIDI BLE Connect</a></td>
+  <td>pairs an Android device with a BLE peripheral</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/philburk/android-midisuite/tree/master/MidiTools">MidiTools</a></td>
+  <td></td>
+  <td>library dependency of the above apps</td>
+</tr>
+</table>
+
+<p>
+If you choose to work from source code rather than install via <em>Google Play</em>&trade;,
+first build the app using the supplied <em>Android.mk</em>.
+Then install the app using
+<a href="http://developer.android.google.cn/tools/help/adb.html">Android Debug Bridge</a> (ADB).
+For example, to install the <em>MidiScope</em> app:</p>
+
+<ol>
+  <li> Use a workstation with ADB installed.</li>
+  <li> Connect a USB cable from the workstation to the Android device.</li>
+  <li> You may need to allow the USB connection on the Android device; see <a href="midi-2.html#usb-peripheral">USB peripheral mode</a></li>
+  <li> On the workstation, enter:</li>
+</ol>
+
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal">cd <var>THIS_FOLDER</var></code>
+<code class="devsite-terminal">adb install -r MidiScope.apk</code>
+</pre>
+
+
+<h2 id="virtual_synth_tests">Virtual synth tests</h2>
+
+
+<p>Note that a MIDI input port can have only one connection. So if another app is
+already using an input port, that port will not be available. If you cannot connect to
+an input port then try closing other apps.</p>
+
+<p>Hardware needed: Android device under test</p>
+
+<h3 id="simple_connection">Simple connection</h3>
+
+
+<p>Apps needed: <em>MidiKeyboard</em>, <em>MidiSynthExample</em></p>
+
+<p>This tests device enumeration, virtual devices, port connections, and message
+sending.</p>
+
+<ol>
+  <li> Adjust volume on Android device to about halfway.</li>
+  <li> Orient phone in landscape mode.</li>
+  <li> Launch <em>MidiKeyboard</em> app.</li>
+  <li> Select <strong>SynthExample</strong> from the spinner menu.</li>
+  <li> Play keys. You should hear notes being played in the <em>SynthExample</em> app.</li>
+  <li> Exit the application by pressing the <strong>Back</strong> button so that the port will be
+closed.</li>
+</ol>
+
+<h2 id="host_mode">USB test: host mode</h2>
+
+
+<p>Hardware needed: USB MIDI keyboard, USB cable, OTG adapter</p>
+
+<p>Repeat these tests several times. We have seen the USB stack crash hard on some
+prototype devices if devices were plugged in and unplugged a few times.</p>
+
+<h3 id="keyboard_already_plugged_in">Keyboard already plugged in</h3>
+
+
+<p>Apps needed: <em>MidiSynthExample</em> or <em>MidiScope</em></p>
+
+<p>This tests USB MIDI in host mode.</p>
+
+<ol>
+  <li> Adjust volume on Android device to about halfway.</li>
+  <li> Plug in USB keyboard using the OTG adapter.</li>
+  <li> Launch <em>SynthExample</em> app or the <em>MidiScope</em> app.</li>
+  <li> From the menu select  the USB keyboard. It will display the brand.</li>
+  <li> Play notes on the keyboard. If you ran <em>SynthExample</em> then you should hear notes
+being played on the phone. If you ran <em>MidiScope</em> then you should see <em>NoteOn</em> and
+<em>NoteOff</em> messages on-screen.</li>
+  <li> Unplug the keyboard. The <em>Sender for Synth</em> menu should display <em>- - - - -</em>.</li>
+  <li> Exit the application by pressing the <strong>Back</strong> button.</li>
+</ol>
+
+<h3 id="hot_plug_usb_keyboard">Hot-plug USB keyboard</h3>
+
+
+<p>Apps needed: <em>MidiSynthExample</em> or <em>MidiScope</em></p>
+
+<p>This tests USB MIDI in host mode.</p>
+
+<ol>
+  <li> Adjust volume on Android device to about halfway.</li>
+  <li> Make sure there is not a USB MIDI keyboard plugged in.</li>
+  <li> Launch <em>SynthExample</em> app.</li>
+  <li> At middle, next to <em>Sender for Synth</em>, look in menu. You should not see the USB
+keyboard listed.</li>
+  <li> Plug in USB keyboard using the OTG adapter.</li>
+  <li> At middle, next to <em>Sender for Synth</em>, select the USB keyboard. It will display
+the brand.</li>
+  <li> Play notes on the keyboard. You should hear notes being played on the phone.</li>
+  <li> At middle, next to <em>Sender for Synth</em>, select <strong>- - - - -</strong>.</li>
+  <li> Play notes on the keyboard. You should hear nothing.</li>
+  <li> At middle, next to <em>Sender for Synth</em>, select the USB keyboard. It will display
+the brand.</li>
+  <li> Play notes on the keyboard. You should hear notes being played on the phone.</li>
+  <li> Unplug the synthesizer. The <em>Sender for Synth</em> menu should display <em>- - - - -</em>.</li>
+  <li>  Exit the application by pressing the <strong>Back</strong> button.</li>
+</ol>
+
+<h2 id="peripheral_mode">USB test: peripheral mode</h2>
+
+
+<p>Hardware needed: USB cable, OTG adapter</p>
+
+<h3 id="android_to_android">Android-to-Android</h3>
+
+
+<p>Apps needed: <em>MidiKeyboard</em> on Android device under test, <em>MidiScope</em> on another
+Android device.</p>
+
+<p>Use Android devices as a peripheral controller for another Android device. To help test
+this mode, use another Android device running in host mode. Note that
+you could modify the test to work with a desktop computer running Digital Audio Workstation (DAW)
+software such as
+GarageBand.</p>
+
+<ol>
+  <li> Connect the USB cable to the Android device under test (Android device <strong>A</strong>).</li>
+  <li> Use an OTG adapter to connect the other end of the cable to a second Android
+device <strong>B</strong> that operates in host mode.</li>
+  <li> On Android device A:
+  <ol>
+    <li> Drag finger down from top of screen.</li>
+    <li> Select <strong>USB for Charging</strong> icon.</li>
+    <li> Select <strong>MIDI</strong>.</li>
+    <li> Launch <em>MidiKeyboard</em> app.</li>
+    <li> Select <strong>Android USB Peripheral Port</strong> from <em>Receiver for Keys</em> menu at top.</li>
+  </ol>
+  </li>
+  <li> On Android device B:
+  <ol>
+    <li> Launch <em>MidiScope</em> app.</li>
+    <li> Select the other Android device as the source.</li>
+  </ol>
+  </li>
+  <li> On Android device A:
+  <ol>
+    <li> Play notes on the keyboard and look for <em>NoteOn</em> and <em>NoteOff</em> on Android device B.</li>
+  </ol>
+  </li>
+  </ol>
+
+<h2 id="bluetooth_le_test">BLE test</h2>
+
+
+<p>Hardware needed: MIDI keyboard supporting BLE</p>
+
+<h3 id="basic_pairing_and_playing">Basic pairing and playing</h3>
+
+
+<p>Apps needed: <em>MidiBtlePairing</em>, <em>MidiSynthExample</em></p>
+
+<p>Test a keyboard connected to Android over BLE.</p>
+
+<ol>
+  <li> Reboot the Android device.</li>
+  <li> Power on the BLE keyboard.<br />
+       (The Miselu C.24 keyboard is powered on by pushing the button near the back so
+that it pops open. The power button on the C.24 pulses blue when in pairing
+mode.)</li>
+  <li> Launch the <em>MidiBtlePairing</em> app. It has a <em>MIDI+BTLE</em> icon.</li>
+  <li> Press the <strong>Bluetooth Scan</strong> button.</li>
+  <li> Select desired BLE peripheral.</li>
+  <li> The app should return to the main page, and you should see the peripheral listed. If
+you are using a C.24, then you will notice that the light should turn green on
+the C.24 to indicate paired mode.</li>
+  <li> Exit the app by pressing the <strong>Home</strong> button, not the <strong>Back</strong> button.</li>
+  <li> Launch the SynthExample app.</li>
+  <li> Select the BLE keyboard as the sender from the menu.</li>
+  <li> You should be able to press keys on the BLE keyboard and hear notes on
+Android.</li>
+</ol>
+
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/audio/midi_test by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 13:35:10 GMT -->
+</html>

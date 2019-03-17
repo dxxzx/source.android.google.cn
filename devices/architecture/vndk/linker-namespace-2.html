@@ -1,0 +1,2301 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/devices/architecture/vndk/linker-namespace.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:54:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Linker Namespace &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Linker Namespace &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="linker-namespace.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="linker-namespace.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+   aria-label="Design, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech/dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Design
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../architecture.html"
+   class="gc-analytics-event"
+   title="Architecture"
+   aria-label="Architecture, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Architecture"
+   >
+  Architecture
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility/overview-2.html"
+   class="gc-analytics-event"
+   title="Compatibility"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Compatibility"
+   >
+  Compatibility
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech/display.html"
+   class="gc-analytics-event"
+   title="Display"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Display"
+   >
+  Display
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech/settings/settings-guidelines.html"
+   class="gc-analytics-event"
+   title="Settings"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Settings"
+   >
+  Settings
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility/tests.html"
+   class="gc-analytics-event"
+   title="Tests"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Tests"
+   >
+  Tests
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../architecture.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Architecture">
+      <span class="devsite-nav-text" menu="_book">Architecture</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility/overview-2.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Compatibility">
+      <span class="devsite-nav-text" >Compatibility</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../tech/display.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Display">
+      <span class="devsite-nav-text" >Display</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../tech/settings/settings-guidelines.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Settings">
+      <span class="devsite-nav-text" >Settings</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility/tests.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Tests">
+      <span class="devsite-nav-text" >Tests</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../../architecture.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Hardware Abstraction Layer (HAL)">Hardware Abstraction Layer (HAL)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Legacy HALs">Legacy HALs</span></a></li><li class="devsite-nav-item"><a href="../hal-types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="HAL Types">HAL Types</span></a></li><li class="devsite-nav-item"><a href="../hal/framework-testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Framework Testing">Framework Testing</span></a></li><li class="devsite-nav-item"><a href="../hal/dynamic-lifecycle.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Dynamic Lifecycle">Dynamic Lifecycle</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Kernel">Kernel</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../kernel/releases.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Stable Releases &amp; Updates">Stable Releases &amp; Updates</span></a></li><li class="devsite-nav-item"><a href="../kernel/android-common.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Android Common Kernels">Android Common Kernels</span></a></li><li class="devsite-nav-item"><a href="../kernel/modular-kernels.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Modular Kernel Requirements">Modular Kernel Requirements</span></a></li><li class="devsite-nav-item"><a href="../kernel/reqs-interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interface Requirements">Interface Requirements</span></a></li><li class="devsite-nav-item"><a href="../kernel/bpf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Extending the kernel with eBPF">Extending the kernel with eBPF</span></a></li><li class="devsite-nav-item"><a href="../kernel/config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Configuration">Configuration</span></a></li><li class="devsite-nav-item"><a href="../kernel/hardening.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Kernel Hardening">Kernel Hardening</span></a></li><li class="devsite-nav-item"><a href="../kernel/squashfs.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="SquashFS">SquashFS</span></a></li><li class="devsite-nav-item"><a href="../kernel/lldb-debug.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="LLDB Debugging">LLDB Debugging</span></a></li><li class="devsite-nav-item"><a href="../kernel/network_tests.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Network Tests">Network Tests</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (General)">HIDL (General)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl/interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interfaces &amp; Packages">Interfaces &amp; Packages</span></a></li><li class="devsite-nav-item"><a href="../hidl/hashing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interface Hashing">Interface Hashing</span></a></li><li class="devsite-nav-item"><a href="../hidl/services.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Services &amp; Data Transfer">Services &amp; Data Transfer</span></a></li><li class="devsite-nav-item"><a href="../hidl/fmq.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Fast Message Queue">Fast Message Queue</span></a></li><li class="devsite-nav-item"><a href="../hidl/binder-ipc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Using Binder IPC">Using Binder IPC</span></a></li><li class="devsite-nav-item"><a href="../hidl/memoryblock.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Using MemoryBlock">Using MemoryBlock</span></a></li><li class="devsite-nav-item"><a href="../hidl/network-stack.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Network Stack Configuration Tools">Network Stack Configuration Tools</span></a></li><li class="devsite-nav-item"><a href="../hidl/threading.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Threading Models">Threading Models</span></a></li><li class="devsite-nav-item"><a href="../hidl/converting.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Converting Modules">Converting Modules</span></a></li><li class="devsite-nav-item"><a href="../hidl/types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl/versioning.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Versioning">Versioning</span></a></li><li class="devsite-nav-item"><a href="../hidl/code-style.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Code Style Guide">Code Style Guide</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (C++)">HIDL (C++)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-cpp.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/packages.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Packages">Packages</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interfaces">Interfaces</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/functions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Functions">Functions</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (Java)">HIDL (Java)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-java.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interface Errors &amp; Methods">Interface Errors &amp; Methods</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/constants.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Exporting Constants">Exporting Constants</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="ConfigStore HAL">ConfigStore HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configstore.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../configstore/interface.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Creating the HAL Interface">Creating the HAL Interface</span></a></li><li class="devsite-nav-item"><a href="../configstore/service.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing the Service">Implementing the Service</span></a></li><li class="devsite-nav-item"><a href="../configstore/client.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Client-Side Usage">Client-Side Usage</span></a></li><li class="devsite-nav-item"><a href="../configstore/add-class-item.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Adding Classes &amp; Items">Adding Classes &amp; Items</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Device Tree Overlays">Device Tree Overlays</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dto.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../dto/implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing DTO">Implementing DTO</span></a></li><li class="devsite-nav-item"><a href="../dto/syntax.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTO Syntax">DTO Syntax</span></a></li><li class="devsite-nav-item"><a href="../dto/compile.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Compiling &amp; Verifying">Compiling &amp; Verifying</span></a></li><li class="devsite-nav-item"><a href="../dto/multiple.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Using Multiple DTs">Using Multiple DTs</span></a></li><li class="devsite-nav-item"><a href="../dto/partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTB/DTBO Partition Format">DTB/DTBO Partition Format</span></a></li><li class="devsite-nav-item"><a href="../dto/optimize.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Optimizing DTO">Optimizing DTO</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor NDK">Vendor NDK</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vndk.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="enabling.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Enabling the VNDK">Enabling the VNDK</span></a></li><li class="devsite-nav-item"><a href="build-system.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Build System Support">VNDK Build System Support</span></a></li><li class="devsite-nav-item"><a href="extensions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Extensions">VNDK Extensions</span></a></li><li class="devsite-nav-item"><a href="deftool.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Definition Tool">VNDK Definition Tool</span></a></li><li class="devsite-nav-item"><a href="snapshot-design.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Snapshot Design">VNDK Snapshot Design</span></a></li><li class="devsite-nav-item"><a href="snapshot-generate.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Generating VNDK Snapshots">Generating VNDK Snapshots</span></a></li><li class="devsite-nav-item"><a href="linker-namespace.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Linker Namespace">Linker Namespace</span></a></li><li class="devsite-nav-item"><a href="dir-rules-sepolicy.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Directories, Rules, and sepolicy">Directories, Rules, and sepolicy</span></a></li><li class="devsite-nav-item"><a href="renderscript.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Renderscript">Renderscript</span></a></li><li class="devsite-nav-item"><a href="abi-stability.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="ABI Stability">ABI Stability</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor Interface Object">Vendor Interface Object</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vintf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../vintf/objects.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Manifests">Manifests</span></a></li><li class="devsite-nav-item"><a href="../vintf/comp-matrices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Compatibility Matrices">Compatibility Matrices</span></a></li><li class="devsite-nav-item"><a href="../vintf/fcm.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="FCM Lifecycle">FCM Lifecycle</span></a></li><li class="devsite-nav-item"><a href="../vintf/dm.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DM Development">DM Development</span></a></li><li class="devsite-nav-item"><a href="../vintf/match-rules.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Matching Rules">Matching Rules</span></a></li><li class="devsite-nav-item"><a href="../vintf/resources.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Resources">Resources</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bootloader">Bootloader</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bootloader.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/boot-reason.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Boot Reason">Boot Reason</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/boot-image-header.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Boot Image Header">Boot Image Header</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/system-as-root.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="System as Root">System as Root</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/partitions-images.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Partitions and Images">Partitions and Images</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/product-partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Product Partitions">Product Partitions</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/recovery-image.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Recovery Image">Recovery Image</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/flashing-updating.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Flashing and Updating">Flashing and Updating</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/unlock-trusty.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Unlocking and Trusty">Unlocking and Trusty</span></a></li></ul></devsite-expandable-nav></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Design
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../architecture.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Architecture
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Linker Namespace</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>The dynamic linker tackles two challenges in Treble VNDK design:</p>
+
+<ul>
+ <li>SP-HAL shared libraries and their dependencies, including VNDK-SP
+ libraries, are loaded into framework processes. There should be some
+ mechanisms to prevent symbol conflicts.</li>
+
+ <li><code>dlopen()</code> and <code>android_dlopen_ext()</code> may introduce
+ some run-time dependencies that are not visible at build-time and can be
+ difficult to detect using static analysis.</li>
+</ul>
+
+<p>These two challenges can be resolved by the <em>linker namespace</em>
+mechanism. The linker namespace mechanism is provided by the dynamic linker. It
+can isolate the shared libraries in different linker namespaces so that
+libraries with same library name but with different symbols won't conflict.</p>
+
+<p>On the other hand, the linker namespace mechanism provides the flexibility
+so that some shared libraries may be exported by a linker namespace and used by
+another linker namespace. These exported shared libraries may become the
+application programming interfaces that are public to other programs while
+hiding their implementation details within their linker namespaces.</p>
+
+<p>For example, <code>/system/lib[64]/libcutils.so</code> and
+<code>/system/lib[64]/vndk-sp-${VER}/libcutils.so</code> are two shared
+libraries. These two libraries may have different symbols. They are loaded
+into different linker namespaces so that framework modules can depend on
+<code>/system/lib[64]/libcutils.so</code> and SP-HAL shared libraries can
+depend on <code>/system/lib[64]/vndk-sp-${VER}/libcutils.so</code>.</p>
+
+<p>On the other hand, <code>/system/lib[64]/libc.so</code> is an example of
+public libraries that is exported by a linker namespace and imported into
+many linker namespaces. The dependencies of
+<code>/system/lib[64]/libc.so</code>, such as <code>libnetd_client.so</code>,
+are loaded into the namespace in which <code>/system/lib[64]/libc.so</code>
+resides. Other namespaces won't have accesses to those dependencies. This
+mechanism encapsulates the implementation details while providing the public
+interfaces.</p>
+
+
+
+
+
+<h2 id="how-does-it-work">How does it work?</h2>
+
+<p>The dynamic linker is responsible for loading the shared libraries specified
+in <code>DT_NEEDED</code> entries or the shared libraries specified by the
+argument of <code>dlopen()</code> or <code>android_dlopen_ext()</code>. In both
+cases, the dynamic linker finds the linker namespace where the caller
+resides and try to load the dependencies into the same linker namespace. If
+the dynamic linker cannot load the shared library into the specified linker
+namespace, it asks the <em>linked linker namespace</em> for exported shared
+libraries.</p>
+
+
+
+
+
+<h2 id="configuration-file-format">Configuration file format</h2>
+
+<p>The configuration file format is based on the INI file format. A typical
+configuration file looks like:</p>
+
+<pre class="prettyprint">
+dir.system = /system/bin
+dir.system = /system/xbin
+dir.vendor = /vendor/bin
+
+[system]
+additional.namespaces = sphal,vndk
+
+namespace.default.isolated = true
+namespace.default.search.paths = /system/${LIB}
+namespace.default.permitted.paths = /system/${LIB}/hw
+namespace.default.asan.search.paths = /data/asan/system/${LIB}:/system/${LIB}
+namespace.default.asan.permitted.paths = /data/asan/system/${LIB}/hw:/system/${LIB}/hw
+
+namespace.sphal.isolated = true
+namespace.sphal.visible = true
+namespace.sphal.search.paths = /odm/${LIB}:/vendor/${LIB}
+namespace.sphal.permitted.paths = /odm/${LIB}:/vendor/${LIB}
+namespace.sphal.asan.search.paths  = /data/asan/odm/${LIB}:/odm/${LIB}
+namespace.sphal.asan.search.paths += /data/asan/vendor/${LIB}:/vendor/${LIB}
+namespace.sphal.asan.permitted.paths  = /data/asan/odm/${LIB}:/odm/${LIB}
+namespace.sphal.asan.permitted.paths += /data/asan/vendor/${LIB}:/vendor/${LIB}
+namespace.sphal.links = default,vndk
+namespace.sphal.link.default.shared_libs = libc.so:libm.so
+namespace.sphal.link.vndk.shared_libs = libbase.so:libcutils.so
+
+namespace.vndk.isolated = true
+namespace.vndk.search.paths = /system/${LIB}/vndk-sp-29
+namespace.vndk.permitted.paths = /system/${LIB}/vndk-sp-29
+namespace.vndk.links = default
+namespace.vndk.link.default.shared_libs = libc.so:libm.so
+
+[vendor]
+namespace.default.isolated = false
+namespace.default.search.paths = /vendor/${LIB}:/system/${LIB}
+</pre>
+
+<p>The configuration file includes:</p>
+
+<ul>
+ <li>Several directory-section mapping properties at the beginning for the
+  dynamic linker to select the effective section.</li>
+
+ <li>
+  Several linker namespaces configuration sections:
+
+  <ul>
+   <li>Each section contains several namespaces (graph vertices) and several
+   fallback links between namespaces (graph arcs).</li>
+
+   <li>Each namespace has its own isolation, search paths, permitted paths,
+   and visibility settings.</li>
+  </ul>
+ </li>
+</ul>
+
+<p>The tables below describe the meaning of each property in detail.</p>
+
+
+
+<h3 id="directory-section-mapping-property">Directory-section mapping property</h3>
+
+<table>
+ <tr>
+  <th>Property</th>
+  <th>Description</th>
+  <th>Example</th>
+ </tr>
+
+ <tr>
+  <td><p><code>dir.<var>name</var></code></p></td>
+
+  <td>
+   <p>A path to a directory that the <code>[<var>name</var>]</code> section
+   applies to.</p>
+
+   <p>Each property maps the executables under the directory to a linker
+   namespaces configuration section. There might be two (or more) properties
+   with the same <code><var>name</var></code> but point to different
+   directories.</p>
+  </td>
+
+  <td>
+   <p>
+    <code>dir.system = /system/bin</code><br/>
+    <code>dir.system = /system/xbin</code><br/>
+    <code>dir.vendor = /vendor/bin</code><br/>
+   </p>
+
+   <p>This indicates that the configuration specified in the
+   <code>[system]</code> section applies to the executables that are loaded
+   from either <code>/system/bin</code> or <code>/system/xbin</code>.</p>
+
+   <p>The configuration specified in the <code>[vendor]</code> section applies
+   to the executables that are loaded from <code>/vendor/bin</code>.</p>
+  </td>
+ </tr>
+</table>
+
+
+
+<h3 id="relation-properties">Relation properties</h3>
+
+<table>
+ <tr>
+  <th>Property</th>
+  <th>Description</th>
+  <th>Example</th>
+ </tr>
+
+ <tr>
+  <td><code>additional.<wbr/>namespaces</code></td>
+
+  <td>
+   <p>A comma-separated list of additional namespaces (in addition to the
+   <code>default</code> namespace) for the section.</p>
+  </td>
+
+  <td>
+   <p><code>additional.<wbr/>namespaces = sphal,<wbr/>vndk</code></p>
+
+   <p>This indicates there are three namespaces (<code>default</code>,
+   <code>sphal</code>, and <code>vndk</code>) in the <code>[system]</code>
+   configuration.</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>namespace.<wbr/><var>name</var>.<wbr/>links</code></td>
+
+  <td>
+   <p>A comma-separated list of fallback namespaces.</p>
+
+   <p>If a shared library cannot be found in the current namespace, the dynamic
+   linker tries to load the shared library from the fallback namespaces. The
+   namespace specified at the beginning of the list has higher priority.</p>
+
+   <aside class="note">Note: Fallback namespaces are not transitive. For
+   example, namespace <em>A</em> links to namespace <em>B</em> and namespace
+   <em>B</em> links to namespace <em>C</em>. If the dynamic linker can not
+   find the library in namespace <em>A</em>, it ONLY searches namespace
+   <em>B</em>. It doesn't search namespace <em>C</em>.</aside>
+  </td>
+
+  <td>
+   <p><code>namespace.<wbr/>sphal.<wbr/>links = default,<wbr/>vndk</code></p>
+
+   <p>If a shared library or an executable requests a shared library that
+   cannot be loaded into the <code>sphal</code> namespace, the dynamic linker
+   tries to load the shared library from the <code>default</code>
+   namespace.</p>
+
+   <p>And then, if the shared library cannot be loaded from the
+   <code>default</code> namespace either, the dynamic linker tries to load the
+   shared library from the <code>vndk</code> namespace.</p>
+
+   <p>Finally, if all attempts fail, the dynamic linker returns an error.</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>namespace.<wbr/><var>name</var>.<wbr/>link.<wbr/><var>other</var>.<wbr/>shared_libs</code></td>
+
+  <td>
+   <p>A colon-separated list of shared libraries that can be searched in the
+   <code>other</code> namespaces when those libraries cannot be found in the
+   <code>name</code> namespace.</p>
+
+   <p>This property cannot be used with
+   <code>namespace.<wbr/><var>name</var>.<wbr/>link.<wbr/><var>other</var>.<wbr/>allow_all_shared_libs</code>.</p>
+
+   <aside class="note"><p>Note: This property shares the same underlying
+   implementation with
+   <a href="../../tech/config/namespaces_libraries.html">public.libraries.txt</a>
+   files. Both mechanisms control the imported shared libraries by specifying a
+   link with a library name filter.</p>
+
+   <p>The difference is that <code>ld.config.txt</code> is loaded by the
+   dynamic linker and all namespaces are created when a program starts. On the
+   contrary, <code>libnativeloader</code> creates a linker namespace when the
+   Zygote process is forked and specialized for an application. The namespace
+   for the application native libraries has a link that only allows the library
+   names specified in <code>public.libraries.txt</code>.</p></aside>
+  </td>
+
+  <td>
+   <p><code>namespace.<wbr/>sphal.<wbr/>link.<wbr/>default.<wbr/>shared_libs = libc.so:<wbr/>libm.so</code></p>
+
+   <p>This indicates that the fallback link only accepts <code>libc.so</code>
+   or <code>libm.so</code> as the requested library name. The dynamic linker
+   ignores the fallback link from <code>sphal</code> to
+   <code>default</code> namespace if the requested library name is not
+   <code>libc.so</code> nor <code>libm.so</code>.</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>namespace.<wbr/><var>name</var>.<wbr/>link.<wbr/><var>other</var>.<wbr/>allow_all_shared_libs</code></td>
+
+  <td>
+   <p>A boolean value that indicates whether all shared libraries can be
+   searched in the <code><var>other</var></code> namespace when those libraries cannot
+   be found in the <code><var>name</var></code> namespace.</p>
+
+   <p>This property cannot be used with
+   <code>namespace.<wbr/><var>name</var>.<wbr/>link.<wbr/><var>other</var>.<wbr/>shared_libs</code>.</p>
+  </td>
+
+  <td>
+   <p><code>namespace.<wbr/>vndk.<wbr/>link.<wbr/>sphal.<wbr/>allow_all_shared_libs = true</code></p>
+
+   <p>This indicates all library names can walk through the fallback link
+   from <code>vndk</code> to <code>sphal</code> namespace.</p>
+  </td>
+ </tr>
+</table>
+
+
+
+<h3 id="namespace-properties">Namespace properties</h3>
+
+<table>
+ <tr>
+  <th>Property</th>
+  <th>Description</th>
+  <th>Example</th>
+ </tr>
+
+ <tr>
+  <td><code>namespace.<wbr/><var>name</var>.<wbr/>isolated</code></td>
+
+  <td>
+   <p>A boolean value that indicates whether the dynamic linker should check
+   where the shared library resides.</p>
+
+   <p>If <code>isolated</code> is <code>true</code>, only the shared libraries
+   that are <em>in</em> one of the <code>search.paths</code> directories
+   (excluding sub-directories) or are <em>under</em> one of the
+   <code>permitted.paths</code> directories (including sub-directories) can be
+   loaded.</p>
+
+   <p>If <code>isolated</code> is <code>false</code> (default), the dynamic
+   linker doesn't check the path of shared libraries.</p>
+  </td>
+
+  <td>
+   <p><code>namespace.<wbr/>sphal.<wbr/>isolated = true</code></p>
+
+   <p>This indicates that only the shared libraries in
+   <code>search.paths</code> or under <code>permitted.paths</code> can be
+   loaded into the <code>sphal</code> namespace.</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>namespace.<wbr/><var>name</var>.<wbr/>search.paths</code></td>
+
+  <td>
+   <p>A colon-separated list of directories to search for shared
+   libraries.</p>
+
+   <p>The directories specified in <code>search.paths</code> are prepended
+   to the requested library name if function calls to <code>dlopen()</code> or
+   <code>DT_NEEDED</code> entries do not specify the full path. The directory
+   specified at the beginning of the list has higher priority.</p>
+
+   <p>When <code>isolated</code> is <code>true</code>, shared libraries that
+   are <em>in</em> one of the <code>search.paths</code> directories (excluding
+   sub-directories) can be loaded regardless the <code>permitted.paths</code>
+   property.</p>
+
+   <p>For example, if <code>search.paths</code> is
+   <code>/system/${LIB}</code> and <code>permitted.paths</code> is empty,
+   <code>/system/${LIB}/libc.so</code> can be loaded but
+   <code>/system/${LIB}/vndk/libutils.so</code> cannot be loaded.</p>
+
+   <aside class="note">Note: <code>${LIB}</code> is a built-in
+   placeholder. It is replaced by <code>lib</code> for 32-bit processes and
+   <code>lib64</code> for 64-bit processes.</aside>
+  </td>
+
+  <td>
+   <p><code>namespace.<wbr/>default.<wbr/>search.paths = /system/${LIB}</code></p>
+
+   <p>This indicates that the dynamic linker searches
+   <code>/system/${LIB}</code> for shared libraries.</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>namespace.<wbr/><var>name</var>.<wbr/>asan.search.paths</code></td>
+
+  <td>
+   <p>A colon-separated list of directories to search for shared libraries when
+   <a href="../../tech/debug/asan.html">Address Sanitizer</a> is enabled.</p>
+
+   <p><code>namespace.<wbr/><var>name</var>.<wbr/>search.paths</code> is
+   ignored when <a href="../../tech/debug/asan.html">Address Sanitizer</a> is
+   enabled.</p>
+  </td>
+
+  <td>
+   <p><code>namespace.<wbr/>default.<wbr/>asan.search.paths = /data/asan/system/${LIB}:<wbr/>/system/${LIB}</code></p>
+
+   <p>This indicates that when
+   <a href="../../tech/debug/asan.html">Address Sanitizer</a> is enabled the
+   dynamic linker searches <code>/data/asan/system/${LIB}</code> first and
+   then searches <code>/system/${LIB}</code>.</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>namespace.<wbr/><var>name</var>.<wbr/>permitted.paths</code></td>
+
+  <td>
+   <p>A colon-separated list of directories (including sub-directories) where
+   the dynamic linker can load the shared libraries (in addition to
+   <code>search.paths</code>) when <code>isolated</code> is
+   <code>true</code>.</p>
+
+   <p>The shared libraries that are under the sub-directories of
+   <code>permitted.paths</code> can be loaded too. For example, if
+   <code>permitted.paths</code> is <code>/system/${LIB}</code>,
+   both <code>/system/${LIB}/libc.so</code> and
+   <code>/system/${LIB}/vndk/libutils.so</code> can be loaded.</p>
+
+   <p>If <code>isolated</code> is <code>false</code>,
+   <code>permitted.paths</code> are ignored and a warning is emitted.</p>
+
+   <aside class="note">Note: <code>permitted.paths</code> are NOT
+   prepended to the requested library names when the dynamic linker is
+   searching for a shared library. Its main purpose is to allow programers to
+   load shared libraries into an isolated namespace by specifying the full path
+   of the shared library.</aside>
+  </td>
+
+  <td>
+   <p><code>namespace.<wbr/>default.<wbr/>permitted.paths = /system/${LIB}/hw</code></p>
+
+   <p>This indicates that the shared libraries under
+   <code>/system/${LIB}/hw</code> can be loaded into the isolated
+   <code>default</code> namespace.</p>
+
+   <p>For example, without <code>permitted.paths</code>,
+   <code>libaudiohal.so</code> won't be able to load
+   <code>/system/${LIB}/hw/audio.a2dp.default.so</code> into the
+   <code>default</code> namespace.</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>namespace.<wbr/><var>name</var>.<wbr/>asan.permitted.paths</code></td>
+
+  <td>
+   <p>A colon-separated list of directories where the dynamic linker can load
+   the shared libraries when <a href="../../tech/debug/asan.html">Address
+   Sanitizer</a> is enabled.</p>
+
+   <p><code>namespace.<wbr/><var>name</var>.<wbr/>permitted.paths</code> is
+   ignored when <a href="../../tech/debug/asan.html">Address Sanitizer</a> is
+   enabled.</p>
+  </td>
+
+  <td>
+   <p><code>namespace.<wbr/>default.<wbr/>asan.permitted.paths = /data/asan/system/${LIB}/hw:<wbr/>/system/${LIB}/hw</code></p>
+
+   <p>This indicates that when
+   <a href="../../tech/debug/asan.html">Address Sanitizer</a> is enabled shared
+   libraries under <code>/data/asan/system/${LIB}/hw</code> or
+   <code>/system/${LIB}/hw</code> can be loaded to the isolated
+   <code>default</code> namespace.</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>namespace.<wbr/><var>name</var>.<wbr/>visible</code></td>
+
+  <td>
+   <p>A boolean value that indicates whether the program (other than
+   <code>libc</code>) can obtain a linker namespace handle with
+   <code>android_get_exported_namespace()</code> and open a shared library in
+   the linker namespace by passing the handle to
+   <code>android_dlopen_ext()</code>.</p>
+
+   <p>If <code>visible</code> is <code>true</code>,
+   <code>android_get_exported_namespace()</code> always returns the handle if
+   the namespace exists.</p>
+
+   <p>If <code>visible</code> is <code>false</code> (default),
+   <code>android_get_exported_namespace()</code> always returns
+   <code>NULL</code> regardless the presence of the namespace. Shared libraries
+   can only be loaded into this namespace if (1) they are requested by another
+   linker namespace that has a fallback link to this namespace or (2) they are
+   requested by other shared libraries or executables in this namespace.</p>
+  </td>
+
+  <td>
+   <p><code>namespace.<wbr/>sphal.<wbr/>visible = true</code></p>
+
+   <p>This indicates that <code>android_get_exported_namespace("sphal")</code>
+   can return a valid linker namespace handle.</p>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+<h2 id="linker-namespace-isolation">Linker namespace isolation</h2>
+
+<p>There are three configuration files in
+<code>${android-src}/system/core/rootdir/etc</code>. Depending on the value of
+<code>PRODUCT_TREBLE_LINKER_NAMESPACES</code>, <code>BOARD_VNDK_VERSION</code>,
+and <code>BOARD_VNDK_RUNTIME_DISABLE</code> in <code>BoardConfig.mk</code>,
+different configurations are selected:</p>
+
+<table>
+ <tr>
+  <th><code>PRODUCT_TREBLE_</code><br/><code>LINKER_NAMESPACES</code></th>
+  <th><code>BOARD_VNDK_</code><br/><code>VERSION</code></th>
+  <th><code>BOARD_VNDK_</code><br/><code>RUNTIME_DISABLE</code></th>
+  <th>Selected configuration</th>
+  <th>VTS Requirement</th>
+ </tr>
+
+ <tr>
+  <td rowspan="3"><code>true</code></td>
+  <td rowspan="2"><code>current</code></td>
+  <td><em>empty</em></td>
+  <td><code>ld.config.txt</code></td>
+  <td>Mandatory for devices launched with Android P.</td>
+ </tr>
+
+ <tr>
+  <td><code>true</code></td>
+  <td rowspan="2"><code>ld.config.vndk_lite.txt</code></td>
+  <td rowspan="2">Mandatory for devices launched with Android 8.x.</td>
+ </tr>
+
+ <tr>
+  <td><em>empty</em></td>
+  <td><em>any</em></td>
+ </tr>
+
+ <tr>
+  <td><code>false</code></td>
+  <td><em>any</em></td>
+  <td><em>any</em></td>
+  <td><code>ld.config.legacy.txt</code></td>
+  <td>For non-Treble devices</td>
+ </tr>
+</table>
+
+<p><code>${android-src}/system/core/rootdir/etc/ld.config.vndk_lite.txt</code>
+isolates SP-HAL and VNDK-SP shared libraries. In Android 8.0 and higher, this
+must be the configuration file for dynamic linker when
+<code>PRODUCT_TREBLE_LINKER_NAMESPACES</code> is <code>true</code>.</p>
+
+<p><code>${android-src}/system/core/rootdir/etc/ld.config.txt</code> isolates
+SP-HAL and VNDK-SP shared libraries as well. In addition,
+<code>ld.config.txt</code> also provides the full dynamic linker isolation.
+It makes sure that modules in the system partition won't depend on the shared
+libraries in the vendor partitions and vice versa.</p>
+
+<p>In Android 8.1, <code>ld.config.txt</code> is the default configuration file
+and it is highly recommended to enable full dynamic linker isolation. However,
+if there are too many dependencies to be cleaned up in Android 8.1, you may add
+<code>BOARD_VNDK_RUNTIME_DISABLE</code> to <code>BoardConfig.mk</code>:</p>
+
+<pre class="prettyprint">
+BOARD_VNDK_RUNTIME_DISABLE := true
+</pre>
+
+<p>If <code>BOARD_VNDK_RUNTIME_DISABLE</code> is <code>true</code>,
+<code>${android-src}/system/core/rootdir/etc/ld.config.vndk_lite.txt</code>
+is installed.</p>
+
+
+
+<h3 id="ld.config.txt">ld.config.txt</h3>
+
+<p><code>ld.config.txt</code> isolates the shared library dependencies
+between the system partition and vendor partitions. Compared to
+<code>ld.config.txt</code> mentioned in previous subsection, the differences
+are outlined as following items:</p>
+
+<ul>
+ <li>
+  <p>Framework Processes</p>
+
+  <ul>
+   <li>Four namespaces (<code>default</code>, <code>vndk</code>,
+   <code>sphal</code>, and <code>rs</code>) are created.</li>
+
+   <li>All namespaces are isolated.</li>
+
+   <li>System shared libraries are loaded into the <code>default</code>
+   namespace.</li>
+
+   <li>SP-HALs are loaded into the <code>sphal</code> namespace.</li>
+
+   <li>VNDK-SP shared libraries loaded into the <code>vndk</code>
+   namespace.</li>
+  </ul>
+ </li>
+
+ <li>
+  <p>Vendor Processes</p>
+
+  <ul>
+   <li>Three namespaces (<code>default</code>, <code>vndk</code>, and
+   <code>system</code>) are created.</li>
+
+   <li>The <code>default</code> namespace is isolated.</li>
+
+   <li>Vendor shared libraries are loaded into the <code>default</code>
+   namespace.</li>
+
+   <li>VNDK and VNDK-SP shared libraries are loaded into the <code>vndk</code>
+   namespace.</li>
+
+   <li>LL-NDK and their dependencies are loaded into the <code>system</code>
+   namespace.</li>
+  </ul>
+ </li>
+</ul>
+
+<p>The relationship between the linker namespaces is depicted in the figure
+below:</p>
+
+<img src="../images/treble_vndk_linker_namespace3.png"
+     alt="Linker namespace graph described in ld.config.txt" />
+<figcaption>
+ <strong>Figure 1.</strong> Linker namespace isolation
+ (<code>ld.config.txt</code>)
+</figcaption>
+
+
+<p>In the graph above, <em>LL-NDK</em> and <em>VNDK-SP</em> stand for following
+shared libraries:</p>
+
+<ul>
+ <li>
+  <em>LL-NDK</em>
+
+  <ul>
+   <li><code>libEGL.so</code></li>
+   <li><code>libGLESv1_CM.so</code></li>
+   <li><code>libGLESv2.so</code></li>
+   <li><code>libGLESv3.so</code></li>
+   <li><code>libandroid_net.so</code></li>
+   <li><code>libc.so</code></li>
+   <li><code>libdl.so</code></li>
+   <li><code>liblog.so</code></li>
+   <li><code>libm.so</code></li>
+   <li><code>libnativewindow.so</code></li>
+   <li><code>libneuralnetworks.so</code></li>
+   <li><code>libsync.so</code></li>
+   <li><code>libvndksupport.so</code></li>
+   <li><code>libvulkan.so</code></li>
+  </ul>
+ </li>
+
+ <li>
+  <em>VNDK-SP</em>
+
+  <ul>
+   <li><code>android.hardware.graphics.common@1.0.so</code></li>
+   <li><code>android.hardware.graphics.mapper@2.0.so</code></li>
+   <li><code>android.hardware.renderscript@1.0.so</code></li>
+   <li><code>android.hidl.memory@1.0.so</code></li>
+   <li><code>libRSCpuRef.so</code></li>
+   <li><code>libRSDriver.so</code></li>
+   <li><code>libRS_internal.so</code></li>
+   <li><code>libbase.so</code></li>
+   <li><code>libbcinfo.so</code></li>
+   <li><code>libc++.so</code></li>
+   <li><code>libcutils.so</code></li>
+   <li><code>libhardware.so</code></li>
+   <li><code>libhidlbase.so</code></li>
+   <li><code>libhidlmemory.so</code></li>
+   <li><code>libhidltransport.so</code></li>
+   <li><code>libhwbinder.so</code></li>
+   <li><code>libion.so</code></li>
+   <li><code>libutils.so</code></li>
+   <li><code>libz.so</code></li>
+  </ul>
+ </li>
+</ul>
+
+<p>The table below presents the namespaces configuration for framework
+processes, which is excerpted from the <code>[system]</code> section in
+<code>ld.config.txt</code>:</p>
+
+<table>
+ <tr>
+  <th>Namespace</th>
+  <th>Property</th>
+  <th>Value</th>
+ </tr>
+
+ <tr>
+  <td rowspan="3"><code>default</code></td>
+  <td><code>search.paths</code></td>
+  <td>
+   <code>/system/${LIB}</code><br/>
+   <code>/product/${LIB}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>permitted.paths</code></td>
+  <td>
+   <code>/system/${LIB}/drm</code><br/>
+   <code>/system/${LIB}/extractors</code><br/>
+   <code>/system/${LIB}/hw</code><br/>
+   <code>/product/${LIB}</code><br/>
+   <code>/system/framework</code><br/>
+   <code>/system/app</code><br/>
+   <code>/system/priv-app</code><br/>
+   <code>/vendor/app</code><br/>
+   <code>/vendor/priv-app</code><br/>
+   <code>/oem/app</code><br/>
+   <code>/odm/priv-app</code><br/>
+   <code>/oem/app</code><br/>
+   <code>/product/framework</code><br/>
+   <code>/product/app</code><br/>
+   <code>/product/priv-app</code><br/>
+   <code>/data</code><br/>
+   <code>/mnt/expand</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td rowspan="8"><code>sphal</code></td>
+  <td><code>search.paths</code></td>
+  <td>
+   <code>/odm/${LIB}</code><br/>
+   <code>/vendor/${LIB}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>permitted.paths</code></td>
+  <td>
+   <code>/odm/${LIB}</code><br/>
+   <code>/vendor/${LIB}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>visible</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>links</code></td>
+  <td><code>default,vndk,rs</code></td>
+ </tr>
+
+ <tr>
+  <td><code>link.default.shared_libs</code></td>
+  <td><em>LL-NDK</em></td>
+ </tr>
+
+ <tr>
+  <td><code>link.vndk.shared_libs</code></td>
+  <td><em>VNDK-SP</em></td>
+ </tr>
+
+ <tr>
+  <td><code>link.rs.shared_libs</code></td>
+  <td><code>libRS_internal.so</code></td>
+ </tr>
+
+ <tr>
+  <td rowspan="7"><code>vndk</code> (For VNDK-SP)</td>
+  <td><code>search.paths</code></td>
+  <td>
+   <code>/odm/${LIB}/vndk-sp</code><br/>
+   <code>/vendor/${LIB}/vndk-sp</code><br/>
+   <code>/system/${LIB}/vndk-sp-${VER}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>permitted.paths</code></td>
+  <td>
+   <code>/odm/${LIB}/hw</code><br/>
+   <code>/odm/${LIB}/egl</code><br/>
+   <code>/vendor/${LIB}/hw</code><br/>
+   <code>/vendor/${LIB}/egl</code><br/>
+   <code>/system/${LIB}/vndk-sp-${VER}/hw</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>visible</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>links</code></td>
+  <td><code>default</code>, <code>sphal</code></td>
+ </tr>
+
+ <tr>
+  <td><code>link.default.shared_libs</code></td>
+  <td><em>LL-NDK</em></td>
+ </tr>
+
+ <tr>
+  <td><code>link.default.allow_all_shared_libs</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td rowspan="7"><code>rs</code> (For Renderscript)</td>
+  <td><code>search.paths</code></td>
+  <td>
+   <code>/odm/${LIB}/vndk-sp</code><br/>
+   <code>/vendor/${LIB}/vndk-sp</code><br/>
+   <code>/system/${LIB}/vndk-sp-${VER}</code><br/>
+   <code>/odm/${LIB}</code><br/>
+   <code>/vendor/${LIB}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>permitted.paths</code></td>
+  <td>
+   <code>/odm/${LIB}</code><br/>
+   <code>/vendor/${LIB}</code><br/>
+   <code>/data</code>  (For compiled RS kernel)
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>visible</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>links</code></td>
+  <td><code>default,vndk</code></td>
+ </tr>
+
+ <tr>
+  <td><code>link.default.shared_libs</code></td>
+  <td>
+   <em>LL-NDK</em><br/>
+   <code>libmediandk.so</code><br/>
+   <code>libft2.so</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>link.vndk.shared_libs</code></td>
+  <td><em>VNDK-SP</em></td>
+ </tr>
+</table>
+
+<p>The table below presents the namespaces configuration for vendor processes,
+which is excerpted from the <code>[vendor]</code> section in
+<code>ld.config.txt</code>:</p>
+
+<table>
+ <tr>
+  <th>Namespace</th>
+  <th>Property</th>
+  <th>Value</th>
+ </tr>
+
+ <tr>
+  <td rowspan="7"><code>default</code></td>
+  <td><code>search.paths</code></td>
+  <td>
+   <code>/odm/${LIB}</code><br/>
+   <code>/vendor/${LIB}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>permitted.paths</code></td>
+  <td>
+   <code>/odm</code><br/>
+   <code>/vendor</code><br/>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>visible</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>links</code></td>
+  <td><code>system</code>, <code>vndk</code></td>
+ </tr>
+
+ <tr>
+  <td><code>link.system.shared_libs</code></td>
+  <td><em>LL-NDK</em></td>
+ </tr>
+
+ <tr>
+  <td><code>link.vndk.shared_libs</code></td>
+  <td><em>VNDK</em>, <em>VNDK-SP</em> (vendor available)</td>
+ </tr>
+
+ <tr>
+  <td rowspan="5"><code>vndk</code></td>
+  <td><code>search.paths</code></td>
+  <td>
+   <code>/odm/${LIB}/vndk</code><br/>
+   <code>/odm/${LIB}/vndk-sp</code><br/>
+   <code>/vendor/${LIB}/vndk</code><br/>
+   <code>/vendor/${LIB}/vndk-sp</code><br/>
+   <code>/system/${LIB}/vndk-${VER}</code><br/>
+   <code>/system/${LIB}/vndk-sp-${VER}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>links</code></td>
+  <td><code>system</code>, <code>default</code></td>
+ </tr>
+
+ <tr>
+  <td><code>link.system.shared_libs</code></td>
+  <td><em>LL-NDK</em></td>
+ </tr>
+
+ <tr>
+  <td><code>link.default.allow_all_shared_libs</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td rowspan="2"><code>system</code></td>
+  <td><code>search.paths</code></td>
+  <td><code>/system/${LIB}</code></td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>false</code></td>
+ </tr>
+</table>
+
+
+<p>More details can be found in
+<code>${android-src}/system/core/rootdir/etc/ld.config.txt</code>.</p>
+
+
+
+<h3 id="ld.config.vndk_lite.txt">ld.config.vndk_lite.txt</h3>
+
+<p>As of Android 8.0, the dynamic linker is configured to isolate SP-HAL and
+VNDK-SP shared libraries such that their symbols do not conflict with other
+framework shared libraries. The relationship between the linker namespaces is
+shown below:</p>
+
+<img src="../images/treble_vndk_linker_namespace1.png"
+     alt="Linker namespace graph described in ld.config.vndk_lite.txt" />
+<figcaption>
+ <strong>Figure 2.</strong> Linker namespace isolation
+ (<code>ld.config.vndk_lite.txt</code>)
+</figcaption>
+
+<p><em>LL-NDK</em> and <em>VNDK-SP</em> stand for following shared libraries:
+</p>
+
+<ul>
+ <li>
+  <em>LL-NDK</em>
+
+  <ul>
+   <li><code>libEGL.so</code></li>
+   <li><code>libGLESv1_CM.so</code></li>
+   <li><code>libGLESv2.so</code></li>
+   <li><code>libc.so</code></li>
+   <li><code>libdl.so</code></li>
+   <li><code>liblog.so</code></li>
+   <li><code>libm.so</code></li>
+   <li><code>libnativewindow.so</code></li>
+   <li><code>libstdc++.so</code> (Not in <code>ld.config.txt</code>)</li>
+   <li><code>libsync.so</code></li>
+   <li><code>libvndksupport.so</code></li>
+   <li><code>libz.so</code> (Moved to <em>VNDK-SP</em> in
+   <code>ld.config.txt</code>)</li>
+  </ul>
+ </li>
+
+ <li>
+  <em>VNDK-SP</em>
+
+  <ul>
+   <li><code>android.hardware.graphics.common@1.0.so</code></li>
+   <li><code>android.hardware.graphics.mapper@2.0.so</code></li>
+   <li><code>android.hardware.renderscript@1.0.so</code></li>
+   <li><code>android.hidl.memory@1.0.so</code></li>
+   <li><code>libbase.so</code></li>
+   <li><code>libc++.so</code></li>
+   <li><code>libcutils.so</code></li>
+   <li><code>libhardware.so</code></li>
+   <li><code>libhidlbase.so</code></li>
+   <li><code>libhidlmemory.so</code></li>
+   <li><code>libhidltransport.so</code></li>
+   <li><code>libhwbinder.so</code></li>
+   <li><code>libion.so</code></li>
+   <li><code>libutils.so</code></li>
+  </ul>
+ </li>
+</ul>
+
+<p>The table below presents the namespaces configuration for framework
+processes, which is excerpted from the <code>[system]</code> section in
+<code>ld.config.vndk_lite.txt</code>:</p>
+
+<table>
+ <tr>
+  <th>Namespace</th>
+  <th>Property</th>
+  <th>Value</th>
+ </tr>
+
+ <tr>
+  <td rowspan="2"><code>default</code></td>
+  <td><code>search.paths</code></td>
+  <td>
+   <code>/system/${LIB}</code><br/>
+   <code>/odm/${LIB}</code><br/>
+   <code>/vendor/${LIB}</code><br/>
+   <code>/product/${LIB}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>false</code></td>
+ </tr>
+
+ <tr>
+  <td rowspan="8"><code>sphal</code></td>
+  <td><code>search.paths</code></td>
+  <td>
+   <code>/odm/${LIB}</code><br/>
+   <code>/vendor/${LIB}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>permitted.paths</code></td>
+  <td>
+   <code>/odm/${LIB}</code><br/>
+   <code>/vendor/${LIB}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>visible</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>links</code></td>
+  <td><code>default,vndk,rs</code></td>
+ </tr>
+ <tr>
+  <td><code>link.default.shared_libs</code></td>
+  <td><em>LL-NDK</em></td>
+ </tr>
+ <tr>
+  <td><code>link.vndk.shared_libs</code></td>
+  <td><em>VNDK-SP</em></td>
+ </tr>
+ <tr>
+  <td><code>link.rs.shared_libs</code></td>
+  <td><code>libRS_internal.so</code></td>
+ </tr>
+
+ <tr>
+  <td rowspan="6"><code>vndk</code> (For VNDK-SP)</td>
+  <td><code>search.paths</code></td>
+  <td>
+   <code>/odm/${LIB}/vndk-sp</code><br/>
+   <code>/vendor/${LIB}/vndk-sp</code><br/>
+   <code>/system/${LIB}/vndk-sp-${VER}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>permitted.paths</code></td>
+  <td>
+   <code>/odm/${LIB}/hw</code><br/>
+   <code>/odm/${LIB}/egl</code><br/>
+   <code>/vendor/${LIB}/hw</code><br/>
+   <code>/vendor/${LIB}/egl</code><br/>
+   <code>/system/${LIB}/vndk-sp-${VER}/hw</code><br/>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>visible</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>links</code></td>
+  <td><code>default</code></td>
+ </tr>
+
+ <tr>
+  <td><code>link.default.shared_libs</code></td>
+  <td><em>LL-NDK</em></td>
+ </tr>
+
+ <tr>
+  <td rowspan="7"><code>rs</code> (For Renderscript)</td>
+  <td><code>search.paths</code></td>
+  <td>
+   <code>/odm/${LIB}/vndk-sp</code><br/>
+   <code>/vendor/${LIB}/vndk-sp</code><br/>
+   <code>/system/${LIB}/vndk-sp-${VER}</code><br/>
+   <code>/odm/${LIB}</code><br/>
+   <code>/vendor/${LIB}</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>permitted.paths</code></td>
+  <td>
+   <code>/odm/${LIB}</code><br/>
+   <code>/vendor/${LIB}</code><br/>
+   <code>/data</code>  (For compiled RS kernel)
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>visible</code></td>
+  <td><code>true</code></td>
+ </tr>
+
+ <tr>
+  <td><code>links</code></td>
+  <td><code>default,vndk</code></td>
+ </tr>
+
+ <tr>
+  <td><code>link.default.shared_libs</code></td>
+  <td>
+   <em>LL-NDK</em><br/>
+   <code>libmediandk.so</code><br/>
+   <code>libft2.so</code>
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>link.vndk.shared_libs</code></td>
+  <td><em>VNDK-SP</em></td>
+ </tr>
+</table>
+
+<p>The table below presents the namespaces configuration for vendor processes,
+which is excerpted from the <code>[vendor]</code> section in
+<code>ld.config.vndk_lite.txt</code>:</p>
+
+<table>
+ <tr>
+  <th>Namespace</th>
+  <th>Property</th>
+  <th>Value</th>
+ </tr>
+
+ <tr>
+  <td rowspan="2"><code>default</code></td>
+  <td><code>search.paths</code></td>
+  <td>
+   <code>/odm/${LIB}</code><br/>
+   <code>/odm/${LIB}/vndk</code><br/>
+   <code>/odm/${LIB}/vndk-sp</code><br/>
+   <code>/vendor/${LIB}</code><br/>
+   <code>/vendor/${LIB}/vndk</code><br/>
+   <code>/vendor/${LIB}/vndk-sp</code><br/>
+   <code>/system/${LIB}/vndk-${VER}</code><br/>
+   <code>/system/${LIB}/vndk-sp-${VER}</code><br/>
+   <code>/system/${LIB}</code>  (Deprecated)<br/>
+   <code>/product/${LIB}</code>  (Deprecated)
+  </td>
+ </tr>
+
+ <tr>
+  <td><code>isolated</code></td>
+  <td><code>false</code></td>
+ </tr>
+</table>
+
+<p>More details can be found in
+<code>${android-src}/system/core/rootdir/etc/ld.config.vndk_lite.txt</code>.</p>
+
+
+
+
+
+<h2 id="document-history">Document history</h2>
+
+<h3 id="changes-p">Android P changes</h3>
+
+<ul>
+ <li><p>In Android P, the <code>vndk</code> linker namespace is added to vendor
+  processes and VNDK shared libraries are isolated from the default linker
+  namespace.</p></li>
+
+ <li><p>Replace <code>PRODUCT_FULL_TREBLE</code> with more specific
+  <code>PRODUCT_TREBLE_LINKER_NAMESPACES</code>.</p></li>
+
+ <li>
+  <p>Android P changes the names of the following dynamic linker configuration
+  files:</p>
+
+  <table>
+   <tr>
+    <th>Android 8.x</th>
+    <th>Android P</th>
+    <th>Description</th>
+   </tr>
+
+   <tr>
+    <td>ld.config.txt.in</td>
+    <td>ld.config.txt</td>
+    <td>For devices with runtime linker namespace isolation</td>
+   </tr>
+
+   <tr>
+    <td>ld.config.txt</td>
+    <td>ld.config.vndk_lite.txt</td>
+    <td>For devices with VNDK-SP linker namespace isolation</td>
+   </tr>
+
+   <tr>
+    <td>ld.config.legacy.txt</td>
+    <td>ld.config.legacy.txt</td>
+    <td>For legacy devices running Android 7.x and earlier</td>
+   </tr>
+  </table>
+ </li>
+
+ <li><p>Remove <code>android.hardware.graphics.allocator@2.0.so</code>.</p></li>
+
+ <li><p><code>product</code> and <code>odm</code> partitions are added.</p></li>
+</ul>
+
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/architecture/vndk/linker-namespace.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:54:02 GMT -->
+</html>

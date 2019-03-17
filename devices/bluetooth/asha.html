@@ -1,0 +1,1691 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/devices/bluetooth/asha by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:29:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Hearing Aid Audio Support Using Bluetooth LE &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Hearing Aid Audio Support Using Bluetooth LE &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="asha.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="asha.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+   aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech/dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Develop
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Audio"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Audio"
+   >
+  Audio
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../camera.html"
+   class="gc-analytics-event"
+   title="Camera"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Camera"
+   >
+  Camera
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../tech/connect.html"
+   class="gc-analytics-event"
+   title="Connectivity"
+   aria-label="Connectivity, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Connectivity"
+   >
+  Connectivity
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../graphics.html"
+   class="gc-analytics-event"
+   title="Graphics"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Graphics"
+   >
+  Graphics
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../input.html"
+   class="gc-analytics-event"
+   title="Interaction"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Interaction"
+   >
+  Interaction
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../media.html"
+   class="gc-analytics-event"
+   title="Media"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Media"
+   >
+  Media
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../storage.html"
+   class="gc-analytics-event"
+   title="Storage"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Storage"
+   >
+  Storage
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Audio">
+      <span class="devsite-nav-text" >Audio</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../camera.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Camera">
+      <span class="devsite-nav-text" >Camera</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../tech/connect.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Connectivity">
+      <span class="devsite-nav-text" menu="_book">Connectivity</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../graphics.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Graphics">
+      <span class="devsite-nav-text" >Graphics</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../input.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Interaction">
+      <span class="devsite-nav-text" >Interaction</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../media.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Media">
+      <span class="devsite-nav-text" >Media</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../storage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Storage">
+      <span class="devsite-nav-text" >Storage</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../tech/connect.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bluetooth and NFC">Bluetooth and NFC</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../bluetooth.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="services-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Bluetooth Services">Bluetooth Services</span></a></li><li class="devsite-nav-item"><a href="ble.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Bluetooth Low Energy">Bluetooth Low Energy</span></a></li><li class="devsite-nav-item"><a href="asha.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Hearing Aids over BLE">Hearing Aids over BLE</span></a></li><li class="devsite-nav-item"><a href="ble_advertising-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="BLE Advertising">BLE Advertising</span></a></li><li class="devsite-nav-item"><a href="verifying_debugging-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Verifying and Debugging Bluetooth">Verifying and Debugging Bluetooth</span></a></li><li class="devsite-nav-item"><a href="hci_requirements.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Bluetooth HCI Requirements">Bluetooth HCI Requirements</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/felica.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="NFC Host Card Emulation of FeliCa">NFC Host Card Emulation of FeliCa</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Calling and Messaging">Calling and Messaging</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tech/connect/block-numbers.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Block Phone Numbers">Block Phone Numbers</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/call-notification.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Call Notifications">Call Notifications</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/emergency-affordance.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Emergency Affordance">Emergency Affordance</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/ims.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="IP Multimedia Subsystem (IMS)">IP Multimedia Subsystem (IMS)</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/rtt.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Real-Time Text (RTT)">Real-Time Text (RTT)</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/third-party-call-apps.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Third-Party Calling Apps">Third-Party Calling Apps</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Carrier">Carrier</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tech/config/carrier.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../tech/config/update.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="APN and CarrierConfig">APN and CarrierConfig</span></a></li><li class="devsite-nav-item"><a href="../tech/config/carrierid.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Carrier Identification">Carrier Identification</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/data-plans.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Plans">Data Plans</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="eSIM">eSIM</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tech/connect/esim-overview.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing eSIM">Implementing eSIM</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/esim-modem-requirements.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Modem Requirements">Modem Requirements</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/esim-euicc-api.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="eUICC APIs">eUICC APIs</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../tech/connect/oob-users-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Out-of-Balance Users">Out-of-Balance Users</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/ril.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Radio Interface Layer (RIL)">Radio Interface Layer (RIL)</span></a></li><li class="devsite-nav-item"><a href="../tech/config/uicc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="UICC">UICC</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Wi-Fi">Wi-Fi</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tech/connect/wifi-overview.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/wifi-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi HAL">Wi-Fi HAL</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/wifi-infrastructure.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Infrastructure Features">Wi-Fi Infrastructure Features</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/wifi-sta-ap-concurrency.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="STA/AP Concurrency">STA/AP Concurrency</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/wifi-mac-randomization.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="MAC Randomization">MAC Randomization</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/wifi-passpoint.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Passpoint R1">Passpoint R1</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/carrier-wifi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Carrier Wi-Fi">Carrier Wi-Fi</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/wifi-aware.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Aware">Wi-Fi Aware</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/wifi-rtt.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Round Trip Time (RTT)">Wi-Fi Round Trip Time (RTT)</span></a></li><li class="devsite-nav-item"><a href="../tech/connect/wifi-debug.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Testing, Debugging, and Tuning Wi-Fi">Testing, Debugging, and Tuning Wi-Fi</span></a></li></ul></devsite-expandable-nav></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Develop
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../tech/connect.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Connectivity
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Hearing Aid Audio Support Using Bluetooth LE</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+    <!--
+      Copyright 2018 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License"); you may
+      not use this file except in compliance with the License.  You may obtain a
+      copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+      WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+      License for the specific language governing permissions and limitations
+      under the License.
+    -->
+
+    <p>
+      Hearing aid devices (HA) can have improved accessibility on
+      Android-powered mobile devices by using connection-oriented L2CAP
+      channels (CoC) over Bluetooth Low Energy (BLE). CoC uses an elastic
+      buffer of several audio packets to maintain a steady flow of audio, even
+      in the presence of packet loss. This buffer provides audio quality for
+      hearing aid devices at the expense of latency.
+    </p>
+
+    <p>
+      The design of CoC references the
+      <a href="https://www.bluetooth.com/specifications/bluetooth-core-specification">Bluetooth Core Specification Version 5</a>
+      (BT). To stay aligned with the core specifications, all multi-byte
+      values on this page shall be read as little-endian.
+    </p>
+
+    <h2 id="terminology">Terminology</h2>
+
+      <ul>
+        <li>
+          <strong>Central</strong> - the Android device that scans for
+          advertisements over Bluetooth.
+        </li>
+        <li>
+          <strong>Peripheral</strong> - the hearing instrument that sends
+          advertisement packets over Bluetooth.
+        </li>
+      </ul>
+
+    <h2 id="network-topology-and-system-architecture">
+      Network topology and system architecture
+    </h2>
+
+      <p>
+        When using CoC for hearing aids, the network topology assumes a single
+        central and two peripherals, one left and one right, as seen in
+        <strong>Figure 1</strong>. The Bluetooth audio system views the left
+        and right peripherals as a single audio sink. If a peripheral is
+        missing, due to a monaural fit or a loss of connection, then the
+        central mixes the left and right audio channel and transmits the audio
+        to the remaining peripheral. If the central loses connection to both
+        peripherals, then the central considers the link to the audio sink
+        lost. In those cases, the central routes audio to another output.
+      </p>
+
+      <p><img src="images/bt_asha_topology.png"><br />
+        <strong>Figure 1.</strong> Topology for pairing hearing aids with
+        Android mobile devices using CoC over BLE
+      </p>
+
+      <p>
+        When the central is not streaming audio data to the peripheral and can
+        maintain a BLE connection, the central should not disconnect from the
+        peripheral. Maintaining the connection allows the data communication
+        to the GATT server residing on the peripheral.
+      </p>
+
+      <aside class="note">
+        <strong>Note</strong>: There is no audio backlink between the central
+        and the peripherals. During a phone call the central microphones are
+        used for voice input.
+      </aside>
+
+      <p>
+        When pairing and connecting hearing devices, the central shall:
+      </p>
+
+      <ul>
+        <li>
+          Keep track of the more recent left and right peripherals paired.
+        </li>
+        <li>
+          Assume the peripherals are in use if a valid pairing exists. The
+          central shall attempt to connect or reconnect with the paired
+          device when the connection is lost.
+        </li>
+        <li>
+          Assume the peripherals are no longer in use if a pairing is deleted.
+        </li>
+      </ul>
+
+      <p>
+        In the cases above, <em>pairing</em> refers to the action of
+        registering a set of hearing aids with a given UUID and
+        left/right designators in the OS, not the Bluetooth pairing process.
+      </p>
+
+    <h2 id="system-requirements">System requirements</h2>
+
+      <p>
+        To properly implement CoC for a good user experience, the Bluetooth
+        systems in the central and peripheral devices shall:
+      </p>
+
+      <ul>
+        <li>
+          implement a compliant BT 4.2 or higher controller.
+        </li>
+        <li>
+          have the central support at least 2 simultaneous LE links with parameters as
+          described in <a href="#audio-packet-format-and-timing">Audio packet
+          format and timing</a>.
+        </li>
+        <li>
+          have the peripheral support at least 1 LE link with the parameters
+          described in <a href="#audio-packet-format-and-timing">Audio packet
+          format and timing</a>.
+        </li>
+        <li>
+          have an LE credit based flow control [BT Vol 3, Part A, Sec 10.1].
+          Devices shall support an MTU and MPS size of at least 241 bytes on
+          CoC and be able to buffer up to 8 packets.
+        </li>
+        <li>
+          have an LE data length extension [BT Vol 6, Part B, Sec 5.1.9] with
+          a payload of at least 167 bytes. For peripherals that support the
+          codec G.722 @ 24 kHz, the length is at least 247 bytes.
+        </li>
+        <li>
+          have the central device support the HCI LE Connection Update Command
+          and comply with the non-zero minimum_CE_Length parameter.
+        </li>
+        <li>
+          have the central maintain the data throughput for two LE CoC connections to two
+          different peripherals with the connection intervals and payload
+          sizes in <a href="#audio-packet-format-and-timing">Audio packet
+          format and timing</a>.
+        </li>
+        <li>
+          have the peripheral set the <code>MaxRxOctets</code> and
+          <code>MaxRxTime</code> parameters in the <code>LL_LENGTH_REQ</code>
+          or <code>LL_LENGTH_RSP</code> frames to be the smallest required values
+          that are necessary for these specifications. This lets the central
+          optimize its time scheduler when calculating the amount of time
+          needed to receive a frame.
+        </li>
+      </ul>
+
+      <p>
+        The peripheral and central may implement 2M PHY as specified in
+        BT 5. The central shall support audio links up to 64 kbit/s on both 1M
+        and 2M PHY but can choose to limit support for links
+        requiring more than 64 kbit/s to the 2M PHY in order to improve
+        coexistence with other 2.4 GHz devices. The BLE long range PHY shall
+        not be used.
+      </p>
+
+      <p>
+        CoC uses the standard Bluetooth mechanisms for link layer encryption
+        and frequency hopping.
+      </p>
+
+    <h2 id="asha-gatt-services">ASHA GATT services</h2>
+
+      <p>
+        A peripheral shall implement the Audio Streaming for Hearing Aid
+        (ASHA) GATT server service described below. The peripheral shall
+        advertise this service when in general discoverable mode to let the
+        central recognize an audio sink. Any LE audio streaming operations
+        shall require encryption. The BLE audio streaming consists of the
+        following characteristics:
+      </p>
+
+      <table>
+        <tr>
+          <th>Characteristic</th>
+          <th>Properties</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>ReadOnlyProperties</td>
+          <td>Read</td>
+          <td>See <a href="#readonlyproperties">ReadOnlyProperties</a>.</td>
+        </tr>
+        <tr>
+          <td>AudioControlPoint</td>
+          <td>Write without Response</td>
+          <td>
+            Control point for audio stream. See
+            <a href="#audiocontrolpoint">AudioControlPoint</a>.
+          </td>
+        </tr>
+        <tr>
+          <td>AudioStatusPoint</td>
+          <td>Read/Notify</td>
+          <td>
+            Status report field for the audio control point. Opcodes are:
+            <ul>
+              <li><strong>0</strong> - Status OK</li>
+              <li><strong>-1</strong> - Unknown command</li>
+              <li><strong>-2</strong> - Illegal parameters</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Volume</td>
+          <td>Write without Response</td>
+          <td>
+            Byte between -128 and 0 indicating volume in dB. -128 shall be
+            interpreted as mute. 0 dB with a rail-to-rail sine tone streamed
+            shall represent a 100 dBSPL input equivalent on the hearing
+            instrument. The central shall stream in nominal full scale and
+            use this variable to set the desired presentation level in the
+            peripheral.
+          </td>
+        </tr>
+        <tr>
+          <td>LE_PSM_OUT</td>
+          <td>Read</td>
+          <td>
+            PSM to use for connecting the audio channel. To be picked from the
+            dynamic range [BT Vol 3, Part A, Sec 4.22]
+          </td>
+        </tr>
+      </table>
+
+      <p>The UUIDs assigned to the service and characteristics:</p>
+
+      <p><strong>Service UUID</strong>: <code>{0xFDF0}</code></p>
+
+      <table>
+        <tr>
+          <th>Characteristic</th>
+          <th>UUID</th>
+        </tr>
+        <tr>
+          <td>ReadOnlyProperties</td>
+          <td><code>{6333651e-c481-4a3e-9169-7c902aad37bb}</code></td>
+        </tr>
+        <tr>
+          <td>AudioControlPoint</td>
+          <td><code>{f0d4de7e-4a88-476c-9d9f-1937b0996cc0}</code></td>
+        </tr>
+        <tr>
+          <td>AudioStatus</td>
+          <td><code>{38663f1a-e711-4cac-b641-326b56404837}</code></td>
+        </tr>
+        <tr>
+          <td>Volume</td>
+          <td><code>{00e4ca9e-ab14-41e4-8823-f9e70c7e91df}</code></td>
+        </tr>
+        <tr>
+          <td>LE_PSM_OUT</td>
+          <td><code>{2d410339-82b6-42aa-b34e-e2e01df8cc1a}</code></td>
+        </tr>
+      </table>
+
+      <p>
+        In addition to the ASHA GATT service, the peripheral shall also
+        implement the Device Information Service to let the central detect the
+        manufacturer names and device names of the peripheral.
+      </p>
+
+      <h3 id="readonlyproperties">ReadOnlyProperties</h3>
+
+        <p>ReadOnlyProperties have the following values:</p>
+
+        <table>
+          <tr>
+            <th>Byte</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>Version - must be 0x01</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>See <a href="#devicecapabilities">DeviceCapabilities</a>.</td>
+          </tr>
+          <tr>
+            <td>2-9</td>
+            <td>See <a href="#hisyncid">HiSyncId</a>.</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>See <a href="#featuremap">FeatureMap</a><strong>.</strong></td>
+          </tr>
+          <tr>
+            <td>11-12</td>
+            <td>
+              RenderDelay. This is the time, in milliseconds, from when the
+              peripheral receives an audio frame until the peripheral renders
+              the output. These bytes can be used to delay a video to
+              synchronize with the audio.
+            </td>
+          </tr>
+          <tr>
+            <td>13-14</td>
+            <td>
+              PreparationDelay. This is the time, in milliseconds, the
+              peripheral needs in order to render audio after the start
+              command has been issued,such as for loading codecs. The
+              PreparationDelay can be used by the central to delay audio
+              playback of short messages.
+            </td>
+          </tr>
+          <tr>
+            <td>15-16</td>
+            <td>
+              Supported <a href="#codec-ids">Codec IDs</a>. This is a bitmask
+              of supported codec IDs. A 1 in a bit location corresponds to a
+              supported codec. All other bits shall be set to 0.
+            </td>
+          </tr>
+        </table>
+
+
+          <h4 id="devicecapabilities">DeviceCapabilities</h4>
+
+            <table>
+              <tr>
+                <th>Bit</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>Device side (Left: 0, Right: 1).</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>
+                  Monaural (0) / Binaural (1). Indicates whether the device is
+                  stand-alone and receives mono data, or if the device is part
+                  of a set.
+                </td>
+              </tr>
+              <tr>
+                <td>2-7</td>
+                <td>Reserved (set to 0).</td>
+              </tr>
+            </table>
+
+          <h4 id="hisyncid">HiSyncID</h4>
+
+            <table>
+              <tr>
+                <th>Byte</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>0-1</td>
+                <td>ID of the manufacturer. It is the
+                  <a href="https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers">Company Identifiers</a>
+                  assigned by BTSIG.
+              </tr>
+              <tr>
+                <td>2-7</td>
+                <td>
+                  Unique ID identifying the hearing aid set. This ID must be set
+                  to the same on both the left and the right peripheral.
+                </td>
+              </tr>
+            </table>
+
+          <h4 id="featuremap">FeatureMap</h4>
+
+            <table>
+              <tr>
+                <th>Bit</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>LE CoC audio output streaming supported (Yes/No).</td>
+              </tr>
+              <tr>
+                <td>1-7</td>
+                <td>Reserved (set to 0).</td>
+              </tr>
+            </table>
+
+          <h4 id="codec-ids">Codec IDs</h4>
+
+            <p>
+              If the bit is set, then that particular codec is support.
+            </p>
+
+            <table>
+              <tr>
+                <th>Bit number</th>
+                <th>Codec and sample rate</th>
+                <th>Required bitrate</th>
+                <th>Frame time</th>
+                <th>Mandatory on central (C) or peripheral (P)</th>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>Reserved</td>
+                <td>Reserved</td>
+                <td>Reserved</td>
+                <td>Reserved</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>G.722 @ 16 kHz</td>
+                <td>64 kbit/s</td>
+                <td>Variable</td>
+                <td>C and P</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>G.722 @ 24 kHz</td>
+                <td>96 kbit/s</td>
+                <td>Variable</td>
+                <td>C</td>
+              </tr>
+              <tr>
+              <tr>
+                <td colspan="5">
+                  3-15 are reserved.<br />
+                  0 is also reserved.
+                </td>
+              </tr>
+            </table>
+
+        <h3 id="audiocontrolpoint">AudioControlPoint</h3>
+
+          <p>
+            This control point cannot be used when the LE CoC is closed. See
+            <a href="#starting-and-stopping-an-audio-stream">Starting and
+            stopping an audio stream</a> for the procedure description.
+          </p>
+
+          <table>
+            <tr>
+              <th>Opcode</th>
+              <th>Arguments</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>1 <code>«Start»</code></td>
+              <td>
+                <ul>
+                  <li><code>uint8_t codec</code></li>
+                  <li><code>uint8_t audiotype</code></li>
+                  <li><code>int8_t volume</code></li>
+                </ul>
+              </td>
+              <td>
+                Instructs the peripheral to reset the codec and start the
+                playback of frame 0. The codec field indicates the bit number
+                of the Codec ID to use for this playback.<br /><br />
+                The audio type bit field indicates the audio type(s) present
+                in the stream:
+                <ul>
+                  <li><strong>0</strong> - Unknown</li>
+                  <li><strong>1</strong> - Ringtone</li>
+                  <li><strong>2</strong> - Phonecall</li>
+                  <li><strong>3</strong> - Media</li>
+                </ul>
+                The peripheral shall not request connection updates before a
+                <code>«Stop»</code> opcode has been received.
+              </td>
+            </tr>
+            <tr>
+              <td>2 <code>«Stop»</code></td>
+              <td>None</td>
+              <td>
+                Instructs the peripheral to stop rendering audio. A new audio
+                setup sequence should be initiated following this stop in order
+                to render audio again.
+              </td>
+            </tr>
+          </table>
+
+    <h2 id="advertisements-for-asha-gatt-service">
+      Advertisements for ASHA GATT Service
+    </h2>
+
+      <p>
+        The <a href="#asha-gatt-services">service UUID</a> must be in the
+        advertisement packet. In either the advertisement or the scan
+        response frame, the peripherals must have a Service Data:
+      </p>
+
+      <table>
+        <tr>
+          <th>Byte offset</th>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>AD Length</td>
+          <td>&gt;= 0x09</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>AD Type</td>
+          <td>0x16 (Service Data - 16-bits UUID)</td>
+        </tr>
+        <tr>
+          <td>2-3</td>
+          <td>Service UUID</td>
+          <td>
+            0xFDF0 (little-endian)<br /><br />
+            <strong>Note:</strong> This is a temporary ID.
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Protocol Version</td>
+          <td>0x01</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Capability</td>
+          <td>
+            <ul>
+              <li><strong>0</strong> - left (0) or right (1) side</li>
+              <li><strong>1</strong> - single (0) or dual (1) devices.</li>
+              <li>
+                <strong>2-7</strong> - reserved. These bits must be zero.
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>6-9</td>
+          <td>Truncated <a href="#hisyncid">HiSyncID</a></td>
+          <td>
+            Four least significant bytes of the
+            <a href="#hisyncid">HiSyncId</a>.
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        The peripherals must have a <strong>Complete Local Name</strong>
+        data type that indicates the name of the hearing aid. This name will
+        be used on the mobile device's user interface so the user can select
+        the right device. The name shall not indicate the left or right
+        channel since this information is provided in
+        <a href="#devicecapabilities">DeviceCapabilities</a>.
+      </p>
+
+      <p>
+        If the peripherals put the name and ASHA service data types in the same
+        frame type (ADV or SCAN RESP), then the two data types ("Complete Local Name"
+        and "Service Data for ASHA service") shall appear
+        in the same frame. This lets the mobile device scanner get both data
+        in the same scan result.
+      </p>
+
+      <p>
+        During the initial pairing, it is important that the peripherals
+        advertise at a rate fast enough to let the mobile device quickly
+        discover the peripherals and bond to them.
+      </p>
+
+    <h2 id="synchronizing-left-and-right-peripheral-devices">Synchronizing left and right peripheral devices</h2>
+
+      <p>
+        To work with Bluetooth on Android mobile devices, peripheral devices
+        are responsible for ensuring that they are synchronized. The playback
+        on the left and right peripheral devices needs to be synchronized in
+        time. Both peripheral devices must play back audio samples from the
+        source at the same time.
+      </p>
+
+      <p>
+        Peripheral devices can synchronize their time by using a sequence
+        number prepended to each packet of the audio payload. The central will
+        guarantee that audio packets that are meant to be played at the same
+        time on each peripheral have the same sequence number. The sequence
+        number is incremented by one after each audio packet. Each sequence
+        number is 8-bit long, so the sequence numbers will repeat after 256
+        audio packets. Since each audio packet size and sample rate is fixed
+        for each connection, the two peripherals can deduce the relative
+        playing time. For more information about the audio packet, see
+        <a href="#audio-packet-format-and-timing">Audio packet format and
+          timing</a>.
+      </p>
+
+    <h2 id="audio-packet-format-and-timing">Audio packet format and timing</h2>
+
+      <p>
+        Packing audio frames (blocks of samples) into packets lets the hearing
+        instrument derive timing from the link layer timing anchors. To
+        simplify the implementation:
+      </p>
+
+      <ul>
+        <li>
+          An audio frame should always match the connection interval in time.
+          For example, if the connection interval is 10ms and sample rate is
+          16 kHz, then the audio frame shall contain 160 samples.
+        </li>
+        <li>
+          Sample rates in the system are restricted to multiples of 8kHz to
+          always have an integer number of samples in a frame regardless of
+          the frame time or the connection interval.
+        </li>
+        <li>
+          A sequence byte shall prepend audio frames. The sequence byte
+          shall be counting with wrap-around and allow the peripheral to
+          detect buffer mismatch or underflow.
+        </li>
+        <li>
+          An audio frame shall always fit into a single LE packet. The audio
+          frame shall be sent as a separate L2CAP packet. The size of the LE
+          LL PDU shall be:<br />
+            <em>audio payload size + 1 (sequence counter) + 6
+              (4 for L2CAP header, 2 for SDU)</em>
+        </li>
+        <li>
+          A connection event should always be large enough to contain 2 audio
+          packets and 2 empty packets for an ACK to reserve bandwidth for
+          retransmissions.
+        </li>
+      </ul>
+
+      <p>
+        To give the central some flexibility, the G.722 packet length is not
+        specified. The G.722 packet length can change based on the connection
+        interval that the central sets.
+      </p>
+
+      <p>
+        For all the codecs that a peripheral supports, the peripheral shall
+        support the connection parameters below. This is a non-exhaustive list
+        of configurations that the central can implement.
+      </p>
+
+      <table>
+        <tr>
+          <th>Codec</th>
+          <th>Bitrate</th>
+          <th>Connection interval</th>
+          <th>CE Length (1M/2M PHY)</th>
+          <th>Audio payload size</th>
+        </tr>
+        <tr>
+          <td>G.722 @ 16 kHz</td>
+          <td>64 kbit/s</td>
+          <td>10 ms</td>
+          <td>2500 / 2500 us</td>
+          <td>80 bytes</td>
+        </tr>
+        <tr>
+          <td>G.722 @ 16 kHz</td>
+          <td>64 kbit/s</td>
+          <td>20 ms</td>
+          <td>5000/3750 us</td>
+          <td>160 bytes</td>
+        </tr>
+        <tr>
+          <td>G.722 @ 24 kHz</td>
+          <td>96 kbit/s</td>
+          <td>10 ms</td>
+          <td>3750 / 2500 us</td>
+          <td>120 bytes</td>
+        </tr>
+        <tr>
+          <td>G.722 @ 24 kHz</td>
+          <td>96 kbit/s</td>
+          <td>20 ms</td>
+          <td>5000 / 3750 us</td>
+          <td>240 bytes</td>
+        </tr>
+      </table>
+
+    <h2 id="starting-and-stopping-an-audio-stream">
+      Starting and stopping an audio stream
+    </h2>
+
+      <aside class="note">
+        <strong>Note:</strong> This section is based on simulations with an
+        audio frame buffer depth of 6. This depth is enough to prevent
+        underflow on the peripheral in most packet loss scenarios. With this
+        depth, the network delay in the system is six times the connection
+        interval. To keep delays down, a short connection interval is
+        preferred.
+      </aside>
+
+      <p>
+        Before starting an audio stream, the central queries the peripherals
+        and establishes a common denominator codec. The stream
+        setup then proceeds through sequence:
+      </p>
+
+      <ol>
+        <li>PSM, and optionally, PreparationDelay and RenderDelay are read. These values
+          may be cached by the central.
+        </li>
+        <li>
+          CoC L2CAP channel is opened – the peripheral shall grant 8 credits
+          initially.
+        </li>
+        <li>
+          A connection update is issued to switch the link to the parameters
+          required for the chosen codec. The central may do this connection update
+          before the CoC connection in the previous step.
+        </li>
+        <li>
+          Both the central and the peripheral host wait for the update
+          complete event.
+        </li>
+        <li>
+          Restart the audio encoder, and reset the packet sequence count to 0.
+          A <code>«Start»</code> command with the relevant parameters is
+          issued on the AudioControlPoint. During audio streaming, the replica
+          should be available at every connection event even though the current
+          replica latency may be non-zero.
+        </li>
+        <li>
+          The peripheral takes the first audio packet from its internal queue
+          (sequence number 0) and plays it.
+        </li>
+      </ol>
+
+      <p>
+        The central issues the <strong>«Stop»</strong> command to close the
+        audio stream. Once the audio stream is closed, the peripheral may ask
+        for more relaxed connection parameters. Go through the sequence above
+        again to restart the audio streaming. When the central is not
+        streaming audio, it should still maintain a LE connection for GATT
+        services.
+      </p>
+
+      <p>
+        The peripheral shall not issue a connection update to the central.
+        To save power, the central may issue a connection update to the
+        peripheral when it is not streaming audio.
+      </p>
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/bluetooth/asha by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:29:04 GMT -->
+</html>

@@ -1,0 +1,1490 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/devices/architecture/kernel/reqs-interfaces by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:09:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Interface Requirements &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Interface Requirements &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="reqs-interfaces.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="reqs-interfaces.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+   aria-label="Design, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech/dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Design
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../architecture.html"
+   class="gc-analytics-event"
+   title="Architecture"
+   aria-label="Architecture, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Architecture"
+   >
+  Architecture
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility/overview-2.html"
+   class="gc-analytics-event"
+   title="Compatibility"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Compatibility"
+   >
+  Compatibility
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech/display.html"
+   class="gc-analytics-event"
+   title="Display"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Display"
+   >
+  Display
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech/settings/settings-guidelines.html"
+   class="gc-analytics-event"
+   title="Settings"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Settings"
+   >
+  Settings
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility/tests.html"
+   class="gc-analytics-event"
+   title="Tests"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Tests"
+   >
+  Tests
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../architecture.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Architecture">
+      <span class="devsite-nav-text" menu="_book">Architecture</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility/overview-2.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Compatibility">
+      <span class="devsite-nav-text" >Compatibility</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../tech/display.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Display">
+      <span class="devsite-nav-text" >Display</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../tech/settings/settings-guidelines.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Settings">
+      <span class="devsite-nav-text" >Settings</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility/tests.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Tests">
+      <span class="devsite-nav-text" >Tests</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../../architecture.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Hardware Abstraction Layer (HAL)">Hardware Abstraction Layer (HAL)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Legacy HALs">Legacy HALs</span></a></li><li class="devsite-nav-item"><a href="../hal-types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="HAL Types">HAL Types</span></a></li><li class="devsite-nav-item"><a href="../hal/framework-testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Framework Testing">Framework Testing</span></a></li><li class="devsite-nav-item"><a href="../hal/dynamic-lifecycle.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Dynamic Lifecycle">Dynamic Lifecycle</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Kernel">Kernel</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="releases.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Stable Releases &amp; Updates">Stable Releases &amp; Updates</span></a></li><li class="devsite-nav-item"><a href="android-common.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Android Common Kernels">Android Common Kernels</span></a></li><li class="devsite-nav-item"><a href="modular-kernels.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Modular Kernel Requirements">Modular Kernel Requirements</span></a></li><li class="devsite-nav-item"><a href="reqs-interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interface Requirements">Interface Requirements</span></a></li><li class="devsite-nav-item"><a href="bpf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Extending the kernel with eBPF">Extending the kernel with eBPF</span></a></li><li class="devsite-nav-item"><a href="config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Configuration">Configuration</span></a></li><li class="devsite-nav-item"><a href="hardening.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Kernel Hardening">Kernel Hardening</span></a></li><li class="devsite-nav-item"><a href="squashfs.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="SquashFS">SquashFS</span></a></li><li class="devsite-nav-item"><a href="lldb-debug.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="LLDB Debugging">LLDB Debugging</span></a></li><li class="devsite-nav-item"><a href="network_tests.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Network Tests">Network Tests</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (General)">HIDL (General)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl/interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interfaces &amp; Packages">Interfaces &amp; Packages</span></a></li><li class="devsite-nav-item"><a href="../hidl/hashing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interface Hashing">Interface Hashing</span></a></li><li class="devsite-nav-item"><a href="../hidl/services.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Services &amp; Data Transfer">Services &amp; Data Transfer</span></a></li><li class="devsite-nav-item"><a href="../hidl/fmq.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Fast Message Queue">Fast Message Queue</span></a></li><li class="devsite-nav-item"><a href="../hidl/binder-ipc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Using Binder IPC">Using Binder IPC</span></a></li><li class="devsite-nav-item"><a href="../hidl/memoryblock.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Using MemoryBlock">Using MemoryBlock</span></a></li><li class="devsite-nav-item"><a href="../hidl/network-stack.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Network Stack Configuration Tools">Network Stack Configuration Tools</span></a></li><li class="devsite-nav-item"><a href="../hidl/threading.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Threading Models">Threading Models</span></a></li><li class="devsite-nav-item"><a href="../hidl/converting.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Converting Modules">Converting Modules</span></a></li><li class="devsite-nav-item"><a href="../hidl/types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl/versioning.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Versioning">Versioning</span></a></li><li class="devsite-nav-item"><a href="../hidl/code-style.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Code Style Guide">Code Style Guide</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (C++)">HIDL (C++)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-cpp.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/packages.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Packages">Packages</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interfaces">Interfaces</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/functions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Functions">Functions</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (Java)">HIDL (Java)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-java.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interface Errors &amp; Methods">Interface Errors &amp; Methods</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/constants.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Exporting Constants">Exporting Constants</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="ConfigStore HAL">ConfigStore HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configstore.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../configstore/interface.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Creating the HAL Interface">Creating the HAL Interface</span></a></li><li class="devsite-nav-item"><a href="../configstore/service.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing the Service">Implementing the Service</span></a></li><li class="devsite-nav-item"><a href="../configstore/client.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Client-Side Usage">Client-Side Usage</span></a></li><li class="devsite-nav-item"><a href="../configstore/add-class-item.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Adding Classes &amp; Items">Adding Classes &amp; Items</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Device Tree Overlays">Device Tree Overlays</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dto.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../dto/implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing DTO">Implementing DTO</span></a></li><li class="devsite-nav-item"><a href="../dto/syntax.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTO Syntax">DTO Syntax</span></a></li><li class="devsite-nav-item"><a href="../dto/compile.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Compiling &amp; Verifying">Compiling &amp; Verifying</span></a></li><li class="devsite-nav-item"><a href="../dto/multiple.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Using Multiple DTs">Using Multiple DTs</span></a></li><li class="devsite-nav-item"><a href="../dto/partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTB/DTBO Partition Format">DTB/DTBO Partition Format</span></a></li><li class="devsite-nav-item"><a href="../dto/optimize.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Optimizing DTO">Optimizing DTO</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor NDK">Vendor NDK</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vndk.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../vndk/enabling.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Enabling the VNDK">Enabling the VNDK</span></a></li><li class="devsite-nav-item"><a href="../vndk/build-system.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Build System Support">VNDK Build System Support</span></a></li><li class="devsite-nav-item"><a href="../vndk/extensions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Extensions">VNDK Extensions</span></a></li><li class="devsite-nav-item"><a href="../vndk/deftool.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Definition Tool">VNDK Definition Tool</span></a></li><li class="devsite-nav-item"><a href="../vndk/snapshot-design.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Snapshot Design">VNDK Snapshot Design</span></a></li><li class="devsite-nav-item"><a href="../vndk/snapshot-generate.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Generating VNDK Snapshots">Generating VNDK Snapshots</span></a></li><li class="devsite-nav-item"><a href="../vndk/linker-namespace.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Linker Namespace">Linker Namespace</span></a></li><li class="devsite-nav-item"><a href="../vndk/dir-rules-sepolicy.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Directories, Rules, and sepolicy">Directories, Rules, and sepolicy</span></a></li><li class="devsite-nav-item"><a href="../vndk/renderscript.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Renderscript">Renderscript</span></a></li><li class="devsite-nav-item"><a href="../vndk/abi-stability.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="ABI Stability">ABI Stability</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor Interface Object">Vendor Interface Object</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vintf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../vintf/objects.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Manifests">Manifests</span></a></li><li class="devsite-nav-item"><a href="../vintf/comp-matrices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Compatibility Matrices">Compatibility Matrices</span></a></li><li class="devsite-nav-item"><a href="../vintf/fcm.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="FCM Lifecycle">FCM Lifecycle</span></a></li><li class="devsite-nav-item"><a href="../vintf/dm.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DM Development">DM Development</span></a></li><li class="devsite-nav-item"><a href="../vintf/match-rules.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Matching Rules">Matching Rules</span></a></li><li class="devsite-nav-item"><a href="../vintf/resources.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Resources">Resources</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bootloader">Bootloader</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bootloader.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/boot-reason.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Boot Reason">Boot Reason</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/boot-image-header.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Boot Image Header">Boot Image Header</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/system-as-root.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="System as Root">System as Root</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/partitions-images.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Partitions and Images">Partitions and Images</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/product-partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Product Partitions">Product Partitions</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/recovery-image.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Recovery Image">Recovery Image</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/flashing-updating.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Flashing and Updating">Flashing and Updating</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/unlock-trusty.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Unlocking and Trusty">Unlocking and Trusty</span></a></li></ul></devsite-expandable-nav></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Design
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../architecture.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Architecture
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Interface Requirements</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>This page describes a subset of the Linux kernel interfaces on which Android
+relies to function properly. The presence and correctness of these interfaces are
+tested as part of the <a href="../../tech/vts/index.html">Vendor Test Suite
+(VTS)</a>. This subset will grow over time to contain a larger portion of
+Android kernel interfaces.</p>
+
+<h2 id="system-calls">System calls</h2>
+<p>All system calls are expected to provide the same signatures and semantics as
+in the upstream Linux kernel of the same version.</p>
+
+<h3 id="prctl">prctl</h3>
+<p>In addition to the upstream <code>prctl</code> operations for supported
+kernel versions, Android relies on additional <code>prctl</code> operations, the
+implementation of which can be found in the android-common kernel.</p>
+
+<pre class="prettyprint">
+PR_SET_TIMERSLACK_PID
+PR_SET_VMA
+</pre>
+
+<h2 id="filesystems">Filesystems</h2>
+<p>The Linux kernel exports interfaces via several filesystems. Android expects
+these interfaces to communicate the same information, in the same format, and
+provide the same semantics as in the upstream Linux kernel. For interfaces that
+do not exist upstream, the appropriate behavior is dictated by the corresponding
+branch of the Android common kernel.</p>
+
+<h3 id="procfs">procfs</h3>
+<table>
+  <tr>
+   <th>Interface</th>
+   <th>Description</th>
+  </tr>
+  <tr>
+  <td>/proc/asound/</td>
+  <td>Read-only file showing the list of currently configured ALSA drivers.</td>
+  </tr>
+  <tr>
+   <td>/proc/cmdline</td>
+   <td>Read-only file containing command line arguments passed to the kernel.
+   </td>
+  </tr>
+  <tr>
+   <td>/proc/config.gz</td>
+   <td>Read-only file containing kernel build configuration.</td>
+  </tr>
+  <tr>
+   <td>/proc/cpuinfo</td>
+   <td>Read-only file containing architecture-specific CPU details.</td>
+  </tr>
+  <tr>
+    <td>/proc/diskstats</td>
+    <td>Read-only file showing I/O statistics of block devices.</td>
+  </tr>
+  <tr>
+    <td>/proc/filesystems</td>
+    <td>Read-only file listing filesystems currently supported by the
+    kernel.</td>
+  </tr>
+  <tr>
+  <tr>
+   <td>/proc/kmsg</td>
+   <td>Read-only file showing kernel messages in real time.</td>
+  </tr>
+  <tr>
+    <td>/proc/loadavg</td>
+    <td>Read-only file showing CPU and IO load average over time.</td>
+  </tr>
+  <tr>
+   <td>/proc/meminfo</td>
+   <td>Read-only file showing memory subsystem details.</td>
+  </tr>
+  <tr>
+    <td>/proc/misc</td>
+    <td>Read-only file listing miscellaneous drivers registered on the
+    miscellaneous major device.</td>
+  </tr>
+  <tr>
+   <td>/proc/modules</td>
+   <td>Read-only file containing information about loaded kernel modules.</td>
+  </tr>
+  <tr>
+   <td>/proc/mounts</td>
+ <td>Symlink to <code>/proc/self/mounts</code>, which is a read-only file
+ listing information about the mounted filesystems.</td>
+  </tr>
+  <tr>
+    <td>/proc/net</td>
+    <td>Directory containing a variety of network stack parameters.</td>
+  </tr>
+  <tr>
+   <td>/proc/net/xt_qtaguid/</td>
+   <td>Read-write file providing information about tagged sockets.</td>
+  </tr>
+  <tr>
+    <td>/proc/pagetypeinfo</td>
+    <td>Read-only file containing page allocator information.</td>
+  </tr>
+  <tr>
+   <td>/proc/stat</td>
+   <td>Read-only file containing various kernel and system statistics.</td>
+  </tr>
+  <tr>
+    <td>/proc/swaps</td>
+    <td>Read-only file showing swap space utilization. <strong>This file is
+    optional; its contents and permissions will be verified in VTS only if the
+    file is present</strong>.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/abi/swp</td>
+    <td>Read-write file which determines the behavior of the obsoleted ARM
+    instruction SWP.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/fs/pipe-max-size</td>
+    <td>Read-write file that reports the maximum size, in bytes, of an
+    individual pipe buffer.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/fs/protected_hardlinks</td>
+    <td>Read-write file that controls the behavior of creation of hard links.
+    </td>
+  </tr>
+  <tr>
+    <td>/proc/sys/fs/protected_symlinks</td>
+    <td>Read-write file that controls the behavior of creation of symbolic
+    links.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/fs/suid_dumpable</td>
+    <td>Read-write file that controls the core dump mode for setuid or otherwise
+    protected/tainted binaries.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/core_pattern</td>
+    <td>Read-write file that specifies the core dump filename pattern.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/core_pipe_limit</td>
+    <td>Read-write file that defines how many concurrent crashing processes may
+    be piped to user applications in parallel.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/dmesg_restrict</td>
+    <td>Read-write file that controls whether unprivileged users may access
+    dmesg.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/domainname</td>
+    <td>Read-write file that contains the YP/NIS domain name of the system.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/hostname</td>
+    <td>Read-write file that determines the host name of the system.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/hung_task_timeout_secs</td>
+    <td>Read-write file that controls the timeout used to determine when a task
+    has become non-responsive and should be considered hung. <strong>This file
+    is optional; its contents and permissions will be verified in VTS only if
+    the file is present</strong>.</td>
+  </tr>
+  <tr>
+   <td>/proc/sys/kernel/kptr_restrict</td>
+   <td>Read-write file that determines whether kernel pointers are printed in
+   <code>proc</code> files and other interfaces.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/modules_disabled</td>
+    <td>Read-write file that controls whether kernel modules may be loaded.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/panic_on_oops</td>
+    <td>Read-write file that controls the kernel's behavior on oops.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/perf_event_max_sample_rate</td>
+    <td>Read-write file that controls the maximum sample rate of performance
+    events.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/perf_event_paranoid</td>
+    <td>Read-write file that controls the usage of the performance events system
+    by unprivileged users.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/pid_max</td>
+    <td>Read-write file that contains the PID allocation wrap value.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/kernel/random/boot_id</td>
+    <td>Read-only file that contains a new random ID on each boot.</td>
+  </tr>
+  <tr>
+   <td>/proc/sys/kernel/randomize_va_space</td>
+   <td>Read-write file that determines the address layout randomization policy
+   for the system.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/kernel/sched_child_runs_first</td>
+  <td>Read-write file that controls whether newly forked tasks are favored in
+  scheduling over their parent tasks.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/kernel/sched_latency_ns</td>
+  <td>Read-write file that contains the maximum latency, in nanoseconds, a task
+  may incur prior to being scheduled.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/kernel/sched_rt_period_us</td>
+  <td>Read-write file that contains the period length used by the system-wide RT
+  execution limit in microseconds.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/kernel/sched_rt_runtime_us</td>
+  <td>Read-write file that contains the amount of time, relative to
+  sched_rt_period_us, that the system may execute RT tasks.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/kernel/sched_tunable_scaling</td>
+  <td>Read-write file that controls whether sched_latency_ns should be
+  automatically adjusted by the scheduler based on the number of CPUs.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/kernel/sched_wakeup_granularity_ns</td>
+  <td>Read-write file that contains how much more virtual runtime task A must
+  have than task B in nanoseconds for task B to preempt it.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/kernel/sysrq</td>
+  <td>Read-write file that controls the functions allowed to be invoked via the
+  sysrq key.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/net/*</td>
+  <td>Directory containing a variety of network stack parameters.</td>
+  </tr>
+  <tr>
+  <td>/proc/sysrq-trigger</td>
+  <td>Write-only file that can be used to initiate sysrq functions.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/vm/dirty_background_ratio</td>
+  <td>Read-write file that contains, as a percentage of total available memory
+  (free pages and reclaimable pages), the number of pages at which the
+  background kernel flusher threads will start writing out dirty data.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/vm/dirty_expire_centisecs</td>
+  <td>Read-write file that defines when dirty data is old enough to be eligible
+  for write out by the kernel flusher threads.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/vm/drop_caches</td>
+  <td>Read-write file that can be used to force the kernel to drop clean
+  caches.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/vm/extra_free_kbytes</td>
+  <td>Read-write file that can be used to keep extra free memory between the
+  threshold where background reclaim (kswapd) kicks in, and the threshold
+  where direct reclaim (by allocating processes) kicks in. <strong>This file
+  is optional; its contents and permissions will be verified in VTS only if
+  the file is present</strong>.</td>
+  </tr>
+  <tr>
+  <td>/proc/sys/vm/max_map_count</td>
+  <td>Read-write file that contains the maximum number of memory map areas a
+  process may have.</td>
+  </tr>
+
+  <tr>
+   <td>/proc/sys/vm/mmap_min_addr</td>
+   <td>Read-write file that determines the minimum address than can be
+   <code>mmap</code>'d.</td>
+  </tr>
+  <tr>
+   <td>/proc/sys/vm/mmap_rnd_bits</td>
+   <td>Read-write file that specifies the amount of randomness in
+   <code>mmap</code>'d addresses.</td>
+  </tr>
+  <tr>
+   <td>/proc/sys/vm/mmap_rnd_compat_bits</td>
+   <td>Read-write file that specifies the amount of randomness in
+   <code>mmap</code>'d addresses.</td>
+  </tr>
+  <tr>
+   <td>/proc/sys/vm/overcommit_memory</td>
+   <td>Read-write file that determines the kernel virtual memory accounting
+   mode.</td>
+  </tr>
+  <tr>
+    <td>/proc/sys/vm/page-cluster</td>
+    <td>Read-write file that controls the number of pages up to which
+    consecutive pages are read in from swap in a single attempt.</td>
+  </tr>
+  <tr>
+   <td>/proc/uid_cputime/remove_uid_range</td>
+   <td>Write-only file that, when written, removes UIDs from being shown in
+   <code>/proc/uid_cputime/show_uid_stat</code>.</td>
+  </tr>
+  <tr>
+   <td>/proc/uid_cputime/show_uid_stat</td>
+   <td>Read-only file containing the time a UID's processes spent in user and
+   kernel space.</td>
+  </tr>
+  <tr>
+  <td>/proc/uid_io/stats</td>
+  <td>Read-only file containing a list of I/O stats for each UID in the
+  system</td>
+  </tr>
+  <tr>
+  <td>/proc/uid_procstat/set</td>
+  <td>Write-only file used to configure a UID as foreground or background.</td>
+  </tr>
+  <tr>
+  <td>/proc/uid_time_in_state</td>
+  <td>Read-only file containing the time each UID's processes spend executing at
+  each available frequency. <strong>This file is optional; its contents and
+  permissions will be verified in VTS only if the file is present</strong>.</td>
+  </tr>
+  <tr>
+  <td>/proc/uptime</td>
+  <td>Read-only file that shows how long the system has been running.</td>
+  </tr>
+  <tr>
+   <td>/proc/version</td>
+   <td>Read-only file containing a string describing the kernel version.</td>
+  </tr>
+  <tr>
+   <td>/proc/vmallocinfo</td>
+   <td>Read-only file containing <code>vmalloc</code>'d ranges.</td>
+  </tr>
+  <tr>
+    <td>/proc/vmstat</td>
+    <td>Read-only file containing virtual memory statistics from the kernel.
+    </td>
+  </tr>
+  <tr>
+   <td>/proc/zoneinfo</td>
+   <td>Read-only file containing information about memory zones.</td>
+  </tr>
+</table>
+
+<h3 id="dev">dev</h3>
+
+<table>
+  <tr>
+   <th>Interface</th>
+   <th>Description</th>
+  </tr>
+  <tr>
+   <td>/dev/ashmem</td>
+   <td>Anonymous shared memory device file.</td>
+  </tr>
+  <tr>
+   <td>/dev/binder</td>
+   <td>Binder device file.</td>
+  </tr>
+  <tr>
+   <td>/dev/hwbinder</td>
+   <td>Hardware binder device file.</td>
+  </tr>
+  <tr>
+   <td>/dev/tun</td>
+   <td>Universal TUN/TAP device file.</td>
+  </tr>
+  <tr>
+   <td>/dev/xt_qtaguid</td>
+   <td>QTAGUID netfilter device file.</td>
+  </tr>
+</table>
+
+<h3 id="sysfs">sysfs</h3>
+<table>
+  <tr>
+   <th>Interface</th>
+   <th>Description</th>
+  </tr>
+  <tr>
+  <td>/sys/class/net/*/mtu</td>
+  <td>Read-write file containing the maximum transmission unit for each
+  interface.</td>
+  </tr>
+  <tr>
+  <td>/sys/class/rtc/*/hctosys</td>
+  <td>Read-only file showing whether a particular rtc supplies the system time
+    on boot and resume.</td>
+  </tr>
+  <tr>
+  <td>/sys/devices/system/cpu/</td>
+  <td>Directory containing information about CPU configuration and
+  frequency.</td>
+  </tr>
+  <tr>
+  <td>/sys/kernel/ipv4</td>
+  <td>Directory of read-write files to configure TCP socket buffer sizes.</td>
+  </tr>
+  <tr>
+  <td>/sys/kernel/wakeup_reasons</td>
+  <td>Directory of read-only files containing the last suspend time and resume
+  reason.</td>
+  </tr>
+  <tr>
+  <td>/sys/power/state</td>
+  <td>Read-write file that controls the system sleep states.</td>
+  </tr>
+  <tr>
+  <td>/sys/power/wake_lock</td>
+  <td>Read-write file that contains the active wake locks.</td>
+  </tr>
+  <tr>
+  <td>/sys/power/wake_unlock</td>
+  <td>Read-write file that contains non-active wake locks.</td>
+  </tr>
+  <tr>
+  <td>/sys/power/wakeup_count</td>
+  <td>Read-write file that can be used to put the system into a sleep state
+  while taking into account the concurrent arrival of wakeup events.</td>
+  </tr>
+</table>
+
+<h3 id="selinuxfs">selinuxfs</h3>
+<p>The framework mounts <code>selinuxfs</code> at <code>/sys/fs/selinux</code>.
+</p>
+
+<table>
+  <tr>
+   <th>Path</th>
+   <th>Description</th>
+  </tr>
+  <tr>
+   <td>/sys/fs/selinux/checkreqprot</td>
+   <td>Read/write file containing a binary flag that determines how selinux
+   protections are checked on <code>mmap</code> and <code>mprotect</code> calls.
+   </td>
+  </tr>
+  <tr>
+   <td>/sys/fs/selinux/null</td>
+   <td>Read/write null device for use by selinux.</td>
+  </tr>
+  <tr>
+   <td>/sys/fs/selinux/policy</td>
+   <td>Read-only file containing the selinux policy in binary form.</td>
+  </tr>
+</table>
+
+<aside class="note"><strong>Note:</strong> For details on SELinux in Android
+8.0, see <a href="../../../security/selinux/images/SELinux_Treble.pdf">SELinux for
+Android 8.0</a>.</aside>
+
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/architecture/kernel/reqs-interfaces by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:09:16 GMT -->
+</html>

@@ -1,0 +1,1748 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/devices/sensors/sensor-types.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:56:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Sensor types &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Sensor types &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="sensor-types.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="sensor-types.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+   aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech/dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Develop
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Audio"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Audio"
+   >
+  Audio
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../camera.html"
+   class="gc-analytics-event"
+   title="Camera"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Camera"
+   >
+  Camera
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech/connect.html"
+   class="gc-analytics-event"
+   title="Connectivity"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Connectivity"
+   >
+  Connectivity
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../graphics.html"
+   class="gc-analytics-event"
+   title="Graphics"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Graphics"
+   >
+  Graphics
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../input.html"
+   class="gc-analytics-event"
+   title="Interaction"
+   aria-label="Interaction, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Interaction"
+   >
+  Interaction
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../media.html"
+   class="gc-analytics-event"
+   title="Media"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Media"
+   >
+  Media
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../storage.html"
+   class="gc-analytics-event"
+   title="Storage"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Storage"
+   >
+  Storage
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Audio">
+      <span class="devsite-nav-text" >Audio</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../camera.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Camera">
+      <span class="devsite-nav-text" >Camera</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../tech/connect.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Connectivity">
+      <span class="devsite-nav-text" >Connectivity</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../graphics.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Graphics">
+      <span class="devsite-nav-text" >Graphics</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../input.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Interaction">
+      <span class="devsite-nav-text" menu="_book">Interaction</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../media.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Media">
+      <span class="devsite-nav-text" >Media</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../storage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Storage">
+      <span class="devsite-nav-text" >Storage</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Input">Input</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../input.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../input/key-layout-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Key Layout Files">Key Layout Files</span></a></li><li class="devsite-nav-item"><a href="../input/key-character-map-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Key Character Map Files">Key Character Map Files</span></a></li><li class="devsite-nav-item"><a href="../input/input-device-configuration-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Input Device Configuration Files">Input Device Configuration Files</span></a></li><li class="devsite-nav-item"><a href="../input/migration-guide.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Migration Guide">Migration Guide</span></a></li><li class="devsite-nav-item"><a href="../input/keyboard-devices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Keyboard Devices">Keyboard Devices</span></a></li><li class="devsite-nav-item"><a href="../input/touch-devices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Touch Devices">Touch Devices</span></a></li><li class="devsite-nav-item"><a href="../input/getevent.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Getevent">Getevent</span></a></li><li class="devsite-nav-item"><a href="../input/validate-keymaps.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Validate Keymaps">Validate Keymaps</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Automotive">Automotive</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../automotive.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio">Audio</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../automotive/audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/audio-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Audio HAL">Audio HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/audio-control.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AudioControl HAL">AudioControl HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/interaction-sequences.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction Sequences">Interaction Sequences</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/multi-zone.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multi-Zone">Multi-Zone</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../automotive/camera-hal-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Camera HAL">Camera HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/ivi_connectivity-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="IVI Connectivity">IVI Connectivity</span></a></li><li class="devsite-nav-item"><a href="../automotive/properties.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Vehicle Properties">Vehicle Properties</span></a></li><li class="devsite-nav-item"><a href="../automotive/power.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Management">Power Management</span></a></li><li class="devsite-nav-item"><a href="../tech/perf/flash-wear-2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Flash Wear Management">Flash Wear Management</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item"><a href="../interaction/neural-networks.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Neural Networks">Neural Networks</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Peripherals">Peripherals</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio Accessories">Audio Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="3.5 mm Headset">3.5 mm Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/plug-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/jack-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="USB Headset">USB Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/usb-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/usb-adapter.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Adapter Spec">Adapter Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/usb-device.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../accessories/headset/expected-behavior.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Expected Behavior">Expected Behavior</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Testing">Testing</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Custom Accessories">Custom Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/custom.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="AOA">AOA</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/protocol.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../accessories/aoa2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AOA 2.0">AOA 2.0</span></a></li><li class="devsite-nav-item"><a href="../accessories/aoa.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AOA 1.0">AOA 1.0</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../accessories/stylus.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Stylus">Stylus</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors">Sensors</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="sensor-stack.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Stack">Sensor Stack</span></a></li><li class="devsite-nav-item"><a href="report-modes.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reporting Modes">Reporting Modes</span></a></li><li class="devsite-nav-item"><a href="suspend-mode.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Suspend Mode">Suspend Mode</span></a></li><li class="devsite-nav-item"><a href="power-use.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Consumption">Power Consumption</span></a></li><li class="devsite-nav-item"><a href="interaction.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction">Interaction</span></a></li><li class="devsite-nav-item"><a href="hal-interface.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="HAL Interface">HAL Interface</span></a></li><li class="devsite-nav-item"><a href="batching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Batching">Batching</span></a></li><li class="devsite-nav-item"><a href="sensor-types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Types">Sensor Types</span></a></li><li class="devsite-nav-item"><a href="versioning.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Version Deprecation">Version Deprecation</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="TV">TV</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tv.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../tv/hdmi-cec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="HDMI-CEC Control Service">HDMI-CEC Control Service</span></a></li><li class="devsite-nav-item"><a href="../tv/reference-tv-app.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reference TV App">Reference TV App</span></a></li><li class="devsite-nav-item"><a href="../tv/customize-tv-app.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Customize the TV App">Customize the TV App</span></a></li></ul></devsite-expandable-nav></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Develop
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../input.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Interaction
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Sensor types</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+
+
+<p>This section describes sensor axes, base sensors, and composite sensors
+(activity, attitude, uncalibrated, and interaction).</p>
+
+<h2 id="sensor_axis_definition">Sensor axes</h2>
+<p>Sensor event values from many sensors are expressed in a specific frame that
+is static relative to the device.
+
+<h3 id=phone_axes>Mobile device axes</h3>
+<p>The Sensor API is relative only to the natural orientation of the screen
+(axes are not swapped when the device's screen orientation changes.</p>
+
+<img src="https://developer.android.google.cn/images/axis_device.png" alt="Coordinate
+system of sensor API for mobile devices"/>
+<p class="img-caption"><strong>Figure 1.</strong> Coordinate system (relative to
+a mobile device) used by the Sensor API.</p>
+
+<h3 id=auto_axes>Automotive axes</h3>
+<p>In Android Automotive implementations, axes are defined with respect to the
+vehicle body frame:</p>
+
+<img src="images/axis_auto.png" alt="Coordinate system of sensor API for
+automotive devices"/>
+<p class="img-caption"><strong>Figure 2.</strong> Coordinate system (relative to
+an automotive device) used by the Sensor API.</p>
+
+<ul>
+<li>X increases towards the right of the vehicle</li>
+<li>Y increases towards the nose of the body frame</li>
+<li>Z increases towards the roof of the body frame</li>
+</ul>
+
+<p>When looking from the positive direction of an axis, positive rotations are
+counterclockwise. Thus, when a vehicle is making a left turn, the z-axis
+gyroscope rate of turn is expected to be a positive value.</p>
+
+<h2 id="base_sensors">Base sensors</h2>
+<p>Base sensor types are named after the physical sensors they represent. These
+sensors relay data from a single physical sensor (as opposed to composite
+sensors that generate data out of other sensors). Examples of base sensor types
+include:</p>
+<ul>
+  <li><code>SENSOR_TYPE_ACCELEROMETER</code></li>
+  <li><code>SENSOR_TYPE_GYROSCOPE</code></li>
+  <li><code>SENSOR_TYPE_MAGNETOMETER</code></li>
+</ul>
+
+<p class='note'><strong>Note:</strong> For details on each Android sensor type,
+review the following sections.</p>
+
+<p>However, base sensors are not equal to and should not be confused with their
+underlying physical sensor. The data from a base sensor is <strong>not</strong>
+the raw output of the physical sensor because corrections (such as bias
+compensation and temperature compensation) are applied.</p>
+
+<p>For example, the characteristics of a base sensor might be different from the
+characteristics of its underlying physical sensor in the following use cases:</p>
+<ul>
+<li>A gyroscope chip rated to have a bias range of 1 deg/sec.
+  <ul>
+    <li>After factory calibration, temperature compensation and bias compensation are
+      applied, the actual bias of the Android sensor will be reduced, may be to a
+      point where the bias is guaranteed to be below 0.01deg/sec.</li>
+    <li>In this situation, we say that the Android sensor has a bias below 0.01
+      deg/sec, even though the data sheet of the underlying sensor said 1 deg/sec.</li>
+  </ul>
+</li>
+<li>A barometer with a power consumption of 100uW.
+  <ul>
+    <li>Because the generated data needs to be transported from the chip to the SoC,
+      the actual power cost to gather data from the barometer Android sensor might be
+      much higher, for example 1000uW.</li>
+    <li>In this situation, we say that the Android sensor has a power consumption of
+      1000uW, even though the power consumption measured at the barometer chip leads
+      is 100uW.</li>
+  </ul>
+</li>
+<li>A magnetometer that consumes 100uW when calibrated, but consumes more when
+calibrating.
+  <ul>
+    <li>Its calibration routine might require activating the gyroscope, consuming
+      5000uW, and running some algorithm, costing another 900uW.</li>
+    <li> In this situation, we say that the maximum power consumption of the
+      (magnetometer) Android sensor is 6000uW.</li>
+    <li>In this case, the average power consumption is the more useful measure, and it
+      is what is reported in the sensor static characteristics through the HAL.</li>
+  </ul>
+</li>
+</ul>
+<h3 id="accelerometer">Accelerometer</h3>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_ACCELEROMETER)</code> <em>returns a non-wake-up sensor</em></p>
+<p>An accelerometer sensor reports the acceleration of the device along the 3
+  sensor axes. The measured acceleration includes both the physical acceleration
+  (change of velocity) and the gravity. The measurement is reported in the x, y
+  and z fields of sensors_event_t.acceleration.</p>
+<p>All values are in SI units (m/s^2) and measure the acceleration of the device
+  minus the force of gravity along the 3 sensor axes.</p>
+<p>Here are examples:</p>
+<ul>
+  <li> The norm of (x, y, z) should be close to 0 when in free fall. </li>
+  <li> When the device lies flat on a table and is pushed on its left side toward the
+    right, the x acceleration value is positive. </li>
+  <li> When the device lies flat on a table, the acceleration value along z is +9.81
+    alo, which corresponds to the acceleration of the device (0 m/s^2) minus the
+    force of gravity (-9.81 m/s^2). </li>
+  <li> When the device lies flat on a table and is pushed toward the sky, the
+    acceleration value is greater than +9.81, which corresponds to the acceleration
+    of the device (+A m/s^2) minus the force of gravity (-9.81 m/s^2). </li>
+</ul>
+<p>The readings are calibrated using:</p>
+<ul>
+  <li> temperature compensation </li>
+  <li> online bias calibration </li>
+  <li> online scale calibration </li>
+</ul>
+<p>The bias and scale calibration must only be updated while the sensor is
+  deactivated, so as to avoid causing jumps in values during streaming.</p>
+<p>The accelerometer also reports how accurate it expects its readings to be
+  through <code>sensors_event_t.acceleration.status</code>. See the <a
+  href="https://developer.android.google.cn/reference/android/hardware/SensorManager.html">SensorManager</a>’s
+  <a href="https://developer.android.google.cn/reference/android/hardware/SensorManager.html#SENSOR_STATUS_ACCURACY_HIGH"><code>SENSOR_STATUS_*  </code></a> constants for more information on possible values for this field.</p>
+<h3 id="ambient_temperature">Ambient temperature</h3>
+<p>Reporting-mode: <em><a href="report-modes-2.html#on-change">On-change</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_AMBIENT_TEMPERATURE)</code> <em>returns a non-wake-up sensor</em></p>
+<p>This sensor provides the ambient (room) temperature in degrees Celsius.</p>
+<h3 id="magnetic_field_sensor">Magnetic field sensor</h3>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_MAGNETIC_FIELD)</code> <em>returns a non-wake-up sensor</em></p>
+<p><code>SENSOR_TYPE_GEOMAGNETIC_FIELD == SENSOR_TYPE_MAGNETIC_FIELD</code></p>
+<p>A magnetic field sensor (also known as magnetometer) reports the ambient
+  magnetic field, as measured along the 3 sensor axes.</p>
+<p>The measurement is reported in the x, y and z fields of
+  <code>sensors_event_t.magnetic</code> and all values are in micro-Tesla (uT).</p>
+<p>The magnetometer also reports how accurate it expects its readings to be
+  through <code>sensors_event_t.magnetic.status</code>. See the <a
+href="https://developer.android.google.cn/reference/android/hardware/SensorManager.html">SensorManager</a>’s
+<a href="https://developer.android.google.cn/reference/android/hardware/SensorManager.html#SENSOR_STATUS_ACCURACY_HIGH"><code>SENSOR_STATUS_*</code></a> constants for more information on possible values for this field.</p>
+<p>The readings are calibrated using:</p>
+<ul>
+  <li> temperature compensation </li>
+  <li> factory (or online) soft-iron calibration </li>
+  <li> online hard-iron calibration </li>
+</ul>
+<h3 id="gyroscope">Gyroscope</h3>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_GYROSCOPE)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A gyroscope sensor reports the rate of rotation of the device around the 3
+  sensor axes.</p>
+<p>Rotation is positive in the counterclockwise direction (right-hand rule). That
+  is, an observer looking from some positive location on the x, y or z axis at a
+  device positioned on the origin would report positive rotation if the device
+  appeared to be rotating counter clockwise. Note that this is the standard
+  mathematical definition of positive rotation and does not agree with the
+  aerospace definition of roll.</p>
+<p>The measurement is reported in the x, y and z fields of <code>sensors_event_t.gyro</code>
+  and all values are in radians per second (rad/s).</p>
+<p>The readings are calibrated using:</p>
+<ul>
+  <li> temperature compensation </li>
+  <li> factory (or online) scale compensation </li>
+  <li> online bias calibration (to remove drift) </li>
+</ul>
+<p>The gyroscope also reports how accurate it expects its readings to be through
+  <code>sensors_event_t.gyro.status</code>. See the <a
+  href="https://developer.android.google.cn/reference/android/hardware/SensorManager.html">SensorManager</a>’s
+  <a
+href="https://developer.android.google.cn/reference/android/hardware/SensorManager.html#SENSOR_STATUS_ACCURACY_HIGH"><code>SENSOR_STATUS_*</code></a> constants for more information on possible values for this field.</p>
+<p>The gyroscope cannot be emulated based on magnetometers and accelerometers, as
+  this would cause it to have reduced local consistency and responsiveness. It
+  must be based on a usual gyroscope chip.</p>
+<h3 id="heart_rate">Heart Rate</h3>
+<p>Reporting-mode: <em><a href="report-modes-2.html#on-change">On-change</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_HEART_RATE)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A heart rate sensor reports the current heart rate of the person touching the
+  device.</p>
+<p>The current heart rate in beats per minute (BPM) is reported in
+  <code>sensors_event_t.heart_rate.bpm</code> and the status of the sensor is reported in
+  <code>sensors_event_t.heart_rate.status</code>. See the <a
+  href="https://developer.android.google.cn/reference/android/hardware/SensorManager.html">SensorManager</a>’s
+  <a href="https://developer.android.google.cn/reference/android/hardware/SensorManager.html#SENSOR_STATUS_ACCURACY_HIGH"><code>SENSOR_STATUS_*</code></a> constants for more information on possible values for this field. In
+  particular, upon the first activation, unless the device is known to not be on
+  the body, the status field of the first event must be set to
+  <code>SENSOR_STATUS_UNRELIABLE</code>. Because this sensor is on-change,
+  events are generated when and only when <code>heart_rate.bpm</code> or
+  <code>heart_rate.status</code> have changed since the last event. The events
+  are generated no faster than every <code>sampling_period</code>.</p>
+<p><code>sensor_t.requiredPermission</code> is always <code>SENSOR_PERMISSION_BODY_SENSORS</code>.</p>
+<h3 id="light">Light</h3>
+<p>Reporting-mode: <em><a href="report-modes-2.html#on-change">On-change</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_LIGHT)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A light sensor reports the current illumination in SI lux units.</p>
+<p>The measurement is reported in <code>sensors_event_t.light</code>.</p>
+<h3 id="proximity">Proximity</h3>
+<p>Reporting-mode: <em><a href="report-modes-2.html#on-change">On-change</a></em></p>
+<p>Usually defined as a wake-up sensor</p>
+<p><code>getDefaultSensor(SENSOR_TYPE_PROXIMITY)</code> <em>returns a wake-up sensor</em></p>
+<p>A proximity sensor reports the distance from the sensor to the closest visible
+  surface.</p>
+<p>Up to Android KitKat, the proximity sensors were always wake-up sensors, waking
+  up the SoC when detecting a change in proximity. After Android KitKat, we
+  advise to implement the wake-up version of this sensor first, as it is the one
+  that is used to turn the screen on and off while making phone calls.</p>
+<p>The measurement is reported in centimeters in <code>sensors_event_t.distance</code>. Note
+  that some proximity sensors only support a binary &quot;near&quot; or &quot;far&quot; measurement.
+  In this case, the sensor report its <code>sensor_t.maxRange</code> value in the &quot;far&quot; state
+  and a value less than <code>sensor_t.maxRange</code> in the &quot;near&quot; state.</p>
+<h3 id="pressure">Pressure</h3>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_PRESSURE)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A pressure sensor (also known as barometer) reports the atmospheric pressure in
+  hectopascal (hPa).</p>
+<p>The readings are calibrated using</p>
+<ul>
+  <li> temperature compensation </li>
+  <li> factory bias calibration </li>
+  <li> factory scale calibration </li>
+</ul>
+<p>The barometer is often used to estimate elevation changes. To estimate absolute
+  elevation, the sea-level pressure (changing depending on the weather) must be
+  used as a reference.</p>
+<h3 id="relative_humidity">Relative humidity</h3>
+<p>Reporting-mode: <em><a href="report-modes-2.html#on-change">On-change</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_RELATIVE_HUMIDITY)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A relative humidity sensor measures relative ambient air humidity and returns a
+  value in percent.</p>
+
+<h2 id="composite_sensor_types">Composite sensor types</h2>
+<p>A composite sensor generates data by processing and/or fusing data from one
+or several physical sensors. (Any sensor that is not a base sensor is called a
+composite sensor.) Examples of composite sensors include:</p>
+<ul>
+<li><a href="#step_detector">Step detector</a> and
+<a href="#significant_motion">Significant motion</a>, which are usually based on
+an accelerometer, but could be based on other sensors as well, if the power
+consumption and accuracy was acceptable.</li>
+<li><a href="#game_rotation_vector">Game rotation vector</a>, based on an
+accelerometer and a gyroscope.</li>
+<li><a href="#gyroscope_uncalibrated">Uncalibrated gyroscope</a>, which is
+similar to the gyroscope base sensor, but with the bias calibration being
+reported separately instead of being corrected in the measurement.</li>
+</ul>
+<p>As with base sensors, the characteristics of the composite sensors come from
+the characteristics of their final data. For example, the power consumption of a
+game rotation vector is probably equal to the sum of the power consumptions of
+the accelerometer chip, the gyroscope chip, the chip processing the data, and
+the buses transporting the data. As another example, the drift of a game
+rotation vector depends as much on the quality of the calibration algorithm as
+on the physical sensor characteristics.</p>
+
+<p>The following table lists available composite sensor types. Each composite
+sensor relies on data from one or several physical sensors. Avoid choosing other
+underlying physical sensors to approximate results as they provide a poor user
+experience.</p>
+<p class="note"><strong>Note:</strong> When there is no gyroscope on the device
+(and only when there is no gyroscope), you may implement the rotation vector,
+linear acceleration, and gravity sensors without using the gyroscope.</p>
+
+<table>
+  <tr>
+    <th width=34%>Sensor type</th>
+    <th width=10%>Category</th>
+    <th width=34%>Underlying physical sensors</th>
+    <th width=19%>Reporting mode</th>
+  </tr>
+  <tr>
+    <td><p><a href="#game_rotation_vector">Game rotation vector</a></p></td>
+    <td><p>Attitude</p></td>
+    <td><p>Accelerometer, Gyroscope MUST NOT USE Magnetometer</p></td>
+    <td><p>Continuous</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#geomagnetic_rotation_vector">Geomagnetic rotation
+     vector</a> <img src="images/battery_icon.png" width="20" height="20" alt="Low
+     power sensor" /></p></td>
+    <td><p>Attitude</p></td>
+    <td><p>Accelerometer, Magnetometer, MUST NOT USE Gyroscope</p></td>
+    <td><p>Continuous</p></td>
+  </tr>
+  <tr>
+    <td><a href="#glance_gesture">Glance gesture</a> <img
+     src="images/battery_icon.png" width="20" height="20" alt="Low power sensor"
+     /></p></td>
+    <td><p>Interaction</p></td>
+    <td><p>Undefined</p></td>
+    <td><p>One-shot</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#gravity">Gravity</a></p></td>
+    <td><p>Attitude</p></td>
+    <td><p>Accelerometer, Gyroscope</p></td>
+    <td><p>Continuous</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#gyroscope_uncalibrated">Gyroscope uncalibrated</a></p></td>
+    <td><p>Uncalibrated</p></td>
+    <td><p>Gyroscope</p></td>
+    <td><p>Continuous</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#linear_acceleration">Linear acceleration</a></p></td>
+    <td><p>Activity</p></td>
+    <td><p>Accelerometer, Gyroscope (if present) or Magnetometer (if gyro not present)</p></td>
+    <td><p>Continuous</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#magnetic_field_uncalibrated">Magnetic field uncalibrated</a></p></td>
+    <td><p>Uncalibrated</p></td>
+    <td><p>Magnetometer</p></td>
+    <td><p>Continuous</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#orientation_deprecated">Orientation</a> (deprecated)</p></td>
+    <td><p>Attitude</p></td>
+    <td><p>Accelerometer, Magnetometer PREFERRED Gyroscope</p></td>
+    <td><p>Continuous</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#pick_up_gesture">Pick up gesture</a> <img
+     src="images/battery_icon.png" width="20" height="20" alt="Low power sensor"
+     /></p></td>
+    <td><p>Interaction</p></td>
+    <td><p>Undefined</p></td>
+    <td><p>One-shot</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#rotation_vector">Rotation vector</a></p></td>
+    <td><p>Attitude</p></td>
+    <td><p>Accelerometer, Magnetometer, AND (when present) <em>Gyroscope </em></p></td>
+    <td><p>Continuous</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#significant_motion">Significant motion</a> <img
+     src="images/battery_icon.png" width="20" height="20" alt="Low power sensor"
+     /></p></td>
+    <td><p>Activity</p></td>
+    <td><p>Accelerometer (or another as long as very low power)</p></td>
+    <td><p>One-shot</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#step_counter">Step counter</a> <img
+     src="images/battery_icon.png" width="20" height="20" alt="Low power sensor"
+     /></p></td>
+    <td><p>Activity</p></td>
+    <td><p>Accelerometer</p></td>
+    <td><p>On-change</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#step_detector">Step detector</a> <img
+     src="images/battery_icon.png" width="20" height="20" alt="Low power sensor"
+     /></p></td> <td><p>Activity</p></td>
+    <td><p>Accelerometer</p></td>
+    <td><p>Special</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#tilt_detector">Tilt detector</a> <img
+     src="images/battery_icon.png" width="20" height="20" alt="Low power sensor"
+     /></p></td>
+    <td><p>Activity</p></td>
+    <td><p>Accelerometer</p></td>
+    <td><p>Special</p></td>
+  </tr>
+  <tr>
+    <td><p><a href="#wake_up_gesture">Wake up gesture</a> <img
+     src="images/battery_icon.png" width="20" height="20" alt="Low power sensor"
+     /></p></td>
+    <td><p>Interaction</p></td>
+    <td><p>Undefined</p></td>
+    <td><p>One-shot</p></td>
+  </tr>
+</table>
+<p><img src="images/battery_icon.png" width="20" height="20" alt="Low power sensor" /> = Low power sensor</p>
+<h2 id="activity_composite_sensors">Activity composite sensors</h2>
+<h3 id="linear_acceleration">Linear acceleration</h3>
+<p>Underlying physical sensors:  Accelerometer and (if present) Gyroscope (or
+  magnetometer if gyroscope not present)</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_LINEAR_ACCELERATION)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A linear acceleration sensor reports the linear acceleration of the device in
+  the sensor frame, not including gravity.</p>
+<p>The output is conceptually: output of the <a
+  href="#accelerometer">accelerometer</a> minus the output of the <a
+  href="#gravity">gravity sensor</a>. It is reported in m/s^2 in the x, y and z
+  fields of <code>sensors_event_t.acceleration</code>.</p>
+<p>Readings on all axes should be close to 0 when the device is immobile.</p>
+<p>If the device possesses a gyroscope, the linear acceleration sensor must use
+  the gyroscope and accelerometer as input.</p>
+<p>If the device doesn’t possess a gyroscope, the linear acceleration sensor must
+  use the accelerometer and the magnetometer as input.</p>
+<h3 id="significant_motion">Significant motion</h3>
+<p>Underlying physical sensor: Accelerometer (or another as long as low power)</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#one-shot">One-shot</a></em></p>
+<p>Low-power</p>
+<p>Implement only the wake-up version of this sensor.</p>
+<p><code>getDefaultSensor(SENSOR_TYPE_SIGNIFICANT_MOTION)</code> <em>returns a wake-up sensor</em></p>
+<p>A significant motion detector triggers when the detecting a “significant
+  motion”: a motion that might lead to a change in the user location.</p>
+<p>Examples of such significant motions are:</p>
+<ul>
+  <li> walking or biking </li>
+  <li> sitting in a moving car, coach or train </li>
+</ul>
+<p>Examples of situations that do not trigger significant motion:</p>
+<ul>
+  <li> phone in pocket and person is not moving </li>
+  <li> phone is on a table and the table shakes a bit due to nearby traffic or washing
+    machine </li>
+</ul>
+<p>At the high level, the significant motion detector is used to reduce the power
+  consumption of location determination. When the localization algorithms detect
+  that the device is static, they can switch to a low power mode, where they rely
+  on significant motion to wake the device up when the user is changing location.</p>
+<p>This sensor must be low power. It makes a tradeoff for power consumption that
+  may result in a small amount of false negatives. This is done for a few
+  reasons:</p>
+<ul>
+  <li> The goal of this sensor is to save power. </li>
+  <li> Triggering an event when the user is not moving (false positive) is costly in
+    terms of power, so it should be avoided. </li>
+  <li> Not triggering an event when the user is moving (false negative) is acceptable
+    as long as it is not done repeatedly. If the user has been walking for 10
+    seconds, not triggering an event within those 10 seconds is not acceptable. </li>
+</ul>
+<p>Each sensor event reports 1 in <code>sensors_event_t.data[0]</code></p>
+<h3 id="step_detector">Step detector</h3>
+<p>Underlying physical sensor: Accelerometer (+ possibly others as long as low
+  power)</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#special">Special</a> (one event per step taken)</em></p>
+<p>Low-power</p>
+<p><code>getDefaultSensor(SENSOR_TYPE_STEP_DETECTOR)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A step detector generates an event each time a step is taken by the user.</p>
+<p>The timestamp of the event <code>sensors_event_t.timestamp</code> corresponds to when the
+  foot hit the ground, generating a high variation in acceleration.</p>
+<p>Compared to the step counter, the step detector should have a lower latency
+  (less than 2 seconds). Both the step detector and the step counter detect when
+  the user is walking, running and walking up the stairs. They should not trigger
+  when the user is biking, driving or in other vehicles.</p>
+<p>This sensor must be low power. That is, if the step detection cannot be done in
+  hardware, this sensor should not be defined. In particular, when the step
+  detector is activated and the accelerometer is not, only steps should trigger
+  interrupts (not every accelerometer reading).</p>
+<p><code>sampling_period_ns</code> has no impact on step detectors.</p>
+<p>Each sensor event reports 1 in <code>sensors_event_t.data[0]</code></p>
+<h3 id="step_counter">Step counter</h3>
+<p>Underlying physical sensor: Accelerometer (+ possibly others as long as low
+  power)</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#on-change">On-change</a></em></p>
+<p>Low-power</p>
+<p><code>getDefaultSensor(SENSOR_TYPE_STEP_COUNTER)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A step counter reports the number of steps taken by the user since the last
+  reboot while activated.</p>
+<p>The measurement is reported as a <code>uint64_t</code> in
+  <code>sensors_event_t.step_counter</code> and
+  is reset to zero only on a system reboot.</p>
+<p>The timestamp of the event is set to the time when the last step for that event
+  was taken.</p>
+<p>See the <a href="#step_detector">Step detector</a> sensor type for the signification of the time of a step.</p>
+<p>Compared to the step detector, the step counter can have a higher latency (up
+  to 10 seconds). Thanks to this latency, this sensor has a high accuracy; the
+  step count after a full day of measures should be within 10% of the actual step
+  count. Both the step detector and the step counter detect when the user is
+  walking, running and walking up the stairs. They should not trigger when the
+  user is biking, driving or in other vehicles.</p>
+<p>The hardware must ensure the internal step count never overflows. The minimum
+  size of the hardware's internal counter shall be 16 bits. In case of imminent
+  overflow (at most every ~2^16 steps), the SoC can be woken up so the driver can
+  do the counter maintenance.</p>
+<p>As stated in <a href="interaction-2.html">Interaction</a>, while this sensor
+  operates, it shall not disrupt any other sensors, in particular, the
+  accelerometer, which might very well be in use.</p>
+<p>If a particular device cannot support these modes of operation, then this
+  sensor type must not be reported by the HAL. ie: it is not acceptable to
+  &quot;emulate&quot; this sensor in the HAL.</p>
+<p>This sensor must be low power. That is, if the step detection cannot be done in
+  hardware, this sensor should not be defined. In particular, when the step
+  counter is activated and the accelerometer is not, only steps should trigger
+  interrupts (not accelerometer data).</p>
+<h3 id="tilt_detector">Tilt detector</h3>
+<p>Underlying physical sensor: Accelerometer (+ possibly others as long as low
+  power)</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#special">Special</a></em></p>
+<p>Low-power</p>
+<p>Implement only the wake-up version of this sensor.</p>
+<p><code>getDefaultSensor(SENSOR_TYPE_TILT_DETECTOR)</code> <em>returns a wake-up sensor</em></p>
+<p>A tilt detector generates an event each time a tilt event is detected.</p>
+<p>A tilt event is defined by the direction of the 2-seconds window average
+  gravity changing by at least 35 degrees since the activation or the last event
+  generated by the sensor. Here is the algorithm:</p>
+<ul>
+  <li> <code>reference_estimated_gravity</code> = average of accelerometer measurements over the
+    first second after activation or the estimated gravity when the last tilt event
+    was generated. </li>
+  <li> <code>current_estimated_gravity</code> = average of accelerometer measurements over the last
+    2 seconds. </li>
+  <li> trigger when <code>angle(reference_estimated_gravity, current_estimated_gravity) &gt; 35
+    degrees</code> </li>
+</ul>
+<p>Large accelerations without a change in phone orientation should not trigger a
+  tilt event. For example, a sharp turn or strong acceleration while driving a
+  car should not trigger a tilt event, even though the angle of the average
+  acceleration might vary by more than 35 degrees.
+  Typically, this sensor is
+  implemented with the help of only an accelerometer. Other sensors can be used
+  as well if they do not increase the power consumption significantly. This is a
+  low power sensor that should allow the SoC to go into suspend mode. Do not
+  emulate this sensor in the HAL. Each sensor event reports 1 in
+  <code>sensors_event_t.data[0]</code>.</p>
+<h2 id="attitude_composite_sensors">Attitude composite sensors</h2>
+<h3 id="rotation_vector">Rotation vector</h3>
+<p>Underlying physical sensors: Accelerometer, Magnetometer, and Gyroscope</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_ROTATION_VECTOR)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A rotation vector sensor reports the orientation of the device relative to the
+  East-North-Up coordinates frame. It is usually obtained by integration of
+  accelerometer, gyroscope, and magnetometer readings. The East-North-Up
+  coordinate system is defined as a direct orthonormal basis where:</p>
+<ul>
+  <li> X points east and is tangential to the ground. </li>
+  <li> Y points north and is tangential to the ground. </li>
+  <li> Z points towards the sky and is perpendicular to the ground. </li>
+</ul>
+<p>The orientation of the phone is represented by the rotation necessary to align
+  the East-North-Up coordinates with the phone's coordinates. That is, applying
+  the rotation to the world frame (X,Y,Z) would align them with the phone
+  coordinates (x,y,z).</p>
+<p>The rotation can be seen as rotating the phone by an angle theta around an axis
+  rot_axis to go from the reference (East-North-Up aligned) device orientation to
+  the current device orientation. The rotation is encoded as the four unit-less
+  x, y, z, w components of a unit quaternion:</p>
+<ul>
+  <li> <code>sensors_event_t.data[0] = rot_axis.x*sin(theta/2)</code> </li>
+  <li> <code>sensors_event_t.data[1] = rot_axis.y*sin(theta/2)</code> </li>
+  <li> <code>sensors_event_t.data[2] = rot_axis.z*sin(theta/2)</code> </li>
+  <li> <code>sensors_event_t.data[3] = cos(theta/2)</code> </li>
+</ul>
+<p>Where:</p>
+<ul>
+  <li> the  x, y and z fields of <code>rot_axis</code> are the East-North-Up
+  coordinates of a unit length vector representing the rotation axis </li>
+  <li> <code>theta</code> is the rotation angle </li>
+</ul>
+<p>The quaternion is a unit quaternion: it must be of norm 1. Failure to ensure
+  this will cause erratic client behaviour.</p>
+<p>In addition, this sensor reports an estimated heading accuracy:</p>
+<p><code>sensors_event_t.data[4] = estimated_accuracy</code> (in radians)</p>
+<p>The heading error must be less than <code>estimated_accuracy</code> 95% of
+the time. This sensor must use a gyroscope as the main orientation change input.</p>
+<p>This sensor also uses accelerometer and magnetometer input to make up
+  for gyroscope drift, and it cannot be implemented using only the accelerometer
+  and magnetometer.</p>
+<h3 id="game_rotation_vector">Game rotation vector</h3>
+<p>Underlying physical sensors: Accelerometer and Gyroscope (no Magnetometer)</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_GAME_ROTATION_VECTOR)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A game rotation vector sensor is similar to a rotation vector sensor but not
+  using the geomagnetic field. Therefore the Y axis doesn't point north but
+  instead to some other reference. That reference is allowed to drift by the same
+  order of magnitude as the gyroscope drifts around the Z axis.</p>
+<p>See the <a href="#rotation_vector">Rotation vector</a> sensor for details on
+  how to set <code>sensors_event_t.data[0-3]</code>. This sensor does
+  not report an estimated heading accuracy:
+  <code>sensors_event_t.data[4]</code> is reserved and should be set to 0.</p>
+<p>In an ideal case, a phone rotated and returned to the same real-world
+  orientation should report the same game rotation vector.</p>
+<p>This sensor must be based on a gyroscope and an accelerometer. It cannot use
+  magnetometer as an input, besides, indirectly, through estimation of the
+  gyroscope bias.</p>
+<h3 id="gravity">Gravity</h3>
+<p>Underlying physical sensors: Accelerometer and (if present) Gyroscope (or
+  magnetometer if gyroscope not present)</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_GRAVITY)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A gravity sensor reports the direction and magnitude of gravity in the device's
+  coordinates.</p>
+<p>The gravity vector components are reported in m/s^2 in the x, y and z fields of
+  <code>sensors_event_t.acceleration</code>.</p>
+<p>When the device is at rest, the output of the gravity sensor should be
+  identical to that of the accelerometer. On Earth, the magnitude is around 9.8
+  m/s^2.</p>
+<p>If the device possesses a gyroscope, the gravity sensor must use the
+  gyroscope and accelerometer as input.</p>
+<p>If the device doesn’t possess a gyroscope, the gravity sensor must use the
+  accelerometer and the magnetometer as input.</p>
+<h3 id="geomagnetic_rotation_vector">Geomagnetic rotation vector</h3>
+<p>Underlying physical sensors: Accelerometer and Magnetometer (no Gyroscope)</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p>Low-power</p>
+<p><code>getDefaultSensor(SENSOR_TYPE_GEOMAGNETIC_ROTATION_VECTOR)</code> <em>returns a non-wake-up sensor</em></p>
+<p>A geomagnetic rotation vector is similar to a rotation vector sensor but using
+  a magnetometer and no gyroscope.</p>
+<p>This sensor must be based on a magnetometer. It cannot be implemented using a
+  gyroscope, and gyroscope input cannot be used by this sensor.</p>
+<p>See the <a href="#rotation_vector">Rotation vector</a> sensor for details on
+  how to set <code>sensors_event_t.data[0-4]</code>.</p>
+<p>Just like for the rotation vector sensor, the heading error must be less than
+  the estimated accuracy (<code>sensors_event_t.data[4]</code>) 95% of the time.</p>
+<p>This sensor must be low power, so it has to be implemented in hardware.</p>
+<h3 id="orientation_deprecated">Orientation (deprecated)</h3>
+<p>Underlying physical sensors: Accelerometer, Magnetometer and (if present)
+  Gyroscope</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_ORIENTATION)</code> <em>returns a non-wake-up sensor</em></p>
+<p class="note"><strong>Note:</strong> This is an older sensor type that has been deprecated in the Android SDK.
+  It has been replaced by the rotation vector sensor, which is more clearly
+  defined. Use the rotation vector sensor over the orientation sensor whenever
+  possible.</p>
+<p>An orientation sensor reports the attitude of the device. The measurements are
+  reported in degrees in the x, y and z fields of <code>sensors_event_t.orientation</code>:</p>
+<ul>
+  <li> <code>sensors_event_t.orientation.x</code>: azimuth, the angle between the magnetic north
+    direction and the Y axis, around the Z axis (<code>0&lt;=azimuth&lt;360</code>). 0=North, 90=East,
+    180=South, 270=West </li>
+  <li> <code>sensors_event_t.orientation.y</code>: pitch, rotation around X axis
+    (<code>-180&lt;=pitch&lt;=180</code>), with positive values when the z-axis moves toward the
+    y-axis. </li>
+  <li> <code>sensors_event_t.orientation.z</code>: roll, rotation around Y axis (<code>-90&lt;=roll&lt;=90</code>),
+    with positive values when the x-axis moves towards the z-axis. </li>
+</ul>
+<p>Please note, for historical reasons the roll angle is positive in the clockwise
+  direction. (Mathematically speaking, it should be positive in the
+  counter-clockwise direction):</p>
+<div class="attempt-right" style="width:264px">
+  <img src="images/axis_positive_roll.png" alt="Depiction of orientation
+   relative to a device" height="253" />
+  <p class="img-caption">
+    <strong>Figure 3.</strong> Orientation relative to a device.
+  </p>
+</div>
+<p>This definition is different from yaw, pitch and roll used in aviation where
+  the X axis is along the long side of the plane (tail to nose).</p>
+<p>The orientation sensor also reports how accurate it expects its readings to be
+  through sensors_event_t.orientation.status. See the <a href="https://developer.android.google.cn/reference/android/hardware/SensorManager.html">SensorManager</a>’s <a href="https://developer.android.google.cn/reference/android/hardware/SensorManager.html#SENSOR_STATUS_ACCURACY_HIGH">SENSOR_STATUS_</a>* constants for more information on possible values for this field.</p>
+<h2 id="uncalibrated_sensors">Uncalibrated sensors</h2>
+<p>Uncalibrated sensors provide more raw results and may include some bias but
+  also contain fewer &quot;jumps&quot; from corrections applied through calibration. Some
+  applications may prefer these uncalibrated results as smoother and more
+  reliable. For instance, if an application is attempting to conduct its own
+  sensor fusion, introducing calibrations can actually distort results.</p>
+<h3 id="gyroscope_uncalibrated">Gyroscope uncalibrated</h3>
+<p>Underlying physical sensor: Gyroscope</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_GYROSCOPE_UNCALIBRATED)</code> <em>returns a non-wake-up sensor</em></p>
+<p>An uncalibrated gyroscope reports the rate of rotation around the sensor axes
+  without applying bias compensation to them, along with a bias estimate. All
+  values are in radians/second and are reported in the fields of
+  <code>sensors_event_t.uncalibrated_gyro</code>:</p>
+<ul>
+  <li> <code>x_uncalib</code>: angular speed (w/o drift compensation) around the X axis </li>
+  <li> <code>y_uncalib</code>: angular speed (w/o drift compensation) around the Y axis </li>
+  <li> <code>z_uncalib</code>: angular speed (w/o drift compensation) around the Z axis </li>
+  <li> <code>x_bias</code>: estimated drift around X axis </li>
+  <li> <code>y_bias</code>: estimated drift around Y axis </li>
+  <li> <code>z_bias</code>: estimated drift around Z axis </li>
+</ul>
+<p>Conceptually, the uncalibrated measurement is the sum of the calibrated
+  measurement and the bias estimate: <code>_uncalibrated = _calibrated + _bias</code>.</p>
+<p>The <code>x/y/z_bias</code> values are expected to jump as soon as the estimate of the bias
+  changes, and they should be stable the rest of the time.</p>
+<p>See the definition of the <a href="#gyroscope">gyroscope</a> sensor for
+  details on the coordinate system used.</p>
+<p>Factory calibration and temperature compensation must be applied to the
+  measurements. Also, gyroscope drift estimation must be implemented so that
+  reasonable estimates can be reported in <code>x_bias</code>,
+  <code>y_bias</code> and <code>z_bias</code>. If the
+  implementation is not able to estimate the drift, then this sensor must not be
+  implemented.</p>
+<p>If this sensor is present, then the corresponding Gyroscope sensor must also be
+  present and both sensors must share the same <code>sensor_t.name</code> and
+  <code>sensor_t.vendor</code> values.</p>
+<h3 id="magnetic_field_uncalibrated">Magnetic field uncalibrated</h3>
+<p>Underlying physical sensor: Magnetometer</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#continuous">Continuous</a></em></p>
+<p><code>getDefaultSensor(SENSOR_TYPE_MAGNETIC_FIELD_UNCALIBRATED)</code> <em>returns a non-wake-up sensor</em></p>
+<p>An uncalibrated magnetic field sensor reports the ambient magnetic field
+  together with a hard iron calibration estimate. All values are in micro-Tesla
+  (uT) and are reported in the fields of <code>sensors_event_t.uncalibrated_magnetic</code>:</p>
+<ul>
+  <li> <code>x_uncalib</code>: magnetic field (w/o hard-iron compensation) along the X axis </li>
+  <li> <code>y_uncalib</code>: magnetic field (w/o hard-iron compensation) along the Y axis </li>
+  <li> <code>z_uncalib</code>: magnetic field (w/o hard-iron compensation) along the Z axis </li>
+  <li> <code>x_bias</code>: estimated hard-iron bias along the X axis </li>
+  <li> <code>y_bias</code>: estimated hard-iron bias along the Y axis </li>
+  <li> <code>z_bias</code>: estimated hard-iron bias along the Z axis </li>
+</ul>
+<p>Conceptually, the uncalibrated measurement is the sum of the calibrated
+  measurement and the bias estimate: <code>_uncalibrated = _calibrated + _bias</code>.</p>
+<p>The uncalibrated magnetometer allows higher level algorithms to handle bad hard
+  iron estimation. The <code>x/y/z_bias</code> values are expected to jump as soon as the
+  estimate of the hard-iron changes, and they should be stable the rest of the
+  time.</p>
+<p>Soft-iron calibration and temperature compensation must be applied to the
+  measurements. Also, hard-iron estimation must be implemented so that reasonable
+  estimates can be reported in <code>x_bias</code>, <code>y_bias</code> and
+  <code>z_bias</code>. If the implementation is not able to estimate the bias,
+  then this sensor must not be implemented.</p>
+<p>If this sensor is present, then the corresponding magnetic field sensor must be
+  present and both sensors must share the same <code>sensor_t.name</code> and
+  <code>sensor_t.vendor</code> values.</p>
+<h2 id="interaction_composite_sensors">Interaction composite sensors</h2>
+<p>Some sensors are mostly used to detect interactions with the user. We do not
+  define how those sensors must be implemented, but they must be low power and it
+  is the responsibility of the device manufacturer to verify their quality in
+  terms of user experience.</p>
+<h3 id="wake_up_gesture">Wake up gesture</h3>
+<p>Underlying physical sensors: Undefined (anything low power)</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#one-shot">One-shot</a></em></p>
+<p>Low-power</p>
+<p>Implement only the wake-up version of this sensor.</p>
+<p><code>getDefaultSensor(SENSOR_TYPE_WAKE_GESTURE)</code> <em>returns a wake-up sensor</em></p>
+<p>A wake up gesture sensor enables waking up the device based on a device
+  specific motion. When this sensor triggers, the device behaves as if the power
+  button was pressed, turning the screen on. This behavior (turning on the screen
+  when this sensor triggers) might be deactivated by the user in the device
+  settings. Changes in settings do not impact the behavior of the sensor: only
+  whether the framework turns the screen on when it triggers.
+  The actual gesture to be detected is not specified, and can be chosen by the
+  manufacturer of the device.</p>
+<p>This sensor must be low power, as it is likely to be activated 24/7.</p>
+<p>Each sensor event reports 1 in <code>sensors_event_t.data[0]</code>.</p>
+<h3 id="pick_up_gesture">Pick up gesture</h3>
+<p>Underlying physical sensors: Undefined (anything low power)</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#one-shot">One-shot</a></em></p>
+<p>Low-power</p>
+<p>Implement only the wake-up version of this sensor.</p>
+<p><code>getDefaultSensor(SENSOR_TYPE_PICK_UP_GESTURE)</code> <em>returns a wake-up sensor</em></p>
+<p>A pick-up gesture sensor triggers when the device is picked up
+  regardless of wherever it was before (desk, pocket, bag).</p>
+<p>Each sensor event reports 1 in <code>sensors_event_t.data[0]</code>.</p>
+<h3 id="glance_gesture">Glance gesture</h3>
+<p>Underlying physical sensors: Undefined (anything low power)</p>
+<p>Reporting-mode: <em><a href="report-modes-2.html#one-shot">One-shot</a></em></p>
+<p>Low-power</p>
+<p>Implement only the wake-up version of this sensor.</p>
+<p><code>getDefaultSensor(SENSOR_TYPE_GLANCE_GESTURE)</code> <em>returns a wake-up sensor</em></p>
+<p>A glance gesture sensor enables briefly turning the screen on to enable the
+  user to glance content on screen based on a specific motion. When this sensor
+  triggers, the device will turn the screen on momentarily to allow the user to
+  glance notifications or other content while the device remains locked in a
+  non-interactive state (dozing), then the screen will turn off again. This
+  behavior (briefly turning on the screen when this sensor triggers) might be
+  deactivated by the user in the device settings. Changes in settings do not
+  impact the behavior of the sensor: only whether the framework briefly turns the
+  screen on when it triggers. The actual gesture to be detected is not specified,
+  and can be chosen by the manufacturer of the device.</p>
+<p>This sensor must be low power, as it is likely to be activated 24/7.
+  Each sensor event reports 1 in <code>sensors_event_t.data[0]</code>.</p>
+
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/sensors/sensor-types.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:56:06 GMT -->
+</html>

@@ -1,0 +1,1636 @@
+<!doctype html>
+<html  lang="zh_cn">
+  
+<!-- Mirrored from source.android.google.cn/devices/architecture/hidl/code-style.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:45:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>代码样式指南 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="代码样式指南 &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="code-style.html">
+
+  <meta property="og:locale" content="zh_cn">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="code-style.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设置"
+   >
+  设置
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../../compatibility0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设计"
+   aria-label="设计, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: 设计"
+   >
+  设计
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="安全性"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 安全性"
+   >
+  安全性
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../audio0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="开发"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 开发"
+   >
+  开发
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech/dalvik0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="配置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 配置"
+   >
+  配置
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="参考"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 参考"
+   >
+  参考
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="搜索"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="搜索框">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          转到源代码
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../compatibility0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            设计
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../compatibility0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="概览"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 概览"
+   >
+  概览
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../architecture0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="架构"
+   aria-label="架构, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: 架构"
+   >
+  架构
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility/overview0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="兼容性"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 兼容性"
+   >
+  兼容性
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech/display0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="显示"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 显示"
+   >
+  显示
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech/settings/settings-guidelines0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设置"
+   >
+  设置
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility/tests0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="测试"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 测试"
+   >
+  测试
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设置">
+      <span class="devsite-nav-text" >设置</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设计">
+      <span class="devsite-nav-text" >设计</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 概览">
+      <span class="devsite-nav-text" >概览</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../architecture.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 架构">
+      <span class="devsite-nav-text" menu="_book">架构</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility/overview-2.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 兼容性">
+      <span class="devsite-nav-text" >兼容性</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../tech/display.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 显示">
+      <span class="devsite-nav-text" >显示</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../tech/settings/settings-guidelines.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设置">
+      <span class="devsite-nav-text" >设置</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility/tests.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 测试">
+      <span class="devsite-nav-text" >测试</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 安全性">
+      <span class="devsite-nav-text" >安全性</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 开发">
+      <span class="devsite-nav-text" >开发</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 配置">
+      <span class="devsite-nav-text" >配置</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 参考">
+      <span class="devsite-nav-text" >参考</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 转到源代码">
+      <span class="devsite-nav-text" >转到源代码</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../../architecture.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="硬件抽象层 (HAL)">硬件抽象层 (HAL)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="旧版 HAL">旧版 HAL</span></a></li><li class="devsite-nav-item"><a href="../hal-types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="HAL 类型">HAL 类型</span></a></li><li class="devsite-nav-item"><a href="../hal/framework-testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="框架测试">框架测试</span></a></li><li class="devsite-nav-item"><a href="../hal/dynamic-lifecycle.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="动态生命周期">动态生命周期</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="内核">内核</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../kernel/releases.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="稳定版本和更新">稳定版本和更新</span></a></li><li class="devsite-nav-item"><a href="../kernel/android-common.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Android 通用内核">Android 通用内核</span></a></li><li class="devsite-nav-item"><a href="../kernel/modular-kernels.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="模块化内核要求">模块化内核要求</span></a></li><li class="devsite-nav-item"><a href="../kernel/reqs-interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="接口要求">接口要求</span></a></li><li class="devsite-nav-item"><a href="../kernel/config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="配置">配置</span></a></li><li class="devsite-nav-item"><a href="../kernel/hardening.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="内核加固">内核加固</span></a></li><li class="devsite-nav-item"><a href="../kernel/squashfs.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="SquashFS">SquashFS</span></a></li><li class="devsite-nav-item"><a href="../kernel/lldb-debug.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="LLDB 调试">LLDB 调试</span></a></li><li class="devsite-nav-item"><a href="../kernel/network_tests.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="网络测试">网络测试</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL（一般信息）">HIDL（一般信息）</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="接口和软件包">接口和软件包</span></a></li><li class="devsite-nav-item"><a href="hashing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="接口哈希">接口哈希</span></a></li><li class="devsite-nav-item"><a href="services.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="服务和数据转移">服务和数据转移</span></a></li><li class="devsite-nav-item"><a href="fmq.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="快速消息队列">快速消息队列</span></a></li><li class="devsite-nav-item"><a href="binder-ipc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="使用 Binder IPC">使用 Binder IPC</span></a></li><li class="devsite-nav-item"><a href="memoryblock.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="使用 MemoryBlock">使用 MemoryBlock</span></a></li><li class="devsite-nav-item"><a href="network-stack.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="网络堆栈配置工具">网络堆栈配置工具</span></a></li><li class="devsite-nav-item"><a href="threading.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="线程模型">线程模型</span></a></li><li class="devsite-nav-item"><a href="converting.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="转换模块">转换模块</span></a></li><li class="devsite-nav-item"><a href="types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="数据类型">数据类型</span></a></li><li class="devsite-nav-item"><a href="versioning.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="版本控制">版本控制</span></a></li><li class="devsite-nav-item"><a href="code-style.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="代码样式指南">代码样式指南</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (C++)">HIDL (C++)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-cpp.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/packages.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="软件包">软件包</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="接口">接口</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="数据类型">数据类型</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/functions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="函数">函数</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (Java)">HIDL (Java)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-java.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="数据类型">数据类型</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="接口错误和方法">接口错误和方法</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/constants.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="导出常量">导出常量</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="ConfigStore HAL">ConfigStore HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configstore.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../configstore/interface.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="创建 HAL 接口">创建 HAL 接口</span></a></li><li class="devsite-nav-item"><a href="../configstore/service.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="实现服务">实现服务</span></a></li><li class="devsite-nav-item"><a href="../configstore/client.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="客户端使用情况">客户端使用情况</span></a></li><li class="devsite-nav-item"><a href="../configstore/add-class-item.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="添加类和项">添加类和项</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="设备树叠加层">设备树叠加层</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dto.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../dto/implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="实现 DTO">实现 DTO</span></a></li><li class="devsite-nav-item"><a href="../dto/syntax.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTO 语法">DTO 语法</span></a></li><li class="devsite-nav-item"><a href="../dto/compile.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="编译和验证">编译和验证</span></a></li><li class="devsite-nav-item"><a href="../dto/multiple.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="使用多个 DT">使用多个 DT</span></a></li><li class="devsite-nav-item"><a href="../dto/partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTB/DTBO 分区格式">DTB/DTBO 分区格式</span></a></li><li class="devsite-nav-item"><a href="../dto/optimize.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="优化 DTO">优化 DTO</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="供应商 NDK">供应商 NDK</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vndk.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../vndk/enabling.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="启用 VNDK">启用 VNDK</span></a></li><li class="devsite-nav-item"><a href="../vndk/build-system.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK 编译系统支持">VNDK 编译系统支持</span></a></li><li class="devsite-nav-item"><a href="../vndk/extensions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK 扩展">VNDK 扩展</span></a></li><li class="devsite-nav-item"><a href="../vndk/deftool.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK 定义工具">VNDK 定义工具</span></a></li><li class="devsite-nav-item"><a href="../vndk/snapshot-design.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK 快照设计">VNDK 快照设计</span></a></li><li class="devsite-nav-item"><a href="../vndk/snapshot-generate.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="生成 VNDK 快照">生成 VNDK 快照</span></a></li><li class="devsite-nav-item"><a href="../vndk/linker-namespace.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="链接器命名空间">链接器命名空间</span></a></li><li class="devsite-nav-item"><a href="../vndk/dir-rules-sepolicy.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="目录、规则和 sepolicy">目录、规则和 sepolicy</span></a></li><li class="devsite-nav-item"><a href="../vndk/renderscript.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Renderscript">Renderscript</span></a></li><li class="devsite-nav-item"><a href="../vndk/abi-stability.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="ABI 稳定性">ABI 稳定性</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="供应商接口对象">供应商接口对象</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vintf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../vintf/objects.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="清单">清单</span></a></li><li class="devsite-nav-item"><a href="../vintf/comp-matrices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="兼容性矩阵">兼容性矩阵</span></a></li><li class="devsite-nav-item"><a href="../vintf/fcm.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="FCM 生命周期">FCM 生命周期</span></a></li><li class="devsite-nav-item"><a href="../vintf/dm.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="制定设备清单">制定设备清单</span></a></li><li class="devsite-nav-item"><a href="../vintf/match-rules.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="匹配规则">匹配规则</span></a></li><li class="devsite-nav-item"><a href="../vintf/resources.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="资源">资源</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="引导加载程序">引导加载程序</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bootloader.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/boot-reason.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="启动原因">启动原因</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/boot-image-header.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="启动映像标头">启动映像标头</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/system-as-root.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="system-as-root">system-as-root</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/partitions-images.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="分区和映像">分区和映像</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/product-partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="/product 分区">/product 分区</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/recovery-image.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="恢复映像">恢复映像</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/flashing-updating.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="刷写和更新">刷写和更新</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/unlock-trusty.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="解锁和 Trusty">解锁和 Trusty</span></a></li></ul></devsite-expandable-nav></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../../compatibility0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            设计
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../architecture0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            架构
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">代码样式指南</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>HIDL 代码样式类似于 Android 框架中的 C++ 代码，缩进 4 个空格，并且采用混用大小写的文件名。软件包声明、导入和文档字符串与 Java 中的类似，只有些微差别。</p>
+
+<p>下面针对 <code>IFoo.hal</code> 和 <code>types.hal</code> 的示例展示了 HIDL 代码样式，并提供了指向每种样式（<code>IFooClientCallback.hal</code>、<code>IBar.hal</code> 和 <code>IBaz.hal</code> 已省略）详细信息的快速链接。</p>
+
+<table>
+<tbody><tr><th><code>hardware/interfaces/foo/1.0/IFoo.hal</code></th></tr>
+<tr><td><pre class="prettyprint">
+
+/*
+ * (License Notice)
+ */
+
+<a href="#package-names">package</a> android.hardware.foo@<a href="#versions">1.0</a>;
+
+<a href="#imports">import</a> android.hardware.bar@1.0::IBar;
+
+import IBaz;
+import IFooClientCallback;
+
+/**
+ * IFoo is an interface that…
+ */
+interface <a href="#interface-names">IFoo</a> {
+
+    /**
+     * This is a <a href="#comments">multiline docstring</a>.
+     *
+     * <a href="#return">@return</a> result 0 if successful, nonzero otherwise.
+     */
+     <a href="#function-declarations">foo() generates (FooStatus result);</a>
+
+    /**
+     * Restart controller by power cycle.
+     *
+     * <a href="#param">@param</a> bar callback interface that…
+     * @return result 0 if successful, nonzero otherwise.
+     */
+    <a href="#functions">powerCycle</a>(IBar bar) generates (FooStatus <a href="#functions">result</a>);
+
+    /** <a href="#comments">Single line docstring</a>. */
+    baz();
+
+    /**
+     * The bar function.
+     *
+     * <a href="#param">@param</a> <a href="#functions">clientCallback</a> callback after function is called
+     * @param baz related baz object
+     * @param data input data blob
+     */
+    bar(IFooClientCallback clientCallback,
+        IBaz baz,
+        FooData data);
+
+};
+</pre>
+</td></tr></tbody></table>
+
+<table>
+<tbody><tr><th><code>hardware/interfaces/foo/1.0/types.hal</code></th></tr>
+<tr><td><pre class="prettyprint">
+
+/*
+ * (License Notice)
+ */
+
+package android.hardware.foo@1.0;
+
+<a href="#comments">/** Replied status. */</a>
+<a href="#enum-declarations">enum Status : int32_t</a> {
+    <a href="#enum-values">OK</a>,
+    ERR_ARG, <a href="#comments">// invalid arguments</a>
+    ERR_UNKNOWN = -1, // note, no transport related errors
+};
+
+<a href="#struct-declarations">struct ArgData</a> {
+    <a href="#array-declarations">int32_t[20]  someArray;</a>
+    <a href="#vectors">vec&lt;uint8_t&gt; data;</a>
+};
+</pre>
+</td></tr></tbody></table>
+
+<h2 id="naming">命名规范</h2>
+<p>函数名称、变量名称和文件名应该是描述性名称；避免过度缩写。将首字母缩略词视为字词（例如，请使用 <code>INfc</code>，而非 <code>INFC</code>）。</p>
+
+<h3 id="dir-structure">目录结构和文件命名</h3>
+<p>目录结构应如下所示：</p>
+<ul>
+<li><code><var>ROOT-DIRECTORY</var></code>
+  <ul>
+  <li><code><var>MODULE</var></code>
+    <ul>
+    <li><code><var>SUBMODULE</var></code>（可选，可以有多层）
+      <ul>
+      <li><code><var>VERSION</var></code>
+        <ul>
+        <li><code>Android.mk</code></li>
+        <li><code>I<var>INTERFACE_1</var>.hal</code></li>
+        <li><code>I<var>INTERFACE_2</var>.hal</code></li>
+        <li><code>…</code></li>
+        <li><code>I<var>INTERFACE_N</var>.hal</code></li>
+        <li><code>types.hal</code>（可选）</li>
+        </ul>
+      </li>
+      </ul>
+    </li>
+    </ul>
+  </li>
+  </ul>
+</li>
+</ul>
+
+<p>其中：</p>
+<ul>
+<li><code><var>ROOT-DIRECTORY</var></code> 为：
+  <ul>
+  <li><code>hardware/interfaces</code>（如果是核心 HIDL 软件包）。</li>
+  <li><code>vendor/<var>VENDOR</var>/interfaces</code>（如果是供应商软件包），其中 <code><var>VENDOR</var></code>
+指 SoC 供应商或原始设备制造商 (OEM)/原始设计制造商 (ODM)。</li>
+  </ul>
+  </li>
+<li><code><var>MODULE</var></code> 应该是一个描述子系统的小写字词（例如 <code>nfc</code>）。如果需要多个字词，请使用嵌套式 <code><var>SUBMODULE</var></code>。可以嵌套多层。</li>
+<li><code><var>VERSION</var></code> 应该与<a href="#versions">版本</a>中所述的版本 (major.minor) 完全相同。</li>
+<li>如<a href="#interface-names">接口名称</a>中所述，<code>I<var>INTERFACE_X</var></code> 应该是含有 <code>UpperCamelCase</code>/<code>PascalCase</code> 的接口名称（例如 <code>INfc</code>）。</li>
+</ul>
+
+<p>例如：</p>
+<ul>
+<li><code>hardware/interfaces</code>
+  <ul>
+  <li><code>nfc</code>
+    <ul>
+    <li><code>1.0</code>
+      <ul>
+      <li><code>Android.mk</code></li>
+      <li><code>INfc.hal</code></li>
+      <li><code>INfcClientCallback.hal</code></li>
+      <li><code>types.hal</code></li>
+      </ul>
+    </li>
+    </ul>
+  </li>
+  </ul>
+</li>
+</ul>
+
+<p class="note"><strong>注意</strong>：所有文件都必须采用不可执行的权限（在 Git 中）。
+
+</p><h3 id="package-names">软件包名称</h3>
+<p>软件包名称必须采用以下<a href="#fqn">完全限定名称 (FQN)</a> 格式（称为 <code><var>PACKAGE-NAME</var></code>）：</p>
+
+<pre class="prettyprint">
+<var>PACKAGE</var>.<var>MODULE</var>[.<var>SUBMODULE</var>[.<var>SUBMODULE</var>[…]]]@<var>VERSION</var>
+</pre>
+
+<p>其中：</p>
+<ul>
+<li><code><var>PACKAGE</var></code> 是映射到 <code><var>ROOT-DIRECTORY</var></code> 的软件包。具体来说，<code><var>PACKAGE</var></code> 是：
+  <ul>
+  <li><code>android.hardware</code>（如果是核心 HIDL 软件包）（映射到 <code>hardware/interfaces</code>）。</li>
+  <li><code>vendor.<var>VENDOR</var>.hardware</code>（如果是供应商软件包），其中 <code><var>VENDOR</var></code> 指 SoC 供应商或 OEM/ODM（映射到 <code>vendor/<var>VENDOR</var>/interfaces</code>）。</li>
+  </ul>
+</li><li><code><var>MODULE</var>[.<var>SUBMODULE</var>[.<var>SUBMODULE</var>[…]]]@<var>VERSION</var></code> 与<a href="#dir-structure">目录结构</a>中所述结构内的文件夹名称完全相同。</li>
+<li>软件包名称应为小写。如果软件包名称包含多个字词，则这些字词应用作子模块或以 <code>snake_case</code> 形式书写。
+</li>
+<li>不允许使用空格。</li>
+</ul>
+
+<p>软件包声明中始终使用 FQN。</p>
+
+<h3 id="versions">版本</h3>
+<p>
+版本应具有以下格式：
+</p>
+
+<pre class="prettyprint"><var>MAJOR</var>.<var>MINOR</var></pre>
+
+<p>MAJOR 和 MINOR 版本都应该是一个整数。<var></var><var></var>HIDL 使用<a href="http://semver.org/" class="external">语义化版本编号</a>规则。</p>
+
+<h3 id="imports">导入</h3>
+<p>导入采用以下三种格式之一：</p>
+<ul>
+<li>完整软件包导入：<code>import <var>PACKAGE-NAME</var>;</code></li>
+<li>部分导入：<code>import
+<var>PACKAGE-NAME</var>::<var>UDT</var>;</code>（或者，如果导入的类型是在同一个软件包中，则为 <code>import <var>UDT</var>;</code>）</li>
+<li>仅类型导入：<code>import <var>PACKAGE-NAME</var>::types;</code></li>
+</ul>
+
+<p><code><var>PACKAGE-NAME</var></code> 遵循<a href="#package-names">软件包名称</a>中的格式。当前软件包的 <code>types.hal</code>（如果存在）是自动导入的（请勿对其进行显式导入）。</p>
+
+<h4 id="fqn">完全限定名称 (FQN)</h4>
+<p>仅在必要时对用户定义的类型导入使用完全限定名称。如果导入类型是在同一个软件包中，则省略 <code><var>PACKAGE-NAME</var></code>。FQN 不得含有空格。完全限定名称示例：</p>
+
+<pre class="prettyprint">android.hardware.nfc@1.0::INfcClientCallback</pre>
+
+<p>如果是在 <code>android.hardware.nfc@1.0</code> 下的另一个文件中，可以使用 <code>INfcClientCallback</code> 引用上述接口。否则，只能使用完全限定名称。</p>
+
+<h4 id="grouping">对导入进行分组和排序</h4>
+<p>在软件包声明之后（在导入之前）添加一个空行。每个导入都应占用一行，且不应缩进。按以下顺序对导入进行分组：</p>
+
+<ol>
+<li>其他 <code>android.hardware</code> 软件包（使用完全限定名称）。
+</li>
+<li>其他 <code>vendor.<var>VENDOR</var></code> 软件包（使用完全限定名称）。
+  <ul>
+  <li>每个供应商都应是一个组。</li>
+  <li>按字母顺序对供应商排序。</li>
+  </ul>
+  </li>
+<li>源自同一个软件包中其他接口的导入（使用简单名称）。</li>
+</ol>
+
+<p>在组与组之间添加一个空行。在每个组内，按字母顺序对导入排序。例如：</p>
+
+<pre class="prettyprint">
+import android.hardware.nfc@1.0::INfc;
+import android.hardware.nfc@1.0::INfcClientCallback;
+
+// Importing the whole module.
+import vendor.barvendor.bar@3.1;
+
+import vendor.foovendor.foo@2.2::IFooBar;
+import vendor.foovendor.foo@2.2::IFooFoo;
+
+import IBar;
+import IFoo;
+</pre>
+
+<h3 id="interface-names">接口名称</h3>
+<p>接口名称必须以 <code>I</code> 开头，后跟 <code>UpperCamelCase</code>/<code>PascalCase</code> 名称。名称为 <code>IFoo</code> 的接口必须在文件 <code>IFoo.hal</code> 中定义。此文件只能包含 <code>IFoo</code> 接口的定义（接口 <code>I<var>NAME</var></code> 应位于 <code>I<var>NAME</var>.hal</code> 中）。
+</p>
+
+<h3 id="functions">函数</h3>
+<p>对于函数名称、参数和返回变量名称，请使用 <code>lowerCamelCase</code>。例如：</p>
+
+<pre class="prettyprint">
+open(INfcClientCallback clientCallback) generates (int32_t retVal);
+oneway pingAlive(IFooCallback cb);
+</pre>
+
+<h3 id="struct-union">结构体/联合字段名称</h3>
+<p>对于结构体/联合字段名称，请使用 <code>lowerCamelCase</code>。例如：</p>
+
+<pre class="prettyprint">
+struct FooReply {
+    vec&lt;uint8_t&gt; replyData;
+}
+</pre>
+
+<h3 id="type-names">类型名称</h3>
+<p>类型名称指结构体/联合定义、枚举类型定义和 <code>typedef</code>。对于这些名称，请使用 <code>UpperCamelCase</code>/<code>PascalCase</code>。例如：</p>
+
+<pre class="prettyprint">
+enum NfcStatus : int32_t {
+    /*...*/
+};
+struct NfcData {
+    /*...*/
+};
+</pre>
+
+<h3 id="enum-values">枚举值</h3>
+<p>枚举值应为 <code>UPPER_CASE_WITH_UNDERSCORES</code>。将枚举值作为函数参数传递以及作为函数返回项返回时，请使用实际枚举类型（而不是基础整数类型）。例如：</p>
+
+<pre class="prettyprint">
+enum NfcStatus : int32_t {
+    HAL_NFC_STATUS_OK               = 0,
+    HAL_NFC_STATUS_FAILED           = 1,
+    HAL_NFC_STATUS_ERR_TRANSPORT    = 2,
+    HAL_NFC_STATUS_ERR_CMD_TIMEOUT  = 3,
+    HAL_NFC_STATUS_REFUSED          = 4
+};
+</pre>
+
+<p class="note"><strong>注意</strong>：枚举类型的基础类型是在冒号后显式声明的。因为它不依赖于编译器，所以使用实际枚举类型会更明晰。</p>
+
+<p>对于枚举值的完全限定名称，请在枚举类型名称和枚举值名称之间使用<strong>冒号</strong>：</p>
+
+<pre class="prettyprint">
+<var>PACKAGE-NAME</var>::<var>UDT</var>[.<var>UDT</var>[.<var>UDT</var>[…]]:<var>ENUM_VALUE_NAME</var>
+</pre>
+
+<p>完全限定名称内不得含有空格。仅在必要时使用完全限定名称，其他情况下可以省略不必要的部分。例如：</p>
+
+<pre class="prettyprint">
+android.hardware.foo@1.0::IFoo.IFooInternal.FooEnum:ENUM_OK
+</pre>
+
+<h2 id="comments">备注</h2>
+<p>对于单行备注，使用 <code>// </code>和 <code>/** */</code> 都可以。</p>
+<pre class="prettyprint">
+// This is a single line comment
+/* This is also single line comment */
+/** This is documentation comment */
+</pre>
+
+<ul>
+<li><code>//</code> 主要用于：
+  <ul>
+  <li>尾随备注</li>
+  <li>将不会针对生成的文档使用的备注</li>
+  <li>TODO</li>
+  </ul>
+</li>
+<li>针对生成的文档使用 <code>/** */</code>。此样式只能应用于类型、方法、字段和枚举值声明。例如：<pre class="prettyprint">
+/** Replied status */
+enum TeleportStatus {
+    /** Object entirely teleported. */
+    OK              = 0,
+    /** Methods return this if teleportation is not completed. */
+    ERROR_TELEPORT  = 1,
+    /**
+     * Teleportation could not be completed due to an object
+     * obstructing the path.
+     */
+    ERROR_OBJECT    = 2,
+    ...
+}
+</pre>
+</li><li>多行备注的第一行应为 <code>/**</code>，每行的开头应使用 <code>*</code>，并且应将 <code>*/</code> 单独放在最后一行（各行的星号应对齐）。例如：
+<pre class="prettyprint">
+/**
+ * My multi-line
+ * comment
+ */
+</pre>
+</li>
+<li>许可通知和变更日志的第一行应为 <code>/*</code>（一个星号），每行的开头应使用 <code>*</code>，并且应将 <code>*/</code> 单独放在最后一行（各行的星号应对齐）。例如：
+<pre class="prettyprint">
+/*
+ * Copyright (C) 2017 The Android Open Source Project
+ * ...
+ */
+
+/*
+ * Changelog:
+ * ...
+ */
+</pre>
+</li>
+</ul>
+
+<h3 id="file-comments">文件备注</h3>
+<p>每个文件的开头都应为相应的许可通知。对于核心 HAL，该通知应为 <a href="https://android.googlesource.com/platform/development/+/master/docs/copyright-templates/c.txt" class="external"><code>development/docs/copyright-templates/c.txt</code></a> 中的 AOSP Apache 许可。请务必更新年份，并使用 <code>/* */</code> 样式的多行备注（如上所述）。</p>
+
+<p>您可以视需要在许可通知后空一行，后跟变更日志/版本编号信息。使用 <code>/* */</code> 样式的多行备注（如上所述），在变更日志后空一行，后跟软件包声明。</p>
+
+<h3 id="todo-comments">TODO 备注</h3>
+<p>TODO 备注应包含全部大写的字符串 <code>TODO</code>，后跟一个冒号。例如：</p>
+<pre>// TODO: remove this code before foo is checked in.</pre>
+
+<p class="alert">只有在开发期间才允许使用 TODO 备注；TODO 备注不得存在于已发布的接口中。</p>
+
+<h3 id="docstrings">接口/函数备注（文档字符串）</h3>
+<p>对于多行和单行文档字符串，请使用 <code>/** */</code>。对于文档字符串，请勿使用 <code>//</code>。</p>
+
+<p>接口的文档字符串应描述接口的一般机制、设计原理、目的等。函数的文档字符串应针对特定函数（软件包级文档位于软件包目录下的 README 文件中）。</p>
+
+<pre class="prettyprint">
+/**
+ * IFooController is the controller for foos.
+ */
+interface IFooController {
+    /**
+     * Opens the controller.
+     *
+     * @return status HAL_FOO_OK if successful.
+     */
+    open() generates (FooStatus status);
+
+    /** Close the controller. */
+    close();
+};
+</pre>
+
+<p>您必须为每个参数/返回值添加 <code>@param</code> 和 <code>@return</code>：</p>
+
+<ul>
+<li id="param">必须为每个参数添加 <code>@param</code>。其后应跟参数的名称，然后是文档字符串。</li>
+<li id="return">必须为每个返回值添加 <code>@return</code>。其后应跟返回值的名称，然后是文档字符串。</li>
+</ul>
+<p>例如：</p>
+
+<pre class="prettyprint">
+/**
+ * Explain what foo does.
+ *
+ * @param arg1 explain what arg1 is
+ * @param arg2 explain what arg2 is
+ * @return ret1 explain what ret1 is
+ * @return ret2 explain what ret2 is
+ */
+foo(T arg1, T arg2) generates (S ret1, S ret2);
+</pre>
+
+<h2>格式</h2>
+<p>一般格式规则包括：</p>
+<ul>
+<li><strong>行长</strong>：每行文字最长不应超过 <strong>80</strong> 列。</li>
+<li><strong>空格</strong>：各行不得包含尾随空格；空行不得包含空格。</li>
+<li><strong>空格与制表符</strong>：仅使用空格。</li>
+<li><strong>缩进大小</strong>：数据块缩进 <strong>4</strong> 个空格，换行缩进 <strong>8</strong> 个空格。</li>
+<li><strong>大括号</strong>：（<a href="#annotations">注释值</a>除外）<strong>左</strong>大括号与前面的代码在同一行，<strong>右</strong>大括号与后面的分号占一整行。例如：
+<pre class="prettyprint">
+interface INfc {
+    close();
+};
+</pre>
+</li>
+</ul>
+
+<h3 id="package-declarations">软件包声明</h3>
+<p>软件包声明应位于文件顶部，在许可通知之后，应占一整行，并且不应缩进。声明软件包时需采用以下格式（有关名称格式，请参阅<a href="#package-names">软件包名称</a>）：</p>
+
+<pre class="prettyprint">
+package <var>PACKAGE-NAME</var>;
+</pre>
+
+<p>例如：</p>
+
+<pre class="prettyprint">
+package android.hardware.nfc@1.0;
+</pre>
+
+<h3 id="function-declarations">函数声明</h3>
+<p>函数名称、参数、<code>generates</code> 和返回值应在同一行中（如果放得下）。例如：</p>
+<pre class="prettyprint">
+interface IFoo {
+    /** ... */
+    easyMethod(int32_t data) generates (int32_t result);
+};
+</pre>
+
+<p>如果一行中放不下，则尝试按相同的缩进量放置参数和返回值，并突出 <code>generate</code>，以便读取器快速看到参数和返回值。例如：</p>
+
+<pre class="prettyprint">
+interface IFoo {
+    suchALongMethodThatCannotFitInOneLine(int32_t theFirstVeryLongParameter,
+                                          int32_t anotherVeryLongParameter);
+    anEvenLongerMethodThatCannotFitInOneLine(int32_t theFirstLongParameter,
+                                             int32_t anotherVeryLongParameter)
+                                  generates (int32_t theFirstReturnValue,
+                                             int32_t anotherReturnValue);
+    superSuperSuperSuperSuperSuperSuperLongMethodThatYouWillHateToType(
+            int32_t theFirstVeryLongParameter, // 8 spaces
+            int32_t anotherVeryLongParameter
+        ) generates (
+            int32_t theFirstReturnValue,
+            int32_t anotherReturnValue
+        );
+    // method name is even shorter than 'generates'
+    foobar(AReallyReallyLongType aReallyReallyLongParameter,
+           AReallyReallyLongType anotherReallyReallyLongParameter)
+        generates (ASuperLongType aSuperLongReturnValue, // 4 spaces
+                   ASuperLongType anotherSuperLongReturnValue);
+}
+</pre>
+
+<p>其他细节：</p>
+<ul>
+<li>左括号始终与函数名称在同一行。</li>
+<li>函数名称和左括号之间不能有空格。</li>
+<li>括号和参数之间不能有空格，它们之间出现换行时除外。<em></em></li>
+<li>如果 <code>generates</code> 与前面的右括号在同一行，则前面加一个空格。如果 <code>generates</code> 与接下来的左括号在同一行，则后面加一个空格。</li>
+<li>将所有参数和返回值对齐（如果可能）。</li>
+<li>默认缩进 4 个空格。</li>
+<li>将换行的参数与上一行的第一个参数对齐，如果不能对齐，则这些参数缩进 8 个空格。</li>
+</ul>
+
+<h3 id="annotations">注释</h3>
+<p>对于注释，请采用以下格式：</p>
+
+<pre class="prettyprint">
+@annotate(keyword = value, keyword = {value, value, value})
+</pre>
+
+<p>按字母顺序对注释进行排序，并在等号两边加空格。例如：</p>
+
+<pre class="prettyprint">
+@callflow(key = value)
+@entry
+@exit
+</pre>
+
+<p>确保注释占一整行。例如：</p>
+<pre class="prettyprint">
+// Good
+@entry
+@exit
+
+// Bad
+@entry @exit
+</pre>
+
+<p>如果注释在同一行中放不下，则缩进 8 个空格。例如：</p>
+
+<pre class="prettyprint">
+@annotate(
+        keyword = value,
+        keyword = {
+                value,
+                value
+        },
+        keyword = value)
+</pre>
+
+<p>如果整个值数组在同一行中放不下，则在左大括号 <code>{</code> 后和数组内的每个逗号后换行。在最后一个值后紧跟着添加一个右括号。如果只有一个值，请勿使用大括号。</p>
+
+<p>如果整个值数组可以放到同一行，则请勿在左大括号后和右大括号前加空格，并在每个逗号后加一个空格。例如：</p>
+
+<pre class="prettyprint">
+// Good
+@callflow(key = {"val", "val"})
+
+// Bad
+@callflow(key = { "val","val" })
+</pre>
+
+<p>注释和函数声明之间不得有空行。例如：</p>
+<pre class="prettyprint">
+// Good
+@entry
+foo();
+
+// Bad
+@entry
+
+foo();
+</pre>
+
+<h3 id="enum-declarations">枚举声明</h3>
+<p>对于枚举声明，请遵循以下规则：</p>
+<ul>
+<li>如果与其他软件包共用枚举声明，则将声明放在 <code>types.hal</code> 中，而不是嵌入到接口内。</li>
+<li>在冒号前后加空格，并在基础类型后和左大括号前加空格。</li>
+<li>最后一个枚举值可以有也可以没有额外的逗号。</li>
+</ul>
+
+<h3 id="struct-declarations">结构体声明</h3>
+<p>对于结构体声明，请遵循以下规则：</p>
+<ul>
+<li>如果与其他软件包共用结构体声明，则将声明放在 <code>types.hal</code> 中，而不是嵌入到接口内。</li>
+<li>在结构体类型名称后和左大括号前加空格。</li>
+<li>对齐字段名称（可选）。例如：
+<pre class="prettyprint">
+struct MyStruct {
+    vec&lt;uint8_t&gt;   data;
+    int32_t        someInt;
+}
+</pre>
+</li>
+</ul>
+
+<h3 id="array-declarations">数组声明</h3>
+<p>请勿在以下内容之间加空格：</p>
+<ul>
+<li>元素类型和左方括号。</li>
+<li>左方括号和数组大小。</li>
+<li>数组大小和右方括号。</li>
+<li>右方括号和接下来的左方括号（如果存在多个维度）。</li>
+</ul>
+
+<p>例如：</p>
+<pre class="prettyprint">
+// Good
+int32_t[5] array;
+
+// Good
+int32_t[5][6] multiDimArray;
+
+// Bad
+int32_t [ 5 ] [ 6 ] array;
+</pre>
+
+<h3 id="vectors">矢量</h3>
+<p>请勿在以下内容之间加空格：</p>
+<ul>
+<li><code>vec</code> 和左尖括号。</li>
+<li>左尖括号和元素类型（例外情况：元素类型也是 <code>vec</code>）。<em></em></li>
+<li>元素类型和右尖括号（例外情况：元素类型也是 <code>vec</code>）。<em></em></li>
+</ul>
+
+<p>例如：</p>
+<pre class="prettyprint">
+// Good
+vec&lt;int32_t&gt; array;
+
+// Good
+vec&lt;vec&lt;int32_t&gt;&gt; array;
+
+// Good
+vec&lt; vec&lt;int32_t&gt; &gt; array;
+
+// Bad
+vec &lt; int32_t &gt; array;
+
+// Bad
+vec &lt; vec &lt; int32_t &gt; &gt; array;
+</pre>
+
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">构建</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 代码库
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            要求
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            下载
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            预览二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            出厂映像
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            驱动程序二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">关注</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            在 Twitter 上 @Android
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            在 Twitter 上 @AndroidDev
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android 博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google 安全博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google 网上论坛上的 Android 平台论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Google 网上论坛上的 Android 构建论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Google 网上论坛上的 Android 移植论坛
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">获取帮助</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            问题跟踪器
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          关于 Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/community0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          社区
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          法律条款
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          许可
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          隐私权政策
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476&amp;hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          网站反馈
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'zh_cn',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/architecture/hidl/code-style.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:45:59 GMT -->
+</html>

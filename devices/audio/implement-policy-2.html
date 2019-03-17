@@ -1,0 +1,1357 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/devices/audio/implement-policy.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:31:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Configuring Audio Policies &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Configuring Audio Policies &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="implement-policy.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="implement-policy.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+   aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech/dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Develop
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab active>
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Audio"
+   aria-label="Audio, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Audio"
+   >
+  Audio
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../camera.html"
+   class="gc-analytics-event"
+   title="Camera"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Camera"
+   >
+  Camera
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech/connect.html"
+   class="gc-analytics-event"
+   title="Connectivity"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Connectivity"
+   >
+  Connectivity
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../graphics.html"
+   class="gc-analytics-event"
+   title="Graphics"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Graphics"
+   >
+  Graphics
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../input.html"
+   class="gc-analytics-event"
+   title="Interaction"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Interaction"
+   >
+  Interaction
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../media.html"
+   class="gc-analytics-event"
+   title="Media"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Media"
+   >
+  Media
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../storage.html"
+   class="gc-analytics-event"
+   title="Storage"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Storage"
+   >
+  Storage
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../audio.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Audio">
+      <span class="devsite-nav-text" menu="_book">Audio</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../camera.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Camera">
+      <span class="devsite-nav-text" >Camera</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../tech/connect.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Connectivity">
+      <span class="devsite-nav-text" >Connectivity</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../graphics.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Graphics">
+      <span class="devsite-nav-text" >Graphics</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../input.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Interaction">
+      <span class="devsite-nav-text" >Interaction</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../media.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Media">
+      <span class="devsite-nav-text" >Media</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../storage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Storage">
+      <span class="devsite-nav-text" >Storage</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item"><a href="terminology.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Terminology">Terminology</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Implementation">Implementation</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-policy.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Policy Configuration">Policy Configuration</span></a></li><li class="devsite-nav-item"><a href="implement-shared-library.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Shared Library">Shared Library</span></a></li><li class="devsite-nav-item"><a href="implement-pre-processing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Pre-processing Effects">Pre-processing Effects</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item"><a href="data_formats.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Formats">Data Formats</span></a></li>
+                          <li class="devsite-nav-item"><a href="attributes.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Attributes">Attributes</span></a></li>
+                          <li class="devsite-nav-item"><a href="highres-effects.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="High-Resolution Effects">High-Resolution Effects</span></a></li>
+                          <li class="devsite-nav-item"><a href="aaudio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AAudio and MMAP">AAudio and MMAP</span></a></li>
+                          <li class="devsite-nav-item"><a href="warmup.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Warmup">Warmup</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Latency">Latency</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="latency/latency.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="latency/contrib.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Contributors">Contributors</span></a></li><li class="devsite-nav-item"><a href="latency/design.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Design">Design</span></a></li><li class="devsite-nav-item"><a href="latency/measure.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Measure">Measure</span></a></li><li class="devsite-nav-item"><a href="latency/testing_circuit.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Light Testing Circuit">Light Testing Circuit</span></a></li><li class="devsite-nav-item"><a href="latency/loopback.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Audio Loopback Dongle">Audio Loopback Dongle</span></a></li><li class="devsite-nav-item"><a href="latency/measurements.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Measurements">Measurements</span></a></li><li class="devsite-nav-item"><a href="latency/app.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Applications">Applications</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item"><a href="avoiding_pi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Priority Inversion">Priority Inversion</span></a></li>
+                          <li class="devsite-nav-item"><a href="src.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sample Rate Conversion">Sample Rate Conversion</span></a></li>
+                          <li class="devsite-nav-item"><a href="debugging.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Debugging">Debugging</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="MIDI">MIDI</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="midi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="midi_arch.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="MIDI Architecture">MIDI Architecture</span></a></li><li class="devsite-nav-item"><a href="midi_test.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="MIDI Test Procedure">MIDI Test Procedure</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item"><a href="usb.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="USB Digital Audio">USB Digital Audio</span></a></li>
+                          <li class="devsite-nav-item"><a href="tv.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="TV Audio">TV Audio</span></a></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Develop
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Audio
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Configuring Audio Policies</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+
+
+<p>Android 7.0 introduces a new audio policy configuration file format (XML) for
+describing your audio topology.</p>
+
+<p>Previous Android releases required using the
+<code>device/&lt;company&gt;/&lt;device&gt;/audio/audio_policy.conf</code>
+to declare the audio devices present on your product (you can see an example of
+this file for the Galaxy Nexus audio hardware in
+<code>device/samsung/tuna/audio/audio_policy.conf</code>). However, .conf is a
+simple proprietary format that is too limited to describe complex topologies for
+applications such as televisions and automobiles.</p>
+
+<p>Android 7.0 deprecates the <code>audio_policy.conf</code> and adds support
+for defining audio topology using an XML file format that is more
+human-readable, has a wide range of editing and parsing tools, and is flexible
+enough to describe complex audio topologies.</p>
+
+<p class="note"><strong>Note:</strong> Android 7.0 preserves support for using
+<code>audio_policy.conf</code>; this legacy format is used by default. To use
+the XML file format, include the build option <code>USE_XML_AUDIO_POLICY_CONF
+:= 1</code> in device makefile.</p>
+
+<h2 id=xml_advantages>Advantages of the XML format</h2>
+<p>As in the .conf file, the new XML file enables defining the number and types
+of output an input stream profiles, devices usable for playback and capture, and
+audio attributes. In addition, the XML format offers the following enhancements:
+</p>
+
+<ul>
+<li>Audio profiles are now structured similar to HDMI Simple Audio Descriptors
+and enable a different set of sampling rates/channel masks for each audio
+format.</li>
+<li>Explicit definitions of all possible connections between devices and
+streams. Previously, an implicit rule made it possible to interconnect all
+devices attached to the same HAL module, preventing the audio policy from
+controlling connections requested with audio patch APIs. In the XML format, the
+topology description now defines connection limitations.</li>
+<li>Support for <em>includes</em> avoids repeating standard A2DP, USB, or
+reroute submit definitions.</li>
+<li>Customizable volume curves. Previously, volume tables were hardcoded. In the
+XML format, volume tables are described and can be customized.</li>
+</ul>
+
+<p>The template at
+<code>frameworks/av/services/audiopolicy/config/audio_policy_configuration.xml</code>
+shows many of these features in use.</p>
+
+<h2 id=xml_file_format>File format and location</h2>
+<p>The new audio policy configuration file is
+<code>audio_policy_configuration.xml</code> and is located in
+<code>/system/etc</code>. To view a simple audio policy configuration in the new
+XML file format, view the example below.</p>
+
+  <section class="expandable">
+    <h4 class="showalways">Show audio policy example</h4>
+<pre class="devsite-click-to-copy">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;audioPolicyConfiguration version=&quot;1.0&quot; xmlns:xi=&quot;http://www.w3.org/2001/XInclude&quot;&gt;
+    &lt;globalConfiguration speaker_drc_enabled=&quot;true&quot;/&gt;
+    &lt;modules&gt;
+        &lt;module name=&quot;primary&quot; halVersion=&quot;3.0&quot;&gt;
+            &lt;attachedDevices&gt;
+                &lt;item&gt;Speaker&lt;/item&gt;
+                &lt;item&gt;Earpiece&lt;/item&gt;
+                &lt;item&gt;Built-In Mic&lt;/item&gt;
+            &lt;/attachedDevices&gt;
+            &lt;defaultOutputDevice&gt;Speaker&lt;/defaultOutputDevice&gt;
+            &lt;mixPorts&gt;
+                &lt;mixPort name=&quot;primary output&quot; role=&quot;source&quot; flags=&quot;AUDIO_OUTPUT_FLAG_PRIMARY&quot;&gt;
+                    &lt;profile name=&quot;&quot; format=&quot;AUDIO_FORMAT_PCM_16_BIT&quot;
+                             samplingRates=&quot;48000&quot; channelMasks=&quot;AUDIO_CHANNEL_OUT_STEREO&quot;/&gt;
+                &lt;/mixPort&gt;
+                &lt;mixPort name=&quot;primary input&quot; role=&quot;sink&quot;&gt;
+                    &lt;profile name=&quot;&quot; format=&quot;AUDIO_FORMAT_PCM_16_BIT&quot;
+                             samplingRates=&quot;8000,16000,48000&quot;
+                             channelMasks=&quot;AUDIO_CHANNEL_IN_MONO&quot;/&gt;
+                &lt;/mixPort&gt;
+            &lt;/mixPorts&gt;
+            &lt;devicePorts&gt;
+                &lt;devicePort tagName=&quot;Earpiece&quot; type=&quot;AUDIO_DEVICE_OUT_EARPIECE&quot; role=&quot;sink&quot;&gt;
+                   &lt;profile name=&quot;&quot; format=&quot;AUDIO_FORMAT_PCM_16_BIT&quot;
+                            samplingRates=&quot;48000&quot; channelMasks=&quot;AUDIO_CHANNEL_IN_MONO&quot;/&gt;
+                &lt;/devicePort&gt;
+                &lt;devicePort tagName=&quot;Speaker&quot; role=&quot;sink&quot; type=&quot;AUDIO_DEVICE_OUT_SPEAKER&quot; address=&quot;&quot;&gt;
+                    &lt;profile name=&quot;&quot; format=&quot;AUDIO_FORMAT_PCM_16_BIT&quot;
+                             samplingRates=&quot;48000&quot; channelMasks=&quot;AUDIO_CHANNEL_OUT_STEREO&quot;/&gt;
+                &lt;/devicePort&gt;
+                &lt;devicePort tagName=&quot;Wired Headset&quot; type=&quot;AUDIO_DEVICE_OUT_WIRED_HEADSET&quot; role=&quot;sink&quot;&gt;
+                    &lt;profile name=&quot;&quot; format=&quot;AUDIO_FORMAT_PCM_16_BIT&quot;
+                             samplingRates=&quot;48000&quot; channelMasks=&quot;AUDIO_CHANNEL_OUT_STEREO&quot;/&gt;
+                &lt;/devicePort&gt;
+                &lt;devicePort tagName=&quot;Built-In Mic&quot; type=&quot;AUDIO_DEVICE_IN_BUILTIN_MIC&quot; role=&quot;source&quot;&gt;
+                    &lt;profile name=&quot;&quot; format=&quot;AUDIO_FORMAT_PCM_16_BIT&quot;
+                             samplingRates=&quot;8000,16000,48000&quot;
+                             channelMasks=&quot;AUDIO_CHANNEL_IN_MONO&quot;/&gt;
+                &lt;/devicePort&gt;
+                &lt;devicePort tagName=&quot;Wired Headset Mic&quot; type=&quot;AUDIO_DEVICE_IN_WIRED_HEADSET&quot; role=&quot;source&quot;&gt;
+                    &lt;profile name=&quot;&quot; format=&quot;AUDIO_FORMAT_PCM_16_BIT&quot;
+                             samplingRates=&quot;8000,16000,48000&quot;
+                             channelMasks=&quot;AUDIO_CHANNEL_IN_MONO&quot;/&gt;
+                &lt;/devicePort&gt;
+            &lt;/devicePorts&gt;
+            &lt;routes&gt;
+                &lt;route type=&quot;mix&quot; sink=&quot;Earpiece&quot; sources=&quot;primary output&quot;/&gt;
+                &lt;route type=&quot;mix&quot; sink=&quot;Speaker&quot; sources=&quot;primary output&quot;/&gt;
+                &lt;route type=&quot;mix&quot; sink=&quot;Wired Headset&quot; sources=&quot;primary output&quot;/&gt;
+                &lt;route type=&quot;mix&quot; sink=&quot;primary input&quot; sources=&quot;Built-In Mic,Wired Headset Mic&quot;/&gt;
+            &lt;/routes&gt;
+        &lt;/module&gt;
+        &lt;xi:include href=&quot;a2dp_audio_policy_configuration.xml&quot;/&gt;
+    &lt;/modules&gt;
+
+    &lt;xi:include href=&quot;audio_policy_volumes.xml&quot;/&gt;
+    &lt;xi:include href=&quot;default_volume_tables.xml&quot;/&gt;
+&lt;/audioPolicyConfiguration&gt;
+</pre></section>
+
+<p>The top level structure contains modules that correspond to each audio HAL
+hardware module, where each module has a list of mix ports, device ports, and
+routes:</p>
+<ul>
+<li><strong>Mix ports</strong> describe the possible config profiles for streams
+that can be opened at the audio HAL for playback and capture.</li>
+<li><strong>Device ports</strong> describe the devices that can be attached with
+their type (and optionally address and audio properties, if relevant).</li>
+<li><strong>Routes</strong> (new) is now separated from the mix port descriptor,
+enabling description of routes from device to device or stream to device.</li>
+</ul>
+
+<p>Volume tables are simple lists of points defining the curve used to translate
+form a UI index to a volume in dB. A separate include file provides default
+curves, but each curve for a given use case and device category can be
+overwritten.</p>
+
+  <section class="expandable">
+    <h4 class="showalways">Show volume table example</h4>
+<pre class="devsite-click-to-copy">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;volumes&gt;
+    &lt;reference name=&quot;FULL_SCALE_VOLUME_CURVE&quot;&gt;
+        &lt;point&gt;0,0&lt;/point&gt;
+        &lt;point&gt;100,0&lt;/point&gt;
+    &lt;/reference&gt;
+    &lt;reference name=&quot;SILENT_VOLUME_CURVE&quot;&gt;
+        &lt;point&gt;0,-9600&lt;/point&gt;
+        &lt;point&gt;100,-9600&lt;/point&gt;
+    &lt;/reference&gt;
+    &lt;reference name=&quot;DEFAULT_VOLUME_CURVE&quot;&gt;
+        &lt;point&gt;1,-4950&lt;/point&gt;
+        &lt;point&gt;33,-3350&lt;/point&gt;
+        &lt;point&gt;66,-1700&lt;/point&gt;
+        &lt;point&gt;100,0&lt;/point&gt;
+    &lt;/reference&gt;
+&lt;/volumes&gt;
+</pre></section>
+
+  <section class="expandable">
+    <h4 class="showalways">Show volumes example</h4>
+<pre class="devsite-click-to-copy">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;volumes&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_VOICE_CALL&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_VOICE_CALL&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_VOICE_CALL&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_VOICE_CALL&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_SYSTEM&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_SYSTEM&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_SYSTEM&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_SYSTEM&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_RING&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_RING&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_RING&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_RING&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot;ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_MUSIC&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_MUSIC&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot;&gt;
+        &lt;point&gt;1,-5500&lt;/point&gt;
+        &lt;point&gt;20,-4300&lt;/point&gt;
+        &lt;point&gt;86,-1200&lt;/point&gt;
+        &lt;point&gt;100,0&lt;/point&gt;
+    &lt;/volume&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_MUSIC&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_MUSIC&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_ALARM&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_ALARM&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_ALARM&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_ALARM&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_NOTIFICATION&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_NOTIFICATION&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_NOTIFICATION&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_NOTIFICATION&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_BLUETOOTH_SCO&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_BLUETOOTH_SCO&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_BLUETOOTH_SCO&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_BLUETOOTH_SCO&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_ENFORCED_AUDIBLE&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_ENFORCED_AUDIBLE&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_ENFORCED_AUDIBLE&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_ENFORCED_AUDIBLE&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_DTMF&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_DTMF&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_DTMF&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_DTMF&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_TTS&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;SILENT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_TTS&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;FULL_SCALE_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_TTS&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;SILENT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_TTS&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;SILENT_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_ACCESSIBILITY&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_ACCESSIBILITY&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_ACCESSIBILITY&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_ACCESSIBILITY&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_REROUTING&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;FULL_SCALE_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_REROUTING&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;FULL_SCALE_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_REROUTING&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;FULL_SCALE_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_REROUTING&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;FULL_SCALE_VOLUME_CURVE&quot;/&gt;
+
+    &lt;volume stream=&quot;AUDIO_STREAM_PATCH&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;FULL_SCALE_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_PATCH&quot; deviceCategory=&quot;DEVICE_CATEGORY_SPEAKER&quot; ref=&quot;FULL_SCALE_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_PATCH&quot; deviceCategory=&quot;DEVICE_CATEGORY_EARPIECE&quot; ref=&quot;FULL_SCALE_VOLUME_CURVE&quot;/&gt;
+    &lt;volume stream=&quot;AUDIO_STREAM_PATCH&quot; deviceCategory=&quot;DEVICE_CATEGORY_EXT_MEDIA&quot; ref=&quot;FULL_SCALE_VOLUME_CURVE&quot;/&gt;
+&lt;/volumes&gt;
+</pre></section>
+
+<h2 id=file_inclusions>File inclusions</h2>
+<p>The XML Inclusions (XInclude) method can be used to include audio policy
+configuration information located in other  XML files. All included files must
+follow the structure described above with the following restrictions:</p>
+<ul>
+<li>Files can contain only top-level elements.</li>
+<li>Files cannot contain Xinclude elements.</li>
+</ul>
+<p>Use includes to avoid copying standard Android Open Source Project (AOSP)
+audio HAL modules configuration information to all audio policy configuration
+files (which is prone to errors). A standard audio policy configuration xml file
+is provided for the following audio HALs:</p>
+<ul>
+<li><strong>A2DP:</strong> <code>a2dp_audio_policy_configuration.xml</code></li>
+<li><strong>Reroute submix:</strong> <code>rsubmix_audio_policy_configuration.xml</code></li>
+<li><strong>USB:</strong> <code>usb_audio_policy_configuration.xml</code></li>
+</ul>
+
+<h2 id=code_reorg>Audio policy code reorganization</h2>
+<p>Android 7.0 splits <code>AudioPolicyManager.cpp</code> into several modules
+to make it more maintainable and to highlight what is configurable. The new
+organization of <code>frameworks/av/services/audiopolicy</code> includes the
+following modules:</p>
+
+<table>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td><code>/managerdefault</code></td>
+<td>Includes the generic interfaces and behavior implementation common to all
+applications. Similar to <code>AudioPolicyManager.cpp</code> with engine
+functionality and common concepts abstracted away.</td>
+</tr>
+
+<tr>
+<td><code>/common</code></td>
+<td>Defines base classes (e.g data structures for input output audio stream
+profiles, audio device descriptors, audio patches, audio port, etc.). Previously
+defined inside <code>AudioPolicyManager.cpp</code>.</td>
+</tr>
+
+<tr>
+<td><code>/engine</code></td>
+<td><p>Implements the rules that define which device and volumes should be used for
+a given use case. It implements a standard interface with the generic part, such
+as to get the appropriate device for a given playback or capture use case, or to
+set connected devices or external state (i.e. a call state of forced usage) that
+can alter the routing decision.</p>
+<p>Available in two versions, customized and default; use build option
+<code>USE_CONFIGURABLE_AUDIO_POLICY</code> to select.</p></td>
+</tr>
+
+<tr>
+<td><code>/engineconfigurable</code></td>
+<td>Policy engine implementation that relies on parameter framework (see below).
+Configuration is based on the parameter framework and where the policy is
+defined by XML files.</td>
+</tr>
+
+<tr>
+<td><code>/enginedefault</code></td>
+<td>Policy engine implementation based on previous Android Audio Policy Manager
+implementations. This is the default and includes hard coded rules that
+correspond to current Nexus and AOSP implementations.</td>
+</tr>
+
+<tr>
+<td><code>/service</code></td>
+<td>Includes binder interfaces, threading and locking implementation with
+interface to the rest of the framework.</td>
+</tr>
+
+</table>
+
+<h2 id=policy_config>Configuration using parameter-framework</h2>
+<p>Android 7.0 reorganizes audio policy code to make it easier to understand and
+maintain while also supporting an audio policy defined entirely by configuration
+files. The reorganization and audio policy design is based on Intel's parameter
+framework, a plugin-based and rule-based framework for handling parameters.</p>
+
+<p>Using the new configurable audio policy enables vendors OEMs to:</p>
+<ul>
+<li>Describe a system's structure and its parameters in XML.</li>
+<li>Write (in C++) or reuse a backend (plugin) for accessing described
+parameters.</li>
+<li>Define (in XML or in a domain-specific language) conditions/rules upon which
+a given parameter must take a given value.</li>
+</ul>
+
+<p>AOSP includes an example of an audio policy configuration file that uses the parameter-framework at: <code>Frameworks/av/services/audiopolicy/engineconfigurable/parameter-framework/example/Settings/PolicyConfigurableDomains.xml</code>. For
+details, refer to Intel documentation on the
+<a href="https://github.com/01org/parameter-framework" class="external">parameter-framework</a>.</p>
+
+<h2 id=policy_routing_apis>Audio policy routing APIs</h2>
+<p>Android 6.0 introduced a public Enumeration and Selection API that sits on
+top of the audio patch/audio port infrastructure and allows application
+developers to indicate a preference for a specific device output or input for
+connected audio records or tracks.</p>
+<p>In Android 7.0, the Enumeration and Selection API is verified by CTS tests
+and is extended to include routing for native C/C++ (OpenSL ES) audio streams.
+The routing of native streams continues to be done in Java, with the addition of
+an <code>AudioRouting</code> interface that supersedes, combines, and deprecates
+the explicit routing methods that were specific to <code>AudioTrack</code> and
+<code>AudioRecord</code> classes.</p>
+
+<p>For details on the Enumeration and Selection API, refer to
+<a
+href="https://developer.android.google.cn/ndk/guides/audio/opensl-for-android.html?hl=fi#configuration-interface"
+class="external">Android
+configuration interfaces</a> and <code>OpenSLES_AndroidConfiguration.h</code>.
+For details on audio routing, refer to
+<a href="https://developer.android.google.cn/reference/android/media/AudioRouting.html"
+class="external">AudioRouting</a>.
+</p>
+
+<h2 id=multichannel>Multi-channel support</h2>
+
+<p>If your hardware and driver supports multichannel audio via HDMI, you can
+output the audio stream  directly to the audio hardware (this bypasses the
+AudioFlinger mixer so it doesn't get downmixed to two channels.) The audio HAL
+must expose whether an output stream profile supports multichannel audio
+capabilities. If the HAL exposes its capabilities, the default policy manager
+allows multichannel playback over HDMI. For implementation details, see
+<code>device/samsung/tuna/audio/audio_hw.c</code>.</p>
+
+<p>To specify that your product contains a multichannel audio output, edit the
+audio policy configuration file to describe the multichannel output for your
+product. The following example from a Galaxy Nexus shows a <em>dynamic</em>
+channel mask, which means the audio policy manager queries the actual channel
+masks supported by the HDMI sink after connection.</p>
+
+<pre class="devsite-click-to-copy">
+audio_hw_modules {
+  primary {
+    outputs {
+        ...
+        hdmi {
+          sampling_rates 44100|48000
+          channel_masks dynamic
+          formats AUDIO_FORMAT_PCM_16_BIT
+          devices AUDIO_DEVICE_OUT_AUX_DIGITAL
+          flags AUDIO_OUTPUT_FLAG_DIRECT
+        }
+        ...
+    }
+    ...
+  }
+  ...
+}
+</pre>
+
+<p>You can also specify a static channel mask such as
+<code>AUDIO_CHANNEL_OUT_5POINT1</code>. AudioFlinger's mixer downmixes the
+content to stereo automatically when sent to an audio device that does not
+support multichannel audio.</p>
+
+<h2 id=codecs>Media codecs</h2>
+
+<p>Ensure the audio codecs your hardware and drivers support are properly
+declared for your product. For details, see
+<a href="../media/index.html#expose">Exposing Codecs to the
+Framework</a>.</p>
+
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/audio/implement-policy.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:31:45 GMT -->
+</html>
