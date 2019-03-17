@@ -1,0 +1,1174 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/setup/build/initializing.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:13:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Establishing a Build Environment &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Establishing a Build Environment &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="initializing.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="initializing.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab active>
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+   aria-label="Set up, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/tech/dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../setup.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Set up
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../start/codelines.html"
+   class="gc-analytics-event"
+   title="Start"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Start"
+   >
+  Start
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="requirements.html"
+   class="gc-analytics-event"
+   title="Download"
+   aria-label="Download, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Download"
+   >
+  Download
+</a>
+
+        </tab>
+                        <tab >
+          <a href="devices.html"
+   class="gc-analytics-event"
+   title="Build"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Build"
+   >
+  Build
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../develop.html"
+   class="gc-analytics-event"
+   title="Create"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Create"
+   >
+  Create
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../contribute.html"
+   class="gc-analytics-event"
+   title="Contribute"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Contribute"
+   >
+  Contribute
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../community.html"
+   class="gc-analytics-event"
+   title="Contact"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Contact"
+   >
+  Contact
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../start/codelines.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Start">
+      <span class="devsite-nav-text" >Start</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="requirements.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Download">
+      <span class="devsite-nav-text" menu="_book">Download</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Build">
+      <span class="devsite-nav-text" >Build</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../develop.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Create">
+      <span class="devsite-nav-text" >Create</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../contribute.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Contribute">
+      <span class="devsite-nav-text" >Contribute</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../community.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Contact">
+      <span class="devsite-nav-text" >Contact</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices/audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices/tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="requirements.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Requirements">Requirements</span></a></li>
+                          <li class="devsite-nav-item"><a href="older-versions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Supporting Older Versions">Supporting Older Versions</span></a></li>
+                          <li class="devsite-nav-item"><a href="initializing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Establishing a Build Environment">Establishing a Build Environment</span></a></li>
+                          <li class="devsite-nav-item"><a href="downloading.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Downloading the Source">Downloading the Source</span></a></li>
+                          <li class="devsite-nav-item"><a href="building.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Preparing to Build">Preparing to Build</span></a></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../setup.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Set up
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="requirements.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Download
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Establishing a Build Environment</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>
+  This section describes how to set up your local work environment to build
+  the Android source files. You must use Linux or Mac OS; building under
+  Windows is not currently supported.
+</p>
+<p>
+  For an overview of the entire code-review and code-update process, see <a
+  href="../contribute/life-of-a-patch-2.html">Life of a Patch</a>.
+</p>
+<aside class="note"><strong>Note:</strong> All commands in this site are
+  preceded by a dollar sign ($) to differentiate them from output or entries
+  within files. You may use the <em>Click to copy</em> feature at the top right
+  of each command box to copy all lines without the dollar signs or triple-click
+  each line to copy it individually without the dollar sign.
+</aside>
+
+<h2 id="choosing-a-branch">Choosing a branch</h2>
+<p>
+  Some requirements for the build environment are determined by the version of
+  the source code you plan to compile. For a full list of available branches,
+  see <a href="../start/build-numbers.html">Build Numbers</a>. You can also
+  choose to download and build the latest source code (called
+  <code>master</code>), in which case you will simply omit
+  the branch specification when you initialize the repository.
+</p>
+<p>
+  After you have selected a branch, follow the appropriate instructions below to
+  set up your build environment.
+</p>
+
+<h2 id="setting-up-a-linux-build-environment">Setting up a Linux build
+environment</h2>
+<p>
+  These instructions apply to all branches, including <code>master</code>.
+</p>
+<p>The Android build is routinely tested in house on recent versions of
+  Ubuntu LTS (14.04) and Debian testing. Most other distributions should
+  have the required build tools available.
+</p>
+<p>
+  For Gingerbread (2.3.x) and newer versions, including the <code>master</code>
+  branch, a 64-bit environment is required. Older versions can be
+  compiled on 32-bit systems.
+</p>
+<aside class="note"><strong>Note:</strong> See
+  <a href="requirements-2.html">Requirements</a> for the complete list of hardware
+  and software requirements, then follow the detailed instructions for Ubuntu
+  and Mac OS below.
+</aside>
+
+<h3 id="installing-required-packages-ubuntu-1404">Installing required packages
+(Ubuntu 14.04)</h3>
+<p>
+  You will need a 64-bit version of Ubuntu. Ubuntu 14.04 is recommended.
+</p>
+<pre class="devsite-terminal devsite-click-to-copy">
+sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip
+</pre>
+<aside class="note"><strong>Note:</strong> To use SELinux tools for policy
+  analysis, also install the <code>python-networkx</code> package.
+</aside>
+<aside class="note"><strong>Note:</strong> If you are using LDAP and want
+  to run ART host tests, also install the <code>libnss-sss:i386</code>
+  package.
+</aside>
+
+<h3 id="installing-required-packages-ubuntu-1204">Installing required packages
+  (Ubuntu 12.04)
+</h3>
+<p>
+  You may use Ubuntu 12.04 to build older versions of Android. Version 12.04
+  is not supported on master or recent releases.
+</p>
+<pre class="devsite-click-to-copy">
+<code class="devsite-terminal">sudo apt-get install git gnupg flex bison gperf build-essential zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-glx:i386 libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown libxml2-utils xsltproc zlib1g-dev:i386</code>
+<code class="devsite-terminal">sudo ln -s /usr/lib/i386-linux-gnu/mesa/libGL.so.1 /usr/lib/i386-linux-gnu/libGL.so</code>
+</pre>
+
+<h3 id="installing-required-packages-ubuntu-1004-1110">Installing required
+  packages (Ubuntu 10.04 -- 11.10)
+</h3>
+<p>
+  Building on Ubuntu 10.04-11.10 is no longer supported, but may be useful for
+  building older releases of AOSP.
+</p>
+<pre class="devsite-terminal devsite-click-to-copy">
+sudo apt-get install git gnupg flex bison gperf build-essential zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown libxml2-utils xsltproc
+</pre>
+<p>
+  On Ubuntu 10.10:
+</p>
+<pre class="devsite-terminal devsite-click-to-copy">
+sudo ln -s /usr/lib32/mesa/libGL.so.1 /usr/lib32/mesa/libGL.so
+</pre>
+<p>
+  On Ubuntu 11.10:
+</p>
+<pre class="devsite-terminal devsite-click-to-copy">
+sudo apt-get install libx11-dev:i386
+</pre>
+
+<h3 id="configuring-usb-access">Configuring USB access</h3>
+<p>
+  Install a community-maintained default set of <code>udev</code> rules for
+  all Android devices by following the instructions to <a
+    href="https://developer.android.google.cn/studio/run/device.html#setting-up"
+    class="external">Set up a device for development</a>.
+</p>
+
+<h3 id="using-a-separate-output-directory">Using a separate output
+directory</h3>
+<p>
+  By default, the output of each build is stored in the <code>out/</code>
+  subdirectory of the matching source tree.
+</p>
+<p>
+  On some machines with multiple storage devices, builds are
+  faster when storing the source files and the output on
+  separate volumes. For additional performance, the output
+  can be stored on a filesystem optimized for speed instead
+  of crash robustness, since all files can be re-generated
+  in case of filesystem corruption.
+</p>
+<p>
+  To set this up, export the <code>OUT_DIR_COMMON_BASE</code> variable
+  to point to the location where your output directories
+  will be stored.
+</p>
+<pre class="devsite-terminal devsite-click-to-copy">
+export OUT_DIR_COMMON_BASE=&lt;path-to-your-out-directory&gt;
+</pre>
+<p>
+  The output directory for each separate source tree will be named after the
+  directory holding the source tree. For instance, if you have source trees as
+  <code>/source/master1</code> and <code>/source/master2</code> and
+  <code>OUT_DIR_COMMON_BASE</code> is set to <code>/output</code>, the output
+  directories will be <code>/output/master1</code> and
+  <code>/output/master2</code>.
+</p>
+<p>
+  It's important in that case to not have multiple source
+  trees stored in directories that have the same name,
+  as those would end up sharing an output directory, with
+  unpredictable results. This is only supported on Jelly Bean (4.1) and newer,
+  including the <code>master</code> branch.
+</p>
+<h2 id="setting-up-a-mac-os-x-build-environment">Setting up a Mac OS build
+  environment
+</h2>
+<p>
+  In a default installation, Mac OS runs on a case-preserving but
+  case-insensitive filesystem. This type of filesystem is not supported by git
+  and will cause some git commands (such as <code>git status</code>) to behave
+  abnormally. Because of this, we recommend that you always work with the AOSP
+  source files on a case-sensitive filesystem. This can be done fairly easily
+  using a disk image, discussed below.
+</p>
+<p>
+  Once the proper filesystem is available, building the <code>master</code>
+  branch in a modern Mac OS environment is very straightforward. Earlier
+  branches require some additional tools and SDKs.
+</p>
+
+<h3 id="creating-a-case-sensitive-disk-image">Creating a case-sensitive disk
+image</h3>
+<p>
+  You can create a case-sensitive filesystem within your existing Mac OS
+  environment using a disk image. To create the image, launch Disk
+  Utility and select <strong>New Image</strong>. A size of 25GB is the minimum to
+  complete the build; larger numbers are more future-proof. Using sparse images
+  saves space while allowing to grow later as the need arises. Be sure to select
+  <strong>case sensitive, journaled</strong> as the volume format.
+</p>
+<p>
+  You can also create it from a shell with the following command:
+</p>
+<pre class="devsite-click-to-copy devsite-terminal" data-terminal-prefix="# ">
+hdiutil create -type SPARSE -fs 'Case-sensitive Journaled HFS+' -size 40g ~/android.dmg
+</pre>
+<p>
+  This will create a <code>.dmg</code> (or possibly a
+  <code>.dmg.sparseimage</code>) file which, once mounted, acts as a drive with
+  the required formatting for Android development.
+</p>
+<p>
+  If you need a larger volume later, you can also resize the sparse image with
+  the following command:
+</p>
+<pre class="devsite-click-to-copy devsite-terminal" data-terminal-prefix="# ">hdiutil resize -size &lt;new-size-you-want&gt;g ~/android.dmg.sparseimage
+</pre>
+<p>
+  For a disk image named <code>android.dmg</code> stored in your home
+  directory, you can add helper functions to your <code>~/.bash_profile</code>:
+</p>
+<ul>
+  <li>To mount the image when you execute <code>mountAndroid</code>:
+    <pre class="devsite-click-to-copy">
+    # mount the android file image
+    mountAndroid() { hdiutil attach ~/android.dmg -mountpoint /Volumes/android; }</pre>
+    <aside class="note"><strong>Note:</strong> If your system created a
+      <code>.dmg.sparseimage</code> file, replace <code>~/android.dmg</code> with
+      <code>~/android.dmg.sparseimage</code>.
+    </aside>
+  </li>
+  <li>To unmount it when you execute <code>umountAndroid</code>:
+    <pre class="devsite-click-to-copy">
+     # unmount the android file image
+     umountAndroid() { hdiutil detach /Volumes/android; }</pre>
+  </li>
+</ul>
+<p>
+  After you've mounted the <code>android</code> volume, you'll do all your work
+  there. You can eject it (unmount it) just as you would an external drive.
+</p>
+
+<h3 id="xcode-other-packages">Installing Xcode and other packages</h3>
+<ol>
+  <li>Install Xcode command line tools with:
+    <pre class="devsite-terminal devsite-click-to-copy">
+    xcode-select --install</pre>
+    For older versions of Mac OS (10.8 or earlier), you must install Xcode from
+    the <a href="http://developer.apple.com/" class="external">Apple developer
+    site</a>. If you are not already registered as an Apple developer, you must
+    create an Apple ID to download.
+  </li>
+  <li>Install either <a href="http://www.macports.org/install.php">MacPorts</a> or <a href="https://brew.sh/">Homebrew</a> for package management.
+  </li>
+  <li>Ensure the associated directory is in your path within your <code>~/.bash_profile</code> file:
+    <ol>
+      <li>MacPorts - <code>/opt/local/bin</code> must appear <strong>before</strong>
+        <code>/usr/bin</code>:
+        <pre class="devsite-click-to-copy">
+        export PATH=/opt/local/bin:$PATH</pre>
+      </li>
+      <li>Homebrew - <code>/usr/local/bin</code>:
+        <pre class="devsite-click-to-copy">
+        export PATH=/usr/local/bin:$PATH</pre>
+      </li>
+  </li>
+  <li>For MacPorts, issue:
+    <pre class="devsite-terminal devsite-click-to-copy">
+    POSIXLY_CORRECT=1 sudo port install git gnupg</pre>
+  </li>
+  <li>For Homebrew, issue:
+    <pre class="devsite-terminal devsite-click-to-copy">
+    brew install git gnupg2</pre>
+  </li>
+</ol>
+
+<h3 id="setting-a-file-descriptor-limit">Setting a file descriptor limit</h3>
+<p>
+  On Mac OS, the default limit on the number of simultaneous file descriptors
+  open is too low and a highly parallel build process may exceed this limit. To
+  increase the cap, add the following lines to your
+  <code>~/.bash_profile</code>:
+</p>
+<pre class="devsite-click-to-copy">
+# set the number of open files to be 1024
+ulimit -S -n 1024</pre>
+
+<h2 id="next-download-the-source">Next: Download the source</h2>
+<p>
+  Your build environment is good to go! Proceed to
+  <a href="downloading-2.html">downloading the source</a>.
+</p>
+
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="pt_br"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="pt_br"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            Português Brasileiro
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/setup/build/initializing.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:13:50 GMT -->
+</html>
