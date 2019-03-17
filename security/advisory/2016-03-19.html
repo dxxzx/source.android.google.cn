@@ -1,0 +1,1206 @@
+<!doctype html>
+<html  lang="en">
+  
+<!-- Mirrored from source.android.google.cn/security/advisory/2016-03-18.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:54:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>Android Security Advisory&hairsp;&mdash;&hairsp;2016-03-18 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Android Security Advisory&hairsp;&mdash;&hairsp;2016-03-18 &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="2016-03-18.html">
+
+  <meta property="og:locale" content="en">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="2016-03-18.html"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+   aria-label="Secure, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/audio.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/tech/dalvik.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          Go to code
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../security.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Secure
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../bulletin.html"
+   class="gc-analytics-event"
+   title="Bulletins"
+   aria-label="Bulletins, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Bulletins"
+   >
+  Bulletins
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../app-sandbox.html"
+   class="gc-analytics-event"
+   title="Features"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Features"
+   >
+  Features
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/tech/debug/fuzz-sanitize.html"
+   class="gc-analytics-event"
+   title="Testing"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Testing"
+   >
+  Testing
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../best-practices.html"
+   class="gc-analytics-event"
+   title="Best Practices"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Best Practices"
+   >
+  Best Practices
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../bulletin.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Bulletins">
+      <span class="devsite-nav-text" menu="_book">Bulletins</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../app-sandbox.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Features">
+      <span class="devsite-nav-text" >Features</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices/tech/debug/fuzz-sanitize.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Testing">
+      <span class="devsite-nav-text" >Testing</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../best-practices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Best Practices">
+      <span class="devsite-nav-text" >Best Practices</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices/audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices/tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../bulletin.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Advisories">Advisories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../advisory.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="2016-03-18.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="March 2016">March 2016</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Android Bulletins">Android Bulletins</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="2019 Bulletins">2019 Bulletins</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../bulletin/2019-03-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="March">March</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2019-02-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="February">February</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2019-01-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="January">January</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2019.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Index">Index</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="2018 Bulletins">2018 Bulletins</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../bulletin/2018-12-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="December">December</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018-11-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="November">November</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018-10-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="October">October</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018-09-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="September">September</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018-08-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="August">August</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018-07-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="July">July</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018-06-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="June">June</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018-05-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="May">May</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018-04-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="April">April</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018-03-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="March">March</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018-02-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="February">February</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018-01-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="January">January</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2018.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Index">Index</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="2017 Bulletins">2017 Bulletins</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../bulletin/2017-12-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="December">December</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017-11-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="November">November</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017-10-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="October">October</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017-09-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="September">September</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017-08-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="August">August</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017-07-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="July">July</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017-06-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="June">June</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017-05-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="May">May</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017-04-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="April">April</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017-03-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="March">March</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017-02-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="February">February</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017-01-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="January">January</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2017.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Index">Index</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="2016 Bulletins">2016 Bulletins</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../bulletin/2016-12-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="December">December</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016-11-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="November">November</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016-10-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="October">October</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016-09-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="September">September</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016-08-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="August">August</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016-07-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="July">July</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016-06-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="June">June</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016-05-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="May">May</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016-04-02.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="April">April</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016-03-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="March">March</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016-02-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="February">February</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016-01-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="January">January</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2016.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Index">Index</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="2015 Bulletins">2015 Bulletins</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../bulletin/2015-12-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="December">December</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2015-11-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="November">November</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2015-10-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="October">October</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2015-09-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="September">September</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2015-08-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="August">August</span></a></li><li class="devsite-nav-item"><a href="../bulletin/2015.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Index">Index</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Pixel/Nexus Bulletins">Pixel/Nexus Bulletins</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../bulletin/pixel.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="2019 Bulletins">2019 Bulletins</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../bulletin/pixel/2019-03-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="March">March</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2019-02-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="February">February</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2019-01-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="January">January</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2019.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Index">Index</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="2018 Bulletins">2018 Bulletins</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-12-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="December">December</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-11-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="November">November</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-10-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="October">October</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-09-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="September">September</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-08-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="August">August</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-07-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="July">July</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-06-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="June">June</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-05-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="May">May</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-04-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="April">April</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-03-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="March">March</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-02-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="February">February</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018-01-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="January">January</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2018.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Index">Index</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="2017 Bulletins">2017 Bulletins</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../bulletin/pixel/2017-12-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="December">December</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2017-11-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="November">November</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2017-10-01.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="October">October</span></a></li><li class="devsite-nav-item"><a href="../bulletin/pixel/2017.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Index">Index</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../security.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Secure
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../bulletin.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Bulletins
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Android Security Advisory&hairsp;&mdash;&hairsp;2016-03-18</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+
+
+<p><em>Published March 18, 2016</em></p>
+
+<p>Android Security Advisories are supplemental to the Nexus Security Bulletins.
+Refer to our <a href="index.html">summary page</a> for more information about Security Advisories.</p>
+
+<h2 id=summary>Summary</h2>
+
+<p>Google has become aware of a rooting application using an unpatched local
+elevation of privilege vulnerability in the kernel on some Android devices
+(<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1805">CVE-2015-1805</a>).
+For this application to affect a device, the user must first install it. Google
+already blocks installation of rooting applications that use this
+vulnerability&hairsp;&mdash;&hairsp;both within Google Play and outside of Google
+Play&hairsp;&mdash;&hairsp;using <a href="https://support.google.com/accounts/answer/2812853">
+Verify Apps</a>, and have updated our systems to detect applications that use
+this specific vulnerability.</p>
+
+<p>To provide a final layer of defense for this issue, partners were provided
+with a patch for this issue on March 16, 2016. Nexus updates are being created
+and will be released within a few days. Source code patches for this issue have
+been released to the Android Open Source Project (AOSP) repository.</p>
+
+<h3 id=background>Background</h3>
+
+<p>This is a known issue in the upstream Linux kernel that was fixed in April 2014
+but wasn’t called out as a security fix and assigned
+<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1805">CVE-2015-1805</a>
+until February 2, 2015. On February 19, 2016, C0RE Team notified Google that
+the issue could be exploited on Android and a patch was developed to be included
+in an upcoming regularly scheduled monthly update.</p>
+
+<p>On March 15, 2016 Google received a
+report from Zimperium that this vulnerability had been abused on a Nexus 5
+device. Google has confirmed the existence of a publicly available rooting
+application that abuses this vulnerability on Nexus 5 and Nexus 6 to provide
+the device user with root privileges.</p>
+
+<p>This issue is rated as a
+<a href="../overview/updates-resources-2.html#severity">
+Critical severity issue</a> due to the possibility of a local privilege escalation
+and arbitrary code execution leading to local permanent device compromise.</p>
+
+<h3 id=scope>Scope</h3>
+
+
+<p>This advisory applies to all unpatched Android devices on kernel versions 3.4,
+3.10 and 3.14, including all Nexus devices. Android devices using Linux kernel
+version 3.18 or higher are not vulnerable.</p>
+
+<h3 id=mitigations>Mitigations</h3>
+
+
+<p>The following are mitigations that reduce the likelihood users are impacted
+by this issue: </p>
+
+<ul>
+  <li> Verify Apps has been updated to block the installation of applications that
+we have learned are attempting to exploit this vulnerability both within and outside
+of Google Play.
+  <li> Google Play does not allow rooting applications, like the one seeking to
+exploit this issue.
+  <li> Android devices using <a href="https://support.google.com/nexus/answer/4457705">
+Linux kernel version 3.18</a> or higher are not vulnerable.
+</ul>
+
+<h3 id=acknowledgements>Acknowledgements</h3>
+
+
+<p>Android would like to thank the <a href="http://c0reteam.org/">C0RE Team</a> and
+<a href="https://www.zimperium.com/">Zimperium</a> for their contributions to
+this advisory.</p>
+
+<h3 id=suggested_actions>Suggested actions</h3>
+
+
+<p>Android encourages all users to accept updates to their devices when they
+are available.</p>
+
+<h3 id=fixes>Fixes</h3>
+
+
+<p>Google has released a fix in the AOSP repository for multiple kernel versions.
+Android partners have been notified of these fixes and are encouraged to apply
+them. If further updates are required, Android will publish them directly to AOSP.</p>
+
+<table>
+ <tr>
+    <th>Kernel Version</th>
+    <th>Patch</th>
+ </tr>
+ <tr>
+    <td>3.4</td>
+    <td><a href="https://android.googlesource.com/kernel/common/+/f7ebfe91b806501808413c8473a300dff58ddbb5">AOSP patch</a></td>
+ </tr>
+ <tr>
+    <td>3.10</td>
+    <td><a href="https://android.googlesource.com/kernel/common/+/4a5a45669796c5b4617109182e25b321f9f00beb">AOSP patch</a></td>
+ </tr>
+ <tr>
+    <td>3.14</td>
+    <td><a href="https://android.googlesource.com/kernel/common/+/bf010e99c9bc48002f6bfa1ad801a59bf996270f">AOSP patch</a></td>
+ </tr>
+ <tr>
+    <td>3.18+</td>
+    <td>Patched in public Linux kernel</td>
+ </tr>
+</table>
+
+
+<h2 id=common_questions_and_answers>Common Questions and Answers</h2>
+
+
+<p><strong>1. What's the problem?</strong></p>
+
+<p>An elevation of privilege vulnerability in the kernel could enable a local
+malicious application to execute arbitrary code in the kernel. This issue is
+rated as a Critical severity due to the possibility of a local permanent device
+compromise and the device would possibly need to be repaired by re-flashing the
+operating system.</p>
+
+<p><strong>2. How would an attacker seek to exploit this issue?</strong></p>
+
+<p>Users who install an application that seeks to exploit this issue are at
+risk. Rooting applications (like the one that is exploiting this issue) are
+prohibited in Google Play, and Google is blocking the installation of
+this application outside of Google Play through Verify Apps. An
+attacker would need to convince a user to manually install an affected
+application.</p>
+
+<p><strong>3. Which devices could be affected?</strong></p>
+
+<p>Google has confirmed that this exploit works on Nexus 5 and 6; however all
+unpatched versions of Android contain the vulnerability.</p>
+
+<p><strong>4. Has Google seen evidence of this vulnerability being abused?</strong></p>
+
+<p>Yes, Google has seen evidence of this vulnerability being abused on a Nexus 5 using a
+publicly available rooting tool. Google has not observed any exploitation that
+would be classified as “malicious.”</p>
+
+<p><strong>5. How will you be addressing this issue?</strong></p>
+
+<p><a href="https://static.googleusercontent.com/media/source.android.com/en//security/reports/Android_WhitePaper_Final_02092016.pdf">
+Google Play</a> prohibits apps attempting to
+exploit this issue. Similarly, Verify Apps blocks the installation of apps
+from outside of Google Play that attempt to exploit this issue. Google Nexus
+devices will also be patched as soon as an update is ready and we’ve notified
+Android partners so they can release similar updates.</p>
+
+<p><strong>6. How do I know if I have a device that contains a fix for this issue?</strong></p>
+
+<p>Android has provided two options to our partners to communicate that their
+devices are not vulnerable to this issue. Android devices with a security patch
+level of March 18, 2016 are not vulnerable. Android devices with a security
+patch level of April 2, 2016 and later are not vulnerable to this issue. Refer
+to <a href="https://support.google.com/nexus/answer/4457705">this article</a>
+for instructions on how to check the security patch level.</p>
+
+<h2 id=revisions>Revisions</h2>
+
+
+<ul>
+  <li> March 18, 2016: Advisory published.
+</ul>
+
+
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            English
+          </option>
+                  <option value="ru"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="ru"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            Русский
+          </option>
+                  <option value="ja"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="ja"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            日本語
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            简体中文
+          </option>
+                  <option value="zh_tw"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="zh_tw"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            繁體中文
+          </option>
+                  <option value="ko"
+                  track-metadata-original-language="en"
+                  track-metadata-selected-language="ko"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            한국어
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'en',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/security/advisory/2016-03-18.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:54:28 GMT -->
+</html>

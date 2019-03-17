@@ -1,0 +1,1022 @@
+<!doctype html>
+<html  lang="zh_cn">
+  
+<!-- Mirrored from source.android.google.cn/security/selinux/concepts?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:55:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+          
+<title>SELinux 概念 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="SELinux 概念 &nbsp;|&nbsp; Android Open Source Project">
+
+  <meta property="og:url" content="concepts">
+
+  <meta property="og:locale" content="zh_cn">
+
+
+    
+    
+    
+  
+        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="concepts"></head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设置"
+   >
+  设置
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="设计"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 设计"
+   >
+  设计
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../security0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="安全性"
+   aria-label="安全性, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: 安全性"
+   >
+  安全性
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/audio0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="开发"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 开发"
+   >
+  开发
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/tech/dalvik0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="配置"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 配置"
+   >
+  配置
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="参考"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 参考"
+   >
+  参考
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search ds-is="search"
+            enable-suggestions
+                  project-path="">
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+    <div class="devsite-search-container">
+      <div id="searchbox" class="devsite-searchbox">
+                <input placeholder="搜索"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="搜索框">
+        <div class="devsite-search-image material-icons"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+           href="http://android-review.googlesource.com/"
+           data-category="Site-Wide Custom Events"
+           data-label="Site header link">
+          转到源代码
+        </a>
+                      </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../security0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            安全性
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../security0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="概览"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 概览"
+   >
+  概览
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../bulletin0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="公告"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 公告"
+   >
+  公告
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../app-sandbox0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="功能"
+   aria-label="功能, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: 功能"
+   >
+  功能
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../devices/tech/debug/fuzz-sanitize0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="测试"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 测试"
+   >
+  测试
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../best-practices0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="最佳做法"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 最佳做法"
+   >
+  最佳做法
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+                  
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设置">
+      <span class="devsite-nav-text" >设置</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 设计">
+      <span class="devsite-nav-text" >设计</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 安全性">
+      <span class="devsite-nav-text" >安全性</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 概览">
+      <span class="devsite-nav-text" >概览</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../bulletin.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 公告">
+      <span class="devsite-nav-text" >公告</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../app-sandbox.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 功能">
+      <span class="devsite-nav-text" menu="_book">功能</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices/tech/debug/fuzz-sanitize.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 测试">
+      <span class="devsite-nav-text" >测试</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../best-practices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 最佳做法">
+      <span class="devsite-nav-text" >最佳做法</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices/audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 开发">
+      <span class="devsite-nav-text" >开发</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices/tech/dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 配置">
+      <span class="devsite-nav-text" >配置</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 参考">
+      <span class="devsite-nav-text" >参考</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 转到源代码">
+      <span class="devsite-nav-text" >转到源代码</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                                      <ul class="devsite-nav-list" menu="_book">
+                                    <li class="devsite-nav-item"><a href="../app-sandbox.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="应用沙盒">应用沙盒</span></a></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="应用签名">应用签名</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../apksigning.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../apksigning/v2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="APK 签名方案 v2">APK 签名方案 v2</span></a></li><li class="devsite-nav-item"><a href="../apksigning/v3.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="APK 签名方案 v3">APK 签名方案 v3</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="身份验证">身份验证</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../authentication.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../authentication/fingerprint-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="指纹 HAL">指纹 HAL</span></a></li><li class="devsite-nav-item"><a href="../authentication/gatekeeper.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Gatekeeper">Gatekeeper</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="生物识别解锁">生物识别解锁</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../biometric.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../biometric/measure.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="衡量生物识别安全性">衡量生物识别安全性</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Keystore">Keystore</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../keystore.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../keystore/features.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="功能">功能</span></a></li><li class="devsite-nav-item"><a href="../keystore/attestation.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="密钥认证">密钥认证</span></a></li><li class="devsite-nav-item"><a href="../keystore/version-binding.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="版本绑定">版本绑定</span></a></li><li class="devsite-nav-item"><a href="../keystore/tags.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="授权标记">授权标记</span></a></li><li class="devsite-nav-item"><a href="../keystore/implementer-ref.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="函数">函数</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Trusty TEE">Trusty TEE</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../trusty.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../trusty/download-and-build.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="下载和编译">下载和编译</span></a></li><li class="devsite-nav-item"><a href="../trusty/trusty-ref"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Trusty API 参考">Trusty API 参考</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="加密">加密</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../encryption.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../encryption/file-based.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="文件级加密">文件级加密</span></a></li><li class="devsite-nav-item"><a href="../encryption/full-disk.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="全盘加密">全盘加密</span></a></li><li class="devsite-nav-item"><a href="../encryption/metadata.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="元数据加密">元数据加密</span></a></li><li class="devsite-nav-item"><a href="../encryption/adiantum"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="启用Adiantum">启用Adiantum</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="SELinux">SELinux</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../selinux.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="concepts"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概念">概念</span></a></li><li class="devsite-nav-item"><a href="implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="实现">实现</span></a></li><li class="devsite-nav-item"><a href="customize.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="自定义">自定义</span></a></li><li class="devsite-nav-item"><a href="build.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="编译 sepolicy">编译 sepolicy</span></a></li><li class="devsite-nav-item"><a href="compatibility.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="兼容性">兼容性</span></a></li><li class="devsite-nav-item"><a href="validate.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="验证">验证</span></a></li><li class="devsite-nav-item"><a href="device-policy.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="编写策略">编写策略</span></a></li><li class="devsite-nav-item"><a href="vendor-init.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="供应商初始化">供应商初始化</span></a></li></ul></devsite-expandable-nav></li>
+                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
+    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="验证启动">验证启动</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../verifiedboot.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/device-state.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="设备状态">设备状态</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/verified-boot.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="验证启动">验证启动</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/boot-flow.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="启动流程">启动流程</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/dm-verity.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="实现 dm-verity">实现 dm-verity</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/avb"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="参考实现">参考实现</span></a></li></ul></devsite-expandable-nav></li>
+                      </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc ds-is="toc" class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content ds-is="content">
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">    
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item">
+                    <a href="../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../../security0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            安全性
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item">
+                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+                    <a href="../app-sandbox0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            功能
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">SELinux 概念</h1>
+    
+    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
+                 ></devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2017 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>请查看此页中的内容，熟悉 SELinux 概念。</p>
+
+<h2 id="mandatory_access_control">强制访问控制</h2>
+
+<p>安全增强型 Linux (SELinux) 是适用于 Linux 操作系统的强制访问控制 (MAC) 系统。作为 MAC 系统，它与 Linux 中用户非常熟悉的自主访问控制 (DAC) 系统不同。在 DAC 系统中，存在所有权的概念，即特定资源的所有者可以控制与相应资源关联的访问权限。这种系统通常比较粗放，并且容易出现无意中提权的问题。MAC 系统则会在决定是否允许每次访问尝试时都咨询核心机构。</p>
+
+<p>SELinux 已作为 Linux 安全模块 (LSM) 框架的一部分实现，该框架可识别各种内核对象以及对这些对象执行的敏感操作。其中每项操作要执行时，系统都会调用 LSM 钩子函数，以便根据不透明安全对象中存储的关于相应操作的信息来确定是否应允许执行相应操作。SELinux 针对这些钩子以及这些安全对象的管理提供了相应的实现，该实现可结合自己的政策来决定是否允许相应访问。</p>
+
+<p>通过结合使用其他 Android 安全措施，Android 的访问控制政策能够大大降低遭到入侵的计算机和帐号可能蒙受的损失。Android 的自主访问控制和强制访问控制等工具可为您提供一种结构，确保您的软件仅以最低权限级别运行。这样可降低攻击造成的影响，并降低错误进程重写数据甚至是传输数据的可能性。</p>
+
+<p>在 Android 4.3 及更高版本中，SELinux 开始为传统的自主访问控制 (DAC) 环境提供强制访问控制 (MAC) 保护功能。例如，软件通常情况下必须以 Root 用户帐号的身份运行，才能向原始块设备写入数据。在基于 DAC 的传统 Linux 环境中，如果 Root 用户遭到入侵，攻击者便可以利用该用户身份向每个原始块设备写入数据。不过，可以使用 SELinux 为这些设备添加标签，以便被分配了 Root 权限的进程可以只向相关政策中指定的设备写入数据。这样一来，该进程便无法重写特定原始块设备之外的数据和系统设置。</p>
+
+<p>如需更多威胁示例以及使用 SELinux 解决威胁的方法，请参阅<a href="implement0b8e-2.html?hl=zh-cn#use_cases">用例</a>。</p>
+
+<h2 id="enforcement_levels">强制执行级别</h2>
+
+<p>SELinux 可以在各种模式下实现：</p>
+
+<ul>
+  <li><em></em>宽容模式 - 仅记录但不强制执行 SELinux 安全政策。
+  </li><li><em></em>强制模式 - 强制执行并记录安全政策。如果失败，则显示为 EPERM 错误。
+</li></ul>
+
+<p>在选择强制执行级别时只能二择其一，您的选择将决定您的政策是采取操作，还是仅允许您收集潜在的失败事件。宽容模式在实现过程中尤其有用。</p>
+
+<h2 id="labels_rules_and_domains">标签、规则和域</h2>
+
+<p><em></em>SELinux 依靠标签来匹配操作和政策。标签用于决定允许的事项。套接字、文件和进程在 SELinux 中都有标签。SELinux 决定是根据为这些对象分配的标签以及定义这些对象可以如何交互的政策做出的。</p>
+
+<p>在 SELinux 中，标签采用以下形式：<code>user:role:type:mls_level</code>，其中 type 是访问决定的主要组成部分，可通过构成标签的其他组成部分进行修改。对象会映射到类，对每个类的不同访问类型由权限表示。</p>
+
+<p>政策规则采用以下形式：<code>allow <em>domains</em> <em>types</em>:<em>classes</em> <em>permissions</em>;</code>，其中：</p>
+
+<ul>
+  <li>Domain - 一个进程或一组进程的标签。<em></em>也称为域类型，因为它只是指进程的类型。
+  </li><li><em></em>Type - 一个对象（例如，文件、套接字）或一组对象的标签。
+  </li><li><em></em>Class - 要访问的对象（例如，文件、套接字）的类型。
+  </li><li><em></em>Permission - 要执行的操作（例如，读取、写入）。
+</li></ul>
+
+<p>使用政策规则时将遵循的结构示例：</p>
+<pre class="devsite-click-to-copy">
+allow appdomain app_data_file:file rw_file_perms;
+</pre>
+
+<p>这表示所有应用域都可以读取和写入带有 <code>app_data_file</code> 标签的文件。请注意，该规则依赖于在 <code>global_macros</code> 文件中定义的宏，您还可以在 <code>te_macros</code> 文件中找到一些其他非常实用的宏。其中提供了一些适用于常见的类、权限和规则分组的宏。应尽可能使用这些宏，以便降低因相关权限被拒而导致失败的可能性。这些宏文件位于 <a href="https://android.googlesource.com/platform/system/sepolicy/">system/sepolicy</a> 目录中。在 Android 8.0 及更高版本中，它们位于 <code>public</code> 子目录中（其中包含其他受支持的公共 sepolicy）。</p>
+
+<p><em></em>除了在规则中逐个列出域或类型之外，还可以通过属性引用一组域或类型。简单来说，属性是一组域或类型的名称。每个域或类型都可以与任意数量的属性相关联。当编写的规则指定了某个属性名称时，该名称会自动扩展为列出与该属性关联的所有域或类型。<em></em><em></em>例如，domain 属性与所有进程域相关联，file_type 属性与所有文件类型相关联。</p>
+
+<p>使用上述语法可以创建构成 SELinux 政策基本内容的 avc 规则。规则采用以下形式：
+</p><pre class="devsite-click-to-copy">
+<var>RULE_VARIANT SOURCE_TYPES TARGET_TYPES</var> : <var>CLASSES PERMISSIONS</var>
+</pre>
+
+<p><em></em><em></em><em></em><em></em>该规则指明了，当带有任何 source_types 标签的主体尝试对某个对象执行与任何 permissions 对应的操作时，如果该对象包含带有任何 target_types 标签的任何 classes 类，会发生什么情况。这些规则的一个最常见示例是 allow 规则，例如：</p>
+
+<pre class="devsite-click-to-copy">
+allow domain null_device:chr_file { open };
+</pre>
+
+<p>
+<em></em><em></em><em></em><em></em>该规则允许具有与 <code>domain</code> 属性关联的任何 domain 的进程对 target_type 标签为 <code>null_device</code> 的 class <code>chr_file</code>（字符设备文件）的对象执行 permission <code>open</code> 所描述的操作。在实践中，该规则可能会扩展为包含其他权限：</p>
+
+<pre class="devsite-click-to-copy">
+allow domain null_device:chr_file { getattr open read ioctl lock append write};
+</pre>
+
+<p>当了解到 <code>domain</code> 是分配给所有进程域的属性，并且 <code>null_device</code> 是字符设备 <code>/dev/null</code> 的标签时，该规则基本上会允许对 <code>/dev/null</code> 进行读写操作。</p>
+
+<p><em></em>一个 domain 通常对应一个进程，而且具有与其关联的标签。</p>
+
+<p>例如，典型的 Android 应用会在自己的进程中运行，并且具有 <code>untrusted_app</code> 标签（用于向其授予特定受限权限）。</p>
+
+<p>系统中内置的平台应用会以单独的标签运行，并会被授予一组不同的权限。作为核心 Android 系统的一部分，系统 UID 应用以表示另一组权限的 <code>system_app</code> 标签运行。</p>
+
+<p>在任何情况下，都不应直接允许域访问以下通用标签；而应为一个或多个对象创建一个更具体的类型：</p>
+
+<ul>
+  <li><code>socket_device</code></li>
+  <li><code>device</code></li>
+  <li><code>block_device</code></li>
+  <li><code>default_service</code></li>
+  <li><code>system_data_file</code></li>
+  <li><code>tmpfs</code></li>
+</ul>
+
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer ds-is="content-footer" class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">构建</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 代码库
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            要求
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            下载
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            预览二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            出厂映像
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            驱动程序二进制文件
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">关注</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            在 Twitter 上 @Android
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            在 Twitter 上 @AndroidDev
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android 博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google 安全博客
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google 网上论坛上的 Android 平台论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Google 网上论坛上的 Android 构建论坛
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Google 网上论坛上的 Android 移植论坛
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">获取帮助</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus 帮助中心
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            问题跟踪器
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
+                      <div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          关于 Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/community0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          社区
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          法律条款
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license0b8e.html?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          许可
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy?hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          隐私权政策
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476&amp;hl=zh-cn"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          网站反馈
+        </a>
+              </li>
+          </ul>
+    
+        <form class="devsite-footer-utility-language">
+      <select class="devsite-footer-utility-language-select"
+              name="language"
+              track-name="click"
+              track-type="languageSelector">
+                  <option value="en"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="en"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  >
+            English
+          </option>
+                  <option value="zh_cn"
+                  track-metadata-original-language="zh_cn"
+                  track-metadata-selected-language="zh_cn"
+                  track-name="changed"
+                  track-type="languageSelector"
+                  selected="selected">
+            简体中文
+          </option>
+              </select>
+    </form>
+      </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
+    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
+                     blocked-link></devsite-tooltip>
+    <devsite-analytics ds-is="analytics">
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+    <script>
+    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
+    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
+    __.parentNode.insertBefore(_,__);})(window, document, 'script',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
+      'zh_cn',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
+      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
+      !1,
+      ['/_pwa/androidsource/manifest.json',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
+       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
+       'https://androidsource-dot-google-developers.gonglchuangl.net/')
+   </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/security/selinux/concepts?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:55:20 GMT -->
+</html>
