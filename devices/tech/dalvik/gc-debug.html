@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/dalvik/gc-debug by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 13:36:36 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/dalvik/gc-debug by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:22:57 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Debugging ART Garbage Collection &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Debugging ART Garbage Collection &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="gc-debug.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="gc-debug.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="gc-debug.html">      
+<title>Debugging ART Garbage Collection &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Debugging ART Garbage Collection &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="gc-debug.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab active>
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
    aria-label="Configure, selected"         data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,16 +243,16 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
-                  <tab active>
-          <a href="../dalvik.html"
+                  <tab >
+          <a href="../../tech.html"
    class="gc-analytics-event"
-   title="ART"
-   aria-label="ART, selected"         data-category="Site-Wide Custom Events"
-        data-label="Tab: ART"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
    >
-  ART
+  Overview
 </a>
 
         </tab>
@@ -243,7 +279,7 @@
 
         </tab>
                         <tab >
-          <a href="../health.html"
+          <a href="../perf.html"
    class="gc-analytics-event"
    title="Performance"
            data-category="Site-Wide Custom Events"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab >
-          <a href="../config/perms-whitelist.html"
+          <a href="../config.html"
    class="gc-analytics-event"
    title="Permissions"
            data-category="Site-Wide Custom Events"
@@ -272,6 +308,17 @@
         data-label="Tab: Power"
    >
   Power
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="Runtime"
+   aria-label="Runtime, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Runtime"
+   >
+  Runtime
 </a>
 
         </tab>
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -351,7 +414,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -361,15 +424,12 @@
   
                                             <ul class="devsite-nav-responsive-tabs">
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../dalvik.html"
-     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+    <a href="../../tech.html"
+          class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
-     data-label="Responsive Tab: ART">
-      <span class="devsite-nav-text" menu="_book">ART</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
-          menu="_book">
-    </span>
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
         </a>
   </li>
 
@@ -394,7 +454,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../health.html"
+    <a href="../perf.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -404,7 +464,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../config/perms-whitelist.html"
+    <a href="../config.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -420,6 +480,19 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Power">
       <span class="devsite-nav-text" >Power</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../dalvik.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Runtime">
+      <span class="devsite-nav-text" menu="_book">Runtime</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
+          menu="_book">
+    </span>
         </a>
   </li>
 
@@ -458,35 +531,38 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../dalvik.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../dalvik.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item"><a href="improvements.html"
+  <li class="devsite-nav-item"><a href="improvements.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Improvements">Improvements</span></a></li>
-                          <li class="devsite-nav-item"><a href="dalvik-bytecode.html"
+  <li class="devsite-nav-item"><a href="dalvik-bytecode.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Bytecode Format">Bytecode Format</span></a></li>
-                          <li class="devsite-nav-item"><a href="dex-format.html"
+  <li class="devsite-nav-item"><a href="dex-format.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Dex Format">Dex Format</span></a></li>
-                          <li class="devsite-nav-item"><a href="instruction-formats.html"
+  <li class="devsite-nav-item"><a href="instruction-formats.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Instruction Formats">Instruction Formats</span></a></li>
-                          <li class="devsite-nav-item"><a href="constraints.html"
+  <li class="devsite-nav-item"><a href="constraints.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Constraints">Constraints</span></a></li>
-                          <li class="devsite-nav-item"><a href="configure.html"
+  <li class="devsite-nav-item"><a href="configure.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Configuration">Configuration</span></a></li>
-                          <li class="devsite-nav-item"><a href="gc-debug.html"
+  <li class="devsite-nav-item"><a href="signed-config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Signed Config">Signed Config</span></a></li>
+  <li class="devsite-nav-item"><a href="gc-debug.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Garbage Collection">Garbage Collection</span></a></li>
-                          <li class="devsite-nav-item"><a href="jit-compiler.html"
+  <li class="devsite-nav-item"><a href="jit-compiler.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="JIT Compilation">JIT Compilation</span></a></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -494,16 +570,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -513,9 +590,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -524,14 +602,15 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
           >
-            ART
+            Runtime
       
   </a>
         </li>
@@ -542,8 +621,8 @@
 
               <h1 class="devsite-page-title">Debugging ART Garbage Collection</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -613,7 +692,7 @@ ART by getting the threads to mark their own roots, then resume running right aw
   <li>Similarly to Dalvik, the ART GC also has a pause before the sweeping process.
 The key difference in this area is that some of the Dalvik phases during this
 pause are done concurrently in ART. These phases include
-<code>java.lang.ref.Reference</code> processing, system weak sweeping (e.g. jni
+<code translate="no" dir="ltr">java.lang.ref.Reference</code> processing, system weak sweeping (e.g. jni
 weak globals, etc.), re-marking non-thread roots, and card pre-cleaning. The
 phases that are still done paused in ART are scanning the dirty cards and
 re-marking the thread roots, which helps reduce the pause time.
@@ -621,7 +700,7 @@ re-marking the thread roots, which helps reduce the pause time.
 throughput enabled by the sticky CMS collector. Unlike normal generational GC,
 sticky CMS is non-moving. Instead of having a dedicated region for young
 objects, young objects are kept in an allocation stack, which is basically an
-array of <code>java.lang.Object</code>. This avoids moving objects required to
+array of <code translate="no" dir="ltr">java.lang.Object</code>. This avoids moving objects required to
 maintain low pauses but has the disadvantage of having longer collections for
 heaps with complex object graphs.
 </ul>
@@ -660,29 +739,29 @@ are only modifiable on non-user or rooted builds.</p>
 <h3 id=changing_the_gc_type>Changing the GC type</h3>
 
 <p>There are ways to change the GC plans that ART uses. The main way to change the
-foreground GC plan is by changing the <code>dalvik.vm.gctype</code> property or
-passing in an <code>-Xgc:</code> option. It is possible to pass in multiple GC
+foreground GC plan is by changing the <code translate="no" dir="ltr">dalvik.vm.gctype</code> property or
+passing in an <code translate="no" dir="ltr">-Xgc:</code> option. It is possible to pass in multiple GC
 options separated by commas.</p>
 
-<p>In order to derive the entire list of available <code>-Xgc</code> settings,
-it is possible to type <code>adb shell dalvikvm -help</code> to print the
+<p>In order to derive the entire list of available <code translate="no" dir="ltr">-Xgc</code> settings,
+it is possible to type <code translate="no" dir="ltr">adb shell dalvikvm -help</code> to print the
 various runtime command-line options.</p>
 
 <p>Here is one example that changes the GC to semi space and turns on pre-GC heap
 verification:
-<code>adb shell setprop dalvik.vm.gctype SS,preverify</code></p>
+<code translate="no" dir="ltr">adb shell setprop dalvik.vm.gctype SS,preverify</code></p>
 
 <ul>
-  <li><code>CMS</code>, which is also the default value, specifies the
+  <li><code translate="no" dir="ltr">CMS</code>, which is also the default value, specifies the
 concurrent mark sweep GC plan.  This plan consists of running sticky
 generational CMS, partial CMS, and full CMS. The allocator for this plan is
 RosAlloc for movable objects and DlMalloc for non-movable objects.
-  <li><code>SS</code> specifies the semi space GC plan. This plan has two semi
+  <li><code translate="no" dir="ltr">SS</code> specifies the semi space GC plan. This plan has two semi
 spaces for movable objects and a DlMalloc space for non-movable objects. The
 movable object allocator defaults to a shared bump pointer allocator which uses
-atomic operations. However, if the <code>-XX:UseTLAB</code> flag is also passed
+atomic operations. However, if the <code translate="no" dir="ltr">-XX:UseTLAB</code> flag is also passed
 in, the allocator uses thread local bump pointer allocation.
-  <li><code>GSS</code> specifies the generational semi space plan. This plan is
+  <li><code translate="no" dir="ltr">GSS</code> specifies the generational semi space plan. This plan is
 very similar to the semi-space plan with the exception that older-lived objects
 are promoted into a large RosAlloc space. This has the advantage of needing to
 copy significantly fewer objects for typical use cases.
@@ -696,29 +775,29 @@ to check the correctness of the heap at a few points during the garbage
 collection process. Heap verification shares the same options as the ones that
 change the GC type. If enabled, heap verification verifies the roots and
 ensures that reachable objects reference only other reachable objects. GC
-verification is enabled by passing in the following -<code>Xgc</code> values:</p>
+verification is enabled by passing in the following -<code translate="no" dir="ltr">Xgc</code> values:</p>
 
 <ul>
-  <li>If enabled, <code>[no]preverify</code> performs heap verification before starting the GC.
-  <li>If enabled, <code>[no]presweepingverify</code> performs heap verification
+  <li>If enabled, <code translate="no" dir="ltr">[no]preverify</code> performs heap verification before starting the GC.
+  <li>If enabled, <code translate="no" dir="ltr">[no]presweepingverify</code> performs heap verification
 before starting the garbage collector sweeping
 process.
-  <li>If enabled, <code>[no]postverify</code> performs heap verification after
+  <li>If enabled, <code translate="no" dir="ltr">[no]postverify</code> performs heap verification after
 the GC has finished sweeping.
-  <li><code>[no]preverify_rosalloc</code>,
-<code>[no]postsweepingverify_rosalloc</code>,
-<code>[no]postverify_rosalloc</code> are also additional GC options that verify
+  <li><code translate="no" dir="ltr">[no]preverify_rosalloc</code>,
+<code translate="no" dir="ltr">[no]postsweepingverify_rosalloc</code>,
+<code translate="no" dir="ltr">[no]postverify_rosalloc</code> are also additional GC options that verify
 only the state of RosAlloc’s internal accounting. The main things verified are
 that magic values match expected constants, and free blocks of memory are all
-registered in the <code>free_page_runs_</code> map.
+registered in the <code translate="no" dir="ltr">free_page_runs_</code> map.
 </ul>
 
 <h3 id=using_the_tlab_allocator_option>Using the TLAB allocator option</h3>
 
 <p>Currently, the only option that changes the allocator used without affecting
 the active GC type is the TLAB option. This option is not available through
-system properties but can be enabled by passing in -<code>XX:UseTLAB</code> to
-<code>dalvikvm</code>. This option enables faster allocation by having a
+system properties but can be enabled by passing in -<code translate="no" dir="ltr">XX:UseTLAB</code> to
+<code translate="no" dir="ltr">dalvikvm</code>. This option enables faster allocation by having a
 shorter allocation code path. Since this option requires using either the SS or
 GSS GC types, which have rather long pauses, it is not enabled by default.</p>
 
@@ -755,29 +834,29 @@ the throughput is lower than partial CMS, which ends up growing the heap.</p>
 <h3 id=using_sigquit_to_obtain_gc_performance_info>Using SIGQUIT to obtain GC performance info</h3>
 
 <p>It is possible to get GC performance timings for apps by sending SIGQUIT to
-already running apps or passing in -<code>XX:DumpGCPerformanceOnShutdown</code>
-to <code>dalvikvm</code> when starting a command line program. When an app gets
+already running apps or passing in -<code translate="no" dir="ltr">XX:DumpGCPerformanceOnShutdown</code>
+to <code translate="no" dir="ltr">dalvikvm</code> when starting a command line program. When an app gets
 the ANR request signal (SIGQUIT) it dumps information related to its locks,
 thread stacks, and GC performance.</p>
 
 <p>The way to get GC timing dumps is to use:</p>
 
-<pre class="devsite-terminal devsite-click-to-copy">
+<pre class="devsite-terminal devsite-click-to-copy" translate="no" dir="ltr">
 adb shell kill -S QUIT <var>PID</var>
 </pre>
 
-<p>This creates a <code>traces.txt</code> file in <code>/data/anr/</code>. This
+<p>This creates a <code translate="no" dir="ltr">traces.txt</code> file in <code translate="no" dir="ltr">/data/anr/</code>. This
 file contains some ANR dumps as well as GC timings. You can locate the
 GC timings by searching for: “Dumping cumulative Gc timings” These timings will
 show a few things that may be of interest. It will show the histogram info for
 each GC type’s phases and pauses. The pauses are usually more important to look
 at. For example:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 sticky concurrent mark sweep paused:	Sum: 5.491ms 99% C.I. 1.464ms-2.133ms Avg: 1.830ms Max: 2.133ms
 </pre>
 
-<p><code>This</code> shows that the average pause was 1.83ms. This should be low enough to not
+<p><code translate="no" dir="ltr">This</code> shows that the average pause was 1.83ms. This should be low enough to not
 cause missed frames in most applications and shouldn’t be a concern.</p>
 
 <p>Another area of interest is time to suspend. What time to suspend measures is
@@ -787,14 +866,14 @@ determine if long pauses are caused by the GC being slow or the thread
 suspending slowly. Here is an example of what a normal time to suspend
 resembles on a Nexus 5:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 suspend all histogram:	Sum: 1.513ms 99% C.I. 3us-546.560us Avg: 47.281us Max: 601us
 </pre>
 
 <p>There are also a few other areas of interest, such as total time spent, GC
 throughput, etc. Examples:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 Total time spent in GC: 502.251ms
 Mean GC size throughput: 92MB/s
 Mean GC object throughput: 1.54702e+06 objects/s
@@ -802,15 +881,15 @@ Mean GC object throughput: 1.54702e+06 objects/s
 
 <p>Here is an example of how to dump the GC timings of an already running app:
 
-<pre class="devsite-click-to-copy">
-<code class="devsite-terminal">adb shell kill -s QUIT <var>PID</var></code>
-<code class="devsite-terminal">adb pull /data/anr/traces.txt</code>
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
+<code class="devsite-terminal" translate="no" dir="ltr">adb shell kill -s QUIT <var>PID</var></code>
+<code class="devsite-terminal" translate="no" dir="ltr">adb pull /data/anr/traces.txt</code>
 </pre>
 
 <p>At this point the GC timings are inside of traces.txt. Here is example output
 from Google maps:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 Start Dumping histograms for 34 iterations for sticky concurrent mark sweep
 ScanGrayAllocSpaceObjects:	Sum: 196.174ms 99% C.I. 0.011ms-11.615ms Avg: 1.442ms Max: 14.091ms
 FreeList:	Sum: 140.457ms 99% C.I. 6us-1676.749us Avg: 128.505us Max: 9886us
@@ -889,7 +968,7 @@ reasons. The checks will catch a few errors that could cause heap corruption
 such as using invalid/stale local and global references. Here is how to enable
 CheckJNI:</p>
 
-<pre class="devsite-terminal devsite-click-to-copy">
+<pre class="devsite-terminal devsite-click-to-copy" translate="no" dir="ltr">
 adb shell setprop dalvik.vm.checkjni true
 </pre>
 
@@ -902,15 +981,15 @@ the red zone don’t match what is expected, this usually means a buffer overrun
 or underrun occurred. This would cause CheckJNI to abort. Here is how to enable
 forcecopy mode:</p>
 
-<pre class="devsite-terminal devsite-click-to-copy">
+<pre class="devsite-terminal devsite-click-to-copy" translate="no" dir="ltr">
 adb shell setprop dalvik.vm.jniopts forcecopy
 </pre>
 
 <p>One example of an error that CheckJNI should catch is writing past the end of
-an array obtained from <code>GetPrimitiveArrayCritical</code>. This operation
+an array obtained from <code translate="no" dir="ltr">GetPrimitiveArrayCritical</code>. This operation
 would very likely corrupt the Java heap. If the write is
 within the CheckJNI red zone area, then CheckJNI would catch the issue when the
-corresponding <code>ReleasePrimitiveArrayCritical</code> is called. Otherwise,
+corresponding <code translate="no" dir="ltr">ReleasePrimitiveArrayCritical</code> is called. Otherwise,
 the write will end up corrupting some random object in
 the Java heap and possibly causing a future GC crash. If the corrupted memory
 is a reference field, then the GC may catch the error and print a “<em>Tried to
@@ -935,18 +1014,18 @@ that valgrind is orders of magnitude slower than normal execution.</p>
 
 <p>Here is an example use:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 # build and install
-<code class="devsite-terminal">mmm external/valgrind</code>
-<code class="devsite-terminal">adb remount && adb sync</code>
+<code class="devsite-terminal" translate="no" dir="ltr">mmm external/valgrind</code>
+<code class="devsite-terminal" translate="no" dir="ltr">adb remount && adb sync</code>
 # disable selinux
-<code class="devsite-terminal">adb shell setenforce 0</code>
-<code class="devsite-terminal">adb shell setprop wrap.com.android.calculator2</code>
+<code class="devsite-terminal" translate="no" dir="ltr">adb shell setenforce 0</code>
+<code class="devsite-terminal" translate="no" dir="ltr">adb shell setprop wrap.com.android.calculator2</code>
 "TMPDIR=/data/data/com.android.calculator2 logwrapper valgrind"
 # push symbols
-<code class="devsite-terminal">adb shell mkdir /data/local/symbols</code>
-<code class="devsite-terminal">adb push $OUT/symbols /data/local/symbols</code>
-<code class="devsite-terminal">adb logcat</code>
+<code class="devsite-terminal" translate="no" dir="ltr">adb shell mkdir /data/local/symbols</code>
+<code class="devsite-terminal" translate="no" dir="ltr">adb push $OUT/symbols /data/local/symbols</code>
+<code class="devsite-terminal" translate="no" dir="ltr">adb logcat</code>
 </pre>
 
 
@@ -954,10 +1033,10 @@ that valgrind is orders of magnitude slower than normal execution.</p>
 
 <p>In the case where the object is actually an invalid root, it will print some
 useful information:
-<code>art E  5955  5955 art/runtime/gc/collector/mark_sweep.cc:383] Tried to mark 0x2
+<code translate="no" dir="ltr">art E  5955  5955 art/runtime/gc/collector/mark_sweep.cc:383] Tried to mark 0x2
 not contained by any spaces</code></p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 art E  5955  5955 art/runtime/gc/collector/mark_sweep.cc:384] Attempting see if
 it's a bad root
 art E  5955  5955 art/runtime/gc/collector/mark_sweep.cc:485] Found invalid
@@ -968,11 +1047,11 @@ com.google.gwt.corp.collections.JavaReadableJsArray.get(int)' at dex PC 0x0002
 (native PC 0xf19609d9) vreg=1
 </pre>
 
-<p>In this case, <code>vreg 1</code> inside of
-<code>com.google.gwt.corp.collections.JavaReadableJsArray.get</code> is
+<p>In this case, <code translate="no" dir="ltr">vreg 1</code> inside of
+<code translate="no" dir="ltr">com.google.gwt.corp.collections.JavaReadableJsArray.get</code> is
 supposed to contain a heap reference but actually contains an invalid pointer
-of address <code>0x2</code>. This is clearly an invalid root. The next step to
-debug this issue would be to use <code>oatdump</code> on the oat file and look
+of address <code translate="no" dir="ltr">0x2</code>. This is clearly an invalid root. The next step to
+debug this issue would be to use <code translate="no" dir="ltr">oatdump</code> on the oat file and look
 at the method that has the invalid root. In this case, the error turned out to
 be a compiler bug in the x86 backend. Here is the changelist that fixed it: <a
 href="https://android-review.googlesource.com/#/c/133932/">https://android-review.googlesource.com/#/c/133932/</a></p>
@@ -982,7 +1061,7 @@ href="https://android-review.googlesource.com/#/c/133932/">https://android-revie
 <p>In the case where the object isn’t a root, output similar to the following
 prints:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 01-15 12:38:00.196  1217  1238 E art     : Attempting see if it's a bad root
 01-15 12:38:00.196  1217  1238 F art     :
 art/runtime/gc/collector/mark_sweep.cc:381] Can't mark invalid object
@@ -1002,17 +1081,17 @@ that was pointing to the invalid object.</p>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1219,8 +1298,9 @@ that was pointing to the invalid object.</p>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1286,54 +1366,49 @@ that was pointing to the invalid object.</p>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/dalvik/gc-debug by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 13:36:36 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/dalvik/gc-debug by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:22:57 GMT -->
 </html>

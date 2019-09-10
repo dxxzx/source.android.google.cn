@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/sensors/hal-interface.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 15:09:28 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/sensors/hal-interface.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:57:40 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>HAL interface &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="HAL interface &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="hal-interface.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="hal-interface.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="hal-interface.html">      
+<title>Sensors HAL 1.0 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Sensors HAL 1.0 &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="hal-interface.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab active>
-          <a href="../audio.html"
+          <a href="../../devices.html"
    class="gc-analytics-event"
    title="Develop"
    aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../tech/dalvik.html"
+          <a href="../tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,9 +243,20 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
           <a href="../audio.html"
    class="gc-analytics-event"
    title="Audio"
@@ -254,7 +301,7 @@
 
         </tab>
                         <tab active>
-          <a href="../input.html"
+          <a href="../interaction.html"
    class="gc-analytics-event"
    title="Interaction"
    aria-label="Interaction, selected"         data-category="Site-Wide Custom Events"
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../audio.html"
+                                <a href="../../devices.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -350,6 +413,16 @@
         </a>
   
                                             <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
                                                                                                                       <li class="devsite-nav-item">
     <a href="../audio.html"
           class="devsite-nav-title gc-analytics-event
@@ -391,13 +464,13 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../input.html"
+    <a href="../interaction.html"
      id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Interaction">
       <span class="devsite-nav-text" menu="_book">Interaction</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -426,7 +499,7 @@
                                   </ul>
                           </li>
                       <li class="devsite-nav-item">
-                                <a href="../tech/dalvik.html"
+                                <a href="../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -458,9 +531,41 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Input">Input</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../input.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../interaction.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Automotive">Automotive</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../automotive.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio">Audio</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../automotive/audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/audio-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Audio HAL">Audio HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/audio-control.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AudioControl HAL">AudioControl HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/interaction-sequences.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction Sequences">Interaction Sequences</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/multi-zone.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multi-Zone">Multi-Zone</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../automotive/camera-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Camera HAL">Camera HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/ivi_connectivity.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="IVI Connectivity">IVI Connectivity</span></a></li><li class="devsite-nav-item"><a href="../automotive/properties.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Vehicle Properties">Vehicle Properties</span></a></li><li class="devsite-nav-item"><a href="../automotive/power.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Management">Power Management</span></a></li><li class="devsite-nav-item"><a href="../automotive/garage_mode.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Garage Mode">Garage Mode</span></a></li><li class="devsite-nav-item"><a href="../automotive/radio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Radio with Media">Radio with Media</span></a></li><li class="devsite-nav-item"><a href="../tech/perf/flash-wear.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Flash Wear Management">Flash Wear Management</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Input">Input</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../input.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../input/key-layout-files.html"
      class="devsite-nav-title"
@@ -479,47 +584,33 @@
    ><span class="devsite-nav-text" title="Getevent">Getevent</span></a></li><li class="devsite-nav-item"><a href="../input/validate-keymaps.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Validate Keymaps">Validate Keymaps</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Automotive">Automotive</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../automotive.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Neural Networks">Neural Networks</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../neural-networks.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio">Audio</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../automotive/audio.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/ahardwarebuffer.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/audio-hal.html"
+   ><span class="devsite-nav-text" title="AHardware Buffer">AHardware Buffer</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/burst-executions.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Audio HAL">Audio HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/audio-control.html"
+   ><span class="devsite-nav-text" title="Burst Executions and Fast Message Queues">Burst Executions and Fast Message Queues</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/compilation-caching.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="AudioControl HAL">AudioControl HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/interaction-sequences.html"
+   ><span class="devsite-nav-text" title="Compilation Caching">Compilation Caching</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/device-discovery.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Interaction Sequences">Interaction Sequences</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/multi-zone.html"
+   ><span class="devsite-nav-text" title="Device Discovery and Assignment">Device Discovery and Assignment</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/vendor-extensions.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Multi-Zone">Multi-Zone</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../automotive/camera-hal-2.html"
+   ><span class="devsite-nav-text" title="Vendor Extensions">Vendor Extensions</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Peripherals">Peripherals</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Camera HAL">Camera HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/ivi_connectivity-2.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio Accessories">Audio Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/audio.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="IVI Connectivity">IVI Connectivity</span></a></li><li class="devsite-nav-item"><a href="../automotive/properties.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Vehicle Properties">Vehicle Properties</span></a></li><li class="devsite-nav-item"><a href="../automotive/power.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Power Management">Power Management</span></a></li><li class="devsite-nav-item"><a href="../tech/perf/flash-wear-2.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Flash Wear Management">Flash Wear Management</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="../interaction/neural-networks.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Neural Networks">Neural Networks</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Peripherals">Peripherals</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio Accessories">Audio Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/audio.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="3.5 mm Headset">3.5 mm Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/plug-headset-spec.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="3.5 mm Headset">3.5 mm Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/plug-headset-spec.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/jack-headset-spec.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="USB Headset">USB Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/usb-headset-spec.html"
+   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="USB Headset">USB Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/usb-headset-spec.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/usb-adapter.html"
      class="devsite-nav-title"
@@ -529,11 +620,11 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Expected Behavior">Expected Behavior</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/testing.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Testing">Testing</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Custom Accessories">Custom Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/custom.html"
+   ><span class="devsite-nav-text" title="Testing">Testing</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Custom Accessories">Custom Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/custom.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="AOA">AOA</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/protocol.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="AOA">AOA</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/protocol.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../accessories/aoa2.html"
      class="devsite-nav-title"
@@ -542,39 +633,48 @@
    ><span class="devsite-nav-text" title="AOA 1.0">AOA 1.0</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../accessories/stylus.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Stylus">Stylus</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors">Sensors</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors">Sensors</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="sensor-stack.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Sensor Stack">Sensor Stack</span></a></li><li class="devsite-nav-item"><a href="report-modes.html"
+   ><span class="devsite-nav-text" title="Sensor Stack">Sensor Stack</span></a></li><li class="devsite-nav-item"><a href="sensor-types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Types">Sensor Types</span></a></li><li class="devsite-nav-item"><a href="interaction.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction">Interaction</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Power">Power</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="batching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Batching">Batching</span></a></li><li class="devsite-nav-item"><a href="power-use.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Consumption">Power Consumption</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Modes">Modes</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="report-modes.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Reporting Modes">Reporting Modes</span></a></li><li class="devsite-nav-item"><a href="suspend-mode.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Suspend Mode">Suspend Mode</span></a></li><li class="devsite-nav-item"><a href="power-use.html"
+   ><span class="devsite-nav-text" title="Suspend Mode">Suspend Mode</span></a></li><li class="devsite-nav-item"><a href="sensors-off.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Power Consumption">Power Consumption</span></a></li><li class="devsite-nav-item"><a href="interaction.html"
+   ><span class="devsite-nav-text" title="Sensors Off">Sensors Off</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors HAL">Sensors HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="sensors-hal2.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Interaction">Interaction</span></a></li><li class="devsite-nav-item"><a href="hal-interface.html"
+   ><span class="devsite-nav-text" title="Sensors HAL 2.0">Sensors HAL 2.0</span></a></li><li class="devsite-nav-item"><a href="hal-interface.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="HAL Interface">HAL Interface</span></a></li><li class="devsite-nav-item"><a href="batching.html"
+   ><span class="devsite-nav-text" title="Sensors HAL 1.0">Sensors HAL 1.0</span></a></li><li class="devsite-nav-item"><a href="versioning.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Batching">Batching</span></a></li><li class="devsite-nav-item"><a href="sensor-types.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Sensor Types">Sensor Types</span></a></li><li class="devsite-nav-item"><a href="versioning.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Version Deprecation">Version Deprecation</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="TV">TV</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tv.html"
+   ><span class="devsite-nav-text" title="Version Deprecation">Version Deprecation</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="TV">TV</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tv.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../tv/hdmi-cec.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="HDMI-CEC Control Service">HDMI-CEC Control Service</span></a></li><li class="devsite-nav-item"><a href="../tv/reference-tv-app.html"
+   ><span class="devsite-nav-text" title="HDMI-CEC Control Service">HDMI-CEC Control Service</span></a></li><li class="devsite-nav-item"><a href="../tv/multimedia-tunneling.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multimedia Tunneling">Multimedia Tunneling</span></a></li><li class="devsite-nav-item"><a href="../tv/reference-tv-app.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Reference TV App">Reference TV App</span></a></li><li class="devsite-nav-item"><a href="../tv/customize-tv-app.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Customize the TV App">Customize the TV App</span></a></li></ul></devsite-expandable-nav></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -582,16 +682,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -601,9 +702,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -612,9 +714,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../input.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../interaction.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
@@ -628,15 +731,43 @@
          </devsite-page-rating>
           </div>
 
-              <h1 class="devsite-page-title">HAL interface</h1>
+              <h1 class="devsite-page-title">Sensors HAL 1.0</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
 
               
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!--
       Copyright 2017 The Android Open Source Project
 
@@ -653,34 +784,42 @@
       limitations under the License.
   -->
 
-
-
-<p>The HAL interface, declared in <a href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/sensors.h">sensors.h</a>, represents the interface between the Android <a href="sensor-stack-2.html#framework">framework</a> and the hardware-specific software. A HAL implementation must define each
-  function declared in sensors.h. The main functions are:</p>
+<aside class="note"><strong>Note:</strong> This page describes Sensors HAL 1.0.
+  For information on implementing Sensors HAL 2.0 on devices running Android
+  10 and higher, see <a
+  href="sensors-hal2.html">Sensors HAL 2.0</a>.</aside>
+<p>The Sensors HAL interface, declared in <a
+  href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/sensors.h"
+  class="external">sensors.h</a>, represents the interface between the Android <a
+  href="sensor-stack.html#framework">framework</a> and the
+  hardware-specific software. A HAL implementation must define each function
+  declared in sensors.h. The main functions are:</p>
 <ul>
-  <li><code>get_sensors_list</code> - Returns the list of all sensors. </li>
-  <li><code>activate</code> - Starts or stops a sensor. </li>
-  <li><code>batch</code> - Sets a sensor’s parameters such as sampling frequency and maximum
+  <li><code translate="no" dir="ltr">get_sensors_list</code> - Returns the list of all sensors. </li>
+  <li><code translate="no" dir="ltr">activate</code> - Starts or stops a sensor. </li>
+  <li><code translate="no" dir="ltr">batch</code> - Sets a sensor’s parameters such as sampling frequency and maximum
     reporting latency. </li>
-  <li><code>setDelay</code> - Used only in HAL version 1.0. Sets the sampling frequency for a
+  <li><code translate="no" dir="ltr">setDelay</code> - Used only in HAL version 1.0. Sets the sampling frequency for a
     given sensor. </li>
-  <li><code>flush</code> - Flushes the FIFO of the specified sensor and reports a flush complete
+  <li><code translate="no" dir="ltr">flush</code> - Flushes the FIFO of the specified sensor and reports a flush complete
     event when this is done. </li>
-  <li><code>poll</code> - Returns available sensor events. </li>
+  <li><code translate="no" dir="ltr">poll</code> - Returns available sensor events. </li>
 </ul>
 <p>The implementation must be thread safe and allow these functions to be called
   from different threads.</p>
 <p>The interface also defines several types used by those functions. The main
   types are:</p>
 <ul>
-  <li><code>sensors_module_t</code></li>
-  <li><code>sensors_poll_device_t</code></li>
-  <li><code>sensor_t</code></li>
-  <li><code>sensors_event_t</code></li>
+  <li><code translate="no" dir="ltr">sensors_module_t</code></li>
+  <li><code translate="no" dir="ltr">sensors_poll_device_t</code></li>
+  <li><code translate="no" dir="ltr">sensor_t</code></li>
+  <li><code translate="no" dir="ltr">sensors_event_t</code></li>
 </ul>
-<p>In addition to the sections below, see <a href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/sensors.h">sensors.h</a> for more information on those types.</p>
+<p>In addition to the sections below, see <a
+  href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/sensors.h"
+  class="external">sensors.h</a> for more information on those types.</p>
 <h2 id="get_sensors_list_list">get_sensors_list(list)</h2>
-<pre class="prettyprint">int (*get_sensors_list)(struct sensors_module_t* module, struct sensor_t
+<pre class="prettyprint" translate="no" dir="ltr">int (*get_sensors_list)(struct sensors_module_t* module, struct sensor_t
   const** list);</pre>
 <p>Provides the list of sensors implemented by the HAL. See <a href="#sensor_t">sensor_t</a> for details on how the sensors are defined.</p>
 <p>The order in which the sensors appear in the list is the order in which the
@@ -688,30 +827,30 @@
   first, followed by the composite sensors.</p>
 <p>If several sensors share the same sensor type and wake-up property, the first
   one in the list is called the “default” sensor. It is the one returned by
-  <code>getDefaultSensor(int sensorType, bool wakeUp)</code>.</p>
+  <code translate="no" dir="ltr">getDefaultSensor(int sensorType, bool wakeUp)</code>.</p>
 <p>This function returns the number of sensors in the list.</p>
 <h2 id="activate_sensor_true_false">activate(sensor, true/false)</h2>
-<pre class="prettyprint">int (*activate)(struct sensors_poll_device_t *dev, int sensor_handle, int
+<pre class="prettyprint" translate="no" dir="ltr">int (*activate)(struct sensors_poll_device_t *dev, int sensor_handle, int
   enabled);</pre>
 <p>Activates or deactivates a sensor.</p>
-<p><code>sensor_handle</code> is the handle of the sensor to activate/deactivate. A sensor’s
-  handle is defined by the <code>handle</code> field of its <a href="#sensor_t">sensor_t</a> structure.</p>
-<p><code>enabled</code> is set to 1 to enable or 0 to disable the sensor.</p>
+<p><code translate="no" dir="ltr">sensor_handle</code> is the handle of the sensor to activate/deactivate. A sensor’s
+  handle is defined by the <code translate="no" dir="ltr">handle</code> field of its <a href="#sensor_t">sensor_t</a> structure.</p>
+<p><code translate="no" dir="ltr">enabled</code> is set to 1 to enable or 0 to disable the sensor.</p>
 <p>One-shot sensors deactivate themselves automatically upon receiving an event,
-  and they must still accept to be deactivated through a call to <code>activate(...,
+  and they must still accept to be deactivated through a call to <code translate="no" dir="ltr">activate(...,
   enabled=0)</code>.</p>
 <p>Non-wake-up sensors never prevent the SoC from going into suspend mode; that
   is, the HAL shall not hold a partial wake-lock on behalf of applications.</p>
 <p>Wake-up sensors, when delivering events continuously, can prevent the SoC from
   going into suspend mode, but if no event needs to be delivered, the partial
   wake-lock must be released.</p>
-<p>If <code>enabled</code> is 1 and the sensor is already activated, this function is a no-op
+<p>If <code translate="no" dir="ltr">enabled</code> is 1 and the sensor is already activated, this function is a no-op
   and succeeds.</p>
-<p>If <code>enabled</code> is 0 and the sensor is already deactivated, this function is a no-op
+<p>If <code translate="no" dir="ltr">enabled</code> is 0 and the sensor is already deactivated, this function is a no-op
   and succeeds.</p>
 <p>This function returns 0 on success and a negative error number otherwise.</p>
 <h2 id="batch_sensor_flags_sampling_period_maximum_report_latency">batch(sensor, flags, sampling period, maximum report latency)</h2>
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 int (*batch)(
      struct sensors_poll_device_1* dev,
      int sensor_handle,
@@ -719,111 +858,40 @@ int (*batch)(
      int64_t sampling_period_ns,
      int64_t max_report_latency_ns);
 </pre>
-<p>Sets a sensor’s parameters, including <a href="#sampling_period_ns">sampling frequency</a> and <a href="#max_report_latency_ns">maximum report latency</a>. This function can be called while the sensor is activated, in which case it
-  must not cause any sensor measurements to be lost: Transitioning from one
-  sampling rate to the other cannot cause lost events, nor can transitioning from
-  a high maximum report latency to a low maximum report latency.</p>
-<p><code>sensor_handle</code> is the handle of the sensor to configure.</p>
-<p><code>flags</code> is currently unused.</p>
-<p><code>sampling_period_ns</code> is the sampling period at which the sensor should run, in
-  nanoseconds. See <a href="#sampling_period_ns">sampling_period_ns</a> for more details.</p>
-<p><code>max_report_latency_ns</code> is the maximum time by which events can be delayed before
-  being reported through the HAL, in nanoseconds. See the <a href="#max_report_latency_ns">max_report_latency_ns</a> paragraph for more details.</p>
+<p>Sets a sensor’s parameters, including <a
+  href="batching.html#sampling_period_ns">sampling frequency</a> and
+  <a href="batching.html#max_report_latency_ns">maximum report
+  latency</a>. This function can be called while the sensor is activated, in
+  which case it must not cause any sensor measurements to be lost: Transitioning
+  from one sampling rate to the other cannot cause lost events, nor can
+  transitioning from a high maximum report latency to a low maximum report
+  latency.</p>
+<p><code translate="no" dir="ltr">sensor_handle</code> is the handle of the sensor to configure.</p>
+<p><code translate="no" dir="ltr">flags</code> is currently unused.</p>
+<p><code translate="no" dir="ltr">sampling_period_ns</code> is the sampling period at which the sensor
+  should run, in nanoseconds. See <a
+  href="batching.html#sampling_period_ns">sampling_period_ns</a> for
+  more details.</p>
+<p><code translate="no" dir="ltr">max_report_latency_ns</code> is the maximum time by which events can be
+  delayed before being reported through the HAL, in nanoseconds. See the <a
+  href="batching.html#max_report_latency_ns">max_report_latency_ns</a>
+  paragraph for more details.</p>
 <p>This function returns 0 on success and a negative error number otherwise.</p>
-<h3 id="sampling_period_ns">sampling_period_ns</h3>
-<p>What the <code>sampling_period_ns</code> parameter means depends on the specified sensor's
-  reporting mode:</p>
-<ul>
-  <li> Continuous: <code>sampling_period_ns</code> is the sampling rate, meaning the rate at which
-    events are generated. </li>
-  <li> On-change: <code>sampling_period_ns</code> limits the sampling rate of events, meaning
-    events are generated no faster than every <code>sampling_period_ns</code> nanoseconds. There
-    might be periods longer than <code>sampling_period_ns</code> where no event is generated if
-    the measured values do not change for long periods. See <a
-    href="report-modes-2.html#on-change">on-change</a> reporting mode for more
-    details. </li>
-  <li> One-shot: <code>sampling_period_ns</code> is ignored. It has no effect. </li>
-  <li> Special: See the specific <a href="sensor-types-2.html">sensor type
-  descriptions</a> for details on how <code>sampling_period_ns</code> is used
-  for special sensors. </li>
-</ul>
-<p>See <a href="report-modes-2.html">Reporting modes</a> for more information
-  about the impact of <code>sampling_period_ns</code> in the different modes.</p>
-<p>For continuous and on-change sensors,</p>
-<ul>
-  <li> if <code>sampling_period_ns</code> is less than
-    <code>sensor_t.minDelay</code>, then the HAL implementation must silently
-    clamp it to <code>max(sensor_t.minDelay, 1ms)</code>. Android
-    does not support the generation of events at more than 1000Hz. </li>
-  <li> if <code>sampling_period_ns</code> is greater than
-    <code>sensor_t.maxDelay</code>, then the HAL
-    implementation must silently truncate it to <code>sensor_t.maxDelay</code>. </li>
-</ul>
-<p>Physical sensors sometimes have limitations on the rates at which they can run
-  and the accuracy of their clocks. To account for this, we allow the actual
-  sampling frequency to differ from the requested frequency, as long as it
-  satisfies the requirements in the table below.</p>
-<table>
-  <tr>
-    <th><p>If the requested frequency is</p></th>
-    <th><p>Then the actual frequency must be</p></th>
-  </tr>
-  <tr>
-    <td><p>below min frequency (&lt;1/maxDelay)</p></td>
-    <td><p>between 90% and 110% of the min frequency</p></td>
-  </tr>
-  <tr>
-    <td><p>between min and max frequency</p></td>
-    <td><p>between 90% and 220% of the requested frequency</p></td>
-  </tr>
-  <tr>
-    <td><p>above max frequency (&gt;1/minDelay)</p></td>
-    <td><p>between 90% and 110% of the max frequency</p>
-      <p>and below 1100Hz</p></td>
-  </tr>
-</table>
-<p>Note that this contract is valid only at the HAL level, where there is always a
-  single client. At the SDK level, applications might get different rates, due to
-  the multiplexing happening in the Framework. See <a
-  href="sensor-stack-2.html#framework">Framework</a> for more details.</p>
-<h3 id="max_report_latency_ns">max_report_latency_ns</h3>
-<p><code>max_report_latency_ns</code> sets the maximum time in nanoseconds, by which events can
-  be delayed and stored in the hardware FIFO before being reported through the
-  HAL while the SoC is awake.</p>
-<p>A value of zero signifies that the events must be reported as soon as they are
-  measured, either skipping the FIFO altogether, or emptying the FIFO as soon as
-  one event from this sensor is present in it.</p>
-<p>For example, an accelerometer activated at 50Hz with <code>max_report_latency_ns=0</code>
-  will trigger interrupts 50 times per second when the SoC is awake.</p>
-<p>When <code>max_report_latency_ns&gt;0</code>, sensor events do not need to be reported as soon
-  as they are detected. They can be temporarily stored in the hardware FIFO and
-  reported in batches, as long as no event is delayed by more than
-  max_report_latency_ns nanoseconds. That is, all events since the previous batch
-  are recorded and returned at once. This reduces the amount of interrupts sent
-  to the SoC and allows the SoC to switch to a lower power mode (idle) while the
-  sensor is capturing and batching data.</p>
-<p>Each event has a timestamp associated with it. Delaying the time at which an
-  event is reported does not impact the event timestamp. The timestamp must be
-  accurate and correspond to the time at which the event physically happened, not
-  the time it is being reported. </p>
-<p>Allowing sensor events to be stored temporarily in the hardware FIFO does not
-  modify the behavior of <code>poll</code>: events from different sensors can be interleaved,
-  and as usual, all events from the same sensor are time-ordered.</p>
-<p>See <a href="batching-2.html">Batching</a> for more details on sensor
-batching, including behaviors in suspend mode and out of suspend mode.</p>
+
 <h2 id="setdelay_sensor_sampling_period">setDelay(sensor, sampling period)</h2>
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 int (*setDelay)(
      struct sensors_poll_device_t *dev,
      int sensor_handle,
      int64_t sampling_period_ns);
 </pre>
 <p>After HAL version 1.0, this function is deprecated and is never called.
-  Instead, the <code>batch</code> function is called to set the
-  <code>sampling_period_ns</code> parameter.</p>
-<p>In HAL version 1.0, setDelay was used instead of batch to set <a href="#sampling_period_ns">sampling_period_ns</a>.</p>
+  Instead, the <code translate="no" dir="ltr">batch</code> function is called to set the
+  <code translate="no" dir="ltr">sampling_period_ns</code> parameter.</p>
+<p>In HAL version 1.0, setDelay was used instead of batch to set <a
+href="batching.html#sampling_period_ns">sampling_period_ns</a>.</p>
 <h2 id="flush_sensor">flush(sensor)</h2>
-<pre class="prettyprint">int (*flush)(struct sensors_poll_device_1* dev, int sensor_handle);</pre>
+<pre class="prettyprint" translate="no" dir="ltr">int (*flush)(struct sensors_poll_device_1* dev, int sensor_handle);</pre>
 <p>Add a <a href="#metadata_flush_complete_events">flush complete event</a> to the end of the hardware FIFO for the specified sensor and flushes the FIFO;
   those events are delivered as usual (i.e.: as if the maximum reporting latency
   had expired) and removed from the FIFO.</p>
@@ -831,56 +899,59 @@ int (*setDelay)(
   If the implementation uses a single FIFO for several sensors, that FIFO is
   flushed and the flush complete event is added only for the specified sensor.</p>
 <p>If the specified sensor has no FIFO (no buffering possible), or if the FIFO,
-  was empty at the time of the call, <code>flush</code> must still succeed and send a flush
-  complete event for that sensor. This applies to all sensors other than one-shot
-  sensors.</p>
-<p>When <code>flush</code> is called, even if a flush event is already in the FIFO for that
-  sensor, an additional one must be created and added to the end of the FIFO, and
-  the FIFO must be flushed. The number of <code>flush</code> calls must be
-  equal to the number of flush complete events created.</p>
-<p><code>flush</code> does not apply to <a href="report-modes-2.html#one-shot">one-shot</a>
-  sensors; if <code>sensor_handle</code> refers to a one-shot sensor,
-  <code>flush</code> must return <code>-EINVAL</code> and not generate any
+  was empty at the time of the call, <code translate="no" dir="ltr">flush</code> must still succeed and
+  send a flush complete event for that sensor. This applies to all sensors other
+  than one-shot sensors.</p>
+<p>When <code translate="no" dir="ltr">flush</code> is called, even if a flush event is already in the
+  FIFO for that sensor, an additional one must be created and added to the end
+  of the FIFO, and the FIFO must be flushed. The number of <code translate="no" dir="ltr">flush</code>
+  calls must be equal to the number of flush complete events created.</p>
+<p><code translate="no" dir="ltr">flush</code> does not apply to <a
+href="report-modes.html#one-shot">one-shot</a>
+  sensors; if <code translate="no" dir="ltr">sensor_handle</code> refers to a one-shot sensor,
+  <code translate="no" dir="ltr">flush</code> must return <code translate="no" dir="ltr">-EINVAL</code> and not generate any
   flush complete metadata event.</p>
-<p>This function returns 0 on success, <code>-EINVAL</code> if the specified sensor is a
+<p>This function returns 0 on success, <code translate="no" dir="ltr">-EINVAL</code> if the specified sensor is a
   one-shot sensor or wasn’t enabled, and a negative error number otherwise.</p>
 <h2 id="poll">poll()</h2>
-<pre class="prettyprint">int (*poll)(struct sensors_poll_device_t *dev, sensors_event_t* data, int
+<pre class="prettyprint" translate="no" dir="ltr">int (*poll)(struct sensors_poll_device_t *dev, sensors_event_t* data, int
   count);</pre>
-<p>Returns an array of sensor data by filling the <code>data</code> argument. This function
+<p>Returns an array of sensor data by filling the <code translate="no" dir="ltr">data</code> argument. This function
   must block until events are available. It will return the number of events read
   on success, or a negative error number in case of an error.</p>
-<p>The number of events returned in <code>data</code> must be less or equal to
-  the <code>count</code> argument. This function shall never return 0 (no event).</p>
+<p>The number of events returned in <code translate="no" dir="ltr">data</code> must be less or equal to
+  the <code translate="no" dir="ltr">count</code> argument. This function shall never return 0 (no event).</p>
 <h2 id="sequence_of_calls">Sequence of calls</h2>
-<p>When the device boots, <code>get_sensors_list</code> is called.</p>
-<p>When a sensor gets activated, the <code>batch</code> function will be called with the
-  requested parameters, followed by <code>activate(..., enable=1)</code>.</p>
-<p>Note that in HAL version 1_0, the order was the opposite: <code>activate</code> was called
-  first, followed by <code>set_delay</code>.</p>
+<p>When the device boots, <code translate="no" dir="ltr">get_sensors_list</code> is called.</p>
+<p>When a sensor gets activated, the <code translate="no" dir="ltr">batch</code> function will be called with the
+  requested parameters, followed by <code translate="no" dir="ltr">activate(..., enable=1)</code>.</p>
+<p>Note that in HAL version 1_0, the order was the opposite: <code translate="no" dir="ltr">activate</code> was called
+  first, followed by <code translate="no" dir="ltr">set_delay</code>.</p>
 <p>When the requested characteristics of a sensor are changing while it is
-  activated, the <code>batch</code> function is called.</p>
-<p><code>flush</code> can be called at any time, even on non-activated sensors (in which case
-  it must return <code>-EINVAL</code>)</p>
-<p>When a sensor gets deactivated, <code>activate(..., enable=0)</code> will be called.</p>
-<p>In parallel to those calls, the <code>poll</code> function will be called repeatedly to
-  request data. <code>poll</code> can be called even when no sensors are activated.</p>
+  activated, the <code translate="no" dir="ltr">batch</code> function is called.</p>
+<p><code translate="no" dir="ltr">flush</code> can be called at any time, even on non-activated sensors (in which case
+  it must return <code translate="no" dir="ltr">-EINVAL</code>)</p>
+<p>When a sensor gets deactivated, <code translate="no" dir="ltr">activate(..., enable=0)</code> will be called.</p>
+<p>In parallel to those calls, the <code translate="no" dir="ltr">poll</code> function will be called repeatedly to
+  request data. <code translate="no" dir="ltr">poll</code> can be called even when no sensors are activated.</p>
 <h2 id="sensors_module_t">sensors_module_t</h2>
-<p><code>sensors_module_t</code> is the type used to create the Android hardware module for the
-  sensors. The implementation of the HAL must define an object
-  <code>HAL_MODULE_INFO_SYM</code> of this type to expose the <a
-  href="#get_sensors_list_list">get_sensors_list</a> function. See the definition
-  of <code>sensors_module_t</code> in <a
-  href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/sensors.h">sensors.h</a> and the
-  definition of <code>hw_module_t</code> for more information.</p>
+<p><code translate="no" dir="ltr">sensors_module_t</code> is the type used to create the Android hardware
+  module for the sensors. The implementation of the HAL must define an object
+  <code translate="no" dir="ltr">HAL_MODULE_INFO_SYM</code> of this type to expose the <a
+  href="#get_sensors_list_list">get_sensors_list</a> function. See the
+  definition of <code translate="no" dir="ltr">sensors_module_t</code> in <a
+  href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/sensors.h"
+  class="external">sensors.h</a> and the definition of <code translate="no" dir="ltr">hw_module_t</code>
+  for more information.</p>
 <h2 id="sensors_poll_device_t_sensors_poll_device_1_t">sensors_poll_device_t / sensors_poll_device_1_t</h2>
-<p><code>sensors_poll_device_1_t</code> contains the rest of the methods defined above:
-  <code>activate</code>, <code>batch</code>, <code>flush</code> and
-  <code>poll</code>. Its <code>common</code> field (of type <a
+<p><code translate="no" dir="ltr">sensors_poll_device_1_t</code> contains the rest of the methods defined above:
+  <code translate="no" dir="ltr">activate</code>, <code translate="no" dir="ltr">batch</code>, <code translate="no" dir="ltr">flush</code> and
+  <code translate="no" dir="ltr">poll</code>. Its <code translate="no" dir="ltr">common</code> field (of type <a
   href="../../reference/hal/structhw__device__t.html">hw_device_t</a>)
   defines the version number of the HAL.</p>
 <h2 id="sensor_t">sensor_t</h2>
-<p><code>sensor_t</code> represents an <a href="index-2.html">Android sensor</a>. Here are some of its important fields:</p>
+<p><code translate="no" dir="ltr">sensor_t</code> represents an <a href="../sensors.html">Android
+sensor</a>. Here are some of its important fields:</p>
 <p><strong>name:</strong> A user-visible string that represents the sensor. This string often
   contains the part name of the underlying sensor, the type of the sensor, and
   whether it is a wake-up sensor. For example, “LIS2HH12 Accelerometer”,
@@ -889,112 +960,130 @@ int (*setDelay)(
 <p><strong>handle:</strong> The integer used to refer to the sensor when registering to it or
   generating events from it.</p>
 <p><strong>type:</strong> The type of the sensor. See the explanation of sensor
-type in <a href="index-2.html">What are Android sensors?</a> for more details, and see <a
-href="sensor-types-2.html">Sensor types</a> for official sensor types. For
-non-official sensor types, <code>type</code> must start with <code>SENSOR_TYPE_DEVICE_PRIVATE_BASE</code></p>
-<p><strong>stringType:</strong> The type of the sensor as a string. When the sensor has an official
-  type, set to <code>SENSOR_STRING_TYPE_*</code>. When the sensor has a manufacturer specific
-  type, <code>stringType</code> must start with the manufacturer reverse domain name. For
-  example, a sensor (say a unicorn detector) defined by the
-  <em>Cool-product</em> team at Fictional-Company could use
-  <code>stringType=”com.fictional_company.cool_product.unicorn_detector”</code>.
-  The <code>stringType</code> is used to uniquely identify non-official sensors types. See <a
-  href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/sensors.h">sensors.h</a> for more
-  information on types and string types.</p>
-<p><strong>requiredPermission:</strong> A string representing the permission that applications must
-  possess to see the sensor, register to it and receive its data. An empty string
-  means applications do not require any permission to access this sensor. Some
-  sensor types like the <a href="sensor-types-2.html#heart_rate">heart rate
-  monitor</a> have a mandatory <code>requiredPermission</code>. All sensors
-  providing sensitive user information (such as the heart rate) must be protected by a permission.</p>
+type in <a href="../sensors.html">What are Android sensors?</a> for more details, and see <a
+href="sensor-types.html">Sensor types</a> for official sensor types. For
+non-official sensor types, <code translate="no" dir="ltr">type</code> must start with <code translate="no" dir="ltr">SENSOR_TYPE_DEVICE_PRIVATE_BASE</code></p>
+<p><strong>stringType:</strong> The type of the sensor as a string. When the
+  sensor has an official type, set to <code translate="no" dir="ltr">SENSOR_STRING_TYPE_*</code>. When
+  the sensor has a manufacturer specific type, <code translate="no" dir="ltr">stringType</code> must
+  start with the manufacturer reverse domain name. For example, a sensor (say a
+  unicorn detector) defined by the <em>Cool-product</em> team at
+  Fictional-Company could use
+  <code translate="no" dir="ltr">stringType=”com.fictional_company.cool_product.unicorn_detector”</code>.
+  The <code translate="no" dir="ltr">stringType</code> is used to uniquely identify non-official sensors
+  types. See <a
+  href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/sensors.h"
+  class="external">sensors.h</a> for more information on types and string
+  types.</p>
+<p><strong>requiredPermission:</strong> A string representing the permission
+  that applications must possess to see the sensor, register to it and receive
+  its data. An empty string means applications do not require any permission to
+  access this sensor. Some sensor types like the <a
+  href="sensor-types.html#heart_rate">heart rate monitor</a> have a
+  mandatory <code translate="no" dir="ltr">requiredPermission</code>. All sensors providing sensitive
+  user information (such as the heart rate) must be protected by a
+  permission.</p>
 <p><strong>flags:</strong> Flags for this sensor, defining the sensor’s reporting mode and whether
   the sensor is a wake-up sensor or not. For example, a one-shot wake-up sensor
-  will have <code>flags = SENSOR_FLAG_ONE_SHOT_MODE | SENSOR_FLAG_WAKE_UP</code>. The bits of
+  will have <code translate="no" dir="ltr">flags = SENSOR_FLAG_ONE_SHOT_MODE | SENSOR_FLAG_WAKE_UP</code>. The bits of
   the flag that are not used in the current HAL version must be left equal to 0.</p>
 <p><strong>maxRange:</strong> The maximum value the sensor can report, in the same unit as the
   reported values. The sensor must be able to report values without saturating
-  within <code>[-maxRange; maxRange]</code>. Note that this means the total range of the
-  sensor in the generic sense is <code>2*maxRange</code>. When the sensor reports values over
+  within <code translate="no" dir="ltr">[-maxRange; maxRange]</code>. Note that this means the total range of the
+  sensor in the generic sense is <code translate="no" dir="ltr">2*maxRange</code>. When the sensor reports values over
   several axes, the range applies to each axis. For example, a “+/- 2g”
-  accelerometer will report <code>maxRange = 2*9.81 = 2g</code>.</p>
+  accelerometer will report <code translate="no" dir="ltr">maxRange = 2*9.81 = 2g</code>.</p>
 <p><strong>resolution:</strong> The smallest difference in value that the sensor can measure.
-  Usually computed based on <code>maxRange</code> and the number of bits in the measurement.</p>
-<p><strong>power:</strong> The power cost of enabling the sensor, in milliAmps. This is nearly
-  always more that the power consumption reported in the datasheet of the
-  underlying sensor. See <a
-href="sensor-types-2.html#base_sensors_=_not_equal_to_physical_sensors">Base
-sensors != physical sensors</a> for more details and see <a
-href="power-use-2.html#power_measurement_process">Power measurement process</a> for details on
-how to measure the power consumption of a sensor. If the
-  sensor’s power consumption depends on whether the device is moving, the power
-  consumption while moving is the one reported in the <code>power</code> field.</p>
-<p><strong>minDelay:</strong> For continuous sensors, the sampling period, in microseconds,
-  corresponding to the fastest rate the sensor supports. See <a href="#sampling_period_ns">sampling_period_ns</a> for details on how this value is used. Beware that <code>minDelay</code> is expressed in
-  microseconds while <code>sampling_period_ns</code> is in nanoseconds. For on-change and
-  special reporting mode sensors, unless otherwise specified, <code>minDelay</code> must be 0.
-  For one-shot sensors, it must be -1.</p>
-<p><strong>maxDelay:</strong> For continuous and on-change sensors, the sampling period, in
-  microseconds, corresponding to the slowest rate the sensor supports. See <a href="#sampling_period_ns">sampling_period_ns</a> for details on how this value is used. Beware that <code>maxDelay</code> is expressed in
-  microseconds while <code>sampling_period_ns</code> is in nanoseconds. For special and
-  one-shot sensors, <code>maxDelay</code> must be 0.</p>
+  Usually computed based on <code translate="no" dir="ltr">maxRange</code> and the number of bits in the measurement.</p>
+<p><strong>power:</strong> The power cost of enabling the sensor, in milliAmps.
+  This is nearly always more that the power consumption reported in the
+  datasheet of the underlying sensor. See <a
+  href="sensor-types.html#base_sensors">Base sensors != physical
+  sensors</a> for more details and see <a
+  href="power-use.html#power_measurement_process">Power measurement
+  process</a> for details on how to measure the power consumption of a sensor.
+  If the sensor’s power consumption depends on whether the device is moving, the
+  power consumption while moving is the one reported in the <code translate="no" dir="ltr">power</code>
+  field.</p>
+<p><strong>minDelay:</strong> For continuous sensors, the sampling period, in
+  microseconds, corresponding to the fastest rate the sensor supports. See <a
+  href="batching.html#sampling_period_ns">sampling_period_ns</a> for
+  details on how this value is used. Beware that <code translate="no" dir="ltr">minDelay</code> is
+  expressed in microseconds while <code translate="no" dir="ltr">sampling_period_ns</code> is in
+  nanoseconds. For on-change and special reporting mode sensors, unless
+  otherwise specified, <code translate="no" dir="ltr">minDelay</code> must be 0. For one-shot sensors, it
+  must be -1.</p>
+<p><strong>maxDelay:</strong> For continuous and on-change sensors, the sampling
+  period, in microseconds, corresponding to the slowest rate the sensor
+  supports. See <a
+  href="batching.html#sampling_period_ns">sampling_period_ns</a> for
+  details on how this value is used. Beware that <code translate="no" dir="ltr">maxDelay</code> is
+  expressed in microseconds while <code translate="no" dir="ltr">sampling_period_ns</code> is in
+  nanoseconds. For special and one-shot sensors, <code translate="no" dir="ltr">maxDelay</code> must be
+  0.</p>
 <p><strong>fifoReservedEventCount:</strong> The number of events reserved for this sensor in the
   hardware FIFO. If there is a dedicated FIFO for this sensor, then
-  <code>fifoReservedEventCount</code> is the size of this dedicated FIFO. If the FIFO is
-  shared with other sensors, <code>fifoReservedEventCount</code> is the size of the part of
+  <code translate="no" dir="ltr">fifoReservedEventCount</code> is the size of this dedicated FIFO. If the FIFO is
+  shared with other sensors, <code translate="no" dir="ltr">fifoReservedEventCount</code> is the size of the part of
   the FIFO that is reserved for that sensor. On most shared-FIFO systems, and on
   systems that do not have a hardware FIFO this value is 0.</p>
-<p><strong>fifoMaxEventCount:</strong> The maximum number of events that could be stored in the
-  FIFOs for this sensor. This is always greater or equal to
-  <code>fifoReservedEventCount</code>. This value is used to estimate how quickly the FIFO
-  will get full when registering to the sensor at a specific rate, supposing no
-  other sensors are activated. On systems that do not have a hardware FIFO,
-  <code>fifoMaxEventCount</code> is 0. See <a href="batching-2.html">Batching</a> for more details.</p>
-<p>For sensors with an official sensor type, some of the fields are overwritten by
-  the framework. For example, <a
-  href="sensor-types-2.html#accelerometer">accelerometer</a> sensors are forced to
-  have a continuous reporting mode, and <a
-  href="sensor-types-2.html#heart_rate">heart rate</a> monitors are forced to be
-  protected by the <code>SENSOR_PERMISSION_BODY_SENSORS</code> permission.</p>
+<p><strong>fifoMaxEventCount:</strong> The maximum number of events that could
+  be stored in the FIFOs for this sensor. This is always greater or equal to
+  <code translate="no" dir="ltr">fifoReservedEventCount</code>. This value is used to estimate how
+  quickly the FIFO will get full when registering to the sensor at a specific
+  rate, supposing no other sensors are activated. On systems that do not have a
+  hardware FIFO, <code translate="no" dir="ltr">fifoMaxEventCount</code> is 0. See <a
+  href="batching.html">Batching</a> for more details.</p>
+<p>For sensors with an official sensor type, some of the fields are overwritten
+  by the framework. For example, <a
+  href="sensor-types.html#accelerometer">accelerometer</a> sensors
+  are forced to have a continuous reporting mode, and <a
+  href="sensor-types.html#heart_rate">heart rate</a> monitors are
+  forced to be protected by the <code translate="no" dir="ltr">SENSOR_PERMISSION_BODY_SENSORS</code>
+  permission.</p>
 <h2 id="sensors_event_t">sensors_event_t</h2>
 <p>Sensor events generated by Android sensors and reported through the <a
-href="#poll">poll</a> function are of <code>type sensors_event_t</code>. Here are some
-important fields of <code>sensors_event_t</code>:</p>
-<p><strong>version:</strong> Must be <code>sizeof(struct sensors_event_t)</code></p>
+href="#poll">poll</a> function are of <code translate="no" dir="ltr">type sensors_event_t</code>. Here are some
+important fields of <code translate="no" dir="ltr">sensors_event_t</code>:</p>
+<p><strong>version:</strong> Must be <code translate="no" dir="ltr">sizeof(struct sensors_event_t)</code></p>
 <p><strong>sensor:</strong> The handle of the sensor that generated the event, as defined by
-  <code>sensor_t.handle</code>.</p>
+  <code translate="no" dir="ltr">sensor_t.handle</code>.</p>
 <p><strong>type:</strong> The sensor type of the sensor that generated the event, as defined by
-  <code>sensor_t.type</code>.</p>
+  <code translate="no" dir="ltr">sensor_t.type</code>.</p>
 <p><strong>timestamp:</strong> The timestamp of the event in nanoseconds. This is the time the
   event happened (a step was taken, or an accelerometer measurement was made),
-  not the time the event was reported. <code>timestamp</code> must be synchronized with the
-  <code>elapsedRealtimeNano</code> clock, and in the case of continuous sensors, the jitter
+  not the time the event was reported. <code translate="no" dir="ltr">timestamp</code> must be synchronized with the
+  <code translate="no" dir="ltr">elapsedRealtimeNano</code> clock, and in the case of continuous sensors, the jitter
   must be small. Timestamp filtering is sometimes necessary to satisfy the CDD
   requirements, as using only the SoC interrupt time to set the timestamps
   causes too high jitter, and using only the sensor chip time to set the
   timestamps can cause de-synchronization from the
-  <code>elapsedRealtimeNano</code> clock, as the sensor clock drifts.</p>
-<p><strong>data and overlapping fields:</strong> The values measured by the sensor. The meaning and
-  units of those fields are specific to each sensor type. See <a
-  href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/sensors.h">sensors.h</a> and the
-  definition of the different <a href="sensor-types-2.html">Sensor types</a> for a
-  description of the data fields. For some sensors, the accuracy of the
-  readings is also reported as part of the data, through a <code>status</code> field. This
-  field is only piped through for those select sensor types, appearing at the SDK
-  layer as an accuracy value. For those sensors, the fact that the status field
-  must be set is mentioned in their <a href="sensor-types-2.html">sensor type</a> definition.</p>
+  <code translate="no" dir="ltr">elapsedRealtimeNano</code> clock, as the sensor clock drifts.</p>
+<p><strong>data and overlapping fields:</strong> The values measured by the
+  sensor. The meaning and units of those fields are specific to each sensor
+  type. See <a
+  href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/sensors.h"
+  class="external">sensors.h</a> and the definition of the different <a
+  href="sensor-types.html">Sensor types</a> for a description of the
+  data fields. For some sensors, the accuracy of the readings is also reported
+  as part of the data, through a <code translate="no" dir="ltr">status</code> field. This field is only
+  piped through for those select sensor types, appearing at the SDK layer as an
+  accuracy value. For those sensors, the fact that the status field must be set
+  is mentioned in their <a href="sensor-types.html">sensor type</a>
+  definition.</p>
 <h3 id="metadata_flush_complete_events">Metadata flush complete events</h3>
 <p>Metadata events have the same type as normal sensor events:
-  <code>sensors_event_meta_data_t = sensors_event_t</code>. They are returned together with
+  <code translate="no" dir="ltr">sensors_event_meta_data_t = sensors_event_t</code>. They are returned together with
   other sensor events through poll. They possess the following fields:</p>
-<p><strong>version:</strong> Must be <code>META_DATA_VERSION</code></p>
-<p><strong>type:</strong> Must be <code>SENSOR_TYPE_META_DATA</code></p>
+<p><strong>version:</strong> Must be <code translate="no" dir="ltr">META_DATA_VERSION</code></p>
+<p><strong>type:</strong> Must be <code translate="no" dir="ltr">SENSOR_TYPE_META_DATA</code></p>
 <p><strong>sensor, reserved, and timestamp</strong>: Must be 0</p>
 <p><strong>meta_data.what:</strong> Contains the metadata type for this event. There is currently a
-  single valid metadata type: <code>META_DATA_FLUSH_COMPLETE</code>.</p>
-<p><code>META_DATA_FLUSH_COMPLETE</code> events represent the completion of the flush of a
-  sensor FIFO. When <code>meta_data.what=META_DATA_FLUSH_COMPLETE</code>, <code>meta_data.sensor</code>
+  single valid metadata type: <code translate="no" dir="ltr">META_DATA_FLUSH_COMPLETE</code>.</p>
+<p><code translate="no" dir="ltr">META_DATA_FLUSH_COMPLETE</code> events represent the completion of the flush of a
+  sensor FIFO. When <code translate="no" dir="ltr">meta_data.what=META_DATA_FLUSH_COMPLETE</code>, <code translate="no" dir="ltr">meta_data.sensor</code>
   must be set to the handle of the sensor that has been flushed. They are
-  generated when and only when <code>flush</code> is called on a sensor. See the section on
+  generated when and only when <code translate="no" dir="ltr">flush</code> is called on a sensor. See the section on
   the <a href="#flush_sensor">flush</a> function for more information.</p>
 
   
@@ -1007,17 +1096,17 @@ important fields of <code>sensors_event_t</code>:</p>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1224,8 +1313,9 @@ important fields of <code>sensors_event_t</code>:</p>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1291,54 +1381,49 @@ important fields of <code>sensors_event_t</code>:</p>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/sensors/hal-interface.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 15:09:28 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/sensors/hal-interface.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:57:40 GMT -->
 </html>

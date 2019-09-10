@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/audio/implement-policy.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:31:45 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/audio/implement-policy.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:44:22 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Configuring Audio Policies &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Configuring Audio Policies &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="implement-policy.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="implement-policy.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="implement-policy.html">      
+<title>Configuring Audio Policies &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Configuring Audio Policies &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="implement-policy.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab active>
-          <a href="../audio.html"
+          <a href="../../devices.html"
    class="gc-analytics-event"
    title="Develop"
    aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../tech/dalvik.html"
+          <a href="../tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,9 +243,20 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
-                  <tab active>
+                  <tab >
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab active>
           <a href="../audio.html"
    class="gc-analytics-event"
    title="Audio"
@@ -254,7 +301,7 @@
 
         </tab>
                         <tab >
-          <a href="../input.html"
+          <a href="../interaction.html"
    class="gc-analytics-event"
    title="Interaction"
            data-category="Site-Wide Custom Events"
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../audio.html"
+                                <a href="../../devices.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -351,13 +414,23 @@
   
                                             <ul class="devsite-nav-responsive-tabs">
                                                                                                                       <li class="devsite-nav-item">
+    <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
     <a href="../audio.html"
      id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Audio">
       <span class="devsite-nav-text" menu="_book">Audio</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -394,7 +467,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../input.html"
+    <a href="../interaction.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -426,7 +499,7 @@
                                   </ul>
                           </li>
                       <li class="devsite-nav-item">
-                                <a href="../tech/dalvik.html"
+                                <a href="../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -458,15 +531,15 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../audio.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../audio.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item"><a href="terminology.html"
+  <li class="devsite-nav-item"><a href="terminology.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Terminology">Terminology</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Implementation">Implementation</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="implement.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Implementation">Implementation</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="implement.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-policy.html"
      class="devsite-nav-title"
@@ -475,23 +548,23 @@
    ><span class="devsite-nav-text" title="Shared Library">Shared Library</span></a></li><li class="devsite-nav-item"><a href="implement-pre-processing.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Pre-processing Effects">Pre-processing Effects</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="data_formats.html"
+  <li class="devsite-nav-item"><a href="data_formats.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Data Formats">Data Formats</span></a></li>
-                          <li class="devsite-nav-item"><a href="attributes.html"
+  <li class="devsite-nav-item"><a href="attributes.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Attributes">Attributes</span></a></li>
-                          <li class="devsite-nav-item"><a href="highres-effects.html"
+  <li class="devsite-nav-item"><a href="highres-effects.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="High-Resolution Effects">High-Resolution Effects</span></a></li>
-                          <li class="devsite-nav-item"><a href="aaudio.html"
+   ><span class="devsite-nav-text" title="High-Resolution Audio">High-Resolution Audio</span></a></li>
+  <li class="devsite-nav-item"><a href="aaudio.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="AAudio and MMAP">AAudio and MMAP</span></a></li>
-                          <li class="devsite-nav-item"><a href="warmup.html"
+  <li class="devsite-nav-item"><a href="warmup.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Warmup">Warmup</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Latency">Latency</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="latency/latency.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Latency">Latency</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="latency/latency.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="latency/contrib.html"
      class="devsite-nav-title"
@@ -508,30 +581,33 @@
    ><span class="devsite-nav-text" title="Measurements">Measurements</span></a></li><li class="devsite-nav-item"><a href="latency/app.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Applications">Applications</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="avoiding_pi.html"
+  <li class="devsite-nav-item"><a href="avoiding_pi.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Priority Inversion">Priority Inversion</span></a></li>
-                          <li class="devsite-nav-item"><a href="src.html"
+  <li class="devsite-nav-item"><a href="src.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Sample Rate Conversion">Sample Rate Conversion</span></a></li>
-                          <li class="devsite-nav-item"><a href="debugging.html"
+  <li class="devsite-nav-item"><a href="debugging.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Debugging">Debugging</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="MIDI">MIDI</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="midi.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="MIDI">MIDI</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="midi.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="midi_arch.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="MIDI Architecture">MIDI Architecture</span></a></li><li class="devsite-nav-item"><a href="midi_test.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="MIDI Test Procedure">MIDI Test Procedure</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="usb.html"
+  <li class="devsite-nav-item"><a href="usb.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="USB Digital Audio">USB Digital Audio</span></a></li>
-                          <li class="devsite-nav-item"><a href="tv.html"
+  <li class="devsite-nav-item"><a href="tv.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="TV Audio">TV Audio</span></a></li>
-                      </ul>
+  <li class="devsite-nav-item"><a href="concurrent.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Concurrent Capture">Concurrent Capture</span></a></li>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -539,16 +615,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -558,9 +635,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -569,8 +647,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -587,13 +666,42 @@
 
               <h1 class="devsite-page-title">Configuring Audio Policies</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
 
               
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!--
       Copyright 2017 The Android Open Source Project
 
@@ -611,62 +719,86 @@
   -->
 
 
+  <p>The Android 10 release includes a significant refactoring of the audio
+  policy manager to provide more flexibility to support complex automotive use cases:</p>
+<ul>
+<li>OEM-specific routing strategies.</li>
+<li>Customizable volume groups for groups of legacy stream types using the same volume curves.</li>
+<li>Routing strategies declared by the audio policy engine instead of being hard coded.</li>
+<li>Volume curves and groups managed by the audio policy engine.</li>
+<li>Internal refactoring preparing for a future split between common code and configurable code
+and offering richer audio device management. For example, the use of all device properties not just
+its type in policy rules.</li></ul>
+</li></ul>
 
-<p>Android 7.0 introduces a new audio policy configuration file format (XML) for
+
+<p>Android 7.0 introduced a audio policy configuration file format (XML) for
 describing your audio topology.</p>
 
-<p>Previous Android releases required using the
-<code>device/&lt;company&gt;/&lt;device&gt;/audio/audio_policy.conf</code>
+<p>Previous Android releases required using
+<code translate="no" dir="ltr">device/&lt;company&gt;/&lt;device&gt;/audio/audio_policy.conf</code>
 to declare the audio devices present on your product (you can see an example of
 this file for the Galaxy Nexus audio hardware in
-<code>device/samsung/tuna/audio/audio_policy.conf</code>). However, .conf is a
-simple proprietary format that is too limited to describe complex topologies for
-applications such as televisions and automobiles.</p>
+<code translate="no" dir="ltr">device/samsung/tuna/audio/audio_policy.conf</code>). However, CONF is a
+simple, proprietary format that is too limited to describe complex topologies for
+verticals like televisions and automobiles.</p>
 
-<p>Android 7.0 deprecates the <code>audio_policy.conf</code> and adds support
-for defining audio topology using an XML file format that is more
+<p>Android 7.0 deprecates <code translate="no" dir="ltr">audio_policy.conf</code> and adds support
+for defining an audio topology using an XML file format that's more
 human-readable, has a wide range of editing and parsing tools, and is flexible
 enough to describe complex audio topologies.</p>
 
-<p class="note"><strong>Note:</strong> Android 7.0 preserves support for using
-<code>audio_policy.conf</code>; this legacy format is used by default. To use
-the XML file format, include the build option <code>USE_XML_AUDIO_POLICY_CONF
-:= 1</code> in device makefile.</p>
+<aside class="note"><strong>Note:</strong> Android 7.0 preserves support for using
+<code translate="no" dir="ltr">audio_policy.conf</code>; this legacy format is used by default. To use
+the XML file format, include the build option <code translate="no" dir="ltr">USE_XML_AUDIO_POLICY_CONF
+:= 1</code> in the device makefile.</aside>
 
-<h2 id=xml_advantages>Advantages of the XML format</h2>
-<p>As in the .conf file, the new XML file enables defining the number and types
-of output an input stream profiles, devices usable for playback and capture, and
+<h2 id="xml_advantages">Advantages of the XML format</h2>
+<p>As in the CONF file, the XML file enables defining the number and types
+of output and input stream profiles, devices usable for playback and capture, and
 audio attributes. In addition, the XML format offers the following enhancements:
 </p>
 
-<ul>
-<li>Audio profiles are now structured similar to HDMI Simple Audio Descriptors
-and enable a different set of sampling rates/channel masks for each audio
-format.</li>
-<li>Explicit definitions of all possible connections between devices and
-streams. Previously, an implicit rule made it possible to interconnect all
-devices attached to the same HAL module, preventing the audio policy from
-controlling connections requested with audio patch APIs. In the XML format, the
-topology description now defines connection limitations.</li>
-<li>Support for <em>includes</em> avoids repeating standard A2DP, USB, or
-reroute submit definitions.</li>
-<li>Customizable volume curves. Previously, volume tables were hardcoded. In the
-XML format, volume tables are described and can be customized.</li>
-</ul>
 
+<ul>
+<li>In Android 10, more than one active recording app is
+allowed simultaneously.
+    <ul>
+    <li>Recording start is never rejected due to a concurrency situation.</li>
+    <li>The <code translate="no" dir="ltr">registerAudioRecordingCallback(AudioManager.AudioRecordingCallback cb)</code>
+    callback notifies clients of capture path changes.</li></ul></li>
+<li>In the following situations, a client gets silent audio samples:
+    <ul>
+    <li>A privacy-sensitive use case (for example, <code translate="no" dir="ltr">VOICE_COMMUNICATION</code>) is active.</li>
+    <li>The client doesn't have a foreground service or foreground UI.</li>
+    <li>Specials roles are recognized by the policy:
+          <ul>
+          <li>Accessibility service: Can record even if a privacy-sensitive use case is active.</li>
+          <li>Assistant: Considered privacy sensitive if the UI is on top.</li></ul></li></ul></li>
+<li>Audio profiles have a structure similar to HDMI simple audio descriptors, enabling a different
+set of sampling rates/channel masks for each audio format.</li>
+<li>There are explicit definitions for all possible connections between devices and streams.
+Previously, an implicit rule made it possible to connect all devices attached to the same HAL
+module, preventing the audio policy from controlling connections requested with audio patch
+APIs. In the XML format, the topology description defines connection limitations.</li>
+<li>Support for <em>includes</em> avoids repeating standard A2DP, USB, or reroute submit
+definitions.</li>
+<li>Volume curves are customizable. Previously, volume tables were hardcoded. In the XML
+format, volume tables are described and can be customized.
+</ul>
 <p>The template at
-<code>frameworks/av/services/audiopolicy/config/audio_policy_configuration.xml</code>
+<code translate="no" dir="ltr">frameworks/av/services/audiopolicy/config/audio_policy_configuration.xml</code>
 shows many of these features in use.</p>
 
-<h2 id=xml_file_format>File format and location</h2>
+<h2 id="xml_file_format">File format and location</h2>
 <p>The new audio policy configuration file is
-<code>audio_policy_configuration.xml</code> and is located in
-<code>/system/etc</code>. To view a simple audio policy configuration in the new
-XML file format, view the example below.</p>
+<code translate="no" dir="ltr">audio_policy_configuration.xml</code> and is located in
+<code translate="no" dir="ltr">/system/etc</code>. The example below shows a simple audio policy configuration in the
+XML file format.</p>
 
   <section class="expandable">
     <h4 class="showalways">Show audio policy example</h4>
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
 &lt;audioPolicyConfiguration version=&quot;1.0&quot; xmlns:xi=&quot;http://www.w3.org/2001/XInclude&quot;&gt;
     &lt;globalConfiguration speaker_drc_enabled=&quot;true&quot;/&gt;
@@ -728,7 +860,7 @@ XML file format, view the example below.</p>
 &lt;/audioPolicyConfiguration&gt;
 </pre></section>
 
-<p>The top level structure contains modules that correspond to each audio HAL
+<p>The top-level structure contains modules that correspond to each audio HAL
 hardware module, where each module has a list of mix ports, device ports, and
 routes:</p>
 <ul>
@@ -736,18 +868,18 @@ routes:</p>
 that can be opened at the audio HAL for playback and capture.</li>
 <li><strong>Device ports</strong> describe the devices that can be attached with
 their type (and optionally address and audio properties, if relevant).</li>
-<li><strong>Routes</strong> (new) is now separated from the mix port descriptor,
-enabling description of routes from device to device or stream to device.</li>
+<li><strong>Routes</strong> is separated from the mix port descriptor,
+enabling the description of routes from device to device or stream to device.</li>
 </ul>
 
 <p>Volume tables are simple lists of points defining the curve used to translate
-form a UI index to a volume in dB. A separate include file provides default
+from a UI index to a volume in dB. A separate include file provides default
 curves, but each curve for a given use case and device category can be
 overwritten.</p>
 
   <section class="expandable">
     <h4 class="showalways">Show volume table example</h4>
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;volumes&gt;
     &lt;reference name=&quot;FULL_SCALE_VOLUME_CURVE&quot;&gt;
@@ -769,7 +901,7 @@ overwritten.</p>
 
   <section class="expandable">
     <h4 class="showalways">Show volumes example</h4>
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;volumes&gt;
     &lt;volume stream=&quot;AUDIO_STREAM_VOICE_CALL&quot; deviceCategory=&quot;DEVICE_CATEGORY_HEADSET&quot; ref=&quot;DEFAULT_VOLUME_CURVE&quot;/&gt;
@@ -844,29 +976,29 @@ overwritten.</p>
 &lt;/volumes&gt;
 </pre></section>
 
-<h2 id=file_inclusions>File inclusions</h2>
+<h2 id="file_inclusions">File inclusions</h2>
 <p>The XML Inclusions (XInclude) method can be used to include audio policy
 configuration information located in other  XML files. All included files must
 follow the structure described above with the following restrictions:</p>
 <ul>
 <li>Files can contain only top-level elements.</li>
-<li>Files cannot contain Xinclude elements.</li>
+<li>Files can't contain XInclude elements.</li>
 </ul>
 <p>Use includes to avoid copying standard Android Open Source Project (AOSP)
-audio HAL modules configuration information to all audio policy configuration
-files (which is prone to errors). A standard audio policy configuration xml file
+audio HAL module configurations information to all audio policy configuration
+files (which is prone to errors). A standard audio policy configuration XML file
 is provided for the following audio HALs:</p>
 <ul>
-<li><strong>A2DP:</strong> <code>a2dp_audio_policy_configuration.xml</code></li>
-<li><strong>Reroute submix:</strong> <code>rsubmix_audio_policy_configuration.xml</code></li>
-<li><strong>USB:</strong> <code>usb_audio_policy_configuration.xml</code></li>
+<li><strong>A2DP:</strong> <code translate="no" dir="ltr">a2dp_audio_policy_configuration.xml</code></li>
+<li><strong>Reroute submix:</strong> <code translate="no" dir="ltr">rsubmix_audio_policy_configuration.xml</code></li>
+<li><strong>USB:</strong> <code translate="no" dir="ltr">usb_audio_policy_configuration.xml</code></li>
 </ul>
 
-<h2 id=code_reorg>Audio policy code reorganization</h2>
-<p>Android 7.0 splits <code>AudioPolicyManager.cpp</code> into several modules
-to make it more maintainable and to highlight what is configurable. The new
-organization of <code>frameworks/av/services/audiopolicy</code> includes the
-following modules:</p>
+<h2 id="code_reorg">Audio policy code organization</h2>
+<p><code translate="no" dir="ltr">AudioPolicyManager.cpp</code> is split into several modules
+to make it easy to maintain and configure. The organization of
+<code translate="no" dir="ltr">frameworks/av/services/audiopolicy</code> includes the
+following modules.</p>
 
 <table>
 <tr>
@@ -875,59 +1007,59 @@ following modules:</p>
 </tr>
 
 <tr>
-<td><code>/managerdefault</code></td>
+<td><code translate="no" dir="ltr">/managerdefault</code></td>
 <td>Includes the generic interfaces and behavior implementation common to all
-applications. Similar to <code>AudioPolicyManager.cpp</code> with engine
+apps. Similar to <code translate="no" dir="ltr">AudioPolicyManager.cpp</code> with engine
 functionality and common concepts abstracted away.</td>
 </tr>
 
 <tr>
-<td><code>/common</code></td>
-<td>Defines base classes (e.g data structures for input output audio stream
-profiles, audio device descriptors, audio patches, audio port, etc.). Previously
-defined inside <code>AudioPolicyManager.cpp</code>.</td>
+<td><code translate="no" dir="ltr">/common</code></td>
+<td>Defines base classes (for example, data structures for input output audio stream
+profiles, audio device descriptors, audio patches, and audio ports). This was previously
+defined inside <code translate="no" dir="ltr">AudioPolicyManager.cpp</code>.</td>
 </tr>
 
 <tr>
-<td><code>/engine</code></td>
+<td><code translate="no" dir="ltr">/engine</code></td>
 <td><p>Implements the rules that define which device and volumes should be used for
 a given use case. It implements a standard interface with the generic part, such
 as to get the appropriate device for a given playback or capture use case, or to
-set connected devices or external state (i.e. a call state of forced usage) that
+set connected devices or external state (that is, a call state of forced usage) that
 can alter the routing decision.</p>
 <p>Available in two versions, customized and default; use build option
-<code>USE_CONFIGURABLE_AUDIO_POLICY</code> to select.</p></td>
+<code translate="no" dir="ltr">USE_CONFIGURABLE_AUDIO_POLICY</code> to select.</p></td>
 </tr>
 
 <tr>
-<td><code>/engineconfigurable</code></td>
-<td>Policy engine implementation that relies on parameter framework (see below).
-Configuration is based on the parameter framework and where the policy is
+<td><code translate="no" dir="ltr">/engineconfigurable</code></td>
+<td>Policy engine implementation that relies on Parameter Framework (see below).
+Configuration is based on the Parameter Framework and where the policy is
 defined by XML files.</td>
 </tr>
 
 <tr>
-<td><code>/enginedefault</code></td>
+<td><code translate="no" dir="ltr">/enginedefault</code></td>
 <td>Policy engine implementation based on previous Android Audio Policy Manager
-implementations. This is the default and includes hard coded rules that
-correspond to current Nexus and AOSP implementations.</td>
+implementations. This is the default and includes hard-coded rules that
+correspond to Nexus and AOSP implementations.</td>
 </tr>
 
 <tr>
-<td><code>/service</code></td>
-<td>Includes binder interfaces, threading and locking implementation with
-interface to the rest of the framework.</td>
+<td><code translate="no" dir="ltr">/service</code></td>
+<td>Includes binder interfaces, threading, and locking implementation with
+the interface to the rest of the framework.</td>
 </tr>
 
 </table>
 
-<h2 id=policy_config>Configuration using parameter-framework</h2>
-<p>Android 7.0 reorganizes audio policy code to make it easier to understand and
+<h2 id="policy_config">Configuration using Parameter Framework</h2>
+<p>Audio policy code is organized to make it easy to understand and
 maintain while also supporting an audio policy defined entirely by configuration
-files. The reorganization and audio policy design is based on Intel's parameter
-framework, a plugin-based and rule-based framework for handling parameters.</p>
+files. The organization and audio policy design is based on Intel's Parameter
+Framework, a plugin-based and rule-based framework for handling parameters.</p>
 
-<p>Using the new configurable audio policy enables vendors OEMs to:</p>
+<p>Using the configurable audio policy enables vendors OEMs to:</p>
 <ul>
 <li>Describe a system's structure and its parameters in XML.</li>
 <li>Write (in C++) or reuse a backend (plugin) for accessing described
@@ -936,33 +1068,34 @@ parameters.</li>
 a given parameter must take a given value.</li>
 </ul>
 
-<p>AOSP includes an example of an audio policy configuration file that uses the parameter-framework at: <code>Frameworks/av/services/audiopolicy/engineconfigurable/parameter-framework/example/Settings/PolicyConfigurableDomains.xml</code>. For
+<p>AOSP includes an example of an audio policy configuration file that uses the Parameter
+Framework at <code translate="no" dir="ltr">Frameworks/av/services/audiopolicy/engineconfigurable/parameter-framework/example/Settings/PolicyConfigurableDomains.xml</code>. For
 details, refer to Intel documentation on the
-<a href="https://github.com/01org/parameter-framework" class="external">parameter-framework</a>.</p>
+<a href="https://01.org/parameter-framework/" class="external">Parameter Framework</a>.</p>
 
-<h2 id=policy_routing_apis>Audio policy routing APIs</h2>
+<h2 id="policy_routing_apis">Audio policy routing APIs</h2>
 <p>Android 6.0 introduced a public Enumeration and Selection API that sits on
-top of the audio patch/audio port infrastructure and allows application
+top of the audio patch/audio port infrastructure and allows app
 developers to indicate a preference for a specific device output or input for
 connected audio records or tracks.</p>
 <p>In Android 7.0, the Enumeration and Selection API is verified by CTS tests
 and is extended to include routing for native C/C++ (OpenSL ES) audio streams.
 The routing of native streams continues to be done in Java, with the addition of
-an <code>AudioRouting</code> interface that supersedes, combines, and deprecates
-the explicit routing methods that were specific to <code>AudioTrack</code> and
-<code>AudioRecord</code> classes.</p>
+an <code translate="no" dir="ltr">AudioRouting</code> interface that supersedes, combines, and deprecates
+the explicit routing methods that were specific to the <code translate="no" dir="ltr">AudioTrack</code> and
+<code translate="no" dir="ltr">AudioRecord</code> classes.</p>
 
 <p>For details on the Enumeration and Selection API, refer to
 <a
 href="https://developer.android.google.cn/ndk/guides/audio/opensl-for-android.html?hl=fi#configuration-interface"
 class="external">Android
-configuration interfaces</a> and <code>OpenSLES_AndroidConfiguration.h</code>.
+configuration interfaces</a> and <code translate="no" dir="ltr">OpenSLES_AndroidConfiguration.h</code>.
 For details on audio routing, refer to
 <a href="https://developer.android.google.cn/reference/android/media/AudioRouting.html"
 class="external">AudioRouting</a>.
 </p>
 
-<h2 id=multichannel>Multi-channel support</h2>
+<h2 id="multichannel">Multi-channel support</h2>
 
 <p>If your hardware and driver supports multichannel audio via HDMI, you can
 output the audio stream  directly to the audio hardware (this bypasses the
@@ -970,15 +1103,15 @@ AudioFlinger mixer so it doesn't get downmixed to two channels.) The audio HAL
 must expose whether an output stream profile supports multichannel audio
 capabilities. If the HAL exposes its capabilities, the default policy manager
 allows multichannel playback over HDMI. For implementation details, see
-<code>device/samsung/tuna/audio/audio_hw.c</code>.</p>
+<code translate="no" dir="ltr">device/samsung/tuna/audio/audio_hw.c</code>.</p>
 
 <p>To specify that your product contains a multichannel audio output, edit the
 audio policy configuration file to describe the multichannel output for your
 product. The following example from a Galaxy Nexus shows a <em>dynamic</em>
-channel mask, which means the audio policy manager queries the actual channel
+channel mask, which means that the audio policy manager queries the channel
 masks supported by the HDMI sink after connection.</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 audio_hw_modules {
   primary {
     outputs {
@@ -999,16 +1132,16 @@ audio_hw_modules {
 </pre>
 
 <p>You can also specify a static channel mask such as
-<code>AUDIO_CHANNEL_OUT_5POINT1</code>. AudioFlinger's mixer downmixes the
-content to stereo automatically when sent to an audio device that does not
+<code translate="no" dir="ltr">AUDIO_CHANNEL_OUT_5POINT1</code>. AudioFlinger's mixer downmixes the
+content to stereo automatically when sent to an audio device that doesn't
 support multichannel audio.</p>
 
-<h2 id=codecs>Media codecs</h2>
+<h2 id="codecs">Media codecs</h2>
 
-<p>Ensure the audio codecs your hardware and drivers support are properly
+<p>Ensure that the audio codecs your hardware and drivers support are properly
 declared for your product. For details, see
-<a href="../media/index.html#expose">Exposing Codecs to the
-Framework</a>.</p>
+<a href="../media/index-2.html#expose">Exposing codecs to the
+framework</a>.</p>
 
   
           </div>
@@ -1020,17 +1153,17 @@ Framework</a>.</p>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1237,8 +1370,9 @@ Framework</a>.</p>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1304,54 +1438,49 @@ Framework</a>.</p>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/audio/implement-policy.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:31:45 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/audio/implement-policy.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:44:22 GMT -->
 </html>

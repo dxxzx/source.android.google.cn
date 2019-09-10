@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/debug/native-crash by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:23:21 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/native-crash by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:07:35 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Diagnosing Native Crashes &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Diagnosing Native Crashes &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="native-crash.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="native-crash.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="native-crash.html">      
+<title>Diagnosing Native Crashes &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Diagnosing Native Crashes &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="native-crash.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,20 +186,50 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
@@ -207,7 +243,7 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../compatibility.html"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab >
-          <a href="../settings/settings-guidelines.html"
+          <a href="../settings.html"
    class="gc-analytics-event"
    title="Settings"
            data-category="Site-Wide Custom Events"
@@ -282,8 +318,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -294,7 +333,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -360,7 +412,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../settings/settings-guidelines.html"
+    <a href="../settings.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -376,7 +428,7 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Tests">
       <span class="devsite-nav-text" menu="_book">Tests</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -395,7 +447,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -405,7 +457,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -437,26 +489,26 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../../../compatibility/tests.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../../../compatibility/tests.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Test Development Workflow">Test Development Workflow</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Test Development Workflow">Test Development Workflow</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/blueprints.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Simple Configuration">Simple Configuration</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/test-config.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Complex Configuration">Complex Configuration</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Instrumentation Tests">Instrumentation Tests</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/instrumentation.html"
+   ><span class="devsite-nav-text" title="Complex Configuration">Complex Configuration</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Instrumentation Tests">Instrumentation Tests</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/instrumentation.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/instr-self-e2e.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Self-Instrumenting Tests">Self-Instrumenting Tests</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/instr-app-e2e.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Targeting an Application">Targeting an Application</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Native Tests">Native Tests</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/native.html"
+   ><span class="devsite-nav-text" title="Targeting an Application">Targeting an Application</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Native Tests">Native Tests</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/native.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/native-func-e2e.html"
      class="devsite-nav-title"
@@ -469,15 +521,22 @@
    ><span class="devsite-nav-text" title="Mapping Tests">Mapping Tests</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/atest.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Running Tests (Atest)">Running Tests (Atest)</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Compatibility Test Suite (CTS)">Compatibility Test Suite (CTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Compatibility Test Suite (CTS)">Compatibility Test Suite (CTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/setup.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Set up CTS">Set up CTS</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/run.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Run CTS">Run CTS</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Run CTS Verifier">Run CTS Verifier</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/verifier.html"
+   ><span class="devsite-nav-text" title="Run CTS">Run CTS</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/command_console.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Command Console">Command Console</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="CTS Modes">CTS Modes</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/harness.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Test Harness">Test Harness</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/cts-instant.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Instant Apps">Instant Apps</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Run CTS Verifier">Run CTS Verifier</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/verifier.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/audio-framework.html"
      class="devsite-nav-title"
@@ -485,41 +544,51 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Near Ultrasound Tests">Near Ultrasound Tests</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/rotation-vector.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Rotation Vector Crosscheck">Rotation Vector Crosscheck</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/usb-audio.html"
+   ><span class="devsite-nav-text" title="Rotation Vector Crosscheck">Rotation Vector Crosscheck</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/cts-midi.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="USB Audio CTS Tests">USB Audio CTS Tests</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Camera Testing">Camera Testing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-hal.html"
+   ><span class="devsite-nav-text" title="CTS Verifier MIDI Tests">CTS Verifier MIDI Tests</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/usb-audio.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Camera HAL Testing">Camera HAL Testing</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Camera ITS-in-a-Box">Camera ITS-in-a-Box</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-its-box.html"
+   ><span class="devsite-nav-text" title="USB Audio CTS Tests">USB Audio CTS Tests</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/Verifier-Pro-Audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="CTS Verifier Pro Audio Test">CTS Verifier Pro Audio Test</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/verifier-instant-apps.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="CTS Verifier for Instant Apps">CTS Verifier for Instant Apps</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Camera Testing">Camera Testing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Camera HAL Testing">Camera HAL Testing</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Camera ITS-in-a-Box">Camera ITS-in-a-Box</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-its-box.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-its-box-assembly.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Regular Field of View Box">Regular Field of View Box</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-wfov-box-assembly.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Wide Field of View Box">Wide Field of View Box</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensor Fusion Box">Sensor Fusion Box</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/sensor-fusion-quick-start.html"
+   ><span class="devsite-nav-text" title="Wide Field of View Box">Wide Field of View Box</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensor Fusion Box">Sensor Fusion Box</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/sensor-fusion-quick-start.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Sensor Fusion Box Quick Start">Sensor Fusion Box Quick Start</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/sensor-fusion-box-assembly.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Sensor Fusion Box Details">Sensor Fusion Box Details</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/secure-element.html"
+   ><span class="devsite-nav-text" title="Sensor Fusion Box Details">Sensor Fusion Box Details</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/sensor-fusion-rack-mount.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Rack-Mount Sensor Fusion Controller Assembly">Rack-Mount Sensor Fusion Controller Assembly</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/secure-element.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Secure Element">Secure Element</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/interpret.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Interpret Results">Interpret Results</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/development.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Develop CTS">Develop CTS</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/downloads-2.html"
+   ><span class="devsite-nav-text" title="Develop CTS">Develop CTS</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/downloads.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Downloads">Downloads</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor Test Suite (VTS)">Vendor Test Suite (VTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts.html"
+   ><span class="devsite-nav-text" title="Downloads">Downloads</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/cts-release-notes.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Release Notes">Release Notes</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor Test Suite (VTS)">Vendor Test Suite (VTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/codelab-video.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Codelab and Video Tutorials">Codelab and Video Tutorials</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/systems.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Systems Testing with VTS">Systems Testing with VTS</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Test Framework">Test Framework</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/shell-commands.html"
+   ><span class="devsite-nav-text" title="Systems Testing with VTS">Systems Testing with VTS</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Test Framework">Test Framework</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/shell-commands.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Device Shell Commands">Device Shell Commands</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/test-templates.html"
      class="devsite-nav-title"
@@ -529,46 +598,160 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="HAL Testability Check">HAL Testability Check</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/multi-device-testing.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Multi-Device Testing">Multi-Device Testing</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="VTS Dashboard">VTS Dashboard</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/setup.html"
+   ><span class="devsite-nav-text" title="Multi-Device Testing">Multi-Device Testing</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/vts-on-gsi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VTS with debug ramdisk">VTS with debug ramdisk</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="VTS Dashboard">VTS Dashboard</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/setup.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Setup">Setup</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/database.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Database">Database</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/ui.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="User Interface">User Interface</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Lab Infrastructure">Lab Infrastructure</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/automated-test-infra.html"
+   ><span class="devsite-nav-text" title="User Interface">User Interface</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Lab Infrastructure">Lab Infrastructure</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/automated-test-infra.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Automated Testing Infrastructure">Automated Testing Infrastructure</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/host-controller.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Host Controller Architecture">Host Controller Architecture</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/performance.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Performance Testing">Performance Testing</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Trade Federation Test Harness">Trade Federation Test Harness</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Trade Federation (TF) Test Harness">Trade Federation (TF) Test Harness</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Getting Started">Getting Started</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Start Here">Start Here</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/machine_setup.html"
+   ><span class="devsite-nav-text" title="Start">Start</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/machine_setup.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Machine Setup">Machine Setup</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/devices.html"
+   ><span class="devsite-nav-text" title="Build or Download Tradefed">Build or Download Tradefed</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/devices.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Working with Devices">Working with Devices</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/lifecycle.html"
+   ><span class="devsite-nav-text" title="Working with Devices">Working with Devices</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/console.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Console">Console</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/lifecycle.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Test Lifecycle">Test Lifecycle</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/options.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Option Handling">Option Handling</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/full_example.html"
+   ><span class="devsite-nav-text" title="Option Handling">Option Handling</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/full_example.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="An End-to-End Example">An End-to-End Example</span></a></li><li class="devsite-nav-item"><a href="../../../reference/tradefed.html"
+   ><span class="devsite-nav-text" title="End-to-End Example">End-to-End Example</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Testing with TF">Testing with TF</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Through Tradefed">Through Tradefed</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/new-test-runner.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="New Test Runner">New Test Runner</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/sharded-runner.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Shardable IRemoteTest">Shardable IRemoteTest</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/host-driven-test.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Host-Driven Test">Host-Driven Test</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/report-metrics.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Report Metrics">Report Metrics</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/auto-retry.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Automatic Test Retry">Automatic Test Retry</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/log-on-failure.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Automated Log Collection">Automated Log Collection</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/instrumentation.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Instrumentations Tests from APK">Instrumentations Tests from APK</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Through Suite">Through Suite</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/setup.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Set up Suite">Set up Suite</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/option-passing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Pass Options">Pass Options</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/system-status-checker.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Check System Status">Check System Status</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/android-test-structure.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Structure AndroidTest.xml">Structure AndroidTest.xml</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/android-test-tuning.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Configure Sharding">Configure Sharding</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/module-controller.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Module Controllers">Module Controllers</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/suite-retry.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Suite Retry">Suite Retry</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Developing TF">Developing TF</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/development.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/development/eclipse.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Set up Eclipse">Set up Eclipse</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/development/tf-unit-tests.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Include Unit Tests">Include Unit Tests</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/development/error-prone.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Run Error Prone Bug Checker">Run Error Prone Bug Checker</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/development/contribute-noncore.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Contribute Non-Core Code">Contribute Non-Core Code</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Architecture">Architecture</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="XML Configuration">XML Configuration</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/xml-config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Structure">Structure</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/xml-config/template-include.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Templates and Includes">Templates and Includes</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/xml-config/config-object.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Configuration Object">Configuration Object</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Global Configuration">Global Configuration</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/global-config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="File Options">File Options</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/host-setup/host-options.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Host Options">Host Options</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Advanced Concepts">Advanced Concepts</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/keystore.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Keystore Secrets">Keystore Secrets</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/command-scheduler.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Command Scheduler">Command Scheduler</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/test-runner.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Test Runner">Test Runner</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/sharding.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Test Sharding">Test Sharding</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/multi-device.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multiple Devices">Multiple Devices</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/scripting-sl4a.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Scripting Layer">Scripting Layer</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/protocols-global-config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Protocols and Global Config">Protocols and Global Config</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Device Manager">Device Manager</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/device-manager.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device State">Device State</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/device-manager/device-allocation.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Allocation">Device Allocation</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/device-manager/device-detection.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Detection">Device Detection</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Build">Build</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/build-provider.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Build Provider">Build Provider</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/build-provider/build-info.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Build Info">Build Info</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Device setup">Device setup</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/target-preparer.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Target Preparer">Target Preparer</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/target-preparer/multi-target.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multi-Target Preparer">Multi-Target Preparer</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Results">Results</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/result-reporter.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Result Reporter">Result Reporter</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/result-reporter/log-reporter.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reporter Logs">Reporter Logs</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/result-reporter/summary.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reporter Summary">Reporter Summary</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Metrics">Metrics</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/metrics-collector.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Metrics Collector">Metrics Collector</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/metrics-collector/device-collector.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device-Side Metrics">Device-Side Metrics</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../../reference/tradefed.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Package Index">Package Index</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Debugging">Debugging</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../debug.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Debugging">Debugging</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../debug.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="native-crash.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../../setup/contribute/read-bug-reports.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Diagnosing Native Crashes">Diagnosing Native Crashes</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Evaluating Performance">Evaluating Performance</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="eval_perf.html"
+   ><span class="devsite-nav-text" title="Reading Bug Reports">Reading Bug Reports</span></a></li><li class="devsite-nav-item"><a href="native-crash.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Diagnosing Native Crashes">Diagnosing Native Crashes</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Evaluating Performance">Evaluating Performance</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="eval_perf.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="systrace.html"
      class="devsite-nav-title"
@@ -586,16 +769,14 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Native Memory Use">Native Memory Use</span></a></li><li class="devsite-nav-item"><a href="../connect/connect_tests.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Network Connectivity Tests">Network Connectivity Tests</span></a></li><li class="devsite-nav-item"><a href="rescue-party-2.html"
+   ><span class="devsite-nav-text" title="Network Connectivity Tests">Network Connectivity Tests</span></a></li><li class="devsite-nav-item"><a href="rescue-party.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Rescue Party">Rescue Party</span></a></li><li class="devsite-nav-item"><a href="storaged-2.html"
+   ><span class="devsite-nav-text" title="Rescue Party">Rescue Party</span></a></li><li class="devsite-nav-item"><a href="storaged.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Storaged">Storaged</span></a></li><li class="devsite-nav-item"><a href="strace.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Strace">Strace</span></a></li><li class="devsite-nav-item"><a href="valgrind.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Valgrind">Valgrind</span></a></li></ul></devsite-expandable-nav></li>
-                      </ul>
+   ><span class="devsite-nav-text" title="Strace">Strace</span></a></li></ul></devsite-expandable-nav></li>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -603,16 +784,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -622,8 +804,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -633,8 +816,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../../compatibility/tests.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -651,8 +835,8 @@
 
               <h1 class="devsite-page-title">Diagnosing Native Crashes</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -677,7 +861,7 @@
 <p>
   The following sections include common types of native crash, an analysis of a
   sample crash dump, and a discussion of tombstones. Each crash type includes
-  example <code>debuggerd</code> output with key evidence highlighted to help
+  example <code translate="no" dir="ltr">debuggerd</code> output with key evidence highlighted to help
   you distinguish the specific kind of crash.
 </p>
 
@@ -692,31 +876,31 @@
 <p>
   Aborts are interesting because they are deliberate. There are many different
   ways to abort (including calling
-  <code><a href="http://man7.org/linux/man-pages/man3/abort.3.html" class="external">abort(3)</a></code>,
+  <code translate="no" dir="ltr"><a href="http://man7.org/linux/man-pages/man3/abort.3.html" class="external">abort(3)</a></code>,
   failing an
-  <code><a href="http://man7.org/linux/man-pages/man3/assert.3.html" class="external">assert(3)</a></code>,
+  <code translate="no" dir="ltr"><a href="http://man7.org/linux/man-pages/man3/assert.3.html" class="external">assert(3)</a></code>,
   using one of the Android-specific fatal logging types), but all involve
-  calling <code>abort</code>. A call to <code>abort</code> signals the calling
-  thread with SIGABRT, so a frame showing "abort" in <code>libc.so</code> plus
-  SIGABRT are the things to look for in the <code>debuggerd</code> output to
+  calling <code translate="no" dir="ltr">abort</code>. A call to <code translate="no" dir="ltr">abort</code> signals the calling
+  thread with SIGABRT, so a frame showing "abort" in <code translate="no" dir="ltr">libc.so</code> plus
+  SIGABRT are the things to look for in the <code translate="no" dir="ltr">debuggerd</code> output to
   recognize this case.
 </p>
 
 <p>
   There may be an explicit "abort message" line. You should also look in the
-  <code>logcat</code> output to see what this thread logged before deliberately
-  killing itself, because unlike <code>assert(3)</code> or high level fatal
-  logging facilities, <code>abort(3)</code> doesn't accept a message.
+  <code translate="no" dir="ltr">logcat</code> output to see what this thread logged before deliberately
+  killing itself, because unlike <code translate="no" dir="ltr">assert(3)</code> or high level fatal
+  logging facilities, <code translate="no" dir="ltr">abort(3)</code> doesn't accept a message.
 </p>
 
 <p>
   Current versions of Android inline the
-  <code><a href="http://man7.org/linux/man-pages/man2/tgkill.2.html" class="external">tgkill(2)</a></code>
+  <code translate="no" dir="ltr"><a href="http://man7.org/linux/man-pages/man2/tgkill.2.html" class="external">tgkill(2)</a></code>
   system call, so their stacks are the easiest to read, with the call to
   abort(3) at the very top:
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 pid: 4637, tid: 4637, name: crasher  >>> crasher <<<
 signal 6 (<em style="color:Orange">SIGABRT</em>), code -6 (SI_TKILL), fault addr --------
 <em style="color:Orange">Abort message</em>: 'some_file.c:123: some_function: assertion "false" failed'
@@ -737,11 +921,11 @@ backtrace:
   Older versions of Android followed a convoluted path between the original
   abort call (frame 4 here) and the actual sending of the signal (frame 0 here).
   This was especially true on 32-bit ARM, which added
-  <code>__libc_android_abort</code> (frame 3 here) to the other platforms'
-  sequence of <code>raise</code>/<code>pthread_kill</code>/<code>tgkill</code>:
+  <code translate="no" dir="ltr">__libc_android_abort</code> (frame 3 here) to the other platforms'
+  sequence of <code translate="no" dir="ltr">raise</code>/<code translate="no" dir="ltr">pthread_kill</code>/<code translate="no" dir="ltr">tgkill</code>:
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 pid: 1656, tid: 1656, name: crasher  >>> crasher <<<
 signal 6 (<em style="color:Orange">SIGABRT</em>), code -6 (SI_TKILL), fault addr --------
 <em style="color:Orange">Abort message</em>: 'some_file.c:123: some_function: assertion "false" failed'
@@ -763,7 +947,7 @@ backtrace:
 </pre>
 
 <p>
-  You can reproduce an instance of this type of crash using <code>crasher
+  You can reproduce an instance of this type of crash using <code translate="no" dir="ltr">crasher
   abort</code>.
 </p>
 
@@ -777,14 +961,14 @@ backtrace:
 
 <p>
   In the example below, even though the crashing function is in
-  <code>libc.so</code>, because the string functions just operate on the
+  <code translate="no" dir="ltr">libc.so</code>, because the string functions just operate on the
   pointers they're given, you can infer that
-  <code><a href="http://man7.org/linux/man-pages/man3/strlen.3.html" class="external">strlen(3)</a></code>
+  <code translate="no" dir="ltr"><a href="http://man7.org/linux/man-pages/man3/strlen.3.html" class="external">strlen(3)</a></code>
   was called with a null pointer; and this crash should go straight to the
   author of the calling code. In this case, frame #01 is the bad caller.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 pid: 25326, tid: 25326, name: crasher  >>> crasher <<<
 signal 11 (<em style="color:Orange">SIGSEGV</em>), code 1 (SEGV_MAPERR), <em style="color:Orange">fault addr 0x0</em>
     r0 00000000  r1 00000000  r2 00004c00  r3 00000000
@@ -802,7 +986,7 @@ backtrace:
 </pre>
 
 <p>
-  You can reproduce an instance of this type of crash using <code>crasher
+  You can reproduce an instance of this type of crash using <code translate="no" dir="ltr">crasher
   strlen-NULL</code>.
 </p>
 
@@ -814,21 +998,21 @@ backtrace:
   address is almost certainly not a null pointer dereference&mdash;that would
   require a 1MiB offset. This usually occurs when you have code that
   dereferences a null pointer as if it was a valid struct. Common functions are
-  <code><a href="http://man7.org/linux/man-pages/man3/fprintf.3.html" class="external">fprintf(3)</a></code>
+  <code translate="no" dir="ltr"><a href="http://man7.org/linux/man-pages/man3/fprintf.3.html" class="external">fprintf(3)</a></code>
  (or any other function taking a FILE*) and
- <code><a href="http://man7.org/linux/man-pages/man3/readdir.3.html" class="external">readdir(3)</a></code>,
+ <code translate="no" dir="ltr"><a href="http://man7.org/linux/man-pages/man3/readdir.3.html" class="external">readdir(3)</a></code>,
   because code often fails to check that the
-  <code><a href="http://man7.org/linux/man-pages/man3/fopen.3.html" class="external">fopen(3)</a></code>
+  <code translate="no" dir="ltr"><a href="http://man7.org/linux/man-pages/man3/fopen.3.html" class="external">fopen(3)</a></code>
   or
-  <code><a href="http://man7.org/linux/man-pages/man3/opendir.3.html" class="external">opendir(3)</a></code>
+  <code translate="no" dir="ltr"><a href="http://man7.org/linux/man-pages/man3/opendir.3.html" class="external">opendir(3)</a></code>
   call actually succeeded first.
 </p>
 
 <p>
-  Here's an example of <code>readdir</code>:
+  Here's an example of <code translate="no" dir="ltr">readdir</code>:
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 pid: 25405, tid: 25405, name: crasher  >>> crasher <<<
 signal 11 (<em style="color:Orange">SIGSEGV</em>), code 1 (SEGV_MAPERR), <em style="color:Orange">fault addr 0xc</em>
     r0 0000000c  r1 00000000  r2 00000000  r3 3d5f0000
@@ -848,23 +1032,23 @@ backtrace:
 
 <p>
   Here the direct cause of the crash is that
-  <code><a href="http://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html" class="external">pthread_mutex_lock(3)</a></code>
+  <code translate="no" dir="ltr"><a href="http://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html" class="external">pthread_mutex_lock(3)</a></code>
   has tried to access address 0xc (frame 0). But the first thing
-  <code>pthread_mutex_lock</code> does is dereference the <code>state</code>
-  element of the <code>pthread_mutex_t*</code> it was given. If you look at the
+  <code translate="no" dir="ltr">pthread_mutex_lock</code> does is dereference the <code translate="no" dir="ltr">state</code>
+  element of the <code translate="no" dir="ltr">pthread_mutex_t*</code> it was given. If you look at the
   source, you can see that element is at offset 0 in the struct, which tells you
-  that <code>pthread_mutex_lock</code> was given the invalid pointer 0xc. From
-  frame 1 you can see that it was given that pointer by <code>readdir</code>,
-  which extracts the <code>mutex_</code> field from the <code>DIR*</code> it's
-  given. Looking at that structure, you can see that <code>mutex_</code> is at
-  offset <code>sizeof(int) + sizeof(size_t) + sizeof(dirent*)</code> into
-  <code>struct DIR</code>, which on a 32-bit device is 4 + 4 + 4 = 12 = 0xc, so
-  you found the bug: <code>readdir</code> was passed a null pointer by the
+  that <code translate="no" dir="ltr">pthread_mutex_lock</code> was given the invalid pointer 0xc. From
+  frame 1 you can see that it was given that pointer by <code translate="no" dir="ltr">readdir</code>,
+  which extracts the <code translate="no" dir="ltr">mutex_</code> field from the <code translate="no" dir="ltr">DIR*</code> it's
+  given. Looking at that structure, you can see that <code translate="no" dir="ltr">mutex_</code> is at
+  offset <code translate="no" dir="ltr">sizeof(int) + sizeof(size_t) + sizeof(dirent*)</code> into
+  <code translate="no" dir="ltr">struct DIR</code>, which on a 32-bit device is 4 + 4 + 4 = 12 = 0xc, so
+  you found the bug: <code translate="no" dir="ltr">readdir</code> was passed a null pointer by the
   caller. At this point you can paste the stack into the stack tool to find out
   <em>where</em> in logcat this happened.
 </p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
   struct DIR {
     int fd_;
     size_t available_bytes_;
@@ -877,14 +1061,14 @@ backtrace:
 
 <p>
   In most cases you can actually skip this analysis. A sufficiently low fault
-  address usually means you can just skip any <code>libc.so</code> frames in the
+  address usually means you can just skip any <code translate="no" dir="ltr">libc.so</code> frames in the
   stack and directly accuse the calling code. But not always, and this is how
   you would present a compelling case.
 </p>
 
 <p>
-  You can reproduce instances of this kind of crash using <code>crasher
-  fprintf-NULL</code> or <code>crasher readdir-NULL</code>.
+  You can reproduce instances of this kind of crash using <code translate="no" dir="ltr">crasher
+  fprintf-NULL</code> or <code translate="no" dir="ltr">crasher readdir-NULL</code>.
 </p>
 
 <h2 id=fortify>FORTIFY failure</h2>
@@ -895,11 +1079,11 @@ backtrace:
   functions are <em>fortified</em>; they take an extra argument that tells them
   how large a buffer actually is and check at run time whether the operation
   you're trying to perform actually fits. Here's an example where the code tries
-  to <code>read(fd, buf, 32)</code> into a buffer that's actually only 10 bytes
+  to <code translate="no" dir="ltr">read(fd, buf, 32)</code> into a buffer that's actually only 10 bytes
   long...
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 pid: 25579, tid: 25579, name: crasher  >>> crasher <<<
 signal 6 (SIGABRT), code -6 (SI_TKILL), fault addr --------
 Abort message: '<em style="color:Orange">FORTIFY: read: prevented 32-byte write into 10-byte buffer</em>'
@@ -920,14 +1104,14 @@ backtrace:
 </pre>
 
 <p>
-  You can reproduce an instance of this type of crash using <code>crasher
+  You can reproduce an instance of this type of crash using <code translate="no" dir="ltr">crasher
   fortify</code>.
 </p>
 
 <h2 id=stackcorruption>Stack corruption detected by -fstack-protector</h2>
 
 <p>
-  The compiler's <code>-fstack-protector</code> option inserts checks into
+  The compiler's <code translate="no" dir="ltr">-fstack-protector</code> option inserts checks into
   functions with on-stack buffers to guard against buffer overruns. This option
   is on by default for platform code but not for apps. When this option is
   enabled, the compiler adds instructions to the
@@ -935,10 +1119,10 @@ backtrace:
   prologue</a> to write a random value just past the last local on the stack and
   to the function epilogue to read it back and check that it's not changed. If
   that value changed, it was overwritten by a buffer overrun, so the epilogue
-  calls <code>__stack_chk_fail</code> to log a message and abort.
+  calls <code translate="no" dir="ltr">__stack_chk_fail</code> to log a message and abort.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 pid: 26717, tid: 26717, name: crasher  >>> crasher <<<
 signal 6 (SIGABRT), code -6 (SI_TKILL), fault addr --------
 <em style="color:Orange">Abort message: 'stack corruption detected'</em>
@@ -961,11 +1145,11 @@ backtrace:
 
 <p>
   You can distinguish this from other kinds of abort by the presence of
-  <code>__stack_chk_fail</code> in the backtrace and the specific abort message.
+  <code translate="no" dir="ltr">__stack_chk_fail</code> in the backtrace and the specific abort message.
 </p>
 
 <p>
-  You can reproduce an instance of this type of crash using <code>crasher
+  You can reproduce an instance of this type of crash using <code translate="no" dir="ltr">crasher
   smash-stack</code>.
 </p>
 
@@ -980,14 +1164,14 @@ backtrace:
   receive a SIGSYS signal with code SYS_SECCOMP. The system call number will be
   shown in the cause line, along with the architecture. It is important to note
   that system call numbers vary between architectures. For example, the
-  <code>readlinkat(2)</code> system call is number 305 on x86 but 267 on x86-64.
+  <code translate="no" dir="ltr">readlinkat(2)</code> system call is number 305 on x86 but 267 on x86-64.
   The call number is different again on both arm and arm64. Because system call
   numbers vary between architectures, it's usually easier to use the stack trace
   to find out which system call was disallowed rather than looking for the
   system call number in the headers.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 pid: 11046, tid: 11046, name: crasher  >>> crasher <<<
 signal 31 (SIGSYS), code 1 (<em style="color:Orange">SYS_SECCOMP</em>), fault addr --------
 <em style="color:Orange">Cause: seccomp prevented call to disallowed arm system call 99999</em>
@@ -1006,11 +1190,67 @@ backtrace:
 
 <p>
   You can distinguish disallowed system calls from other crashes by the presence of
-<code>SYS_SECCOMP</code> on the signal line and the description on the cause line.
+<code translate="no" dir="ltr">SYS_SECCOMP</code> on the signal line and the description on the cause line.
 </p>
 <p>
-You can reproduce an instance of this type of crash using <code>crasher
+You can reproduce an instance of this type of crash using <code translate="no" dir="ltr">crasher
 seccomp</code>.
+</p>
+
+<h2 id="xom">Execute-only memory violation</h2>
+
+<p>
+  For arm64 in Android 10 and higher, executable segments of
+  binaries and libraries are mapped
+  into memory execute-only (non-readable) as a hardening technique against code-reuse attacks.
+  Read primitives can be used to bypass address space layout randomization (ASLR) by searching
+  executable memory for known functions or by constructing gadget chains without any prior
+  knowledge of the memory layout. By marking executable code as unreadable, read primitives
+  are unable to access executable memory, shutting down an entire class of exploitation techniques.
+  This not only improves the effectiveness of ASLR but also control-flow integrity (CFI) because
+  valid destinations can no longer be revealed to attackers with read primitives.
+</p>
+<p>
+  Making code unreadable causes intentional and unintentional reads into memory segments marked
+  execute-only to throw a <code translate="no" dir="ltr">SIGSEGV</code> with code <code translate="no" dir="ltr">SEGV_ACCERR</code>. This might
+  occur as a result of a bug, vulnerability, data mixed with code (such as a literal pool),
+  or intentional memory introspection.
+</p>
+<p>
+  The compiler assumes code and data are not intermixed, but issues can arise from hand-written
+  assembly. In many cases these can be fixed by simply moving the constants to a <code translate="no" dir="ltr">.data</code>
+  section.
+  If code introspection is absolutely necessary on executable code sections,
+  <a href="http://man7.org/linux/man-pages/man2/mprotect.2.html" class="external"><code translate="no" dir="ltr">mprotect(2)</code></a>
+  should be called first to mark the code readable, and then again to mark it unreadable after the
+  operation is completed.
+</p>
+<pre class="devsite-terminal devsite-click-to-copy" translate="no" dir="ltr">
+pid: 2938, tid: 2940, name: crasher64  >>> crasher64 <<<
+signal 11 (SIGSEGV), code 2 (SEGV_ACCERR), fault addr 0x5f2ced24a8
+<em style="color:Orange">Cause: execute-only (no-read) memory access error; likely due to data in .text.</em>
+    x0  0000000000000000  x1  0000005f2cecf21f  x2  0000000000000078  x3  0000000000000053
+    x4  0000000000000074  x5  8000000000000000  x6  ff71646772607162  x7  00000020dcf0d16c
+    x8  0000005f2ced24a8  x9  000000781251c55e  x10 0000000000000000  x11 0000000000000000
+    x12 0000000000000014  x13 ffffffffffffffff  x14 0000000000000002  x15 ffffffffffffffff
+    x16 0000005f2ced52f0  x17 00000078125c0ed8  x18 0000007810e8e000  x19 00000078119fbd50
+    x20 00000078125d6020  x21 00000078119fbd50  x22 00000b7a00000b7a  x23 00000078119fbdd8
+    x24 00000078119fbd50  x25 00000078119fbd50  x26 00000078119fc018  x27 00000078128ea020
+    x28 00000078119fc020  x29 00000078119fbcb0
+    sp  00000078119fba40  lr  0000005f2ced1b94  pc  0000005f2ced1ba4
+
+backtrace:
+      #00 pc 0000000000003ba4  /system/bin/crasher64 (do_action+2348)
+      #01 pc 0000000000003234  /system/bin/crasher64 (thread_callback+44)
+      #02 pc 00000000000e2044  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start(void*)+36)
+      #03 pc 0000000000083de0  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+64)
+</pre>
+
+<p>
+  You can distinguish execute-only memory violations from other crashes by the cause line.
+</p>
+<p>
+You can reproduce an instance of this type of crash using <code translate="no" dir="ltr">crasher xom</code>.
 </p>
 
 <h2 id="fdsan">Error detected by fdsan</h2>
@@ -1024,7 +1264,7 @@ seccomp</code>.
   for more details about debugging (and avoiding) this class of errors.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 pid: 32315, tid: 32315, name: crasher64  >>> crasher64 <<<
 signal 35 (<debuggerd signal>), code -1 (SI_QUEUE), fault addr --------
 <em style="color:Orange">Abort message: 'attempted to close file descriptor 3, expected to be unowned, actually owned by FILE* 0x7d8e413018'</em>
@@ -1049,12 +1289,12 @@ backtrace:
 
 <p>
   You can distinguish this from other kinds of abort by the presence of
-  <code>fdsan_error</code> in the backtrace and the specific abort message.
+  <code translate="no" dir="ltr">fdsan_error</code> in the backtrace and the specific abort message.
 </p>
 
 <p>
   You can reproduce an instance of this type of crash using
-  <code>crasher fdsan_file</code> or <code>crasher fdsan_dir</code>.
+  <code translate="no" dir="ltr">crasher fdsan_file</code> or <code translate="no" dir="ltr">crasher fdsan_dir</code>.
 </p>
 
 
@@ -1062,12 +1302,12 @@ backtrace:
 
 <p>
   If you don't have a specific crash that you're investigating right now, the
-  platform source includes a tool for testing <code>debuggerd</code> called
-  crasher. If you <code>mm</code> in <code>system/core/debuggerd/</code> you'll
-  get both a <code>crasher</code> and a <code>crasher64</code> on your path (the
+  platform source includes a tool for testing <code translate="no" dir="ltr">debuggerd</code> called
+  crasher. If you <code translate="no" dir="ltr">mm</code> in <code translate="no" dir="ltr">system/core/debuggerd/</code> you'll
+  get both a <code translate="no" dir="ltr">crasher</code> and a <code translate="no" dir="ltr">crasher64</code> on your path (the
   latter allowing you to test 64-bit crashes). Crasher can crash in a large
   number of interesting ways based on the command line arguments you provide.
-  Use <code>crasher --help</code> to see the currently supported selection.
+  Use <code translate="no" dir="ltr">crasher --help</code> to see the currently supported selection.
 </p>
 
 <p>
@@ -1075,7 +1315,7 @@ backtrace:
   example crash dump:
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
 Build fingerprint: 'Android/aosp_flounder/flounder:5.1.51/AOSP/enh08201009:eng/test-keys'
 Revision: '0'
@@ -1108,18 +1348,18 @@ Tombstone written to: /data/tombstones/tombstone_06
   at the beginning of a native crash.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 Build fingerprint:
 'Android/aosp_flounder/flounder:5.1.51/AOSP/enh08201009:eng/test-keys'
 </pre>
 
 <p>
   The fingerprint lets you identify exactly which build the crash occurred on.
-  This is exactly the same as the <code>ro.build.fingerprint</code> system
+  This is exactly the same as the <code translate="no" dir="ltr">ro.build.fingerprint</code> system
   property.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 Revision: '0'
 </pre>
 
@@ -1127,20 +1367,20 @@ Revision: '0'
   The revision refers to the hardware rather than the software. This is usually
   unused but can be useful to help you automatically ignore bugs known to be
   caused by bad hardware. This is exactly the same as the
-  <code>ro.revision</code> system property.
+  <code translate="no" dir="ltr">ro.revision</code> system property.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 ABI: 'arm'
 </pre>
 
 <p>
   The ABI is one of arm, arm64, mips, mips64, x86, or x86-64. This is mostly
-  useful for the <code>stack</code> script mentioned above, so that it knows
+  useful for the <code translate="no" dir="ltr">stack</code> script mentioned above, so that it knows
   what toolchain to use.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 pid: 1656, tid: 1656, name: crasher &gt;&gt;&gt; crasher &lt;&lt;&lt;
 </pre>
 
@@ -1154,18 +1394,18 @@ pid: 1656, tid: 1656, name: crasher &gt;&gt;&gt; crasher &lt;&lt;&lt;
 tid can also be useful in finding the relevant log lines preceding the crash.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 signal 6 (SIGABRT), code -6 (SI_TKILL), fault addr --------
 </pre>
 
 <p>
   This line tells you which signal (SIGABRT) was received, and more about how it
-  was received (SI_TKILL). The signals reported by <code>debuggerd</code> are
+  was received (SI_TKILL). The signals reported by <code translate="no" dir="ltr">debuggerd</code> are
   SIGABRT, SIGBUS, SIGFPE, SIGILL, SIGSEGV, and SIGTRAP. The signal-specific
 codes vary based on the specific signal.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 Abort message: 'some_file.c:123: some_function: assertion "false" failed'
 </pre>
 
@@ -1176,7 +1416,7 @@ Abort message: 'some_file.c:123: some_function: assertion "false" failed'
   explanation of why the program killed itself.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 r0 00000000 r1 00000678 r2 00000006 r3 f70b6dc8
 r4 f70b6dd0 r5 f70b6d80 r6 00000002 r7 0000010c
 r8 ffffffed r9 00000000 sl 00000000 fp ff96ae1c
@@ -1189,7 +1429,7 @@ ip 00000006 sp ff96ad18 lr f700ced5 pc f700dc98 cpsr 400b0010
   these are will depend on the exact crash.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 backtrace:
     #00 pc 00042c98 /system/lib/libc.so (tgkill+12)
     #01 pc 00041ed1 /system/lib/libc.so (pthread_kill+32)
@@ -1211,19 +1451,19 @@ backtrace:
   (which is usually a shared library or executable, but might not be for, say,
   JIT-compiled code). Finally, if symbols are available, the symbol that the PC
   value corresponds to is shown, along with the offset into that symbol in
-  bytes. You can use this in conjunction with <code>objdump(1)</code> to find
+  bytes. You can use this in conjunction with <code translate="no" dir="ltr">objdump(1)</code> to find
   the corresponding assembler instruction.
 </p>
 
 <h2 id=tombstones>Reading tombstones</h2>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 Tombstone written to: /data/tombstones/tombstone_06
 </pre>
 
 <p>
-  This tells you where <code>debuggerd</code> wrote extra information.
-  <code>debuggerd</code> will keep up to 10 tombstones, cycling through the
+  This tells you where <code translate="no" dir="ltr">debuggerd</code> wrote extra information.
+  <code translate="no" dir="ltr">debuggerd</code> will keep up to 10 tombstones, cycling through the
   numbers 00 to 09 and overwriting existing tombstones as necessary.
 </p>
 
@@ -1232,11 +1472,11 @@ Tombstone written to: /data/tombstones/tombstone_06
   extras. For example, it includes backtraces for <em>all</em> threads (not
   just the crashing thread), the floating point registers, raw stack dumps,
   and memory dumps around the addresses in registers. Most usefully it also
-  includes a full memory map (similar to <code>/proc/<var>pid</var>/maps</code>).
+  includes a full memory map (similar to <code translate="no" dir="ltr">/proc/<var>pid</var>/maps</code>).
   Here's an annotated example from a 32-bit ARM process crash:
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 memory map: (fault address prefixed with ---&gt;)
 ---&gt;ab15f000-ab162fff r-x 0 4000 /system/xbin/crasher (BuildId:
 b9527db01b5cf8f5402f899f64b9b121)
@@ -1264,10 +1504,10 @@ b9527db01b5cf8f5402f899f64b9b121)
   show the BuildId (if present) in Android 6.0 and higher, so you can see exactly
   which version of your code crashed. Platform binaries include a BuildId by
   default since Android 6.0; NDK r12 and higher automatically pass
-  <code>-Wl,--build-id</code> to the linker too.
+  <code translate="no" dir="ltr">-Wl,--build-id</code> to the linker too.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 ab163000-ab163fff r--      3000      1000  /system/xbin/crasher
 ab164000-ab164fff rw-         0      1000
 f6c80000-f6d7ffff rw-         0    100000  [anon:libc_malloc]
@@ -1275,10 +1515,10 @@ f6c80000-f6d7ffff rw-         0    100000  [anon:libc_malloc]
 
 <p>
   On Android the heap isn't necessarily a single region. Heap regions will
-  be labeled <code>[anon:libc_malloc]</code>.
+  be labeled <code translate="no" dir="ltr">[anon:libc_malloc]</code>.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 f6d82000-f6da1fff r--         0     20000  /dev/__properties__/u:object_r:logd_prop:s0
 f6da2000-f6dc1fff r--         0     20000  /dev/__properties__/u:object_r:default_prop:s0
 f6dc2000-f6de1fff r--         0     20000  /dev/__properties__/u:object_r:logd_prop:s0
@@ -1308,12 +1548,12 @@ f6f33000-f6f33fff rw-      e000      1000  /system/lib/liblog.so
   Typically, a shared library has three adjacent entries. One is readable and
   executable (code), one is read-only (read-only data), and one is read-write
   (mutable data). The first column shows the address ranges for the mapping, the
-  second column the permissions (in the usual Unix <code>ls(1)</code> style),
+  second column the permissions (in the usual Unix <code translate="no" dir="ltr">ls(1)</code> style),
   the third column the offset into the file (in hex), the fourth column the size
   of the region (in hex), and the fifth column the file (or other region name).
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 f6f34000-f6f53fff r-x         0     20000  /system/lib/libm.so (BuildId: 76ba45dcd9247e60227200976a02c69b)
 f6f54000-f6f54fff ---         0      1000
 f6f55000-f6f55fff r--     20000      1000  /system/lib/libm.so
@@ -1346,16 +1586,16 @@ f6fca000-f6fcafff ---         0      1000  [anon:thread signal stack guard page]
   there are fewer mystery regions.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 f6fcb000-f6fccfff rw- 0 2000 [stack:5081]
 </pre>
 
 <p>
-  Regions named <code>[stack:<var>tid</var>]</code> are the stacks for the given
+  Regions named <code translate="no" dir="ltr">[stack:<var>tid</var>]</code> are the stacks for the given
   threads.
 </p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 f6fcd000-f702afff r-x         0     5e000  /system/bin/linker (BuildId: 84f1316198deee0591c8ac7f158f28b7)
 f702b000-f702cfff r--     5d000      2000  /system/bin/linker
 f702d000-f702dfff rw-     5f000      1000  /system/bin/linker
@@ -1367,9 +1607,9 @@ ffff0000-ffff0fff r-x         0      1000  [vectors]
 </pre>
 
 <p>
-  Whether you see <code>[vector]</code> or <code>[vdso]</code> depends on the
-  architecture. ARM uses <code>[vector]</code>, while all other architectures use
-  <a href="http://man7.org/linux/man-pages/man7/vdso.7.html" class="external"><code>[vdso]</code></a>.
+  Whether you see <code translate="no" dir="ltr">[vector]</code> or <code translate="no" dir="ltr">[vdso]</code> depends on the
+  architecture. ARM uses <code translate="no" dir="ltr">[vector]</code>, while all other architectures use
+  <a href="http://man7.org/linux/man-pages/man7/vdso.7.html" class="external"><code translate="no" dir="ltr">[vdso]</code></a>.
 </p>
 
   
@@ -1382,17 +1622,17 @@ ffff0000-ffff0fff r-x         0      1000  [vectors]
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1599,8 +1839,9 @@ ffff0000-ffff0fff r-x         0      1000  [vectors]
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1666,54 +1907,49 @@ ffff0000-ffff0fff r-x         0      1000  [vectors]
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/debug/native-crash by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:23:22 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/native-crash by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:07:36 GMT -->
 </html>

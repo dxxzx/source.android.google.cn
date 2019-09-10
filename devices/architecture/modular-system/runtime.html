@@ -1,0 +1,1562 @@
+<!doctype html>
+<html       lang="en"      dir="ltr">
+  
+<!-- Mirrored from source.android.google.cn/devices/architecture/modular-system/runtime by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:54:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="runtime.html">      
+<title>Runtime &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Runtime &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="runtime.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        block-apix        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+   aria-label="Design, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../devices.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search
+            enable-suggestions
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
+    <div class="devsite-search-container">
+      <div class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Design
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../architecture.html"
+   class="gc-analytics-event"
+   title="Architecture"
+   aria-label="Architecture, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Architecture"
+   >
+  Architecture
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility/overview-2.html"
+   class="gc-analytics-event"
+   title="Compatibility"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Compatibility"
+   >
+  Compatibility
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech/display.html"
+   class="gc-analytics-event"
+   title="Display"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Display"
+   >
+  Display
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech/settings.html"
+   class="gc-analytics-event"
+   title="Settings"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Settings"
+   >
+  Settings
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility/tests.html"
+   class="gc-analytics-event"
+   title="Tests"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Tests"
+   >
+  Tests
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav scrollbars >
+                  
+
+
+
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../architecture.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Architecture">
+      <span class="devsite-nav-text" menu="_book">Architecture</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility/overview-2.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Compatibility">
+      <span class="devsite-nav-text" >Compatibility</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../tech/display.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Display">
+      <span class="devsite-nav-text" >Display</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../tech/settings.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Settings">
+      <span class="devsite-nav-text" >Settings</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../compatibility/tests.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Tests">
+      <span class="devsite-nav-text" >Tests</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../tech.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../../architecture.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Modular System Components">Modular System Components</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../modular-system.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="runtime.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Android Runtime">Android Runtime</span></a></li><li class="devsite-nav-item"><a href="conscrypt.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Conscrypt">Conscrypt</span></a></li><li class="devsite-nav-item"><a href="dns-resolver.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DNS Resolver">DNS Resolver</span></a></li><li class="devsite-nav-item"><a href="documentsui.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DocumentsUI">DocumentsUI</span></a></li><li class="devsite-nav-item"><a href="extservices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="ExtServices">ExtServices</span></a></li><li class="devsite-nav-item"><a href="media.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Media">Media</span></a></li><li class="devsite-nav-item"><a href="metadata.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Metadata">Metadata</span></a></li><li class="devsite-nav-item"><a href="networking.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Networking">Networking</span></a></li><li class="devsite-nav-item"><a href="permissioncontroller.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="PermissionController">PermissionController</span></a></li><li class="devsite-nav-item"><a href="timezone.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Time Zone Data">Time Zone Data</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Hardware Abstraction Layer (HAL)">Hardware Abstraction Layer (HAL)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Legacy HALs">Legacy HALs</span></a></li><li class="devsite-nav-item"><a href="../hal-types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="HAL Types">HAL Types</span></a></li><li class="devsite-nav-item"><a href="../hal/framework-testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Framework Testing">Framework Testing</span></a></li><li class="devsite-nav-item"><a href="../hal/dynamic-lifecycle.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Dynamic Lifecycle">Dynamic Lifecycle</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Kernel">Kernel</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../kernel/releases.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Stable Releases &amp; Updates">Stable Releases &amp; Updates</span></a></li><li class="devsite-nav-item"><a href="../kernel/android-common.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Android Common Kernels">Android Common Kernels</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Modular Kernels">Modular Kernels</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel/modular-kernels.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../kernel/loadable-kernel-modules.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Loadable Kernel Modules">Loadable Kernel Modules</span></a></li><li class="devsite-nav-item"><a href="../kernel/mounting-partitions-early.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Mounting Partitions Early">Mounting Partitions Early</span></a></li><li class="devsite-nav-item"><a href="../kernel/dto-support.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTO Support">DTO Support</span></a></li><li class="devsite-nav-item"><a href="../kernel/core-kernel-reqs.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Core Kernel Requirements">Core Kernel Requirements</span></a></li><li class="devsite-nav-item"><a href="../kernel/future-versions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Future Android Versions">Future Android Versions</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../kernel/reqs-interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interface Requirements">Interface Requirements</span></a></li><li class="devsite-nav-item"><a href="../kernel/bpf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Extending the kernel with eBPF">Extending the kernel with eBPF</span></a></li><li class="devsite-nav-item"><a href="../kernel/ion_abi_changes.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Ion ABI Changes">Ion ABI Changes</span></a></li><li class="devsite-nav-item"><a href="../kernel/config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Configuration">Configuration</span></a></li><li class="devsite-nav-item"><a href="../kernel/hardening.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Kernel Hardening">Kernel Hardening</span></a></li><li class="devsite-nav-item"><a href="../kernel/squashfs.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="SquashFS">SquashFS</span></a></li><li class="devsite-nav-item"><a href="../kernel/lldb-debug.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="LLDB Debugging">LLDB Debugging</span></a></li><li class="devsite-nav-item"><a href="../kernel/network_tests.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Network Tests">Network Tests</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (General)">HIDL (General)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl/interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interfaces &amp; Packages">Interfaces &amp; Packages</span></a></li><li class="devsite-nav-item"><a href="../hidl/hashing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interface Hashing">Interface Hashing</span></a></li><li class="devsite-nav-item"><a href="../hidl/services.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Services &amp; Data Transfer">Services &amp; Data Transfer</span></a></li><li class="devsite-nav-item"><a href="../hidl/fmq.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Fast Message Queue">Fast Message Queue</span></a></li><li class="devsite-nav-item"><a href="../hidl/binder-ipc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Using Binder IPC">Using Binder IPC</span></a></li><li class="devsite-nav-item"><a href="../hidl/memoryblock.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Using MemoryBlock">Using MemoryBlock</span></a></li><li class="devsite-nav-item"><a href="../hidl/network-stack.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Network Stack Configuration Tools">Network Stack Configuration Tools</span></a></li><li class="devsite-nav-item"><a href="../hidl/threading.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Threading Models">Threading Models</span></a></li><li class="devsite-nav-item"><a href="../hidl/converting.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Converting Modules">Converting Modules</span></a></li><li class="devsite-nav-item"><a href="../hidl/types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl/safe_union.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Safe Union">Safe Union</span></a></li><li class="devsite-nav-item"><a href="../hidl/versioning.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Versioning">Versioning</span></a></li><li class="devsite-nav-item"><a href="../hidl/code-style.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Code Style Guide">Code Style Guide</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (C++)">HIDL (C++)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-cpp.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/packages.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Packages">Packages</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interfaces">Interfaces</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/functions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Functions">Functions</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (Java)">HIDL (Java)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-java.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interface Errors &amp; Methods">Interface Errors &amp; Methods</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/constants.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Exporting Constants">Exporting Constants</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Configuration">Configuration</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configuration.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../sysprops-apis.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="System Properties APIs">System Properties APIs</span></a></li><li class="devsite-nav-item"><a href="../config-file-schema-api.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Config File Schema API">Config File Schema API</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="ConfigStore HAL">ConfigStore HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configstore.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../configstore/interface.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Creating the HAL Interface">Creating the HAL Interface</span></a></li><li class="devsite-nav-item"><a href="../configstore/service.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing the Service">Implementing the Service</span></a></li><li class="devsite-nav-item"><a href="../configstore/client.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Client-Side Usage">Client-Side Usage</span></a></li><li class="devsite-nav-item"><a href="../configstore/add-class-item.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Adding Classes &amp; Items">Adding Classes &amp; Items</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="../systemsuspend.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="SystemSuspend Service">SystemSuspend Service</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Device Tree Overlays">Device Tree Overlays</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dto.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../dto/implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing DTO">Implementing DTO</span></a></li><li class="devsite-nav-item"><a href="../dto/syntax.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTO Syntax">DTO Syntax</span></a></li><li class="devsite-nav-item"><a href="../dto/compile.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Compiling &amp; Verifying">Compiling &amp; Verifying</span></a></li><li class="devsite-nav-item"><a href="../dto/multiple.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Using Multiple DTs">Using Multiple DTs</span></a></li><li class="devsite-nav-item"><a href="../dto/partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTB/DTBO Partition Format">DTB/DTBO Partition Format</span></a></li><li class="devsite-nav-item"><a href="../dto/optimize.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Optimizing DTO">Optimizing DTO</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor NDK">Vendor NDK</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vndk.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../vndk/enabling.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Enabling the VNDK">Enabling the VNDK</span></a></li><li class="devsite-nav-item"><a href="../vndk/build-system.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Build System Support">VNDK Build System Support</span></a></li><li class="devsite-nav-item"><a href="../vndk/extensions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Extensions">VNDK Extensions</span></a></li><li class="devsite-nav-item"><a href="../vndk/deftool.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Definition Tool">VNDK Definition Tool</span></a></li><li class="devsite-nav-item"><a href="../vndk/snapshot-design.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VNDK Snapshot Design">VNDK Snapshot Design</span></a></li><li class="devsite-nav-item"><a href="../vndk/snapshot-generate.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Generating VNDK Snapshots">Generating VNDK Snapshots</span></a></li><li class="devsite-nav-item"><a href="../vndk/linker-namespace.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Linker Namespace">Linker Namespace</span></a></li><li class="devsite-nav-item"><a href="../vndk/dir-rules-sepolicy.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Directories, Rules, and sepolicy">Directories, Rules, and sepolicy</span></a></li><li class="devsite-nav-item"><a href="../vndk/renderscript.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Renderscript">Renderscript</span></a></li><li class="devsite-nav-item"><a href="../vndk/abi-stability.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="ABI Stability">ABI Stability</span></a></li><li class="devsite-nav-item"><a href="../vndk/abi-use-check.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Prebuilt ABI Usage Checker">Prebuilt ABI Usage Checker</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor Interface Object">Vendor Interface Object</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vintf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../vintf/objects.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Manifests">Manifests</span></a></li><li class="devsite-nav-item"><a href="../vintf/comp-matrices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Compatibility Matrices">Compatibility Matrices</span></a></li><li class="devsite-nav-item"><a href="../vintf/fcm.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="FCM Lifecycle">FCM Lifecycle</span></a></li><li class="devsite-nav-item"><a href="../vintf/dm.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DM Development">DM Development</span></a></li><li class="devsite-nav-item"><a href="../vintf/match-rules.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Matching Rules">Matching Rules</span></a></li><li class="devsite-nav-item"><a href="../vintf/resources.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Resources">Resources</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bootloader">Bootloader</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bootloader.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/boot-reason.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Boot Reason">Boot Reason</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/boot-image-header.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Boot Image Header">Boot Image Header</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/system-as-root.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Partition Layout">Partition Layout</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/partitions-images.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Partitions and Images">Partitions and Images</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/product-partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Product Partitions">Product Partitions</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/odm-partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="ODM Partitions">ODM Partitions</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/recovery-image.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Recovery Image">Recovery Image</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/flashing-updating.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Flashing and Updating">Flashing and Updating</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/unlock-trusty.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Unlocking and Trusty">Unlocking and Trusty</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/stable-aidl.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Stable AIDL">Stable AIDL</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/fastbootd.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Fastboot in User Space">Fastboot in User Space</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="../java-library.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Java SDK Library">Java SDK Library</span></a></li>
+          </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content>
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">        
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Design
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../architecture.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Architecture
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Runtime</h1>
+    
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2019 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>
+  The Runtime module (<code translate="no" dir="ltr">com.android.runtime.release.apex</code>) is an APEX
+  module for native and managed Android runtimes. The module includes the
+  following components:
+</p>
+
+<ul>
+  <li>ART</li>
+  <li>Bionic</li>
+  <li>Managed Core Library (new in Android 10)</li>
+  <li>ICU libraries</li>
+  <li><code translate="no" dir="ltr">libnativebridge</code></li>
+  <li><code translate="no" dir="ltr">libnativehelper</code></li>
+  <li><code translate="no" dir="ltr">libnativeloader</code></li>
+</ul>
+
+<p>
+  The Runtime module is generated when building Android and contains the build
+  artifacts of its constituent projects. It's closely coupled with both the
+  <a href="conscrypt.html">Conscrypt module</a>
+  (<code translate="no" dir="ltr">com.android.conscrypt.apex</code>) and the
+  <a href="timezone.html">Time Zone Data
+  module</a> (<code translate="no" dir="ltr">com.android.tzdata.apex</code>), also new in Android
+  10.
+</p>
+
+<aside class="note">
+  <strong>Note:</strong> The Runtime module isn't updatable in Android
+  10.
+</aside>
+
+<h2 id="android-runtime-art-changes">Android Runtime (ART) changes</h2>
+
+<p>
+  In Android 10, the ART build system creates the
+  Runtime module in two variants: <em>release</em> and <em>debug</em> (contains
+  additional diagnostic and debugging tools). The release version is installed
+  on <code translate="no" dir="ltr">user</code> builds and the debug version is installed on
+  <code translate="no" dir="ltr">userdebug</code> and <code translate="no" dir="ltr">eng</code> builds. When a device boots,
+  <code translate="no" dir="ltr">apexd</code> mounts the Runtime module under
+  <code translate="no" dir="ltr">/apex/com.android.runtime</code>.
+</p>
+
+<p>
+  In the module, the boot class path is split between classes such as Managed
+  Core Library, classes in other modules (such as Conscrypt and Media), and
+  classes in the system partition (such as <code translate="no" dir="ltr">framework.jar</code>). If a
+  module is updated, dex2oat JIT compiles boot classes in modules.
+</p>
+
+<p>
+  Android 10 includes the following API changes:
+</p>
+
+<ul>
+  <li>A new API for DEX file support provides a stable interface between system
+  code (such as the stack unwinder) and ART.</li>
+  <li>A new API is used as an ART-specific platform abstraction layer (PAL) with
+  the system. The system element (<code translate="no" dir="ltr">libartpalette-system.so</code>) exposes
+  system functionality depended on by ART and is accessible through a client
+  library (<code translate="no" dir="ltr">libartpalette.so</code>), that loads the system library
+  installed on device.</li>
+</ul>
+
+<p>
+  Android 10 also refactors paths for some ART
+  binaries, moving the following binaries from <code translate="no" dir="ltr">/system/bin</code> to the
+  Runtime module: <code translate="no" dir="ltr">dalvikvm</code>, <code translate="no" dir="ltr">dalvikvm32</code>,
+  <code translate="no" dir="ltr">dalvikvm64</code>, <code translate="no" dir="ltr">dex2oat</code>, <code translate="no" dir="ltr">dexdiag</code>,
+  <code translate="no" dir="ltr">dexdump</code>, <code translate="no" dir="ltr">dexlist</code>, <code translate="no" dir="ltr">dexoptanalyzer</code>,
+  <code translate="no" dir="ltr">oatdump</code>, and <code translate="no" dir="ltr">profman</code>. For compatibility, the
+  refactor includes symlinks in <code translate="no" dir="ltr">/system/bin</code>.
+</p>
+
+<h2 id="bionic-changes">Bionic changes</h2>
+
+<p>
+  <code translate="no" dir="ltr">libc</code>'s <code translate="no" dir="ltr">tzcode</code> uses time zone data provided by the
+  Runtime module (<code translate="no" dir="ltr">/apex/com.android.runtime/etc/tz/</code>) and the Time
+  Zone Data module (<code translate="no" dir="ltr">/apex/com.android.tzdata/etc/tz/</code>).
+  <code translate="no" dir="ltr">tzcode</code> prioritizes data from
+  <a href="../../tech/config/timezone-rules.html">APK-based time zone updates</a>
+  over APEX-based time zone updates (provided by the Time Zone Data module) and
+  falls back to <code translate="no" dir="ltr">/system</code> data.
+</p>
+
+<p>
+  <code translate="no" dir="ltr">libc</code> uses a new library (<code translate="no" dir="ltr">libandroidicu</code>) instead of
+  <code translate="no" dir="ltr">libicuuc</code>/<code translate="no" dir="ltr">libicui18n</code>. For details, see
+  <a href="#managed-core-library">Managed Core Library</a>.
+</p>
+
+<p>
+  Finally, Bionic-shared libraries and dynamic linker paths are now symlinks
+  (applies to 64-bit variants as well). Specifically:
+</p>
+<ul>
+  <li><code translate="no" dir="ltr">/system/lib/libc.so</code> -&gt;
+  <code translate="no" dir="ltr">/apex/com.android.runtime/lib/bionic/libc.so</code></li>
+  <li><code translate="no" dir="ltr">/system/lib/libm.so</code> -&gt;
+  <code translate="no" dir="ltr">/apex/com.android.runtime/lib/bionic/libm.so</code></li>
+  <li><code translate="no" dir="ltr">/system/lib/libdl.so</code> -&gt;
+  <code translate="no" dir="ltr">/apex/com.android.runtime/lib/bionic/libdl.so</code></li>
+  <li><code translate="no" dir="ltr">/system/bin/linker</code> -&gt;
+  <code translate="no" dir="ltr">/apex/com.android.runtime/bin/linker</code></li>
+</ul>
+
+<h2 id="boot-sequence-changes">Boot sequence changes</h2>
+
+<p>
+  To support the Runtime module, Android 10 updates the
+  boot sequence to the following:
+</p>
+
+<ol>
+  <li><code translate="no" dir="ltr">init</code> prepares the bootstrap and default
+  <a href="http://man7.org/linux/man-pages/man7/mount_namespaces.7.html"
+  class="external">mount namespaces</a>. A <code translate="no" dir="ltr">tmpfs</code> is mounted on
+  <code translate="no" dir="ltr">/apex</code> and the propagation type of the mount point is set to
+  <code translate="no" dir="ltr">private</code>.</li>
+  <li><code translate="no" dir="ltr">apexd</code> starts in bootstrap mode, before any other process. It
+  activates the APEX files in <code translate="no" dir="ltr">/system/apex</code> and mounts them in the
+  bootstrap mount namespace.</li>
+  <li>Other pre-<code translate="no" dir="ltr">apexd</code> processes start. These processes are in the
+  bootstrap mount namespace and are provided with libraries from system APEX
+  files.</li>
+  <li><code translate="no" dir="ltr">/data</code> mounts. <code translate="no" dir="ltr">init</code> switches into the default
+  mount namespace and starts <code translate="no" dir="ltr">apexd</code> as a daemon.</li>
+  <li><code translate="no" dir="ltr">apexd</code> scans both /<code translate="no" dir="ltr">data/apex</code> and
+  <code translate="no" dir="ltr">/system/apex</code> and activates the most recent APEX files in those
+  directories. APEX files activated in this phase are mounted in the default
+  namespaces only and aren't visible to the pre-<code translate="no" dir="ltr">apexd</code> processes.
+  </li>
+</ol>
+
+<h2 id="managed-core-library">Managed Core Library</h2>
+
+<p>
+  The Managed Core Library is a collection of low-level, updatable, managed
+  (<code translate="no" dir="ltr">dex</code> executed by Android Runtime) code that was previously known
+  as <em>libcore</em>. In Android 10, the Managed Core
+  Library includes multiple Git projects (in addition to
+  <code translate="no" dir="ltr">platform/libcore/</code>), and the new term refers to the collection
+  of code.
+</p>
+
+<p>
+  The Managed Core Library is provided by the Runtime, Time Zone Data, and
+  Conscrypt modules and relies on native libraries present in the Runtime
+  module, such as <code translate="no" dir="ltr">libjavacore</code> and <code translate="no" dir="ltr">libandroidicu</code>.
+  Collected code comes from multiple Git projects such as <code translate="no" dir="ltr">libcore</code>,
+  <code translate="no" dir="ltr">apache-xml</code>, <code translate="no" dir="ltr">boringssl</code>, <code translate="no" dir="ltr">bouncycastle</code>,
+  <code translate="no" dir="ltr">conscrypt</code>, <code translate="no" dir="ltr">expat</code>, <code translate="no" dir="ltr">fdlibm</code>,
+  <code translate="no" dir="ltr">icu</code>, <code translate="no" dir="ltr">okhttp</code>, <code translate="no" dir="ltr">ziparchive</code>, and
+  <code translate="no" dir="ltr">zlib</code>. The library is split between multiple <code translate="no" dir="ltr">.jar</code>
+  files on the boot classpath (for example <code translate="no" dir="ltr">core-oj.jar</code>,
+  <code translate="no" dir="ltr">core-libart.jar</code>, <code translate="no" dir="ltr">conscrypt.jar</code>,
+  <code translate="no" dir="ltr">okhttp.jar</code>, <code translate="no" dir="ltr">bouncycastle.jar</code>, and
+  <code translate="no" dir="ltr">apache-xml.jar</code>); however, it doesn't include
+  <code translate="no" dir="ltr">framework.jar</code> or <code translate="no" dir="ltr">ext.jar</code>.
+</p>
+
+<h3 id="component-repackaging">Component repackaging</h3>
+
+<p>
+  Android 10 repackages several components
+  (<code translate="no" dir="ltr">bouncycastle/</code>, <code translate="no" dir="ltr">conscrypt/</code>, <code translate="no" dir="ltr">okhttp/</code>)
+  that were previously packaged under <code translate="no" dir="ltr">android.*</code> and
+  <code translate="no" dir="ltr">com.android.*</code> using bytecode manipulation. These components are
+  repackaged using source code transformation to enable Java annotations to be
+  used for API metadata.
+</p>
+
+<aside class="note">
+  <strong>Note:</strong> <code translate="no" dir="ltr">icu/</code> was also repackaged and transformed
+  in a previous Android release.
+</aside>
+
+<h3 id="core-platform-api">Core Platform API</h3>
+
+<p>
+  The Core Platform API provides a stable, managed-code API for use by the
+  Android framework, enabling the Managed Core Library to be updated by ensuring
+  that all framework dependencies are clearly understood. The Core Platform API:
+</p>
+
+<ul>
+  <li>Indicates dependencies in addition to the public SDK APIs. For API
+  content, refer to <code translate="no" dir="ltr">libcore/mmodules/core_platform_api/</code>.</li>
+  <li>Explicitly annotates managed code with
+  <code translate="no" dir="ltr">@libcore.api.CorePlatformApi</code>. For code in
+  l<code translate="no" dir="ltr">ibcore/ojluni/src/</code>, refer to the annotations in
+  <code translate="no" dir="ltr">libcore/ojluni/annotations/mmodule/</code>; for all other projects,
+  refer to the main source files.</li>
+</ul>
+
+<p>
+  The build system defaults to using the Core Platform API when building Java
+  source platform targets (that is, in the absence of
+  <code translate="no" dir="ltr">"sdk_version:"</code> in <code translate="no" dir="ltr">.bp</code> files or
+  <code translate="no" dir="ltr">"LOCAL_SDK_VERSION="</code> in <code translate="no" dir="ltr">.mk</code> files). This default
+  ensures that Android framework code is restricted to using public APIs and
+  the Core Platform API only (no implementation classes). Other
+  <code translate="no" dir="ltr">sdk_version</code> values such as <code translate="no" dir="ltr">"core_current"</code> and
+  <code translate="no" dir="ltr">"current"</code> work as they always have (they allow use of public SDK
+  APIs only). The build system also reports changes to the Core Platform API
+  surface and prevents targets (outside of a small set of exceptions) from
+  depending on Managed Core Library internals.
+</p>
+
+<p>
+  The Runtime module performs access checks for fields and methods covered by
+  the Core Platform API. The checks are performed when platform code accesses
+  methods in the Core Platform API. The system property
+  <code translate="no" dir="ltr">persist.debug.dalvik.vm.core_platform_api_policy</code> controls the
+  policy around these checks. Valid policy values are <code translate="no" dir="ltr">enabled</code>,
+  <code translate="no" dir="ltr">disabled</code>, and <code translate="no" dir="ltr">just-warn</code>. For debug and eng builds,
+  the standard policy is <code translate="no" dir="ltr">just-warn</code>, which logs a warning when a
+  policy violation is detected. For user builds, the default policy is
+  <code translate="no" dir="ltr">disabled</code> and no action is taken. The Runtime module also performs
+  Core Platform API checks when native code resolves fields and methods through
+  the Java Native Interface (JNI).
+</p>
+
+<p>
+  Android 10 also includes numerous changes to
+  simplify the APIs, runtime dependencies, and build-time dependencies between
+  the Android framework and Managed Core Library.
+</p>
+
+<p>
+  Android 10 repackages the <code translate="no" dir="ltr">org.kxml2</code>
+  parser under <code translate="no" dir="ltr">com.android.org.kxml2</code>.
+</p>
+
+<h3 id="native-libraries">Native libraries</h3>
+
+<p>
+  Android 10 refactors native libraries that support
+  the Managed Core Library. Several dynamically linked libraries (for example,
+  <code translate="no" dir="ltr">libcrypto</code>, <code translate="no" dir="ltr">libexpat</code>, and <code translate="no" dir="ltr">zlib</code>) that
+  were previously shared with other parts of the platform are now duplicated so
+  that the Runtime module has its own copies loaded into the runtime linker
+  namespace. Dynamically linked native libraries provided by the Runtime module
+  are in <code translate="no" dir="ltr">/apex/com.android.runtime/{lib,lib64}</code>.
+</p>
+
+<h3 id="icu-libraries">ICU libraries</h3>
+
+<p>
+  The Runtime module includes ICU libraries (ICU4C and ICU4J) and associated
+  data.
+</p>
+
+<p>
+  Android 10 includes <code translate="no" dir="ltr">libandroidicu</code>, a new
+  dynamic library that makes a subset of ICU4C functions available to framework
+  code. The linker symbols for <code translate="no" dir="ltr">libandroidicu</code> are stable across ICU
+  releases (the symbols end with <code translate="no" dir="ltr">_android</code> rather than
+  <code translate="no" dir="ltr">_icu-version-number</code> used in <code translate="no" dir="ltr">libicuuc</code> and
+  <code translate="no" dir="ltr">libicui18n</code>). However, for app compatibility,
+  <code translate="no" dir="ltr">libicuuc</code> and <code translate="no" dir="ltr">libicui18n</code> symbols remain available.
+  Also for app compatibility, the linker redirects absolute paths to ICU
+  libraries in dlopen() calls, i.e. <code translate="no" dir="ltr">dlopen("/system/lib/libicuuc.so", ...)</code>
+  and <code translate="no" dir="ltr">dlopen("/system/lib/libicui18n.so", ...)</code>, redirect to the
+  corresponding libraries in <code translate="no" dir="ltr">/apex/com.android.runtime/lib/</code> for
+  apps with <code translate="no" dir="ltr">targetSdkVersion < 29</code>.
+</p>
+
+<p>
+  At runtime, the ICU data file installs to
+  <code translate="no" dir="ltr">/apex/com.android.runtime/etc/icu/</code>. For app compatibility,
+  Android 10 includes a symlink from the previous ICU
+  data file location (<code translate="no" dir="ltr">/system/usr/icu/</code>) to
+  <code translate="no" dir="ltr">/apex/com.android.runtime/etc/icu</code>.
+</p>
+
+<h3 id="conscrypt-interactions">Conscrypt interactions</h3>
+
+<p>
+  Android 10 moves Conscrypt, which is logically part
+  of the Managed Core Library, to its own independently
+  <a href="conscrypt.html">updatable APEX
+  module</a>. Between the Conscrypt and Runtime modules, a new bi-directional
+  API surface indicates dependencies in addition to the public SDK APIs (for
+  details, refer to <code translate="no" dir="ltr">libcore/mmodules/intracoreapi/</code>). API elements
+  are explicitly annotated with <code translate="no" dir="ltr">@libcore.api.IntraCoreApi</code>.
+</p>
+
+<p>
+  The build system verifies that Conscrypt code is restricted to public APIs and
+  the intra-core API. Other Managed Core Library dependencies on Conscrypt are
+  reflection based; the build system records such dependencies where possible
+  and reports all changes to the API surface.
+</p>
+
+<h3 id="time-zone-data-interactions">Time Zone Data interactions</h3>
+
+<p>
+  In Android 10, architecture libcore, Runtime libcore,
+  and ICU4J/ICU4C use time zone data provided by the Runtime module
+  (<code translate="no" dir="ltr">/apex/com.android.runtime/etc/tz/</code>) and the Time Zone Data module
+  (<code translate="no" dir="ltr">/apex/com.android.tzdata/etc/tz/</code>). These libraries:
+</p>
+
+<ul>
+  <li>Fall back to <code translate="no" dir="ltr">/system</code> data.</li>
+  <li>Prioritize data from
+  <a href="../../tech/config/timezone-rules.html">APK-based time zone updates</a>
+  over APEX-based time zone updates (provided by the
+  <a href="timezone.html">Time Zone Data
+  module</a>).</li>
+</ul>
+
+<h3 id="miscellaneous-changes">Miscellaneous changes</h3>
+
+<p>
+  Android 10 moves the
+  <code translate="no" dir="ltr">AsynchronousCloseMonitor</code> API from <code translate="no" dir="ltr">libnativehelper.so</code>
+  to <code translate="no" dir="ltr">libandroidio.so</code>. The API is exposed by
+  <code translate="no" dir="ltr">AsynchronousCloseMonitor.h</code>.
+</p>
+
+<h2 id="libnativebridge-changes">libnativebridge changes</h2>
+
+<p>
+  Android 10 moves the <code translate="no" dir="ltr">libnativebridge</code>
+  library to the Runtime module as this library is tightly coupled with
+  <code translate="no" dir="ltr">libnativeloader</code> and the Bionic C libraries that are part of the
+  Runtime module.
+</p>
+
+<h2 id="libnativehelper-changes">libnativehelper changes</h2>
+
+<p>
+  In Android 10, the Runtime module makes
+  <code translate="no" dir="ltr">libnativehelper</code> available to system and frameworks code, while
+  code outside of the Runtime module links against a stubs API (C only) for
+  <code translate="no" dir="ltr">libnativehelper</code>. The <code translate="no" dir="ltr">libnativehelper</code> library
+  includes:
+</p>
+
+<ul>
+  <li>A reduced set of cached JNI classes, methods, and fields.</li>
+  <li>Improved JNI macros in <code translate="no" dir="ltr">platform_include/jni_macros.h</code>.</li>
+  <li>New JNI helper methods for accessing the internals of
+  <code translate="no" dir="ltr">java.nio.Buffer</code> classes from native code (see methods starting
+  with <code translate="no" dir="ltr">jniGetNio</code> in
+  <code translate="no" dir="ltr">libnativehelper/include/nativehelper/JNIHelp.h</code>). These methods
+  are used by the framework code.</li>
+</ul>
+
+<h2 id="libnativeloader-changes">libnativeloader changes</h2>
+
+<p>
+  In Android 10, the Runtime module includes the
+  <code translate="no" dir="ltr">libnativeloader</code> library, which is responsible for creating linker
+  namespaces for Java class loaders. The linker namespaces apply to the native
+  libraries loaded by Android apps written in managed code. The library
+  is closely coupled to the Bionic linker, which is also in the module.
+</p>
+
+<h2 id="libpac-changes">libpac changes</h2>
+
+<p>
+  Android 10 moves <code translate="no" dir="ltr">libpac</code>, which provides
+  a C API for PacProcessor, into the Runtime module. The <code translate="no" dir="ltr">libpac</code>
+  library contains an entire V8 JavaScript engine and should not be used except
+  by PacProcessor (an independent package and process).
+</p>
+
+<h2 id="linker-configuration-changes">Linker configuration changes</h2>
+
+<p>
+  In Android 10,
+  <a href="../vndk/linker-namespace.html">linker namespaces</a>
+  are used to separate internal dynamic native library dependencies in the
+  Runtime module from the platform and other APEX modules. The
+  <code translate="no" dir="ltr">runtime</code> linker namespace is set up for Runtime module libraries,
+  with appropriate links to and from other namespaces for external dependencies.
+</p>
+
+<p>
+  The linker configuration resides in <code translate="no" dir="ltr">/system/etc/ld.config.txt</code> for
+  binaries in <code translate="no" dir="ltr">/vendor</code> and <code translate="no" dir="ltr">/system</code>, and in
+  <code translate="no" dir="ltr">/apex/com.android.runtime/etc/ld.config.txt</code> for binaries in the
+  Runtime module itself (<code translate="no" dir="ltr">/apex/com.android.runtime/bin</code>).
+</p>
+
+<h2 id="systemserver-framework-changes">SystemServer and framework changes</h2>
+
+<p>
+  In Android 10, the SystemServer hosts a new
+  RuntimeService for reporting information from the Runtime module. To view this
+  information, use the following ADB command:
+</p>
+
+<pre class="prettyprint" translate="no" dir="ltr">adb shell dumpsys runtimeinfo</pre>
+
+<p>
+  The information managed by the RuntimeService is extensible. For service
+  source code, refer to
+  <code translate="no" dir="ltr">frameworks/base/services/core/java/com/android/server/RuntimeService.java</code>;
+  for example client code, refer to
+  <code translate="no" dir="ltr">libcore/luni/src/main/java/libcore/util/CoreLibraryDebug.java</code>.
+</p>
+
+<p>
+  Android 10 also updates the over-the-air (OTA) update
+  process to use <code translate="no" dir="ltr">dex2oat</code> and other tools from the Runtime module.
+</p>
+
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/architecture/modular-system/runtime by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:54:50 GMT -->
+</html>

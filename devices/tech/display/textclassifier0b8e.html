@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="zh_cn">
+<html       lang="zh-CN"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/display/textclassifier.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:42:58 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/display/textclassifier.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 20:53:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>实现文本分类 &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="实现文本分类 &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="textclassifier-2.html">
-
-  <meta property="og:locale" content="zh_cn">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="textclassifier-2.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="textclassifier.html">      
+<title>实现文本分类 &nbsp;|&nbsp; Android 开源项目 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="实现文本分类 &nbsp;|&nbsp; Android 开源项目 &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="textclassifier.html">
+
+  <meta property="og:locale" content="zh_cn">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup0b8e.html?hl=zh-cn"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio0b8e.html?hl=zh-cn"
+          <a href="../../../devices0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="开发"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../dalvik0b8e.html?hl=zh-cn"
+          <a href="../../tech0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="配置"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+              family-name="Android 开源项目"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results?hl=zh-cn" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="搜索"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="搜索框">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,20 +186,50 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          转到源代码
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  转到源代码
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../compatibility0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
@@ -207,7 +243,7 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../compatibility0b8e.html?hl=zh-cn"
@@ -232,7 +268,7 @@
 
         </tab>
                         <tab >
-          <a href="../../../compatibility/overview0b8e.html?hl=zh-cn"
+          <a href="../../../compatibility/overview0b8e-2.html?hl=zh-cn"
    class="gc-analytics-event"
    title="兼容性"
            data-category="Site-Wide Custom Events"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab >
-          <a href="../settings/settings-guidelines0b8e.html?hl=zh-cn"
+          <a href="../settings0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="设置"
            data-category="Site-Wide Custom Events"
@@ -282,8 +318,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -294,7 +333,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -356,14 +408,14 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: 显示">
       <span class="devsite-nav-text" menu="_book">显示</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../settings/settings-guidelines.html"
+    <a href="../settings.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -395,7 +447,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -405,7 +457,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -437,59 +489,59 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../display.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../display.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li>
-                          <li class="devsite-nav-item"><a href="adaptive-icons-2.html"
+  <li class="devsite-nav-item"><a href="adaptive-icons.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="自适应图标">自适应图标</span></a></li>
-                          <li class="devsite-nav-item"><a href="app-shortcuts.html"
+  <li class="devsite-nav-item"><a href="app-shortcuts.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="应用快捷方式">应用快捷方式</span></a></li>
-                          <li class="devsite-nav-item"><a href="circular-icons.html"
+  <li class="devsite-nav-item"><a href="circular-icons.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="圆形图标">圆形图标</span></a></li>
-                          <li class="devsite-nav-item"><a href="color-mgmt.html"
+  <li class="devsite-nav-item"><a href="color-mgmt.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="颜色管理">颜色管理</span></a></li>
-                          <li class="devsite-nav-item"><a href="display-cutouts.html"
+  <li class="devsite-nav-item"><a href="display-cutouts.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="显示屏凹口">显示屏凹口</span></a></li>
-                          <li class="devsite-nav-item"><a href="dnd.html"
+   ><span class="devsite-nav-text" title="刘海屏">刘海屏</span></a></li>
+  <li class="devsite-nav-item"><a href="dnd.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="勿扰">勿扰</span></a></li>
-                          <li class="devsite-nav-item"><a href="hdr.html"
+  <li class="devsite-nav-item"><a href="hdr.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="HDR 视频">HDR 视频</span></a></li>
-                          <li class="devsite-nav-item"><a href="multi-window.html"
+  <li class="devsite-nav-item"><a href="multi-window.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="多窗口模式">多窗口模式</span></a></li>
-                          <li class="devsite-nav-item"><a href="night-light-2.html"
+  <li class="devsite-nav-item"><a href="night-light.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="夜间模式">夜间模式</span></a></li>
-                          <li class="devsite-nav-item"><a href="pip-2.html"
+  <li class="devsite-nav-item"><a href="pip.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="画中画">画中画</span></a></li>
-                          <li class="devsite-nav-item"><a href="retail-mode-2.html"
+  <li class="devsite-nav-item"><a href="retail-mode.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="零售演示模式">零售演示模式</span></a></li>
-                          <li class="devsite-nav-item"><a href="rotate-suggestions.html"
+  <li class="devsite-nav-item"><a href="rotate-suggestions.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="旋转建议">旋转建议</span></a></li>
-                          <li class="devsite-nav-item"><a href="split-screen-2.html"
+  <li class="devsite-nav-item"><a href="split-screen.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="分屏交互">分屏交互</span></a></li>
-                          <li class="devsite-nav-item"><a href="synched-app-transitions.html"
+  <li class="devsite-nav-item"><a href="synched-app-transitions.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="同步应用转换">同步应用转换</span></a></li>
-                          <li class="devsite-nav-item"><a href="textclassifier-2.html"
+  <li class="devsite-nav-item"><a href="textclassifier.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="文本分类">文本分类</span></a></li>
-                          <li class="devsite-nav-item"><a href="widgets-shortcuts-2.html"
+  <li class="devsite-nav-item"><a href="widgets-shortcuts.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="微件和快捷方式">微件和快捷方式</span></a></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -497,16 +549,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -516,8 +569,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../../compatibility0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -527,8 +581,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../display0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -545,14 +600,13 @@
 
               <h1 class="devsite-page-title">实现文本分类</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
 
               
-
   <!--
       Copyright 2017 The Android Open Source Project
 
@@ -643,7 +697,7 @@ public final class TextClassifierServiceImpl
 &lt;string name="config_defaultTextClassifierPackage" translatable="false"&gt;com.example.textclassifierservice&lt;/string&gt;</pre><p></p>
 
 <h4>将文本分类程序服务编译到系统映像中</h4>
-<p>您的自定义文本分类程序服务可以是编译到系统映像中的独立 APK，也可以是其他系统 APK 的一部分。系统使用 <code>PackageManager.MATCH_SYSTEM_ONLY</code> 解析服务。
+<p>自定义文本分类程序服务可以是编译到系统映像中的独立 APK，也可以是其他系统 APK 的一部分。系统使用 <code>PackageManager.MATCH_SYSTEM_ONLY</code> 解析该服务。
 </p>
 
 <h3>测试</h3>
@@ -771,17 +825,17 @@ PRODUCT_PACKAGES += \
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -988,8 +1042,9 @@ PRODUCT_PACKAGES += \
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1055,54 +1110,49 @@ PRODUCT_PACKAGES += \
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'zh_cn',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"zh_cn",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/display/textclassifier.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:43:01 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/display/textclassifier.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 20:53:26 GMT -->
 </html>

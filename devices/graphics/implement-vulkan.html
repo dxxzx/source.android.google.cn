@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/graphics/implement-vulkan by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:29:51 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/graphics/implement-vulkan by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:01:34 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Implementing Vulkan &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Implementing Vulkan &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="implement-vulkan.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="implement-vulkan.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="implement-vulkan.html">      
+<title>Implementing Vulkan &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Implementing Vulkan &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="implement-vulkan.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab active>
-          <a href="../audio.html"
+          <a href="../../devices.html"
    class="gc-analytics-event"
    title="Develop"
    aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../tech/dalvik.html"
+          <a href="../tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,9 +243,20 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
           <a href="../audio.html"
    class="gc-analytics-event"
    title="Audio"
@@ -254,7 +301,7 @@
 
         </tab>
                         <tab >
-          <a href="../input.html"
+          <a href="../interaction.html"
    class="gc-analytics-event"
    title="Interaction"
            data-category="Site-Wide Custom Events"
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../audio.html"
+                                <a href="../../devices.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -350,6 +413,16 @@
         </a>
   
                                             <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
                                                                                                                       <li class="devsite-nav-item">
     <a href="../audio.html"
           class="devsite-nav-title gc-analytics-event
@@ -387,14 +460,14 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Graphics">
       <span class="devsite-nav-text" menu="_book">Graphics</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../input.html"
+    <a href="../interaction.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -426,7 +499,7 @@
                                   </ul>
                           </li>
                       <li class="devsite-nav-item">
-                                <a href="../tech/dalvik.html"
+                                <a href="../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -458,66 +531,67 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../graphics.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../graphics.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Architecture">Architecture</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="architecture.html"
+  <li class="devsite-nav-item"><a href="arch-bq-gralloc.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="arch-bq-gralloc.html"
+   ><span class="devsite-nav-text" title="BufferQueue and Gralloc">BufferQueue and Gralloc</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Surface and SurfaceHolder">Surface and SurfaceHolder</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-sh.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="BufferQueue">BufferQueue</span></a></li><li class="devsite-nav-item"><a href="arch-sf-hwc.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="SurfaceFlinger and HWC">SurfaceFlinger and HWC</span></a></li><li class="devsite-nav-item"><a href="arch-sh.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Surface and SurfaceHolder">Surface and SurfaceHolder</span></a></li><li class="devsite-nav-item"><a href="arch-egl-opengl.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="OpenGL ES">OpenGL ES</span></a></li><li class="devsite-nav-item"><a href="renderer.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="OpenGLRenderer Configuration">OpenGLRenderer Configuration</span></a></li><li class="devsite-nav-item"><a href="arch-vulkan.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Vulkan">Vulkan</span></a></li><li class="devsite-nav-item"><a href="arch-sv-glsv.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="arch-sv-glsv.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="SurfaceView">SurfaceView</span></a></li><li class="devsite-nav-item"><a href="arch-st.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="SurfaceTexture">SurfaceTexture</span></a></li><li class="devsite-nav-item"><a href="arch-tv.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="TextureView">TextureView</span></a></li><li class="devsite-nav-item"><a href="arch-gameloops.html"
+   ><span class="devsite-nav-text" title="TextureView">TextureView</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="SurfaceFlinger and WindowManager">SurfaceFlinger and WindowManager</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="surfaceflinger-windowmanager.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Game Loops">Game Loops</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Implementation">Implementation</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="implement.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="tracing-win-transitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Tracing Window Transitions">Tracing Window Transitions</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Hardware Composer HAL">Hardware Composer HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="hwc.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-hwc.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Hardware Composer HAL">Hardware Composer HAL</span></a></li><li class="devsite-nav-item"><a href="implement-vsync.html"
+   ><span class="devsite-nav-text" title="Implementing the HWC">Implementing the HWC</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="layers-displays.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="VSYNC">VSYNC</span></a></li><li class="devsite-nav-item"><a href="implement-vulkan.html"
+   ><span class="devsite-nav-text" title="Layers and Displays">Layers and Displays</span></a></li>
+  <li class="devsite-nav-item"><a href="implement-vsync.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Vulkan">Vulkan</span></a></li><li class="devsite-nav-item"><a href="implement-vdisplays.html"
+   ><span class="devsite-nav-text" title="VSYNC">VSYNC</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="OpenGL ES">OpenGL ES</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-egl-opengl.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Virtual Displays">Virtual Displays</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="OpenGL ES Testing">OpenGL ES Testing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="testing.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-opengl-es.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="build-tests.html"
+   ><span class="devsite-nav-text" title="Implementing OpenGL ES">Implementing OpenGL ES</span></a></li><li class="devsite-nav-item"><a href="renderer.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Building Test Programs">Building Test Programs</span></a></li><li class="devsite-nav-item"><a href="port-tests.html"
+   ><span class="devsite-nav-text" title="OpenGLRenderer Configuration">OpenGLRenderer Configuration</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vulkan">Vulkan</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-vulkan.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Porting the Test Framework">Porting the Test Framework</span></a></li><li class="devsite-nav-item"><a href="run-tests.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-vulkan.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Running the Tests">Running the Tests</span></a></li><li class="devsite-nav-item"><a href="automate-tests.html"
+   ><span class="devsite-nav-text" title="Implementing Vulkan">Implementing Vulkan</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="sync.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Automating the Tests">Automating the Tests</span></a></li><li class="devsite-nav-item"><a href="test-groups.html"
+   ><span class="devsite-nav-text" title="Synchronization Framework">Synchronization Framework</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Testing">Testing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="implement.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Using Special Test Groups">Using Special Test Groups</span></a></li><li class="devsite-nav-item"><a href="cts-integration.html"
+   ><span class="devsite-nav-text" title="Implementation Tests">Implementation Tests</span></a></li><li class="devsite-nav-item"><a href="cts-integration.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Integrating with Android CTS">Integrating with Android CTS</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="tracing-win-transitions.html"
+   ><span class="devsite-nav-text" title="Integrating with Android CTS">Integrating with Android CTS</span></a></li><li class="devsite-nav-item"><a href="deqp-testing.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Tracing Window Transitions">Tracing Window Transitions</span></a></li>
-                      </ul>
+   ><span class="devsite-nav-text" title="deqp Testing">deqp Testing</span></a></li></ul></devsite-expandable-nav></li>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -525,16 +599,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -544,9 +619,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -555,8 +631,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../graphics.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -573,14 +650,15 @@
 
               <h1 class="devsite-page-title">Implementing Vulkan</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
 
               
     
+
 
 
 
@@ -624,208 +702,244 @@
   -->
 
 
-
-
 <p>Vulkan is a low-overhead, cross-platform API for high-performance 3D
-graphics. Like OpenGL ES, Vulkan provides tools for creating high-quality,
-real-time graphics in applications. Vulkan advantages include reductions in CPU
-overhead and support for the <a href="https://www.khronos.org/spir">SPIR-V
-Binary Intermediate</a> language.</p>
+graphics. Like OpenGL ES (GLES), Vulkan provides tools for creating high-quality,
+real-time graphics in apps. Advantages of using Vulkan include reductions in CPU
+overhead and support for the <a href="https://www.khronos.org/spir"
+class="external">SPIR-V Binary Intermediate</a> language.</p>
 
-<p class="note"><strong>Note:</strong> This section describes Vulkan
+<aside class="note"><strong>Note:</strong> This section describes Vulkan
 implementation; for details on Vulkan architecture, advantages, API, and other
 resources, see <a href="arch-vulkan-2.html">Vulkan
-Architecture</a>.</p>
+Architecture</a>.</aside>
 
-<p>To implement Vulkan, a device:</p>
+<p>To implement Vulkan successfully, a device must include:</p>
 <ul>
-<li>Must include the Vulkan Loader (provided by Android) in the build.</li>
-<li>Must include a Vulkan driver (provided by SoCs such as GPU IHVs) that
+<li>The Vulkan loader, provided by Android.</li>
+<li>A Vulkan driver, provided by SoCs such as GPU IHVs, that
 implements the
-<a href="https://www.khronos.org/registry/vulkan/specs/1.0-wsi_extensions/xhtml/vkspec.html">Vulkan
-API</a>. To support Vulkan functionality, the Android device needs capable GPU
-hardware and the associated driver. Consult your SoC vendor to request driver
-support.</li>
+<a href="https://www.khronos.org/registry/vulkan/specs/1.0-wsi_extensions/xhtml/vkspec.html"
+class="external">Vulkan API</a>. To support Vulkan functionality, the Android
+device needs Vulkan-capable GPU hardware and the associated driver. The GPU
+must also support GLES 3.1 and higher. Consult your SoC vendor to
+request driver support.</li>
 </ul>
-<p>If a Vulkan driver is available on the device, the device needs to declare
-<code>FEATURE_VULKAN_HARDWARE_LEVEL</code> and
-<code>FEATURE_VULKAN_HARDWARE_VERSION</code> system features, with versions that
-accurately reflect the capabilities of the device.</p>
 
-<h2 id=vulkan_loader>Vulkan Loader</h2>
-<p>The primary interface between Vulkan applications and a device's Vulkan
-driver is the Vulkan loader, which is part of Android Open Source Project (AOSP)
-(<code>platform/frameworks/native/vulkan</code>) and installed at
-<code>/system/lib[64]/libvulkan.so</code>. The loader provides the core Vulkan
-API entry points, as well as entry points of a few extensions that are required
-on Android and always present. In particular, Window System Integration (WSI)
-extensions are exported by the loader and primarily implemented in it rather
-than the driver. The loader also supports enumerating and loading layers that
-can expose additional extensions and/or intercept core API calls on their way to
-the driver.</p>
+<p>If a device includes a Vulkan driver, the device needs to declare
+<code translate="no" dir="ltr">FEATURE_VULKAN_HARDWARE_LEVEL</code> and
+<code translate="no" dir="ltr">FEATURE_VULKAN_HARDWARE_VERSION</code> system features, with versions that
+accurately reflect the capabilities of the device. This helps ensure that the
+  device is in compliance with
+the <a href="../../compatibility/cdd.html">Compatibility Definition Document</a> (CDD).
+</p>
 
-<p>The NDK includes a stub <code>libvulkan.so</code> library that exports the
-same symbols as the loader and which is used for linking. When running on a
-device, applications call the Vulkan functions exported from
-<code>libvulkan.so</code> (the real library, not the stub) to enter trampoline
-functions in the loader, which dispatch to the appropriate layer or driver
-based on their first argument. The <code>vkGet*ProcAddr</code> calls
-return the function pointers to which the trampolines would dispatch (i.e. it
-calls directly into the core API code), so calling through these function
-pointers (rather than the exported symbols) is slightly more efficient as it
+<h2 id="vulkan_loader">Vulkan loader</h2>
+
+<p>The Vulkan loader <code translate="no" dir="ltr">platform/frameworks/native/vulkan</code> is the
+primary interface between Vulkan apps and a device's Vulkan driver. The Vulkan
+loader is installed at <code translate="no" dir="ltr">/system/lib[64]/libvulkan.so</code>. The loader
+provides the core Vulkan API entry points, as well as the entry points of
+extensions required by the Android CDD. Window System Integration (WSI)
+extensions are exported by the loader and primarily implemented in the loader
+rather than in the driver. The loader also supports enumerating and loading
+layers that can expose additional extensions and intercept core API calls on
+their way to the driver.</p>
+
+<p>The NDK includes a stub <code translate="no" dir="ltr">libvulkan.so</code> library for
+linking. The library exports the same symbols as the loader. Apps call the functions
+exported from the real <code translate="no" dir="ltr">libvulkan.so</code> library to
+enter trampoline functions in the loader, which dispatch to the appropriate
+layer or driver based on their first argument. The <code translate="no" dir="ltr">vkGet*ProcAddr()</code>
+call returns the function pointers to which the trampolines dispatch (that is,
+it calls directly into the core API code). Calling through the function
+pointers, rather than the exported symbols, is more efficient as it
 skips the trampoline and dispatch.</p>
 
-<h2 id=driver_emun>Driver enumeration and loading</h2>
-<p>Android expects the GPUs available to the system to be known when the system
-image is built. The loader uses the existing HAL mechanism (see <code><a href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/hardware.h">hardware.h</code></a>)
-for discovering and loading the driver. Preferred paths for 32-bit and 64-bit
-Vulkan drivers are:</p>
+<h3 id="driver_emun">Driver enumeration and loading</h3>
 
-<pre class="devsite-click-to-copy">
+<p>When the system image is built, Android expects the system to know which GPUs
+are available. The loader uses the existing HAL mechanism in
+<code translate="no" dir="ltr"><a href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/hardware.h" class="external">hardware.h</code></a>
+to discover and load the driver. Preferred paths for 32-bit and 64-bit Vulkan drivers are:</p>
+
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 /vendor/lib/hw/vulkan.&lt;ro.hardware.vulkan&gt;.so
 /vendor/lib/hw/vulkan.&lt;ro.product.platform&gt;.so
 /vendor/lib64/hw/vulkan.&lt;ro.hardware.vulkan&gt;.so
 /vendor/lib64/hw/vulkan.&lt;ro.product.platform&gt;.so
 </pre>
 
-<p>Where &lt;<code>ro.hardware.vulkan</code>&gt; or
-&lt;<code>ro.product.platform</code>&gt; is replaced by the value of
-the system property of that name. For details and supported alternative
-locations, refer to <code><a href="https://android.googlesource.com/platform/hardware/libhardware/+/master/hardware.c">libhardware/hardware.c</code></a>.</p>
+<aside class="note"><strong>Note:</strong>
+<code translate="no" dir="ltr">&lt;ro.hardware.vulkan&gt;</code> and
+<code translate="no" dir="ltr">&lt;ro.product.platform&gt;</code> are replaced by the value of the system
+property of that name. For details and supported alternative locations, refer to
+<a href="https://android.googlesource.com/platform/hardware/libhardware/+/master/hardware.c"
+class="external"><code translate="no" dir="ltr">libhardware/hardware.c</code></a>.</aside>
 
-<p>In Android 7.0, the Vulkan <code>hw_module_t</code> derivative is trivial;
-only one driver is supported and the constant string
-<code>HWVULKAN_DEVICE_0</code> is passed to open. If support for multiple
-drivers is added in future versions of Android, the HAL module will export a
-list of strings that can be passed to the <code>module open</code> call.</p>
+<p>In Android 7.0 and higher, the Vulkan <code translate="no" dir="ltr">hw_module_t</code> derivative
+wraps a single <code translate="no" dir="ltr">hw_module_t</code> struct; only one driver is supported and the constant string
+<code translate="no" dir="ltr">HWVULKAN_DEVICE_0</code> is passed to <code translate="no" dir="ltr">open()</code>.</p>
 
-<p>The Vulkan <code>hw_device_t</code> derivative corresponds to a single
-driver, though that driver can support multiple physical devices. The
-<code>hw_device_t</code> structure can be extended to export
-<code>vkGetGlobalExtensionProperties</code>, <code>vkCreateInstance</code>, and
-<code>vkGetInstanceProcAddr</code> functions. The loader can find all other
-<code>VkInstance</code>, <code>VkPhysicalDevice</code>, and
-<code>vkGetDeviceProcAddr</code> functions by calling
-the <code>hw_device_t</code>'s <code>vkGetInstanceProcAddr</code>.</p>
+<p>The Vulkan <code translate="no" dir="ltr">hw_device_t</code> derivative corresponds to a single
+driver that can support multiple physical devices. The
+<code translate="no" dir="ltr">hw_device_t</code> structure can extend to export
+<code translate="no" dir="ltr">vkGetGlobalExtensionProperties()</code>, <code translate="no" dir="ltr">vkCreateInstance()</code>, and
+<code translate="no" dir="ltr">vkGetInstanceProcAddr()</code> functions. The loader can find all other
+<code translate="no" dir="ltr">VkInstance()</code>, <code translate="no" dir="ltr">VkPhysicalDevice()</code>, and
+<code translate="no" dir="ltr">vkGetDeviceProcAddr()</code> functions by calling
+the <code translate="no" dir="ltr">hw_device_t</code> structure's <code translate="no" dir="ltr">vkGetInstanceProcAddr()</code>.</p>
 
-<h2 id=layer_discover>Layer discovery and loading</h2>
+<h3 id="layer_discover">Layer discovery and loading</h3>
+
 <p>The Vulkan loader supports enumerating and loading layers that can expose
-additional extensions and/or intercept core API calls on their way to the
-driver. Android does not include layers on the system image; however,
-applications may include layers in their APK.</p>
+additional extensions and intercept core API calls on their way to the
+driver. Android doesn't include layers on the system image; however,
+apps may include layers in their APK.</p>
+
 <p>When using layers, keep in mind that Android's security model and policies
-differ significantly from other platforms. In particular, Android does not allow
-loading external code into a non-debuggable process on production (non-rooted)
+differ significantly from other platforms. In particular, Android doesn't allow
+loading external code into a nondebuggable process on production (nonrooted)
 devices, nor does it allow external code to inspect or control the process's
-memory, state, etc. This includes a prohibition on saving core dumps, API
-traces, etc. to disk for later inspection. Only layers delivered as part of the
-application are enabled on production devices, and drivers must not provide
+memory, state, and so on. This includes a prohibition on saving core dumps, API
+traces, and so on to disk for later inspection. Only layers delivered as part of
+nondebuggable apps are enabled on production devices, and drivers must not provide
 functionality that violates these policies.</p>
 
 <p>Use cases for layers include:</p>
 <ul>
-<li><strong>Development-time layers</strong>. These layers (validation layers,
-shims for tracing/profiling/debugging tools, etc.) should not be installed on
-the system image of production devices as they waste space for users and should
-be updateable without requiring a system update. Developers who want to use one
-of these layers during development can modify the application package (e.g.
-adding a file to their native libraries directory). IHV and OEM engineers who
-want to diagnose failures in shipping, unmodifiable apps are assumed to have
-access to non-production (rooted) builds of the system image.</li>
-<li><strong>Utility layers</strong>. These layers almost always expose
+<li><strong>Development-time layers</strong> &mdash; Validation
+layers and shims for tracing/profiling/debugging tools shouldn't be installed on
+the system image of production devices. Validation layers and shims for
+tracing/profiling/debugging tools should be updatable without a system
+image. Developers who want to use one
+of these layers during development can modify the app package, for example,
+by adding a file to their native libraries directory. IHV and OEM engineers who
+want to diagnose failures in shipping unmodifiable apps are assumed to have
+access to nonproduction (rooted) builds of the system image, unless those apps
+are debuggable. For more information see <a
+href="https://developer.android.google.cn/ndk/guides/graphics/validation-layer#vl-adb"
+class="external">Vulkan validation layers on Android</a>.</li>
+<li><strong>Utility layers</strong> &mdash; These layers expose
 extensions, such as a layer that implements a memory manager for device memory.
-Developers choose layers (and versions of those layers) to use in their
-application; different applications using the same layer may still use
+Developers choose layers, and versions of those layers, to use in their
+app; different apps using the same layer may still use
 different versions. Developers choose which of these layers to ship in their
-application package.</li>
-<li><strong>Injected (implicit) layers</strong>. Includes layers such as
-framerate, social network, or game launcher overlays provided by the user or
-some other application without the application's knowledge or consent. These
-violate Android's security policies and are not supported.</li>
+app package.</li>
+<li><strong>Injected (implicit) layers</strong> &mdash; Includes layers such as
+frame rate, social network, and game launcher overlays provided by the user or
+some other app without the app's knowledge or consent. These
+violate Android's security policies and aren't supported.</li>
 </ul>
 
-<p>In the normal state, the loader searches for layers only in the application's
-native library directory and attempts to load any library with a name matching a
-particular pattern (e.g. <code>libVKLayer_foo.so</code>). It does not need a
-separate manifest file as the developer deliberately included these layers and
-reasons to avoid loading libraries before enabling them don't apply.</p>
+<p>For nondebuggable apps, the loader searches for layers only in the
+app's native library directory and attempts to load any library with a name
+matching a particular pattern (for example, <code translate="no" dir="ltr">libVKLayer_foo.so</code>).</p>
 
-<p>Android allows layers to be ported with build-environment changes between
+<p>For debuggable apps, the loader searches for layers in
+<code translate="no" dir="ltr">/data/local/debug/vulkan</code> and attempts to load any library matching
+a particular pattern.</p>
+
+<p>Android enables layers to be ported with build-environment changes between
 Android and other platforms. For details on the interface between layers and the
-loader, refer to
-<a href="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/blob/master/loader/LoaderAndLayerInterface.md">Vulkan
-Loader Specification and Architecture Overview</a>. Versions of the LunarG
-validation layers that have been verified to build and work on Android are
-hosted in the android_layers branch of the
-<a href="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/tree/android_layers">KhronosGroup/Vulkan-LoaderAndValidationLayers</a>
-project on GitHub.</p>
+loader, see
+<a href="https://github.com/KhronosGroup/Vulkan-Loader/blob/master/loader/LoaderAndLayerInterface.md" class="external">
+Architecture of the Vulkan Loader Interfaces</a>. The Khronos-maintained
+validation layers are hosted in
+<a href="https://github.com/KhronosGroup/Vulkan-ValidationLayers"
+class="external">Vulkan Validation Layers</a>.</p>
 
 
-<h2 id="versions">Vulkan API Versions and Capabilities</h2>
-<p>This section describes the supported Vulkan API versions.</p>
+<h2 id="versions">Vulkan API versions and capabilities</h2>
 
-<h3 id="v1_0">Vulkan API version 1.0</h3>
-<p>The Android 7.0 release added support for Vulkan API version 1.0.</p>
-
-<h3 id="v1_1">Vulkan API version 1.1</h3>
-<p>The Android 9 release introduces support for the Vulkan 1.1 graphics
-API. For more information about the Vulkan 1.1 API, see the
-<a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html">
-Vulkan 1.1 API spec</a>.</p>
+<p>Android 9 and higher support the Vulkan API version
+1.1. Android 7 to Android 9 support the Vulkan API version 1.0.
+For more information about the Vulkan 1.1 API, see the
+<a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html"
+class="external">Vulkan 1.1 API spec</a>.</p>
 
 <h4>Vulkan 1.1 support overview</h4>
-<p>Vulkan 1.1 support includes support for Vulkan 1.1 and memory/synchronization interop.
-This enables OEMs to support Vulkan 1.1 on devices, and developers to determine whether Vulkan 1.1
-is supported on a device, and use it effectively when it is. Vulkan 1.1 does not have new hardware
-requirements beyond Vulkan 1.0, but most of the implementation is in the SOC-specific graphics
-driver, not in the framework.</p>
+
+<p>Vulkan 1.1 includes support for memory/synchronization interop, which
+enables OEMs to support Vulkan 1.1 on devices. Additionally,
+memory/synchronization interop enables developers
+to determine whether Vulkan 1.1 is supported on a device, and use it effectively
+when it is. Vulkan 1.1 has the same hardware requirements as Vulkan 1.0, but most of the
+implementation is in the SOC-specific graphics driver, not in the framework.</p>
+
 <p>The most important Vulkan 1.1 features for Android are:</p>
+
 <ul>
-<li>Support for importing and exporting memory buffers and synchronization objects from outside
-Vulkan (for interop with camera, codecs, and GLES)</li>
+<li>Support for importing and exporting memory buffers and synchronization
+objects from outside Vulkan (for interop with camera, codecs, and GLES)</li>
 <li>Support for YCbCr formats</li>
 </ul>
-<p>Vulkan 1.1 also includes several smaller features and API usability enhancements.</p>
+
+<p>Vulkan 1.1 also includes several smaller features and API usability
+enhancements.</p>
 
 <h4>Implementing Vulkan 1.1</h4>
-<p>Vulkan 1.1 is optional in the Android 9 release. To use it, a device
-must have a GPU that meets the minimum Vulkan 1.1 capabilities.</p>
+
+<p>Android devices should support Vulkan 1.1 if they:</p>
+
+<ul>
+  <li>Launch with Android 10.</li>
+  <li>Support a 64-bit ABI.</li>
+  <li>Aren't low memory.</li>
+</ul>
+
+<p>Other devices can optionally support Vulkan 1.1.</p>
+
 <p>To implement Vulkan 1.1:</p>
+
 <ol>
-<li>Add a Vulkan driver that supports Vulkan 1.1 plus the additional Android 1.1 requirements
-(make sure to view the 9 API level documentation), or update the existing Vulkan 1.0 driver.</li>
-<li>You might need to update the kernel GPU driver, depending on your implementation.</li>
-<li>Ensure <code>PackageManager#hasSystemFeature(PackageManager.FEATURE_VULKAN_HARDWARE_VERSION, 0x401000)</code>
-returns <code>true</code> by adding a rule like the following to an appropriate <code>device.mk</code> file:
-<p><code>
-PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:
+<li>Add a Vulkan driver that supports Vulkan 1.1 plus the additional Android 1.1
+<a href="../../compatibility/cdd.html">CDD requirements</a>, or update the existing Vulkan
+1.0 driver.</li>
+<li>Ensure that
+<code translate="no" dir="ltr">PackageManager#hasSystemFeature(PackageManager.FEATURE_VULKAN_HARDWARE_VERSION, 0x401000)</code>
+returns
+<code translate="no" dir="ltr">true</code> by adding a rule such as the following to an appropriate
+<code translate="no" dir="ltr">device.mk</code> file:
+<pre class="prettyprint" translate="no" dir="ltr">PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:
 $(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml
-</code></p></li>
+</pre></li>
 </ol>
 
-<h4>Customizing Vulkan 1.1</h4>
-<p>Applications that depend on Vulkan 1.1 are not compatible with devices that don’t provide Vulkan
-1.1 support. Some applications might not require Vulkan 1.1 but will provide additional features or
-performance when it is present.</p>
+<aside class="note"><strong>Note:</strong> Apps that depend on Vulkan 1.1 can
+run only on devices that support Vulkan 1.1. Some apps might not require
+Vulkan 1.1 but provide additional features or performance when it's
+present.</aside>
 
-<h2 id=wsi>Window System Integration (WSI)</h2>
-<p>The Window System Integration (WSI) extensions <code>VK_KHR_surface</code>,
-<code>VK_KHR_android_surface</code>, and <code>VK_KHR_swapchain</code> are
-implemented by the platform and live in <code>libvulkan.so</code>. The
-<code>VkSurfaceKHR</code> and <code>VkSwapchainKHR</code> objects and all
-interaction with <code>ANativeWindow</code> is handled by the platform and is
-not exposed to drivers. The WSI implementation relies on the
-<code>VK_ANDROID_native_buffer</code> extension (described below) which must be
-supported by the driver; this extension is only used by the WSI implementation
-and will not be exposed to applications.</p>
+<h2 id="wsi">Window System Integration (WSI)</h2>
 
-<h3 id=gralloc_usage_flags>Gralloc usage flags</h3>
-<p>Implementations may need swapchain buffers to be allocated with
-implementation-defined private gralloc usage flags. When creating a swapchain,
-Android 8.0 asks the driver to translate the requested format and image usage
-flags into gralloc usage flags by calling:</p>
+<p>In <code translate="no" dir="ltr">libvulkan.so</code>, the driver implements the following
+Window System Integration (WSI) extensions:</p>
 
-<pre class="devsite-click-to-copy">
+<ul>
+  <li><code translate="no" dir="ltr">VK_KHR_surface</code></li>
+  <li><code translate="no" dir="ltr">VK_KHR_android_surface</code></li>
+  <li><code translate="no" dir="ltr">VK_KHR_swapchain</code></li>
+  <li><code translate="no" dir="ltr">VK_KHR_driver_properties</code>, implemented for Vulkan 1.1 in
+    Android 10 only</li>
+  <li><code translate="no" dir="ltr">VK_GOOGLE_display_timing</code>, implemented for any Vulkan version
+    in Android 10</li>
+</ul>
+
+<p>The <code translate="no" dir="ltr">VkSurfaceKHR</code> and <code translate="no" dir="ltr">VkSwapchainKHR</code> objects and all
+interactions with <code translate="no" dir="ltr">ANativeWindow</code> are handled by the platform and aren't
+exposed to drivers. The WSI implementation relies on the
+<code translate="no" dir="ltr">VK_ANDROID_native_buffer</code> extension, which must be
+supported by the driver; this extension is used only by the WSI implementation
+and isn't exposed to apps.</p>
+
+<h3 id="gralloc_usage_flags">Gralloc usage flags</h3>
+
+<p>Vulkan implementations may need swapchain buffers to be allocated with
+implementation-defined private Gralloc usage flags. When creating a swapchain,
+Android asks the driver to translate the requested format and image usage
+flags into Gralloc usage flags by calling:</p>
+
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 typedef enum VkSwapchainImageUsageFlagBitsANDROID {
     VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_ANDROID = 0x00000001,
     VK_SWAPCHAIN_IMAGE_USAGE_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
@@ -842,18 +956,20 @@ VkResult VKAPI vkGetSwapchainGrallocUsage2ANDROID(
 );
 </pre>
 
-<p>The <code>format</code> and <code>imageUsage</code> parameters are taken from
-the <code>VkSwapchainCreateInfoKHR</code> structure. The driver should fill
-<code>*grallocConsumerUsage</code> and <code>*grallocProducerUsage</code> with
-the gralloc usage flags required for the format
-and usage. The usage returned by the driver will be combined with the usage flags
-requested by the swapchain consumer when allocating buffers.</p>
+<p>The <code translate="no" dir="ltr">format</code> and <code translate="no" dir="ltr">imageUsage</code> parameters are taken from
+the <code translate="no" dir="ltr">VkSwapchainCreateInfoKHR</code> structure. The driver should fill
+<code translate="no" dir="ltr">*grallocConsumerUsage</code> and <code translate="no" dir="ltr">*grallocProducerUsage</code> with
+the Gralloc usage flags required for the format
+and usage. The usage flags returned by the driver are combined with the usage
+flags requested by the swapchain consumer when allocating buffers.</p>
 
-<p>An earlier version of this function is called by Android 7.x. In Android 8.0
-it is deprecated but will still be called if
-  <code>vkGetSwapchainGrallocUsage2ANDROID</code> isn't provided by the driver:</p>
+<p>Android 7.x calls an earlier version of <code translate="no" dir="ltr">VkSwapchainImageUsageFlagsANDROID()</code>,
+named <code translate="no" dir="ltr">vkGetSwapchainGrallocUsageANDROID()</code>. Android 8.0 and higher deprecates
+<code translate="no" dir="ltr">vkGetSwapchainGrallocUsageANDROID()</code> but still calls
+<code translate="no" dir="ltr">vkGetSwapchainGrallocUsageANDROID()</code> if
+<code translate="no" dir="ltr">vkGetSwapchainGrallocUsage2ANDROID()</code> isn't provided by the driver:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 VkResult VKAPI vkGetSwapchainGrallocUsageANDROID(
     VkDevice            device,
     VkFormat            format,
@@ -862,21 +978,21 @@ VkResult VKAPI vkGetSwapchainGrallocUsageANDROID(
 );
 </pre>
 
-<p>This earlier version does not support swapchain usage flags or extended gralloc
-usage flags.</p>
+<p><code translate="no" dir="ltr">vkGetSwapchainGrallocUsageANDROID()</code> doesn't support swapchain usage
+flags or extended Gralloc usage flags.</p>
 
-<h3 id=gralloc_usage_flags>Gralloc-backed images</h3>
+<h3 id="gralloc_usage_flags">Gralloc-backed images</h3>
 
-<p><code>VkNativeBufferANDROID</code> is a <code>vkCreateImage</code> extension
-structure for creating an image backed by a gralloc buffer. This structure is
-provided to <code>vkCreateImage</code> in the <code>VkImageCreateInfo</code>
-structure chain. Calls to <code>vkCreateImage</code> with this structure happen
-during the first call to <code>vkGetSwapChainInfoWSI(..
+<p><code translate="no" dir="ltr">VkNativeBufferANDROID</code> is a <code translate="no" dir="ltr">vkCreateImage</code> extension
+structure for creating an image backed by a Gralloc buffer. <code translate="no" dir="ltr">VkNativeBufferANDROID</code> is
+provided to <code translate="no" dir="ltr">vkCreateImage()</code> in the <code translate="no" dir="ltr">VkImageCreateInfo</code>
+structure chain. Calls to <code translate="no" dir="ltr">vkCreateImage()</code> with <code translate="no" dir="ltr">VkNativeBufferANDROID</code> happen
+during the first call to <code translate="no" dir="ltr">vkGetSwapChainInfoWSI(..
 VK_SWAP_CHAIN_INFO_TYPE_IMAGES_WSI ..)</code>. The WSI implementation allocates
 the number of native buffers requested for the swapchain, then creates a
-<code>VkImage</code> for each one:</p>
+<code translate="no" dir="ltr">VkImage</code> for each one:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 typedef struct {
     VkStructureType             sType; // must be VK_STRUCTURE_TYPE_NATIVE_BUFFER_ANDROID
     const void*                 pNext;
@@ -900,11 +1016,13 @@ typedef struct {
 } VkNativeBufferANDROID;
 </pre>
 
-<p>When creating a gralloc-backed image, the <code>VkImageCreateInfo</code> has
+<p>When creating a Gralloc-backed image, <code translate="no" dir="ltr">VkImageCreateInfo</code> has
 the following data:</p>
 
-<pre class="devsite-click-to-copy">
- .imageType           = VK_IMAGE_TYPE_2D
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
+  .sType               = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO
+  .pNext               = the above VkNativeBufferANDROID structure
+  .imageType           = VK_IMAGE_TYPE_2D
   .format              = a VkFormat matching the format requested for the gralloc buffer
   .extent              = the 2D dimensions requested for the gralloc buffer
   .mipLevels           = 1
@@ -918,13 +1036,13 @@ the following data:</p>
   .pQueueFamilyIndices = VkSwapChainCreateInfoWSI::pQueueFamilyIndices
 </pre>
 
-In Android 8.0 and later, the platform will provide a
-<code>VkSwapchainImageCreateInfo</code> extension structure in the
-<code>VkImageCreateInfo</code> chain provided to <code>vkCreateImage</code>
+<p>In Android 8.0 and higher, the platform provides a
+<code translate="no" dir="ltr">VkSwapchainImageCreateInfo</code> extension structure in the
+<code translate="no" dir="ltr">VkImageCreateInfo</code> chain provided to <code translate="no" dir="ltr">vkCreateImage</code>
 when any swapchain image usage flags are required for the swapchain.
-The extension structure contains the swapchain image usage flags:
+The extension structure contains the swapchain image usage flags:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 typedef struct {
     VkStructureType                        sType; // must be VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_ANDROID
     const void*                            pNext;
@@ -933,12 +1051,27 @@ typedef struct {
 } VkSwapchainImageCreateInfoANDROID;
 </pre>
 
-<h3 id=acquire_image>Acquiring images</h3>
-<p><code>vkAcquireImageANDROID</code> acquires ownership of a swapchain image
-and imports an externally-signalled native fence into both an existing
-<code>VkSemaphore</code> object and an existing <code>VkFence</code> object:</p>
+<p>In Android 10 and higher, the platform supports
+<code translate="no" dir="ltr">VK_KHR_swapchain</code> v70, so the Vulkan app is able to create a
+<code translate="no" dir="ltr">VkImage</code> backed by swapchain memory. The app first calls
+<code translate="no" dir="ltr">vkCreateImage</code> with a <code translate="no" dir="ltr">VkImageSwapchainCreateInfoKHR</code>
+structure chained to the <code translate="no" dir="ltr">VkImageCreateInfo</code> structure. Then the
+app calls <code translate="no" dir="ltr">vkBindImageMemory2(KHR)</code> with a
+<code translate="no" dir="ltr">VkBindImageMemorySwapchainInfoKHR</code> structure chained to the
+<code translate="no" dir="ltr">VkBindImageMemoryInfo</code> structure. The <code translate="no" dir="ltr">imageIndex</code>
+specified in the <code translate="no" dir="ltr">VkBindImageMemorySwapchainInfoKHR</code> structure must
+be a valid swapchain image index. Meanwhile, the platform provides a
+<code translate="no" dir="ltr">VkNativeBufferANDROID</code> extension structure with the corresponding
+Gralloc buffer information to the <code translate="no" dir="ltr">VkBindImageMemoryInfo</code> chain, so
+the driver knows which Gralloc buffer to bind the <code translate="no" dir="ltr">VkImage</code> with.</p>
 
-<pre class="devsite-click-to-copy">
+<h3 id="acquire_image">Acquiring images</h3>
+
+<p><code translate="no" dir="ltr">vkAcquireImageANDROID</code> acquires ownership of a swapchain image
+and imports an externally signaled native fence into both an existing
+<code translate="no" dir="ltr">VkSemaphore</code> object and an existing <code translate="no" dir="ltr">VkFence</code> object:</p>
+
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 VkResult VKAPI vkAcquireImageANDROID(
     VkDevice            device,
     VkImage             image,
@@ -948,30 +1081,32 @@ VkResult VKAPI vkAcquireImageANDROID(
 );
 </pre>
 
-<p>This function is called during <code>vkAcquireNextImageWSI</code> to import a
-native fence into the <code>VkSemaphore</code> and <code>VkFence</code> objects
-provided by the application (however, both semaphore and fence objects are
+<p><code translate="no" dir="ltr">vkAcquireImageANDROID()</code> is called during
+<code translate="no" dir="ltr">vkAcquireNextImageKHR</code> to import a
+native fence into the <code translate="no" dir="ltr">VkSemaphore</code> and <code translate="no" dir="ltr">VkFence</code> objects
+provided by the app (however, both semaphore and fence objects are
 optional in this call). The driver may also use this opportunity to recognize
-and handle any external changes to the gralloc buffer state; many drivers won't
-need to do anything here. This call puts the <code>VkSemaphore</code> and
-<code>VkFence</code> into the same pending state as
-<code>vkQueueSignalSemaphore</code> and <code>vkQueueSubmit</code> respectively,
-so queues can wait on the semaphore and the application can wait on the fence.</p>
+and handle any external changes to the Gralloc buffer state; many drivers won't
+need to do anything here. This call puts <code translate="no" dir="ltr">VkSemaphore</code> and
+<code translate="no" dir="ltr">VkFence</code> into the same pending state as
+<code translate="no" dir="ltr">vkQueueSignalSemaphore</code> and <code translate="no" dir="ltr">vkQueueSubmit</code> respectively,
+so queues can wait on the semaphore and the app can wait on the fence.</p>
 
-<p>Both objects become signalled when the underlying native fence signals; if
-the native fence has already signalled, then the semaphore is in the signalled
-state when this function returns. The driver takes ownership of the fence fd and
-is responsible for closing it when no longer needed. It must do so even if
-neither a semaphore or fence object is provided, or even if
-<code>vkAcquireImageANDROID</code> fails and returns an error. If fenceFd is -1,
-it is as if the native fence was already signalled.</p>
+<p>Both objects become signaled when the underlying native fence signals; if
+the native fence has already signaled, then the semaphore is in the signaled
+state when this function returns. The driver takes ownership of the fence file
+descriptor and closes the fence file descriptor when no longer needed. The driver
+must do so even if neither a semaphore or fence object is provided, or even if
+<code translate="no" dir="ltr">vkAcquireImageANDROID</code> fails and returns an error. If
+<code translate="no" dir="ltr">fenceFd</code> is -1, it's as if the native fence was already
+signaled.</p>
 
-<h3 id=acquire_image>Releasing images</h3>
-<p><code>vkQueueSignalReleaseImageANDROID</code> prepares a swapchain image for
-external use, and creates a native fence and schedules it to be signalled after
+<h3 id="acquire_image">Releasing images</h3>
+<p><code translate="no" dir="ltr">vkQueueSignalReleaseImageANDROID</code> prepares a swapchain image for
+external use, creates a native fence, and schedules the native fence to be signaled after
 the input semaphores have signaled:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 VkResult VKAPI vkQueueSignalReleaseImageANDROID(
     VkQueue             queue,
     uint32_t            waitSemaphoreCount,
@@ -981,36 +1116,66 @@ VkResult VKAPI vkQueueSignalReleaseImageANDROID(
 );
 </pre>
 
-<p>This API is called during <code>vkQueuePresentKHR</code> on the provided
-queue. Effects are similar to <code>vkQueueSignalSemaphore</code>, except with a
-native fence instead of a semaphore. The native fence must not signal until the
-<code>waitSemaphoreCount</code> semaphores in <code>pWaitSemaphores</code> have
-signaled. Unlike <code>vkQueueSignalSemaphore</code>,
-however, this call creates and returns the synchronization object that will be
-signalled rather than having it provided as input. If the queue is already idle
-when this function is called, it is allowed (but not required) to set
-<code>*pNativeFenceFd</code> to -1. The file descriptor returned in
-*<code>pNativeFenceFd</code> is owned and will be closed by the caller.</p>
+
+<p><code translate="no" dir="ltr">vkQueuePresentKHR()</code> calls <code translate="no" dir="ltr">vkQueueSignalReleaseImageANDROID()</code>
+on the provided queue. The driver must produce a native fence that doesn't signal
+until all <code translate="no" dir="ltr">waitSemaphoreCount</code> semaphores in
+<code translate="no" dir="ltr">pWaitSemaphores</code> signal, and any additional work required to
+prepare <code translate="no" dir="ltr">image</code> for presentation completes.</p>
+
+<p>If the wait semaphores (if any) already signaled, and <code translate="no" dir="ltr">queue</code> is
+already idle, the driver can set <code translate="no" dir="ltr">*pNativeFenceFd</code>
+ to <code translate="no" dir="ltr">-1</code> instead of an actual native fence file descriptor, indicating that
+there's nothing to wait for. The caller owns and closes the file descriptor
+returned in <code translate="no" dir="ltr">*pNativeFenceFd</code>.</p>
 
 <p>Many drivers can ignore the image parameter, but some may need to prepare
-CPU-side data structures associated with a gralloc buffer for use by external
+CPU-side data structures associated with a Gralloc buffer for use by external
 image consumers. Preparing buffer contents for use by external consumers should
-have been done asynchronously as part of transitioning the image to
-<code>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</code>.</p>
+be done asynchronously as part of transitioning the image to
+<code translate="no" dir="ltr">VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</code>.</p>
 
-If the image was created with
-<code>VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_ANDROID</code>, then the driver must
-allow <code>vkQueueSignalReleaseImageANDROID</code> to be called repeatedly
-without intervening calls to <code>vkAcquireImageANDROID</code>.
+<p>If the image was created with
+<code translate="no" dir="ltr">VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_ANDROID</code>, then the driver must
+allow <code translate="no" dir="ltr">vkQueueSignalReleaseImageANDROID()</code> to be called repeatedly
+without intervening calls to <code translate="no" dir="ltr">vkAcquireImageANDROID()</code>.</p>
 
-<h2 id=validation>Validation</h2>
+<h3 id="shared_presentable_image">Shared presentable image support</h3>
+
+<p>Some devices can share ownership of a single image between
+the display pipeline and the Vulkan implementation to minimize latency.
+In Android 9 and higher, the loader conditionally advertises the
+<code translate="no" dir="ltr">VK_KHR_shared_presentable_image</code> extension based on the driver's
+response to a call to <code translate="no" dir="ltr">vkGetPhysicalDeviceProperties2</code>.</p>
+
+<p>If the driver doesn't support either Vulkan 1.1 or the
+<code translate="no" dir="ltr">VK_KHR_physical_device_properties2</code> extension, the loader doesn't
+advertise support for shared presentable images. Otherwise, the loader queries
+the driver capabilities by calling <code translate="no" dir="ltr">vkGetPhysicalDeviceProperties2()</code>
+and including the following structure in the
+<code translate="no" dir="ltr">VkPhysicalDeviceProperties2::pNext</code> chain:</p>
+
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
+typedef struct {
+    VkStructureType sType; // must be VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_ANDROID
+    const void*     pNext;
+    VkBool32        sharedImage;
+} VkPhysicalDevicePresentationPropertiesANDROID;
+</pre>
+
+<p>If the driver can share ownership of an image with the display
+system, it sets the <code translate="no" dir="ltr">sharedImage</code> member to <code translate="no" dir="ltr">VK_TRUE</code>.</p>
+
+<h2 id="validation">Validation</h2>
+
 <p>OEMs can test their Vulkan implementation using CTS, which includes:</p>
+
 <ul>
-<li><a href="cts-integration-2.html">drawElements
-Quality Program (dEQP)</a> tests in the <code>CtsDeqpTestCases</code> module, which include
-functional API tests for Vulkan 1.0 and 1.1.</li>
-<li>The <code>CtsGraphicsTestCases</code> module, which tests that the device is configured
-correctly for Vulkan capabilities it supports.</li>
+<li><a href="cts-integration.html">Khronos Vulkan Conformance tests</a>
+in the <code translate="no" dir="ltr">CtsDeqpTestCases</code> module,
+which include functional API tests for Vulkan 1.0 and 1.1.</li>
+<li>The <code translate="no" dir="ltr">CtsGraphicsTestCases</code> module, which tests that the device is
+configured correctly for Vulkan capabilities it supports.</li>
 </ul>
 
 
@@ -1023,17 +1188,17 @@ correctly for Vulkan capabilities it supports.</li>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1240,8 +1405,9 @@ correctly for Vulkan capabilities it supports.</li>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1307,54 +1473,49 @@ correctly for Vulkan capabilities it supports.</li>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/graphics/implement-vulkan by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:29:52 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/graphics/implement-vulkan by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:01:35 GMT -->
 </html>

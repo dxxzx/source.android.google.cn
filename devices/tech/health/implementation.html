@@ -1,25 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/health/implementation by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:32:05 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/health/implementation by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:01:47 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Implementing Health &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Implementing Health &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="implementation.html">
-
-  <meta property="og:locale" content="en">
-
-
-
-  
-
-  
-
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -27,26 +12,46 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="implementation.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="implementation.html">      
+<title>Implementing Health &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Implementing Health &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="implementation.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+
+  
+
+  
+
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -69,18 +74,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -116,7 +122,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -127,7 +133,7 @@
 
         </tab>
                         <tab active>
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
    aria-label="Configure, selected"         data-category="Site-Wide Custom Events"
@@ -152,12 +158,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -165,7 +171,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -181,21 +187,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -208,16 +244,16 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
-   title="ART"
+   title="Overview"
            data-category="Site-Wide Custom Events"
-        data-label="Tab: ART"
+        data-label="Tab: Overview"
    >
-  ART
+  Overview
 </a>
 
         </tab>
@@ -244,7 +280,7 @@
 
         </tab>
                         <tab active>
-          <a href="../health.html"
+          <a href="../perf.html"
    class="gc-analytics-event"
    title="Performance"
    aria-label="Performance, selected"         data-category="Site-Wide Custom Events"
@@ -255,7 +291,7 @@
 
         </tab>
                         <tab >
-          <a href="../config/perms-whitelist.html"
+          <a href="../config.html"
    class="gc-analytics-event"
    title="Permissions"
            data-category="Site-Wide Custom Events"
@@ -277,6 +313,17 @@
 
         </tab>
                         <tab >
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="Runtime"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Runtime"
+   >
+  Runtime
+</a>
+
+        </tab>
+                        <tab >
           <a href="../ota.html"
    class="gc-analytics-event"
    title="Updates"
@@ -294,8 +341,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -306,7 +356,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -342,7 +405,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -352,7 +415,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -362,12 +425,12 @@
   
                                             <ul class="devsite-nav-responsive-tabs">
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../dalvik.html"
+    <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
-     data-label="Responsive Tab: ART">
-      <span class="devsite-nav-text" >ART</span>
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
         </a>
   </li>
 
@@ -392,20 +455,20 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../health.html"
+    <a href="../perf.html"
      id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Performance">
       <span class="devsite-nav-text" menu="_book">Performance</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../config/perms-whitelist.html"
+    <a href="../config.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -421,6 +484,16 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Power">
       <span class="devsite-nav-text" >Power</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Runtime">
+      <span class="devsite-nav-text" >Runtime</span>
         </a>
   </li>
 
@@ -459,37 +532,43 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Health">Health</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../health.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../perf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item"><a href="../perf/apk-caching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="APK Caching">APK Caching</span></a></li>
+  <li class="devsite-nav-item"><a href="../perf/boot-times.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Boot Times">Boot Times</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Health">Health</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../health.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implementation.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Implementing Health">Implementing Health</span></a></li><li class="devsite-nav-item"><a href="deprecation.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Deprecating health@1.0">Deprecating health@1.0</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="../perf/apk-caching.html"
+  <li class="devsite-nav-item"><a href="../perf/cgroups.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="APK Caching">APK Caching</span></a></li>
-                          <li class="devsite-nav-item"><a href="../perf/boot-times.html"
+   ><span class="devsite-nav-text" title="Cgroup Abstraction Layer">Cgroup Abstraction Layer</span></a></li>
+  <li class="devsite-nav-item"><a href="../perf/lmkd.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Boot Times">Boot Times</span></a></li>
-                          <li class="devsite-nav-item"><a href="../perf/lmkd.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="LMKD in Userspace">LMKD in Userspace</span></a></li>
-                          <li class="devsite-nav-item"><a href="../perf/low-ram.html"
+   ><span class="devsite-nav-text" title="Low Memory Killer Daemon (LMKD)">Low Memory Killer Daemon (LMKD)</span></a></li>
+  <li class="devsite-nav-item"><a href="../perf/low-ram.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Low RAM">Low RAM</span></a></li>
-                          <li class="devsite-nav-item"><a href="../perf/pgo.html"
+  <li class="devsite-nav-item"><a href="../perf/pgo.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Profile Guided Optimization (PGO)">Profile Guided Optimization (PGO)</span></a></li>
-                          <li class="devsite-nav-item"><a href="../perf/task-snapshots-2.html"
+  <li class="devsite-nav-item"><a href="../perf/task-snapshots.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Task Snapshots">Task Snapshots</span></a></li>
-                          <li class="devsite-nav-item"><a href="../perf/compatibility-wal.html"
+  <li class="devsite-nav-item"><a href="../perf/compatibility-wal.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Write-Ahead Logging">Write-Ahead Logging</span></a></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -497,16 +576,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -516,9 +596,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -527,9 +608,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../health.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../perf.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
@@ -545,13 +627,14 @@
 
               <h1 class="devsite-page-title">Implementing Health</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
 
               
+
 
 
 
@@ -595,12 +678,12 @@
 
 
 
-<p>All <code>healthd</code> code has been refactored into health@2.0-impl and
-<code>libhealthservice</code>, then modified to implement health@2.0 HAL. These two
+<p>All <code translate="no" dir="ltr">healthd</code> code has been refactored into health@2.0-impl and
+<code translate="no" dir="ltr">libhealthservice</code>, then modified to implement health@2.0 HAL. These two
 libraries are linked statically by health@2.0-service, enabling it to do the
-work previously done by <code>healthd</code> (i.e. run the <code>healthd_mainloop</code> and do
+work previously done by <code translate="no" dir="ltr">healthd</code> (i.e. run the <code translate="no" dir="ltr">healthd_mainloop</code> and do
 polling). In init, the health@2.0-service registers an implementation of the
-interface <code>IHealth</code> to <code>hwservicemanager</code>. When upgrading devices with an
+interface <code translate="no" dir="ltr">IHealth</code> to <code translate="no" dir="ltr">hwservicemanager</code>. When upgrading devices with an
 Android 8.x vendor image and an Android 9 framework,
 health@2.0 service might not be provided by the vendor image. This is enforced
 by the
@@ -609,29 +692,29 @@ by the
 <p>To resolve this issue:</p>
 
 <ol>
-<li><code>healthd</code> registers <code>IHealth</code> to <code>hwservicemanager</code> (despite being a system
-daemon). <code>IHealth</code> is added to the system manifest, with instance name
+<li><code translate="no" dir="ltr">healthd</code> registers <code translate="no" dir="ltr">IHealth</code> to <code translate="no" dir="ltr">hwservicemanager</code> (despite being a system
+daemon). <code translate="no" dir="ltr">IHealth</code> is added to the system manifest, with instance name
 &quot;backup&quot;.</li>
-<li>Framework and <code>storaged</code> communicate with <code>healthd</code> via <code>hwbinder</code> instead
-of <code>binder</code>.</li>
-<li>Code for framework and <code>storaged</code> are changed to fetch the instance
+<li>Framework and <code translate="no" dir="ltr">storaged</code> communicate with <code translate="no" dir="ltr">healthd</code> via <code translate="no" dir="ltr">hwbinder</code> instead
+of <code translate="no" dir="ltr">binder</code>.</li>
+<li>Code for framework and <code translate="no" dir="ltr">storaged</code> are changed to fetch the instance
 &quot;default&quot; if available, then &quot;backup&quot;.
 <ul>
-<li>C++ client code uses the logic defined in <code>libhealthhalutils</code>.</li>
-<li>Java client code uses the logic defined in <code>HealthServiceWrapper</code>.</li>
+<li>C++ client code uses the logic defined in <code translate="no" dir="ltr">libhealthhalutils</code>.</li>
+<li>Java client code uses the logic defined in <code translate="no" dir="ltr">HealthServiceWrapper</code>.</li>
 </ul></li>
 <li>After IHealth/default is widely available and Android 8.1 vendor images are
-deprecated, IHealth/backup and <code>healthd</code> can be deprecated. For more
+deprecated, IHealth/backup and <code translate="no" dir="ltr">healthd</code> can be deprecated. For more
 details, see <a href="deprecation.html">Deprecating health@1.0</a>.</li>
 </ol>
 
 <h2 id="board-specific_build_variables_for_healthd">Board-specific build variables for healthd</h2>
 
-<p><code>BOARD_PERIODIC_CHORES_INTERVAL_*</code> are board-specific variables used to build
-<code>healthd</code>. As part of system/vendor build split, board-specific values
+<p><code translate="no" dir="ltr">BOARD_PERIODIC_CHORES_INTERVAL_*</code> are board-specific variables used to build
+<code translate="no" dir="ltr">healthd</code>. As part of system/vendor build split, board-specific values
 <strong>cannot</strong> be defined for system modules. In health@2.0, vendors can override
-these two values in <code>healthd_mode_ops-&gt;init</code> (by dropping <code>libhealthservice</code>
-dependency in <code>health@2.0-service.&lt;device&gt;</code> and re-implementing this function).</p>
+these two values in <code translate="no" dir="ltr">healthd_mode_ops-&gt;init</code> (by dropping <code translate="no" dir="ltr">libhealthservice</code>
+dependency in <code translate="no" dir="ltr">health@2.0-service.&lt;device&gt;</code> and re-implementing this function).</p>
 
 <h2 id="static_implementation_library">Static implementation library</h2>
 
@@ -639,14 +722,14 @@ dependency in <code>health@2.0-service.&lt;device&gt;</code> and re-implementing
 health@2.0-impl is a <strong>static</strong> library to which health@2.0-service, charger,
 recovery, and legacy healthd link.</p>
 
-<p>health@2.0.impl implements <code>IHealth</code> as described above and is meant to wrap
-around <code>libbatterymonitor</code> and <code>libhealthd.<var>BOARD</var></code>. These
-users of health@2.0-impl must not use <code>BatteryMonitor</code> or the functions in
-<code>libhealthd</code> directly; instead, these calls should be replaced with calls into
-the <code>Health</code> class, an implementation of the<code>IHealth</code> interface. To generalize
-further, <code>healthd_common</code> code is also included in health@2.0-impl. The new
-<code>healthd_common</code> contains the rest of common code between health@2.0-service,
-charger, and <code>healthd</code> and calls into IHealth methods instead of BatteryMonitor.</p>
+<p>health@2.0.impl implements <code translate="no" dir="ltr">IHealth</code> as described above and is meant to wrap
+around <code translate="no" dir="ltr">libbatterymonitor</code> and <code translate="no" dir="ltr">libhealthd.<var>BOARD</var></code>. These
+users of health@2.0-impl must not use <code translate="no" dir="ltr">BatteryMonitor</code> or the functions in
+<code translate="no" dir="ltr">libhealthd</code> directly; instead, these calls should be replaced with calls into
+the <code translate="no" dir="ltr">Health</code> class, an implementation of the<code translate="no" dir="ltr">IHealth</code> interface. To generalize
+further, <code translate="no" dir="ltr">healthd_common</code> code is also included in health@2.0-impl. The new
+<code translate="no" dir="ltr">healthd_common</code> contains the rest of common code between health@2.0-service,
+charger, and <code translate="no" dir="ltr">healthd</code> and calls into IHealth methods instead of BatteryMonitor.</p>
 
 <h2 id="implementing_health_20_service">Implementing Health 2.0 service</h2>
 
@@ -654,11 +737,11 @@ charger, and <code>healthd</code> and calls into IHealth methods instead of Batt
 is:</p>
 
 <ul>
-<li>Sufficient for the device, use <code>android.hardware.health@2.0-service</code>
+<li>Sufficient for the device, use <code translate="no" dir="ltr">android.hardware.health@2.0-service</code>
 directly.</li>
 <li><p>Not sufficient for the device, create the
-<code>android.hardware.health@2.0-service.(device)</code> executable and include:</p>
-<pre class="prettyprint"><code>#include &lt;health2/service.h&gt;
+<code translate="no" dir="ltr">android.hardware.health@2.0-service.(device)</code> executable and include:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">#include &lt;health2/service.h&gt;
 int main() { return health_service_main(); }
 </code></pre></li>
 </ul>
@@ -666,30 +749,63 @@ int main() { return health_service_main(); }
 <p>Then:</p>
 
 <ul>
-<li><p>If board-specific <code>libhealthd:</code></p>
+<li><p>If board-specific <code translate="no" dir="ltr">libhealthd:</code></p>
 
 <ul>
 <li>Does exist, link to it.</li>
-<li>Does not exist, provide empty implementations for <code>healthd_board_init</code>
-and <code>healthd_board_battery_update</code> functions.</li>
+<li>Does not exist, provide empty implementations for <code translate="no" dir="ltr">healthd_board_init</code>
+and <code translate="no" dir="ltr">healthd_board_battery_update</code> functions.</li>
 </ul></li>
-<li><p>If board-specific <code>BOARD_PERIODIC_CHORES_INTERVAL_*</code> variables:</p>
+<li><p>If board-specific <code translate="no" dir="ltr">BOARD_PERIODIC_CHORES_INTERVAL_*</code> variables:</p>
 
 <ul>
-<li>Are defined, create a device-specific <code>HealthServiceCommon.cpp</code> (copied
-from <code>hardware/interfaces/health/2.0/utils/libhealthservice</code>) and
-customize it in <code>healthd_mode_service_2_0_init</code>.</li>
-<li>Are not defined, link to <code>libhealthservice</code> statically.</li>
+<li>Are defined, create a device-specific <code translate="no" dir="ltr">HealthServiceCommon.cpp</code> (copied
+from <code translate="no" dir="ltr">hardware/interfaces/health/2.0/utils/libhealthservice</code>) and
+customize it in <code translate="no" dir="ltr">healthd_mode_service_2_0_init</code>.</li>
+<li>Are not defined, link to <code translate="no" dir="ltr">libhealthservice</code> statically.</li>
 </ul></li>
 <li><p>If device:</p>
 
 <ul>
-<li>Should implement <code>getStorageInfo</code> and <code>getDiskStats</code> APIs, provide the
-implementation in <code>get_storage_info</code> and <code>get_disk_stats</code> functions.</li>
-<li>Should not implement those APIs, link to <code>libstoragehealthdefault</code>
+<li>Should implement <code translate="no" dir="ltr">getStorageInfo</code> and <code translate="no" dir="ltr">getDiskStats</code> APIs, provide the
+implementation in <code translate="no" dir="ltr">get_storage_info</code> and <code translate="no" dir="ltr">get_disk_stats</code> functions.</li>
+<li>Should not implement those APIs, link to <code translate="no" dir="ltr">libstoragehealthdefault</code>
 statically.</li>
 </ul></li>
 <li><p>Update necessary SELinux permissions.</p></li>
+<li><p>Implement HAL in recovery by installing a passthrough implementation to the
+recovery image. Example:</p>
+<pre class="prettyprint lang-bp" translate="no" dir="ltr"><code translate="no" dir="ltr">// Android.bp
+cc_library_shared {
+    name: &#34;android.hardware.health@2.0-impl-&lt;device&gt;&#34;,
+    recovery_available: true,
+    relative_install_path: &#34;hw&#34;,
+    static_libs: [
+        &#34;android.hardware.health@2.0-impl&#34;,
+        &#34;libhealthd.&lt;device&gt;&#34;
+        // Include the following or implement device-specific storage APIs
+        &#34;libhealthstoragedefault&#34;,
+    ],
+    srcs: [
+        &#34;HealthImpl.cpp&#34;,
+    ],
+    overrides: [
+        &#34;android.hardware.health@2.0-impl-default&#34;,
+    ],
+}
+</code></pre><pre class="prettyprint lang-c++" translate="no" dir="ltr"><code translate="no" dir="ltr">// HealthImpl.cpp
+#include &lt;health2/Health.h&gt;
+#include &lt;healthd/healthd.h&gt;
+using android::hardware::health::V2_0::IHealth;
+using android::hardware::health::V2_0::implementation::Health;
+extern &#34;C&#34; IHealth* HIDL_FETCH_IHealth(const char* name) {
+    const static std::string providedInstance{&#34;default&#34;};
+    if (providedInstance != name) return nullptr;
+    return Health::initInstance(&amp;gHealthdConfig).get();
+}
+</code></pre><pre class="prettyprint lang-mk" translate="no" dir="ltr"><code translate="no" dir="ltr"># device.mk
+PRODUCT_PACKAGES += android.hardware.health@2.0-impl-&lt;device&gt;
+</code></pre></li>
 </ul>
 
 <p>For details, refer to
@@ -700,28 +816,28 @@ statically.</li>
 <p>health@2.0 has the following clients:</p>
 
 <ul>
-<li><strong>charger</strong>. The usage of <code>libbatterymonitor</code> and <code>healthd_common</code> code is
+<li><strong>charger</strong>. The usage of <code translate="no" dir="ltr">libbatterymonitor</code> and <code translate="no" dir="ltr">healthd_common</code> code is
 wrapped in health@2.0-impl.</li>
-<li><strong>recovery</strong>. The linkage to <code>libbatterymonitor</code> is wrapped in
-health@2.0-impl. All calls to <code>BatteryMonitor</code> are replaced by calls into
-<code>Health</code> implementation class.</li>
-<li><p><strong>BatteryManager</strong>. <code>BatteryManager.queryProperty(int id)</code> was the only
-client of <code>IBatteryPropertiesRegistrar.getProperty</code> which was provided by
-<code>healthd</code> and directly reads <code>/sys/class/power_supply</code>.</p>
+<li><strong>recovery</strong>. The linkage to <code translate="no" dir="ltr">libbatterymonitor</code> is wrapped in
+health@2.0-impl. All calls to <code translate="no" dir="ltr">BatteryMonitor</code> are replaced by calls into
+<code translate="no" dir="ltr">Health</code> implementation class.</li>
+<li><p><strong>BatteryManager</strong>. <code translate="no" dir="ltr">BatteryManager.queryProperty(int id)</code> was the only
+client of <code translate="no" dir="ltr">IBatteryPropertiesRegistrar.getProperty</code> which was provided by
+<code translate="no" dir="ltr">healthd</code> and directly reads <code translate="no" dir="ltr">/sys/class/power_supply</code>.</p>
 
 <p>As a security consideration, apps are not allowed to call into health HAL
 directly. In Android 9, the binder service
-<code>IBatteryPropertiesRegistrar</code> is provided by <code>BatteryService</code> instead of
-<code>healthd</code> and <code>BatteryService</code> delegates the call to health HAL to retrieve
+<code translate="no" dir="ltr">IBatteryPropertiesRegistrar</code> is provided by <code translate="no" dir="ltr">BatteryService</code> instead of
+<code translate="no" dir="ltr">healthd</code> and <code translate="no" dir="ltr">BatteryService</code> delegates the call to health HAL to retrieve
 the requested information.</p></li>
-<li><p><strong>BatteryService</strong>. In Android 9, <code>BatteryService</code>
-uses <code>HealthServiceWrapper</code> to determine the health service instance to use
+<li><p><strong>BatteryService</strong>. In Android 9, <code translate="no" dir="ltr">BatteryService</code>
+uses <code translate="no" dir="ltr">HealthServiceWrapper</code> to determine the health service instance to use
 (&quot;default&quot; instance from vendor or &quot;backup&quot; instance from healthd). It then
-listens for health events via <code>IHealth.registerCallback</code>.</p></li>
-<li><p><strong>Storaged</strong>. In Android 9, <code>storaged</code> uses
-<code>libhealthhalutils</code> to determine the health service instance to use
+listens for health events via <code translate="no" dir="ltr">IHealth.registerCallback</code>.</p></li>
+<li><p><strong>Storaged</strong>. In Android 9, <code translate="no" dir="ltr">storaged</code> uses
+<code translate="no" dir="ltr">libhealthhalutils</code> to determine the health service instance to use
 (&quot;default&quot; instance from vendor or &quot;backup&quot; instance from healthd). It then
-listens for health events via <code>IHealth.registerCallback</code> and retrieves
+listens for health events via <code translate="no" dir="ltr">IHealth.registerCallback</code> and retrieves
 storage information.</p></li>
 </ul>
 
@@ -730,20 +846,20 @@ storage information.</p></li>
 <p>The new health@2.0 HAL includes the following SELinux changes:</p>
 
 <ul>
-<li>Adds health@2.0-service to <code>file_contexts</code>.</li>
-<li>Allows <code>system_server</code> and <code>storaged</code> to use <code>hal_health</code>.</li>
-<li>Allows <code>system_server</code> (<code>BatteryService</code>) to register
-<code>batteryproperties_service</code> (<code>IBatteryPropertiesRegistrar</code>).</li>
-<li>Allows <code>healthd</code> to provide <code>hal_health</code>.</li>
-<li>Removes rules that allow <code>system_server</code> / <code>storaged</code> to call into <code>healthd</code>
+<li>Adds health@2.0-service to <code translate="no" dir="ltr">file_contexts</code>.</li>
+<li>Allows <code translate="no" dir="ltr">system_server</code> and <code translate="no" dir="ltr">storaged</code> to use <code translate="no" dir="ltr">hal_health</code>.</li>
+<li>Allows <code translate="no" dir="ltr">system_server</code> (<code translate="no" dir="ltr">BatteryService</code>) to register
+<code translate="no" dir="ltr">batteryproperties_service</code> (<code translate="no" dir="ltr">IBatteryPropertiesRegistrar</code>).</li>
+<li>Allows <code translate="no" dir="ltr">healthd</code> to provide <code translate="no" dir="ltr">hal_health</code>.</li>
+<li>Removes rules that allow <code translate="no" dir="ltr">system_server</code> / <code translate="no" dir="ltr">storaged</code> to call into <code translate="no" dir="ltr">healthd</code>
 via binder.</li>
-<li>Removes rules that allow <code>healthd</code> to register <code>batteryproperties_service</code>
-(<code>IBatteryPropertiesRegistrar</code>).</li>
+<li>Removes rules that allow <code translate="no" dir="ltr">healthd</code> to register <code translate="no" dir="ltr">batteryproperties_service</code>
+(<code translate="no" dir="ltr">IBatteryPropertiesRegistrar</code>).</li>
 </ul>
 
 <p>For devices with their own implementation, some vendor SELinux changes may be
 necessary. Example:</p>
-<pre class="prettyprint"><code># device/&lt;manufacturer&gt;/&lt;device&gt;/sepolicy/vendor/file_contexts
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr"># device/&lt;manufacturer&gt;/&lt;device&gt;/sepolicy/vendor/file_contexts
 /vendor/bin/hw/android\.hardware\.health@2\.0-service.&lt;device&gt; u:object_r:hal_health_default_exec:s0
 
 # device/&lt;manufacturer&gt;/&lt;device&gt;/sepolicy/vendor/hal_health_default.te
@@ -752,34 +868,34 @@ necessary. Example:</p>
 </code></pre>
 <h2 id="kernel_interfaces">Kernel interfaces</h2>
 
-<p>The <code>healthd</code> daemon and the default implementation
-<code>android.hardware.health@2.0-service</code> access the following kernel interfaces to
+<p>The <code translate="no" dir="ltr">healthd</code> daemon and the default implementation
+<code translate="no" dir="ltr">android.hardware.health@2.0-service</code> access the following kernel interfaces to
 retrieve battery information:</p>
 
 <ul>
-<li><code>/sys/class/power_supply/*/capacity</code></li>
-<li><code>/sys/class/power_supply/*/charge_counter</code></li>
-<li><code>/sys/class/power_supply/*/charge_full</code></li>
-<li><code>/sys/class/power_supply/*/current_avg</code></li>
-<li><code>/sys/class/power_supply/*/current_max</code></li>
-<li><code>/sys/class/power_supply/*/current_now</code></li>
-<li><code>/sys/class/power_supply/*/cycle_count</code></li>
-<li><code>/sys/class/power_supply/*/health</code></li>
-<li><code>/sys/class/power_supply/*/online</code></li>
-<li><code>/sys/class/power_supply/*/present</code></li>
-<li><code>/sys/class/power_supply/*/status</code></li>
-<li><code>/sys/class/power_supply/*/technology</code></li>
-<li><code>/sys/class/power_supply/*/temp</code></li>
-<li><code>/sys/class/power_supply/*/type</code></li>
-<li><code>/sys/class/power_supply/*/voltage_max</code></li>
-<li><code>/sys/class/power_supply/*/voltage_now</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/capacity</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/charge_counter</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/charge_full</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/current_avg</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/current_max</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/current_now</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/cycle_count</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/health</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/online</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/present</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/status</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/technology</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/temp</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/type</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/voltage_max</code></li>
+<li><code translate="no" dir="ltr">/sys/class/power_supply/*/voltage_now</code></li>
 </ul>
 
-<p>Any device-specific health HAL implementation that uses <code>libbatterymonitor</code>
+<p>Any device-specific health HAL implementation that uses <code translate="no" dir="ltr">libbatterymonitor</code>
 accesses these kernel interfaces by default, unless overridden in
-<code>healthd_board_init(struct healthd_config*)</code>.</p>
+<code translate="no" dir="ltr">healthd_board_init(struct healthd_config*)</code>.</p>
 
-<p>If these files are missing or are inaccessible from <code>healthd</code> or from the
+<p>If these files are missing or are inaccessible from <code translate="no" dir="ltr">healthd</code> or from the
 default service (e.g. the file is a symlink to a vendor-specific folder that
 denies access because of misconfigured SELinux policy), they may not function
 correctly. Hence, additional vendor-specific SELinux changes may be necessary
@@ -791,7 +907,7 @@ even though the default implementation is used.</p>
 written specifically for the health@2.0 HAL. If a device declares to provide
 health@2.0 HAL in the device manifest, it must pass the corresponding VTS tests.
 Tests are written for both the default instance (to ensure that the device
-implements the HAL correctly) and the backup instance (to ensure that <code>healthd</code>
+implements the HAL correctly) and the backup instance (to ensure that <code translate="no" dir="ltr">healthd</code>
 continues to function correctly before it is removed).</p>
 
           </div>
@@ -803,17 +919,17 @@ continues to function correctly before it is removed).</p>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1020,8 +1136,9 @@ continues to function correctly before it is removed).</p>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1087,54 +1204,49 @@ continues to function correctly before it is removed).</p>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/health/implementation by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:32:05 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/health/implementation by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:01:47 GMT -->
 </html>

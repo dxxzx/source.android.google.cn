@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/setup/build/jack by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:11:05 GMT -->
+<!-- Mirrored from source.android.google.cn/setup/build/jack by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:00:07 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Compiling with Jack &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Compiling with Jack &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="jack.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="jack.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="jack.html">      
+<title>Compiling with Jack for Android 6.0–8.1 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Compiling with Jack for Android 6.0–8.1 &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="jack.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab active>
           <a href="../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../devices/audio.html"
+          <a href="../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../../devices/tech/dalvik.html"
+          <a href="../../devices/tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,20 +186,58 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="pt_br"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="pt_br"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        Português – Brasil
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../setup.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
@@ -207,7 +251,7 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../setup.html"
@@ -221,7 +265,7 @@
 
         </tab>
                         <tab >
-          <a href="../start/codelines.html"
+          <a href="requirements.html"
    class="gc-analytics-event"
    title="Start"
            data-category="Site-Wide Custom Events"
@@ -232,7 +276,7 @@
 
         </tab>
                         <tab >
-          <a href="requirements.html"
+          <a href="../develop.html"
    class="gc-analytics-event"
    title="Download"
            data-category="Site-Wide Custom Events"
@@ -242,22 +286,22 @@
 </a>
 
         </tab>
-                        <tab active>
-          <a href="devices.html"
+                        <tab >
+          <a href="../build.html"
    class="gc-analytics-event"
    title="Build"
-   aria-label="Build, selected"         data-category="Site-Wide Custom Events"
+           data-category="Site-Wide Custom Events"
         data-label="Tab: Build"
    >
   Build
 </a>
 
         </tab>
-                        <tab >
-          <a href="../develop.html"
+                        <tab active>
+          <a href="../create/coding-tasks.html"
    class="gc-analytics-event"
    title="Create"
-           data-category="Site-Wide Custom Events"
+   aria-label="Create, selected"         data-category="Site-Wide Custom Events"
         data-label="Tab: Create"
    >
   Create
@@ -293,8 +337,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +352,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -331,7 +391,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../start/codelines.html"
+    <a href="requirements.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -341,7 +401,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="requirements.html"
+    <a href="../develop.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -351,25 +411,25 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="devices.html"
-     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+    <a href="../build.html"
+          class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Build">
-      <span class="devsite-nav-text" menu="_book">Build</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
-          menu="_book">
-    </span>
+      <span class="devsite-nav-text" >Build</span>
         </a>
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../develop.html"
-          class="devsite-nav-title gc-analytics-event
+    <a href="../create/coding-tasks.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Create">
-      <span class="devsite-nav-text" >Create</span>
+      <span class="devsite-nav-text" menu="_book">Create</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
+          menu="_book">
+    </span>
         </a>
   </li>
 
@@ -416,7 +476,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../devices/audio.html"
+                                <a href="../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -426,7 +486,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../devices/tech/dalvik.html"
+                                <a href="../../devices/tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -458,32 +518,29 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="devices.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../create/coding-tasks.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Use Reference Boards">Use Reference Boards</span></a></li>
-                          <li class="devsite-nav-item"><a href="gsi.html"
+   ><span class="devsite-nav-text" title="Use Source Control">Use Source Control</span></a></li>
+  <li class="devsite-nav-item"><a href="../develop/repo.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Generic System Images">Generic System Images</span></a></li>
-                          <li class="devsite-nav-item"><a href="jack.html"
+   ><span class="devsite-nav-text" title="Repo Command Reference">Repo Command Reference</span></a></li>
+  <li class="devsite-nav-item"><a href="../develop/new-device.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Add a New Device Type">Add a New Device Type</span></a></li>
+  <li class="devsite-nav-item"><a href="../develop/64-bit-builds.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Understand 64-bit Builds">Understand 64-bit Builds</span></a></li>
+  <li class="devsite-nav-item"><a href="devices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Employ Reference Boards">Employ Reference Boards</span></a></li>
+  <li class="devsite-nav-item"><a href="gsi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Use Generic System Images">Use Generic System Images</span></a></li>
+  <li class="devsite-nav-item"><a href="jack.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Compile with Jack">Compile with Jack</span></a></li>
-                          <li class="devsite-nav-item"><a href="running-2.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Run Builds">Run Builds</span></a></li>
-                          <li class="devsite-nav-item"><a href="building-kernels.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Building Kernels">Building Kernels</span></a></li>
-                          <li class="devsite-nav-item"><a href="building-kernels-deprecated.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Building Kernels (deprecated)">Building Kernels (deprecated)</span></a></li>
-                          <li class="devsite-nav-item"><a href="known-issues.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="See Known Issues">See Known Issues</span></a></li>
-                          <li class="devsite-nav-item"><a href="dashboard.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Continuous Integration Dashboard">Continuous Integration Dashboard</span></a></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -491,16 +548,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -510,8 +568,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../setup.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -521,14 +580,15 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../create/coding-tasks.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
           >
-            Build
+            Create
       
   </a>
         </li>
@@ -537,10 +597,10 @@
          </devsite-page-rating>
           </div>
 
-              <h1 class="devsite-page-title">Compiling with Jack</h1>
+              <h1 class="devsite-page-title">Compiling with Jack for Android 6.0–8.1</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -575,14 +635,14 @@ use Jack&mdash;just use your standard makefile commands to compile the tree or
 your project. Android 8.1 is the last release that uses Jack.</p>
 
 <h2 id="overview">About Jack</h2>
-<p>Jack works as follows:</p>
+<p>Jack works as shown in Figure 1.</p>
 
 <img src="../images/jack_overview.png" alt="Jack overview"/>
 <figcaption><strong>Figure 1.</strong> Jack overview</figcaption>
 
 <h3 id=jack_library>Jack library format</h3>
 
-<p>Jack has its own .jack file format that contains the pre-compiled dex code
+<p>Jack has its own <code translate="no" dir="ltr">.jack</code> file format that contains the pre-compiled dex code
 for the library, allowing for faster compilation (pre-dex).</p>
 
 <img src="../images/jack_library.png" alt="Jack library file contents"/>
@@ -590,11 +650,11 @@ for the library, allowing for faster compilation (pre-dex).</p>
 
 <h3 id=jill>Jill</h3>
 
-<p>The Jill tool translates the existing .jar libraries into the new library
+<p>The Jill tool translates the existing <code translate="no" dir="ltr">.jar</code> libraries into the new library
 format, as shown below.</p>
 
 <img src="../images/jack_jill.png" alt="Importing .jar libraries with Jill"/>
-<figcaption><strong>Figure 3.</strong> Workflow to import an existing .jar
+<figcaption><strong>Figure 3.</strong> Workflow to import an existing <code translate="no" dir="ltr">.jar</code>
 library</figcaption>
 
 <h2 id=using_jack>Jack compilation server</h2>
@@ -602,7 +662,7 @@ library</figcaption>
 <aside class="note"><strong>Note:</strong> The following instructions apply only
 to using Jack in Android 6.x; for instructions on using Jack in Android 7.x and
 8.x, refer to
-<a href="https://android.googlesource.com/platform/prebuilts/sdk/+/master/tools/README-jack-server.md" class="external">Jack
+<a href="https://android.googlesource.com/platform/prebuilts/sdk/+/master/README-jack-server.txt" class="external">Jack
 server documentation</a>.</aside>
 
 <p>The first time Jack is used, it launches a local Jack compilation server on
@@ -612,102 +672,102 @@ your computer. This server:</p>
 <li>Brings an intrinsic speedup because it avoids launching a new host JRE JVM,
 loading Jack code, initializing Jack, and warming up the JIT at each
 compilation. It also provides very good compilation times during small
-compilations (e.g. in incremental mode).</li>
+compilations (for example, in incremental mode).</li>
 <li>Is a short-term solution to control the number of parallel Jack
-compilations. It avoids overloading your computer (memory or disk issue) because
+compilations. The server avoids overloading your computer (memory or disk issue) because
 it limits the number of parallel compilations.</li>
 </ul>
 
 <p>The Jack server shuts itself down after an idle time without any compilation.
-It uses two TCP ports on the localhost interface and is not available
+It uses two TCP ports on the localhost interface and isn't available
 externally. All parameters (number of parallel compilations, timeout, ports
-number, etc.) can be modified by editing the <code>$HOME/.jack</code> file.</p>
+number, etc.) can be modified by editing the <code translate="no" dir="ltr">$HOME/.jack</code> file.</p>
 
 <h3 id=home_jack_file>$HOME/.jack file</h3>
 
-<p>The <code>$HOME/.jack</code> file contains the following settings for Jack
+<p>The <code translate="no" dir="ltr">$HOME/.jack</code> file contains the following settings for Jack
 server variables in a full bash syntax:</p>
 
 <ul>
-<li><code>SERVER=true</code>. Enable the server feature of Jack.</li>
-<li><code>SERVER_PORT_SERVICE=8072</code>. Set the TCP port number of the server
+<li><code translate="no" dir="ltr">SERVER=true</code> enables the server feature of Jack.</li>
+<li><code translate="no" dir="ltr">SERVER_PORT_SERVICE=8072</code> sets the TCP port number of the server
 for compilation purposes.</li>
-<li><code>SERVER_PORT_ADMIN=8073</code>. Set the TCP port number of the server
+<li><code translate="no" dir="ltr">SERVER_PORT_ADMIN=8073</code> sets the TCP port number of the server
 for admin purposes.</li>
-<li><code>SERVER_COUNT=1</code>. Unused.
-<li><code>SERVER_NB_COMPILE=4</code>. Set the maximum number of allowed parallel
+<li><code translate="no" dir="ltr">SERVER_COUNT=1</code> is unused.
+<li><code translate="no" dir="ltr">SERVER_NB_COMPILE=4</code> sets the maximum number of allowed parallel
 compilations.</li>
-<li><code>SERVER_TIMEOUT=60</code>. Set the number of idle seconds the server
+<li><code translate="no" dir="ltr">SERVER_TIMEOUT=60</code> sets the number of idle seconds the server
 must wait without any compilation before shutting itself down.</li>
-<li><code>SERVER_LOG=${SERVER_LOG:=$SERVER_DIR/jack-$SERVER_PORT_SERVICE.log}</code>.
-Set the file where server logs are written. By default, this variable can be
+<li><code translate="no" dir="ltr">SERVER_LOG=${SERVER_LOG:=$SERVER_DIR/jack-$SERVER_PORT_SERVICE.log}</code>
+sets the file where server logs are written. By default, this variable can be
 overloaded by an environment variable.</li>
-<li><code>JACK_VM_COMMAND=${JACK_VM_COMMAND:=java}</code>. Set the default
+<li><code translate="no" dir="ltr">JACK_VM_COMMAND=${JACK_VM_COMMAND:=java}</code> sets the default
 command used to launch a JVM on the host. By default, this variable can be
 overloaded by environment variable.</li>
 </ul>
 
 <h3 id=jack_troubleshooting>Troubleshooting Jack compilations</h3>
 
-<table>
+<table class="responsive">
 <tr>
 <th>Problem</th>
 <th>Action</th>
 </tr>
 <tr>
 <td>Your computer becomes unresponsive during compilation or you experience
-Jack compilations failing on “Out of memory error”</td>
-<td>You can improve the situation by reducing the number of simultaneous Jack
-compilations by editing <code>$HOME/.jack</code> and changing
-<code>SERVER_NB_COMPILE</code> to a lower value.</td>
+  Jack compilations failing on <em>Out of memory error</em></td>
+<td>Reduce the number of simultaneous Jack
+compilations by editing <code translate="no" dir="ltr">$HOME/.jack</code> and changing
+<code translate="no" dir="ltr">SERVER_NB_COMPILE</code> to a lower value.</td>
 </tr>
 <tr>
-<td>Compilations are failing on “Cannot launch background server”</td>
+  <td>Compilations are failing on <em>Cannot launch background server</em></td>
 <td>The most likely cause is TCP ports are already used on your computer. Change
-ports by editing <code>$HOME/.jack</code> (<code>SERVER_PORT_SERVICE</code> and
-<code>SERVER_PORT_ADMIN</code> variables). To unblock the situation, disable the
-Jack compilation server by editing <code>$HOME/.jack</code> and changing
-<code>SERVER</code> to false. Unfortunately this will significantly slow down
-your compilation and may force you to launch <code>make -j</code> with load
-control (option <code>-l</code> of <code>make</code>).</td>
+ports by editing <code translate="no" dir="ltr">$HOME/.jack</code> (<code translate="no" dir="ltr">SERVER_PORT_SERVICE</code> and
+<code translate="no" dir="ltr">SERVER_PORT_ADMIN</code> variables). To unblock the situation, disable the
+Jack compilation server by editing <code translate="no" dir="ltr">$HOME/.jack</code> and changing
+  <code translate="no" dir="ltr">SERVER</code> to <code translate="no" dir="ltr">false</code>. Unfortunately this significantly slows down
+your compilation and may force you to launch <code translate="no" dir="ltr">make -j</code> with load
+control (option <code translate="no" dir="ltr">-l</code> of <code translate="no" dir="ltr">make</code>).</td>
 </tr>
 <tr>
 <td>Compilation gets stuck without any progress</td>
 <td>To unblock the situation, kill the Jack background server using
-<code>jack-admin kill-server</code>) then remove the temporary directories
-contained in <code>jack-$USER</code> of your temporary directory
-(<code>/tmp</code> or <code>$TMPDIR</code>).</td>
+<code translate="no" dir="ltr">jack-admin kill-server</code>) then remove the temporary directories
+contained in <code translate="no" dir="ltr">jack-$USER</code> of your temporary directory
+(<code translate="no" dir="ltr">/tmp</code> or <code translate="no" dir="ltr">$TMPDIR</code>).</td>
 </tr>
 </table>
 
 <h3 id="jack_log">Finding the Jack log</h3>
-<p>If you ran a <code>make</code> command with a dist target, the Jack log is
-located at <code>$ANDROID_BUILD_TOP/out/dist/logs/jack-server.log</code>.
-Otherwise, you can find the log by running <code>jack-admin server-log</code>.
+<p>If you ran a <code translate="no" dir="ltr">make</code> command with a dist target, the Jack log is
+located at <code translate="no" dir="ltr">$ANDROID_BUILD_TOP/out/dist/logs/jack-server.log</code>.
+Otherwise, you can find the log by running <code translate="no" dir="ltr">jack-admin server-log</code>.
 In case of reproducible Jack failures, you can get a more detailed log by
 setting the following variable:</p>
 
-<pre class="devsite-terminal devsite-click-to-copy">
+<pre class="devsite-terminal devsite-click-to-copy" translate="no" dir="ltr">
 export ANDROID_JACK_EXTRA_ARGS="--verbose debug --sanity-checks on -D sched.runner=single-threaded"
 </pre>
 
 <p>Use standard makefile commands to compile the tree (or your project) and
 attach standard output and error. To remove detailed build logs, run:</p>
 
-<pre class="devsite-terminal devsite-click-to-copy">
+<pre class="devsite-terminal devsite-click-to-copy" translate="no" dir="ltr">
 unset ANDROID_JACK_EXTRA_ARGS
 </pre>
 
 <h3 id=jack_limitations>Jack limitations</h3>
 
 <ul>
-<li>By default, the Jack server is mono-user and can be used by only one user on
+<li>By default, the Jack server can be used by only one user on
 a computer. To support additional users, select different port numbers for each
-user and adjust <code>SERVER_NB_COMPILE</code> accordingly. You can also disable
-the Jack server by setting <code>SERVER=false</code> in
-<code>$HOME/.jack</code>.</li>
-<li>CTS compilation is slow due to current <code>vm-tests-tf</code> integration.
-<li>Bytecode manipulation tools (such as JaCoCo) are not supported.</li>
+user and adjust <code translate="no" dir="ltr">SERVER_NB_COMPILE</code> accordingly. You can also disable
+the Jack server by setting <code translate="no" dir="ltr">SERVER=false</code> in
+<code translate="no" dir="ltr">$HOME/.jack</code>.</li>
+<li>CTS compilation is slow due to current <code translate="no" dir="ltr">vm-tests-tf</code> integration.</li>
+<li>Bytecode manipulation tools (such as JaCoCo) aren't supported.</li>
 </ul>
 
 <h2 id=using_jack_features>Using Jack</h2>
@@ -715,17 +775,17 @@ the Jack server by setting <code>SERVER=false</code> in
 <p>Jack supports Java programming language 1.7 and integrates the additional
 features described below.</p>
 
-<h3 id=predexing>Predexing</h3>
+<h3 id=predexing>Pre-dexing</h3>
 
-<p>When generating a Jack library file, the <code>.dex</code> of the library is
-generated and stored inside the <code>.jack</code> library file as a pre-dex.
+<p>When generating a Jack library file, the <code translate="no" dir="ltr">.dex</code> of the library is
+generated and stored inside the <code translate="no" dir="ltr">.jack</code> library file as a pre-dex.
 When compiling, Jack reuses the pre-dex from each library. All libraries are
-pre-dexed:</p>
+pre-dexed.</p>
 
 <img src="../images/jack_predex.png" alt="Jack libraries with pre-dex" />
 <figcaption><strong>Figure 4.</strong> Jack libraries with pre-dex</figcaption>
 
-<p>Jack does not reuse the library pre-dex if shrinking, obfuscation, or
+<p>Jack doesn't reuse the library pre-dex if shrinking, obfuscation, or
 repackaging is used in the compilation.</p>
 
 <h3 id=incremental_compilation>Incremental compilation</h3>
@@ -735,93 +795,93 @@ compilation (and their dependencies) are recompiled. Incremental compilation can
 be significantly faster than a full compilation when changes are limited to a
 set of components.</p>
 
-<p>Incremental compilation is not enabled by default (and is automatically
+<p>Incremental compilation is disabled by default (and is automatically
 deactivated when shrinking, obfuscation, repackaging or multi-dex legacy is
 enabled). To enable incremental builds, add the following line to the
-<code>Android.mk</code> file of the project you want to build incrementally:</p>
+<code translate="no" dir="ltr">Android.mk</code> file of the project that you want to build incrementally:</p>
 
-<pre class="devsite-click-to-copy">LOCAL_JACK_ENABLED := incremental</pre>
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">LOCAL_JACK_ENABLED := incremental</pre>
 
-<aside class="note"><strong>Note:</strong> If some dependencies are not built
-the first time you build your project with Jack, use <code>mma</code> to build
-them. After doing so you can use the standard build command.</aside>
+<aside class="note"><strong>Note:</strong> If some dependencies aren't built
+the first time you build your project with Jack, use <code translate="no" dir="ltr">mma</code> to build
+them. After doing so, you can use the standard build command.</aside>
 
 <h3 id=shrinking_and_obfuscation>Shrinking and obfuscation</h3>
 
-<p>Jack uses proguard configuration files to enable shrinking and
+<p>Jack uses ProGuard configuration files to enable shrinking and
 obfuscation.</p>
 
 <p>Common options include the following:</p>
 
 <ul>
-  <li> <code>@</code>
-  <li> <code>-include</code>
-  <li> <code>-basedirectory</code>
-  <li> <code>-injars</code>
-  <li> <code>-outjars // only 1 output jar supported</code>
-  <li> <code>-libraryjars</code>
-  <li> <code>-keep</code>
-  <li> <code>-keepclassmembers</code>
-  <li> <code>-keepclasseswithmembers</code>
-  <li> <code>-keepnames</code>
-  <li> <code>-keepclassmembernames</code>
-  <li> <code>-keepclasseswithmembernames</code>
-  <li> <code>-printseeds</code>
+  <li> <code translate="no" dir="ltr">@</code>
+  <li> <code translate="no" dir="ltr">-include</code>
+  <li> <code translate="no" dir="ltr">-basedirectory</code>
+  <li> <code translate="no" dir="ltr">-injars</code>
+  <li> <code translate="no" dir="ltr">-outjars</code> (only 1 output jar supported)
+  <li> <code translate="no" dir="ltr">-libraryjars</code>
+  <li> <code translate="no" dir="ltr">-keep</code>
+  <li> <code translate="no" dir="ltr">-keepclassmembers</code>
+  <li> <code translate="no" dir="ltr">-keepclasseswithmembers</code>
+  <li> <code translate="no" dir="ltr">-keepnames</code>
+  <li> <code translate="no" dir="ltr">-keepclassmembernames</code>
+  <li> <code translate="no" dir="ltr">-keepclasseswithmembernames</code>
+  <li> <code translate="no" dir="ltr">-printseeds</code>
 </ul>
 
 <p>Shrinking options include the following:</p>
 
 <ul>
-  <li><code>-dontshrink</code>
+  <li><code translate="no" dir="ltr">-dontshrink</code>
 </ul>
 
 <p>Obfuscation options include the following:</p>
 
 <ul>
-  <li> <code>-dontobfuscate</code>
-  <li> <code>-printmapping</code>
-  <li> <code>-applymapping</code>
-  <li> <code>-obfuscationdictionary</code>
-  <li> <code>-classobfuscationdictionary</code>
-  <li> <code>-packageobfuscationdictionary</code>
-  <li> <code>-useuniqueclassmembernames</code>
-  <li> <code>-dontusemixedcaseclassnames</code>
-  <li> <code>-keeppackagenames</code>
-  <li> <code>-flattenpackagehierarchy</code>
-  <li> <code>-repackageclasses</code>
-  <li> <code>-keepattributes</code>
-  <li> <code>-adaptclassstrings</code>
+  <li> <code translate="no" dir="ltr">-dontobfuscate</code>
+  <li> <code translate="no" dir="ltr">-printmapping</code>
+  <li> <code translate="no" dir="ltr">-applymapping</code>
+  <li> <code translate="no" dir="ltr">-obfuscationdictionary</code>
+  <li> <code translate="no" dir="ltr">-classobfuscationdictionary</code>
+  <li> <code translate="no" dir="ltr">-packageobfuscationdictionary</code>
+  <li> <code translate="no" dir="ltr">-useuniqueclassmembernames</code>
+  <li> <code translate="no" dir="ltr">-dontusemixedcaseclassnames</code>
+  <li> <code translate="no" dir="ltr">-keeppackagenames</code>
+  <li> <code translate="no" dir="ltr">-flattenpackagehierarchy</code>
+  <li> <code translate="no" dir="ltr">-repackageclasses</code>
+  <li> <code translate="no" dir="ltr">-keepattributes</code>
+  <li> <code translate="no" dir="ltr">-adaptclassstrings</code>
 </ul>
 
 <p>Ignored options include the following:</p>
 
 <ul>
-  <li> <code>-dontoptimize // Jack does not optimize</code>
-  <li> <code>-dontpreverify // Jack does not preverify</code>
-  <li> <code>-skipnonpubliclibraryclasses</code>
-  <li> <code>-dontskipnonpubliclibraryclasses</code>
-  <li> <code>-dontskipnonpubliclibraryclassmembers</code>
-  <li> <code>-keepdirectories</code>
-  <li> <code>-target</code>
-  <li> <code>-forceprocessing</code>
-  <li> <code>-printusage</code>
-  <li> <code>-whyareyoukeeping</code>
-  <li> <code>-optimizations</code>
-  <li> <code>-optimizationpasses</code>
-  <li> <code>-assumenosideeffects</code>
-  <li> <code>-allowaccessmodification</code>
-  <li> <code>-mergeinterfacesaggressively</code>
-  <li> <code>-overloadaggressively</code>
-  <li> <code>-microedition</code>
-  <li> <code>-verbose</code>
-  <li> <code>-dontnote</code>
-  <li> <code>-dontwarn</code>
-  <li> <code>-ignorewarnings</code>
-  <li> <code>-printconfiguration</code>
-  <li> <code>-dump</code>
+  <li> <code translate="no" dir="ltr">-dontoptimize</code> (Jack doesn't optimize)
+  <li> <code translate="no" dir="ltr">-dontpreverify</code> (Jack doesn't preverify)
+  <li> <code translate="no" dir="ltr">-skipnonpubliclibraryclasses</code>
+  <li> <code translate="no" dir="ltr">-dontskipnonpubliclibraryclasses</code>
+  <li> <code translate="no" dir="ltr">-dontskipnonpubliclibraryclassmembers</code>
+  <li> <code translate="no" dir="ltr">-keepdirectories</code>
+  <li> <code translate="no" dir="ltr">-target</code>
+  <li> <code translate="no" dir="ltr">-forceprocessing</code>
+  <li> <code translate="no" dir="ltr">-printusage</code>
+  <li> <code translate="no" dir="ltr">-whyareyoukeeping</code>
+  <li> <code translate="no" dir="ltr">-optimizations</code>
+  <li> <code translate="no" dir="ltr">-optimizationpasses</code>
+  <li> <code translate="no" dir="ltr">-assumenosideeffects</code>
+  <li> <code translate="no" dir="ltr">-allowaccessmodification</code>
+  <li> <code translate="no" dir="ltr">-mergeinterfacesaggressively</code>
+  <li> <code translate="no" dir="ltr">-overloadaggressively</code>
+  <li> <code translate="no" dir="ltr">-microedition</code>
+  <li> <code translate="no" dir="ltr">-verbose</code>
+  <li> <code translate="no" dir="ltr">-dontnote</code>
+  <li> <code translate="no" dir="ltr">-dontwarn</code>
+  <li> <code translate="no" dir="ltr">-ignorewarnings</code>
+  <li> <code translate="no" dir="ltr">-printconfiguration</code>
+  <li> <code translate="no" dir="ltr">-dump</code>
 </ul>
 
-<aside class="note"><strong>Note:</strong> Other options will generate an
+<aside class="note"><strong>Note:</strong> Other options generate an
 error.</aside>
 
 <h3 id=repackaging>Repackaging</h3>
@@ -832,11 +892,11 @@ compatible with "rule" rule types, it is not compatible with "zap" or
 
 <h3 id=multidex_support>Multidex support</h3>
 
-<p>Jack offers native and legacy multidex support. Since dex files are limited
+<p>Jack offers native and legacy multidex support. Because dex files are limited
 to 65K methods, apps with over 65K methods must be split into multiple dex
 files. For more details, refer to
-<a href="http://developer.android.google.cn/tools/building/multidex.html" class="external">Building
-Apps with Over 65K Methods</a>.</p>
+<a href="http://developer.android.google.cn/tools/building/multidex.html" class="external">Enable
+multidex for apps with over 64K methods</a>.</p>
 
   
           </div>
@@ -848,17 +908,17 @@ Apps with Over 65K Methods</a>.</p>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1065,8 +1125,9 @@ Apps with Over 65K Methods</a>.</p>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1132,62 +1193,57 @@ Apps with Over 65K Methods</a>.</p>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="pt_br"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="pt_br"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            Português Brasileiro
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="pt_br"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="pt_br"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        Português – Brasil
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/setup/build/jack by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:11:09 GMT -->
+<!-- Mirrored from source.android.google.cn/setup/build/jack by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:00:11 GMT -->
 </html>

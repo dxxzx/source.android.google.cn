@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/graphics/implement-hwc by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:29:48 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/graphics/implement-hwc by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:20:54 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Implementing the Hardware Composer HAL &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Implementing the Hardware Composer HAL &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="implement-hwc.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="implement-hwc.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="implement-hwc.html">      
+<title>Implementing Hardware Composer HAL &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Implementing Hardware Composer HAL &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="implement-hwc.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab active>
-          <a href="../audio.html"
+          <a href="../../devices.html"
    class="gc-analytics-event"
    title="Develop"
    aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../tech/dalvik.html"
+          <a href="../tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,9 +243,20 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
           <a href="../audio.html"
    class="gc-analytics-event"
    title="Audio"
@@ -254,7 +301,7 @@
 
         </tab>
                         <tab >
-          <a href="../input.html"
+          <a href="../interaction.html"
    class="gc-analytics-event"
    title="Interaction"
            data-category="Site-Wide Custom Events"
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../audio.html"
+                                <a href="../../devices.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -350,6 +413,16 @@
         </a>
   
                                             <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
                                                                                                                       <li class="devsite-nav-item">
     <a href="../audio.html"
           class="devsite-nav-title gc-analytics-event
@@ -387,14 +460,14 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Graphics">
       <span class="devsite-nav-text" menu="_book">Graphics</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../input.html"
+    <a href="../interaction.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -426,7 +499,7 @@
                                   </ul>
                           </li>
                       <li class="devsite-nav-item">
-                                <a href="../tech/dalvik.html"
+                                <a href="../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -458,66 +531,67 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../graphics.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../graphics.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Architecture">Architecture</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="architecture.html"
+  <li class="devsite-nav-item"><a href="arch-bq-gralloc.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="arch-bq-gralloc.html"
+   ><span class="devsite-nav-text" title="BufferQueue and Gralloc">BufferQueue and Gralloc</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Surface and SurfaceHolder">Surface and SurfaceHolder</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-sh.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="BufferQueue">BufferQueue</span></a></li><li class="devsite-nav-item"><a href="arch-sf-hwc.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="SurfaceFlinger and HWC">SurfaceFlinger and HWC</span></a></li><li class="devsite-nav-item"><a href="arch-sh.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Surface and SurfaceHolder">Surface and SurfaceHolder</span></a></li><li class="devsite-nav-item"><a href="arch-egl-opengl.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="OpenGL ES">OpenGL ES</span></a></li><li class="devsite-nav-item"><a href="renderer.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="OpenGLRenderer Configuration">OpenGLRenderer Configuration</span></a></li><li class="devsite-nav-item"><a href="arch-vulkan.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Vulkan">Vulkan</span></a></li><li class="devsite-nav-item"><a href="arch-sv-glsv.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="arch-sv-glsv.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="SurfaceView">SurfaceView</span></a></li><li class="devsite-nav-item"><a href="arch-st.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="SurfaceTexture">SurfaceTexture</span></a></li><li class="devsite-nav-item"><a href="arch-tv.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="TextureView">TextureView</span></a></li><li class="devsite-nav-item"><a href="arch-gameloops.html"
+   ><span class="devsite-nav-text" title="TextureView">TextureView</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="SurfaceFlinger and WindowManager">SurfaceFlinger and WindowManager</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="surfaceflinger-windowmanager.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Game Loops">Game Loops</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Implementation">Implementation</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="implement.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="tracing-win-transitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Tracing Window Transitions">Tracing Window Transitions</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Hardware Composer HAL">Hardware Composer HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="hwc.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-hwc.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Hardware Composer HAL">Hardware Composer HAL</span></a></li><li class="devsite-nav-item"><a href="implement-vsync.html"
+   ><span class="devsite-nav-text" title="Implementing the HWC">Implementing the HWC</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="layers-displays.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="VSYNC">VSYNC</span></a></li><li class="devsite-nav-item"><a href="implement-vulkan.html"
+   ><span class="devsite-nav-text" title="Layers and Displays">Layers and Displays</span></a></li>
+  <li class="devsite-nav-item"><a href="implement-vsync.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Vulkan">Vulkan</span></a></li><li class="devsite-nav-item"><a href="implement-vdisplays.html"
+   ><span class="devsite-nav-text" title="VSYNC">VSYNC</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="OpenGL ES">OpenGL ES</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-egl-opengl.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Virtual Displays">Virtual Displays</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="OpenGL ES Testing">OpenGL ES Testing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="testing.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-opengl-es.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="build-tests.html"
+   ><span class="devsite-nav-text" title="Implementing OpenGL ES">Implementing OpenGL ES</span></a></li><li class="devsite-nav-item"><a href="renderer.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Building Test Programs">Building Test Programs</span></a></li><li class="devsite-nav-item"><a href="port-tests.html"
+   ><span class="devsite-nav-text" title="OpenGLRenderer Configuration">OpenGLRenderer Configuration</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vulkan">Vulkan</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-vulkan.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Porting the Test Framework">Porting the Test Framework</span></a></li><li class="devsite-nav-item"><a href="run-tests.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-vulkan.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Running the Tests">Running the Tests</span></a></li><li class="devsite-nav-item"><a href="automate-tests.html"
+   ><span class="devsite-nav-text" title="Implementing Vulkan">Implementing Vulkan</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="sync.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Automating the Tests">Automating the Tests</span></a></li><li class="devsite-nav-item"><a href="test-groups.html"
+   ><span class="devsite-nav-text" title="Synchronization Framework">Synchronization Framework</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Testing">Testing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="implement.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Using Special Test Groups">Using Special Test Groups</span></a></li><li class="devsite-nav-item"><a href="cts-integration.html"
+   ><span class="devsite-nav-text" title="Implementation Tests">Implementation Tests</span></a></li><li class="devsite-nav-item"><a href="cts-integration.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Integrating with Android CTS">Integrating with Android CTS</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="tracing-win-transitions.html"
+   ><span class="devsite-nav-text" title="Integrating with Android CTS">Integrating with Android CTS</span></a></li><li class="devsite-nav-item"><a href="deqp-testing.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Tracing Window Transitions">Tracing Window Transitions</span></a></li>
-                      </ul>
+   ><span class="devsite-nav-text" title="deqp Testing">deqp Testing</span></a></li></ul></devsite-expandable-nav></li>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -525,16 +599,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -544,9 +619,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -555,8 +631,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../graphics.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -571,10 +648,10 @@
          </devsite-page-rating>
           </div>
 
-              <h1 class="devsite-page-title">Implementing the Hardware Composer HAL</h1>
+              <h1 class="devsite-page-title">Implementing Hardware Composer HAL</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -599,298 +676,315 @@
 
 
 
-<p>The Hardware Composer HAL (HWC) is used by SurfaceFlinger to composite
-surfaces to the screen. The HWC abstracts objects such as overlays and 2D
-blitters and helps offload some work that would normally be done with OpenGL.</p>
 
-<p>Android 7.0 includes a new version of HWC (HWC2) used by SurfaceFlinger to
-talk to specialized window composition hardware. SurfaceFlinger contains a
-fallback path that uses the 3D graphics processor (GPU) to perform the task of
-window composition, but this path is not ideal for a couple of reasons:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>The Hardware Composer (HWC) HAL composites layers received from
+SurfaceFlinger, reducing the amount of composition OpenGL ES (GLES) and the GPU
+perform.</p>
+
+<p>The HWC abstracts objects, such as overlays and 2D blitters, to composite
+surfaces and communicates with specialized window composition hardware to
+composite windows. Use the HWC to composite windows instead of having
+SurfaceFlinger composite with the GPU. Most GPUs aren't optimized for
+composition, and when the GPU composes layers from
+SurfaceFlinger, apps can't use the GPU for their own rendering.</p>
+
+<p>HWC implementations should support:</p>
 
 <ul>
-  <li>Typically, GPUs are not optimized for this use case and may use more power
-  than necessary to perform composition.</li>
-  <li>Any time SurfaceFlinger is using the GPU for composition is time that
-  applications cannot use the processor for their own rendering, so it is
-  preferable to use specialized hardware for composition instead of the GPU
-  whenever possible.</li>
+  <li>At least four overlays:
+    <ul>
+      <li>Status bar</li>
+      <li>System bar</li>
+      <li>App</li>
+      <li>Wallpaper/background</li>
+    </ul></li>
+  <li>Layers that are larger than the display (for example, a wallpaper)</li>
+  <li>Simultaneous premultiplied per-pixel alpha blending and per-plane
+    alpha blending</li>
+  <li>Hardware path for protected video playback</li>
+  <li>RGBA packing order, YUV formats, and tiling, swizzling, and stride
+    properties</li>
 </ul>
 
-<h2 id="guidance">General guidance</h2>
-
-<p>As the physical display hardware behind the Hardware Composer abstraction
-layer can vary from device to device, it's difficult to give recommendations on
-specific features. In general, use the following guidance:</p>
-
-<ul>
-  <li>The HWC should support at least four overlays (status bar, system bar,
-  application, and wallpaper/background).</li>
-  <li>Layers can be bigger than the screen, so the HWC should be able to handle
-  layers that are larger than the display (for example, a wallpaper).</li>
-  <li>Pre-multiplied per-pixel alpha blending and per-plane alpha blending
-  should be supported at the same time.</li>
-  <li>The HWC should be able to consume the same buffers the GPU, camera, and
-  video decoder are producing, so supporting some of the following
-  properties is helpful:
-  <ul>
-    <li>RGBA packing order</li>
-    <li>YUV formats</li>
-    <li>Tiling, swizzling, and stride properties</li>
-  </ul>
-  <li>To support protected content, a hardware path for protected video playback
-  must be present.</li>
-  </ul>
-
-<p>The general recommendation is to implement a non-operational HWC first; after
-the structure is complete, implement a simple algorithm to delegate composition
-to the HWC (for example, delegate only the first three or four surfaces to the
-overlay hardware of the HWC).</p>
-
-<p>Focus on optimization, such as intelligently selecting the surfaces to send
-to the overlay hardware that maximizes the load taken off of the GPU. Another
-optimization is to detect whether the screen is updating; if it isn't, delegate
-composition to OpenGL instead of the HWC to save power. When the screen updates
-again, continue to offload composition to the HWC.</p>
-
-<p>Prepare for common use cases, such as:</p>
-
-<ul>
-  <li>Full-screen games in portrait and landscape mode</li>
-  <li>Full-screen video with closed captioning and playback control</li>
-  <li>The home screen (compositing the status bar, system bar, application
-  window, and live wallpapers)</li>
-  <li>Protected video playback</li>
-  <li>Multiple display support</li>
-</ul>
-
-<p>These use cases should address regular, predictable uses rather than edge
-cases that are rarely encountered (otherwise, optimizations will have little
-benefit). Implementations must balance two competing goals: animation smoothness
-and interaction latency.</p>
-
-
-<h2 id="interface_activities">HWC2 interface activities</h2>
-
-<p>HWC2 provides a few primitives (layer, display) to represent composition work
-and its interaction with the display hardware.</p>
-<p>A <em>layer</em> is the most important unit of composition; every layer has a
-set of properties that define how it interacts with other layers. Property
-categories include the following:</p>
-
-<ul>
-<li><strong>Positional</strong>. Defines where the layer appears on its display.
-Includes information such as the positions of a layer's edges and its <em>Z
-order</em> relative to other layers (whether it should be in front of or behind
-other layers).</li>
-<li><strong>Content</strong>. Defines how content displayed on the layer should
-be presented within the bounds defined by the positional properties. Includes
-information such as crop (to expand a portion of the content to fill the bounds
-of the layer) and transform (to show rotated or flipped content).</li>
-<li><strong>Composition</strong>. Defines how the layer should be composited
-with other layers. Includes information such as blending mode and a layer-wide
-alpha value for
-<a href="https://en.wikipedia.org/wiki/Alpha_compositing#Alpha_blending">alpha
-compositing</a>.</li>
-<li><strong>Optimization</strong>. Provides information not strictly necessary
-to correctly composite the layer, but which can be used by the HWC device to
-optimize how it performs composition. Includes information such as the visible
-region of the layer and which portion of the layer has been updated since the
-previous frame.</li>
-</ul>
-
-<p>A <em>display</em> is another important unit of composition. Every layer can
-be present only on one display. A system can have multiple displays, and
-displays can be added or removed during normal system operations. This
-addition/removal can come at the request of the HWC device (typically in
-response to an external display being plugged into or removed from the device,
-called <em>hotplugging</em>), or at the request of the client, which permits the
-creation of <em>virtual displays</em> whose contents are rendered into an
-off-screen buffer instead of to a physical display.</p>
-<p>HWC2 provides functions to determine the properties of a given display, to
-switch between different configurations (e.g., 4k or 1080p resolution) and color
-modes (e.g., native color or true sRGB), and to turn the display on, off, or
-into a low-power mode if supported.</p>
-<p>In addition to layers and displays, HWC2 also provides control over the
-hardware vertical sync (VSYNC) signal along with a callback into the client to
-notify it of when a vsync event has occurred.</p>
-
-<h3 id="func_pointers">Function pointers</h3>
-<p>In this section and in HWC2 header comments, HWC interface functions are
-referred to by lowerCamelCase names that do not actually exist in the interface
-as named fields. Instead, almost every function is loaded by requesting a
-function pointer using <code>getFunction</code> provided by
-<code>hwc2_device_t</code>. For example, the function <code>createLayer</code>
-is a function pointer of type <code>HWC2_PFN_CREATE_LAYER</code>, which is
-returned when the enumerated value <code>HWC2_FUNCTION_CREATE_LAYER</code> is
-passed into <code>getFunction</code>.</p>
-<p>For detailed documentation on functions (including functions required for
-every HWC2 implementation), refer to the
-<a href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/hwcomposer2.h">HWC2 header</a>.</p>
-
-<h3 id="layer_display_handles">Layer and display handles</h3>
-<p>Layers and displays are manipulated by opaque handles.</p>
-<p>When SurfaceFlinger wants to create a new layer, it calls the
-<code>createLayer</code> function, which then returns an opaque handle of type
-<code>hwc2_layer_t</code>. From that point on, any time SurfaceFlinger wants to
-modify a property of that layer, it passes that <code>hwc2_layer_t</code> value
-into the appropriate modification function, along with any other information
-needed to make the modification. The <code>hwc2_layer_t</code> type was made
-large enough to be able to hold either a pointer or an index, and it will be
-treated as opaque by SurfaceFlinger to provide HWC implementers maximum
-flexibility.</p>
-<p>Most of the above also applies to display handles, though handles are created
-differently depending on whether they are hotplugged (where the handle is passed
-through the hotplug callback) or requested by the client as a virtual display
-(where the handle is returned from <code>createVirtualDisplay</code>).</p>
-
-<h2 id="display_comp_ops">Display composition operations</h2>
-<p>Once per hardware vsync, SurfaceFlinger wakes if it has new content to
-composite. This new content could be new image buffers from applications or just
-a change in the properties of one or more layers. When it wakes, it performs the
-following steps:</p>
+<p>To implement the HWC:</p>
 
 <ol>
-<li>Apply transactions, if present. Includes changes in the properties of layers
-specified by the window manager but not changes in the contents of layers (i.e.,
-graphic buffers from applications).</li>
-<li>Latch new graphic buffers (acquire their handles from their respective
-applications), if present.</li>
-<li>If step 1 or 2 resulted in a change to the display contents, perform a new
-composition (described below).</li>
+  <li>Implement a nonoperational HWC and send all composition work to
+    GLES.</li>
+  <li>Implement an algorithm to delegate composition to the HWC incrementally.
+    For example, delegate only the first three or four surfaces to the overlay
+    hardware of the HWC.</li>
+  <li>Optimize the HWC. This may include:
+    <ul>
+      <li>Selecting surfaces that maximize the load taken off the GPU and
+        sending them to the HWC.</li>
+      <li>Detecting whether the screen is updating. If it isn't, delegate
+        composition to GLES instead of the HWC to save power. When the screen
+        updates again, continue to offload composition to the HWC.</li>
+      <li>Preparing for common use cases such as:
+        <ul>
+          <li>The home screen, which includes the status bar, system bar, app
+            window, and live wallpapers</li>
+          <li>Full-screen games in portrait and landscape mode</li>
+          <li>Full-screen video with closed captioning and playback
+            control</li>
+          <li>Protected video playback</li>
+          <li>Split-screen multiwindow</li>
+        </ul></li>
+    </ul></li>
 </ol>
 
-<p>Steps 1 and 2 have some nuances (such as deferred transactions and
-presentation timestamps) that are outside the scope of this section. However,
-step 3 involves the HWC interface and is detailed below.</p>
-<p>At the beginning of the composition process, SurfaceFlinger will create and
-destroy layers or modify layer state as applicable. It will also update the
+<aside class="note"><strong>Note:</strong> Use cases should address regular,
+  predictable cases instead of edge cases to maximize optimization benefits.
+</aside>
+
+<h2 id="primitives">HWC primitives</h2>
+
+<p>The HWC provides two primitives, <a
+href="layers-displays.html#layers">layers</a> and <a
+href="layers-displays.html#display">displays</a>, to
+represent composition work and its interaction with the display hardware. The
+HWC also provides control over <a
+href="implement-vsync.html">VSYNC</a> and a callback to SurfaceFlinger
+to notify it when a VSYNC event occurs.</p>
+
+<h2 id="hidl">HIDL interface</h2>
+
+<p>Android 8.0 and higher uses a
+<a href="../architecture/hidl.html">HIDL</a> interface called Composer HAL for
+binderized IPC between the HWC and SurfaceFlinger. The Composer HAL replaces the
+legacy <code translate="no" dir="ltr">hwcomposer2.h</code> interface. If vendors provide a Composer HAL
+implementation of the HWC, Composer HAL directly accepts HIDL calls from
+SurfaceFlinger. If vendors provide a legacy implementation of the HWC, Composer
+HAL loads function pointers from <code translate="no" dir="ltr">hwcomposer2.h</code>,
+forwarding HIDL calls into function pointer calls.</p>
+
+<p>The HWC provides functions to determine the properties of a given display; to
+switch between different display configurations (such as 4k or 1080p
+resolution) and color modes (such as native color or true sRGB); and to turn
+the display on, off, or into a low-power mode if supported.</p>
+
+<h3 id="func_pointers">Function pointers</h3>
+
+<p>If vendors implement Composer HAL directly, SurfaceFlinger calls its functions
+through HIDL IPC. For example, to create a layer, SurfaceFlinger calls
+<code translate="no" dir="ltr">createLayer()</code> on the Composer HAL.
+
+<p>If vendors implement the <code translate="no" dir="ltr">hwcomposer2.h</code> interface, Composer HAL
+calls into <code translate="no" dir="ltr">hwcomposer2.h</code> function pointers. In <code translate="no" dir="ltr">hwcomposer2.h</code> comments,
+HWC interface functions are
+referred to by lowerCamelCase names that don't exist in the interface
+as named fields. Almost every function is loaded by requesting a
+function pointer using <code translate="no" dir="ltr">getFunction</code> provided by
+<code translate="no" dir="ltr">hwc2_device_t</code>. For example, the function <code translate="no" dir="ltr">createLayer</code>
+is a function pointer of type <code translate="no" dir="ltr">HWC2_PFN_CREATE_LAYER</code>, which is
+returned when the enumerated value <code translate="no" dir="ltr">HWC2_FUNCTION_CREATE_LAYER</code> is
+passed into <code translate="no" dir="ltr">getFunction</code>.</p>
+
+<p>For detailed documentation on Composer HAL functions and HWC function passthrough
+functions, see <a
+href="https://android.googlesource.com/platform/hardware/interfaces/+/master/graphics/composer"
+class="external"><code translate="no" dir="ltr">composer</code></a>. For detailed documentation on
+HWC function pointers, see the
+<a href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/hwcomposer2.h"
+class="external"><code translate="no" dir="ltr">hwcomposer2.h</code></a>.</p>
+
+<h3 id="layer_display_handles">Layer and display handles</h3>
+
+<p>Layers and displays are manipulated by handles generated by the HWC.
+The handles are opaque to SurfaceFlinger.</p>
+
+<p>When SurfaceFlinger creates a new layer, it calls <code translate="no" dir="ltr">createLayer</code>,
+which returns of type <code translate="no" dir="ltr">Layer</code> for direct
+implementations or <code translate="no" dir="ltr">hwc2_layer_t</code> for passthrough implementations. When
+SurfaceFlinger modifies a property of that layer, SurfaceFlinger passes
+the <code translate="no" dir="ltr">hwc2_layer_t</code> value into the appropriate modification function
+along with any other information needed to make the modification. The
+<code translate="no" dir="ltr">hwc2_layer_t</code> type is large enough to hold either a pointer or an
+index.</p>
+
+<p>Physical displays are created by being hotplugged. When a physical display is
+hotplugged, the HWC creates a handle and passes the handle to SurfaceFlinger
+through the hotplug callback. Virtual displays are created by SurfaceFlinger
+calling <code translate="no" dir="ltr">createVirtualDisplay()</code> to request a display. If the HWC
+supports virtual display composition, it returns a handle. Then, SurfaceFlinger
+delegates the displays's composition to the HWC. If the HWC doesn't support virtual
+display composition, SurfaceFlinger creates the handle and composites the display.</p>
+
+<h2 id="display_comp_ops">Display composition operations</h2>
+
+<p>Once per VSYNC, SurfaceFlinger wakes if it has new content to
+composite. This new content can be new image buffers from apps or
+a change in the properties of one or more layers. When SurfaceFlinger
+wakes it:</p>
+
+<ol>
+  <li>Handles transactions, if present.</li>
+  <li>Latches new graphic buffers, if present.</li>
+  <li>Performs a new composition, if step 1 or 2 resulted in a change
+    to the display contents.</li>
+</ol>
+
+<p>To perform a new composition, SurfaceFlinger creates and
+destroys layers or modifies layer states, as applicable. It also updates
 layers with their current contents, using calls such as
-<code>setLayerBuffer</code> or <code>setLayerColor</code>. After all layers have
-been updated, it will call <code>validateDisplay</code>, which tells the device
-to examine the state of the various layers and determine how composition will
-proceed. By default, SurfaceFlinger usually attempts to configure every layer
-such that it will be composited by the device, though there may be some
-circumstances where it will mandate that it be composited by the client.</p>
-<p>After the call to <code>validateDisplay</code>, SurfaceFlinger will follow up
-with a call to <code>getChangedCompositionTypes</code> to see if the device
-wants any of the layers' composition types changed before performing the actual
-composition. SurfaceFlinger may choose to:</p>
+<code translate="no" dir="ltr">setLayerBuffer</code> or <code translate="no" dir="ltr">setLayerColor</code>. After all layers are
+updated, SurfaceFlinger calls <code translate="no" dir="ltr">validateDisplay</code>, which tells
+the HWC to examine the state of the layers and determine how composition will
+proceed. By default, SurfaceFlinger attempts to configure every layer
+such that the layer is composited by the HWC; though in some
+circumstances, SurfaceFlinger composites layers through the GPU fallback.</p>
 
-<ul>
-<li>Change some of the layer composition types and re-validate the display.</li>
-</ul>
+<p>After the call to <code translate="no" dir="ltr">validateDisplay</code>, SurfaceFlinger calls
+<code translate="no" dir="ltr">getChangedCompositionTypes</code> to see if the HWC
+wants any of the layer composition types changed before performing the
+composition. To accept the changes, SurfaceFlinger calls
+<code translate="no" dir="ltr">acceptDisplayChanges</code>.</p>
 
-<em><strong>OR</strong></em>
+<p>If any layers are marked for SurfaceFlinger composition, SurfaceFlinger
+composites them into the target buffer. SurfaceFlinger then calls
+<code translate="no" dir="ltr">setClientTarget</code> to give the buffer to the display so that the
+buffer can be displayed on the screen or further composited with layers that
+haven't been marked for SurfaceFlinger composition. If no layers are marked for
+SurfaceFlinger composition, SurfaceFlinger bypasses the composition step.</p>
 
-<ul>
-<li>Call <code>acceptDisplayChanges</code>, which has the same effect as
-changing the composition types as requested by the device and re-validating
-without actually having to call <code>validateDisplay</code> again.</li>
-</ul>
+<p>Finally, SurfaceFlinger calls <code translate="no" dir="ltr">presentDisplay</code> to tell
+the HWC to complete the composition process and display the final result.</p>
 
-<p>In practice, SurfaceFlinger always takes the latter path (calling
-<code>acceptDisplayChanges</code>) though this behavior may change in the
-future.</p>
-<p>At this point, the behavior differs depending on whether any of the layers
-have been marked for client composition. If any (or all) layers have been marked
-for client composition, SurfaceFlinger will now composite all of those layers
-into the client target buffer. This buffer will be provided to the device using
-the <code>setClientTarget</code> call so that it may be either displayed
-directly on the screen or further composited with layers that have not been
-marked for client composition. If no layers have been marked for client
-composition, then the client composition step is bypassed.</p>
-<p>Finally, after all of the state has been validated and client composition has
-been performed if needed, SurfaceFlinger will call <code>presentDisplay</code>.
-This is the HWC device's cue to complete the composition process and display the
-final result.</p>
+<h2 id="multiple_displays">Multiple displays</h2>
 
-<h2 id="multiple_displays">Multiple displays in Android 7.0</h2>
-<p>While the HWC2 interface is quite flexible when it comes to the number of
-displays in the system, the rest of the Android framework is not yet as
-flexible. When designing a HWC2 implementation intended for use on Android 7.0,
-there are some additional restrictions not present in the HWC definition itself:
+<p>Android 10 supports multiple physical displays.
+When designing an HWC implementation intended for use on Android 7.0 and
+higher, there are some restrictions not present in the HWC definition:
 </p>
 
 <ul>
-<li>It is assumed that there is exactly one <em>primary</em> display; that is,
-that there is one physical display that will be hotplugged immediately during
-the initialization of the device (specifically after the hotplug callback is
-registered).</li>
-<li>In addition to the primary display, exactly one <em>external</em> display
-may be hotplugged during normal operation of the device.</li>
+<li>It's assumed that there's exactly one <em>internal</em> display. The internal
+display is the display that the initial hotplug reports during
+boot. After the internal display is hotplugged, it can't
+be disconnected.</li>
+<li>In addition to the internal display, any number of external displays may be hotplugged
+during normal operation of the device. The framework assumes that all
+hotplugs after the first internal display are external displays, so if any more
+internal displays are added, they're categorized incorrectly as
+<code translate="no" dir="ltr">Display.TYPE_HDMI</code> instead of
+<code translate="no" dir="ltr">Display.TYPE_BUILT_IN</code>.</li>
 </ul>
 
-<p>While the SurfaceFlinger operations described above are performed per-display
-(eventual goal is to be able to composite displays independently of each other),
-they are currently performed sequentially for all active displays, even if only
-the contents of one display are updated.</p>
-<p>For example, if only the external display is updated, the sequence is:</p>
+<p>While the SurfaceFlinger operations described above are performed
+per-display, they're performed sequentially for all active displays,
+even if the contents of only one display are updated.</p>
 
-<pre class="devsite-click-to-copy">
+<p>For example, if the external display is updated, the sequence is:</p>
+
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
+// In Android 9 and lower:
+
 // Update state for internal display
 // Update state for external display
 validateDisplay(&lt;internal display&gt;)
 validateDisplay(&lt;external display&gt;)
 presentDisplay(&lt;internal display&gt;)
 presentDisplay(&lt;external display&gt;)
+
+// In Android 10 and higher:
+
+// Update state for internal display
+// Update state for external display
+validateInternal(&lt;internal display&gt;)
+presentInternal(&lt;internal display&gt;)
+validateExternal(&lt;external display&gt;)
+presentExternal(&lt;external display&gt;)
 </pre>
 
+<h2 id="vdisplay-composition">Virtual display composition</h2>
+
+<p>Virtual display composition is similar to  external display
+composition. The difference between virtual display composition and physical
+display composition is that virtual displays send output to a Gralloc buffer
+instead of to the screen. Hardware Composer (HWC) writes the output to a buffer,
+provides the completion fence, and sends the buffer to a consumer (such as the
+video encoder, GPU, CPU, and so on). Virtual displays can use 2D/blitter or
+overlays if the display pipeline writes to memory.</p>
+
+<h3 id="modes">Modes</h3>
+
+<p>Each frame is in one of three modes after SurfaceFlinger calls the
+<code translate="no" dir="ltr">validateDisplay()</code> HWC method:</p>
+
+<ul>
+<li><strong>GLES</strong> &mdash; The GPU composites all layers, writing
+  directly to the output buffer. The HWC isn't involved in composition.</li>
+<li><strong>MIXED</strong> &mdash; The GPU composites some layers to the
+  framebuffer and HWC composites the framebuffer and the remaining layers,
+  writing directly to the output buffer.</li>
+<li><strong>HWC</strong> &mdash; HWC composites all layers and writes directly
+  to the output buffer.</li>
+</ul>
+
+<h3 id="output_format">Output format</h3>
+
+<p>Virtual display buffer output formats depend on their mode:</p>
+
+<ul>
+<li><strong>GLES mode</strong> &mdash; The EGL driver sets the output buffer
+  format in <code translate="no" dir="ltr">dequeueBuffer()</code>, typically <code translate="no" dir="ltr">RGBA_8888</code>.
+  The consumer must be able to accept the output format the driver sets or the
+  buffer can't be read.</li>
+<li><strong>MIXED and HWC modes</strong> &mdash; If the consumer needs CPU
+  access, the consumer sets the format. Otherwise, the format is
+  <code translate="no" dir="ltr">IMPLEMENTATION_DEFINED</code>, and Gralloc sets the best format based on
+  the usage flags. For example, Gralloc sets a YCbCr format if the consumer is
+  video encoder and HWC can write the format efficiently.</li>
+</ul>
+
+<aside class="note"><strong>Note:</strong> Android 10
+removes the requirement that <code translate="no" dir="ltr">eglSwapBuffers()</code> dequeues buffers
+after rendering begins. Buffers may be dequeued immediately.</aside>
 
 <h2 id="sync_fences">Synchronization fences</h2>
+
 <p>Synchronization (sync) fences are a crucial aspect of the Android graphics
-system. Fences allow CPU work to proceed independently from concurrent GPU work,
-blocking only when there is a true dependency.</p>
-<p>For example, when an application submits a buffer that is being produced on
-the GPU, it will also submit a fence object; this fence signals only when the
-GPU has finished writing into the buffer. Since the only part of the system that
-truly needs the GPU write to have finished is the display hardware (the hardware
-abstracted by the HWC HAL), the graphics pipeline is able to pass this fence
-along with the buffer through SurfaceFlinger to the HWC device. Only immediately
-before that buffer would be displayed does the device need to actually check
-that the fence has signaled.</p>
-<p>Sync fences are integrated tightly into HWC2 and organized in the following
-categories:</p>
+system. Fences let CPU work proceed independently from concurrent GPU work,
+blocking only when there's a true dependency.</p>
 
-<ol>
-<li>Acquire fences are passed along with input buffers to the
-<code>setLayerBuffer</code> and <code>setClientTarget</code> calls. These
-represent a pending write into the buffer and must signal before the HWC client
-or device attempts to read from the associated buffer to perform composition.
-</li>
-<li>Release fences are retrieved after the call to <code>presentDisplay</code>
-using the <code>getReleaseFences</code> call and are passed back to the
-application along with buffers that will be replaced during the next
-composition. These represent a pending read from the buffer, and must signal
-before the application attempts to write new contents into the buffer.</li>
-<li>Retire fences are returned, one per frame, as part of the call to
-<code>presentDisplay</code> and represent when the composition of this frame
-has completed, or alternately, when the composition result of the prior frame is
-no longer needed. For physical displays, this is when the current frame appears
-on the screen and can also be interpreted as the time after which it is safe to
-write to the client target buffer again (if applicable). For virtual displays,
-this is the time when it is safe to read from the output buffer.</li>
-</ol>
+<p>For example, when an app submits a buffer that's being produced on
+the GPU, it also submits a sync fence object. This fence signals when the
+GPU has finished writing into the buffer.</p>
 
-<h3 id="hwc2_changes">Changes in HWC2</h3>
-<p>The meaning of sync fences in HWC 2.0 has changed significantly relative to
-previous versions of the HAL.</p>
-<p>In HWC v1.x, the release and retire fences were speculative. A release fence
-for a buffer or a retire fence for the display retrieved in frame N would not
-signal any sooner than frame N + 1. In other words, the meaning of the fence
-was "the content of the buffer you provided for frame N is no longer needed."
-This is speculative because in theory SurfaceFlinger may not run again after
-frame N for an indeterminate period of time, which would leave those fences
-unsignaled for the same period.</p>
-<p>In HWC 2.0, release and retire fences are non-speculative. A release or
-retire fence retrieved in frame N will signal as soon as the content of the
-associated buffers replaces the contents of the buffers from frame N - 1, or in
-other words, the meaning of the fence is "the content of the buffer you provided
-for frame N has now replaced the previous content." This is non-speculative,
-since this fence should signal shortly after <code>presentDisplay</code> is
-called as soon as the hardware presents this frame's content.</p>
-<p>For implementation details, refer to the
-<a href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/hwcomposer2.h">HWC2 header</a>.</p>
+<p>The HWC requires that the GPU finish writing buffers before buffers are
+displayed. Sync fences are passed through the graphics pipeline with buffers
+and signal when buffers are written. Before a buffer is displayed, the HWC
+checks if the sync fence has signaled, and if it has, it displays the
+buffer.</p>
+
+<p>For more information about sync fences see <a
+href="sync.html#hardware_composer_integration">Hardware Composer
+Integration</a>.</p>
 
   
           </div>
@@ -902,17 +996,17 @@ called as soon as the hardware presents this frame's content.</p>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1119,8 +1213,9 @@ called as soon as the hardware presents this frame's content.</p>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1186,54 +1281,49 @@ called as soon as the hardware presents this frame's content.</p>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/graphics/implement-hwc by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:29:48 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/graphics/implement-hwc by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:20:55 GMT -->
 </html>

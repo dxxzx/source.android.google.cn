@@ -1,0 +1,1750 @@
+<!doctype html>
+<html       lang="en"      dir="ltr">
+  
+<!-- Mirrored from source.android.google.cn/devices/tech/ota/dynamic_partitions/implement by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:23:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="implement.html">      
+<title>Implementing Dynamic Partitions &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Implementing Dynamic Partitions &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="implement.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        block-apix        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../devices.html"
+   class="gc-analytics-event"
+   title="Develop"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../../tech.html"
+   class="gc-analytics-event"
+   title="Configure"
+   aria-label="Configure, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search
+            enable-suggestions
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
+    <div class="devsite-search-container">
+      <div class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Configure
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../tech.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../datausage.html"
+   class="gc-analytics-event"
+   title="Data"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Data"
+   >
+  Data
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../admin.html"
+   class="gc-analytics-event"
+   title="Enterprise"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Enterprise"
+   >
+  Enterprise
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../perf.html"
+   class="gc-analytics-event"
+   title="Performance"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Performance"
+   >
+  Performance
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../config.html"
+   class="gc-analytics-event"
+   title="Permissions"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Permissions"
+   >
+  Permissions
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../power.html"
+   class="gc-analytics-event"
+   title="Power"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Power"
+   >
+  Power
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../dalvik.html"
+   class="gc-analytics-event"
+   title="Runtime"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Runtime"
+   >
+  Runtime
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../ota.html"
+   class="gc-analytics-event"
+   title="Updates"
+   aria-label="Updates, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Updates"
+   >
+  Updates
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav scrollbars >
+                  
+
+
+
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../tech.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../tech.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../datausage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Data">
+      <span class="devsite-nav-text" >Data</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../admin.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Enterprise">
+      <span class="devsite-nav-text" >Enterprise</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../perf.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Performance">
+      <span class="devsite-nav-text" >Performance</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../config.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Permissions">
+      <span class="devsite-nav-text" >Permissions</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../power.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Power">
+      <span class="devsite-nav-text" >Power</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Runtime">
+      <span class="devsite-nav-text" >Runtime</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../ota.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Updates">
+      <span class="devsite-nav-text" menu="_book">Updates</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../../ota.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item"><a href="../apex.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="APEX File Format">APEX File Format</span></a></li>
+  <li class="devsite-nav-item"><a href="../tools.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="OTA Tools">OTA Tools</span></a></li>
+  <li class="devsite-nav-item"><a href="../sign_builds.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Signing Builds for Release">Signing Builds for Release</span></a></li>
+  <li class="devsite-nav-item"><a href="../reduce_size.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reducing OTA Size">Reducing OTA Size</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="A/B System Updates">A/B System Updates</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../ab.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../ab/ab_implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing A/B Updates">Implementing A/B Updates</span></a></li><li class="devsite-nav-item"><a href="../ab/ab_faqs.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Frequently Asked Questions">Frequently Asked Questions</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Non-A/B System Updates">Non-A/B System Updates</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../nonab.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../nonab/block.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Block-Based OTA">Block-Based OTA</span></a></li><li class="devsite-nav-item"><a href="../nonab/inside_packages.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Inside OTA Packages">Inside OTA Packages</span></a></li><li class="devsite-nav-item"><a href="../nonab/device_code.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device-Specific Code">Device-Specific Code</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Dynamic Partitions">Dynamic Partitions</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dynamic_partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing Dynamic Partitions">Implementing Dynamic Partitions</span></a></li><li class="devsite-nav-item"><a href="ab_launch.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="OTA for A/B Devices">OTA for A/B Devices</span></a></li><li class="devsite-nav-item"><a href="ab_legacy.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="OTA for Legacy A/B Devices">OTA for Legacy A/B Devices</span></a></li><li class="devsite-nav-item"><a href="nonab.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="OTA for non-A/B Devices">OTA for non-A/B Devices</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="../../config/timezone-rules.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Time Zone Rules">Time Zone Rules</span></a></li>
+  <li class="devsite-nav-item"><a href="../user-data-checkpoint.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="User Data Checkpoint">User Data Checkpoint</span></a></li>
+  <li class="devsite-nav-item"><a href="../dynamic-system-updates.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Dynamic System Updates">Dynamic System Updates</span></a></li>
+          </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content>
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">        
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Configure
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../ota.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Updates
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Implementing Dynamic Partitions</h1>
+    
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2019 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <p>
+    Dynamic partitioning is implemented using the dm-linear device-mapper
+    module in the Linux kernel. The <code translate="no" dir="ltr">super</code> partition contains
+    metadata listing the names and block ranges of each dynamic partition
+    within <code translate="no" dir="ltr">super</code>. During first-stage <code translate="no" dir="ltr">init</code>, this
+    metadata is parsed and validated, and virtual block devices are created to
+    represent each dynamic partition.
+  </p>
+
+  <p>
+    When applying an OTA, dynamic partitions are automatically created,
+    resized, or deleted as needed. For A/B devices, there are two copies of
+    the metadata, and changes are applied only to the copy representing the
+    target slot.
+  </p>
+
+  <p>
+    Because dynamic partitions are implemented in userspace, partitions needed
+    by the bootloader can't be made dynamic. For example, <code translate="no" dir="ltr">boot</code>,
+    <code translate="no" dir="ltr">dtbo</code>, and <code translate="no" dir="ltr">vbmeta</code> are read by the bootloader, and
+    so must remain as physical partitions.
+  </p>
+
+  <p>
+    Each dynamic partition can belong to an <em>update group</em>. These
+    groups limit the maximum space that partitions in that group can consume.
+    For example, <code translate="no" dir="ltr">system</code> and <code translate="no" dir="ltr">vendor</code> can belong to a
+    group that restricts the total size of <code translate="no" dir="ltr">system</code> and
+    <code translate="no" dir="ltr">vendor</code>.
+  </p>
+
+  <h2 id="implement-dynamic-partitions-new-devices">
+    Implementing dynamic partitions on new devices
+  </h2>
+
+    <p>
+      This section details how to implement dynamic partitions on new devices
+      launching with Android 10 and higher. To update
+      existing devices, see <a href="#upgrading-devices">Upgrading Android
+      devices</a>.
+    </p>
+
+    <h3 id="partitioning-changes">Partitioning changes</h3>
+
+      <p>
+        For devices launching with Android 10, create
+        a partition called <code translate="no" dir="ltr">super</code>. The <code translate="no" dir="ltr">super</code>
+        partition handles A/B slots internally, so A/B devices don't need
+        separate <code translate="no" dir="ltr">super_a</code> and <code translate="no" dir="ltr">super_b</code> partitions.
+        All read-only AOSP partitions that aren't used by the bootloader must
+        be dynamic and must be removed from the GUID Partition Table (GPT).
+        Vendor-specific partitions don't have to be dynamic and may be placed
+        in the GPT.
+      </p>
+
+      <aside class="note">
+        <strong>Note:</strong> Avoid placing <code translate="no" dir="ltr">userdata</code> or any other
+        permanent read-write partition inside <code translate="no" dir="ltr">super</code>.
+    </aside>
+
+      <p>
+        To estimate the size of <code translate="no" dir="ltr">super</code>, add the sizes of the
+        partitions being deleted from the GPT. For A/B devices, this
+        should include the size of both slots. <strong>Figure 1</strong> shows
+        an example partition table before and after converting to dynamic
+        partitions.
+      </p>
+
+      <figure>
+        <img src="../images/dynamic_partitions_table.png"
+        alt="Partition table layout">
+        <figcaption>
+          <strong>Figure 1.</strong> New physical partition table layout when
+          converting to dynamic partitions
+        </figcaption>
+      </figure>
+
+      <p>
+        The supported dynamic partitions are:
+      </p>
+
+      <ul>
+        <li>System</li>
+        <li>Vendor</li>
+        <li>Product</li>
+        <li>System Ext</li>
+        <li>ODM</li>
+      </ul>
+
+      <p>
+        For devices launching with Android 10, the
+        kernel command line option <code translate="no" dir="ltr">androidboot.super_partition</code>
+        must be empty so that the command sysprop
+        <code translate="no" dir="ltr">ro.boot.super_partition</code> is empty.
+      </p>
+
+    <h3 id="partition-alignment">Partition alignment</h3>
+
+      <p>
+        The device-mapper module may operate less efficiently if the
+        <code translate="no" dir="ltr">super</code> partition is not properly aligned. The
+        <code translate="no" dir="ltr">super</code> partition MUST be aligned to the <em>minimum I/O
+        request size</em> as determined by the block layer. By default, the
+        build system (via <code translate="no" dir="ltr">lpmake</code>, which generates the
+        <code translate="no" dir="ltr">super</code> partition image), assumes that a 1&nbsp;MiB alignment
+        is sufficient for every dynamic partition. However, vendors should
+        ensure that the <code translate="no" dir="ltr">super</code> partition is properly aligned.
+      </p>
+
+      <p>
+        You can determine the minimum request size of a block device by
+        inspecting <code translate="no" dir="ltr">sysfs</code>. For example:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+# ls -l /dev/block/by-name/super
+lrwxrwxrwx 1 root root 16 1970-04-05 01:41 /dev/block/by-name/super -&gt; /dev/block/sda17
+# cat /sys/block/sda/queue/minimum_io_size
+786432
+</pre>
+
+      <p>
+        You can verify the <code translate="no" dir="ltr">super</code> partition's alignment in a
+        similar manner:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+# cat /sys/block/sda/sda17/alignment_offset
+</pre>
+
+      <p>
+        The alignment offset MUST be 0.
+      </p>
+
+    <h3 id="device-configuration-changes">Device configuration changes</h3>
+
+      <p>
+        To enable dynamic partitioning, add the following flag in
+        <code translate="no" dir="ltr">device.mk</code>:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">PRODUCT_USE_DYNAMIC_PARTITIONS := true</pre>
+
+    <h3 id="board-configuration-changes">Board configuration changes</h3>
+
+      <p>
+        You're required to set the size of the <code translate="no" dir="ltr">super</code> partition:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+BOARD_SUPER_PARTITION_SIZE := &lt;size-in-bytes&gt;
+</pre>
+
+      <p>
+        On A/B devices, the build system throws an error if the total size
+        of dynamic partition images is more than half of the <code translate="no" dir="ltr">super</code>
+        partition size.
+      </p>
+
+      <p>
+        You can configure the list of dynamic partitions as follows. For
+        devices using update groups, list the groups in the
+        <code translate="no" dir="ltr">BOARD_SUPER_PARTITION_GROUPS</code> variable. Each group name
+        then has a <code translate="no" dir="ltr">BOARD_<var>group</var>_SIZE</code>
+        and <code translate="no" dir="ltr">BOARD_<var>group</var>_PARTITION_LIST</code> variable.
+        For A/B devices, the maximum size of a group should cover only one
+        slot, as the group names are slot-suffixed internally.
+      </p>
+
+      <p>
+        Here's an example device that places all partitions into a group
+        called <code translate="no" dir="ltr">example_dynamic_partitions</code>:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+BOARD_SUPER_PARTITION_GROUPS := example_dynamic_partitions
+BOARD_EXAMPLE_DYNAMIC_PARTITIONS_SIZE := 6442450944
+BOARD_EXAMPLE_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor product
+</pre>
+
+      <p>
+        Here's an example device that places system and product services into
+        <code translate="no" dir="ltr">group_foo</code>, and <code translate="no" dir="ltr">vendor</code>, <code translate="no" dir="ltr">product</code>,
+        and <code translate="no" dir="ltr">odm</code> into <code translate="no" dir="ltr">group_bar</code>:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+BOARD_SUPER_PARTITION_GROUPS := group_foo group_bar
+BOARD_GROUP_FOO_SIZE := 4831838208
+BOARD_GROUP_FOO_PARTITION_LIST := system product_services
+BOARD_GROUP_BAR_SIZE := 1610612736
+BOARD_GROUP_BAR_PARTITION_LIST := vendor product odm
+</pre>
+
+      <aside class="note">
+        <strong>Note:</strong> Avoid choosing names that can conflict with
+        build variables, such as <em>super</em> and <em>super_partition</em>.
+        For readability,  choose names such as <em>foo_dp</em>,
+        <em>foo_dynamic_partitions</em>, <em>foo_dp_group</em>,
+        <em>super_foo</em>, or <em>group_foo</em> (where foo is the name
+        of the party that updates a given group). For example,
+        <code translate="no" dir="ltr">group_OEM</code> or <code translate="no" dir="ltr">group_VENDOR</code>.
+      </aside>
+
+      <aside class="note">
+        <strong>Note:</strong> There may be one or more update groups on your
+        device.
+      </aside>
+
+      <ul>
+        <li>
+          For A/B launch devices, the sum of maximum sizes of all groups must
+          be:<br />
+          <em><code translate="no" dir="ltr">BOARD_SUPER_PARTITION_SIZE</code> / 2 - overhead</em>
+        </li>
+        <li>
+          For non-A/B devices and retrofit A/B devices, the sum of maximum
+          sizes of all groups must be:<br />
+          <em><code translate="no" dir="ltr">BOARD_SUPER_PARTITION_SIZE</code> - overhead</em>
+        </li>
+        <li>
+          At build time, the sum of the sizes of the images of each partition
+          in an update group must not exceed the maximum size of the group.
+        </li>
+        <li>
+          Overhead is required in the computation to account for metadata,
+          alignments, and so on. A reasonable overhead is 4&nbsp;MiB, but you
+          can pick a larger overhead as needed by the device.
+        </li>
+      </ul>
+
+    <h3 id="dyanimic-partitions-sizing">Sizing dynamic partitions</h3>
+
+      <p>
+        Before dynamic partitions, partition sizes were over-allocated to
+        ensure that they had enough room for future updates. The actual size
+        was taken as is and most read-only partitions had some amount of free
+        space in their file system. In dynamic partitions, that free space is
+        unusable and could be used to grow partitions during an OTA.
+        It's critical to ensure that partitions aren't wasting space and are
+        allocated to a minimum possible size.
+      </p>
+
+      <p>
+        For read-only ext4 images, the build system automatically allocates
+        the minimum size if no hardcoded partition size is specified. The
+        build system fits the image so that the file system has as little
+        unused space as possible. This ensures that the device doesn't waste
+        space that can be used for OTAs.
+      </p>
+
+      <p>
+        Additionally, ext4 images can be further compressed by enabling block-
+        level deduplication. To enable this, use the following configuration:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+BOARD_EXT4_SHARE_DUP_BLOCKS := true
+</pre>
+
+      <p>
+        If automatic allocation of a partition minimum size is undesirable,
+        there are two ways to control the partition size. You can specify a
+        minimum amount of free space with
+        <code translate="no" dir="ltr">BOARD_<var>partition</var>IMAGE_PARTITION_RESERVED_SIZE</code>,
+        or you can specify
+        <code translate="no" dir="ltr">BOARD_<var>partition</var>IMAGE_PARTITION_SIZE</code> to force
+        dynamic partitions to a specific size. Neither of these is
+        recommended unless necessary.
+      </p>
+
+      <p>
+        For example:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 52428800
+</pre>
+
+      <p>
+        This forces the file system in <code translate="no" dir="ltr">product.img</code> to have
+        50&nbsp;MiB of unused space.
+      </p>
+
+      <aside class="note">
+        <strong>Note:</strong> The build system <strong>can only</strong>
+        best-fit ext4 file system images, and only on images produced by the
+        build. For prebuilt images, or images using other file systems, it's
+        important to manually ensure that the file system isn't wasting
+        on-disk space.
+      </aside>
+
+    <h3 id="system-as-root-changes">System-as-root changes</h3>
+
+      <p>
+        Devices launching with Android 10 must not
+        use system-as-root.
+      </p>
+
+      <p>
+        Devices with dynamic partitions (whether it launches with or retrofits
+        dynamic partitions) must not use system-as-root. The Linux kernel can't
+        interpret the <code translate="no" dir="ltr">super</code> partition and so can't mount
+        <code translate="no" dir="ltr">system</code> itself. <code translate="no" dir="ltr">system</code> is now mounted by
+        first-stage <code translate="no" dir="ltr">init</code>, which resides in the ramdisk.
+      </p>
+
+      <p>
+        Don't set <code translate="no" dir="ltr">BOARD_BUILD_SYSTEM_ROOT_IMAGE</code>. In
+        Android 10, the
+        <code translate="no" dir="ltr">BOARD_BUILD_SYSTEM_ROOT_IMAGE</code> flag is only used to
+        differentiate whether the system is mounted by the kernel or by the
+        first-stage <code translate="no" dir="ltr">init</code> in ramdisk.
+      </p>
+
+      <p>
+        Setting <code translate="no" dir="ltr">BOARD_BUILD_SYSTEM_ROOT_IMAGE</code> to <code translate="no" dir="ltr">true</code>
+        causes a build error when
+        <code translate="no" dir="ltr">PRODUCT_USES_DYNAMIC_PARTITIONS</code> is also <code translate="no" dir="ltr">true</code>.
+      </p>
+
+      <p>
+        When <code translate="no" dir="ltr">BOARD_USES_RECOVERY_AS_BOOT</code> is set to true, the
+        recovery image is built as boot.img, containing the recovery's
+        ramdisk. Previously, bootloader used the <code translate="no" dir="ltr">skip_initramfs</code> kernel
+        command line parameter to decide which mode to boot into. For Android
+        10 devices, the bootloader MUST NOT pass
+        <code translate="no" dir="ltr">skip_initramfs</code> to the kernel command-line. Instead, bootloader
+        should pass <code translate="no" dir="ltr">androidboot.force_normal_boot=1</code> to skip recovery
+        and boot normal Android.
+      </p>
+
+    <h3 id="avb-configuration-changes">AVB configuration changes</h3>
+
+      <aside class="caution">
+        <strong>Caution:</strong> Dynamic partitions require Android Verified
+        Boot (AVB) and won't work with Verified Boot 1.0.
+      </aside>
+
+      <p>
+        When using <a
+        href="../../../../security/verifiedboot/avb.html">Android
+        Verified Boot 2.0</a>, if the device isn't using <em>chained partition
+        descriptors</em>, then no change is necessary. If using chained
+        partitions, however, and one of the verified partitions is dynamic,
+        then changes are necessary.
+      </p>
+
+      <p>
+        Here's an example configuration for a device that chains
+        <code translate="no" dir="ltr">vbmeta</code> for the <code translate="no" dir="ltr">system</code> and
+        <code translate="no" dir="ltr">vendor</code> partitions.
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+BOARD_AVB_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+BOARD_AVB_SYSTEM_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
+
+BOARD_AVB_VENDOR_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+BOARD_AVB_VENDOR_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_VENDOR_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_VENDOR_ROLLBACK_INDEX_LOCATION := 1
+</pre>
+
+      <p>
+        With this configuration, the bootloader expects to find a <a
+        href="https://android.googlesource.com/platform/external/avb/+/master/README.md">vbmeta
+        footer</a> at the end of the <code translate="no" dir="ltr">system</code> and
+        <code translate="no" dir="ltr">vendor</code> partitions. Because these partitions are no longer
+        visible to the bootloader (they reside in <code translate="no" dir="ltr">super</code>), two
+        changes are needed.
+      </p>
+
+      <ul>
+        <li>
+          Add <code translate="no" dir="ltr">vbmeta_system</code> and <code translate="no" dir="ltr">vbmeta_vendor</code>
+          partitions to the device's partition table. For A/B devices, add
+          <code translate="no" dir="ltr">vbmeta_system_a</code>, <code translate="no" dir="ltr">vbmeta_system_b</code>,
+          <code translate="no" dir="ltr">vbmeta_vendor_a</code>, and <code translate="no" dir="ltr">vbmeta_vendor_b</code>. If
+          adding one or more of these partitions, they should be the same size
+          as the <code translate="no" dir="ltr">vbmeta</code> partition.
+        </li>
+        <li>
+          Rename the configuration flags by adding <code translate="no" dir="ltr">VBMETA_</code> and
+          specify which partitions the chaining extends to:
+
+<pre class="prettyprint" translate="no" dir="ltr">
+BOARD_AVB_VBMETA_SYSTEM := system
+BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
+
+BOARD_AVB_VBMETA_VENDOR := vendor
+BOARD_AVB_VBMETA_VENDOR_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+BOARD_AVB_VBMETA_VENDOR_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX_LOCATION := 1
+</pre>
+        </li>
+      </ul>
+
+      <p>
+        A device may be using one, both, or none of these partitions. Changes
+        are need only when chaining to a logical partition.
+      </p>
+
+    <h3 id="avb-bootloader-changes">AVB bootloader changes</h3>
+
+      <p>
+        If the bootloader has embedded <a
+        href="https://android.googlesource.com/platform/external/avb/">libavb</a>,
+        include the following patches:
+      </p>
+
+      <ul>
+        <li>
+          <a href="https://android.googlesource.com/platform/external/avb/+/818cf56740775446285466eda984acedd4baeac0" class="external">818cf56740775446285466eda984acedd4baeac0</a>
+          &mdash; "libavb: Only query partition GUIDs when the cmdline needs
+          them."
+        </li>
+        <li>
+          <a href="https://android.googlesource.com/platform/external/avb/+/5abd6bc2578968d24406d834471adfd995a0c2e9" class="external">5abd6bc2578968d24406d834471adfd995a0c2e9</a>
+          &mdash; "Allow system partition to be absent"
+        </li>
+        <li>
+          <a href="https://android.googlesource.com/platform/external/avb/+/9ba3b6613b4e5130fa01a11d984c6b5f0eb3af05" class="external">9ba3b6613b4e5130fa01a11d984c6b5f0eb3af05</a>
+          &mdash; "Fix AvbSlotVerifyData->cmdline might be NULL"
+        </li>
+      </ul>
+
+      <p>
+        If using chained partitions, include an additional patch:
+      </p>
+
+      <ul>
+        <li>
+          <a href="https://android.googlesource.com/platform/external/avb/+/49936b4c0109411fdd38bd4ba3a32a01c40439a9">49936b4c0109411fdd38bd4ba3a32a01c40439a9</a>
+          &mdash; "libavb: Support vbmeta blobs in beginning of partition."
+
+          <aside class="note">
+            <strong>Note:</strong> Previously, it was optional to implement
+            <code translate="no" dir="ltr">get_size_of_partition</code> in <code translate="no" dir="ltr">AvbOps</code>. After
+            this change it's required, and the bootloader must
+            implement this function.
+          </aside>
+        </li>
+      </ul>
+
+    <h3 id="kernel-command-line-changes">Kernel command line changes</h3>
+
+      <p>
+        A new parameter, <code translate="no" dir="ltr">androidboot.boot_devices</code>, must be added
+        to the kernel command line. This is used by <code translate="no" dir="ltr">init</code> to
+        enable <code translate="no" dir="ltr">/dev/block/by-name</code> symlinks. It should be the
+        device path component to the underlying by-name symlink created by
+        <code translate="no" dir="ltr">ueventd</code>, that is,
+        <code translate="no" dir="ltr">/dev/block/platform/<var>device-path</var>/by-name/<var>partition-name</var></code>.
+      </p>
+
+      <p>
+        For example, if the super partition by-name symlink is
+        <code translate="no" dir="ltr">/dev/block/platform/<strong>soc/100000.ufshc</strong>/by-name/super</code>,
+        you can add the command line parameter in the BoardConfig.mk file as
+        follows:
+
+<pre class="prettyprint" translate="no" dir="ltr">
+BOARD_KERNEL_CMDLINE += androidboot.boot_devices=soc/100000.ufshc
+</pre>
+
+    <h3 id="fstab-changes">fstab changes</h3>
+
+      <p>
+        The device tree and device tree overlays must not contain fstab
+        entries. Use an fstab file that will be part of the ramdisk.
+      </p>
+
+      <p>
+        Changes must be made to the fstab file for logical partitions:
+      </p>
+
+      <ul>
+        <li>
+          The fs_mgr flags field must include the <code translate="no" dir="ltr">logical</code> flag
+          and the <code translate="no" dir="ltr">first_stage_mount</code> flag, introduced in Android
+          10, which indicates that a partition is to
+          be mounted in the first stage.
+        </li>
+        <li>
+          A partition may specify
+          <code translate="no" dir="ltr">avb=<var>vbmeta partition name</var></code> as an
+          <code translate="no" dir="ltr">fs_mgr</code> flag and then the specified <code translate="no" dir="ltr">vbmeta</code>
+          partition is initialized by first stage <code translate="no" dir="ltr">init</code> before
+          attempting to mount any devices.
+        </li>
+        <li>
+          The <code translate="no" dir="ltr">dev</code> field must be the partition name.
+        </li>
+      </ul>
+
+      <p>
+        The following fstab entries set system, vendor, and product as logical
+        partitions following the above rules.
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+#&lt;dev&gt;  &lt;mnt_point&gt; &lt;type&gt;  &lt;mnt_flags options&gt; &lt;fs_mgr_flags&gt;
+system   /system     ext4    ro,barrier=1        wait,slotselect,avb=vbmeta,logical,first_stage_mount
+vendor   /vendor     ext4    ro,barrier=1        wait,slotselect,avb,logical,first_stage_mount
+product  /product    ext4    ro,barrier=1        wait,slotselect,avb,logical,first_stage_mount</pre>
+
+      <aside class="note">
+        <strong>Note:</strong> Do not include <code translate="no" dir="ltr">slotselect</code> for a non-A/B device.
+      </aside>
+
+      <p>
+        Copy the fstab file into the first stage ramdisk.
+      </p>
+
+    <h3 id="selinux-launch">SELinux changes</h3>
+      <p>
+        The super partition block device must be marked with the label
+        <code translate="no" dir="ltr">super_block_device</code>. For example, if the super partition by-name symlink is
+        <code translate="no" dir="ltr">/dev/block/platform/<strong>soc/100000.ufshc</strong>/by-name/super</code>,
+        add the following line to <code translate="no" dir="ltr">file_contexts</code>:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+/dev/block/platform/soc/10000\.ufshc/by-name/super   u:object_r:super_block_device:s0
+</pre>
+
+    <h3 id="fastbootd">fastbootd</h3>
+
+      <p>
+        The bootloader (or any non-userspace flashing tool) doesn't understand
+        dynamic partitions, so it can't flash them. To address this, devices
+        must use a user-space implementation of the fastboot protocol, called
+        fastbootd.
+      </p>
+
+      <p>
+        For more information on how to implement fastbootd, see <a
+        href="../../../bootloader/fastbootd.html">Moving Fastboot to User Space</a>.
+      </p>
+
+
+    <h3 id="adb-remount">adb remount</h3>
+
+      <p>
+        For developers using eng or userdebug builds, <code translate="no" dir="ltr">adb remount</code>
+        is extremely useful for fast iteration. Dynamic partitions pose a
+        problem for <code translate="no" dir="ltr">adb remount</code> because there is no longer free
+        space within each file system. To address this, devices can enable
+        overlayfs. As long as there is free space within the super partition,
+        <code translate="no" dir="ltr">adb remount</code> automatically creates a temporary dynamic
+        partition and uses overlayfs for writes. The temporary partition is
+        named <code translate="no" dir="ltr">scratch</code>, so don't use this name for other
+        partitions.
+      </p>
+
+      <p>
+        For more information on how to enable overlayfs, see the <a
+        href="https://android.googlesource.com/platform/system/core/+/a9a3b73163fda5abf237cc0f0cee97ff33e6254d/fs_mgr/README.overlayfs.md">overlayfs
+        README</a> in AOSP.
+      </p>
+
+  <h2 id="upgrading-devices">Upgrading Android devices</h2>
+
+    <p>
+      If you upgrade a device to Android 10, and
+      want to include dynamic partitions support in the OTA, you don't need to
+      change the built-in partition table. Some extra configuration is
+      required.
+    </p>
+
+    <h3 id="device-configuration-changes-retrofit">Device configuration changes</h3>
+
+      <p>
+        To retrofit dynamic partitioning, add the following flags in
+        <code translate="no" dir="ltr">device.mk</code>:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := true
+</pre>
+
+    <h3 id="board-configuration-changes-retrofit">Board configuration changes</h3>
+
+      <p>
+        You're required to set the following board variables:
+      </p>
+        <ul>
+          <li>Set <code translate="no" dir="ltr">BOARD_SUPER_PARTITION_BLOCK_DEVICES</code> to the list of block devices used
+            to store extents of dynamic partitions. This is the list of names of existing physical
+            partitions on the device.</li>
+          <li>Set <code translate="no" dir="ltr">BOARD_SUPER_PARTITION_<var>partition</var>_DEVICE_SIZE</code> to the sizes
+            of each block device in <code translate="no" dir="ltr">BOARD_SUPER_PARTITION_BLOCK_DEVICES</code>, respectively.
+            This is the list of sizes of existing physical partitions on the device. This is usually
+            <code translate="no" dir="ltr">BOARD_<var>partition</var>IMAGE_PARTITION_SIZE</code> in existing board
+            configurations.</li>
+          <li>Unset existing <code translate="no" dir="ltr">BOARD_<var>partition</var>IMAGE_PARTITION_SIZE</code> for all
+            partitions in <code translate="no" dir="ltr">BOARD_SUPER_PARTITION_BLOCK_DEVICES</code>.</li>
+          <li>Set <code translate="no" dir="ltr">BOARD_SUPER_PARTITION_SIZE</code> to the sum of
+            <code translate="no" dir="ltr">BOARD_SUPER_PARTITION_<var>partition</var>_DEVICE_SIZE</code>.</li>
+          <li>Set <code translate="no" dir="ltr">BOARD_SUPER_PARTITION_METADATA_DEVICE</code> to the block device where
+            dynamic partition metadata is stored. It must be one of
+            <code translate="no" dir="ltr">BOARD_SUPER_PARTITION_BLOCK_DEVICES</code>. Usually, this is set to
+            <code translate="no" dir="ltr">system</code>.</li>
+          <li>Set <code translate="no" dir="ltr">BOARD_SUPER_PARTITION_GROUPS</code>,
+            <code translate="no" dir="ltr">BOARD_<var>group</var>_SIZE</code>, and
+            <code translate="no" dir="ltr">BOARD_<var>group</var>_PARTITION_LIST</code>, respectively. See
+            <a href="#board-configuration-changes">Board configuration changes on new devices</a>
+            for details.</li>
+        </ul>
+      <p>
+        For example, if the device already has system and vendor partitions, and you want to convert
+        them to dynamic partitions and add a new product partition during the update, set this board configuration:
+      </p>
+<pre class="prettyprint" translate="no" dir="ltr">
+BOARD_SUPER_PARTITION_BLOCK_DEVICES := system vendor
+BOARD_SUPER_PARTITION_METADATA_DEVICE := system
+
+# Rename BOARD_SYSTEMIMAGE_PARTITION_SIZE to BOARD_SUPER_PARTITION_SYSTEM_DEVICE_SIZE.
+BOARD_SUPER_PARTITION_SYSTEM_DEVICE_SIZE := &lt;size-in-bytes&gt;
+
+# Rename BOARD_VENDORIMAGE_PARTITION_SIZE to BOARD_SUPER_PARTITION_VENDOR_DEVICE_SIZE
+BOARD_SUPER_PARTITION_VENDOR_DEVICE_SIZE := &lt;size-in-bytes&gt;
+
+# This is BOARD_SUPER_PARTITION_SYSTEM_DEVICE_SIZE + BOARD_SUPER_PARTITION_VENDOR_DEVICE_SIZE
+BOARD_SUPER_PARTITION_SIZE := &lt;size-in-bytes&gt;
+
+# Configuration for dynamic partitions. For example:
+BOARD_SUPER_PARTITION_GROUPS := group_foo
+BOARD_GROUP_FOO_SIZE := &lt;size-in-bytes&gt;
+BOARD_GROUP_FOO_PARTITION_LIST := system vendor product
+</pre>
+
+    <h3 id="selinux-legacy">SELinux changes</h3>
+      <p>
+        The super partition block devices must be marked with the attribute
+        <code translate="no" dir="ltr">super_block_device_type</code>. For example, if the device already has
+        <code translate="no" dir="ltr">system</code> and <code translate="no" dir="ltr">vendor</code> partitions, you want to use them as block
+        devices to store extents of dynamic partitions, and their by-name symlinks are marked as
+        <code translate="no" dir="ltr">system_block_device</code>:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+/dev/block/platform/soc/10000\.ufshc/by-name/system   u:object_r:system_block_device:s0
+/dev/block/platform/soc/10000\.ufshc/by-name/vendor   u:object_r:system_block_device:s0
+</pre>
+
+      <p>
+        Then, add the following line to <code translate="no" dir="ltr">device.te</code>:
+      </p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+typeattribute system_block_device super_block_device_type;
+</pre>
+
+
+    <p>
+      For other configurations, see <a href="#implement-dynamic-partitions-new-devices">Implementing
+      dynamic partitions on new devices</a>.
+    </p>
+
+    <p>
+      For more information about retrofit updates, see
+      <a href="ab_legacy.html">OTA for A/B Devices without Dynamic
+        Partitions</a>.
+    </p>
+
+  <h2 id="factory-images">Factory images</h2>
+
+    <p>
+      For a device launching with dynamic partitions support, avoid using
+      userspace fastboot to flash factory images, as booting to userspace is
+      slower than other flashing methods.
+    </p>
+
+    <p>
+      To address this, <code translate="no" dir="ltr">make dist</code> now builds an additional
+      <code translate="no" dir="ltr">super.img</code> image that can be flashed directly to the super
+      partition. It automatically bundles the contents of logical
+      partitions, meaning it contains <code translate="no" dir="ltr">system.img</code>,
+      <code translate="no" dir="ltr">vendor.img</code>, and so on, in addition to the <code translate="no" dir="ltr">super</code>
+      partition metadata. This image can be flashed directly to the
+      <code translate="no" dir="ltr">super</code> partition without any additional tooling or using
+      fastbootd. After the build, <code translate="no" dir="ltr">super.img</code> is placed in
+      <code translate="no" dir="ltr">${ANDROID_PRODUCT_OUT}</code>.
+    </p>
+
+    <p>
+      For A/B devices that launch with dynamic partitions,
+      <code translate="no" dir="ltr">super.img</code> contains images in the A slot. After flashing the
+      super image directly, mark slot A as bootable before rebooting the
+      device.
+    </p>
+
+    <p>
+      For retrofit devices, <code translate="no" dir="ltr">make dist</code> builds a set of
+      <code translate="no" dir="ltr">super_*.img</code> images that can be flashed directly to
+      corresponding physical partitions. For example, <code translate="no" dir="ltr">make dist</code>
+      builds <code translate="no" dir="ltr">super_system.img</code> and <code translate="no" dir="ltr">super_vendor.img</code>
+      when <code translate="no" dir="ltr">BOARD_SUPER_PARTITION_BLOCK_DEVICES</code> is the system
+      vendor. These images are placed in the OTA folder in
+      <code translate="no" dir="ltr">target_files.zip</code>.
+    </p>
+  
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/tech/ota/dynamic_partitions/implement by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:23:24 GMT -->
+</html>

@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/dalvik/instruction-formats.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:32:35 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/dalvik/instruction-formats.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:57:40 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Dalvik Executable instruction formats &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Dalvik Executable instruction formats &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="instruction-formats.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="instruction-formats.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="instruction-formats.html">      
+<title>Dalvik Executable instruction formats &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Dalvik Executable instruction formats &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="instruction-formats.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab active>
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
    aria-label="Configure, selected"         data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,16 +243,16 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
-                  <tab active>
-          <a href="../dalvik.html"
+                  <tab >
+          <a href="../../tech.html"
    class="gc-analytics-event"
-   title="ART"
-   aria-label="ART, selected"         data-category="Site-Wide Custom Events"
-        data-label="Tab: ART"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
    >
-  ART
+  Overview
 </a>
 
         </tab>
@@ -243,7 +279,7 @@
 
         </tab>
                         <tab >
-          <a href="../health.html"
+          <a href="../perf.html"
    class="gc-analytics-event"
    title="Performance"
            data-category="Site-Wide Custom Events"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab >
-          <a href="../config/perms-whitelist.html"
+          <a href="../config.html"
    class="gc-analytics-event"
    title="Permissions"
            data-category="Site-Wide Custom Events"
@@ -272,6 +308,17 @@
         data-label="Tab: Power"
    >
   Power
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="Runtime"
+   aria-label="Runtime, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Runtime"
+   >
+  Runtime
 </a>
 
         </tab>
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -351,7 +414,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -361,15 +424,12 @@
   
                                             <ul class="devsite-nav-responsive-tabs">
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../dalvik.html"
-     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+    <a href="../../tech.html"
+          class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
-     data-label="Responsive Tab: ART">
-      <span class="devsite-nav-text" menu="_book">ART</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
-          menu="_book">
-    </span>
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
         </a>
   </li>
 
@@ -394,7 +454,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../health.html"
+    <a href="../perf.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -404,7 +464,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../config/perms-whitelist.html"
+    <a href="../config.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -420,6 +480,19 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Power">
       <span class="devsite-nav-text" >Power</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../dalvik.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Runtime">
+      <span class="devsite-nav-text" menu="_book">Runtime</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
+          menu="_book">
+    </span>
         </a>
   </li>
 
@@ -458,35 +531,38 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../dalvik.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../dalvik.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item"><a href="improvements.html"
+  <li class="devsite-nav-item"><a href="improvements.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Improvements">Improvements</span></a></li>
-                          <li class="devsite-nav-item"><a href="dalvik-bytecode.html"
+  <li class="devsite-nav-item"><a href="dalvik-bytecode.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Bytecode Format">Bytecode Format</span></a></li>
-                          <li class="devsite-nav-item"><a href="dex-format.html"
+  <li class="devsite-nav-item"><a href="dex-format.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Dex Format">Dex Format</span></a></li>
-                          <li class="devsite-nav-item"><a href="instruction-formats.html"
+  <li class="devsite-nav-item"><a href="instruction-formats.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Instruction Formats">Instruction Formats</span></a></li>
-                          <li class="devsite-nav-item"><a href="constraints.html"
+  <li class="devsite-nav-item"><a href="constraints.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Constraints">Constraints</span></a></li>
-                          <li class="devsite-nav-item"><a href="configure.html"
+  <li class="devsite-nav-item"><a href="configure.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Configuration">Configuration</span></a></li>
-                          <li class="devsite-nav-item"><a href="gc-debug.html"
+  <li class="devsite-nav-item"><a href="signed-config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Signed Config">Signed Config</span></a></li>
+  <li class="devsite-nav-item"><a href="gc-debug.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Garbage Collection">Garbage Collection</span></a></li>
-                          <li class="devsite-nav-item"><a href="jit-compiler.html"
+  <li class="devsite-nav-item"><a href="jit-compiler.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="JIT Compilation">JIT Compilation</span></a></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -494,16 +570,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -513,9 +590,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -524,14 +602,15 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
           >
-            ART
+            Runtime
       
   </a>
         </li>
@@ -542,8 +621,8 @@
 
               <h1 class="devsite-page-title">Dalvik Executable instruction formats</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -577,12 +656,12 @@ format and Dalvik bytecode. It is meant to be used in conjunction with the
 the format. It consists of one or more space-separated "words" each of
 which describes a 16-bit code unit. Each character in a word
 represents four bits, read from high bits to low, with vertical bars
-("<code>|</code>") interspersed to aid in reading. Uppercase letters
-in sequence from "<code>A</code>" are used to indicate fields within
+("<code translate="no" dir="ltr">|</code>") interspersed to aid in reading. Uppercase letters
+in sequence from "<code translate="no" dir="ltr">A</code>" are used to indicate fields within
 the format (which then get defined further by the syntax column). The term
-"<code>op</code>" is used to indicate the position of an eight-bit
+"<code translate="no" dir="ltr">op</code>" is used to indicate the position of an eight-bit
 opcode within the format. A slashed zero
-("<code>&Oslash;</code>") is used to indicate that all bits must be
+("<code translate="no" dir="ltr">&Oslash;</code>") is used to indicate that all bits must be
 zero in the indicated position.</p>
 
 <p>For the most part, lettering proceeds from earlier code units to
@@ -592,7 +671,7 @@ done in order to make the naming of similar-meaning parts be the same
 across different instruction formats. These cases are noted explicitly
 in the format descriptions.</p>
 
-<p>For example, the format "<code>B|A|<i>op</i> CCCC</code>" indicates
+<p>For example, the format "<code translate="no" dir="ltr">B|A|<i>op</i> CCCC</code>" indicates
 that the format consists of two 16-bit code units. The first word
 consists of the opcode in the low eight bits and a pair of four-bit
 values in the high eight bits; and the second word consists of a single
@@ -608,19 +687,19 @@ the format.</p>
 letter. The first digit indicates the number of 16-bit code units in the
 format. The second digit indicates the maximum number of registers that the
 format contains (maximum, since some formats can accommodate a variable
-number of registers), with the special designation "<code>r</code>" indicating
+number of registers), with the special designation "<code translate="no" dir="ltr">r</code>" indicating
 that a range of registers is encoded. The final letter semi-mnemonically
 indicates the type of any extra data encoded by the format. For example,
-format "<code>21t</code>" is of length two, contains one register reference,
+format "<code translate="no" dir="ltr">21t</code>" is of length two, contains one register reference,
 and additionally contains a branch target.</p>
 
 <p>Suggested static linking formats have an additional
-"<code>s</code>" suffix, making them four characters total. Similarly,
-suggested "inline" linking formats have an additional "<code>i</code>"
+"<code translate="no" dir="ltr">s</code>" suffix, making them four characters total. Similarly,
+suggested "inline" linking formats have an additional "<code translate="no" dir="ltr">i</code>"
 suffix. (In this context, inline linking is like static linking,
 except with more direct ties into a machine's implementation.)
 Finally, a couple oddball suggested formats (e.g.,
-"<code>20bc</code>") include two pieces of data which are both
+"<code translate="no" dir="ltr">20bc</code>") include two pieces of data which are both
 represented in its format ID.</p>
 
 <p>The full list of typecode letters are as follows. Note that some
@@ -655,7 +734,7 @@ forms have different sizes, depending on the format:</p>
   <td>h</td>
   <td>16</td>
   <td>immediate signed <b>h</b>at (high-order bits of a 32- or 64-bit
-    value; low-order bits are all <code>0</code>)
+    value; low-order bits are all <code translate="no" dir="ltr">0</code>)
   </td>
 </tr>
 <tr>
@@ -706,45 +785,45 @@ more arguments, themselves separated with commas.</p>
 <p>Wherever an argument refers to a field from the first column, the
 letter for that field is indicated in the syntax, repeated once for
 each four bits of the field. For example, an eight-bit field labeled
-"<code>BB</code>" in the first column would also be labeled
-"<code>BB</code>" in the syntax column.</p>
+"<code translate="no" dir="ltr">BB</code>" in the first column would also be labeled
+"<code translate="no" dir="ltr">BB</code>" in the syntax column.</p>
 
-<p>Arguments which name a register have the form "<code>v<i>X</i></code>".
-The prefix "<code>v</code>" was chosen instead of the more common
-"<code>r</code>" exactly to avoid conflicting with (non-virtual) architectures
+<p>Arguments which name a register have the form "<code translate="no" dir="ltr">v<i>X</i></code>".
+The prefix "<code translate="no" dir="ltr">v</code>" was chosen instead of the more common
+"<code translate="no" dir="ltr">r</code>" exactly to avoid conflicting with (non-virtual) architectures
 on which the Dalvik Executable format might be implemented which themselves
-use the prefix "<code>r</code>" for their registers. (That is, this
+use the prefix "<code translate="no" dir="ltr">r</code>" for their registers. (That is, this
 decision makes it possible to talk about both virtual and real registers
 together without the need for circumlocution.)</p>
 
 <p>Arguments which indicate a literal value have the form
-"<code>#+<i>X</i></code>". Some formats indicate literals that only
+"<code translate="no" dir="ltr">#+<i>X</i></code>". Some formats indicate literals that only
 have non-zero bits in their high-order bits; for these, the zeroes
 are represented explicitly in the syntax, even though they do not
 appear in the bitwise representation.</p>
 
 <p>Arguments which indicate a relative instruction address offset have the
-form "<code>+<i>X</i></code>".</p>
+form "<code translate="no" dir="ltr">+<i>X</i></code>".</p>
 
 <p>Arguments which indicate a literal constant pool index have the form
-"<code><i>kind</i>@<i>X</i></code>", where "<code><i>kind</i></code>"
+"<code translate="no" dir="ltr"><i>kind</i>@<i>X</i></code>", where "<code translate="no" dir="ltr"><i>kind</i></code>"
 indicates which constant pool is being referred to. Each opcode that
 uses such a format explicitly allows only one kind of constant; see
 the opcode reference to figure out the correspondence. The
-kinds of constant pool are "<code>string</code>" (string pool index),
-"<code>type</code>" (type pool index), "<code>field</code>" (field
-pool index), "<code>meth</code>" (method pool index), and
-"<code>site</code>" (call site index).</p>
+kinds of constant pool are "<code translate="no" dir="ltr">string</code>" (string pool index),
+"<code translate="no" dir="ltr">type</code>" (type pool index), "<code translate="no" dir="ltr">field</code>" (field
+pool index), "<code translate="no" dir="ltr">meth</code>" (method pool index), and
+"<code translate="no" dir="ltr">site</code>" (call site index).</p>
 
 <p>Similar to the representation of constant pool indices, there are
 also suggested (optional) forms that indicate prelinked offsets or
 indices. There are two types of suggested prelinked value: vtable offsets
-(indicated as "<code>vtaboff</code>") and field offsets (indicated as
-"<code>fieldoff</code>").</p>
+(indicated as "<code translate="no" dir="ltr">vtaboff</code>") and field offsets (indicated as
+"<code translate="no" dir="ltr">fieldoff</code>").</p>
 
 <p>In the cases where a format value isn't explicitly part of the syntax
 but instead picks a variant, each variant is listed with the prefix
-"<code>[<i>X</i>=<i>N</i>]</code>" (e.g., "<code>[A=2]</code>") to indicate
+"<code translate="no" dir="ltr">[<i>X</i>=<i>N</i>]</code>" (e.g., "<code translate="no" dir="ltr">[A=2]</code>") to indicate
 the correspondence.</p>
 
 <h2 id="formats">The formats</h2>
@@ -762,48 +841,48 @@ the correspondence.</p>
 <tr>
   <td><i>N/A</i></td>
   <td>00x</td>
-  <td><i><code>N/A</code></i></td>
+  <td><i><code translate="no" dir="ltr">N/A</code></i></td>
   <td><i>pseudo-format used for unused opcodes; suggested for use as the
     nominal format for a breakpoint opcode</i></td>
 </tr>
 <tr>
   <td>&Oslash;&Oslash;|<i>op</i></td>
   <td>10x</td>
-  <td><i><code>op</code></i></td>
+  <td><i><code translate="no" dir="ltr">op</code></i></td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td rowspan="2">B|A|<i>op</i></td>
   <td>12x</td>
-  <td><i><code>op</code></i> vA, vB</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vA, vB</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>11n</td>
-  <td><i><code>op</code></i> vA, #+B</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vA, #+B</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td rowspan="2">AA|<i>op</i></td>
   <td>11x</td>
-  <td><i><code>op</code></i> vAA</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>10t</td>
-  <td><i><code>op</code></i> +AA</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> +AA</td>
   <td>goto</td>
 </tr>
 <tr>
-  <td>&Oslash;&Oslash;|<i>op</i> AAAA</td></td>
+  <td>&Oslash;&Oslash;|<i>op</i> AAAA</td>
   <td>20t</td>
-  <td><i><code>op</code></i> +AAAA</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> +AAAA</td>
   <td>goto/16</td>
 </tr>
 <tr>
-  <td>AA|<i>op</i> BBBB</td></td>
+  <td>AA|<i>op</i> BBBB</td>
   <td>20bc</td>
-  <td><i><code>op</code></i> AA, kind@BBBB</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> AA, kind@BBBB</td>
   <td><i>suggested format for statically determined verification errors;
     A is the type of error and B is an index into a type-appropriate
     table (e.g. method references for a no-such-method error)</i></td>
@@ -811,33 +890,33 @@ the correspondence.</p>
 <tr>
   <td rowspan="5">AA|<i>op</i> BBBB</td>
   <td>22x</td>
-  <td><i><code>op</code></i> vAA, vBBBB</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA, vBBBB</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>21t</td>
-  <td><i><code>op</code></i> vAA, +BBBB</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA, +BBBB</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>21s</td>
-  <td><i><code>op</code></i> vAA, #+BBBB</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA, #+BBBB</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>21h</td>
-  <td><i><code>op</code></i> vAA, #+BBBB0000<br/>
-    <i><code>op</code></i> vAA, #+BBBB000000000000
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA, #+BBBB0000<br/>
+    <i><code translate="no" dir="ltr">op</code></i> vAA, #+BBBB000000000000
   </td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>21c</td>
-  <td><i><code>op</code></i> vAA, type@BBBB<br/>
-    <i><code>op</code></i> vAA, field@BBBB<br/>
-    <i><code>op</code></i> vAA, method_handle@BBBB<br/>
-    <i><code>op</code></i> vAA, proto@BBBB<br/>
-    <i><code>op</code></i> vAA, string@BBBB
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA, type@BBBB<br/>
+    <i><code translate="no" dir="ltr">op</code></i> vAA, field@BBBB<br/>
+    <i><code translate="no" dir="ltr">op</code></i> vAA, method_handle@BBBB<br/>
+    <i><code translate="no" dir="ltr">op</code></i> vAA, proto@BBBB<br/>
+    <i><code translate="no" dir="ltr">op</code></i> vAA, string@BBBB
   </td>
   <td>check-cast<br/>
     const-class<br/>
@@ -849,86 +928,86 @@ the correspondence.</p>
 <tr>
   <td rowspan="2">AA|<i>op</i> CC|BB</td>
   <td>23x</td>
-  <td><i><code>op</code></i> vAA, vBB, vCC</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA, vBB, vCC</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>22b</td>
-  <td><i><code>op</code></i> vAA, vBB, #+CC</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA, vBB, #+CC</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td rowspan="4">B|A|<i>op</i> CCCC</td>
   <td>22t</td>
-  <td><i><code>op</code></i> vA, vB, +CCCC</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vA, vB, +CCCC</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>22s</td>
-  <td><i><code>op</code></i> vA, vB, #+CCCC</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vA, vB, #+CCCC</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>22c</td>
-  <td><i><code>op</code></i> vA, vB, type@CCCC<br/>
-    <i><code>op</code></i> vA, vB, field@CCCC
+  <td><i><code translate="no" dir="ltr">op</code></i> vA, vB, type@CCCC<br/>
+    <i><code translate="no" dir="ltr">op</code></i> vA, vB, field@CCCC
   </td>
   <td>instance-of</td>
 </tr>
 <tr>
   <td>22cs</td>
-  <td><i><code>op</code></i> vA, vB, fieldoff@CCCC</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vA, vB, fieldoff@CCCC</td>
   <td><i>suggested format for statically linked field access instructions of
     format 22c</i>
   </td>
 </tr>
 <tr>
-  <td>&Oslash;&Oslash;|<i>op</i> AAAA<sub>lo</sub> AAAA<sub>hi</sub></td></td>
+  <td>&Oslash;&Oslash;|<i>op</i> AAAA<sub>lo</sub> AAAA<sub>hi</sub></td>
   <td>30t</td>
-  <td><i><code>op</code></i> +AAAAAAAA</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> +AAAAAAAA</td>
   <td>goto/32</td>
 </tr>
 <tr>
   <td>&Oslash;&Oslash;|<i>op</i> AAAA BBBB</td>
   <td>32x</td>
-  <td><i><code>op</code></i> vAAAA, vBBBB</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vAAAA, vBBBB</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td rowspan="3">AA|<i>op</i> BBBB<sub>lo</sub> BBBB<sub>hi</sub></td>
   <td>31i</td>
-  <td><i><code>op</code></i> vAA, #+BBBBBBBB</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA, #+BBBBBBBB</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>31t</td>
-  <td><i><code>op</code></i> vAA, +BBBBBBBB</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA, +BBBBBBBB</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>31c</td>
-  <td><i><code>op</code></i> vAA, string@BBBBBBBB</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA, string@BBBBBBBB</td>
   <td>const-string/jumbo</td>
 </tr>
 <tr>
   <td rowspan="3">A|G|<i>op</i> BBBB F|E|D|C</td>
   <td>35c</td>
-  <td><i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG},
+  <td><i>[<code translate="no" dir="ltr">A=5</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE, vF, vG},
     meth@BBBB<br/>
-    <i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG},
+    <i>[<code translate="no" dir="ltr">A=5</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE, vF, vG},
     site@BBBB<br/>
-    <i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG},
+    <i>[<code translate="no" dir="ltr">A=5</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE, vF, vG},
     type@BBBB<br/>
-    <i>[<code>A=4</code>] <code>op</code></i> {vC, vD, vE, vF},
-    <i><code>kind</code></i>@BBBB<br/>
-    <i>[<code>A=3</code>] <code>op</code></i> {vC, vD, vE},
-    <i><code>kind</code></i>@BBBB<br/>
-    <i>[<code>A=2</code>] <code>op</code></i> {vC, vD},
-    <i><code>kind</code></i>@BBBB<br/>
-    <i>[<code>A=1</code>] <code>op</code></i> {vC},
-    <i><code>kind</code></i>@BBBB<br/>
-    <i>[<code>A=0</code>] <code>op</code></i> {},
-    <i><code>kind</code></i>@BBBB<br/>
+    <i>[<code translate="no" dir="ltr">A=4</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE, vF},
+    <i><code translate="no" dir="ltr">kind</code></i>@BBBB<br/>
+    <i>[<code translate="no" dir="ltr">A=3</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE},
+    <i><code translate="no" dir="ltr">kind</code></i>@BBBB<br/>
+    <i>[<code translate="no" dir="ltr">A=2</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD},
+    <i><code translate="no" dir="ltr">kind</code></i>@BBBB<br/>
+    <i>[<code translate="no" dir="ltr">A=1</code>] <code translate="no" dir="ltr">op</code></i> {vC},
+    <i><code translate="no" dir="ltr">kind</code></i>@BBBB<br/>
+    <i>[<code translate="no" dir="ltr">A=0</code>] <code translate="no" dir="ltr">op</code></i> {},
+    <i><code translate="no" dir="ltr">kind</code></i>@BBBB<br/>
     <p><i>The unusual choice in lettering here reflects a desire to make
     the count and the reference index have the same label as in format
     3rc.</i></p>
@@ -937,87 +1016,87 @@ the correspondence.</p>
 </tr>
 <tr>
   <td>35ms</td>
-  <td><i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG},
+  <td><i>[<code translate="no" dir="ltr">A=5</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE, vF, vG},
     vtaboff@BBBB<br/>
-    <i>[<code>A=4</code>] <code>op</code></i> {vC, vD, vE, vF},
+    <i>[<code translate="no" dir="ltr">A=4</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE, vF},
     vtaboff@BBBB<br/>
-    <i>[<code>A=3</code>] <code>op</code></i> {vC, vD, vE},
+    <i>[<code translate="no" dir="ltr">A=3</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE},
     vtaboff@BBBB<br/>
-    <i>[<code>A=2</code>] <code>op</code></i> {vC, vD},
+    <i>[<code translate="no" dir="ltr">A=2</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD},
     vtaboff@BBBB<br/>
-    <i>[<code>A=1</code>] <code>op</code></i> {vC},
+    <i>[<code translate="no" dir="ltr">A=1</code>] <code translate="no" dir="ltr">op</code></i> {vC},
     vtaboff@BBBB<br/>
     <p><i>The unusual choice in lettering here reflects a desire to make
     the count and the reference index have the same label as in format
     3rms.</i></p>
   </td>
-  <td><i>suggested format for statically linked <code>invoke-virtual</code>
-    and <code>invoke-super</code> instructions of format 35c</i>
+  <td><i>suggested format for statically linked <code translate="no" dir="ltr">invoke-virtual</code>
+    and <code translate="no" dir="ltr">invoke-super</code> instructions of format 35c</i>
   </td>
 </tr>
 <tr>
   <td>35mi</td>
-  <td><i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG},
+  <td><i>[<code translate="no" dir="ltr">A=5</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE, vF, vG},
     inline@BBBB<br/>
-    <i>[<code>A=4</code>] <code>op</code></i> {vC, vD, vE, vF},
+    <i>[<code translate="no" dir="ltr">A=4</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE, vF},
     inline@BBBB<br/>
-    <i>[<code>A=3</code>] <code>op</code></i> {vC, vD, vE},
+    <i>[<code translate="no" dir="ltr">A=3</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE},
     inline@BBBB<br/>
-    <i>[<code>A=2</code>] <code>op</code></i> {vC, vD},
+    <i>[<code translate="no" dir="ltr">A=2</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD},
     inline@BBBB<br/>
-    <i>[<code>A=1</code>] <code>op</code></i> {vC},
+    <i>[<code translate="no" dir="ltr">A=1</code>] <code translate="no" dir="ltr">op</code></i> {vC},
     inline@BBBB<br/>
     <p><i>The unusual choice in lettering here reflects a desire to make
     the count and the reference index have the same label as in format
     3rmi.</i></p>
   </td>
-  <td><i>suggested format for inline linked <code>invoke-static</code>
-    and <code>invoke-virtual</code> instructions of format 35c</i>
+  <td><i>suggested format for inline linked <code translate="no" dir="ltr">invoke-static</code>
+    and <code translate="no" dir="ltr">invoke-virtual</code> instructions of format 35c</i>
   </td>
 </tr>
 <tr>
   <td rowspan="3">AA|<i>op</i> BBBB CCCC</td>
   <td>3rc</td>
-  <td><i><code>op</code></i> {vCCCC .. vNNNN}, meth@BBBB<br/>
-    <i><code>op</code></i> {vCCCC .. vNNNN}, site@BBBB<br/>
-    <i><code>op</code></i> {vCCCC .. vNNNN}, type@BBBB<br/>
-    <p><i>where <code>NNNN = CCCC+AA-1</code>, that is <code>A</code>
-    determines the count <code>0..255</code>, and <code>C</code>
+  <td><i><code translate="no" dir="ltr">op</code></i> {vCCCC .. vNNNN}, meth@BBBB<br/>
+    <i><code translate="no" dir="ltr">op</code></i> {vCCCC .. vNNNN}, site@BBBB<br/>
+    <i><code translate="no" dir="ltr">op</code></i> {vCCCC .. vNNNN}, type@BBBB<br/>
+    <p><i>where <code translate="no" dir="ltr">NNNN = CCCC+AA-1</code>, that is <code translate="no" dir="ltr">A</code>
+    determines the count <code translate="no" dir="ltr">0..255</code>, and <code translate="no" dir="ltr">C</code>
     determines the first register</i></p>
   </td>
   <td>&nbsp;</td>
 </tr>
 <tr>
   <td>3rms</td>
-  <td><i><code>op</code></i> {vCCCC .. vNNNN}, vtaboff@BBBB<br/>
-    <p><i>where <code>NNNN = CCCC+AA-1</code>, that is <code>A</code>
-    determines the count <code>0..255</code>, and <code>C</code>
+  <td><i><code translate="no" dir="ltr">op</code></i> {vCCCC .. vNNNN}, vtaboff@BBBB<br/>
+    <p><i>where <code translate="no" dir="ltr">NNNN = CCCC+AA-1</code>, that is <code translate="no" dir="ltr">A</code>
+    determines the count <code translate="no" dir="ltr">0..255</code>, and <code translate="no" dir="ltr">C</code>
     determines the first register</i></p>
   </td>
-  <td><i>suggested format for statically linked <code>invoke-virtual</code>
-    and <code>invoke-super</code> instructions of format <code>3rc</code></i>
+  <td><i>suggested format for statically linked <code translate="no" dir="ltr">invoke-virtual</code>
+    and <code translate="no" dir="ltr">invoke-super</code> instructions of format <code translate="no" dir="ltr">3rc</code></i>
   </td>
 </tr>
 <tr>
   <td>3rmi</td>
-  <td><i><code>op</code></i> {vCCCC .. vNNNN}, inline@BBBB<br/>
-    <p><i>where <code>NNNN = CCCC+AA-1</code>, that is <code>A</code>
-    determines the count <code>0..255</code>, and <code>C</code>
+  <td><i><code translate="no" dir="ltr">op</code></i> {vCCCC .. vNNNN}, inline@BBBB<br/>
+    <p><i>where <code translate="no" dir="ltr">NNNN = CCCC+AA-1</code>, that is <code translate="no" dir="ltr">A</code>
+    determines the count <code translate="no" dir="ltr">0..255</code>, and <code translate="no" dir="ltr">C</code>
     determines the first register</i></p>
   </td>
-  <td><i>suggested format for inline linked <code>invoke-static</code>
-    and <code>invoke-virtual</code> instructions of format 3rc</i>
+  <td><i>suggested format for inline linked <code translate="no" dir="ltr">invoke-static</code>
+    and <code translate="no" dir="ltr">invoke-virtual</code> instructions of format 3rc</i>
   </td>
 </tr>
 <tr>
   <td>A|G|<i>op</i> BBBB F|E|D|C HHHH
   <td>45cc</td>
   <td>
-    <i>[<code>A=5</code>] <code>op</code></i> {vC, vD, vE, vF, vG}, meth@BBBB, proto@HHHH<br>
-    <i>[<code>A=4</code>] <code>op</code></i> {vC, vD, vE, vF}, meth@BBBB, proto@HHHH<br>
-    <i>[<code>A=3</code>] <code>op</code></i> {vC, vD, vE}, meth@BBBB, proto@HHHH<br>
-    <i>[<code>A=2</code>] <code>op</code></i> {vC, vD}, meth@BBBB, proto@HHHH<br>
-    <i>[<code>A=1</code>] <code>op</code></i> {vC}, meth@BBBB, proto@HHHH
+    <i>[<code translate="no" dir="ltr">A=5</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE, vF, vG}, meth@BBBB, proto@HHHH<br>
+    <i>[<code translate="no" dir="ltr">A=4</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE, vF}, meth@BBBB, proto@HHHH<br>
+    <i>[<code translate="no" dir="ltr">A=3</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD, vE}, meth@BBBB, proto@HHHH<br>
+    <i>[<code translate="no" dir="ltr">A=2</code>] <code translate="no" dir="ltr">op</code></i> {vC, vD}, meth@BBBB, proto@HHHH<br>
+    <i>[<code translate="no" dir="ltr">A=1</code>] <code translate="no" dir="ltr">op</code></i> {vC}, meth@BBBB, proto@HHHH
   </td>
   <td>invoke-polymorphic
   </td>
@@ -1026,9 +1105,9 @@ the correspondence.</p>
   <td>AA|<i>op</i> BBBB CCCC HHHH
   <td>4rcc</td>
   <td>
-    <code>op></code> {vCCCC .. vNNNN}, meth@BBBB, proto@HHHH
-    <p><i>wheere <code>NNNN = CCCC+AA-1</code>, that is <code>A</code>
-    determines the count <code>0..255</code>, and <code>C</code>
+    <code translate="no" dir="ltr">op></code> {vCCCC .. vNNNN}, meth@BBBB, proto@HHHH
+    <p><i>where <code translate="no" dir="ltr">NNNN = CCCC+AA-1</code>, that is <code translate="no" dir="ltr">A</code>
+    determines the count <code translate="no" dir="ltr">0..255</code>, and <code translate="no" dir="ltr">C</code>
     determines the first register</i></p>
   </td>
   <td>invoke-polymorphic/range
@@ -1037,7 +1116,7 @@ the correspondence.</p>
 <tr>
   <td>AA|<i>op</i> BBBB<sub>lo</sub> BBBB BBBB BBBB<sub>hi</sub></td>
   <td>51l</td>
-  <td><i><code>op</code></i> vAA, #+BBBBBBBBBBBBBBBB</td>
+  <td><i><code translate="no" dir="ltr">op</code></i> vAA, #+BBBBBBBBBBBBBBBB</td>
   <td>const-wide</td>
 </tr>
 </tbody>
@@ -1053,17 +1132,17 @@ the correspondence.</p>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1270,8 +1349,9 @@ the correspondence.</p>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1337,54 +1417,49 @@ the correspondence.</p>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/dalvik/instruction-formats.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:32:35 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/dalvik/instruction-formats.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:57:40 GMT -->
 </html>

@@ -1,0 +1,1820 @@
+<!doctype html>
+<html       lang="en"      dir="ltr">
+  
+<!-- Mirrored from source.android.google.cn/devices/neural-networks/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:58:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="../neural-networks.html">      
+<title>Neural Networks API Drivers &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Neural Networks API Drivers &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="../neural-networks.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+
+  
+
+  
+
+    </head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        block-apix        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Develop"
+   aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search
+            enable-suggestions
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
+    <div class="devsite-search-container">
+      <div class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Develop
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Audio"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Audio"
+   >
+  Audio
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../camera.html"
+   class="gc-analytics-event"
+   title="Camera"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Camera"
+   >
+  Camera
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech/connect.html"
+   class="gc-analytics-event"
+   title="Connectivity"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Connectivity"
+   >
+  Connectivity
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../graphics.html"
+   class="gc-analytics-event"
+   title="Graphics"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Graphics"
+   >
+  Graphics
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../interaction.html"
+   class="gc-analytics-event"
+   title="Interaction"
+   aria-label="Interaction, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Interaction"
+   >
+  Interaction
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../media.html"
+   class="gc-analytics-event"
+   title="Media"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Media"
+   >
+  Media
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../storage.html"
+   class="gc-analytics-event"
+   title="Storage"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Storage"
+   >
+  Storage
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav scrollbars >
+                  
+
+
+
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Audio">
+      <span class="devsite-nav-text" >Audio</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../camera.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Camera">
+      <span class="devsite-nav-text" >Camera</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../tech/connect.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Connectivity">
+      <span class="devsite-nav-text" >Connectivity</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../graphics.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Graphics">
+      <span class="devsite-nav-text" >Graphics</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../interaction.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Interaction">
+      <span class="devsite-nav-text" menu="_book">Interaction</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../media.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Media">
+      <span class="devsite-nav-text" >Media</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../storage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Storage">
+      <span class="devsite-nav-text" >Storage</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../tech.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../interaction.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Automotive">Automotive</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../automotive.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio">Audio</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../automotive/audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/audio-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Audio HAL">Audio HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/audio-control.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AudioControl HAL">AudioControl HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/interaction-sequences.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction Sequences">Interaction Sequences</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/multi-zone.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multi-Zone">Multi-Zone</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../automotive/camera-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Camera HAL">Camera HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/ivi_connectivity.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="IVI Connectivity">IVI Connectivity</span></a></li><li class="devsite-nav-item"><a href="../automotive/properties.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Vehicle Properties">Vehicle Properties</span></a></li><li class="devsite-nav-item"><a href="../automotive/power.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Management">Power Management</span></a></li><li class="devsite-nav-item"><a href="../automotive/garage_mode.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Garage Mode">Garage Mode</span></a></li><li class="devsite-nav-item"><a href="../automotive/radio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Radio with Media">Radio with Media</span></a></li><li class="devsite-nav-item"><a href="../tech/perf/flash-wear.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Flash Wear Management">Flash Wear Management</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Input">Input</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../input.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../input/key-layout-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Key Layout Files">Key Layout Files</span></a></li><li class="devsite-nav-item"><a href="../input/key-character-map-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Key Character Map Files">Key Character Map Files</span></a></li><li class="devsite-nav-item"><a href="../input/input-device-configuration-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Input Device Configuration Files">Input Device Configuration Files</span></a></li><li class="devsite-nav-item"><a href="../input/migration-guide.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Migration Guide">Migration Guide</span></a></li><li class="devsite-nav-item"><a href="../input/keyboard-devices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Keyboard Devices">Keyboard Devices</span></a></li><li class="devsite-nav-item"><a href="../input/touch-devices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Touch Devices">Touch Devices</span></a></li><li class="devsite-nav-item"><a href="../input/getevent.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Getevent">Getevent</span></a></li><li class="devsite-nav-item"><a href="../input/validate-keymaps.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Validate Keymaps">Validate Keymaps</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Neural Networks">Neural Networks</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../neural-networks.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="ahardwarebuffer.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AHardware Buffer">AHardware Buffer</span></a></li><li class="devsite-nav-item"><a href="burst-executions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Burst Executions and Fast Message Queues">Burst Executions and Fast Message Queues</span></a></li><li class="devsite-nav-item"><a href="compilation-caching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Compilation Caching">Compilation Caching</span></a></li><li class="devsite-nav-item"><a href="device-discovery.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Discovery and Assignment">Device Discovery and Assignment</span></a></li><li class="devsite-nav-item"><a href="vendor-extensions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Vendor Extensions">Vendor Extensions</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Peripherals">Peripherals</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio Accessories">Audio Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="3.5 mm Headset">3.5 mm Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/plug-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/jack-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="USB Headset">USB Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/usb-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/usb-adapter.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Adapter Spec">Adapter Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/usb-device.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../accessories/headset/expected-behavior.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Expected Behavior">Expected Behavior</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Testing">Testing</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Custom Accessories">Custom Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/custom.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="AOA">AOA</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/protocol.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../accessories/aoa2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AOA 2.0">AOA 2.0</span></a></li><li class="devsite-nav-item"><a href="../accessories/aoa.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AOA 1.0">AOA 1.0</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../accessories/stylus.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Stylus">Stylus</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors">Sensors</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../sensors/sensor-stack.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Stack">Sensor Stack</span></a></li><li class="devsite-nav-item"><a href="../sensors/sensor-types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Types">Sensor Types</span></a></li><li class="devsite-nav-item"><a href="../sensors/interaction.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction">Interaction</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Power">Power</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors/batching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Batching">Batching</span></a></li><li class="devsite-nav-item"><a href="../sensors/power-use.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Consumption">Power Consumption</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Modes">Modes</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors/report-modes.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reporting Modes">Reporting Modes</span></a></li><li class="devsite-nav-item"><a href="../sensors/suspend-mode.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Suspend Mode">Suspend Mode</span></a></li><li class="devsite-nav-item"><a href="../sensors/sensors-off.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensors Off">Sensors Off</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors HAL">Sensors HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors/sensors-hal2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensors HAL 2.0">Sensors HAL 2.0</span></a></li><li class="devsite-nav-item"><a href="../sensors/hal-interface.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensors HAL 1.0">Sensors HAL 1.0</span></a></li><li class="devsite-nav-item"><a href="../sensors/versioning.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Version Deprecation">Version Deprecation</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="TV">TV</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tv.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../tv/hdmi-cec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="HDMI-CEC Control Service">HDMI-CEC Control Service</span></a></li><li class="devsite-nav-item"><a href="../tv/multimedia-tunneling.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multimedia Tunneling">Multimedia Tunneling</span></a></li><li class="devsite-nav-item"><a href="../tv/reference-tv-app.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reference TV App">Reference TV App</span></a></li><li class="devsite-nav-item"><a href="../tv/customize-tv-app.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Customize the TV App">Customize the TV App</span></a></li></ul></devsite-expandable-nav></li>
+          </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content>
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">        
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Develop
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../interaction.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Interaction
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Neural Networks API Drivers</h1>
+    
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  Copyright 2018 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+
+
+<p>This page provides an overview of how to implement a Neural Networks API (NNAPI)
+driver. For further details, see the documentation found in the HAL definition
+files in
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/" class="external"><code translate="no" dir="ltr">hardware/interfaces/neuralnetworks</code></a>.
+A sample driver implementation is in
+<a href="https://android.googlesource.com/platform/frameworks/ml/+/refs/heads/master/nn/driver/sample" class="external"><code translate="no" dir="ltr">frameworks/ml/nn/driver/sample</code></a>.</p>
+
+<p>For more information on the Neural Networks API, see
+<a href="https://developer.android.google.cn/ndk/guides/neuralnetworks/" class="external">Neural Networks API</a>.</p>
+
+<h2 id="nnhal">Neural Networks HAL</h2>
+
+<p>The Neural Networks (NN) HAL defines an abstraction of the various <em>devices</em>,
+such as graphics processing units (GPUs) and digital signal processors (DSPs),
+that are in a product (for example, a phone or tablet). The drivers for these
+devices must conform to the NN HAL. The interface is specified in the HAL
+definition files in
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/" class="external"><code translate="no" dir="ltr">hardware/interfaces/neuralnetworks</code></a>.</p>
+
+<p>The general flow of the interface between the framework and a driver is depicted
+in figure 1.</p>
+
+<p><img src="images/neural-networks-interface.png" alt="Neural Networks flow"></p>
+
+<p><strong>Figure 1.</strong> Neural Networks flow</p>
+
+<h2 id="initialization">Initialization</h2>
+
+<p>At initialization, the framework queries the driver for its capabilities using
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IDevice.hal#87" class="external"><code translate="no" dir="ltr">IDevice::getCapabilities_1_2</code></a> 
+in <code translate="no" dir="ltr">IDevice.hal</code> (or
+<a href="../../reference/hidl.html#getcapabilities_1_1"><code translate="no" dir="ltr">getCapabilities_1_1</code></a>
+for HAL 1.1 and
+<a href="../../reference/hidl.html#getcapabilities"><code translate="no" dir="ltr">getCapabilities</code></a>
+for HAL 1.0). The <code translate="no" dir="ltr">@1.2::Capabilities</code> structure includes all data types and
+represents nonrelaxed performance using a vector.</p>
+
+<p>To determine how to allocate computations to the available devices, the
+framework uses the capabilities to understand how quickly and how energy
+efficiently each driver can perform an execution. To provide this information,
+the driver must provide standardized performance numbers based on the execution
+of reference workloads.</p>
+
+<p>To determine the values that the driver returns in response to
+<code translate="no" dir="ltr">IDevice::getCapabilities_1_2</code>, use the NNAPI benchmark app to measure the
+performance for corresponding data types. The MobileNet v1 and v2, <code translate="no" dir="ltr">asr_float</code>,
+and <code translate="no" dir="ltr">tts_float</code> models are recommended for measuring performance for 32-bit
+floating point values and the MobileNet v1 and v2 quantized models are
+recommended for 8-bit quantized values. For more information, see
+<a href="#mlts">Android Machine Learning Test Suite</a>.</p>
+
+<p>In Android 9 and lower, the <code translate="no" dir="ltr">Capabilities</code> structure includes driver performance
+information only for floating point and quantized tensors and doesn&#39;t include
+scalar data types.</p>
+
+<p>As part of the initialization process, the framework may query more information,
+using
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IDevice.hal#76" class="external"><code translate="no" dir="ltr">IDevice::getType</code></a>,
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IDevice.hal#56" class="external"><code translate="no" dir="ltr">IDevice::getVersionString</code></a>,
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IDevice.hal#101" class="external"><code translate="no" dir="ltr">IDevice:getSupportedExtensions</code></a>,
+and
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IDevice.hal#164" class="external"><code translate="no" dir="ltr">IDevice::getNumberOfCacheFilesNeeded</code></a>.</p>
+
+<p>Between product reboots, the framework expects all queries described in this
+section to always report the same values for a given driver. Otherwise, an app
+using that driver may exhibit reduced performance or incorrect behavior.</p>
+
+<h2 id="compilation">Compilation</h2>
+
+<p>The framework determines which devices to use when it receives a request from an
+app. In Android 10, apps can discover
+and specify the devices
+that the framework picks from. For more information, see
+<a href="device-discovery.html">Device Discovery and Assignment</a>.</p>
+
+<p>At model compilation time, the framework sends the model to each candidate
+driver by calling
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IDevice.hal#123" class="external"><code translate="no" dir="ltr">IDevice::getSupportedOperations_1_2</code></a> 
+(or
+<a href="../../reference/hidl.html#getsupportedoperations_1_1"><code translate="no" dir="ltr">getSupportedOperations_1_1</code></a>
+for HAL 1.1 and
+<a href="../../reference/hidl.html#getsupportedoperations"><code translate="no" dir="ltr">getSupportedOperations</code></a>
+for HAL 1.0). Each driver returns an array of booleans indicating which
+operations of the model are supported. A driver can determine that it can&#39;t
+support a given operation for a number of reasons. For example:</p>
+
+<ul>
+<li>The driver doesn&#39;t support the data type.</li>
+<li>The driver only supports operations with specific input parameters. For
+example, a driver might support 3x3 and 5x5, but not 7x7 convolution
+operations.</li>
+<li>The driver has memory constraints preventing it from handling large
+graphs or inputs.</li>
+</ul>
+
+<p>During compilation, the input, output, and internal operands of the model, as
+described in
+<a href="../../reference/hidl.html#operandlifetime"><code translate="no" dir="ltr">OperandLifeTime</code></a>,
+can have unknown dimensions or rank. For more information, see
+<a href="#output-shape">Output shape</a>.</p>
+
+<p>The framework instructs each selected driver to prepare to execute a subset of
+the model by calling
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IDevice.hal#266" class="external"><code translate="no" dir="ltr">IDevice::prepareModel_1_2</code></a> 
+or
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IDevice.hal#346" class="external"><code translate="no" dir="ltr">prepareModelFromCache</code></a> 
+(or
+<a href="../../reference/hidl.html#preparemodel_1_1"><code translate="no" dir="ltr">prepareModel_1_1</code></a>
+for HAL 1.1 and
+<a href="../../reference/hidl.html#preparemodel"><code translate="no" dir="ltr">prepareModel</code></a>
+for HAL 1.0). Each driver then compiles its subset. For example, a driver might
+generate code or create a reordered copy of the weights. Because there can be a
+significant amount of time between the compilation of the model and the
+execution of requests, resources such as large chunks of device memory shouldn&#39;t
+be assigned during compilation.</p>
+
+<p>On success, the driver returns an
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IPreparedModel.hal" class="external"><code translate="no" dir="ltr">@1.2::IPreparedModel</code></a> 
+(or
+<a href="../../reference/hidl.html"><code translate="no" dir="ltr">@1.0::IPreparedModel</code></a>)
+handle. If the driver returns a failure code when preparing its subset of the
+model, the framework runs the entire model on the CPU.</p>
+
+<p>To reduce the time used for compilation when an app starts, a driver can
+cache compilation artifacts. For more information, see <a href="compilation-caching.html">Compilation
+Caching</a>.</p>
+
+<h2 id="execution">Execution</h2>
+
+<p>When an app asks the framework to execute a request, the framework calls
+the
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IPreparedModel.hal#141" class="external"><code translate="no" dir="ltr">IPreparedModel::executeSynchronously</code></a> 
+HAL method by default to perform a synchronous execution on a prepared model.
+A request can also be executed asynchronously using the
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IPreparedModel.hal#79" class="external"><code translate="no" dir="ltr">execute_1_2</code></a> 
+method
+(<a href="../../reference/hidl.html#execute"><code translate="no" dir="ltr">execute</code></a>
+for drivers with NN HAL 1.1 or lower)
+or executed using a
+<a href="burst-executions.html">burst execution</a>.</p>
+
+<p>Synchronous execution calls improve performance and reduce threading
+overhead as compared to asynchronous calls because control is returned to the
+app process only after the execution is completed. This means that the
+driver doesn&#39;t need a separate mechanism to notify the app process that
+an execution is completed.</p>
+
+<p>With the asynchronous <code translate="no" dir="ltr">execute_1_2</code> or <code translate="no" dir="ltr">execute</code> method, control returns to the
+app process after the execution has started, and the driver must notify
+the framework when the execution is completed, using the
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IExecutionCallback.hal" class="external"><code translate="no" dir="ltr">@1.2::IExecutionCallback</code></a> 
+or
+<a href="../../reference/hidl.html"><code translate="no" dir="ltr">@1.0::IExecutionCallback</code></a>
+interface.</p>
+
+<p>For debugging, you may want to set the <code translate="no" dir="ltr">debug.nn.syncexec-hal</code> property to <code translate="no" dir="ltr">0</code>,
+which tells the framework to call the asynchronous
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IPreparedModel.hal#79" class="external"><code translate="no" dir="ltr">execute_1_2</code></a> 
+method instead of <code translate="no" dir="ltr">executeSynchronously</code> because otherwise there might be no way
+of running <code translate="no" dir="ltr">execute_1_2</code> from the framework.</p>
+
+<p>The <code translate="no" dir="ltr">Request</code> parameter passed to the execute method lists the input and output
+operands used for the execution. The memory that stores the operand data must
+use row-major order with the first dimension iterating the slowest and have no
+padding at the end of any row. For more information about the types of operands,
+see
+<a href="https://developer.android.google.cn/ndk/guides/neuralnetworks#operands" class="external">Operands</a>.</p>
+
+<p>For NN HAL 1.2 drivers, when a request is
+completed, the error status, <a href="#output-shape">output shape</a>, and
+<a href="#timing">timing information</a> are returned
+to the framework. During execution, output or internal operands of the model can
+have one or more unknown dimensions or unknown rank. When at least one output
+operand has an unknown dimension or rank, the driver must return
+dynamically sized output information.</p>
+
+<p>For drivers with NN HAL 1.1 or lower, only the error status is returned when a
+request is completed. The dimensions for input and output operands must be fully
+specified for the execution to complete successfully. Internal operands can
+have one or more unknown dimensions, but they must have specified rank.</p>
+
+<p>For user requests that span multiple drivers, the framework is responsible for
+reserving intermediate memory and for sequencing the calls to each driver.</p>
+
+<p>Multiple requests can be initiated in parallel on the same
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IPreparedModel.hal" class="external"><code translate="no" dir="ltr">@1.2::IPreparedModel</code></a> 
+(or
+<a href="../../reference/hidl.html"><code translate="no" dir="ltr">@1.0::IPreparedModel</code></a>).
+The driver can execute requests in parallel or serialize the executions.</p>
+
+<p>The framework can ask a driver to keep more than one prepared model. For
+example, prepare model <code translate="no" dir="ltr">m1</code>, prepare <code translate="no" dir="ltr">m2</code>, execute request <code translate="no" dir="ltr">r1</code> on <code translate="no" dir="ltr">m1</code>, execute
+<code translate="no" dir="ltr">r2</code> on <code translate="no" dir="ltr">m2</code>, execute <code translate="no" dir="ltr">r3</code> on <code translate="no" dir="ltr">m1</code>, execute <code translate="no" dir="ltr">r4</code> on <code translate="no" dir="ltr">m2</code>, release (described in
+<a href="#cleanup">Cleanup</a>) <code translate="no" dir="ltr">m1</code>, and release <code translate="no" dir="ltr">m2</code>.</p>
+
+<p>To avoid a slow first execution that could result in a poor user experience (for
+example, a first frame stutter), the driver should perform most initializations
+in the compilation phase. Initialization on first execution should be limited to
+actions that negatively affect system health when performed early, such as
+reserving large temporary buffers or increasing the clock rate of a device.
+Drivers that can prepare only a limited number of concurrent models might have
+to do their initialization at first execution.</p>
+
+<p>In Android 10, in cases where multiple executions with
+the same prepared model
+are executed in quick succession, the client may choose to use an execution
+burst object to communicate between app and driver processes. For more
+information, see
+<a href="burst-executions.html">Burst Executions and Fast Message Queues</a>.</p>
+
+<p>To improve performance for multiple executions in quick succession, the driver
+can hold on to temporary buffers or increase clock rates. Creating a watchdog
+thread is recommended to release resources if no new requests are created after
+a fixed period of time.</p>
+<aside class="note"><strong>Note:</strong><span> Support for synchronous execution calls across the HAL layer isn&#39;t
+dependent on synchronous execution calls across the NDK layer.</span></aside>
+<h3 id="output-shape">Output shape</h3>
+
+<p>For requests where one or more output operands don&#39;t have all dimensions
+specified, the driver must provide a list of output shapes containing the
+dimension information for each output operand after execution. For more
+information on dimensions, see
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/types.hal#4872" class="external"><code translate="no" dir="ltr">types.hal</code></a>.</p>
+
+<p>If an execution fails because of an undersized output buffer, the driver must
+indicate which output operands have insufficient buffer size in the list of
+output shapes, and should report as much dimensional information as possible,
+using zero for dimensions that are unknown.</p>
+
+<h3 id="timing">Timing</h3>
+
+<p>In Android 10, an app can ask for the execution
+time if the app
+has specified a single device to use during the compilation process. For
+details, see
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/types.hal#5081" class="external"><code translate="no" dir="ltr">MeasureTiming</code></a> 
+and <a href="device-discovery.html">Device Discovery and Assignment</a>.
+In this case, an
+NN HAL 1.2 driver must measure execution duration or report <code translate="no" dir="ltr">UINT64_MAX</code> (to
+indicate that duration is unavailable) when executing a request. The driver
+should minimize any performance penalty resulting from measuring execution
+duration.</p>
+
+<p>The driver reports the following durations in microseconds in the
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/types.hal#5096" class="external"><code translate="no" dir="ltr">Timing</code></a> 
+structure:</p>
+
+<ul>
+<li><strong>Execution time on device:</strong> Doesn&#39;t include execution time in the
+driver, which runs on the host processor.</li>
+<li><strong>Execution time in the driver:</strong> Includes execution time on device.</li>
+</ul>
+
+<p>These durations must include the time when the execution is suspended, for
+example, when the execution has been preempted by other tasks or when it is
+waiting for a resource to become available.</p>
+<aside class="note"><strong>Note:</strong><span> While the driver reports durations in microseconds, the framework reports
+durations in nanoseconds (by scaling the durations reported by the driver).</span></aside>
+<p>When the driver hasn&#39;t been asked to measure the execution duration, or when
+there&#39;s an execution error, the driver must report durations as
+<code translate="no" dir="ltr">UINT64_MAX</code>. Even when the driver has been asked to measure the execution
+duration, it can instead report <code translate="no" dir="ltr">UINT64_MAX</code> for time on the device, time in the
+driver, or both. When the driver reports both durations as a value other than
+<code translate="no" dir="ltr">UINT64_MAX</code>, the execution time in the driver must equal or exceed the time on
+the device.</p>
+
+<h2 id="cleanup">Cleanup</h2>
+
+<p>When an app is finished using a prepared model, the framework releases
+its reference to the
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IPreparedModel.hal" class="external"><code translate="no" dir="ltr">@1.2::IPreparedModel</code></a> 
+(or
+<a href="../../reference/hidl.html"><code translate="no" dir="ltr">@1.0::IPreparedModel</code></a>)
+object. When the <code translate="no" dir="ltr">IPreparedModel</code> object is no longer referenced, it&#39;s
+automatically destroyed in the driver service that created it. Model-specific
+resources can be reclaimed at this time in the driver&#39;s implementation of the
+destructor. If the driver service wants the <code translate="no" dir="ltr">IPreparedModel</code> object to be
+automatically destroyed when no longer needed by the client, it must not hold
+any references to the <code translate="no" dir="ltr">IPreparedModel</code> object after the <code translate="no" dir="ltr">IPreparedeModel</code> object
+has been returned through
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/IPreparedModelCallback.hal#54" class="external"><code translate="no" dir="ltr">IPreparedModelCallback::notify_1_2</code></a> 
+or
+<a href="../../reference/hidl.html#notify"><code translate="no" dir="ltr">IPreparedModelCallback::notify</code></a>.</p>
+
+<h2 id="cpu-usage">CPU usage</h2>
+
+<p>Drivers are expected to use the CPU to set up computations. Drivers shouldn&#39;t
+use the CPU to perform graph computations because that interferes with the
+ability of the framework to correctly allocate work. The driver should report
+the parts that it can&#39;t handle to the framework and let the framework handle the
+rest.</p>
+
+<p>The framework provides a CPU implementation for all NNAPI operations except for
+vendor-defined operations. For more information, see
+<a href="vendor-extensions.html">Vendor Extensions</a>.</p>
+
+<p>The
+<a href="#android-q">operations introduced in Android 10</a>
+(API level 29)
+only have a reference CPU implementation to verify that the CTS and VTS tests
+are correct. The optimized implementations included in mobile machine learning
+frameworks are preferred over the NNAPI CPU implementation.</p>
+
+<h2 id="utility_functions">Utility functions</h2>
+
+<p>The NNAPI codebase includes utility functions that can be used by driver
+services.</p>
+
+<p>The
+<a href="https://android.googlesource.com/platform/frameworks/ml/+/refs/heads/master/nn/common/include/Utils.h" class="external"><code translate="no" dir="ltr">frameworks/ml/nn/common/include/Utils.h</code></a> 
+file contains assorted utility functions, such as those used for logging and
+for converting between different NN HAL versions.</p>
+
+<ul>
+<li><p>VLogging: <code translate="no" dir="ltr">VLOG</code> is a wrapper macro around Android&#39;s <code translate="no" dir="ltr">LOG</code> that only
+logs the message if the appropriate tag is set in the <code translate="no" dir="ltr">debug.nn.vlog</code>
+property.
+<a href="https://android.googlesource.com/platform/frameworks/ml/+/refs/heads/master/nn/common/Utils.cpp#50" class="external"><code translate="no" dir="ltr">initVLogMask()</code></a> 
+must be called before any calls to <code translate="no" dir="ltr">VLOG</code>. The <code translate="no" dir="ltr">VLOG_IS_ON</code> macro can be
+used to check if <code translate="no" dir="ltr">VLOG</code> is currently enabled, enabling complicated logging
+code to be skipped if it&#39;s not needed. The value of the property must be
+one of the following:</p>
+
+<ul>
+<li>An empty string, indicating that no logging is to be done.</li>
+<li>The token <code translate="no" dir="ltr">1</code> or <code translate="no" dir="ltr">all</code>, indicating that all logging is to be done.</li>
+<li>A list of tags, delimited by spaces, commas, or colons,
+indicating which logging is to be done. The tags are <code translate="no" dir="ltr">compilation</code>,
+<code translate="no" dir="ltr">cpuexe</code>, <code translate="no" dir="ltr">driver</code>, <code translate="no" dir="ltr">execution</code>, <code translate="no" dir="ltr">manager</code>, and <code translate="no" dir="ltr">model</code>.</li>
+</ul></li>
+<li><p><code translate="no" dir="ltr">compliantWithV1_*</code>: Returns <code translate="no" dir="ltr">true</code> if an NN HAL object can be converted
+to the same type of a different HAL version without losing information. For
+example, calling <code translate="no" dir="ltr">compliantWithV1_0</code> on a <code translate="no" dir="ltr">V1_2::Model</code> returns <code translate="no" dir="ltr">false</code> if
+the model includes operation types introduced in NN HAL 1.1 or NN HAL 1.2.</p></li>
+<li><p><code translate="no" dir="ltr">convertToV1_*</code>: Converts an NN HAL object from one version to another.
+A warning is logged if the conversion results in a loss of information (that
+is, if the new version of the type cannot fully represent the value).</p></li>
+<li><p>Capabilities: The <code translate="no" dir="ltr">nonExtensionOperandPerformance</code> and <code translate="no" dir="ltr">update</code>
+functions can be used to help build the
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.2/types.hal#4782" class="external"><code translate="no" dir="ltr">Capabilities::operandPerformance</code></a> 
+field.</p></li>
+<li><p>Querying properties of types: <code translate="no" dir="ltr">isExtensionOperandType</code>,
+<code translate="no" dir="ltr">isExtensionOperationType</code>, <code translate="no" dir="ltr">nonExtensionSizeOfData</code>,
+<code translate="no" dir="ltr">nonExtensionOperandSizeOfData</code>, <code translate="no" dir="ltr">nonExtensionOperandTypeIsScalar</code>,
+<code translate="no" dir="ltr">tensorHasUnspecifiedDimensions</code>.</p></li>
+</ul>
+
+<p>The
+<a href="https://android.googlesource.com/platform/frameworks/ml/+/refs/heads/master/nn/common/include/ValidateHal.h" class="external"><code translate="no" dir="ltr">frameworks/ml/nn/common/include/ValidateHal.h</code></a> 
+file contains utility functions for validating that an NN HAL object is valid
+according to its HAL version&#39;s specification.</p>
+
+<ul>
+<li><code translate="no" dir="ltr">validate*</code>: Returns <code translate="no" dir="ltr">true</code> if the NN HAL object is valid
+according to its HAL version&#39;s specification. OEM types and extension types
+aren&#39;t validated. For example, <code translate="no" dir="ltr">validateModel</code> returns <code translate="no" dir="ltr">false</code> if the
+model contains an operation that references an operand index that doesn&#39;t
+exist, or an operation that isn&#39;t supported at that HAL version.</li>
+</ul>
+
+<p>The
+<a href="https://android.googlesource.com/platform/frameworks/ml/+/refs/heads/master/nn/common/include/Tracing.h" class="external"><code translate="no" dir="ltr">frameworks/ml/nn/common/include/Tracing.h</code></a> 
+file contains macros to simplify adding
+<a href="../tech/debug/systrace.html">systracing</a> information to Neural Networks code.
+For an example, see the <code translate="no" dir="ltr">NNTRACE_*</code> macro invocations in the
+<a href="https://android.googlesource.com/platform/frameworks/ml/+/refs/heads/master/nn/driver/sample" class="external">sample driver</a>.</p>
+
+<p>The
+<a href="https://android.googlesource.com/platform/frameworks/ml/+/refs/heads/master/nn/common/include/GraphDump.h" class="external"><code translate="no" dir="ltr">frameworks/ml/nn/common/include/GraphDump.h</code></a> 
+file contains a utility function to dump the content of a <code translate="no" dir="ltr">Model</code> in graphical
+form for debugging purposes.</p>
+
+<ul>
+<li><code translate="no" dir="ltr">graphDump</code>: Writes a representation of the model in Graphviz
+(<code translate="no" dir="ltr">.dot</code>) format to the specified stream (if provided) or to the logcat (if
+no stream is provided).</li>
+</ul>
+
+<h2 id="validation">Validation</h2>
+
+<p>To test your implementation of the NNAPI, use the VTS and CTS tests included in
+the Android framework. VTS exercises your drivers directly (without using the
+framework), whereas CTS exercises them indirectly through the framework. These
+test each API method and verify that all operations supported by the
+drivers work correctly and provide results that meet the precision requirements.</p>
+
+<p>The precision requirements in CTS and VTS for the NNAPI are as follows:</p>
+
+<ul>
+<li><p><strong>Floating-point:</strong>
+abs(expected&nbsp;-&nbsp;actual)&nbsp;&lt;=&nbsp;atol&nbsp;+&nbsp;rtol&nbsp;
+*&nbsp;abs(expected); where:</p>
+
+<ul>
+<li>For fp32, atol&nbsp;=&nbsp;rtol&nbsp;=&nbsp;1e-5f</li>
+<li>For fp16, atol&nbsp;=&nbsp;rtol&nbsp;=&nbsp;5.0f&nbsp;*&nbsp;0.0009765625f</li>
+</ul></li>
+<li><p><strong>Quantized:</strong> off-by-one (except for <code translate="no" dir="ltr">mobilenet_quantized</code>,
+which is off-by-two)</p></li>
+<li><p><strong>Boolean:</strong> exact match</p></li>
+</ul>
+
+<p>One way CTS tests NNAPI is by generating fixed pseudorandom graphs
+used to test and compare the
+execution results from each driver with the NNAPI reference implementation. For
+drivers with NN HAL 1.2 or higher, if the results don&#39;t meet the precision
+criteria, CTS reports an error and dumps a specification file for the failed
+model under <code translate="no" dir="ltr">/data/local/tmp</code> for debugging. For more details about the
+precision criteria, see
+<a href="https://android.googlesource.com/platform/frameworks/ml/+/refs/heads/master/nn/runtime/test/fuzzing/TestRandomGraph.cpp#573" class="external"><code translate="no" dir="ltr">TestRandomGraph.cpp</code></a> 
+and
+<a href="https://android.googlesource.com/platform/frameworks/ml/+/refs/heads/master/nn/runtime/test/fuzzing/RandomGraphGenerator.h" class="external"><code translate="no" dir="ltr">RandomGraphGenerator.h</code></a>.</p>
+
+<h3 id="security">Security</h3>
+
+<p>Because app processes communicate directly with a driver&#39;s process,
+drivers must validate the arguments of the calls they receive. This validation
+is verified by VTS. The validation code is in
+<a href="https://android.googlesource.com/platform/frameworks/ml/+/refs/heads/master/nn/common/include/ValidateHal.h" class="external"><code translate="no" dir="ltr">frameworks/ml/nn/common/include/ValidateHal.h</code></a>.</p>
+
+<p>Drivers should also ensure that apps can&#39;t interfere with other
+apps when using the same device.</p>
+
+<h3 id="mlts">Android Machine Learning Test Suite</h3>
+
+<p>The Android Machine Learning Test Suite (MLTS) is an NNAPI benchmark included in
+CTS and VTS for validating the accuracy of real models on vendor devices. The
+benchmark evaluates latency and accuracy, and compares the drivers&#39; results with
+the results using
+<a href="https://tensorflow.google.cn/lite" class="external">TF Lite</a> running on the CPU,
+for the same model and datasets. This ensures that a driver&#39;s accuracy isn&#39;t
+worse than the CPU reference implementation.</p>
+
+<p>Android platform developers also use MLTS to evaluate the latency and accuracy
+of drivers.</p>
+
+<p>The NNAPI benchmark can be found in two projects in AOSP:</p>
+
+<ul>
+<li><a href="https://android.googlesource.com/platform/test/mlts/benchmark/+/master" class="external"><code translate="no" dir="ltr">platform/test/mlts/benchmark</code></a> 
+(benchmark app)</li>
+<li><a href="https://android.googlesource.com/platform/test/mlts/models/+/master" class="external"><code translate="no" dir="ltr">platform/test/mlts/models</code></a> 
+(models and datasets)</li>
+</ul>
+
+<h4 id="models">Models and datasets</h4>
+
+<p>The NNAPI benchmark uses the following models and datasets.</p>
+
+<ul>
+<li>MobileNetV1 float and u8 quantized in different sizes, run against a
+small subset (1500 images) of Open Images Dataset v4.</li>
+<li>MobileNetV2 float and u8 quantized in different sizes, run against a
+small subset (1500 images) of Open Images Dataset v4.</li>
+<li>Long short-term memory (LSTM) based acoustic model for text-to-speech,
+run against a small subset of the CMU Arctic set.</li>
+<li>LSTM based acoustic model for automatic speech recognition, run against
+a small subset of the LibriSpeech dataset.</li>
+</ul>
+
+<p>For more information, see
+<a href="https://android.googlesource.com/platform/test/mlts/models/+/master" class="external"><code translate="no" dir="ltr">platform/test/mlts/models</code></a>.</p>
+
+<h4 id="use-mlts">Using MLTS</h4>
+
+<p>To use the MLTS:</p>
+
+<ol>
+<li>Connect a target device to your workstation and make sure it&#39;s
+reachable through
+<a href="https://developer.android.google.cn/studio/command-line/adb" class="external">adb</a>.
+Export the target device <code translate="no" dir="ltr">ANDROID_SERIAL</code>
+environment variable if more than one device is connected.</li>
+<li><p><code translate="no" dir="ltr">cd</code> into the Android top-level source directory.</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">source build/envsetup.sh
+lunch aosp_arm-userdebug # Or aosp_arm64-userdebug if available.
+./test/mlts/benchmark/build_and_run_benchmark.sh
+</code></pre>
+<p>At the end of a benchmark run, the results are presented as an HTML page
+and passed to <code translate="no" dir="ltr">xdg-open</code>.</p></li>
+</ol>
+
+<p>For more information, see
+<a href="https://android.googlesource.com/platform/test/mlts/benchmark/+/refs/heads/master/README.txt" class="external"><code translate="no" dir="ltr">platform/test/mlts/benchmark/README.txt</code></a>.</p>
+
+<h2 id="hal-versions">Neural Networks HAL versions</h2>
+
+<p>This section describes the changes introduced in Android and Neural
+Networks HAL versions.</p>
+
+<h3 id="android-q">Android 10</h3>
+
+<p>Android 10 introduces NN HAL 1.2, which includes the
+following notable changes.</p>
+
+<ul>
+<li>The <code translate="no" dir="ltr">Capabilities</code> struct includes all data types including scalar
+data types, and represents nonrelaxed performance using a vector rather
+than named fields.</li>
+<li>The <code translate="no" dir="ltr">getVersionString</code> and <code translate="no" dir="ltr">getType</code> methods allow the framework to
+retrieve device type (<code translate="no" dir="ltr">DeviceType</code>) and version information. See
+<a href="device-discovery.html">Device Discovery and Assignment</a>.</li>
+<li>The <code translate="no" dir="ltr">executeSynchronously</code> method is called by default to perform an
+execution synchronously. The <code translate="no" dir="ltr">execute_1_2</code> method tells the framework to
+perform an execution asynchronously. See <a href="#execution">Execution</a>.</li>
+<li>The <code translate="no" dir="ltr">MeasureTiming</code> parameter to <code translate="no" dir="ltr">executeSynchronously</code>, <code translate="no" dir="ltr">execute_1_2</code>,
+and burst execution specifies whether the driver is to measure execution
+duration. The results are reported in the <code translate="no" dir="ltr">Timing</code> structure. See
+<a href="#timing">Timing</a>.</li>
+<li>Support for executions where one or more output operands have an unknown
+dimension or rank. See <a href="#output-shape">Output shape</a>.</li>
+<li>Support for vendor extensions, which are collections of vendor-defined
+operations and data types. The driver reports supported extensions through
+the <code translate="no" dir="ltr">IDevice::getSupportedExtensions</code> method. See
+<a href="vendor-extensions.html">Vendor Extensions</a>.</li>
+<li>Ability for a burst object to control a set of burst executions using
+fast message queues (FMQs) to communicate between app and driver
+processes, reducing latency. See
+<a href="burst-executions.html">Burst Executions and Fast Message Queues</a>.</li>
+<li>Support for AHardwareBuffer to allow the driver to perform executions
+without copying data. See
+<a href="ahardwarebuffer.html">AHardwareBuffer</a>.</li>
+<li>Improved support for caching of compilation artifacts to reduce the time
+used for compilation when an app starts. See
+<a href="compilation-caching.html">Compilation Caching</a>.</li>
+</ul>
+
+<p>Android 10 introduces the following operand types and
+operations.</p>
+
+<ul>
+<li><p><a href="https://developer.android.google.cn/ndk/reference/group/neural-networks.html#operandcode" class="external">Operand types</a> </p>
+
+<ul>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_BOOL</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_FLOAT16</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_TENSOR_BOOL8</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_TENSOR_FLOAT16</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_TENSOR_QUANT16_ASYMM</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_TENSOR_QUANT16_SYMM</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_TENSOR_QUANT8_SYMM</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_TENSOR_QUANT8_SYMM_PER_CHANNEL</code></li>
+</ul></li>
+<li><p><a href="https://developer.android.google.cn/ndk/reference/group/neural-networks.html#operationcode" class="external">Operations</a> </p>
+
+<ul>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_ABS</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_ARGMAX</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_ARGMIN</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_AXIS_ALIGNED_BBOX_TRANSFORM</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_BIDIRECTIONAL_SEQUENCE_LSTM</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_BIDIRECTIONAL_SEQUENCE_RNN</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_BOX_WITH_NMS_LIMIT</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_CAST</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_CHANNEL_SHUFFLE</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_DETECTION_POSTPROCESSING</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_EQUAL</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_EXP</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_EXPAND_DIMS</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_GATHER</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_GENERATE_PROPOSALS</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_GREATER</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_GREATER_EQUAL</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_GROUPED_CONV_2D</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_HEATMAP_MAX_KEYPOINT</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_INSTANCE_NORMALIZATION</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_LESS</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_LESS_EQUAL</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_LOG</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_LOGICAL_AND</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_LOGICAL_NOT</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_LOGICAL_OR</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_LOG_SOFTMAX</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_MAXIMUM</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_MINIMUM</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_NEG</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_NOT_EQUAL</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_PAD_V2</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_POW</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_PRELU</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_QUANTIZE</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_QUANTIZED_16BIT_LSTM</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_RANDOM_MULTINOMIAL</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_REDUCE_ALL</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_REDUCE_ANY</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_REDUCE_MAX</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_REDUCE_MIN</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_REDUCE_PROD</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_REDUCE_SUM</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_RESIZE_NEAREST_NEIGHBOR</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_ROI_ALIGN</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_ROI_POOLING</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_RSQRT</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_SELECT</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_SIN</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_SLICE</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_SPLIT</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_SQRT</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_TILE</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_TOPK_V2</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_TRANSPOSE_CONV_2D</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_UNIDIRECTIONAL_SEQUENCE_LSTM</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_UNIDIRECTIONAL_SEQUENCE_RNN</code></li>
+</ul></li>
+</ul>
+
+<p>Android 10 introduces updates to many of the existing
+operations. The updates are
+mainly related to the following:</p>
+
+<ul>
+<li>Support for the NCHW memory layout</li>
+<li>Support for tensors with rank different than 4 in softmax and
+normalization operations</li>
+<li>Support for dilated convolutions</li>
+<li>Support for inputs with mixed quantization in
+<code translate="no" dir="ltr">ANEURALNETWORKS_CONCATENATION</code></li>
+</ul>
+
+<p>The list below shows the operations that are modified in
+Android 10. For full
+details of the changes, see
+<a href="https://developer.android.google.cn/ndk/reference/group/neural-networks#operationcode" class="external">OperationCode</a> 
+in the NNAPI reference documentation.</p>
+
+<ul>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_ADD</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_AVERAGE_POOL_2D</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_BATCH_TO_SPACE_ND</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_CONCATENATION</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_CONV_2D</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_DEPTHWISE_CONV_2D</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_DEPTH_TO_SPACE</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_DEQUANTIZE</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_DIV</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_FLOOR</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_FULLY_CONNECTED</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_L2_NORMALIZATION</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_L2_POOL_2D</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_LOCAL_RESPONSE_NORMALIZATION</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_LOGISTIC</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_LSH_PROJECTION</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_LSTM</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_MAX_POOL_2D</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_MEAN</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_MUL</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_PAD</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_RELU</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_RELU1</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_RELU6</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_RESHAPE</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_RESIZE_BILINEAR</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_RNN</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_ROI_ALIGN</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_SOFTMAX</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_SPACE_TO_BATCH_ND</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_SPACE_TO_DEPTH</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_SQUEEZE</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_STRIDED_SLICE</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_SUB</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_SVDF</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_TANH</code></li>
+<li><code translate="no" dir="ltr">ANEURALNETWORKS_TRANSPOSE</code></li>
+</ul>
+
+<h3 id="android-9">Android 9</h3>
+
+<p>NN HAL 1.1 is introduced in Android 9 and includes the following notable
+changes.</p>
+
+<ul>
+<li><code translate="no" dir="ltr">IDevice::prepareModel_1_1</code> includes an <code translate="no" dir="ltr">ExecutionPreference</code>
+parameter. A driver can use this to adjust its preparation, knowing that
+the app prefers to conserve battery or will be executing the model
+in quick successive calls.</li>
+<li>Nine new operations have been added: <code translate="no" dir="ltr">BATCH_TO_SPACE_ND</code>, <code translate="no" dir="ltr">DIV</code>, <code translate="no" dir="ltr">MEAN</code>,
+<code translate="no" dir="ltr">PAD</code>, <code translate="no" dir="ltr">SPACE_TO_BATCH_ND</code>, <code translate="no" dir="ltr">SQUEEZE</code>, <code translate="no" dir="ltr">STRIDED_SLICE</code>, <code translate="no" dir="ltr">SUB</code>, <code translate="no" dir="ltr">TRANSPOSE</code>.</li>
+<li>An app can specify that 32-bit float computations can be run
+using 16-bit float range and/or precision by setting
+<code translate="no" dir="ltr">Model.relaxComputationFloat32toFloat16</code> to <code translate="no" dir="ltr">true</code>. The <code translate="no" dir="ltr">Capabilities</code>
+struct has the additional field <code translate="no" dir="ltr">relaxedFloat32toFloat16Performance</code> so
+that the driver can report its relaxed performance to the framework.</li>
+</ul>
+
+<h3 id="android-81">Android 8.1</h3>
+
+<p>The initial Neural Networks HAL (1.0) was released in Android 8.1. For more
+information, see
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/neuralnetworks/1.0/" class="external"><code translate="no" dir="ltr">/neuralnetworks/1.0/</code></a>.</p>
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",1,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/neural-networks/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:58:11 GMT -->
+</html>

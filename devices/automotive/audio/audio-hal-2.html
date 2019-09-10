@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/automotive/audio/audio-hal.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 15:09:26 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/automotive/audio/audio-hal.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:44:22 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Implementing the Audio HAL &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Implementing the Audio HAL &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="audio-hal.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="audio-hal.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="audio-hal.html">      
+<title>Implementing Automotive Audio HAL &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Implementing Automotive Audio HAL &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="audio-hal.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab active>
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
    aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../../tech/dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,9 +243,20 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
+          <a href="../../../devices.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
           <a href="../../audio.html"
    class="gc-analytics-event"
    title="Audio"
@@ -254,7 +301,7 @@
 
         </tab>
                         <tab active>
-          <a href="../../input.html"
+          <a href="../../interaction.html"
    class="gc-analytics-event"
    title="Interaction"
    aria-label="Interaction, selected"         data-category="Site-Wide Custom Events"
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -350,6 +413,16 @@
         </a>
   
                                             <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
                                                                                                                       <li class="devsite-nav-item">
     <a href="../../audio.html"
           class="devsite-nav-title gc-analytics-event
@@ -391,13 +464,13 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../../input.html"
+    <a href="../../interaction.html"
      id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Interaction">
       <span class="devsite-nav-text" menu="_book">Interaction</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -426,7 +499,7 @@
                                   </ul>
                           </li>
                       <li class="devsite-nav-item">
-                                <a href="../../tech/dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -458,9 +531,41 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Input">Input</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../input.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../../interaction.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Automotive">Automotive</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../automotive.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio">Audio</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="audio-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Audio HAL">Audio HAL</span></a></li><li class="devsite-nav-item"><a href="audio-control.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AudioControl HAL">AudioControl HAL</span></a></li><li class="devsite-nav-item"><a href="interaction-sequences.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction Sequences">Interaction Sequences</span></a></li><li class="devsite-nav-item"><a href="multi-zone.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multi-Zone">Multi-Zone</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../camera-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Camera HAL">Camera HAL</span></a></li><li class="devsite-nav-item"><a href="../ivi_connectivity.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="IVI Connectivity">IVI Connectivity</span></a></li><li class="devsite-nav-item"><a href="../properties.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Vehicle Properties">Vehicle Properties</span></a></li><li class="devsite-nav-item"><a href="../power.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Management">Power Management</span></a></li><li class="devsite-nav-item"><a href="../garage_mode.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Garage Mode">Garage Mode</span></a></li><li class="devsite-nav-item"><a href="../radio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Radio with Media">Radio with Media</span></a></li><li class="devsite-nav-item"><a href="../../tech/perf/flash-wear.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Flash Wear Management">Flash Wear Management</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Input">Input</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../input.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../input/key-layout-files.html"
      class="devsite-nav-title"
@@ -479,47 +584,33 @@
    ><span class="devsite-nav-text" title="Getevent">Getevent</span></a></li><li class="devsite-nav-item"><a href="../../input/validate-keymaps.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Validate Keymaps">Validate Keymaps</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Automotive">Automotive</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../automotive.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Neural Networks">Neural Networks</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../neural-networks.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio">Audio</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../audio.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../neural-networks/ahardwarebuffer.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="audio-hal.html"
+   ><span class="devsite-nav-text" title="AHardware Buffer">AHardware Buffer</span></a></li><li class="devsite-nav-item"><a href="../../neural-networks/burst-executions.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Audio HAL">Audio HAL</span></a></li><li class="devsite-nav-item"><a href="audio-control.html"
+   ><span class="devsite-nav-text" title="Burst Executions and Fast Message Queues">Burst Executions and Fast Message Queues</span></a></li><li class="devsite-nav-item"><a href="../../neural-networks/compilation-caching.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="AudioControl HAL">AudioControl HAL</span></a></li><li class="devsite-nav-item"><a href="interaction-sequences.html"
+   ><span class="devsite-nav-text" title="Compilation Caching">Compilation Caching</span></a></li><li class="devsite-nav-item"><a href="../../neural-networks/device-discovery.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Interaction Sequences">Interaction Sequences</span></a></li><li class="devsite-nav-item"><a href="multi-zone.html"
+   ><span class="devsite-nav-text" title="Device Discovery and Assignment">Device Discovery and Assignment</span></a></li><li class="devsite-nav-item"><a href="../../neural-networks/vendor-extensions.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Multi-Zone">Multi-Zone</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../camera-hal-2.html"
+   ><span class="devsite-nav-text" title="Vendor Extensions">Vendor Extensions</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Peripherals">Peripherals</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Camera HAL">Camera HAL</span></a></li><li class="devsite-nav-item"><a href="../ivi_connectivity-2.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio Accessories">Audio Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories/audio.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="IVI Connectivity">IVI Connectivity</span></a></li><li class="devsite-nav-item"><a href="../properties.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Vehicle Properties">Vehicle Properties</span></a></li><li class="devsite-nav-item"><a href="../power.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Power Management">Power Management</span></a></li><li class="devsite-nav-item"><a href="../../tech/perf/flash-wear-2.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Flash Wear Management">Flash Wear Management</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="../../interaction/neural-networks.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Neural Networks">Neural Networks</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Peripherals">Peripherals</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio Accessories">Audio Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories/audio.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="3.5 mm Headset">3.5 mm Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories/headset/plug-headset-spec.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="3.5 mm Headset">3.5 mm Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories/headset/plug-headset-spec.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../../accessories/headset/jack-headset-spec.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="USB Headset">USB Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories/headset/usb-headset-spec.html"
+   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="USB Headset">USB Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories/headset/usb-headset-spec.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../../accessories/headset/usb-adapter.html"
      class="devsite-nav-title"
@@ -529,11 +620,11 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Expected Behavior">Expected Behavior</span></a></li><li class="devsite-nav-item"><a href="../../accessories/headset/testing.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Testing">Testing</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Custom Accessories">Custom Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories/custom.html"
+   ><span class="devsite-nav-text" title="Testing">Testing</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Custom Accessories">Custom Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories/custom.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="AOA">AOA</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories/protocol.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="AOA">AOA</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../accessories/protocol.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../accessories/aoa2.html"
      class="devsite-nav-title"
@@ -542,39 +633,48 @@
    ><span class="devsite-nav-text" title="AOA 1.0">AOA 1.0</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../accessories/stylus.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Stylus">Stylus</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors">Sensors</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../sensors.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors">Sensors</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../sensors.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../sensors/sensor-stack.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Sensor Stack">Sensor Stack</span></a></li><li class="devsite-nav-item"><a href="../../sensors/report-modes.html"
+   ><span class="devsite-nav-text" title="Sensor Stack">Sensor Stack</span></a></li><li class="devsite-nav-item"><a href="../../sensors/sensor-types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Types">Sensor Types</span></a></li><li class="devsite-nav-item"><a href="../../sensors/interaction.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction">Interaction</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Power">Power</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../sensors/batching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Batching">Batching</span></a></li><li class="devsite-nav-item"><a href="../../sensors/power-use.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Consumption">Power Consumption</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Modes">Modes</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../sensors/report-modes.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Reporting Modes">Reporting Modes</span></a></li><li class="devsite-nav-item"><a href="../../sensors/suspend-mode.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Suspend Mode">Suspend Mode</span></a></li><li class="devsite-nav-item"><a href="../../sensors/power-use.html"
+   ><span class="devsite-nav-text" title="Suspend Mode">Suspend Mode</span></a></li><li class="devsite-nav-item"><a href="../../sensors/sensors-off.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Power Consumption">Power Consumption</span></a></li><li class="devsite-nav-item"><a href="../../sensors/interaction.html"
+   ><span class="devsite-nav-text" title="Sensors Off">Sensors Off</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors HAL">Sensors HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../sensors/sensors-hal2.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Interaction">Interaction</span></a></li><li class="devsite-nav-item"><a href="../../sensors/hal-interface.html"
+   ><span class="devsite-nav-text" title="Sensors HAL 2.0">Sensors HAL 2.0</span></a></li><li class="devsite-nav-item"><a href="../../sensors/hal-interface.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="HAL Interface">HAL Interface</span></a></li><li class="devsite-nav-item"><a href="../../sensors/batching.html"
+   ><span class="devsite-nav-text" title="Sensors HAL 1.0">Sensors HAL 1.0</span></a></li><li class="devsite-nav-item"><a href="../../sensors/versioning.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Batching">Batching</span></a></li><li class="devsite-nav-item"><a href="../../sensors/sensor-types.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Sensor Types">Sensor Types</span></a></li><li class="devsite-nav-item"><a href="../../sensors/versioning.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Version Deprecation">Version Deprecation</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="TV">TV</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../tv.html"
+   ><span class="devsite-nav-text" title="Version Deprecation">Version Deprecation</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="TV">TV</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../tv.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../tv/hdmi-cec.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="HDMI-CEC Control Service">HDMI-CEC Control Service</span></a></li><li class="devsite-nav-item"><a href="../../tv/reference-tv-app.html"
+   ><span class="devsite-nav-text" title="HDMI-CEC Control Service">HDMI-CEC Control Service</span></a></li><li class="devsite-nav-item"><a href="../../tv/multimedia-tunneling.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multimedia Tunneling">Multimedia Tunneling</span></a></li><li class="devsite-nav-item"><a href="../../tv/reference-tv-app.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Reference TV App">Reference TV App</span></a></li><li class="devsite-nav-item"><a href="../../tv/customize-tv-app.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Customize the TV App">Customize the TV App</span></a></li></ul></devsite-expandable-nav></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -582,16 +682,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -601,9 +702,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -612,9 +714,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../../input.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../interaction.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
@@ -628,10 +731,10 @@
          </devsite-page-rating>
           </div>
 
-              <h1 class="devsite-page-title">Implementing the Audio HAL</h1>
+              <h1 class="devsite-page-title">Implementing Automotive Audio HAL</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -653,33 +756,32 @@
       limitations under the License.
   -->
 
-
 <p>
   Automotive audio implementations rely on the standard
-  <a href="../../audio/implement.html"> Android Audio HAL</a>, which includes the
+  <a href="../../audio/implement.html">Android Audio HAL</a>, which includes the
   following:
 </p>
 
 <ul>
-  <li><code><strong>IDevice</code></strong>
-  (<code>hardware/interfaces/audio/2.0/IDevice.hal</code>). Creates input and
+  <li><code translate="no" dir="ltr"><strong>IDevice</code></strong>
+  (<code translate="no" dir="ltr">hardware/interfaces/audio/2.0/IDevice.hal</code>). Creates input and
   output streams, handles master volume and muting, and uses:
   <ul>
-    <li><code>createAudioPatch</code> to create external-external patches
+    <li><code translate="no" dir="ltr">createAudioPatch</code> to create external-external patches
     between devices.</li>
-    <li><code>IDevice.setAudioPortConfig()</code> to provide volume for each
+    <li><code translate="no" dir="ltr">IDevice.setAudioPortConfig()</code> to provide volume for each
     physical stream.</li>
   </ul>
-  <li><code><strong>IStream</code></strong>
-  (<code>hardware/interfaces/audio/2.0/IStream.hal</code>). Along with its In
-  and Out variants, manages the actual streaming of audio samples to and from
+  <li><code translate="no" dir="ltr"><strong>IStream</code></strong>
+  (<code translate="no" dir="ltr">hardware/interfaces/audio/2.0/IStream.hal</code>). Along with its In
+  and Out variants, manages the streaming of audio samples to and from
   the hardware.</li>
 </ul>
 
 <h2 id="automotive-device-types">Automotive device types</h2>
 
 <p>
-The following device types are relevant for automotive platforms:
+The following device types are relevant for automotive platforms.
 </p>
 
 <table>
@@ -691,37 +793,37 @@ The following device types are relevant for automotive platforms:
 </thead>
 <tbody>
 <tr>
-<td>AUDIO_DEVICE_OUT_BUS</td>
+<td><code translate="no" dir="ltr">AUDIO_DEVICE_OUT_BUS</code></td>
 <td>Primary output from Android (this is how all audio from Android is
 delivered to the vehicle). Used as the address for disambiguating streams
-for each Context.</td>
+for each context.</td>
 </tr>
 <tr>
-<td>AUDIO_DEVICE_OUT_TELEPHONY_TX</td>
+<td><code translate="no" dir="ltr">AUDIO_DEVICE_OUT_TELEPHONY_TX</code></td>
 <td>Used for audio routed to the cellular radio for transmission.</td>
 </tr>
 <tr>
-<td>AUDIO_DEVICE_IN_BUS</td>
+<td><code translate="no" dir="ltr">AUDIO_DEVICE_IN_BUS</code></td>
 <td>Used for inputs not otherwise classified.</td>
 </tr>
 <tr>
-<td>AUDIO_DEVICE_IN_FM_TUNER</td>
+<td><code translate="no" dir="ltr">AUDIO_DEVICE_IN_FM_TUNER</code></td>
 <td>Used only for broadcast radio input.</td>
 </tr>
 <tr>
-<td>AUDIO_DEVICE_IN_TV_TUNER</td>
-<td>May be used for a TV device if present.</td>
+<td><code translate="no" dir="ltr">AUDIO_DEVICE_IN_TV_TUNER</code></td>
+<td>Used for a TV device if present.</td>
 </tr>
 <tr>
-<td>AUDIO_DEVICE_IN_LINE</td>
+<td><code translate="no" dir="ltr">AUDIO_DEVICE_IN_LINE</code></td>
 <td>Used for AUX input jack.</td>
 </tr>
 <tr>
-<td>AUDIO_DEVICE_IN_BLUETOOTH_A2DP</td>
+<td><code translate="no" dir="ltr">AUDIO_DEVICE_IN_BLUETOOTH_A2DP</code></td>
 <td>Music received over Bluetooth.</td>
 </tr>
 <tr>
-<td>AUDIO_DEVICE_IN_TELEPHONY_RX</td>
+<td><code translate="no" dir="ltr">AUDIO_DEVICE_IN_TELEPHONY_RX</code></td>
 <td>Used for audio received from the cellular radio associated with a phone
 call.</td>
 </tr>
@@ -731,61 +833,61 @@ call.</td>
 <h2 id="route-audio-sources">Routing audio sources</h2>
 
 <p>
-  Most audio sources should be captured using <code>AudioRecord</code> or a
+  Most audio sources should be captured using <code translate="no" dir="ltr">AudioRecord</code> or a
   related Android mechanism. The data can then be assigned
-  <a href="../../audio/attributes.html">AudioAttributes</a> and played through
-  <code>AndroidTrack</code> either by relying on the default Android routing
-  logic or by explicitly calling <code>setPreferredDevice()</code> on the
-  <code>AudioRecord</code> and/or <code>AudioTrack</code> objects.
+  <a href="../../audio/attributes.html">audio attributes through the <code translate="no" dir="ltr">AudioAttributes</code>
+  class</a> and played through
+  <code translate="no" dir="ltr">AudioTrack</code> either by relying on the default Android routing
+  logic or by explicitly calling <code translate="no" dir="ltr">setPreferredDevice()</code> on the
+  <code translate="no" dir="ltr">AudioRecord</code> or <code translate="no" dir="ltr">AudioTrack</code> objects.
 <p>
 
 <p>
   For sources with dedicated hardware connections to the external mixer or
   with extremely tight latency requirements, you can use
-  <code>createAudioPatch()</code> and <code>releaseAudioPatch()</code> to
+  <code translate="no" dir="ltr">createAudioPatch()</code> and <code translate="no" dir="ltr">releaseAudioPatch()</code> to
   activate and deactivate routes between external devices (without involving
-  <code>AudioFlinger</code> in the transport of samples).
+  <code translate="no" dir="ltr">AudioFlinger</code> in the transport of samples).
 </p>
 
 <h2 id="configure-audio-devices">Configuring audio devices</h2>
 
 <p>
   Audio devices visible to Android must be defined in
-  <code>system/etc/audio_policy_configuration.xml</code>, which includes the
+  <code translate="no" dir="ltr">/audio_policy_configuration.xml</code>, which includes the
   following components:
 </p>
 
 <ul>
-  <li><strong>module name</strong>. Supports "primary" (used for automotive
+  <li><strong>module name.</strong> Supports "primary" (used for automotive
   use cases), "A2DP", "remote_submix", and "USB". The module name and the
   corresponding audio driver should be compiled to
-  <code>audio.primary.$(variant).so</code>.</li>
-  <li><strong>devicePorts</strong>. Contains a list of device descriptors for
+  <code translate="no" dir="ltr">audio.primary.$(variant).so</code>.</li>
+  <li><strong>devicePorts.</strong> Contains a list of device descriptors for
   all input and output devices (includes permanently attached devices and
   removable devices) that are accessible from this module.
   <ul>
     <li>For each output device, you can define gain control that consists of
-      min/value/step/default values in millibel (1 millibel = 1/100 dB = 1/1000
-      bel).</li>
-      <li>The address attribute on a <code>devicePort</code> can be used to find
+      min/value/step/default values in millibel (1 millibel = 1/100&nbsp;dB = 1/1000&nbsp;bel).</li>
+      <li>The address attribute on a <code translate="no" dir="ltr">devicePort</code> instance can be used to find
       the device, even if there are multiple devices with the same device type
-      as <code>AUDIO_DEVICE_OUT_BUS</code>.</li>
+      as <code translate="no" dir="ltr">AUDIO_DEVICE_OUT_BUS</code>.</li>
   </ul>
-  <li><strong>mixPorts</strong>. Contains a list of all output and input streams
-  exposed by the audio HAL. Each <code>mixPort</code> can be considered as a
-  physical stream to Android <code>AudioService</code>.</li>
-  <li><strong>routes</strong>. Defines a list of possible connections between
+  <li><strong>mixPorts.</strong> Contains a list of all output and input streams
+  exposed by the audio HAL. Each <code translate="no" dir="ltr">mixPort</code> instance can be considered as a
+  physical stream to Android <code translate="no" dir="ltr">AudioService</code>.</li>
+  <li><strong>routes.</strong> Defines a list of possible connections between
   input and output devices or between stream and device.</li>
 </ul>
 
 <p>
-  The following example defines an output device <code>bus0_phone_out</code> in
+  The following example defines an output device <code translate="no" dir="ltr">bus0_phone_out</code> in
   which all Android audio streams are mixed by
-  <code>mixer_bus0_phone_out</code>. The route takes output stream of
-  <code>mixer_bus0_phone_out</code> to <code>device bus0_phone_out</code>.
+  <code translate="no" dir="ltr">mixer_bus0_phone_out</code>. The route takes output stream of
+  <code translate="no" dir="ltr">mixer_bus0_phone_out</code> to <code translate="no" dir="ltr">device bus0_phone_out</code>.
 </p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 &lt;audioPolicyConfiguration version="1.0" xmlns:xi="http://www.w3.org/2001/XInclude"&gt;
     &lt;modules&gt;
         &lt;module name="primary" halVersion="3.0"&gt;
@@ -793,7 +895,7 @@ call.</td>
                 &lt;item&gt;bus0_phone_out&lt;/item&gt;
 &lt;defaultOutputDevice&gt;bus0_phone_out&lt;/defaultOutputDevice&gt;
             &lt;mixPorts&gt;
-                &lt;mixPort name="mixport_bus0_phone_out" 
+                &lt;mixPort name="mixport_bus0_phone_out"
                          role="source"
                          flags="AUDIO_OUTPUT_FLAG_PRIMARY"&gt;
                     &lt;profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
@@ -802,7 +904,7 @@ call.</td>
                 &lt;/mixPort&gt;
             &lt;/mixPorts&gt;
             &lt;devicePorts&gt;
-                &lt;devicePort tagName="bus0_phone_out" 
+                &lt;devicePort tagName="bus0_phone_out"
                             role="sink"
                             type="AUDIO_DEVICE_OUT_BUS"
                             address="BUS00_PHONE"&gt;
@@ -811,9 +913,9 @@ call.</td>
                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/&gt;
                     &lt;gains&gt;
                         &lt;gain name="" mode="AUDIO_GAIN_MODE_JOINT"
-                                minValueMB="-8400" 
-                                maxValueMB="4000" 
-                                defaultValueMB="0" 
+                                minValueMB="-8400"
+                                maxValueMB="4000"
+                                defaultValueMB="0"
                                 stepValueMB="100"/&gt;
                     &lt;/gains&gt;
                 &lt;/devicePort&gt;
@@ -830,37 +932,37 @@ call.</td>
 <h2 id="device-ports">Specifying devicePorts</h2>
 
 <p>
-  Automotive platforms should specify a <code>devicePort</code> for each
+  Automotive platforms should specify a <code translate="no" dir="ltr">devicePort</code> instance for each
   physical stream that is input to and output from Android. For output,
-  <code>devicePorts</code> should be of type <code>AUDIO_DEVICE_OUT_BUS</code>,
-  and addressed by integers (i.e., Bus 0, Bus 1, etc.). <code>mixPort</code>s
-  should be created in 1:1 relation to the <code>devicePorts</code> and should
+  each <code translate="no" dir="ltr">devicePort</code> instance should be of type <code translate="no" dir="ltr">AUDIO_DEVICE_OUT_BUS</code>,
+  and addressed by integers (that is, Bus 0, Bus 1, etc.). <code translate="no" dir="ltr">mixPort</code> instances
+  should be created in 1:1 relation to the <code translate="no" dir="ltr">devicePort</code> instances and should
   allow specification of the data formats that can be routed to each bus.
 </p>
 
 <p>
   Automotive implementations can use multiple input device types, including
-  <code>FM_TUNER</code> (reserved for broadcast radio input), <code>MIC</code>
-  device for handling microphone input, and <code>TYPE_AUX_LINE</code> for
-  representing analog line input. All other input streams are assigned to the
-  <code>AUDIO_DEVICE_IN_BUS</code> and discovered by enumerating the devices via
-  a <code>AudioManager.getDeviceList()</code> call. Individual sources can be
-  differentiated by their <code>AudioDeviceInfo.getProductName()</code>.
+  <code translate="no" dir="ltr">FM_TUNER</code> (reserved for broadcast radio input), <code translate="no" dir="ltr">MIC</code>
+  device for handling microphone input, and <code translate="no" dir="ltr">TYPE_AUX_LINE</code> for
+  representing analog line input. All other input streams are assigned to
+  <code translate="no" dir="ltr">AUDIO_DEVICE_IN_BUS</code> and discovered by enumerating the devices with
+  a <code translate="no" dir="ltr">AudioManager.getDeviceList()</code> call. Individual sources can be
+  differentiated by <code translate="no" dir="ltr">AudioDeviceInfo.getProductName()</code>.
   <p>
 
 <p>
   You can also define external devices as ports, then use those ports to
   interact with external hardware with the
-  <code>IDevice::createAudioPatch</code> method of the Audio HAL (exposed via a
-    new <code>CarAudioManager</code> entry point).
+  <code translate="no" dir="ltr">IDevice::createAudioPatch</code> method of the Audio HAL (exposed through a
+    new <code translate="no" dir="ltr">CarAudioManager</code> entry point).
 </p>
 
 <p>
-  When the BUS-based audio driver is present, you must set the
-  <code>audioUseDynamicRouting</code> flag to <code>true</code>:
+  When the bus-based audio driver is present, you must set the
+  <code translate="no" dir="ltr">audioUseDynamicRouting</code> flag to <code translate="no" dir="ltr">true</code>:
 </p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 &lt;resources&gt;
     &lt;bool name="audioUseDynamicRouting"&gt;true&lt;/bool&gt;
 &lt;/resources&gt;
@@ -868,7 +970,7 @@ call.</td>
 
 <p>
   For details, refer to
-  <code>device/generic/car/emulator/audio/overlay/packages/services/Car/service/res/values/config.xml</code>.
+  <code translate="no" dir="ltr">device/generic/car/emulator/audio/overlay/packages/services/Car/service/res/values/config.xml</code>.
 </p>
 
 
@@ -881,17 +983,17 @@ call.</td>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1098,8 +1200,9 @@ call.</td>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1165,54 +1268,49 @@ call.</td>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/automotive/audio/audio-hal.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 15:09:26 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/automotive/audio/audio-hal.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:44:22 GMT -->
 </html>

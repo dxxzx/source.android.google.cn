@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="zh_cn">
+<html       lang="zh-CN"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/config/filesystem?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:39:15 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/config/filesystem?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 22:18:45 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>配置自主访问控制 (DAC) &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="配置自主访问控制 (DAC) &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="filesystem.html">
-
-  <meta property="og:locale" content="zh_cn">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="filesystem.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="filesystem.html">      
+<title>自主访问控制 (DAC) &nbsp;|&nbsp; Android 开源项目 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="自主访问控制 (DAC) &nbsp;|&nbsp; Android 开源项目 &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="filesystem.html">
+
+  <meta property="og:locale" content="zh_cn">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup0b8e.html?hl=zh-cn"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio0b8e.html?hl=zh-cn"
+          <a href="../../../devices0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="开发"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab active>
-          <a href="../dalvik0b8e.html?hl=zh-cn"
+          <a href="../../tech0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="配置"
    aria-label="配置, selected"         data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+              family-name="Android 开源项目"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results?hl=zh-cn" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="搜索"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="搜索框">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          转到源代码
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  转到源代码
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../dalvik0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../tech0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,16 +243,16 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
-          <a href="../dalvik0b8e.html?hl=zh-cn"
+          <a href="../../tech0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
-   title="ART"
+   title="概览"
            data-category="Site-Wide Custom Events"
-        data-label="Tab: ART"
+        data-label="Tab: 概览"
    >
-  ART
+  概览
 </a>
 
         </tab>
@@ -243,7 +279,7 @@
 
         </tab>
                         <tab >
-          <a href="../health0b8e.html?hl=zh-cn"
+          <a href="../perf0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="性能"
            data-category="Site-Wide Custom Events"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab active>
-          <a href="perms-whitelist0b8e.html?hl=zh-cn"
+          <a href="../config0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="权限"
    aria-label="权限, selected"         data-category="Site-Wide Custom Events"
@@ -276,6 +312,17 @@
 
         </tab>
                         <tab >
+          <a href="../dalvik0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="运行时"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 运行时"
+   >
+  运行时
+</a>
+
+        </tab>
+                        <tab >
           <a href="../ota0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="更新"
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -351,7 +414,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -361,12 +424,12 @@
   
                                             <ul class="devsite-nav-responsive-tabs">
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../dalvik.html"
+    <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
-     data-label="Responsive Tab: ART">
-      <span class="devsite-nav-text" >ART</span>
+     data-label="Responsive Tab: 概览">
+      <span class="devsite-nav-text" >概览</span>
         </a>
   </li>
 
@@ -391,7 +454,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../health.html"
+    <a href="../perf.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -401,13 +464,13 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="perms-whitelist.html"
+    <a href="../config.html"
      id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: 权限">
       <span class="devsite-nav-text" menu="_book">权限</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -420,6 +483,16 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: 电耗">
       <span class="devsite-nav-text" >电耗</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 运行时">
+      <span class="devsite-nav-text" >运行时</span>
         </a>
   </li>
 
@@ -458,29 +531,32 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="perms-whitelist.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../config.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="特许权限白名单">特许权限白名单</span></a></li>
-                          <li class="devsite-nav-item"><a href="runtime_perms.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="运行时权限">运行时权限</span></a></li>
-                          <li class="devsite-nav-item"><a href="ambient-2.html"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li>
+  <li class="devsite-nav-item"><a href="ambient.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Ambient 权能">Ambient 权能</span></a></li>
-                          <li class="devsite-nav-item"><a href="filesystem.html"
+  <li class="devsite-nav-item"><a href="filesystem.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="自主访问控制">自主访问控制</span></a></li>
-                          <li class="devsite-nav-item"><a href="namespaces_libraries.html"
+  <li class="devsite-nav-item"><a href="namespaces_libraries.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="库命名空间">库命名空间</span></a></li>
-                          <li class="devsite-nav-item"><a href="usb-hal-2.html"
+  <li class="devsite-nav-item"><a href="perms-whitelist.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="特许权限白名单">特许权限白名单</span></a></li>
+  <li class="devsite-nav-item"><a href="runtime_perms.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="运行时权限">运行时权限</span></a></li>
+  <li class="devsite-nav-item"><a href="usb-hal.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="USB HAL">USB HAL</span></a></li>
-                          <li class="devsite-nav-item"><a href="voicemail.html"
+  <li class="devsite-nav-item"><a href="voicemail.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="可视化语音信箱">可视化语音信箱</span></a></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -488,16 +564,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -507,9 +584,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../dalvik0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../tech0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -518,9 +596,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="perms-whitelist0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../config0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
@@ -534,15 +613,16 @@
          </devsite-page-rating>
           </div>
 
-              <h1 class="devsite-page-title">配置自主访问控制 (DAC)</h1>
+              <h1 class="devsite-page-title">自主访问控制 (DAC)</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
 
               
+
   <!--
       Copyright 2017 The Android Open Source Project
 
@@ -589,7 +669,7 @@
 <h2 id="adding-android-aids">添加 Android ID (AID)</h2>
 
 <p>
-  Android 8.0 从 Android 开源项目 (AOSP) 中移除了 <code>android_ids[]</code> 数组。所有好记的 AID 名称都改为在生成 Bionic <code>android_ids[]</code> 数组时从 <code>system/core/include/private/android_filesystem_config.h</code> 标头文件生成。这种机制会发现与 <code>define</code> 匹配的所有 <code>AID_*</code>，且 <strong>*</strong> 会变为小写名称。
+  Android 8.0 从 Android 开源项目 (AOSP) 中移除了 <code>android_ids[]</code> 数组。所有好记的 AID 名称都改为在生成 Bionic <code>android_ids[]</code> 数组时从 <code>system/core/include/private/android_filesystem_config.h</code> 标头文件生成。这种机制会发现与 <code>AID_*</code> 匹配的所有 <code>define</code>，且 <strong>*</strong> 会变为小写名称。
 </p>
 
 <p>
@@ -619,17 +699,17 @@
 </p>
 
 <aside class="caution">
-  <strong>注意</strong>：请勿将 <code>TARGET_FS_CONFIG_GEN</code> 与更低版本 Android 中较旧的 <code>TARGET_ANDROID_FILESYSTEM_CONFIG_H</code> 方法结合使用！否则，您会收到错误提示。
+  <strong>注意</strong>：请勿将 <code>TARGET_FS_CONFIG_GEN</code> 与更低 Android 版本中较旧的 <code>TARGET_ANDROID_FILESYSTEM_CONFIG_H</code> 方法结合使用！否则，您会收到错误提示。
 </aside>
 
 <p>
-  按照惯例，配置文件使用名称 <code>config.fs</code>，但在实际中，您可以使用任意名称。<code>config.fs</code> 文件采用 <a href="https://docs.python.org/2/library/configparser.html" class="external">Python ConfigParser ini 格式</a>，并包含 caps 部分（用于配置文件系统权能）和 AID 部分（用于配置 OEM AID）。
+  按照惯例，配置文件使用名称 <code>config.fs</code>，但实际上，您可以使用任意名称。<code>config.fs</code> 文件采用 <a href="https://docs.python.org/2/library/configparser.html" class="external">Python ConfigParser ini 格式</a>，并包含 caps 部分（用于配置文件系统权能）和 AID 部分（用于配置 OEM AID）。
 </p>
 
 <h3 id="configuring-the-caps-section">配置 caps 部分</h3>
 
 <aside class="note">
-  <strong>注意</strong>：<a href="ambient0b8e-2.html?hl=zh-cn">Ambient 权能</a>是为由 <code>init</code> 启动的服务设置权能的首选机制（此方法会将服务配置的所有方面保存在单个 <code>.rc</code> 文件中）。建议您对这些服务使用 Ambient 权能，而不是在 <code>config.fs</code> 文件中使用 caps 部分配置文件系统权能。在为<strong>不是由 <code>init</code> 启动</strong>的服务设置权能时，请继续使用 <code>fs_config.c</code> 配置文件系统权能。
+  <strong>注意</strong>：<a href="ambient0b8e-2.html?hl=zh-cn">Ambient 权能</a>是为由 <code>init</code> 启动的服务设置权能的首选机制（此方法会将服务配置的所有方面保存在单个 <code>.rc</code> 文件中）。建议您对这些服务使用 Ambient 权能，而不是在 <code>config.fs</code> 文件中使用 caps 部分配置文件系统权能。在为<strong>并非由 <code>init</code> 启动</strong>的服务设置权能时，请继续使用 <code>fs_config.c</code> 配置文件系统权能。
 </aside>
 
 <p>
@@ -705,16 +785,43 @@
   <td><code>[AID_&lt;name&gt;]</code></td>
    <td></td>
    <td><code>&lt;name&gt;</code> 可以包含大写字母、数字和下划线字符。小写版本作为好记的名称使用。生成的用于代码收录的标头文件使用确切的 <code>AID_&lt;name&gt;</code>。
-   <br /><br />使用同一 <code>AID_&lt;name&gt;</code> 指定多个部分（不区分大小写，限制条件与 <code>[path]</code> 相同）是错误的做法。</td>
+   <br /><br />使用同一 <code>AID_&lt;name&gt;</code> 指定多个部分（不区分大小写，限制条件与 <code>[path]</code> 相同）是错误的做法。
+   <br /><br /><code>&lt;name&gt;</code> 必须以分区名称开头，以确保不会与其他源发生冲突。</td>
   </tr>
   <tr>
   <td><code>value</code></td>
   <td>&lt;number&gt;</td>
   <td>有效的 C 样式的数字字符串（十六进制、八进制、二进制和十进制）。
-  <br /><br />无论是使用同一个值选项指定多个部分，<strong>还是</strong>指定超出收录的 OEM 范围（在 <code>system/core/include/private/android_filesystem_config.h</code> 中指定）的值，都是错误的做法：
+  <br /><br />使用同一值选项指定多个部分的做法是错误的。
+  <br /><br />值选项必须在 <code>&lt;name&gt;</code> 所使用的分区对应的范围中指定。有效分区及其对应范围的列表在 <code>system/core/include/private/android_filesystem_config.h</code> 中定义。
+  以下是各个选项：
   <ul>
-  <li>AID_OEM_RESERVED_START(2900) - AID_OEM_RESERVED_END(2999)</li>
-  <li>AID_OEM_RESERVED_2_START(5000) - AID_OEM_RESERVED_2_END(5999)</li>
+   <li>供应商分区
+    <ul>
+     <li>AID_OEM_RESERVED_START(2900) - AID_OEM_RESERVED_END(2999)</li>
+     <li>AID_OEM_RESERVED_2_START(5000) - AID_OEM_RESERVED_2_END(5999)</li>
+    </ul>
+   </li>
+   <li>系统分区
+    <ul>
+     <li>AID_SYSTEM_RESERVED_START(6000) - AID_SYSTEM_RESERVED_END(6499)</li>
+    </ul>
+   </li>
+   <li>ODM 分区
+    <ul>
+     <li>AID_ODM_RESERVED_START(6500) - AID_ODM_RESERVED_END(6999)</li>
+    </ul>
+   </li>
+   <li>产品分区
+    <ul>
+     <li>AID_PRODUCT_RESERVED_START(7000) - AID_PRODUCT_RESERVED_END(7499)</li>
+    </ul>
+   </li>
+   <li>System_ext 分区
+    <ul>
+     <li>AID_SYSTEM_EXT_RESERVED_START(7500) - AID_SYSTEM_EXT_RESERVED_END(7999)</li>
+    </ul>
+   </li>
   </ul>
   </td>
   </tr>
@@ -727,7 +834,7 @@
 <h2 id="usage-examples">用法示例</h2>
 
 <p>
-  以下示例详细介绍了如何定义和使用 OEM AID，以及如何启用文件系统权能。OEM AID 名称 (<strong>[AID_</strong><em>name<strong></strong></em><strong>]</strong>) 必须以值“<strong>vendor_</strong>”开头，以确保它们不会与未来的 AOSP 名称发生冲突。
+  以下示例详细介绍了如何定义和使用 OEM AID，以及如何启用文件系统权能。OEM AID 名称 (<strong>[AID_</strong>name<strong></strong><em></em><strong>]</strong>) 必须以分区名称（如“<strong>vendor_</strong>”）开头，以确保不会与将来的 AOSP 名称或其他分区发生冲突。
 </p>
 
 <h3 id="defining-oem-aid-name">定义 OEM AID 名称</h3>
@@ -801,7 +908,7 @@ service vendor_foo /vendor/bin/foo_service
 <h2 id="converting-aid-to-friendly">从 AID 转换为好记的名称</h2>
 
 <p>
-  对于 <a href="#using-oem-aid">OEM AID</a>，Android 8.x 要求jiang 配合 <code>oem_####</code> 使用 <code>getpwnam</code> 和类似函数，在通过 <code>getpwnam</code>（如 <code>init</code> 脚本）处理查询时也是如此。在 Android 9 中，您可以使用 Bionic 中的 <code>getpwnam</code> 和 <code>getgrnam</code> 这对组合函数从 Android ID (AID) 转换为好记的名称，反之亦然。
+  对于 <a href="#using-oem-aid">OEM AID</a>，Android 8.x 要求配合 <code>getpwnam</code> 和类似函数使用 <code>oem_####</code>，在通过 <code>getpwnam</code> 处理查询（如 <code>init</code> 脚本）时也是如此。在 Android 9 中，您可以使用 Bionic 中的 <code>getpwnam</code> 和 <code>getgrnam</code> 这对组合函数从 Android ID (AID) 转换为好记的名称，反之亦然。
 </p>
 
 <h3 id="using-file-system-capabilities">使用文件系统权能</h3>
@@ -830,7 +937,8 @@ caps: SYS_ADMIN | SYS_NICE
 TARGET_FS_CONFIG_GEN += device/x/y/config.fs
 </pre>
 
-<p>当执行 <code><strong>vendor_</strong>foo</code> 服务时，它会先使用 <code>CAP_SYS_ADMIN</code> 和 <code>CAP_SYS_NICE</code> 权能，而不使用 <code>setuid</code> 和 <code>setgid</code> 调用。此外，<code><strong>vendor_</strong>foo</code> 服务的 SELinux 政策不再需要 <code>setuid</code> 和 <code>setgid</code> 权能，因此可以删除这些权能。
+<p>
+  执行 <code><strong>vendor_</strong>foo</code> 服务时，会先使用 <code>CAP_SYS_ADMIN</code> 和 <code>CAP_SYS_NICE</code> 权能，而不使用 <code>setuid</code> 和 <code>setgid</code> 调用。此外，<code><strong>vendor_</strong>foo</code> 服务的 SELinux 策略不再需要 <code>setuid</code> 和 <code>setgid</code> 权能，因此可以删除这两项权能。
 </p>
 
 <h2 id="older">配置替换（Android 6.x 到 7.x）</h2>
@@ -956,7 +1064,7 @@ index 0c71d21..235c1a7 100644
 <ul>
   <li>Android 6.x 移除了部分头文件、结构和内嵌定义。</li>
   <li>Android 6.x 需要引用 <code>libcutils</code>，而不是直接从 <code>system/core/include/private/android_filesystem_config.h</code> 运行。文件/目录结构依赖于 <code>system/code/include/private_filesystem_config.h</code> 的设备制造商专属可执行文件或者 <code>fs_config</code> 必须添加 <code>libcutils</code> 库依赖项。</li>
-  <li>Android 6.x 需要 <code>system/core/include/private/android_filesystem_config.h</code> 的设备制造商专属分支副本，该副本应包含有关现有目标的附加内容，以便移至 <code>device/<em>vendor</em>/<em>device</em>/android_filesystem_config.h</code>。
+  <li>Android 6.x 需要 <code>system/core/include/private/android_filesystem_config.h</code> 的设备制造商专用分支副本，并需将现有目标上的附加内容移至 <code>device/<em>vendor</em>/<em>device</em>/android_filesystem_config.h</code>。
   </li>
   <li>由于 Android 6.x 保留将 SELinux 强制访问控制 (MAC) 应用于目标系统中的配置文件的权利，因此如果实现包含使用 <code>fs_config()</code> 的自定义目标可执行文件，则必须确保具有访问权限。</li>
 </ul>
@@ -971,17 +1079,17 @@ index 0c71d21..235c1a7 100644
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1188,8 +1296,9 @@ index 0c71d21..235c1a7 100644
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1255,54 +1364,49 @@ index 0c71d21..235c1a7 100644
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'zh_cn',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"zh_cn",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/config/filesystem?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:39:16 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/config/filesystem?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 22:18:47 GMT -->
 </html>

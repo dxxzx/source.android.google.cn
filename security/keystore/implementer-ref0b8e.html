@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="zh_cn">
+<html       lang="zh-CN"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/security/keystore/implementer-ref?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:39:19 GMT -->
+<!-- Mirrored from source.android.google.cn/security/keystore/implementer-ref?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 22:18:49 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Keymaster 函数 &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Keymaster 函数 &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="implementer-ref.html">
-
-  <meta property="og:locale" content="zh_cn">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="implementer-ref.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="implementer-ref.html">      
+<title>Keymaster 函数 &nbsp;|&nbsp; Android 开源项目 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Keymaster 函数 &nbsp;|&nbsp; Android 开源项目 &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="implementer-ref.html">
+
+  <meta property="og:locale" content="zh_cn">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../setup0b8e.html?hl=zh-cn"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../devices/audio0b8e.html?hl=zh-cn"
+          <a href="../../devices0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="开发"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../../devices/tech/dalvik0b8e.html?hl=zh-cn"
+          <a href="../../devices/tech0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="配置"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+              family-name="Android 开源项目"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results?hl=zh-cn" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="搜索"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="搜索框">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,20 +186,50 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          转到源代码
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  转到源代码
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../security0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
@@ -207,7 +243,7 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../security0b8e.html?hl=zh-cn"
@@ -232,7 +268,7 @@
 
         </tab>
                         <tab active>
-          <a href="../app-sandbox0b8e.html?hl=zh-cn"
+          <a href="../features0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="功能"
    aria-label="功能, selected"         data-category="Site-Wide Custom Events"
@@ -271,8 +307,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -283,7 +322,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -339,13 +391,13 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../app-sandbox.html"
+    <a href="../features.html"
      id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: 功能">
       <span class="devsite-nav-text" menu="_book">功能</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -374,7 +426,7 @@
                                   </ul>
                           </li>
                       <li class="devsite-nav-item">
-                                <a href="../../devices/audio.html"
+                                <a href="../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -384,7 +436,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../devices/tech/dalvik.html"
+                                <a href="../../devices/tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -416,34 +468,57 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../app-sandbox.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../features.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li>
+  <li class="devsite-nav-item"><a href="../app-sandbox.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="应用沙盒">应用沙盒</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="应用签名">应用签名</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../apksigning.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="应用签名">应用签名</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../apksigning.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../apksigning/v2.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="APK 签名方案 v2">APK 签名方案 v2</span></a></li><li class="devsite-nav-item"><a href="../apksigning/v3.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="APK 签名方案 v3">APK 签名方案 v3</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="身份验证">身份验证</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../authentication.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="身份验证">身份验证</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../authentication.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../authentication/fingerprint-hal.html"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../authentication/gatekeeper.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="指纹 HAL">指纹 HAL</span></a></li><li class="devsite-nav-item"><a href="../authentication/gatekeeper.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Gatekeeper">Gatekeeper</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="生物识别解锁">生物识别解锁</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../biometric.html"
+   ><span class="devsite-nav-text" title="Gatekeeper">Gatekeeper</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="生物识别">生物识别</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../biometric.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../biometric/measure.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="衡量生物识别安全性">衡量生物识别安全性</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Keystore">Keystore</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../keystore.html"
+   ><span class="devsite-nav-text" title="衡量生物识别安全性">衡量生物识别安全性</span></a></li><li class="devsite-nav-item"><a href="../authentication/fingerprint-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="指纹 HAL">指纹 HAL</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="受保护的确认">受保护的确认</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../protected-confirmation.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../protected-confirmation/implementation.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="实现">实现</span></a></li><li class="devsite-nav-item"><a href="../protected-confirmation/design.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="设计指南">设计指南</span></a></li><li class="devsite-nav-item"><a href="../protected-confirmation/accessibility.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="无障碍">无障碍</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="加密">加密</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../encryption.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../encryption/file-based.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="文件级加密">文件级加密</span></a></li><li class="devsite-nav-item"><a href="../encryption/full-disk.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="全盘加密">全盘加密</span></a></li><li class="devsite-nav-item"><a href="../encryption/metadata.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="元数据加密">元数据加密</span></a></li><li class="devsite-nav-item"><a href="../encryption/adiantum.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="启用Adiantum">启用Adiantum</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Keystore">Keystore</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../keystore.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="features.html"
      class="devsite-nav-title"
@@ -456,30 +531,10 @@
    ><span class="devsite-nav-text" title="授权标记">授权标记</span></a></li><li class="devsite-nav-item"><a href="implementer-ref.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="函数">函数</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Trusty TEE">Trusty TEE</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../trusty.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="SELinux">SELinux</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../selinux.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../trusty/download-and-build.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="下载和编译">下载和编译</span></a></li><li class="devsite-nav-item"><a href="../trusty/trusty-ref"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Trusty API 参考">Trusty API 参考</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="加密">加密</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../encryption.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../encryption/file-based.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="文件级加密">文件级加密</span></a></li><li class="devsite-nav-item"><a href="../encryption/full-disk.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="全盘加密">全盘加密</span></a></li><li class="devsite-nav-item"><a href="../encryption/metadata.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="元数据加密">元数据加密</span></a></li><li class="devsite-nav-item"><a href="../encryption/adiantum"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="启用Adiantum">启用Adiantum</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="SELinux">SELinux</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../selinux.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../selinux/concepts"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../selinux/concepts.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概念">概念</span></a></li><li class="devsite-nav-item"><a href="../selinux/implement.html"
      class="devsite-nav-title"
@@ -496,8 +551,16 @@
    ><span class="devsite-nav-text" title="编写策略">编写策略</span></a></li><li class="devsite-nav-item"><a href="../selinux/vendor-init.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="供应商初始化">供应商初始化</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="验证启动">验证启动</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../verifiedboot.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Trusty TEE">Trusty TEE</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../trusty.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../trusty/download-and-build.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="下载和编译">下载和编译</span></a></li><li class="devsite-nav-item"><a href="../trusty/trusty-ref.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Trusty API 参考">Trusty API 参考</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="验证启动">验证启动</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../verifiedboot.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/device-state.html"
      class="devsite-nav-title"
@@ -507,10 +570,10 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="启动流程">启动流程</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/dm-verity.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="实现 dm-verity">实现 dm-verity</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/avb"
+   ><span class="devsite-nav-text" title="实现 dm-verity">实现 dm-verity</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/avb.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="参考实现">参考实现</span></a></li></ul></devsite-expandable-nav></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -518,16 +581,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -537,8 +601,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../security0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -548,9 +613,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../app-sandbox0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../features0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
@@ -566,13 +632,14 @@
 
               <h1 class="devsite-page-title">Keymaster 函数</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
 
               
+
   <!--
       Copyright 2017 The Android Open Source Project
 
@@ -588,12 +655,13 @@
       See the License for the specific language governing permissions and
       limitations under the License.
   -->
+
 <p>本页提供了一些对 Keymaster 硬件抽象层 (HAL) 实现人员很有帮助的详细信息。其中介绍了 API 中的每个函数、提供函数的 Keymaster 版本以及函数的默认实现方法。如需了解标记，请参阅 <a href="tags0b8e.html?hl=zh-cn">Keymaster 标记</a>页面。</p>
 
-<p class="note">为了支持 Keymaster 3 从旧式 C 结构 HAL 转换到从采用新的硬件接口定义语言 (HIDL) 的定义生成的 C++ HAL 接口，Android 8.0 中的函数名称已更改。为此，目前函数都采用驼峰式大小写形式。例如，<code>get_key_characteristics</code> 现在是 <code>getKeyCharacteristics</code>。
-</p>
+<aside class="note"><b>注意</b>：为了支持 Keymaster 3 从旧式 C 结构 HAL 转换到根据新硬件接口定义语言 (HIDL) 中的定义生成的 C++ HAL 接口，Android 8.0 中的函数名称已更改。为此，目前函数都采用驼峰式大小写形式。例如，<code>get_key_characteristics</code> 现在是 <code>getKeyCharacteristics</code>。
+</aside>
 
-<h2 id="general_implementation_guidelines">常规实现准则</h2>
+<h2 id="implementation_guidelines">常规实现准则</h2>
 
 <p>以下准则适用于 API 中的所有函数。</p>
 
@@ -622,24 +690,26 @@
 
 <p>应用、框架和 Android Keystore 需负责确保对 Keymaster 模块的调用是合理的，而且是有用的。</p>
 
-<p class="caution">Keymaster 实现应该尝试诊断严重错误，如缺少必需的参数、指定无效的必需参数，以及会破坏 Keymaster 实现完整性的类似错误。</p>
+<aside class="caution"><b>注意</b>：Keymaster 实现应该尝试诊断严重错误，如缺少必需的参数、指定无效的必需参数，以及会破坏 Keymaster 实现完整性的类似错误。</aside>
 
 <h2 id="functions">函数</h2>
 
 <h3 id="get_hardware_features">getHardwareFeatures</h3>
 <p><strong>版本</strong>：3</p>
 
-<p>
-全新的 <code>getHardwareFeatures</code> 方法向客户端披露了底层安全硬件的一些重要特征。该方法不需要任何参数，且返回四个值（都是布尔值）：</p>
+<p>全新的 <code>getHardwareFeatures</code> 方法向客户端披露了底层安全硬件的一些重要特征。该方法不需要任何参数，且返回四个值（都是布尔值）：</p>
+
 <ul>
   <li>如果密钥始终存储在安全硬件（TEE 等）中，则 <code>isSecure</code> 为 <code>true</code>。</li>
   <li>如果硬件支持采用 NIST 曲线（P-224、P-256、P-384 和 P-521）的椭圆曲线加密，则 <code>supportsEllipticCurve</code> 为 <code>true</code>。</li>
   <li>如果硬件支持对称加密（包括 AES 和 HMAC），则 <code>supportsSymmetricCryptography</code> 为 <code>true</code>。</li>
   <li>如果硬件支持生成使用注入安全环境中的密钥进行签名的 Keymaster 公钥认证证书，则 <code>supportsAttestation</code> 为 <code>true</code>。</li>
 </ul>
+
 <p>
 该方法仅可能返回以下错误代码：<code>ErrorCode:OK</code>、<code>ErrorCode::KEYMASTER_NOT_CONFIGURED</code> 或指示无法与安全硬件通信的错误代码之一。
 </p>
+
 <pre class="devsite-click-to-copy">
 getHardwareFeatures()
     generates(bool isSecure, bool supportsEllipticCurve, bool supportsSymmetricCryptography,
@@ -650,23 +720,22 @@ getHardwareFeatures()
 <p><strong>版本</strong>：2</p>
 <p>该函数在 Keymaster 2 中引入，并在 Keymaster 3 中被弃用，因为这些信息已在系统属性文件中提供，制造商实现会在启动期间读取这些文件。</p>
 
-<p>配置 Keymaster。该方法在打开设备之后、使用设备之前被调用一次。可使用此方法向 Keymaster 提供 <a href="tags0b8e.html?hl=zh-cn#os_version">KM_TAG_OS_VERSION</a> 和 <a href="tags0b8e.html?hl=zh-cn#os_patchlevel">KM_TAG_OS_PATCHLEVEL</a>。
-在该方法被调用之前，所有其他方法会返回 <code>KM_ERROR_KEYMASTER_NOT_CONFIGURED</code>。该方法提供的值仅在每次启动时被 Keymaster 接受一次。之后的调用都会返回 <code>KM_ERROR_OK</code>，但不执行任何操作。</p>
+<p>配置 Keymaster。该方法在打开设备之后、使用设备之前被调用一次。可使用此方法向 Keymaster 提供 <a href="tags0b8e.html?hl=zh-cn#os_version">KM_TAG_OS_VERSION</a> 和 <a href="tags0b8e.html?hl=zh-cn#os_patchlevel">KM_TAG_OS_PATCHLEVEL</a>。在该方法被调用之前，所有其他方法会返回 <code>KM_ERROR_KEYMASTER_NOT_CONFIGURED</code>。该方法提供的值仅在每次启动时被 Keymaster 接受一次。之后的调用都会返回 <code>KM_ERROR_OK</code>，但不执行任何操作。</p>
 <p>
 如果 Keymaster 实现在安全的硬件中进行，且提供的操作系统版本和补丁程序级别的值与引导加载程序向安全硬件提供的值不匹配（或者引导加载程序未提供任何值），则该方法会返回 <code>KM_ERROR_INVALID_ARGUMENT</code>，所有其他方法仍然返回 <code>KM_ERROR_KEYMASTER_NOT_CONFIGURED</code>。</p>
+
 <pre class="devsite-click-to-copy">
 keymaster_error_t (*configure)(const struct keymaster2_device* dev,
                                const keymaster_key_param_set_t* params);</pre>
 
-<h3 id="add_rng_entropy">addRngEntropy</h3>
+<h3 id="addrngentropy">addRngEntropy</h3>
 
 <p><strong>版本</strong>：1、2、3</p>
 <p>该函数在 Keymaster 1 中引入（名为 <code>add_rng_entropy</code>），并在 Keymaster 3 中进行了重命名。</p>
 
 <p>该函数将调用程序提供的熵添加到 Keymaster 1 实现生成随机数（用作密钥、IV 等）所用的池中。</p>
 
-<p>Keymaster 实现需要将收到的熵安全地混合到所使用的池中，该池中还必须包含由硬件随机数生成器在内部生成的熵。
-对混合操作的处理应该实现：即使攻击者能够完全控制 <code>addRngEntropy</code> 提供的数位或硬件生成的数位（但不能同时控制这两者），他们在预测从熵池生成的数位方面也不具有明显的优势。</p>
+<p>Keymaster 实现需要将收到的熵安全地混合到所使用的池中，该池中还必须包含由硬件随机数生成器在内部生成的熵。对混合操作的处理应该实现：即使攻击者能够完全控制 <code>addRngEntropy</code> 提供的数位或硬件生成的数位（但不能同时控制这两者），他们在预测从熵池生成的数位方面也不具有明显的优势。</p>
 
 <p>尝试估算内部池中的熵的 Keymaster 实现假定 <code>addRngEntropy</code> 提供的数据不包含熵。如果在单次调用中向 Keymaster 实现提供的数据超过 2KiB，则这些实现可能会返回 <code>ErrorCode::INVALID_INPUT_LENGTH</code>。</p>
 
@@ -675,7 +744,8 @@ keymaster_error_t (*configure)(const struct keymaster2_device* dev,
 <p><strong>版本</strong>：1、2、3</p>
 <p>该函数在 Keymaster 1 中引入（名为 <code>generate_key</code>），并在 Keymaster 3 中进行了重命名。</p>
 
-<p>该函数会生成一个新的加密密钥，同时指定关联的授权，这些授权会永久绑定到该密钥。Keymaster 实现确保无法通过任何与生成密钥时指定的授权不一致的方式使用密钥。对于安全硬件无法强制执行的授权，安全硬件的义务仅限于确保与密钥关联的无法强制执行的授权不能被修改，以便每次调用 <a href="#get_key_characteristics">getKeyCharacteristics</a> 时都会返回原始值。此外，由 <code>generateKey</code> 返回的特性将授权正确地分配到由硬件强制执行的列表和由软件强制执行的列表。如需了解详情，请参阅 <a href="#get_key_characteristics">getKeyCharacteristics</a>。</p>
+<p>该函数会生成一个新的加密密钥，同时指定关联的授权，这些授权会永久绑定到该密钥。Keymaster 实现确保无法通过任何与生成密钥时指定的授权不一致的方式使用密钥。对于安全硬件无法强制执行的授权，安全硬件的义务仅限于确保与密钥关联的无法强制执行的授权不能被修改，以便每次调用 <a href="#get_key_characteristics">getKeyCharacteristics</a> 时都会返回原始值。此外，由 <code>generateKey</code> 返回的特性将授权正确地分配到由硬件强制执行的列表和由软件强制执行的列表。如需了解详情，请参阅 <a href="#get_key_characteristics">getKeyCharacteristics</a>。
+</p>
 
 <p>向 <code>generateKey</code> 提供的参数取决于要生成的密钥的类型。本部分总结了每种类型密钥的必需和可选标记。<a href="tags0b8e.html?hl=zh-cn#algorithm">Tag::ALGORITHM</a> 始终为必需的标记，用于指定类型。</p>
 
@@ -691,8 +761,7 @@ keymaster_error_t (*configure)(const struct keymaster2_device* dev,
 <p>以下参数不是生成 RSA 密钥所必需的参数，但如果在缺少这些参数的情况下生成 RSA 密钥，生成的密钥将无法使用。不过，如果缺少这些参数，<code>generateKey</code> 函数不会返回错误。</p>
 
 <ul>
-  <li><a href="tags0b8e.html?hl=zh-cn#purpose">Tag::PURPOSE</a> 用于指定允许的目的。
-  对于 RSA 密钥，需要支持采用任意组合的所有目的。</li>
+  <li><a href="tags0b8e.html?hl=zh-cn#purpose">Tag::PURPOSE</a> 用于指定允许的目的。对于 RSA 密钥，需要支持采用任意组合的所有目的。</li>
   <li><a href="tags0b8e.html?hl=zh-cn#digest">Tag::DIGEST</a> 用于指定可与新密钥配合使用的摘要算法。不支持任何摘要算法的实现需要接受包含不受支持的摘要的密钥生成请求。不受支持的摘要应被放入“由软件强制执行”的列表内的返回的密钥特性中。这是因为相应密钥能够与其他摘要配合使用，但添加摘要会在软件中进行。然后，将调用硬件按 <code>Digest::NONE</code> 摘要算法执行相应操作。</li>
   <li><a href="tags0b8e.html?hl=zh-cn#padding">Tag::PADDING</a> 用于指定可与新密钥配合使用的填充模式。如果指定了任何不受支持的摘要算法，则不支持所有摘要算法的实现需要将 <code>PaddingMode::RSA_PSS</code> 和 <code>PaddingMode::RSA_OAEP</code> 放入由软件强制执行的密钥特性列表中。</li>
 </ul>
@@ -722,18 +791,18 @@ keymaster_error_t (*configure)(const struct keymaster2_device* dev,
 <p>以下参数是生成 HMAC 密钥所必需的参数：</p>
 
 <ul>
-  <li><a href="tags0b8e.html?hl=zh-cn#key_size">Tag::KEY_SIZE</a> 用于指定密钥大小（以位计）。不支持小于 64 以及不是 8 的倍数的值。支持介于 64 和 512 之间并且是 8 的倍数的所有值。可以支持更大的值。</li>
+  <li><a href="tags0b8e.html?hl=zh-cn#key_size">Tag::KEY_SIZE</a> 用于指定密钥大小（以位计）。不支持小于 64 以及不是 8 的倍数的值。支持介于 64 和 512 之间并且是 8 的倍数的所有值。可以支持更大的值。
+  </li>
   <li><a href="tags0b8e.html?hl=zh-cn#min_mac_length">Tag::MIN_MAC_LENGTH</a> 用于指定可通过相应密钥生成或验证的 MAC 的最小长度。此参数的值是 8 的倍数，并且不小于 64。</li>
-  <li><a href="tags0b8e.html?hl=zh-cn#digest">Tag::DIGEST</a> 用于指定相应密钥的摘要算法。只能指定一种摘要，否则返回 <code>ErrorCode::UNSUPPORTED_DIGEST</code>。
-  如果 Trustlet 不支持指定的摘要，则返回 <code>ErrorCode::UNSUPPORTED_DIGEST</code>。</li>
+  <li><a href="tags0b8e.html?hl=zh-cn#digest">Tag::DIGEST</a> 用于指定相应密钥的摘要算法。只能指定一种摘要，否则返回 <code>ErrorCode::UNSUPPORTED_DIGEST</code>。如果 Trustlet 不支持指定的摘要，则返回 <code>ErrorCode::UNSUPPORTED_DIGEST</code>。</li>
 </ul>
 
 <h4 id="key_characteristics">密钥特性</h4>
 
-<p>如果特性参数为非 NULL 值，<code>generateKey</code> 会返回新生成密钥的特性（相应划分到由硬件强制执行的列表和由软件强制执行的列表中）。
-要了解哪些特性会划分到哪个列表中，请参阅 <a href="#get_key_characteristics">getKeyCharacteristics</a>。返回的特性包含为生成密钥而指定的所有参数，但 <a href="tags0b8e.html?hl=zh-cn#application_id">Tag::APPLICATION_ID</a> 和 <a href="tags0b8e.html?hl=zh-cn#application_data">Tag::APPLICATION_DATA</a> 除外。如果密钥参数中包含这两个标记，为确保无法通过查看返回的密钥 Blob 找到这两个标记的值，系统会将这两个标记从返回的特性中移除。不过，这两个标记以加密形式绑定到密钥 Blob，以便在使用相应密钥时，如果未提供正确的值，使用会失败。<a href="tags0b8e.html?hl=zh-cn#root_of_trust">Tag::ROOT_OF_TRUST</a> 同样会以加密形式绑定到相应密钥，但在生成或导入密钥期间可以不指定此标记，并且在任何情况下都不会返回此标记。</p>
+<p>如果特性参数为非 NULL 值，<code>generateKey</code> 会返回新生成密钥的特性（相应划分到由硬件强制执行的列表和由软件强制执行的列表中）。要了解哪些特性会划分到哪个列表中，请参阅 <a href="#get_key_characteristics">getKeyCharacteristics</a>。返回的特性包含为生成密钥而指定的所有参数，但 <a href="tags0b8e.html?hl=zh-cn#application_id">Tag::APPLICATION_ID</a> 和 <a href="tags0b8e.html?hl=zh-cn#application_data">Tag::APPLICATION_DATA</a> 除外。如果密钥参数中包含这两个标记，为确保无法通过查看返回的密钥 Blob 找到这两个标记的值，系统会将这两个标记从返回的特性中移除。不过，这两个标记以加密形式绑定到密钥 Blob，以便在使用相应密钥时，如果未提供正确的值，使用会失败。<a href="tags0b8e.html?hl=zh-cn#root_of_trust">Tag::ROOT_OF_TRUST</a> 同样会以加密形式绑定到相应密钥，但在生成或导入密钥期间可以不指定此标记，并且在任何情况下都不会返回此标记。</p>
 
-<p>除了收到的标记外，Trustlet 还会添加 <a href="tags0b8e.html?hl=zh-cn#origin">Tag::ORIGIN</a>（值为 <code>KeyOrigin::GENERATED</code>）；如果相应密钥可抗回滚，则还会添加 <a href="tags0b8e.html?hl=zh-cn#rollback_resistant">Tag::ROLLBACK_RESISTANT</a>。</p>
+<p>除了收到的标记外，Trustlet 还会添加 <a href="tags0b8e.html?hl=zh-cn#origin">Tag::ORIGIN</a>（值为 <code>KeyOrigin::GENERATED</code>）；如果相应密钥可抗回滚，则还会添加 </p>
+<a href="tags0b8e.html?hl=zh-cn#rollback_resistant">Tag::ROLLBACK_RESISTANT</a>。
 
 <h4 id="rollback_resistance">抗回滚</h4>
 
@@ -746,7 +815,8 @@ keymaster_error_t (*configure)(const struct keymaster2_device* dev,
 <p><strong>版本</strong>：1、2、3</p>
 <p>该函数在 Keymaster 1 中引入（名为 <code>get_key_characteristics</code>），并在 Keymaster 3 中进行了重命名。</p>
 
-<p>用于返回与收到的密钥关联的参数和授权，并且返回的参数和授权会划分为两组：一组由硬件强制执行，一组由软件强制执行。此处的说明同样适用于通过 <a href="#generate_key">generateKey</a> 和 <a href="#import_key">importKey</a> 返回的密钥特性列表。</p>
+<p>用于返回与收到的密钥关联的参数和授权，并且返回的参数和授权会划分为两组：一组由硬件强制执行，一组由软件强制执行。此处的说明同样适用于通过 <a href="#generate_key">generateKey</a> 和 <a href="#import_key">importKey</a> 返回的密钥特性列表。
+</p>
 
 <p>如果在生成或导入密钥期间提供了 <code>Tag::APPLICATION_ID</code>，则在 <code>clientId</code> 参数中为此方法提供相同的值。否则，此方法会返回 <code>ErrorCode::INVALID_KEY_BLOB</code>。同样，如果在生成或导入密钥期间提供了 <code>Tag::APPLICATION_DATA</code>，则在 <code>appData</code> 参数中为此方法提供相同的值。</p>
 
@@ -876,7 +946,7 @@ keymaster_error_t (*configure)(const struct keymaster2_device* dev,
 <p>如果分块模式是 <code>BlockMode::GCM</code> 或 <code>BlockMode::CTR</code>，那么指定的填充模式必须是 <code>PaddingMode::NONE</code>。如果分块模式是 <code>BlockMode::ECB</code> 或 <code>BlockMode::CBC</code>，那么指定的填充模式可以是 <code>PaddingMode::NONE</code> 或 <code>PaddingMode::PKCS7</code>。如果填充模式不符合这些条件，则返回 <code>ErrorCode::INCOMPATIBLE_PADDING_MODE</code>。</p>
 
 <p>如果分块模式是 <code>BlockMode::CBC</code>、<code>BlockMode::CTR</code> 或 <code>BlockMode::GCM</code>，则需要初始化矢量或随机数。
-在大多数情况下，调用程序都不应提供 IV 或随机数。在这种情况下，Keymaster 实现会生成一个随机 IV 或随机数，并通过 <a href="tags0b8e.html?hl=zh-cn#nonce">outParams</a> 中的 <code>outParams</code> 将其返回。
+在大多数情况下，调用程序都不应提供 IV 或随机数。在这种情况下，Keymaster 实现会生成一个随机 IV 或随机数，并通过 <code>outParams</code> 中的 <a href="tags0b8e.html?hl=zh-cn#nonce">Tag::NONCE</a> 将其返回。
 CBC 和 CTR IV 均为 16 个字节。GCM 随机数为 12 个字节。如果密钥授权包含 <a href="tags0b8e.html?hl=zh-cn#caller_nonce">Tag::CALLER_NONCE</a>，调用程序可能会通过 <code>inParams</code> 中的 <a href="tags0b8e.html?hl=zh-cn#nonce">Tag::NONCE</a> 提供 IV/随机数。如果在 <a href="tags0b8e.html?hl=zh-cn#caller_nonce">Tag::CALLER_NONCE</a> 未获得授权的情况下提供了随机数，则会返回 <code>ErrorCode::CALLER_NONCE_PROHIBITED</code>。如果在 <a href="tags0b8e.html?hl=zh-cn#caller_nonce">Tag::CALLER_NONCE</a> 获得授权的情况下未提供随机数，则会生成随机 IV/随机数。</p>
 
 <h4 id="begin_hmac_keys">HMAC 密钥</h4>
@@ -964,9 +1034,8 @@ CBC 和 CTR IV 均为 16 个字节。GCM 随机数为 12 个字节。如果密�
 
 <ul>
   <li><code>PaddingMode::NONE</code>：对于非填充式签名和加密操作，如果收到的数据比密钥短，那么在签名/加密之前，在数据左侧填充零来补齐。如果数据与密钥一样长度，但数值较大，则返回 <code>ErrorCode::INVALID_ARGUMENT</code>。对于验证和解密操作，数据必须与密钥一样长。否则返回 <code>ErrorCode::INVALID_INPUT_LENGTH.</code></li>
-  <li><code>PaddingMode::RSA_PSS</code>：对于 PSS 填充式签名操作，PSS 盐不得短于 20 个字节，并且是随机生成的。
-  盐可以更长；参考实现使用的是长度最大的盐。调用 <a href="tags0b8e.html?hl=zh-cn#digest">begin</a> 时使用 <code>inputParams</code> 中的 <a href="#begin">Tag::DIGEST</a> 指定的摘要会用作 PSS 摘要算法，而 SHA1 会用作 MGF1 摘要算法。</li>
-  <li><code>PaddingMode::RSA_OAEP</code>：调用 <a href="tags0b8e.html?hl=zh-cn#digest">begin</a> 时使用 <code>inputParams</code> 中的 <a href="#begin">Tag::DIGEST</a> 指定的摘要会用作 OAEP 摘要算法，而 SHA1 会用作 MGF1 摘要算法。</li>
+  <li><code>PaddingMode::RSA_PSS</code>：对于 PSS 填充式签名操作，PSS 盐不得短于 20 个字节，并且是随机生成的。盐可以更长；参考实现使用的是长度最大的盐。调用 <a href="#begin">begin</a> 时使用 <code>inputParams</code> 中的 <a href="tags0b8e.html?hl=zh-cn#digest">Tag::DIGEST</a> 指定的摘要会用作 PSS 摘要算法，而 SHA1 会用作 MGF1 摘要算法。</li>
+  <li><code>PaddingMode::RSA_OAEP</code>：调用 <a href="#begin">begin</a> 时使用 <code>inputParams</code> 中的 <a href="tags0b8e.html?hl=zh-cn#digest">Tag::DIGEST</a> 指定的摘要会用作 OAEP 摘要算法，而 SHA1 会用作 MGF1 摘要算法。</li>
 </ul>
 
 <h4 id="finish_ecdsa_keys">ECDSA 密钥</h4>
@@ -1083,6 +1152,7 @@ CBC 和 CTR IV 均为 16 个字节。GCM 随机数为 12 个字节。如果密�
 <h3 id="km2">Keymaster 2</h3>
 <p>以下函数属于 Keymaster 2 定义，但在 Keymaster 3 中已被移除，一同被移除的还有上述 Keymaster 1 函数。
 </p>
+
 <ul>
   <li><code>configure</code></li>
 </ul>
@@ -1097,17 +1167,17 @@ CBC 和 CTR IV 均为 16 个字节。GCM 随机数为 12 个字节。如果密�
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1314,8 +1384,9 @@ CBC 和 CTR IV 均为 16 个字节。GCM 随机数为 12 个字节。如果密�
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1381,54 +1452,49 @@ CBC 和 CTR IV 均为 16 个字节。GCM 随机数为 12 个字节。如果密�
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'zh_cn',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"zh_cn",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/security/keystore/implementer-ref?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:39:19 GMT -->
+<!-- Mirrored from source.android.google.cn/security/keystore/implementer-ref?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 22:18:49 GMT -->
 </html>

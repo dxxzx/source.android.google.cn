@@ -1,25 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/connect/esim-overview by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:29:23 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/connect/esim-overview by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:57:57 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Implementing eSIM &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Implementing eSIM &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="esim-overview.html">
-
-  <meta property="og:locale" content="en">
-
-
-
-  
-
-  
-
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -27,26 +12,46 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="esim-overview.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="esim-overview.html">      
+<title>Implementing eSIM &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Implementing eSIM &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="esim-overview.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+
+  
+
+  
+
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -69,18 +74,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -116,7 +122,7 @@
 
         </tab>
                         <tab active>
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
    aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
@@ -127,7 +133,7 @@
 
         </tab>
                         <tab >
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -152,12 +158,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -165,7 +171,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -181,21 +187,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -208,9 +244,20 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
+          <a href="../../../devices.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
           <a href="../../audio.html"
    class="gc-analytics-event"
    title="Audio"
@@ -255,7 +302,7 @@
 
         </tab>
                         <tab >
-          <a href="../../input.html"
+          <a href="../../interaction.html"
    class="gc-analytics-event"
    title="Interaction"
            data-category="Site-Wide Custom Events"
@@ -294,8 +341,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -306,7 +356,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -342,7 +405,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -351,6 +414,16 @@
         </a>
   
                                             <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
                                                                                                                       <li class="devsite-nav-item">
     <a href="../../audio.html"
           class="devsite-nav-title gc-analytics-event
@@ -378,7 +451,7 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Connectivity">
       <span class="devsite-nav-text" menu="_book">Connectivity</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -395,7 +468,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../../input.html"
+    <a href="../../interaction.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -427,7 +500,7 @@
                                   </ul>
                           </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -459,44 +532,54 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../connect.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../connect.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bluetooth and NFC">Bluetooth and NFC</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bluetooth.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bluetooth and NFC">Bluetooth and NFC</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bluetooth.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/services-2.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/services.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Bluetooth Services">Bluetooth Services</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/ble.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Bluetooth Low Energy">Bluetooth Low Energy</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/asha.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Hearing Aids over BLE">Hearing Aids over BLE</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/ble_advertising-2.html"
+   ><span class="devsite-nav-text" title="Hearing Aids over BLE">Hearing Aids over BLE</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/ble_advertising.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="BLE Advertising">BLE Advertising</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/verifying_debugging-2.html"
+   ><span class="devsite-nav-text" title="BLE Advertising">BLE Advertising</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/verifying_debugging.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Verifying and Debugging Bluetooth">Verifying and Debugging Bluetooth</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/hci_requirements.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Bluetooth HCI Requirements">Bluetooth HCI Requirements</span></a></li><li class="devsite-nav-item"><a href="felica.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="NFC Host Card Emulation of FeliCa">NFC Host Card Emulation of FeliCa</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Calling and Messaging">Calling and Messaging</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="block-numbers.html"
+   ><span class="devsite-nav-text" title="NFC Host Card Emulation of FeliCa">NFC Host Card Emulation of FeliCa</span></a></li><li class="devsite-nav-item"><a href="secure-nfc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Secure NFC">Secure NFC</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Calling and Messaging">Calling and Messaging</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="5g-nsa.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="5G Non-Standalone (NSA)">5G Non-Standalone (NSA)</span></a></li><li class="devsite-nav-item"><a href="block-numbers.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Block Phone Numbers">Block Phone Numbers</span></a></li><li class="devsite-nav-item"><a href="call-notification.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Call Notifications">Call Notifications</span></a></li><li class="devsite-nav-item"><a href="emergency-affordance.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Emergency Affordance">Emergency Affordance</span></a></li><li class="devsite-nav-item"><a href="ims.html"
+   ><span class="devsite-nav-text" title="Emergency Affordance">Emergency Affordance</span></a></li><li class="devsite-nav-item"><a href="emergency-call.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="IP Multimedia Subsystem (IMS)">IP Multimedia Subsystem (IMS)</span></a></li><li class="devsite-nav-item"><a href="rtt.html"
+   ><span class="devsite-nav-text" title="Emergency Numbers and Emergency Calling">Emergency Numbers and Emergency Calling</span></a></li><li class="devsite-nav-item"><a href="ims.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="IP Multimedia Subsystem (IMS)">IP Multimedia Subsystem (IMS)</span></a></li><li class="devsite-nav-item"><a href="phone-account-suggestion.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Phone Account Suggestion">Phone Account Suggestion</span></a></li><li class="devsite-nav-item"><a href="rtt.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Real-Time Text (RTT)">Real-Time Text (RTT)</span></a></li><li class="devsite-nav-item"><a href="third-party-call-apps.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Third-Party Calling Apps">Third-Party Calling Apps</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Carrier">Carrier</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../config/carrier.html"
+   ><span class="devsite-nav-text" title="Third-Party Calling Apps">Third-Party Calling Apps</span></a></li><li class="devsite-nav-item"><a href="../config/voicemail.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Visual Voicemail">Visual Voicemail</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Carrier">Carrier</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../config/carrier.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../config/update.html"
      class="devsite-nav-title"
@@ -504,43 +587,57 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Carrier Identification">Carrier Identification</span></a></li><li class="devsite-nav-item"><a href="data-plans.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Data Plans">Data Plans</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="eSIM">eSIM</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="esim-overview.html"
+   ><span class="devsite-nav-text" title="Data Plans">Data Plans</span></a></li><li class="devsite-nav-item"><a href="../config/device-identifiers.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device identifiers">Device identifiers</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="eSIM">eSIM</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="esim-overview.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Implementing eSIM">Implementing eSIM</span></a></li><li class="devsite-nav-item"><a href="esim-modem-requirements.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Modem Requirements">Modem Requirements</span></a></li><li class="devsite-nav-item"><a href="esim-euicc-api.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="eUICC APIs">eUICC APIs</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="oob-users-2.html"
+   ><span class="devsite-nav-text" title="eUICC APIs">eUICC APIs</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="oob-users.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Out-of-Balance Users">Out-of-Balance Users</span></a></li><li class="devsite-nav-item"><a href="ril.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Radio Interface Layer (RIL)">Radio Interface Layer (RIL)</span></a></li><li class="devsite-nav-item"><a href="../config/uicc.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="UICC">UICC</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Wi-Fi">Wi-Fi</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="wifi-overview.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Wi-Fi">Wi-Fi</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="wifi-overview.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="wifi-hal.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Wi-Fi HAL">Wi-Fi HAL</span></a></li><li class="devsite-nav-item"><a href="wifi-infrastructure.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Wi-Fi Infrastructure Features">Wi-Fi Infrastructure Features</span></a></li><li class="devsite-nav-item"><a href="wifi-sta-ap-concurrency.html"
+   ><span class="devsite-nav-text" title="Wi-Fi Infrastructure Features">Wi-Fi Infrastructure Features</span></a></li><li class="devsite-nav-item"><a href="wifi-debug.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="STA/AP Concurrency">STA/AP Concurrency</span></a></li><li class="devsite-nav-item"><a href="wifi-mac-randomization.html"
+   ><span class="devsite-nav-text" title="Testing, Debugging, and Tuning Wi-Fi">Testing, Debugging, and Tuning Wi-Fi</span></a></li><li class="devsite-nav-item"><a href="carrier-wifi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Carrier Wi-Fi">Carrier Wi-Fi</span></a></li><li class="devsite-nav-item"><a href="wifi-mac-randomization.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="MAC Randomization">MAC Randomization</span></a></li><li class="devsite-nav-item"><a href="wifi-passpoint.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Passpoint R1">Passpoint R1</span></a></li><li class="devsite-nav-item"><a href="carrier-wifi.html"
+   ><span class="devsite-nav-text" title="Passpoint (Hotspot 2.0)">Passpoint (Hotspot 2.0)</span></a></li><li class="devsite-nav-item"><a href="wifi-sta-ap-concurrency.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Carrier Wi-Fi">Carrier Wi-Fi</span></a></li><li class="devsite-nav-item"><a href="wifi-aware.html"
+   ><span class="devsite-nav-text" title="STA/AP Concurrency">STA/AP Concurrency</span></a></li><li class="devsite-nav-item"><a href="wifi-aware.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Wi-Fi Aware">Wi-Fi Aware</span></a></li><li class="devsite-nav-item"><a href="wifi-rtt.html"
+   ><span class="devsite-nav-text" title="Wi-Fi Aware">Wi-Fi Aware</span></a></li><li class="devsite-nav-item"><a href="wifi-direct.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Wi-Fi Round Trip Time (RTT)">Wi-Fi Round Trip Time (RTT)</span></a></li><li class="devsite-nav-item"><a href="wifi-debug.html"
+   ><span class="devsite-nav-text" title="Wi-Fi Direct">Wi-Fi Direct</span></a></li><li class="devsite-nav-item"><a href="wifi-easy-connect.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Testing, Debugging, and Tuning Wi-Fi">Testing, Debugging, and Tuning Wi-Fi</span></a></li></ul></devsite-expandable-nav></li>
-                      </ul>
+   ><span class="devsite-nav-text" title="Wi-Fi Easy Connect">Wi-Fi Easy Connect</span></a></li><li class="devsite-nav-item"><a href="wifi-low-latency.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Low Latency Mode">Wi-Fi Low Latency Mode</span></a></li><li class="devsite-nav-item"><a href="wifi-network-selection.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Network Selection">Wi-Fi Network Selection</span></a></li><li class="devsite-nav-item"><a href="wifi-scan.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Preferred Network Offload Scanning">Wi-Fi Preferred Network Offload Scanning</span></a></li><li class="devsite-nav-item"><a href="wifi-rtt.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Round Trip Time (RTT)">Wi-Fi Round Trip Time (RTT)</span></a></li><li class="devsite-nav-item"><a href="wifi-wpa3-owe.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="WPA3 and Wi-Fi Enhanced Open">WPA3 and Wi-Fi Enhanced Open</span></a></li></ul></devsite-expandable-nav></li>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -548,16 +645,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -567,9 +665,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../../audio.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -578,8 +677,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../connect.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -596,13 +696,14 @@
 
               <h1 class="devsite-page-title">Implementing eSIM</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
 
               
+
 
 
 
@@ -673,10 +774,10 @@ available LPA, and routes all the eUICC operations through an LPA instance.</p>
 
 <p>Mobile network operators interested in creating a <em>carrier app</em> should look at
 the APIs in
-<a href="https://android.googlesource.com/platform/frameworks/base/+/master/telephony/java/android/telephony/euicc/EuiccManager.java" class="external">EuiccManager</a>,
+<a href="https://developer.android.google.cn/reference/android/telephony/euicc/EuiccManager" class="external">EuiccManager</a>,
 which provides high-level profile management operations such as
-<code>downloadSubscription()</code>, <code>switchToSubscription()</code>, and
-<code>deleteSubscription()</code>.</p>
+<code translate="no" dir="ltr">downloadSubscription()</code>, <code translate="no" dir="ltr">switchToSubscription()</code>, and
+<code translate="no" dir="ltr">deleteSubscription()</code>.</p>
 
 <p>If you are a device OEM interested in creating your own LPA system app, you must
 extend
@@ -686,14 +787,18 @@ should use the APIs in
 <a href="https://android.googlesource.com/platform/frameworks/base/+/master/telephony/java/android/telephony/euicc/EuiccCardManager.java" class="external">EuiccCardManager</a>,
 which provides ES10x functions based on GSMA Remote SIM Provisioning (RSP) v2.0.
 These functions are used to issue commands to the eUICC chip, such as
-<code>prepareDownload()</code>, <code>loadBoundProfilePackage()</code>, <code>retrieveNotificationList()</code>,
-and <code>resetMemory()</code>.</p>
+<code translate="no" dir="ltr">prepareDownload()</code>, <code translate="no" dir="ltr">loadBoundProfilePackage()</code>, <code translate="no" dir="ltr">retrieveNotificationList()</code>,
+and <code translate="no" dir="ltr">resetMemory()</code>.</p>
 
 <p>The APIs in
-<a href="https://android.googlesource.com/platform/frameworks/base/+/master/telephony/java/android/telephony/euicc/EuiccManager.java" class="external">EuiccManager</a> 
+<a href="https://developer.android.google.cn/reference/android/telephony/euicc/EuiccManager" class="external">EuiccManager</a> 
 require a properly implemented LPA app to function and the caller of
 <a href="https://android.googlesource.com/platform/frameworks/base/+/master/telephony/java/android/telephony/euicc/EuiccCardManager.java" class="external">EuiccCardManager</a> 
 APIs must be an LPA. This is enforced by the Android framework.</p>
+
+<p>Devices running Android 10 or higher can support
+devices with multiple eSIMs. For more information, see
+<a href="#supporting_multiple_esims">Supporting multiple eSIMs</a>.</p>
 
 <h2 id="making_a_carrier_app">Making a carrier app</h2>
 
@@ -704,41 +809,41 @@ owned by the carrier, as well as switching to a profile owned by a carrier.</p>
 
 <h3 id="euiccmanager">EuiccManager</h3>
 
-<p><code>EuiccManager</code> is the main entry point for applications to interact with the
+<p><code translate="no" dir="ltr">EuiccManager</code> is the main entry point for applications to interact with the
 LPA. This includes carrier apps that download, delete, and switch to
 subscriptions owned by the carrier. This also includes the LUI system app, which
 provides a central location/UI for managing <em>all</em> embedded subscriptions, and
-can be a separate app from the one that provides the <code>EuiccService</code>.</p>
+can be a separate app from the one that provides the <code translate="no" dir="ltr">EuiccService</code>.</p>
 
 <p>To use the public APIs, a carrier app must first obtain the instance of
-<code>EuiccManager</code> through <code>Context#getSystemService</code>:</p>
-<pre class="prettyprint"><code>EuiccManager mgr = (EuiccManager) context.getSystemService(Context.EUICC_SERVICE);
+<code translate="no" dir="ltr">EuiccManager</code> through <code translate="no" dir="ltr">Context#getSystemService</code>:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">EuiccManager mgr = (EuiccManager) context.getSystemService(Context.EUICC_SERVICE);
 </code></pre>
 <p>You should check whether eSIM is supported on the device before performing any
-eSIM operations. <code>EuiccManager#isEnabled()</code> generally returns true if the
+eSIM operations. <code translate="no" dir="ltr">EuiccManager#isEnabled()</code> generally returns true if the
 android.hardware.telephony.euicc feature is defined and an LPA package is
 present.</p>
-<pre class="prettyprint"><code>boolean isEnabled = mgr.isEnabled();
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">boolean isEnabled = mgr.isEnabled();
 if (!isEnabled) {
     return;
 }
 </code></pre>
 <p>To get information about the eUICC hardware and the eSIM OS version:</p>
-<pre class="prettyprint"><code>EuiccInfo info = mgr.getEuiccInfo();
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">EuiccInfo info = mgr.getEuiccInfo();
 String osVer = info.getOsVersion();
 </code></pre>
-<p>Many APIs, such as <code>downloadSubscription()</code> and <code>switchToSubscription()</code>, use
-<code>PendingIntent</code> callbacks as they may take seconds or even minutes to complete.
-The <code>PendingIntent</code> is sent with a result code in the
-<code>EuiccManager#EMBEDDED_SUBSCRIPTION_RESULT_</code> space, which provides
+<p>Many APIs, such as <code translate="no" dir="ltr">downloadSubscription()</code> and <code translate="no" dir="ltr">switchToSubscription()</code>, use
+<code translate="no" dir="ltr">PendingIntent</code> callbacks as they may take seconds or even minutes to complete.
+The <code translate="no" dir="ltr">PendingIntent</code> is sent with a result code in the
+<code translate="no" dir="ltr">EuiccManager#EMBEDDED_SUBSCRIPTION_RESULT_</code> space, which provides
 framework-defined error codes, as well as an arbitrary detailed result code
-propagated from the LPA as <code>EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE</code>, allowing
-the carrier app to track for logging/debugging purposes. The <code>PendingIntent</code>
-must be a <code>BroadcastReceiver</code>.</p>
+propagated from the LPA as <code translate="no" dir="ltr">EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE</code>, allowing
+the carrier app to track for logging/debugging purposes. The <code translate="no" dir="ltr">PendingIntent</code>
+must be a <code translate="no" dir="ltr">BroadcastReceiver</code>.</p>
 
-<p>To download a given <code>DownloadableSubscription</code> (created from an
+<p>To download a given <code translate="no" dir="ltr">DownloadableSubscription</code> (created from an
 <em>activation code</em> or a QR code):</p>
-<pre class="prettyprint"><code>// Register receiver.
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">// Register receiver.
 static final String ACTION_DOWNLOAD_SUBSCRIPTION = &#34;download_subscription&#34;;
 static final String LPA_DECLARED_PERMISSION
     = &#34;com.your.company.lpa.permission.BROADCAST&#34;;
@@ -772,7 +877,7 @@ mgr.downloadSubscription(sub, true /* switchAfterDownload */,
         callbackIntent);
 </code></pre>
 <p>To switch to a subscription given the subscription ID:</p>
-<pre class="prettyprint"><code>// Register receiver.
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">// Register receiver.
 static final String ACTION_SWITCH_TO_SUBSCRIPTION = &#34;switch_to_subscription&#34;;
 static final String LPA_DECLARED_PERMISSION
     = &#34;com.your.company.lpa.permission.BROADCAST&#34;;
@@ -802,26 +907,26 @@ PendingIntent callbackIntent = PendingIntent.getBroadcast(
         PendingIntent.FLAG_UPDATE_CURRENT);
 mgr.switchToSubscription(1 /* subscriptionId */, callbackIntent);
 </code></pre>
-<p>For a complete list of <code>EuiccManager</code> APIs and code examples, see
+<p>For a complete list of <code translate="no" dir="ltr">EuiccManager</code> APIs and code examples, see
 <a href="esim-euicc-api.html">eUICC APIs</a>.</p>
 
 <h3 id="resolvable_errors">Resolvable errors</h3>
 
 <p>There are some cases where the system is unable to complete the eSIM operation
-but the error can be resolved by the user. For example, <code>downloadSubscription</code>
+but the error can be resolved by the user. For example, <code translate="no" dir="ltr">downloadSubscription</code>
 may fail if the profile metadata indicates that a <em>carrier confirmation code</em>
-is required. Or <code>switchToSubscription</code> may fail if the carrier app has carrier
+is required. Or <code translate="no" dir="ltr">switchToSubscription</code> may fail if the carrier app has carrier
 privileges over the destination profile (i.e. carrier owns the profile) but
 doesn&#39;t have carrier privileges over the currently enabled profile, and hence
 user consent is required.</p>
 
 <p>For these cases, the caller&#39;s callback is called with
-<code>EuiccManager#EMBEDDED_SUBSCRIPTION_RESULT_RESOLVABLE_ERROR</code>. The callback
-<code>Intent</code> will contain internal extras such that when the caller passes it to
-<a href="https://developer.android.google.cn/reference/android/telephony/euicc/EuiccManager.html#startResolutionActivity(android.app.Activity,%20int,%20android.content.Intent,%20android.app.PendingIntent)" class="external"><code>EuiccManager#startResolutionActivity</code></a>,
+<code translate="no" dir="ltr">EuiccManager#EMBEDDED_SUBSCRIPTION_RESULT_RESOLVABLE_ERROR</code>. The callback
+<code translate="no" dir="ltr">Intent</code> will contain internal extras such that when the caller passes it to
+<a href="https://developer.android.google.cn/reference/android/telephony/euicc/EuiccManager.html#startResolutionActivity(android.app.Activity,%20int,%20android.content.Intent,%20android.app.PendingIntent)" class="external"><code translate="no" dir="ltr">EuiccManager#startResolutionActivity</code></a>,
 resolution can be requested through the LUI. Using the confirmation code for
 example again,
-<a href="https://developer.android.google.cn/reference/android/telephony/euicc/EuiccManager.html#startResolutionActivity(android.app.Activity,%20int,%20android.content.Intent,%20android.app.PendingIntent)" class="external"><code>EuiccManager#startResolutionActivity</code></a>
+<a href="https://developer.android.google.cn/reference/android/telephony/euicc/EuiccManager.html#startResolutionActivity(android.app.Activity,%20int,%20android.content.Intent,%20android.app.PendingIntent)" class="external"><code translate="no" dir="ltr">EuiccManager#startResolutionActivity</code></a>
 triggers an LUI screen that allows the user to enter a confirmation code;
 after the code is entered, the download operation is resumed. This approach
 provides the carrier app with full control over when the UI is shown, but gives
@@ -829,9 +934,9 @@ the LPA/LUI an extensible method for adding new handling of user-recoverable
 issues in the future without needing client apps to change.</p>
 
 <p>Android 9 defines these resolvable errors in
-<a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/service/euicc/EuiccService.java" class="external"><code>EuiccService</code></a>,
+<a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/service/euicc/EuiccService.java" class="external"><code translate="no" dir="ltr">EuiccService</code></a>,
 which the LUI should handle:</p>
-<pre class="prettyprint"><code>/**
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">/**
  * Alert the user that this action will result in an active SIM being
  * deactivated. To implement the LUI triggered by the system, you need to define
  * this in AndroidManifest.xml.
@@ -845,13 +950,13 @@ public static final String ACTION_RESOLVE_DEACTIVATE_SIM =
 public static final String ACTION_RESOLVE_NO_PRIVILEGES =
         &#34;android.service.euicc.action.RESOLVE_NO_PRIVILEGES&#34;;
 
-/** Ask the user to input carrier confirmation code. */
-public static final String ACTION_RESOLVE_CONFIRMATION_CODE =
-        &#34;android.service.euicc.action.RESOLVE_CONFIRMATION_CODE&#34;;
+/** Ask the user to resolve all the resolvable errors. */
+public static final String ACTION_RESOLVE_RESOLVABLE_ERRORS =
+        &#34;android.service.euicc.action.RESOLVE_RESOLVABLE_ERRORS&#34;;
 </code></pre>
 <h3 id="carrier_privileges">Carrier privileges</h3>
 
-<p>If you are a carrier developing your own carrier app that calls <code>EuiccManager</code>
+<p>If you are a carrier developing your own carrier app that calls <code translate="no" dir="ltr">EuiccManager</code>
 to download profiles onto a device, your profile should include carrier
 privilege rules corresponding to your carrier app in the metadata. This is
 because subscription profiles belonging to different carriers can co-exist in
@@ -863,7 +968,7 @@ download, enable, or disable a profile owned by carrier B.</p>
 grant special privileges to the profile owner&#39;s app (i.e. carrier app). The
 Android platform loads certificates stored in the profile&#39;s Access Rule File
 (ARF) and grants permission to apps signed by these certificates to make calls
-to <code>EuiccManager</code> APIs. The high-level process is described below:</p>
+to <code translate="no" dir="ltr">EuiccManager</code> APIs. The high-level process is described below:</p>
 
 <ol>
 <li>Operator signs the carrier app APK; the
@@ -877,7 +982,7 @@ that contains:</p>
 (required)</li>
 <li>Package name of the carrier app (optional)</li>
 </ol></li>
-<li><p>Carrier app tries to perform an eUICC operation via <code>EuiccManager</code> API.</p></li>
+<li><p>Carrier app tries to perform an eUICC operation via <code translate="no" dir="ltr">EuiccManager</code> API.</p></li>
 <li><p>Android platform verifies SHA-1 or SHA-256 hash of the caller app&#39;s
 certificate matches the signature of the certificate obtained from the
 target profile&#39;s ARF. If the package name of the carrier app is included in
@@ -895,7 +1000,7 @@ same carrier privilege rules as in the profile.</p>
 metadata. The tag content should be the same carrier privilege rules as returned
 by the ARA (Access Rule Applet) defined in
 <a href="../config/uicc.html">UICC Carrier Privileges</a>:</p>
-<pre class="prettyprint"><code>RefArDo ::= [PRIVATE 2] SEQUENCE {  -- Tag E2
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">RefArDo ::= [PRIVATE 2] SEQUENCE {  -- Tag E2
     refDo [PRIVATE 1] SEQUENCE {  -- Tag E1
         deviceAppIdRefDo [PRIVATE 1] OCTET STRING (SIZE(20|32)),  -- Tag C1
         pkgRefDo [PRIVATE 10] OCTET STRING (SIZE(0..127)) OPTIONAL  -- Tag CA
@@ -926,17 +1031,48 @@ servers that have a matching RSP version. For detailed RSP architecture, see
 <p>In addition, to integrate with the eUICC APIs in Android
 9, the device modem should send terminal capabilities
 with the support for eUICC capabilities encoded (Local Profile Management and
-Profile Download). It also needs to implement the following APIs:</p>
+Profile Download). It also needs to implement the following methods:</p>
 
 <ul>
 <li>IRadio HAL v1.1: setSimPower</li>
-<li>IRadio HAL v1.2: getIccCardStatus</li>
-<li>IRadioConfig HAL v1.0: getSimSlotsStatus</li>
+<li><p>IRadio HAL v1.2: getIccCardStatus</p>
+<aside class="note"><strong>Note:</strong><span> Support for IRadio HAL v1.4 is required for devices launching with
+Android 10 and is recommended for all other
+Android versions.</span></aside></li>
+<li><p>IRadioConfig HAL v1.0: getSimSlotsStatus</p>
+<aside class="note"><strong>Note:</strong><span> Support for IRadioConfig HAL v1.2 is required for devices launching
+with Android 10 and is recommended for all other
+Android versions.</span></aside></li>
 </ul>
 
 <p>The modem should recognize the eSIM with the default boot profile enabled as a
 valid SIM and keep the SIM power on.</p>
 
+<p>For devices running Android 10, a non-removable eUICC
+slot ID array must be defined. For example, see
+<a href="https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/res/res/values/arrays.xml"><code translate="no" dir="ltr">arrays.xml</code></a>.</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">&lt;resources&gt;
+   &lt;!-- Device-specific array of SIM slot indexes which are are embedded eUICCs.
+        e.g. If a device has two physical slots with indexes 0, 1, and slot 1 is an
+        eUICC, then the value of this array should be:
+            &lt;integer-array name=&#34;non_removable_euicc_slots&#34;&gt;
+                &lt;item&gt;1&lt;/item&gt;
+            &lt;/integer-array&gt;
+        If a device has three physical slots and slot 1 and 2 are eUICCs, then the value of
+        this array should be:
+            &lt;integer-array name=&#34;non_removable_euicc_slots&#34;&gt;
+               &lt;item&gt;1&lt;/item&gt;
+               &lt;item&gt;2&lt;/item&gt;
+            &lt;/integer-array&gt;
+        This is used to differentiate between removable eUICCs and built in eUICCs, and should
+        be set by OEMs for devices which use eUICCs. --&gt;
+
+   &lt;integer-array name=&#34;non_removable_euicc_slots&#34;&gt;
+       &lt;item&gt;1&lt;/item&gt;
+   &lt;/integer-array&gt;
+&lt;/resources&gt;
+
+</code></pre>
 <p>For a complete list of modem requirements, see
 <a href="esim-modem-requirements.html">Modem Requirements for eSIM Support</a>.</p>
 
@@ -946,14 +1082,14 @@ valid SIM and keep the SIM power on.</p>
 APK): the LPA backend, and the LPA UI or LUI.</p>
 
 <p>To implement the LPA backend, you must extend
-<a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/service/euicc/EuiccService.java" class="external"><code>EuiccService</code></a> 
+<a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/service/euicc/EuiccService.java" class="external"><code translate="no" dir="ltr">EuiccService</code></a> 
 and declare this service in your manifest file. The service must require the
-<code>android.permission.BIND_EUICC_SERVICE</code> system permission to ensure that only
+<code translate="no" dir="ltr">android.permission.BIND_EUICC_SERVICE</code> system permission to ensure that only
 the system can bind to it. The service must also include an intent filter with
-the <code>android.service.euicc.EuiccService</code> action. The priority of the intent
+the <code translate="no" dir="ltr">android.service.euicc.EuiccService</code> action. The priority of the intent
 filter should be set to a non-zero value in case multiple implementations are
 present on the device. For example:</p>
-<pre class="prettyprint"><code>&lt;service
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">&lt;service
     android:name=&#34;.EuiccServiceImpl&#34;
     android:permission=&#34;android.permission.BIND_EUICC_SERVICE&#34;&gt;
     &lt;intent-filter android:priority=&#34;100&#34;&gt;
@@ -962,28 +1098,28 @@ present on the device. For example:</p>
 &lt;/service&gt;
 </code></pre>
 <p>Internally, the Android framework determines the active LPA and interacts with
-it as needed to support the Android eUICC APIs. <code>PackageManager</code> is queried for
-all apps with the <code>android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS</code> permission,
-which specifies a service for the <code>android.service.euicc.EuiccService</code> action.
+it as needed to support the Android eUICC APIs. <code translate="no" dir="ltr">PackageManager</code> is queried for
+all apps with the <code translate="no" dir="ltr">android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS</code> permission,
+which specifies a service for the <code translate="no" dir="ltr">android.service.euicc.EuiccService</code> action.
 The service with the highest priority is selected. If no service is found, LPA
 support is disabled.</p>
 
 <p>To implement the LUI, you must provide an activity for the following actions:</p>
 
 <ul>
-<li><code>android.service.euicc.action.MANAGE_EMBEDDED_SUBSCRIPTIONS</code></li>
-<li><code>android.service.euicc.action.PROVISION_EMBEDDED_SUBSCRIPTION</code></li>
+<li><code translate="no" dir="ltr">android.service.euicc.action.MANAGE_EMBEDDED_SUBSCRIPTIONS</code></li>
+<li><code translate="no" dir="ltr">android.service.euicc.action.PROVISION_EMBEDDED_SUBSCRIPTION</code></li>
 </ul>
 
 <p>As with the service, each activity must require the
-<code>android.permission.BIND_EUICC_SERVICE</code> system permission. Each should have an
+<code translate="no" dir="ltr">android.permission.BIND_EUICC_SERVICE</code> system permission. Each should have an
 intent filter with the appropriate action, the
-<code>android.service.euicc.category.EUICC_UI</code> category, and a non-zero priority.
+<code translate="no" dir="ltr">android.service.euicc.category.EUICC_UI</code> category, and a non-zero priority.
 Similar logic is used to pick the implementations for these activities as
 with picking the implementation of
-<a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/service/euicc/EuiccService.java" class="external"><code>EuiccService</code></a>.
+<a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/service/euicc/EuiccService.java" class="external"><code translate="no" dir="ltr">EuiccService</code></a>.
 For example:</p>
-<pre class="prettyprint"><code>&lt;activity android:name=&#34;.MyLuiActivity&#34;
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">&lt;activity android:name=&#34;.MyLuiActivity&#34;
           android:exported=&#34;true&#34;
           android:permission=&#34;android.permission.BIND_EUICC_SERVICE&#34;&gt;
     &lt;intent-filter android:priority=&#34;100&#34;&gt;
@@ -996,35 +1132,34 @@ For example:</p>
 </code></pre>
 <p>This implies that the UI implementing these screens can come from a different
 APK from the one that implements
-<a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/service/euicc/EuiccService.java" class="external"><code>EuiccService</code></a>.
+<a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/service/euicc/EuiccService.java" class="external"><code translate="no" dir="ltr">EuiccService</code></a>.
 Whether to have a single APK or multiple APKs (e.g. one that implements
-<a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/service/euicc/EuiccService.java" class="external"><code>EuiccService</code></a> 
-and one that provides LUI activities) is a design choice.</p>
+<code translate="no" dir="ltr">EuiccService</code> and one that provides LUI activities) is a design choice.</p>
 
 <h3 id="euicccardmanager">EuiccCardManager</h3>
 
-<p><code>EuiccCardManager</code> is the interface for communicating with the eSIM chip. It
+<p><code translate="no" dir="ltr">EuiccCardManager</code> is the interface for communicating with the eSIM chip. It
 provides ES10 functions (as described in the GSMA RSP spec) and handles the
 low-level APDU request/response commands as well as ASN.1 parsing.
-<code>EuiccCardManager</code> is a system API and can be called only by system-privileged
+<code translate="no" dir="ltr">EuiccCardManager</code> is a system API and can be called only by system-privileged
 applications.</p>
 
 <p><img src="images/carrier-app-euicc-apis.png" alt="Carrier apps, LPA, and Euicc APIs"></p>
 
 <p><strong>Figure 2.</strong> Both carrier app and LPA use Euicc APIs</p>
 
-<p>The profile operation APIs through <code>EuiccCardManager</code> require the caller to be
+<p>The profile operation APIs through <code translate="no" dir="ltr">EuiccCardManager</code> require the caller to be
 an LPA. This is enforced by the Android framework. This means the caller must
-extend the <code>EuiccService</code> and be declared in your manifest file, as described in
+extend the <code translate="no" dir="ltr">EuiccService</code> and be declared in your manifest file, as described in
 the previous sections.</p>
 
-<p>Similar to the <code>EuiccManager</code>, to use the <code>EuiccCardManager</code> APIs, your LPA must
-first obtain the instance of <code>EuiccCardManager</code> through
-<code>Context#getSystemService</code>:</p>
-<pre class="prettyprint"><code>EuiccCardManager cardMgr = (EuiccCardManager) context.getSystemService(Context.EUICC_CARD_SERVICE);
+<p>Similar to the <code translate="no" dir="ltr">EuiccManager</code>, to use the <code translate="no" dir="ltr">EuiccCardManager</code> APIs, your LPA must
+first obtain the instance of <code translate="no" dir="ltr">EuiccCardManager</code> through
+<code translate="no" dir="ltr">Context#getSystemService</code>:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">EuiccCardManager cardMgr = (EuiccCardManager) context.getSystemService(Context.EUICC_CARD_SERVICE);
 </code></pre>
 <p>Then, to get all the profiles on the eUICC:</p>
-<pre class="prettyprint"><code>ResultCallback&lt;EuiccProfileInfo[]&gt; callback =
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">ResultCallback&lt;EuiccProfileInfo[]&gt; callback =
        new ResultCallback&lt;EuiccProfileInfo[]&gt;() {
            @Override
            public void onComplete(int resultCode,
@@ -1039,36 +1174,129 @@ first obtain the instance of <code>EuiccCardManager</code> through
 
 cardMgr.requestAllProfiles(eid, AsyncTask.THREAD_POOL_EXECUTOR, callback);
 </code></pre>
-<p>Internally, <code>EuiccCardManager</code> binds to <code>EuiccCardController</code> (which runs in the
-phone process) through an AIDL interface, and each <code>EuiccCardManager</code> method
+<p>Internally, <code translate="no" dir="ltr">EuiccCardManager</code> binds to <code translate="no" dir="ltr">EuiccCardController</code> (which runs in the
+phone process) through an AIDL interface, and each <code translate="no" dir="ltr">EuiccCardManager</code> method
 receives its callback from the phone process through a different, dedicated AIDL
-interface. When using <code>EuiccCardManager</code> APIs, the caller (LPA) must provide an
-<a href="https://developer.android.google.cn/reference/java/util/concurrent/Executor" class="external"><code>Executor</code></a> 
-through which the callback is invoked. This <code>Executor</code> may run on a single
+interface. When using <code translate="no" dir="ltr">EuiccCardManager</code> APIs, the caller (LPA) must provide an
+<a href="https://developer.android.google.cn/reference/java/util/concurrent/Executor" class="external"><code translate="no" dir="ltr">Executor</code></a> 
+through which the callback is invoked. This <code translate="no" dir="ltr">Executor</code> may run on a single
 thread or on a thread pool of your choice.</p>
 
-<p>Most <code>EuiccCardManager</code> APIs have the same usage pattern. For example, to load a
+<p>Most <code translate="no" dir="ltr">EuiccCardManager</code> APIs have the same usage pattern. For example, to load a
 bound profile package onto the eUICC:</p>
-<pre class="prettyprint"><code>...
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">...
 cardMgr.loadBoundProfilePackage(eid, boundProfilePackage,
         AsyncTask.THREAD_POOL_EXECUTOR, callback);
 </code></pre>
 <p>To switch to a different profile with a given ICCID:</p>
-<pre class="prettyprint"><code>...
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">...
 cardMgr.switchToProfile(eid, iccid, true /* refresh */,
         AsyncTask.THREAD_POOL_EXECUTOR, callback);
 </code></pre>
 <p>To get the default SM-DP+ address from the eUICC chip:</p>
-<pre class="prettyprint"><code>...
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">...
 cardMgr.requestDefaultSmdpAddress(eid, AsyncTask.THREAD_POOL_EXECUTOR,
         callback);
 </code></pre>
 <p>To retrieve a list of notifications of the given notification events:</p>
-<pre class="prettyprint"><code>...
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">...
 cardMgr.listNotifications(eid,
         EuiccNotification.Event.INSTALL
               | EuiccNotification.Event.DELETE /* events */,
         AsyncTask.THREAD_POOL_EXECUTOR, callback);
+</code></pre>
+<h2 id="supporting_multiple_esims">Supporting multiple eSIMs</h2>
+
+<p>For devices running Android 10 or higher, the
+EuiccManager class supports devices
+with multiple eSIMs. Devices with a single eSIM that are upgrading to
+Android 10
+don&#39;t require any modification to the LPA implementation as the platform
+automatically associates the EuiccManager instance with the default eUICC. The
+default eUICC is determined by the platform for devices with radio HAL version
+1.2 or higher and by the LPA for devices with radio HAL versions lower than
+1.2.</p>
+
+<h3 id="requirements">Requirements</h3>
+
+<p>To support multiple eSIMs, the device must have more than one eUICC, which can
+be either a built-in eUICC or a physical SIM slot where removable eUICCs can be
+inserted.</p>
+
+<p>Radio HAL version 1.2 or higher is required to support multiple eSIMs. Radio HAL
+version 1.4 and RadioConfig HAL version 1.2 are recommended.</p>
+
+<h3 id="implementation">Implementation</h3>
+
+<p>To support multiple eSIMs (including removable eUICCs or programmable SIMs), the
+LPA must implement
+<a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/service/euicc/EuiccService.java" class="external"><code translate="no" dir="ltr">EuiccService</code></a>,
+which receives the slot ID corresponding to the caller-provided card ID.</p>
+
+<p>The
+<a href="https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/res/res/values/arrays.xml#202" class="external"><code translate="no" dir="ltr">non_removable_euicc_slots</code></a> 
+resource specified in
+<a href="https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/res/res/values/arrays.xml" class="external"><code translate="no" dir="ltr">arrays.xml</code></a> 
+is an array of integers that represent the slot IDs of a device&#39;s built-in
+eUICCs. You must specify this resource to allow the platform to determine
+whether an inserted eUICC is removable or not.</p>
+
+<h3 id="carrier_app_for_device_with_multiple_esims">Carrier app for device with multiple eSIMs</h3>
+
+<p>When making a carrier app for a device with multiple eSIMs, use the
+<a href="https://developer.android.google.cn/reference/android/telephony/euicc/EuiccManager#createForCardId(int)" class="external"><code translate="no" dir="ltr">createForCardId</code></a>
+method in <code translate="no" dir="ltr">EuiccManager</code> to create an <code translate="no" dir="ltr">EuiccManager</code> object that is pinned to a
+given card ID. The card ID is an integer value that uniquely identifies a UICC
+or an eUICC on the device.</p>
+
+<p>To get the card ID for the device&#39;s default eUICC, use the
+<a href="https://developer.android.google.cn/reference/android/telephony/TelephonyManager#getCardIdForDefaultEuicc()" class="external"><code translate="no" dir="ltr">getCardIdForDefaultEuicc</code></a>
+method in <code translate="no" dir="ltr">TelephonyManager</code>. This method returns
+<a href="https://developer.android.google.cn/reference/android/telephony/TelephonyManager#UNSUPPORTED_CARD_ID" class="external"><code translate="no" dir="ltr">UNSUPPORTED_CARD_ID</code></a> 
+if the radio HAL version is lower than 1.2 and returns
+<a href="https://developer.android.google.cn/reference/android/telephony/TelephonyManager#UNINITIALIZED_CARD_ID" class="external"><code translate="no" dir="ltr">UNINITIALIZED_CARD_ID</code></a> 
+if the device hasn&#39;t read the eUICC.</p>
+
+<p>You can also get card IDs from
+<a href="https://developer.android.google.cn/reference/android/telephony/TelephonyManager#getUiccCardsInfo()" class="external"><code translate="no" dir="ltr">getUiccCardsInfo</code></a>
+and <code translate="no" dir="ltr">getUiccSlotsInfo</code> (system API) in <code translate="no" dir="ltr">TelephonyManager</code>, and
+<a href="https://developer.android.google.cn/reference/android/telephony/SubscriptionInfo#getCardId()" class="external"><code translate="no" dir="ltr">getCardId</code></a>
+in <code translate="no" dir="ltr">SubscriptionInfo</code>.</p>
+
+<p>When an <code translate="no" dir="ltr">EuiccManager</code> object has been instantiated with a specific card ID, all
+operations are directed to the eUICC with that card ID. If the eUICC becomes
+unreachable (for example, when it is turned off or removed) <code translate="no" dir="ltr">EuiccManager</code> no
+longer works.</p>
+
+<p>You can use the following code samples to create a carrier app.</p>
+
+<p>Example 1: Get active subscription and instantiate <code translate="no" dir="ltr">EuiccManager</code></p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">// Get the active subscription and instantiate an EuiccManager for the eUICC which holds
+// that subscription
+SubscriptionManager subMan = (SubscriptionManager)
+        mContext.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+int cardId = subMan.getActiveSubscriptionInfo().getCardId();
+EuiccManager euiccMan = (EuiccManager) mContext.getSystemService(Context.EUICC_SERVICE)
+            .createForCardId(cardId);
+</code></pre>
+<p>Example 2: Iterate through UICCs and instantiate <code translate="no" dir="ltr">EuiccManager</code> for a
+removable eUICC</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">// On a device with a built-in eUICC and a removable eUICC, iterate through the UICC cards
+// to instantiate an EuiccManager associated with a removable eUICC
+TelephonyManager telMan = (TelephonyManager)
+        mContext.getSystemService(Context.TELEPHONY_SERVICE);
+List&lt;UiccCardInfo&gt; infos = telMan.getUiccCardsInfo();
+int removableCardId = -1; // valid cardIds are 0 or greater
+for (UiccCardInfo info : infos) {
+    if (info.isRemovable()) {
+        removableCardId = info.getCardId();
+        break;
+    }
+}
+if (removableCardId != -1) {
+    EuiccManager euiccMan = (EuiccManager) mContext.getSystemService(Context.EUICC_SERVICE)
+            .createForCardId(removableCardId);
+}
 </code></pre>
 <h2 id="validation">Validation</h2>
 
@@ -1105,17 +1333,17 @@ inevitable. For best test coverage, you should follow the
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1322,8 +1550,9 @@ inevitable. For best test coverage, you should follow the
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1389,54 +1618,49 @@ inevitable. For best test coverage, you should follow the
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/connect/esim-overview by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:29:25 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/connect/esim-overview by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:57:59 GMT -->
 </html>

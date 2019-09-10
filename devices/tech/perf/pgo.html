@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/perf/pgo by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:32:08 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/perf/pgo by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:01:48 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Using Profile-Guided Optimization (PGO) &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Using Profile-Guided Optimization (PGO) &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="pgo.html">
-
-  <meta property="og:locale" content="en">
-
-
-  
-  
-  
-
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="pgo.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="pgo.html">      
+<title>Using Profile-Guided Optimization (PGO) &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Using Profile-Guided Optimization (PGO) &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="pgo.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+  
+  
+  
+
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab active>
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
    aria-label="Configure, selected"         data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,16 +243,16 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
-   title="ART"
+   title="Overview"
            data-category="Site-Wide Custom Events"
-        data-label="Tab: ART"
+        data-label="Tab: Overview"
    >
-  ART
+  Overview
 </a>
 
         </tab>
@@ -243,7 +279,7 @@
 
         </tab>
                         <tab active>
-          <a href="../health.html"
+          <a href="../perf.html"
    class="gc-analytics-event"
    title="Performance"
    aria-label="Performance, selected"         data-category="Site-Wide Custom Events"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab >
-          <a href="../config/perms-whitelist.html"
+          <a href="../config.html"
    class="gc-analytics-event"
    title="Permissions"
            data-category="Site-Wide Custom Events"
@@ -276,6 +312,17 @@
 
         </tab>
                         <tab >
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="Runtime"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Runtime"
+   >
+  Runtime
+</a>
+
+        </tab>
+                        <tab >
           <a href="../ota.html"
    class="gc-analytics-event"
    title="Updates"
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -351,7 +414,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -361,12 +424,12 @@
   
                                             <ul class="devsite-nav-responsive-tabs">
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../dalvik.html"
+    <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
-     data-label="Responsive Tab: ART">
-      <span class="devsite-nav-text" >ART</span>
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
         </a>
   </li>
 
@@ -391,20 +454,20 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../health.html"
+    <a href="../perf.html"
      id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Performance">
       <span class="devsite-nav-text" menu="_book">Performance</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../config/perms-whitelist.html"
+    <a href="../config.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -420,6 +483,16 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Power">
       <span class="devsite-nav-text" >Power</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Runtime">
+      <span class="devsite-nav-text" >Runtime</span>
         </a>
   </li>
 
@@ -458,37 +531,43 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Health">Health</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../health.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../perf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item"><a href="apk-caching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="APK Caching">APK Caching</span></a></li>
+  <li class="devsite-nav-item"><a href="boot-times.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Boot Times">Boot Times</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Health">Health</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../health.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../health/implementation.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Implementing Health">Implementing Health</span></a></li><li class="devsite-nav-item"><a href="../health/deprecation.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Deprecating health@1.0">Deprecating health@1.0</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="apk-caching.html"
+  <li class="devsite-nav-item"><a href="cgroups.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="APK Caching">APK Caching</span></a></li>
-                          <li class="devsite-nav-item"><a href="boot-times.html"
+   ><span class="devsite-nav-text" title="Cgroup Abstraction Layer">Cgroup Abstraction Layer</span></a></li>
+  <li class="devsite-nav-item"><a href="lmkd.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Boot Times">Boot Times</span></a></li>
-                          <li class="devsite-nav-item"><a href="lmkd.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="LMKD in Userspace">LMKD in Userspace</span></a></li>
-                          <li class="devsite-nav-item"><a href="low-ram.html"
+   ><span class="devsite-nav-text" title="Low Memory Killer Daemon (LMKD)">Low Memory Killer Daemon (LMKD)</span></a></li>
+  <li class="devsite-nav-item"><a href="low-ram.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Low RAM">Low RAM</span></a></li>
-                          <li class="devsite-nav-item"><a href="pgo.html"
+  <li class="devsite-nav-item"><a href="pgo.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Profile Guided Optimization (PGO)">Profile Guided Optimization (PGO)</span></a></li>
-                          <li class="devsite-nav-item"><a href="task-snapshots-2.html"
+  <li class="devsite-nav-item"><a href="task-snapshots.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Task Snapshots">Task Snapshots</span></a></li>
-                          <li class="devsite-nav-item"><a href="compatibility-wal.html"
+  <li class="devsite-nav-item"><a href="compatibility-wal.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Write-Ahead Logging">Write-Ahead Logging</span></a></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -496,16 +575,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -515,9 +595,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -526,9 +607,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../health.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../perf.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
@@ -544,8 +626,8 @@
 
               <h1 class="devsite-page-title">Using Profile-Guided Optimization (PGO)</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -597,8 +679,8 @@
 
   <p>All profiles should be generated from a representative workload that
   exercises the typical behavior of the application. While Clang supports both
-  AST-based (<code>-fprofile-instr-generate</code>) and LLVM IR-based
-  (<code>-fprofile-generate)</code>, Android supports only LLVM IR-based for
+  AST-based (<code translate="no" dir="ltr">-fprofile-instr-generate</code>) and LLVM IR-based
+  (<code translate="no" dir="ltr">-fprofile-generate)</code>, Android supports only LLVM IR-based for
   instrumentation-based PGO.</p>
 
 
@@ -606,30 +688,30 @@
 
 
   <ul>
-    <li><code>-fprofile-generate</code> for IR-based instrumentation. With this
+    <li><code translate="no" dir="ltr">-fprofile-generate</code> for IR-based instrumentation. With this
     option, the backend uses a weighted minimal spanning tree approach to
     reduce the number of instrumentation points and optimize their placement to
     low-weight edges (use this option for the link step as well). The Clang
     driver automatically passes the profiling runtime
-    (<code>libclang_rt.profile-<em>arch</em>-android.a</code>) to the linker.
+    (<code translate="no" dir="ltr">libclang_rt.profile-<em>arch</em>-android.a</code>) to the linker.
     This library contains routines to write the profiles to disk upon program
     exit.</li>
 
 
-    <li><code>-gline-tables-only</code> for sampling-based profile collection
+    <li><code translate="no" dir="ltr">-gline-tables-only</code> for sampling-based profile collection
     to generate minimal debug information.</li>
   </ul>
 
 
   <p>A profile can be used for PGO using
-  <code>-fprofile-instr-use=<em>pathname</em></code> or
-  <code>-fprofile-sample-use=<em>pathname</em></code> for instrumentation-based
+  <code translate="no" dir="ltr">-fprofile-instr-use=<em>pathname</em></code> or
+  <code translate="no" dir="ltr">-fprofile-sample-use=<em>pathname</em></code> for instrumentation-based
   and sampling-based profiles respectively.</p>
 
 
   <p><strong>Note:</strong> As changes are made to the code, if Clang can no
   longer use the profile data it generates a
-  <code>-Wprofile-instr-out-of-date</code> warning.</p>
+  <code translate="no" dir="ltr">-Wprofile-instr-out-of-date</code> warning.</p>
 
 
   <h2 id="using-pgo">Using PGO</h2>
@@ -640,20 +722,20 @@
 
   <ol>
     <li>Build the library/executable with instrumentation by passing
-    <code>-fprofile-generate</code> to the compiler and linker.</li>
+    <code translate="no" dir="ltr">-fprofile-generate</code> to the compiler and linker.</li>
 
 
     <li>Collect profiles by running a representative workload on the
     instrumented binary.</li>
 
 
-    <li>Post-process the profiles using the <code>llvm-profdata</code> utility
+    <li>Post-process the profiles using the <code translate="no" dir="ltr">llvm-profdata</code> utility
     (for details, see <a href="#handling-llvm-profile-files">Handling LLVM
     profile files</a>).</li>
 
 
     <li>Use the profiles to apply PGO by passing
-    <code>-fprofile-use=&lt;&gt;.profdata</code> to the compiler and
+    <code translate="no" dir="ltr">-fprofile-use=&lt;&gt;.profdata</code> to the compiler and
     linker.</li>
   </ol>
 
@@ -679,19 +761,19 @@
     that benchmark.</li>
 
 
-    <li>Add <code>pgo</code> properties to the benchmark and libraries (details
+    <li>Add <code translate="no" dir="ltr">pgo</code> properties to the benchmark and libraries (details
     below).</li>
 
 
     <li>Produce an Android build with an instrumented copy of these libraries
     using:
 
-      <pre class="prettyprint">make ANDROID_PGO_INSTRUMENT=benchmark</pre>
+      <pre class="prettyprint" translate="no" dir="ltr">make ANDROID_PGO_INSTRUMENT=benchmark</pre>
     </li>
   </ol>
 
 
-  <p><code><em>benchmark</em></code> is a placeholder that identifies the
+  <p><code translate="no" dir="ltr"><em>benchmark</em></code> is a placeholder that identifies the
   collection of libraries instrumented during build. The actual representative
   inputs (and possibly another executable that links against a library being
   benchmarked) are not specific to PGO and are beyond the scope of this
@@ -705,7 +787,7 @@
     <li>Run the benchmark to collect profiles.</li>
 
 
-    <li>Use the <code>llvm-profdata</code> tool (discussed below) to
+    <li>Use the <code translate="no" dir="ltr">llvm-profdata</code> tool (discussed below) to
     post-process the profiles and make them ready to be checked into the source
     tree.</li>
   </ol>
@@ -714,24 +796,24 @@
   <h3 id="using-profiles-during-build">Using profiles during build</h3>
 
 
-  <p>Check the profiles into <code>toolchain/pgo-profiles</code> in an Android
+  <p>Check the profiles into <code translate="no" dir="ltr">toolchain/pgo-profiles</code> in an Android
   tree. The name should match what is specified in the
-  <code>profile_file</code> sub-property of the <code>pgo</code> property for
+  <code translate="no" dir="ltr">profile_file</code> sub-property of the <code translate="no" dir="ltr">pgo</code> property for
   the library. The build system automatically passes the profile file to Clang
-  when building the library. The <code>ANDROID_PGO_DISABLE_PROFILE_USE</code>
-  environment variable can be set to <strong><code>true</code></strong> to
+  when building the library. The <code translate="no" dir="ltr">ANDROID_PGO_DISABLE_PROFILE_USE</code>
+  environment variable can be set to <strong><code translate="no" dir="ltr">true</code></strong> to
   temporarily disable PGO and measure its performance benefit.</p>
 
 
   <p>To specify additional product-specific profile directories, append them to
-  the <code>PGO_ADDITIONAL_PROFILE_DIRECTORIES</code> make variable in a
-  <code>BoardConfig.mk</code>. If additional paths are specified, profiles in
-  these paths override those in <code>toolchain/pgo-profiles</code>.</p>
+  the <code translate="no" dir="ltr">PGO_ADDITIONAL_PROFILE_DIRECTORIES</code> make variable in a
+  <code translate="no" dir="ltr">BoardConfig.mk</code>. If additional paths are specified, profiles in
+  these paths override those in <code translate="no" dir="ltr">toolchain/pgo-profiles</code>.</p>
 
 
-  <p>When generating a release image using the <code>dist</code> target to
-  <code>make</code>, the build system writes the names of missing profile files
-  to <code>$DIST_DIR/pgo_profile_file_missing.txt</code>. You can check this
+  <p>When generating a release image using the <code translate="no" dir="ltr">dist</code> target to
+  <code translate="no" dir="ltr">make</code>, the build system writes the names of missing profile files
+  to <code translate="no" dir="ltr">$DIST_DIR/pgo_profile_file_missing.txt</code>. You can check this
   file to see what profile files were accidentally dropped (which silently
   disables PGO).</p>
 
@@ -740,8 +822,8 @@
   files</h2>
 
 
-  <p>To enable PGO in <code>Android.bp</code> files for native modules, simply
-  specify the <code>pgo</code> property. This property has the following
+  <p>To enable PGO in <code translate="no" dir="ltr">Android.bp</code> files for native modules, simply
+  specify the <code translate="no" dir="ltr">pgo</code> property. This property has the following
   sub-properties:</p>
 
 
@@ -756,59 +838,59 @@
 
 
     <tr>
-      <td><code>instrumentation</code>
+      <td><code translate="no" dir="ltr">instrumentation</code>
       </td>
 
-      <td>Set to <code>true</code> for PGO using instrumentation. Default is
-      <code>false</code>.</td>
+      <td>Set to <code translate="no" dir="ltr">true</code> for PGO using instrumentation. Default is
+      <code translate="no" dir="ltr">false</code>.</td>
     </tr>
 
 
     <tr>
-      <td><code>sampling</code>
+      <td><code translate="no" dir="ltr">sampling</code>
       </td>
 
-      <td><strong>Currently unsupported.</strong> Set to <code>true</code> for
-      PGO using sampling. Default is <code>false</code>.</td>
+      <td><strong>Currently unsupported.</strong> Set to <code translate="no" dir="ltr">true</code> for
+      PGO using sampling. Default is <code translate="no" dir="ltr">false</code>.</td>
     </tr>
 
 
     <tr>
-      <td><code>benchmarks</code>
+      <td><code translate="no" dir="ltr">benchmarks</code>
       </td>
 
       <td>List of strings. This module is built for profiling if any benchmark
-      in the list is specified in the <code>ANDROID_PGO_INSTRUMENT</code> build
+      in the list is specified in the <code translate="no" dir="ltr">ANDROID_PGO_INSTRUMENT</code> build
       option.</td>
     </tr>
 
 
     <tr>
-      <td><code>profile_file</code>
+      <td><code translate="no" dir="ltr">profile_file</code>
       </td>
 
-      <td>Profile file (relative to <code>toolchain/pgo-profile</code>) to use
+      <td>Profile file (relative to <code translate="no" dir="ltr">toolchain/pgo-profile</code>) to use
       with PGO. The build warns that this file doesn't exist by adding this
-      file to <code>$DIST_DIR/pgo_profile_file_missing.txt</code>
-      <em>unless</em> the <code>enable_profile_use</code> property is set to
-      <code>false</code> <strong>OR</strong> the
-      <code>ANDROID_PGO_NO_PROFILE_USE</code> build variable is set to
-      <code>true</code>.</td>
+      file to <code translate="no" dir="ltr">$DIST_DIR/pgo_profile_file_missing.txt</code>
+      <em>unless</em> the <code translate="no" dir="ltr">enable_profile_use</code> property is set to
+      <code translate="no" dir="ltr">false</code> <strong>OR</strong> the
+      <code translate="no" dir="ltr">ANDROID_PGO_NO_PROFILE_USE</code> build variable is set to
+      <code translate="no" dir="ltr">true</code>.</td>
     </tr>
 
 
     <tr>
-      <td><code>enable_profile_use</code>
+      <td><code translate="no" dir="ltr">enable_profile_use</code>
       </td>
 
-      <td>Set to <code>false</code> if profiles should not be used during
+      <td>Set to <code translate="no" dir="ltr">false</code> if profiles should not be used during
       build. Can be used during bootstrap to enable profile collection or to
-      temporarily disable PGO. Default is <code>true</code>.</td>
+      temporarily disable PGO. Default is <code translate="no" dir="ltr">true</code>.</td>
     </tr>
 
 
     <tr>
-      <td><code>cflags</code>
+      <td><code translate="no" dir="ltr">cflags</code>
       </td>
 
       <td>List of additional flags to use during an instrumented build.</td>
@@ -818,7 +900,7 @@
 
   <p>Example of a module with PGO:</p>
 
-<pre class="prettyprint">cc_library {
+<pre class="prettyprint" translate="no" dir="ltr">cc_library {
     name: "libexample",
     srcs: [
         "src1.cpp",
@@ -844,22 +926,22 @@
 
 
 
-  <p>If the benchmarks <code>benchmark1</code> and <code>benchmark2</code>
-  exercise representative behavior for libraries <code>libstatic1</code>,
-  <code>libstatic2</code>, or <code>libshared1</code>, the <code>pgo</code>
+  <p>If the benchmarks <code translate="no" dir="ltr">benchmark1</code> and <code translate="no" dir="ltr">benchmark2</code>
+  exercise representative behavior for libraries <code translate="no" dir="ltr">libstatic1</code>,
+  <code translate="no" dir="ltr">libstatic2</code>, or <code translate="no" dir="ltr">libshared1</code>, the <code translate="no" dir="ltr">pgo</code>
   property of these libraries can also include the benchmarks. The
-  <code>defaults</code> module in <code>Android.bp</code> can include a common
-  <code>pgo</code> specification for a set of libraries to avoid repeating the
+  <code translate="no" dir="ltr">defaults</code> module in <code translate="no" dir="ltr">Android.bp</code> can include a common
+  <code translate="no" dir="ltr">pgo</code> specification for a set of libraries to avoid repeating the
   same build rules for several modules.</p>
 
 
   <p>To select different profile files or selectively disable PGO for an
-  architecture, specify the <code>profile_file</code>,
-  <code>enable_profile_use</code>, and <code>cflags</code> properties per
+  architecture, specify the <code translate="no" dir="ltr">profile_file</code>,
+  <code translate="no" dir="ltr">enable_profile_use</code>, and <code translate="no" dir="ltr">cflags</code> properties per
   architecture. Example (with architecture target in
   <strong>bold</strong>):</p>
 
-<pre class="prettyprint">cc_library {
+<pre class="prettyprint" translate="no" dir="ltr">cc_library {
     name: "libexample",
     srcs: [
           "src1.cpp",
@@ -898,11 +980,11 @@
 
   <p>To resolve references to the profiling runtime library during
   instrumentation-based profiling, pass the build flag
-  <code>-fprofile-generate</code> to the linker. Static libraries instrumented
+  <code translate="no" dir="ltr">-fprofile-generate</code> to the linker. Static libraries instrumented
   with PGO, all shared libraries, and any binary that directly depends on the
   static library must also be instrumented for PGO. However, such shared
   libraries or executables don't need to use PGO profiles, and their
-  <code>enable_profile_use</code> property can be set to <code>false</code>.
+  <code translate="no" dir="ltr">enable_profile_use</code> property can be set to <code translate="no" dir="ltr">false</code>.
   Outside of this restriction, you can apply PGO to any static library, shared
   library, or executable.</p>
 
@@ -911,40 +993,40 @@
 
 
   <p>Executing an instrumented library or executable produces a profile file
-  named <code>default_<em>unique_id</em>_0.profraw</code> in
-  <code>/data/local/tmp</code> (where <code><em>unique_id</em></code> is a
+  named <code translate="no" dir="ltr">default_<em>unique_id</em>_0.profraw</code> in
+  <code translate="no" dir="ltr">/data/local/tmp</code> (where <code translate="no" dir="ltr"><em>unique_id</em></code> is a
   numeric hash that is unique to this library). If this file already exists,
   the profiling runtime merges the new profile with the old one while writing
   the profiles. To change the location of the profile file, set the
-  <code>LLVM_PROFILE_FILE</code> environment variable at runtime.</p>
+  <code translate="no" dir="ltr">LLVM_PROFILE_FILE</code> environment variable at runtime.</p>
 
 
-  <p>The <code><a href="https://llvm.org/docs/CommandGuide/llvm-profdata.html">llvm-profdata</a></code>
-  utility is then used to convert the <code>.profraw</code> file (and possibly
-  merge multiple <code>.profraw</code> files) to a <code>.profdata</code>
+  <p>The <code translate="no" dir="ltr"><a href="https://llvm.org/docs/CommandGuide/llvm-profdata.html">llvm-profdata</a></code>
+  utility is then used to convert the <code translate="no" dir="ltr">.profraw</code> file (and possibly
+  merge multiple <code translate="no" dir="ltr">.profraw</code> files) to a <code translate="no" dir="ltr">.profdata</code>
   file:</p>
 
-  <pre class="prettyprint">
+  <pre class="prettyprint" translate="no" dir="ltr">
   llvm-profdata merge -output=profile.profdata &lt;.profraw and/or .profdata files&gt;</pre>
 
-  <p><code><em>profile.profdata</em></code> can then be checked into the source
+  <p><code translate="no" dir="ltr"><em>profile.profdata</em></code> can then be checked into the source
   tree for use during build.</p>
 
 
   <p>If multiple instrumented binaries/libraries are loaded during a benchmark,
-  each library generates a separate <code>.profraw</code> file with a separate
+  each library generates a separate <code translate="no" dir="ltr">.profraw</code> file with a separate
   unique ID. Typically, all of these files can be merged to a single
-  <code>.profdata</code> file and used for PGO build. In cases where a library
+  <code translate="no" dir="ltr">.profdata</code> file and used for PGO build. In cases where a library
   is exercised by another benchmark, that library must be optimized using
-  profiles from both the benchmarks. In this situation, the <code>show</code>
-  option of <code>llvm-profdata</code> is useful:</p>
+  profiles from both the benchmarks. In this situation, the <code translate="no" dir="ltr">show</code>
+  option of <code translate="no" dir="ltr">llvm-profdata</code> is useful:</p>
 
-  <pre class="prettyprint">
+  <pre class="prettyprint" translate="no" dir="ltr">
   llvm-profdata merge -output=default_unique_id.profdata default_unique_id_0.profraw
 llvm-profdata show -all-functions default_unique_id.profdata</pre>
 
   <p>To map <em>unique_id</em>s to individual libraries, search the
-  <code>show</code> output for each <em>unique_id</em> for a function name that
+  <code translate="no" dir="ltr">show</code> output for each <em>unique_id</em> for a function name that
   is unique to the library.</p>
 
 
@@ -957,10 +1039,10 @@ llvm-profdata show -all-functions default_unique_id.profdata</pre>
   </p>
 
 
-  <p>The <code>dex2oat</code> ahead-of-time compiler in ART depends on
-  <code>libart-compiler.so</code>, which in turn depends on
-  <code>libart.so</code>. The ART runtime is implemented mainly in
-  <code>libart.so</code>. Benchmarks for the compiler and the runtime will be
+  <p>The <code translate="no" dir="ltr">dex2oat</code> ahead-of-time compiler in ART depends on
+  <code translate="no" dir="ltr">libart-compiler.so</code>, which in turn depends on
+  <code translate="no" dir="ltr">libart.so</code>. The ART runtime is implemented mainly in
+  <code translate="no" dir="ltr">libart.so</code>. Benchmarks for the compiler and the runtime will be
   different:</p>
 
 
@@ -975,48 +1057,48 @@ llvm-profdata show -all-functions default_unique_id.profdata</pre>
 
 
     <tr>
-      <td><code>dex2oat</code>
+      <td><code translate="no" dir="ltr">dex2oat</code>
       </td>
 
-      <td><code>dex2oat</code> (executable), <code>libart-compiler.so</code>,
-      <code>libart.so</code></td>
+      <td><code translate="no" dir="ltr">dex2oat</code> (executable), <code translate="no" dir="ltr">libart-compiler.so</code>,
+      <code translate="no" dir="ltr">libart.so</code></td>
     </tr>
 
 
     <tr>
-      <td><code>art_runtime</code>
+      <td><code translate="no" dir="ltr">art_runtime</code>
       </td>
 
-      <td><code>libart.so</code>
+      <td><code translate="no" dir="ltr">libart.so</code>
       </td>
     </tr>
   </table>
 
 
   <ol>
-    <li>Add the following <code>pgo</code> property to <code>dex2oat</code>,
-    <code>libart-compiler.so</code>:
+    <li>Add the following <code translate="no" dir="ltr">pgo</code> property to <code translate="no" dir="ltr">dex2oat</code>,
+    <code translate="no" dir="ltr">libart-compiler.so</code>:
 
-      <pre class="prettyprint">    pgo: {
+      <pre class="prettyprint" translate="no" dir="ltr">    pgo: {
         instrumentation: true,
         benchmarks: ["dex2oat",],
         profile_file: "dex2oat.profdata",
     }</pre>
     </li>
 
-    <li>Add the following <code>pgo</code> property to <code>libart.so</code>:
+    <li>Add the following <code translate="no" dir="ltr">pgo</code> property to <code translate="no" dir="ltr">libart.so</code>:
 
-      <pre class="prettyprint">    pgo: {
+      <pre class="prettyprint" translate="no" dir="ltr">    pgo: {
         instrumentation: true,
         benchmarks: ["art_runtime", "dex2oat",],
         profile_file: "libart.profdata",
     }</pre>
     </li>
 
-    <li>Create instrumented builds for the <code>dex2oat</code> and
-    <code>art_runtime</code> benchmarks using:
+    <li>Create instrumented builds for the <code translate="no" dir="ltr">dex2oat</code> and
+    <code translate="no" dir="ltr">art_runtime</code> benchmarks using:
 
-      <pre class="prettyprint">    make ANDROID_PGO_INSTRUMENT=dex2oat
+      <pre class="prettyprint" translate="no" dir="ltr">    make ANDROID_PGO_INSTRUMENT=dex2oat
     make ANDROID_PGO_INSTRUMENT=art_runtime</pre>
     </li>
 
@@ -1024,57 +1106,57 @@ llvm-profdata show -all-functions default_unique_id.profdata</pre>
   <p>Alternatively, create a single instrumented build with all libraries
   instrumented using:</p>
 
-  <pre class="prettyprint">    make ANDROID_PGO_INSTRUMENT=dex2oat,art_runtime
+  <pre class="prettyprint" translate="no" dir="ltr">    make ANDROID_PGO_INSTRUMENT=dex2oat,art_runtime
     (or)
     make ANDROID_PGO_INSTRUMENT=ALL</pre>
 
   <p>The second command builds <strong>all</strong> PGO-enabled modules for
   profiling.</p>
 
-    <li>Run the benchmarks exercising <code>dex2oat</code> and
-    <code>art_runtime</code> to obtain:
+    <li>Run the benchmarks exercising <code translate="no" dir="ltr">dex2oat</code> and
+    <code translate="no" dir="ltr">art_runtime</code> to obtain:
 
     <ul>
 
-    <li>Three <code>.profraw</code> files from <code>dex2oat</code>
-    (<code>dex2oat_exe.profdata</code>,
-    <code>dex2oat_libart-compiler.profdata</code>, and
-    <code>dexeoat_libart.profdata</code>), identified using the method
+    <li>Three <code translate="no" dir="ltr">.profraw</code> files from <code translate="no" dir="ltr">dex2oat</code>
+    (<code translate="no" dir="ltr">dex2oat_exe.profdata</code>,
+    <code translate="no" dir="ltr">dex2oat_libart-compiler.profdata</code>, and
+    <code translate="no" dir="ltr">dexeoat_libart.profdata</code>), identified using the method
     described in <a href="#handling-llvm-profile-files">Handling LLVM profile
     files</a>.</li>
 
-    <li>A single <code>art_runtime_libart.profdata</code>.</li>
+    <li>A single <code translate="no" dir="ltr">art_runtime_libart.profdata</code>.</li>
     </ul>
     </li>
 
-    <li>Produce a common profdata file for <code>dex2oat</code> executable and
-    <code>libart-compiler.so</code> using:
+    <li>Produce a common profdata file for <code translate="no" dir="ltr">dex2oat</code> executable and
+    <code translate="no" dir="ltr">libart-compiler.so</code> using:
 
-      <pre class="prettyprint">llvm-profdata merge -output=dex2oat.profdata \
+      <pre class="prettyprint" translate="no" dir="ltr">llvm-profdata merge -output=dex2oat.profdata \
     dex2oat_exe.profdata dex2oat_libart-compiler.profdata</pre>
     </li>
 
-    <li>Obtain the profile for <code>libart.so</code> by merging the profiles
+    <li>Obtain the profile for <code translate="no" dir="ltr">libart.so</code> by merging the profiles
     from the two benchmarks:
 
-      <pre class="prettyprint">llvm-profdata merge -output=libart.profdata \
+      <pre class="prettyprint" translate="no" dir="ltr">llvm-profdata merge -output=libart.profdata \
     dex2oat_libart.profdata art_runtime_libart.profdata</pre>
 
-  <p>The raw counts for <code>libart.so</code> from the two profiles might be
+  <p>The raw counts for <code translate="no" dir="ltr">libart.so</code> from the two profiles might be
   disparate because the benchmarks differ in the number of test cases and the
   duration for which they run. In this case, you can use a weighted merge:</p>
 
-  <pre class="prettyprint">llvm-profdata merge -output=libart.profdata \
+  <pre class="prettyprint" translate="no" dir="ltr">llvm-profdata merge -output=libart.profdata \
     -weighted-input=2,dex2oat_libart.profdata \
     -weighted-input=1,art_runtime_libart.profdata</pre>
 
   <p>The above command assigns twice the weight to the profile from
-  <code>dex2oat</code>. The actual weight should be determined based on domain
+  <code translate="no" dir="ltr">dex2oat</code>. The actual weight should be determined based on domain
   knowledge or experimentation.</p>
     </li>
 
-    <li>Check the profile files <code>dex2oat.profdata</code> and
-    <code>libart.profdata</code> into <code>toolchain/pgo-profiles</code> for
+    <li>Check the profile files <code translate="no" dir="ltr">dex2oat.profdata</code> and
+    <code translate="no" dir="ltr">libart.profdata</code> into <code translate="no" dir="ltr">toolchain/pgo-profiles</code> for
     use during build.</li>
   </ol>
 
@@ -1087,17 +1169,17 @@ llvm-profdata show -all-functions default_unique_id.profdata</pre>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1304,8 +1386,9 @@ llvm-profdata show -all-functions default_unique_id.profdata</pre>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1371,54 +1454,49 @@ llvm-profdata show -all-functions default_unique_id.profdata</pre>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/perf/pgo by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:32:08 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/perf/pgo by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:01:48 GMT -->
 </html>

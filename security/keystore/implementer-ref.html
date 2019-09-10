@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/security/keystore/implementer-ref by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:28:18 GMT -->
+<!-- Mirrored from source.android.google.cn/security/keystore/implementer-ref by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:19:15 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Keymaster Functions &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Keymaster Functions &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="implementer-ref.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="implementer-ref.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="implementer-ref.html">      
+<title>Keymaster Functions &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Keymaster Functions &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="implementer-ref.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../devices/audio.html"
+          <a href="../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../../devices/tech/dalvik.html"
+          <a href="../../devices/tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,20 +186,50 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../security.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
@@ -207,7 +243,7 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../security.html"
@@ -232,7 +268,7 @@
 
         </tab>
                         <tab active>
-          <a href="../app-sandbox.html"
+          <a href="../features.html"
    class="gc-analytics-event"
    title="Features"
    aria-label="Features, selected"         data-category="Site-Wide Custom Events"
@@ -271,8 +307,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -283,7 +322,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -339,13 +391,13 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../app-sandbox.html"
+    <a href="../features.html"
      id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Features">
       <span class="devsite-nav-text" menu="_book">Features</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -374,7 +426,7 @@
                                   </ul>
                           </li>
                       <li class="devsite-nav-item">
-                                <a href="../../devices/audio.html"
+                                <a href="../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -384,7 +436,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../devices/tech/dalvik.html"
+                                <a href="../../devices/tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -416,34 +468,59 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../app-sandbox.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../features.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item"><a href="../app-sandbox.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Application Sandbox">Application Sandbox</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Application Signing">Application Signing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../apksigning.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Application Signing">Application Signing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../apksigning.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../apksigning/v2.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="APK Signature Scheme v2">APK Signature Scheme v2</span></a></li><li class="devsite-nav-item"><a href="../apksigning/v3.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="APK Signature Scheme v3">APK Signature Scheme v3</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Authentication">Authentication</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../authentication.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Authentication">Authentication</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../authentication.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../authentication/fingerprint-hal.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../authentication/gatekeeper.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Fingerprint HAL">Fingerprint HAL</span></a></li><li class="devsite-nav-item"><a href="../authentication/gatekeeper.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Gatekeeper">Gatekeeper</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Biometric Unlock">Biometric Unlock</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../biometric.html"
+   ><span class="devsite-nav-text" title="Gatekeeper">Gatekeeper</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Biometrics">Biometrics</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../biometric.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../biometric/measure.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Measuring Biometric Security">Measuring Biometric Security</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Keystore">Keystore</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../keystore.html"
+   ><span class="devsite-nav-text" title="Measuring Biometric Security">Measuring Biometric Security</span></a></li><li class="devsite-nav-item"><a href="../authentication/fingerprint-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Fingerprint HIDL">Fingerprint HIDL</span></a></li><li class="devsite-nav-item"><a href="../biometric/face-authentication.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Face Authentication HIDL">Face Authentication HIDL</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Protected Confirmation">Protected Confirmation</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../protected-confirmation.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../protected-confirmation/implementation.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementation">Implementation</span></a></li><li class="devsite-nav-item"><a href="../protected-confirmation/design.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Design Guidelines">Design Guidelines</span></a></li><li class="devsite-nav-item"><a href="../protected-confirmation/accessibility.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Accessibility">Accessibility</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Encryption">Encryption</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../encryption.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../encryption/file-based.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="File-Based Encryption">File-Based Encryption</span></a></li><li class="devsite-nav-item"><a href="../encryption/full-disk.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Full-Disk Encryption">Full-Disk Encryption</span></a></li><li class="devsite-nav-item"><a href="../encryption/metadata.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Metadata Encryption">Metadata Encryption</span></a></li><li class="devsite-nav-item"><a href="../encryption/adiantum.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Enabling Adiantum">Enabling Adiantum</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Keystore">Keystore</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../keystore.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="features.html"
      class="devsite-nav-title"
@@ -456,30 +533,10 @@
    ><span class="devsite-nav-text" title="Authorization Tags">Authorization Tags</span></a></li><li class="devsite-nav-item"><a href="implementer-ref.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Functions">Functions</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Trusty TEE">Trusty TEE</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../trusty.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="SELinux">SELinux</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../selinux.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../trusty/download-and-build.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Download and Build">Download and Build</span></a></li><li class="devsite-nav-item"><a href="../trusty/trusty-ref"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Trusty API Reference">Trusty API Reference</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Encryption">Encryption</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../encryption.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../encryption/file-based.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="File-Based Encryption">File-Based Encryption</span></a></li><li class="devsite-nav-item"><a href="../encryption/full-disk.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Full-Disk Encryption">Full-Disk Encryption</span></a></li><li class="devsite-nav-item"><a href="../encryption/metadata.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Metadata Encryption">Metadata Encryption</span></a></li><li class="devsite-nav-item"><a href="../encryption/adiantum"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Enabling Adiantum">Enabling Adiantum</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="SELinux">SELinux</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../selinux.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../selinux/concepts"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../selinux/concepts.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Concepts">Concepts</span></a></li><li class="devsite-nav-item"><a href="../selinux/implement.html"
      class="devsite-nav-title"
@@ -496,8 +553,16 @@
    ><span class="devsite-nav-text" title="Writing Policy">Writing Policy</span></a></li><li class="devsite-nav-item"><a href="../selinux/vendor-init.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Vendor init">Vendor init</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Verified Boot">Verified Boot</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../verifiedboot.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Trusty TEE">Trusty TEE</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../trusty.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../trusty/download-and-build.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Download and Build">Download and Build</span></a></li><li class="devsite-nav-item"><a href="../trusty/trusty-ref.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Trusty API Reference">Trusty API Reference</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Verified Boot">Verified Boot</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../verifiedboot.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/device-state.html"
      class="devsite-nav-title"
@@ -507,10 +572,10 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Boot Flow">Boot Flow</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/dm-verity.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Implementing dm-verity">Implementing dm-verity</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/avb"
+   ><span class="devsite-nav-text" title="Implementing dm-verity">Implementing dm-verity</span></a></li><li class="devsite-nav-item"><a href="../verifiedboot/avb.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Reference Implementation">Reference Implementation</span></a></li></ul></devsite-expandable-nav></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -518,16 +583,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -537,8 +603,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../security.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -548,9 +615,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../app-sandbox.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../features.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
@@ -566,8 +634,8 @@
 
               <h1 class="devsite-page-title">Keymaster Functions</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -588,20 +656,21 @@
       See the License for the specific language governing permissions and
       limitations under the License.
   -->
-<p>This page provides details to assist implementers of Keymaster 
+
+<p>This page provides details to assist implementers of Keymaster
 Hardware Abstraction Layers (HALs). It covers each function in the
 API and which Keymaster version that function is available in and
 describes the default implementation. For tags, see the
 <a href="tags.html">Keymaster Tags</a> page.</p>
 
-<p class="note">To support Keymaster 3's transition from the old-style
+<aside class="note"><b>Note: </b>To support Keymaster 3's transition from the old-style
 C-structure HAL to the C++ HAL interface generated from a definition in the new
 Hardware Interface Definition Language (HIDL), function names have changed in
 Android 8.0. To support this, functions are now in camel case. For example,
-<code>get_key_characteristics</code> is now <code>getKeyCharacteristics</code>.
-</p>
+<code translate="no" dir="ltr">get_key_characteristics</code> is now <code translate="no" dir="ltr">getKeyCharacteristics</code>.
+</aside>
 
-<h2 id="general_implementation_guidelines">General implementation guidelines</h2>
+<h2 id="implementation_guidelines">General implementation guidelines</h2>
 
 <p>The following guidelines apply to all functions in the API.</p>
 
@@ -609,15 +678,16 @@ Android 8.0. To support this, functions are now in camel case. For example,
 
 <p><strong>Version</strong>: 1, 2</p>
 
-<p>Input pointer parameters that are not used for a given call may be <code>NULL</code>.
-The caller is not required to provide placeholders. For example, some key
-types and modes may not use any values from the <code>inParams</code> argument
-to <a href="#begin">begin</a>, so the caller may set <code>inParams</code>
-to <code>NULL</code> or provide an empty parameter set. Callers can also
-provide unused parameters, and Keymaster methods should not issue errors.</p>
+<p>Input pointer parameters that are not used for a given call may be
+<code translate="no" dir="ltr">NULL</code>. The caller is not required to provide placeholders.
+For example, some key types and modes may not use any values from the
+<code translate="no" dir="ltr">inParams</code> argument to <a href="#begin">begin</a>, so the caller may
+set <code translate="no" dir="ltr">inParams</code> to <code translate="no" dir="ltr">NULL</code> or provide an empty parameter
+set. Callers can also provide unused parameters, and Keymaster methods should
+not issue errors.</p>
 
 <p>If a required input parameter is NULL, Keymaster methods should return
-<code>ErrorCode::UNEXPECTED_NULL_POINTER</code>.</p>
+<code translate="no" dir="ltr">ErrorCode::UNEXPECTED_NULL_POINTER</code>.</p>
 
 <p>Starting in Keymaster 3, there are no pointer parameters. All parameters
 are passed by value or const references.</p>
@@ -628,9 +698,9 @@ are passed by value or const references.</p>
 <p><strong>Version</strong>: 1, 2</p>
 
 <p>Similar to input pointer parameters, unused output pointer parameters
-may be <code>NULL</code>. If a method needs to return data in an output
-parameter found to be <code>NULL</code>, it should return
-<code>ErrorCode::OUTPUT_PARAMETER_NULL</code>.</p>
+may be <code translate="no" dir="ltr">NULL</code>. If a method needs to return data in an output
+parameter found to be <code translate="no" dir="ltr">NULL</code>, it should return
+<code translate="no" dir="ltr">ErrorCode::OUTPUT_PARAMETER_NULL</code>.</p>
 <p>Starting in Keymaster 3, there are no pointer parameters. All parameters
 are passed by value or const references.</p>
 
@@ -639,50 +709,52 @@ are passed by value or const references.</p>
 
 <p><strong>Version</strong>: 1, 2, 3</p>
 
-<p>There are many ways that callers can make requests that don't make sense or are
-foolish but not technically wrong. Keymaster implementations are not required
-to fail in such cases or issue a diagnostic. Use of too-small keys,
+<p>There are many ways that callers can make requests that don't make sense or
+are foolish but not technically wrong. Keymaster implementations are not
+required to fail in such cases or issue a diagnostic. Use of too-small keys,
 specification of irrelevant input parameters, reuse of IVs or nonces,
 generation of keys with no purposes (hence useless) and the like should not be
 diagnosed by implementations. Omission of required parameters, specification of
 invalid required parameters, and similar errors must be diagnosed.</p>
 
-<p>It is the responsibility of apps, the framework, and Android keystore to ensure
-that the calls to Keymaster modules are sensible and useful.</p>
+<p>It is the responsibility of apps, the framework, and Android keystore to
+ensure that the calls to Keymaster modules are sensible and useful.</p>
 
-<p class="caution">Keymaster implementations should attempt to diagnose
-serious errors, such as omission of required parameters, specification of invalid
+<aside class="caution"><b>Caution:</b>
+Keymaster implementations should attempt to diagnose serious
+errors, such as omission of required parameters, specification of invalid
 required parameters, and similar errors that compromise the integrity of the
-Keymaster implementation.</p>
+Keymaster implementation.</aside>
 
 <h2 id="functions">Functions</h2>
 
 <h3 id="get_hardware_features">getHardwareFeatures</h3>
 <p><strong>Version</strong>: 3</p>
 
-<p>
-The new <code>getHardwareFeatures</code> method exposes to clients some important
-characteristics of the underlying secure hardware. The method takes no arguments
-and returns four values, all booleans:
-</p>
+<p>The new <code translate="no" dir="ltr">getHardwareFeatures</code> method exposes to clients some
+important characteristics of the underlying secure hardware.
+The method takes no arguments and returns four values, all booleans:</p>
+
 <ul>
-  <li><code>isSecure</code> is <code>true</code> if keys are stored in
+  <li><code translate="no" dir="ltr">isSecure</code> is <code translate="no" dir="ltr">true</code> if keys are stored in
   secure hardware (TEE, etc.) and never leave it.</li>
-  <li><code>supportsEllipticCurve</code> is <code>true</code> if the
+  <li><code translate="no" dir="ltr">supportsEllipticCurve</code> is <code translate="no" dir="ltr">true</code> if the
   hardware supports Elliptic Curve cryptography with the NIST curves (P-224,
   P-256, P-384, and P-521).</li>
-  <li><code>supportsSymmetricCryptography</code> is <code>true</code>
+  <li><code translate="no" dir="ltr">supportsSymmetricCryptography</code> is <code translate="no" dir="ltr">true</code>
   if the hardware supports symmetric cryptography, including AES and HMAC.</li>
-  <li><code>supportsAttestation</code> is <code>true</code> if the
+  <li><code translate="no" dir="ltr">supportsAttestation</code> is <code translate="no" dir="ltr">true</code> if the
   hardware supports generation of Keymaster public key attestation certificates,
   signed with a key injected in a secure environment.</li>
 </ul>
+
 <p>
-The only error codes this method may return are <code>ErrorCode:OK</code>,
-<code>ErrorCode::KEYMASTER_NOT_CONFIGURED</code> or one of the error codes
+The only error codes this method may return are <code translate="no" dir="ltr">ErrorCode:OK</code>,
+<code translate="no" dir="ltr">ErrorCode::KEYMASTER_NOT_CONFIGURED</code> or one of the error codes
 indicating a failure to communicate with the secure hardware.
 </p>
-<pre class="devsite-click-to-copy">
+
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 getHardwareFeatures()
     generates(bool isSecure, bool supportsEllipticCurve, bool supportsSymmetricCryptography,
               bool supportsAttestation, bool supportsAllDigests, string keymasterName,
@@ -694,28 +766,29 @@ getHardwareFeatures()
 3, as this information is available in system properties files, and manufacturer
 implementations read those files during startup.</p>
 
-<p>Configures keymaster. This method is called once after the device is opened and before
-it is used. It's used to provide
+<p>Configures keymaster. This method is called once after the device is opened
+and before it is used. It's used to provide
 <a href="tags.html#os_version">KM_TAG_OS_VERSION</a> and
-<a href="tags.html#os_patchlevel">KM_TAG_OS_PATCHLEVEL</a> to keymaster.
-Until this method is called, all other methods return
-<code>KM_ERROR_KEYMASTER_NOT_CONFIGURED</code>. The values provided by this
+<a href="tags.html#os_patchlevel">KM_TAG_OS_PATCHLEVEL</a> to
+keymaster. Until this method is called, all other methods return
+<code translate="no" dir="ltr">KM_ERROR_KEYMASTER_NOT_CONFIGURED</code>. The values provided by this
 method are only accepted by keymaster once per boot. Subsequent
-calls return <code>KM_ERROR_OK</code>, but do nothing.</p>
+calls return <code translate="no" dir="ltr">KM_ERROR_OK</code>, but do nothing.</p>
 <p>
-If the keymaster implementation is in secure hardware and the OS version and patch level
-values provided do not match the values provided to the secure hardware by the bootloader (or
-if the bootloader did not provide values), then this method returns
-<code>KM_ERROR_INVALID_ARGUMENT</code>, and all other methods continue returning
-<code>KM_ERROR_KEYMASTER_NOT_CONFIGURED</code>.</p>
-<pre class="devsite-click-to-copy">
+If the keymaster implementation is in secure hardware and the OS version and
+patch level values provided do not match the values provided to the secure
+hardware by the bootloader (or if the bootloader did not provide values),
+then this method returns <code translate="no" dir="ltr">KM_ERROR_INVALID_ARGUMENT</code>, and all other
+methods continue returning <code translate="no" dir="ltr">KM_ERROR_KEYMASTER_NOT_CONFIGURED</code>.</p>
+
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 keymaster_error_t (*configure)(const struct keymaster2_device* dev,
                                const keymaster_key_param_set_t* params);</pre>
 
-<h3 id="add_rng_entropy">addRngEntropy</h3>
+<h3 id="addrngentropy">addRngEntropy</h3>
 
 <p><strong>Version</strong>: 1, 2, 3</p>
-<p>This function was introduced in Keymaster 1 as <code>add_rng_entropy</code>
+<p>This function was introduced in Keymaster 1 as <code translate="no" dir="ltr">add_rng_entropy</code>
 and renamed in Keymaster 3.</p>
 
 <p>Adds caller-provided entropy to the pool used by the Keymaster 1 implementation
@@ -723,27 +796,27 @@ for generating random numbers, for keys, IVs, etc.</p>
 
 <p>Keymaster implementations need to securely mix the provided
 entropy into their pool, which also must contain
-internally-generated entropy from a hardware random number generator.
+internally generated entropy from a hardware random number generator.
 Mixing should be handled so that an attacker who has complete control
-of either the <code>addRngEntropy</code>-provided bits or the hardware-generated bits,
-but not both, has no non-neglible advantage in predicting the bits generated
-from the entropy pool.</p>
+of either the <code translate="no" dir="ltr">addRngEntropy</code>-provided bits or the hardware-generated
+bits, but not both, has no non-neglible advantage in predicting the bits
+generated from the entropy pool.</p>
 
 <p>Keymaster implementations that attempt to estimate the entropy in their
 internal pool assume that data provided by
-<code>addRngEntropy</code> contains no entropy. Keymaster implementations may
-return <code>ErrorCode::INVALID_INPUT_LENGTH</code> if they're given more than 2
+<code translate="no" dir="ltr">addRngEntropy</code> contains no entropy. Keymaster implementations may
+return <code translate="no" dir="ltr">ErrorCode::INVALID_INPUT_LENGTH</code> if they're given more than 2
 KiB of data in a single call.</p>
 
 
 <h3 id="generate_key">generateKey</h3>
 
 <p><strong>Version</strong>: 1, 2, 3</p>
-<p>This function was introduced in Keymaster 1 as <code>generate_key</code>
+<p>This function was introduced in Keymaster 1 as <code translate="no" dir="ltr">generate_key</code>
 and renamed in Keymaster 3.</p>
 
-<p>Generates a new cryptographic key, specifying associated authorizations, which
-are permanently bound to the key. Keymaster implementations make it
+<p>Generates a new cryptographic key, specifying associated authorizations,
+which are permanently bound to the key. Keymaster implementations make it
 impossible to use a key in any way inconsistent with the authorizations
 specified at generation time. With respect to authorizations that the secure
 hardware cannot enforce, the secure hardware's obligation is limited to
@@ -751,13 +824,14 @@ ensuring that the unenforceable authorizations associated with the key cannot
 be modified, so that every call to
 <a href="#get_key_characteristics">getKeyCharacteristics</a>
 returns the original value. In addition, the characteristics returned by
-<code>generateKey</code> allocates authorizations correctly between the
+<code translate="no" dir="ltr">generateKey</code> allocates authorizations correctly between the
 hardware-enforced and software-enforced lists. See
-<a href="#get_key_characteristics">getKeyCharacteristics</a> for more details.</p>
+<a href="#get_key_characteristics">getKeyCharacteristics</a> for more details.
+</p>
 
-<p>The parameters provided to <code>generateKey</code> depend on the type of key
-being generated. This section summarizes the necessary and optional tags for each
-type of key. <a href="tags.html#algorithm">Tag::ALGORITHM</a>
+<p>The parameters provided to <code translate="no" dir="ltr">generateKey</code> depend on the type of key
+being generated. This section summarizes the necessary and optional tags for
+each type of key. <a href="tags.html#algorithm">Tag::ALGORITHM</a>
 is always necessary, to specify the type.</p>
 
 <h4 id="generate_key_rsa_keys">RSA keys</h4>
@@ -766,38 +840,40 @@ is always necessary, to specify the type.</p>
 
 <ul>
   <li><a href="tags.html#key_size">Tag::KEY_SIZE</a>
-  specifies the size of the public modulus, in bits. If omitted,
-  the method returns <code>ErrorCode::UNSUPPORTED_KEY_SIZE</code>.
-  Supported values are 1024, 2048, 3072 and 4096. Recommended values
-  are all key sizes that are a multiple of 8.</li>
+    specifies the size of the public modulus, in bits. If omitted,
+    the method returns <code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_KEY_SIZE</code>.
+    Supported values are 1024, 2048, 3072 and 4096. Recommended values
+    are all key sizes that are a multiple of 8.</li>
   <li><a href="tags.html#rsa_public_exponent">Tag::RSA_PUBLIC_EXPONENT</a>
-  specifies the RSA public exponent value. If omitted, the method
-  returns <code>ErrorCode::INVALID_ARGUMENT</code>.
-  Supported values are 3 and 65537. Recommended values are
-  all prime values up to 2^64.</li>
+    specifies the RSA public exponent value. If omitted, the method
+    returns <code translate="no" dir="ltr">ErrorCode::INVALID_ARGUMENT</code>.
+    Supported values are 3 and 65537. Recommended values are
+    all prime values up to 2^64.</li>
 </ul>
 
-<p>The following parameters are not necessary to generate an RSA key, but creating
-an RSA key without them produces a key that is unusable. However, the
-<code>generateKey</code> function doesn't return an error if these parameters are omitted.</p>
+<p>The following parameters are not necessary to generate an RSA key, but
+creating an RSA key without them produces a key that is unusable. However, the
+<code translate="no" dir="ltr">generateKey</code> function doesn't return an error if these parameters
+are omitted.</p>
 
 <ul>
-  <li><a href="tags.html#purpose">Tag::PURPOSE</a> specifies allowed purposes.
-  All purposes need to be supported for RSA keys, in
-  any combination.</li>
+  <li><a href="tags.html#purpose">Tag::PURPOSE</a> specifies
+    allowed purposes. All purposes need to be supported for RSA keys, in
+    any combination.</li>
   <li><a href="tags.html#digest">Tag::DIGEST</a> specifies
-  digest algorithms that may be used with the new key. Implementations
-  that do not support all digest algorithms need to accept key generation requests
-  that include unsupported digests. The unsupported digests should be placed in
-  the "software-enforced" list in the returned key characteristics. This is
-  because the key is usable with those other digests, but digesting is
-  performed in software. Then hardware is called to perform the operation
-  with <code>Digest::NONE</code>.</li>
-  <li><a href="tags.html#padding">Tag::PADDING</a> specifies the padding modes
-  that may be used with the new key. Implementations
-  that do not support all digest algorithms need to place <code>PaddingMode::RSA_PSS</code>
-  and <code>PaddingMode::RSA_OAEP</code> in the software-enforced list of the key
-  characteristics if any unsupported digest algorithms are specified.</li>
+    digest algorithms that may be used with the new key. Implementations
+    that do not support all digest algorithms need to accept key generation
+    requests that include unsupported digests. The unsupported digests should be
+    placed in the "software-enforced" list in the returned key characteristics.
+    This is because the key is usable with those other digests, but digesting is
+    performed in software. Then hardware is called to perform the operation
+    with <code translate="no" dir="ltr">Digest::NONE</code>.</li>
+  <li><a href="tags.html#padding">Tag::PADDING</a> specifies the
+    padding modes that may be used with the new key. Implementations
+    that do not support all digest algorithms need to place
+    <code translate="no" dir="ltr">PaddingMode::RSA_PSS</code> and <code translate="no" dir="ltr">PaddingMode::RSA_OAEP</code> in
+    the software-enforced list of the key characteristics if any unsupported
+    digest algorithms are specified.</li>
 </ul>
 
 <h4 id="generate_key_ecdsa_keys">ECDSA keys</h4>
@@ -815,22 +891,22 @@ NIST p-224, p-256, p-384 and p521 curves, respectively.</p>
 
 <p>Only <a href="tags.html#key_size">Tag::KEY_SIZE</a>
  is necessary to generate an AES key. If omitted, the method returns
- <code>ErrorCode::UNSUPPORTED_KEY_SIZE</code>. Supported values are
+ <code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_KEY_SIZE</code>. Supported values are
  128 and 256, with optional support for 192-bit AES keys.</p>
 
 <p>The following parameters are particularly relevant for AES keys, but not
 necessary to generate one:</p>
 
 <ul>
-  <li><code>Tag::BLOCK_MODE</code> specifies the block modes with which
+  <li><code translate="no" dir="ltr">Tag::BLOCK_MODE</code> specifies the block modes with which
   the new key may be used.</li>
-  <li><code>Tag::PADDING</code> specifies the padding modes that may be
+  <li><code translate="no" dir="ltr">Tag::PADDING</code> specifies the padding modes that may be
   used. This is only relevant for ECB and CBC modes.</li>
 </ul>
 
 <p>If the GCM block mode is specified, then provide the
 <a href="tags.html#min_mac_length">Tag::MIN_MAC_LENGTH</a>.
-If omitted, the method returns <code>ErrorCode::MISSING_MIN_MAC_LENGTH</code>.
+If omitted, the method returns <code translate="no" dir="ltr">ErrorCode::MISSING_MIN_MAC_LENGTH</code>.
 The tag's value is a multiple of 8 and between 96 and 128.</p>
 
 <h4 id="generate_key_hmac_keys">HMAC keys</h4>
@@ -839,34 +915,36 @@ The tag's value is a multiple of 8 and between 96 and 128.</p>
 
 <ul>
   <li><a href="tags.html#key_size">Tag::KEY_SIZE</a>
-  specifies the key size in bits. Values smaller than 64
-  and values that are not multiples of 8 are not supported. All
-  multiples of 8, from 64 to 512, are supported. Larger values may be supported.</li>
+    specifies the key size in bits. Values smaller than 64
+    and values that are not multiples of 8 are not supported. All
+    multiples of 8, from 64 to 512, are supported. Larger values may be
+    supported.
+  </li>
   <li><a href="tags.html#min_mac_length">Tag::MIN_MAC_LENGTH</a>
-  specifies the minimum length of
-  MACs that can be generated or verified with this key. The value is a multiple of
-  8 and at least 64.</li>
+    specifies the minimum length of
+    MACs that can be generated or verified with this key. The value is a
+    multiple of 8 and at least 64.</li>
   <li><a href="tags.html#digest">Tag::DIGEST</a>
-  specifies the digest algorithm for the key. Exactly
-  one digest is specified, otherwise return <code>ErrorCode::UNSUPPORTED_DIGEST</code>.
-  If the digest is not supported by the trustlet, return
-  <code>ErrorCode::UNSUPPORTED_DIGEST</code>.</li>
+    specifies the digest algorithm for the key. Exactly
+    one digest is specified, otherwise return
+    <code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_DIGEST</code>. If the digest is not supported
+    by the trustlet, return
+  <code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_DIGEST</code>.</li>
 </ul>
 
 <h4 id="key_characteristics">Key characteristics</h4>
 
-<p>If the characteristics argument is non-NULL,
-<code>generateKey</code> returns the newly-generated
-key's characteristics divided appropriately
-into hardware-enforced and software-enforced lists.
-See <a href="#get_key_characteristics">getKeyCharacteristics</a>
-for a description of which characteristics go in which list. The returned
-characteristics include all of the parameters specified to key generation,
-except <a href="tags.html#application_id">Tag::APPLICATION_ID</a> and
+<p>If the characteristics argument is non-NULL, <code translate="no" dir="ltr">generateKey</code> returns
+the newly generated key's characteristics divided appropriately into
+hardware-enforced and software-enforced lists. See
+<a href="#get_key_characteristics">getKeyCharacteristics</a> for a description
+of which characteristics go in which list. The returned characteristics
+include all of the parameters specified to key generation, except
+<a href="tags.html#application_id">Tag::APPLICATION_ID</a> and
 <a href="tags.html#application_data">Tag::APPLICATION_DATA</a>.
 If these tags were included in the key parameters, they are removed from
-the returned characteristics so that it is not be possible to find their values by
-examining the returned key blob. However, they are cryptographically bound
+the returned characteristics so that it is not be possible to find their values
+by examining the returned key blob. However, they are cryptographically bound
 to the key blob, so that if the correct values are not provided when the key is
 used, usage fails. Similarly,
 <a href="tags.html#root_of_trust">Tag::ROOT_OF_TRUST</a> is
@@ -875,23 +953,26 @@ key creation or import and is never returned.</p>
 
 <p>In addition to the provided tags, the trustlet also
 adds <a href="tags.html#origin">Tag::ORIGIN</a>,
-with the value <code>KeyOrigin::GENERATED</code>,
+with the value <code translate="no" dir="ltr">KeyOrigin::GENERATED</code>,
 and if the key is rollback resistant,
-<a href="tags.html#rollback_resistant">Tag::ROLLBACK_RESISTANT</a>.</p>
+</p>
+<a
+href="tags.html#rollback_resistant">Tag::ROLLBACK_RESISTANT</a>.
 
 <h4 id="rollback_resistance">Rollback resistance</h4>
 
 <p>Rollback resistance means that once a key is deleted with
-<a href="#delete_key">deleteKey</a> or <a href="#delete_all_keys">deleteAllKeys</a>,
-it is guaranteed by secure hardware never to be usable again. Implementations
-without rollback resistance typically return generated or imported key
-material to the caller as a key blob, an encrypted and authenticated form. When
-keystore deletes the key blob, the key is gone, but an attacker who has
-previously managed to retrieve the key material can potentially restore it to
-the device.</p>
+<a
+href="#delete_key">deleteKey</a> or <a
+href="#delete_all_keys">deleteAllKeys</a>, it is guaranteed by secure hardware
+never to be usable again. Implementations without rollback resistance typically
+return generated or imported key material to the caller as a key blob, an
+encrypted and authenticated form. When keystore deletes the key blob, the key is
+gone, but an attacker who has previously managed to retrieve the key material
+can potentially restore it to the device.</p>
 
-<p>A key is rollback resistant if the secure hardware guarantees that deleted keys
-cannot be restored later. This is generally done by storing additional key
+<p>A key is rollback resistant if the secure hardware guarantees that deleted
+keys cannot be restored later. This is generally done by storing additional key
 metadata in a trusted location that cannot be manipulated by an attacker. On
 mobile devices, the mechanism used for this is usually Replay Protected Memory
 Blocks (RPMB). Because the number of keys that may be created is essentially
@@ -904,21 +985,22 @@ should not be added to the key characteristics.</p>
 <h3 id="get_key_characteristics">getKeyCharacteristics</h3>
 
 <p><strong>Version</strong>: 1, 2, 3</p>
-<p>This function was introduced in Keymaster 1 as <code>get_key_characteristics</code>
-and renamed in Keymaster 3.</p>
+<p>This function was introduced in Keymaster 1 as
+<code translate="no" dir="ltr">get_key_characteristics</code> and renamed in Keymaster 3.</p>
 
-<p>Returns parameters and authorizations associated with the provided key, divided
-into two sets: hardware-enforced and software-enforced. The description here
-applies equally to the key characteristics lists returned
-by <a href="#generate_key">generateKey</a> and <a href="#import_key">importKey</a>.</p>
+<p>Returns parameters and authorizations associated with the provided key,
+divided into two sets: hardware-enforced and software-enforced. The description
+here applies equally to the key characteristics lists returned by <a
+href="#generate_key">generateKey</a> and <a href="#import_key">importKey</a>.
+</p>
 
-<p>If <code>Tag::APPLICATION_ID</code> was provided during key generation
+<p>If <code translate="no" dir="ltr">Tag::APPLICATION_ID</code> was provided during key generation
 or import, the same value is provided to
-this method in the <code>clientId</code> argument. Otherwise, the
-method returns <code>ErrorCode::INVALID_KEY_BLOB</code>. Similarly,
-if <code>Tag::APPLICATION_DATA</code> was provided during generation
+this method in the <code translate="no" dir="ltr">clientId</code> argument. Otherwise, the
+method returns <code translate="no" dir="ltr">ErrorCode::INVALID_KEY_BLOB</code>. Similarly,
+if <code translate="no" dir="ltr">Tag::APPLICATION_DATA</code> was provided during generation
 or import, the same value is provided to
-this method in the <code>appData</code> argument.</p>
+this method in the <code translate="no" dir="ltr">appData</code> argument.</p>
 
 <p>The characteristics returned by this method completely describe the type and
 usage of the specified key.</p>
@@ -965,11 +1047,11 @@ may be unclear:</p>
 <h3 id="import_key">importKey</h3>
 
 <p><strong>Version</strong>: 1, 2, 3</p>
-<p>This function was introduced in Keymaster 1 as <code>import_key</code>
+<p>This function was introduced in Keymaster 1 as <code translate="no" dir="ltr">import_key</code>
 and renamed in Keymaster 3.</p>
 
 <p>Imports key material into Keymaster hardware. Key definition parameters and
-output characteristics are handled the same as for <code>generateKey</code>,
+output characteristics are handled the same as for <code translate="no" dir="ltr">generateKey</code>,
 with the following exceptions:</p>
 
 <ul>
@@ -979,31 +1061,31 @@ with the following exceptions:</p>
   the trustlet deduces the values from the provided key material and adds
   appropriate tags and values to the key characteristics. If the parameters are
   provided, the trustlet validates them against the key material. In the
-  event of a mismatch, the method returns <code>ErrorCode::IMPORT_PARAMETER_MISMATCH</code>.</li>
+  event of a mismatch, the method returns <code translate="no" dir="ltr">ErrorCode::IMPORT_PARAMETER_MISMATCH</code>.</li>
   <li>The returned <a href="tags.html#origin">Tag::ORIGIN</a> has the
-  same value as <code>KeyOrigin::IMPORTED</code>.</li>
+  same value as <code translate="no" dir="ltr">KeyOrigin::IMPORTED</code>.</li>
 </ul>
 
 <h3 id="export_key">exportKey</h3>
 
 <p><strong>Version</strong>: 1, 2, 3</p>
-<p>This function was introduced in Keymaster 1 as <code>export_key</code>
+<p>This function was introduced in Keymaster 1 as <code translate="no" dir="ltr">export_key</code>
 and renamed in Keymaster 3.</p>
 
 <p>Exports a public key from a Keymaster RSA or EC key pair.</p>
 
-<p>If <code>Tag::APPLICATION_ID</code> was provided during key generation or import,
-the same value is provided to this method in the
-<code>clientId</code> argument. Otherwise, the method returns
-<code>ErrorCode::INVALID_KEY_BLOB</code>. Similarly, if
-<code>Tag::APPLICATION_DATA</code>
+<p>If <code translate="no" dir="ltr">Tag::APPLICATION_ID</code> was provided during key generation or
+import, the same value is provided to this method in the
+<code translate="no" dir="ltr">clientId</code> argument. Otherwise, the method returns
+<code translate="no" dir="ltr">ErrorCode::INVALID_KEY_BLOB</code>. Similarly, if
+<code translate="no" dir="ltr">Tag::APPLICATION_DATA</code>
 was provided during generation or import, the same value is provided to
-this method in the <code>appData</code> argument.</p>
+this method in the <code translate="no" dir="ltr">appData</code> argument.</p>
 
 <h3 id="delete_key">deleteKey</h3>
 
 <p><strong>Version</strong>: 1, 2, 3</p>
-<p>This function was introduced in Keymaster 1 as <code>delete_key</code>
+<p>This function was introduced in Keymaster 1 as <code translate="no" dir="ltr">delete_key</code>
 and renamed in Keymaster 3.</p>
 
 <p>Deletes the provided key. This method is optional, and is only
@@ -1012,7 +1094,7 @@ implemented by Keymaster modules that provide rollback resistance.</p>
 <h3 id="delete_all_keys">deleteAllKeys</h3>
 
 <p><strong>Version</strong>: 1, 2, 3</p>
-<p>This function was introduced in Keymaster 1 as <code>delete_all_keys</code>
+<p>This function was introduced in Keymaster 1 as <code translate="no" dir="ltr">delete_all_keys</code>
 and renamed in Keymaster 3.</p>
 
 <p>Deletes all keys. This method is optional, and is only implemented
@@ -1022,22 +1104,22 @@ by Keymaster modules that provide rollback resistance.</p>
 <h3 id="destroy_attestation_ids">destroyAttestationIds</h3>
 <p><strong>Version</strong>: 3</p>
 <p>
-The <code>destroyAttestationIds()</code> method is used to permanently
+The <code translate="no" dir="ltr">destroyAttestationIds()</code> method is used to permanently
 disable the new (optional, but highly recommended)
 <a href="attestation.html#id-attestation">ID attestation</a>
 feature. If the TEE has no way to ensure that ID attestation is permanently
 disabled after this method is called, then ID attestation must not be
 implemented at all, in which case this method does nothing and
-returns <code>ErrorCode::UNIMPLEMENTED</code>. If ID attestation is
+returns <code translate="no" dir="ltr">ErrorCode::UNIMPLEMENTED</code>. If ID attestation is
 supported, this method needs to be implemented and must permanently disable
 all future ID attestation attempts. The method may be called any number of
 times. If ID attestation is permanently disabled already, the method does
-nothing and returns <code>ErrorCode::OK</code>.
+nothing and returns <code translate="no" dir="ltr">ErrorCode::OK</code>.
 </p>
 <p>
 The only error codes this method may return are
-<code>ErrorCode::UNIMPLEMENTED</code> (if ID attestation is not supported),
-<code>ErrorCode:OK</code>, <code>ErrorCode::KEYMASTER_NOT_CONFIGURED</code> or
+<code translate="no" dir="ltr">ErrorCode::UNIMPLEMENTED</code> (if ID attestation is not supported),
+<code translate="no" dir="ltr">ErrorCode:OK</code>, <code translate="no" dir="ltr">ErrorCode::KEYMASTER_NOT_CONFIGURED</code> or
 one of the error codes indicating a failure to communicate with the secure
 hardware.
 </p>
@@ -1051,22 +1133,22 @@ purpose, with the specified parameters (as appropriate), and returns an
 operation handle that is used with <a href="#update">update</a> and <a
 href="#finish">finish</a> to complete the operation. The operation handle is
 also used as the "challenge" token in authenticated operations, and for such
-operations is included in the <code>challenge</code> field of the
+operations is included in the <code translate="no" dir="ltr">challenge</code> field of the
 authentication token.</p>
 
 <p>A Keymaster implementation supports at least 16 concurrent
 operations. Keystore uses up to 15, leaving one for vold to use for password
-encryption. When Keystore has 15 operations in progress (<code>begin</code> has
-been called, but <code>finish</code> or <code>abort</code> have not yet been
+encryption. When Keystore has 15 operations in progress (<code translate="no" dir="ltr">begin</code> has
+been called, but <code translate="no" dir="ltr">finish</code> or <code translate="no" dir="ltr">abort</code> have not yet been
 called) and it receives a request to begin a 16th, it calls
-<code>abort</code> on the least-recently used operation to reduce the number of
-active operations to 14 before calling <code>begin</code> to start the
-newly-requested operation.</p>
+<code translate="no" dir="ltr">abort</code> on the least-recently used operation to reduce the number of
+active operations to 14 before calling <code translate="no" dir="ltr">begin</code> to start the
+newly requested operation.</p>
 
 <p>If <a href="tags.html#application_id">Tag::APPLICATION_ID</a>
 or <a href="#application_data">Tag::APPLICATION_DATA</a> were specified
-during key generation or import, calls to <code>begin</code> include those
-tags with the originally-specified values in the <code>inParams</code> argument
+during key generation or import, calls to <code translate="no" dir="ltr">begin</code> include those
+tags with the originally specified values in the <code translate="no" dir="ltr">inParams</code> argument
 to this method.</p>
 
 <h4 id="begin_authorization_enforcement">Authorization enforcement</h4>
@@ -1074,48 +1156,48 @@ to this method.</p>
 <p>During this method, the following key authorizations are enforced by the
 trustlet if the implementation placed them in the "hardware-enforced"
 characteristics and if the operation is not a public key operation. Public key
-operations, meaning <code>KeyPurpose::ENCRYPT</code> and <code>KeyPurpose::VERIFY</code>,
+operations, meaning <code translate="no" dir="ltr">KeyPurpose::ENCRYPT</code> and <code translate="no" dir="ltr">KeyPurpose::VERIFY</code>,
 with RSA or EC keys, are allowed to succeed even if authorization
 requirements are not met.</p>
 
 <ul>
   <li><a href="tags.html#purpose">Tag::PURPOSE</a>: The purpose
-   specified in the <code>begin()</code> call has to match one of the purposes
+   specified in the <code translate="no" dir="ltr">begin()</code> call has to match one of the purposes
    in the key authorizations, unless the requested operation is a public key
    operation. If the specified purpose does not match and the operation is not
-   a public key operation, <code>begin</code> will return
-   <code>ErrorCode::UNSUPPORTED_PURPOSE</code>. Public key operations are
+   a public key operation, <code translate="no" dir="ltr">begin</code> will return
+   <code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_PURPOSE</code>. Public key operations are
    asymmetric encryption or verification operations.</li>
   <li><a href="tags.html#active_datetime">Tag::ACTIVE_DATETIME</a>
   can only be enforced if a trusted UTC time source is available. If the
   current date and time is prior to the tag value, the method returns
-  <code>ErrorCode::KEY_NOT_YET_VALID</code>.</li>
+  <code translate="no" dir="ltr">ErrorCode::KEY_NOT_YET_VALID</code>.</li>
   <li><a href="tags.html#origination_expire_datetime">Tag::ORIGINATION_EXPIRE_DATETIME</a>
   can only be enforced if a trusted UTC time source is available. If the
   current date and time is later than the tag value and the purpose is
-  <code>KeyPurpose::ENCRYPT</code> or <code>KeyPurpose::SIGN</code>, the method
-  returns <code>ErrorCode::KEY_EXPIRED</code>.</li>
+  <code translate="no" dir="ltr">KeyPurpose::ENCRYPT</code> or <code translate="no" dir="ltr">KeyPurpose::SIGN</code>, the method
+  returns <code translate="no" dir="ltr">ErrorCode::KEY_EXPIRED</code>.</li>
   <li><a href="tags.html#usage_expire_datetime">Tag::USAGE_EXPIRE_DATETIME</a>
   can only be enforced if a trusted UTC time source is available. If the
   current date and time is later than the tag value and the purpose is
-  <code>KeyPurpose::DECRYPT</code> or <code>KeyPurpose::VERIFY</code>, the method
-  returns <code>ErrorCode::KEY_EXPIRED</code>.</li>
+  <code translate="no" dir="ltr">KeyPurpose::DECRYPT</code> or <code translate="no" dir="ltr">KeyPurpose::VERIFY</code>, the method
+  returns <code translate="no" dir="ltr">ErrorCode::KEY_EXPIRED</code>.</li>
   <li><a href="tags.html#min_seconds_between_ops">Tag::MIN_SECONDS_BETWEEN_OPS</a>
   is compared with a trusted relative timer indicating the last use of
   the key. If the last use time plus the tag value is less than the current time,
-  the method returns <code>ErrorCode::KEY_RATE_LIMIT_EXCEEDED</code>. See the
+  the method returns <code translate="no" dir="ltr">ErrorCode::KEY_RATE_LIMIT_EXCEEDED</code>. See the
   <a href="tags.html#min_seconds_between_ops">tag description</a>
   for important implementation details.</li>
   <li><a href="tags.html#max_uses_per_boot">Tag::MAX_USES_PER_BOOT</a>
   is compared against a secure counter that tracks the uses of the key
   since boot time. If the count of previous uses exceeds the tag value, the
-  method returns <code>ErrorCode::KEY_MAX_OPS_EXCEEDED</code>.</li>
+  method returns <code translate="no" dir="ltr">ErrorCode::KEY_MAX_OPS_EXCEEDED</code>.</li>
   <li><a href="tags.html#user_secure_id">Tag::USER_SECURE_ID</a>
   is enforced by this method only if the key also has
   <a href="tags.html#auth_timeout">Tag::AUTH_TIMEOUT</a>.
   If the key has both, then this method must receive a valid
   <a href="tags.html#auth_token">Tag::AUTH_TOKEN</a> in
-  <code>inParams</code>. For the auth token to be valid, all of the following
+  <code translate="no" dir="ltr">inParams</code>. For the auth token to be valid, all of the following
   has to be true:
    <ul>
      <li>The HMAC field validates correctly.</li>
@@ -1128,148 +1210,148 @@ requirements are not met.</p>
      that matches the auth type in the token.</li>
    </ul>
   <p>If any of these conditions aren't met, the method returns
-  <code>ErrorCode::KEY_USER_NOT_AUTHENTICATED</code>.</p></li>
+  <code translate="no" dir="ltr">ErrorCode::KEY_USER_NOT_AUTHENTICATED</code>.</p></li>
   <li><a href="tags.html#caller_nonce">Tag::CALLER_NONCE</a>
   allows the caller to specify a nonce or initialization vector (IV). If the key
   doesn't have this tag, but the caller provided
   <a href="tags.html#nonce">Tag::NONCE</a> to this method,
-  <code>ErrorCode::CALLER_NONCE_PROHIBITED</code> is returned.</li>
+  <code translate="no" dir="ltr">ErrorCode::CALLER_NONCE_PROHIBITED</code> is returned.</li>
   <li><a href="tags.html#bootloader_only">Tag::BOOTLOADER_ONLY</a>
    specifies that only the bootloader may use the key. If this method is
    called with a bootloader-only key after the bootloader has finished executing,
-   it returns <code>ErrorCode::INVALID_KEY_BLOB</code>.</li>
+   it returns <code translate="no" dir="ltr">ErrorCode::INVALID_KEY_BLOB</code>.</li>
 </ul>
 
 <h4 id="begin_rsa_keys">RSA keys</h4>
 
-<p>All RSA key operations specify exactly one padding mode in <code>inParams</code>.
+<p>All RSA key operations specify exactly one padding mode in <code translate="no" dir="ltr">inParams</code>.
 If unspecified or specified more than once, the method returns
-<code>ErrorCode::UNSUPPORTED_PADDING_MODE</code>.</p>
+<code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_PADDING_MODE</code>.</p>
 
 <p>RSA signing and verification operations need a digest, as do RSA encryption
 and decryption operations with OAEP padding mode. For those cases, the caller
-specifies exactly one digest in <code>inParams</code>. If unspecified or specified
-more than once, the method returns <code>ErrorCode::UNSUPPORTED_DIGEST</code>.</p>
+specifies exactly one digest in <code translate="no" dir="ltr">inParams</code>. If unspecified or specified
+more than once, the method returns <code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_DIGEST</code>.</p>
 
-<p>Private key operations (<code>KeyPurpose::DECYPT</code> and <code>KeyPurpose::SIGN</code>)
+<p>Private key operations (<code translate="no" dir="ltr">KeyPurpose::DECYPT</code> and <code translate="no" dir="ltr">KeyPurpose::SIGN</code>)
 need authorization of digest and padding, which means that the key authorizations
 need to contain the specified values. If not, the method returns
-<code>ErrorCode::INCOMPATIBLE_DIGEST</code>
-or <code>ErrorCode::INCOMPATIBLE_PADDING</code>, as appropriate. Public key operations
-(<code>KeyPurpose::ENCRYPT</code> and <code>KeyPurpose::VERIFY</code>) are permitted with
+<code translate="no" dir="ltr">ErrorCode::INCOMPATIBLE_DIGEST</code>
+or <code translate="no" dir="ltr">ErrorCode::INCOMPATIBLE_PADDING</code>, as appropriate. Public key operations
+(<code translate="no" dir="ltr">KeyPurpose::ENCRYPT</code> and <code translate="no" dir="ltr">KeyPurpose::VERIFY</code>) are permitted with
 unauthorized digest or padding.</p>
 
-<p>With the exception of <code>PaddingMode::NONE</code>, all RSA padding modes are
+<p>With the exception of <code translate="no" dir="ltr">PaddingMode::NONE</code>, all RSA padding modes are
 applicable only to certain purposes. Specifically,
-<code>PaddingMode::RSA_PKCS1_1_5_SIGN</code> and <code>PaddingMode::RSA_PSS</code>
-only support signing and verification, while <code>PaddingMode::RSA_PKCS1_1_1_5_ENCRYPT</code>
-and <code>PaddingMode::RSA_OAEP</code> only support encryption and decryption.
-The method returns <code>ErrorCode::UNSUPPORTED_PADDING_MODE</code> if the
+<code translate="no" dir="ltr">PaddingMode::RSA_PKCS1_1_5_SIGN</code> and <code translate="no" dir="ltr">PaddingMode::RSA_PSS</code>
+only support signing and verification, while <code translate="no" dir="ltr">PaddingMode::RSA_PKCS1_1_1_5_ENCRYPT</code>
+and <code translate="no" dir="ltr">PaddingMode::RSA_OAEP</code> only support encryption and decryption.
+The method returns <code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_PADDING_MODE</code> if the
 specified mode does not support the specified purpose.</p>
 
 <p>There are some important interactions between padding modes and digests:</p>
 
 <ul>
 
-  <li><code>PaddingMode::NONE</code> indicates that a "raw" RSA operation is
-  performed. If signing or verifying, <code>Digest::NONE</code> is
+  <li><code translate="no" dir="ltr">PaddingMode::NONE</code> indicates that a "raw" RSA operation is
+  performed. If signing or verifying, <code translate="no" dir="ltr">Digest::NONE</code> is
   specified for the digest. No digest is necessary for unpadded encryption or
   decryption.</li>
-  <li><code>PaddingMode::RSA_PKCS1_1_5_SIGN</code> padding requires a digest. The
-  digest may be <code>Digest::NONE</code>, in which case the Keymaster
+  <li><code translate="no" dir="ltr">PaddingMode::RSA_PKCS1_1_5_SIGN</code> padding requires a digest. The
+  digest may be <code translate="no" dir="ltr">Digest::NONE</code>, in which case the Keymaster
   implementation cannot build a proper PKCS#1 v1.5 signature structure, because
   it cannot add the DigestInfo structure. Instead, the implementation
-  constructs <code>0x00 || 0x01 || PS || 0x00 || M</code>, where M is the
+  constructs <code translate="no" dir="ltr">0x00 || 0x01 || PS || 0x00 || M</code>, where M is the
   provided message and PS is the padding string. The size of the RSA key has to
   be at least 11 bytes larger than the message, otherwise the method returns
-  <code>ErrorCode::INVALID_INPUT_LENGTH</code>.</li>
-  <li><code>PaddingMode::RSA_PKCS1_1_1_5_ENCRYPT</code> padding does not require a digest.</li>
-  <li><code>PaddingMode::RSA_PSS</code> padding requires a digest, which may not be
-  <code>Digest::NONE</code>. If <code>Digest::NONE</code> is specified, the
-  method returns <code>ErrorCode::INCOMPATIBLE_DIGEST</code>. In addition, the
+  <code translate="no" dir="ltr">ErrorCode::INVALID_INPUT_LENGTH</code>.</li>
+  <li><code translate="no" dir="ltr">PaddingMode::RSA_PKCS1_1_1_5_ENCRYPT</code> padding does not require a digest.</li>
+  <li><code translate="no" dir="ltr">PaddingMode::RSA_PSS</code> padding requires a digest, which may not be
+  <code translate="no" dir="ltr">Digest::NONE</code>. If <code translate="no" dir="ltr">Digest::NONE</code> is specified, the
+  method returns <code translate="no" dir="ltr">ErrorCode::INCOMPATIBLE_DIGEST</code>. In addition, the
   size of the RSA key has to be at least 2 + D bytes larger than the output
   size of the digest, where D is the size of the digest, in bytes. Otherwise
-  the method returns <code>ErrorCode::INCOMPATIBLE_DIGEST</code>. The salt size
+  the method returns <code translate="no" dir="ltr">ErrorCode::INCOMPATIBLE_DIGEST</code>. The salt size
   is D.</li>
-  <li><code>PaddingMode::RSA_OAEP</code> padding requires a digest, which may not be
-  <code>Digest::NONE</code>. If <code>Digest::NONE</code> is specified, the
-  method returns <code>ErrorCode::INCOMPATIBLE_DIGEST</code>.</li>
+  <li><code translate="no" dir="ltr">PaddingMode::RSA_OAEP</code> padding requires a digest, which may not be
+  <code translate="no" dir="ltr">Digest::NONE</code>. If <code translate="no" dir="ltr">Digest::NONE</code> is specified, the
+  method returns <code translate="no" dir="ltr">ErrorCode::INCOMPATIBLE_DIGEST</code>.</li>
 </ul>
 
 <h4 id="begin_ec_keys">EC keys</h4>
 
-<p>EC key operations specify exactly one padding mode in <code>inParams</code>.
+<p>EC key operations specify exactly one padding mode in <code translate="no" dir="ltr">inParams</code>.
 If unspecified or specified more than once, the method
-returns <code>ErrorCode::UNSUPPORTED_PADDING_MODE</code>.</p>
+returns <code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_PADDING_MODE</code>.</p>
 
-<p>Private key operations (<code>KeyPurpose::SIGN</code>) need authorization
+<p>Private key operations (<code translate="no" dir="ltr">KeyPurpose::SIGN</code>) need authorization
 of digest and padding, which means that the key authorizations
 need to contain the specified values. If not, return
-<code>ErrorCode::INCOMPATIBLE_DIGEST</code>. Public key operations
-(<code>KeyPurpose::VERIFY</code>) are permitted with unauthorized digest or padding.</p>
+<code translate="no" dir="ltr">ErrorCode::INCOMPATIBLE_DIGEST</code>. Public key operations
+(<code translate="no" dir="ltr">KeyPurpose::VERIFY</code>) are permitted with unauthorized digest or padding.</p>
 
 <h4 id="begin_aes_keys">AES keys</h4>
 
 <p>AES key operations specify exactly one block mode and one padding mode
-in <code>inParams</code>. If either value is unspecified or specified more
-than once, return <code>ErrorCode::UNSUPPORTED_BLOCK_MODE</code> or
-<code>ErrorCode::UNSUPPORTED_PADDING_MODE</code>. The specified modes have to be
+in <code translate="no" dir="ltr">inParams</code>. If either value is unspecified or specified more
+than once, return <code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_BLOCK_MODE</code> or
+<code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_PADDING_MODE</code>. The specified modes have to be
 authorized by the key, otherwise the method returns
-<code>ErrorCode::INCOMPATIBLE_BLOCK_MODE</code> or
-<code>ErrorCode::INCOMPATIBLE_PADDING_MODE</code>.</p>
+<code translate="no" dir="ltr">ErrorCode::INCOMPATIBLE_BLOCK_MODE</code> or
+<code translate="no" dir="ltr">ErrorCode::INCOMPATIBLE_PADDING_MODE</code>.</p>
 
-<p>If the block mode is <code>BlockMode::GCM</code>, <code>inParams</code>
-specifies <code>Tag::MAC_LENGTH</code>, and the
+<p>If the block mode is <code translate="no" dir="ltr">BlockMode::GCM</code>, <code translate="no" dir="ltr">inParams</code>
+specifies <code translate="no" dir="ltr">Tag::MAC_LENGTH</code>, and the
 specified value is a multiple of 8 that is not greater than 128
-or less than the value of <code>Tag::MIN_MAC_LENGTH</code> in the
+or less than the value of <code translate="no" dir="ltr">Tag::MIN_MAC_LENGTH</code> in the
 key authorizations. For MAC lengths greater than 128 or non-multiples of
-8, return <code>ErrorCode::UNSUPPORTED_MAC_LENGTH</code>. For values less
-than the key's minimum length, return <code>ErrorCode::INVALID_MAC_LENGTH</code>.</p>
+8, return <code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_MAC_LENGTH</code>. For values less
+than the key's minimum length, return <code translate="no" dir="ltr">ErrorCode::INVALID_MAC_LENGTH</code>.</p>
 
-<p>If the block mode is <code>BlockMode::GCM</code> or <code>BlockMode::CTR</code>,
-the specified padding mode has to be <code>PaddingMode::NONE</code>.
-For <code>BlockMode::ECB</code> or <code>BlockMode::CBC</code>, the mode may be
-<code>PaddingMode::NONE</code> or <code>PaddingMode::PKCS7</code>. If the padding mode
-doesn't meet these conditions, return <code>ErrorCode::INCOMPATIBLE_PADDING_MODE</code>.</p>
+<p>If the block mode is <code translate="no" dir="ltr">BlockMode::GCM</code> or <code translate="no" dir="ltr">BlockMode::CTR</code>,
+the specified padding mode has to be <code translate="no" dir="ltr">PaddingMode::NONE</code>.
+For <code translate="no" dir="ltr">BlockMode::ECB</code> or <code translate="no" dir="ltr">BlockMode::CBC</code>, the mode may be
+<code translate="no" dir="ltr">PaddingMode::NONE</code> or <code translate="no" dir="ltr">PaddingMode::PKCS7</code>. If the padding mode
+doesn't meet these conditions, return <code translate="no" dir="ltr">ErrorCode::INCOMPATIBLE_PADDING_MODE</code>.</p>
 
-<p>If the block mode is <code>BlockMode::CBC</code>, <code>BlockMode::CTR</code>,
-or <code>BlockMode::GCM</code>, an initialization vector or nonce is needed.
+<p>If the block mode is <code translate="no" dir="ltr">BlockMode::CBC</code>, <code translate="no" dir="ltr">BlockMode::CTR</code>,
+or <code translate="no" dir="ltr">BlockMode::GCM</code>, an initialization vector or nonce is needed.
 In most cases, callers shouldn't provide an IV or nonce. In that case, the
 Keymaster implementation generates a random IV or nonce and returns it via
-<a href="tags.html#nonce">Tag::NONCE</a> in <code>outParams</code>.
+<a href="tags.html#nonce">Tag::NONCE</a> in <code translate="no" dir="ltr">outParams</code>.
 CBC and CTR IVs are 16 bytes. GCM nonces are 12 bytes. If the key
 authorizations contain
 <a href="tags.html#caller_nonce">Tag::CALLER_NONCE</a>,
 then the caller may provide an IV/nonce with
 <a href="tags.html#nonce">Tag::NONCE</a>
-in <code>inParams</code>. If a nonce is provided when
+in <code translate="no" dir="ltr">inParams</code>. If a nonce is provided when
 <a href="tags.html#caller_nonce">Tag::CALLER_NONCE</a>
-is not authorized, return <code>ErrorCode::CALLER_NONCE_PROHIBITED</code>.
+is not authorized, return <code translate="no" dir="ltr">ErrorCode::CALLER_NONCE_PROHIBITED</code>.
 If a nonce is not provided when
 <a href="tags.html#caller_nonce">Tag::CALLER_NONCE</a>
 is authorized, generate a random IV/nonce.</p>
 
 <h4 id="begin_hmac_keys">HMAC keys</h4>
 
-<p>HMAC key operations specify <code>Tag::MAC_LENGTH</code> in <code>inParams</code>.
+<p>HMAC key operations specify <code translate="no" dir="ltr">Tag::MAC_LENGTH</code> in <code translate="no" dir="ltr">inParams</code>.
 The specified value must be a multiple of 8 that is not greater than the
-digest length or less than the value of <code>Tag::MIN_MAC_LENGTH</code>
+digest length or less than the value of <code translate="no" dir="ltr">Tag::MIN_MAC_LENGTH</code>
 in the key authorizations. For MAC lengths greater than the digest length or
-non-multiples of 8, return <code>ErrorCode::UNSUPPORTED_MAC_LENGTH</code>.
+non-multiples of 8, return <code translate="no" dir="ltr">ErrorCode::UNSUPPORTED_MAC_LENGTH</code>.
 For values less than the key's minimum length, return
-<code>ErrorCode::INVALID_MAC_LENGTH</code>.</p>
+<code translate="no" dir="ltr">ErrorCode::INVALID_MAC_LENGTH</code>.</p>
 
 <h3 id="update">update</h3>
 
 <p><strong>Version</strong>: 1, 2, 3</p>
 
 <p>Provides data to process in an ongoing operation started with <a href="#begin">begin</a>.
-The operation is specified by the <code>operationHandle</code> parameter.</p>
+The operation is specified by the <code translate="no" dir="ltr">operationHandle</code> parameter.</p>
 
 <p>To provide more flexibility for buffer handling, implementations of this method
 have the option of consuming less data than was provided. The caller is
 responsible for looping to feed the rest of the data in subsequent calls. The
-amount of input consumed is returned in the <code>inputConsumed</code> parameter.
+amount of input consumed is returned in the <code translate="no" dir="ltr">inputConsumed</code> parameter.
 Implementations always consume at least one byte, unless the
 operation cannot accept any more; if more than zero bytes are provided and zero
 bytes are consumed, callers consider this an error and abort the operation.</p>
@@ -1281,11 +1363,11 @@ Return data as early as possible, rather than buffer it.</p>
 
 <h4 id="error_handling">Error handling</h4>
 
-<p>If this method returns an error code other than <code>ErrorCode::OK</code>,
+<p>If this method returns an error code other than <code translate="no" dir="ltr">ErrorCode::OK</code>,
 the operation is aborted and the operation handle is invalidated. Any
 future use of the handle, with this method,
 <a href="#finish">finish</a>, or <a href="#abort">abort</a>,
-returns <code>ErrorCode::INVALID_OPERATION_HANDLE</code>.</p>
+returns <code translate="no" dir="ltr">ErrorCode::INVALID_OPERATION_HANDLE</code>.</p>
 
 <h4 id="update_authorization_enforcement">Authorization enforcement</h4>
 
@@ -1299,28 +1381,28 @@ The one exception is the case where the key has:</p>
 
 <p>In this case, the key requires an authorization per operation, and the update
 method receives a <a href="tags.html#auth_token">Tag::AUTH_TOKEN</a>
-in the <code>inParams</code> argument. HMAC verifies that the token is valid and contains
+in the <code translate="no" dir="ltr">inParams</code> argument. HMAC verifies that the token is valid and contains
 a matching secure user ID, matches the key's
 <a href="tags.html#mac_length">Tag::USER_AUTH_TYPE</a>,
 and contains the operation handle of the current operation in the
 challenge field. If these conditions aren't met, return
-<code>ErrorCode::KEY_USER_NOT_AUTHENTICATED</code>.</p>
+<code translate="no" dir="ltr">ErrorCode::KEY_USER_NOT_AUTHENTICATED</code>.</p>
 
 <p>The caller provides the authentication token to every call to <a href="#update">update</a> and
 <a href="#finish">finish</a>. The implementation need only validate the token once if it prefers.</p>
 
 <h4 id="update_rsa_keys">RSA keys</h4>
 
-<p>For signing and verification operations with <code>Digest::NONE</code>,
+<p>For signing and verification operations with <code translate="no" dir="ltr">Digest::NONE</code>,
 this method accepts the entire block to be signed or verified in a single
 update. It may not consume only a portion of the block. However, if the caller
 chooses to provide the data in multiple updates, this method accepts it.
 If the caller provides more data to sign than can be used (length of
-data exceeds RSA key size), return <code>ErrorCode::INVALID_INPUT_LENGTH</code>.</p>
+data exceeds RSA key size), return <code translate="no" dir="ltr">ErrorCode::INVALID_INPUT_LENGTH</code>.</p>
 
 <h4 id="update_ecdsa_keys">ECDSA keys</h4>
 
-<p>For signing and verification operations with <code>Digest::NONE</code>,
+<p>For signing and verification operations with <code translate="no" dir="ltr">Digest::NONE</code>,
 this method accepts the entire block to be signed or verified in a single
 update. This method may not consume only a portion of the block.</p>
 
@@ -1334,17 +1416,17 @@ is compatibility with legacy clients.)</p>
 
 <p>AES GCM mode supports "associated authentication data," provided via the
 <a href="tags.html#associated_data">Tag::ASSOCIATED_DATA</a>
-tag in the <code>inParams</code> argument.
+tag in the <code translate="no" dir="ltr">inParams</code> argument.
 The associated data may be provided in repeated calls (important if
 the data is too large to send in a single block) but always precedes data
 to be encrypted or decrypted. An update call may receive both associated data
 and data to encrypt/decrypt, but subsequent updates may not include associated
 data. If the caller provides associated data to an update call after a call
-that includes data to encrypt/decrypt, return <code>ErrorCode::INVALID_TAG</code>.</p>
+that includes data to encrypt/decrypt, return <code translate="no" dir="ltr">ErrorCode::INVALID_TAG</code>.</p>
 
 <p>For GCM encryption, the tag is appended to the ciphertext by
 <a href="#finish">finish</a>. During decryption, the last
-<code>Tag::MAC_LENGTH</code> bytes of the data provided to the last
+<code translate="no" dir="ltr">Tag::MAC_LENGTH</code> bytes of the data provided to the last
 update call is the tag. Since a given invocation of
 <a href="#update">update</a> cannot know if it's the last invocation,
 it processes all but the tag length and buffer the possible tag data
@@ -1364,10 +1446,10 @@ processed data is returned.</p>
 <p>Whether it completes successfully or returns an error, this method finalizes
 the operation and therefore invalidates the provided operation handle. Any
 future use of the handle, with this method or <a href="#update">update</a> or
-<a href="#abort">abort</a>, returns <code>ErrorCode::INVALID_OPERATION_HANDLE</code>.</p>
+<a href="#abort">abort</a>, returns <code translate="no" dir="ltr">ErrorCode::INVALID_OPERATION_HANDLE</code>.</p>
 
 <p>Signing operations return the signature as the output. Verification operations
-accept the signature in the <code>signature</code> parameter, and return no output.</p>
+accept the signature in the <code translate="no" dir="ltr">signature</code> parameter, and return no output.</p>
 
 <h4 id="finish_authorization_enforcement">Authorization enforcement</h4>
 
@@ -1383,12 +1465,12 @@ accept the signature in the <code>signature</code> parameter, and return no outp
 
 <p>In this case, the key requires an authorization per operation, and the update
 method receives a <a href="tags.html#auth_token">Tag::AUTH_TOKEN</a>
-in the <code>inParams</code> argument. HMAC verifies that the token
+in the <code translate="no" dir="ltr">inParams</code> argument. HMAC verifies that the token
 is valid and contains a matching secure user ID, matches the key's
 <a href="tags.html#mac_length">Tag::USER_AUTH_TYPE</a>, and
 contains the operation handle of the current operation in the
 challenge field. If these conditions aren't met, return
-<code>ErrorCode::KEY_USER_NOT_AUTHENTICATED</code>.</p>
+<code translate="no" dir="ltr">ErrorCode::KEY_USER_NOT_AUTHENTICATED</code>.</p>
 
 <p>The caller provides the authentication token to every call to
 <a href="#update">update</a> and <a href="#finish">finish</a>.
@@ -1399,21 +1481,21 @@ The implementation need only validate the token once if it prefers.</p>
 <p>Some additional requirements, depending on the padding mode:</p>
 
 <ul>
-  <li><code>PaddingMode::NONE</code>. For unpadded signing and encryption operations,
+  <li><code translate="no" dir="ltr">PaddingMode::NONE</code>. For unpadded signing and encryption operations,
   if the provided data is shorter than the key, the data is be zero-padded on
   the left before signing/encryption. If the data is the same length as the key,
-  but numerically larger, return <code>ErrorCode::INVALID_ARGUMENT</code>. For
+  but numerically larger, return <code translate="no" dir="ltr">ErrorCode::INVALID_ARGUMENT</code>. For
   verification and decryption operations, the data must be exactly as long
-  as the key. Otherwise, return <code>ErrorCode::INVALID_INPUT_LENGTH.</code></li>
-  <li><code>PaddingMode::RSA_PSS</code>. For PSS-padded signature operations,
-  the PSS salt is at least 20 bytes in length and randomly-generated.
-  The salt may be longer; the reference implementation uses maximally-sized salt.
+  as the key. Otherwise, return <code translate="no" dir="ltr">ErrorCode::INVALID_INPUT_LENGTH.</code></li>
+  <li><code translate="no" dir="ltr">PaddingMode::RSA_PSS</code>. For PSS-padded signature operations,
+  the PSS salt is at least 20 bytes in length and randomly generated.
+  The salt may be longer; the reference implementation uses maximally sized salt.
   The digest specified with <a href="tags.html#digest">Tag::DIGEST</a>
-  in <code>inputParams</code> on <a href="#begin">begin</a> is used as the PSS digest
+  in <code translate="no" dir="ltr">inputParams</code> on <a href="#begin">begin</a> is used as the PSS digest
   algorithm, and SHA1 is used as the MGF1 digest algorithm.</li>
-  <li><code>PaddingMode::RSA_OAEP</code>. The digest specified with
+  <li><code translate="no" dir="ltr">PaddingMode::RSA_OAEP</code>. The digest specified with
   <a href="tags.html#digest">Tag::DIGEST</a> in
-  <code>inputParams</code> on <a href="#begin">begin</a> is used as the OAEP
+  <code translate="no" dir="ltr">inputParams</code> on <a href="#begin">begin</a> is used as the OAEP
   digest algorithm, and SHA1 is used as the MGF1 digest algorithm.</li>
 </ul>
 
@@ -1427,20 +1509,20 @@ it.</p>
 <p>Some additional conditions, depending on block mode:</p>
 
 <ul>
-  <li><code>BlockMode::ECB</code> or <code>BlockMode::CBC</code>.
-  If padding is <code>PaddingMode::NONE</code> and the
+  <li><code translate="no" dir="ltr">BlockMode::ECB</code> or <code translate="no" dir="ltr">BlockMode::CBC</code>.
+  If padding is <code translate="no" dir="ltr">PaddingMode::NONE</code> and the
   data length is not a multiple of the AES block size, return
-  <code>ErrorCode::INVALID_INPUT_LENGTH</code>. If padding is
-  <code>PaddingMode::PKCS7</code>, pad the data per the PKCS#7 specification.
+  <code translate="no" dir="ltr">ErrorCode::INVALID_INPUT_LENGTH</code>. If padding is
+  <code translate="no" dir="ltr">PaddingMode::PKCS7</code>, pad the data per the PKCS#7 specification.
   Note that PKCS#7 recommends adding an additional padding block
   if the data is a multiple of the block length.</li>
-  <li><code>BlockMode::GCM</code>. During encryption, after processing
+  <li><code translate="no" dir="ltr">BlockMode::GCM</code>. During encryption, after processing
   all plaintext, compute the tag
   (<a href="tags.html#mac_length">Tag::MAC_LENGTH</a> bytes)
   and append it to the returned ciphertext. During decryption, process
   the last <a href="tags.html#mac_length">Tag::MAC_LENGTH</a>
   bytes as the tag. If tag verification fails, return
-  <code>ErrorCode::VERIFICATION_FAILED</code>.</li>
+  <code translate="no" dir="ltr">ErrorCode::VERIFICATION_FAILED</code>.</li>
 </ul>
 
 <h3 id="abort">abort</h3>
@@ -1448,7 +1530,7 @@ it.</p>
 <p><strong>Version</strong>: 1, 2, 3</p>
 
 <p>Aborts the in-progress operation. After the call to abort, return
-<code>ErrorCode::INVALID_OPERATION_HANDLE</code> for
+<code translate="no" dir="ltr">ErrorCode::INVALID_OPERATION_HANDLE</code> for
 any subsequent use of the provided operation handle with <a href="#update">update</a>,
 <a href="#finish">finish</a>, or <a href="#abort">abort</a>.</p>
 
@@ -1473,7 +1555,7 @@ implementation for a specified algorithm and purpose.</p>
 
 <p>For RSA, EC and HMAC, which are not block ciphers, the method returns an
 empty list for all valid purposes. Invalid purposes should cause the method to
-return <code>ErrorCode::INVALID_PURPOSE</code>.</p>
+return <code translate="no" dir="ltr">ErrorCode::INVALID_PURPOSE</code>.</p>
 
 <p>Keymaster 1 implementations support ECB, CBC, CTR and GCM for AES
 encryption and decryption.</p>
@@ -1488,7 +1570,7 @@ implementation for a specified algorithm and purpose.</p>
 
 <p>HMAC and EC have no notion of padding so the method returns an empty list
 for all valid purposes. Invalid purposes should cause the method to return
-<code>ErrorCode::INVALID_PURPOSE</code>.</p>
+<code translate="no" dir="ltr">ErrorCode::INVALID_PURPOSE</code>.</p>
 
 <p>For RSA, Keymaster 1 implementations support:</p>
 
@@ -1551,13 +1633,13 @@ were present in Keymaster 1 struct keymaster1_device_t. However, in Keymaster
 1.0 they were not implemented, and their function pointers were set to NULL.
 </p>
 <ul>
-<li><code>generate_keypair</code></li>
-<li><code>import_keypair</code></li>
-<li><code>get_keypair_public</code></li>
-<li><code>delete_keypair</code></li>
-<li><code>delete_all</code></li>
-<li><code>sign_data</code></li>
-<li><code>Verify_data</code></li>
+<li><code translate="no" dir="ltr">generate_keypair</code></li>
+<li><code translate="no" dir="ltr">import_keypair</code></li>
+<li><code translate="no" dir="ltr">get_keypair_public</code></li>
+<li><code translate="no" dir="ltr">delete_keypair</code></li>
+<li><code translate="no" dir="ltr">delete_all</code></li>
+<li><code translate="no" dir="ltr">sign_data</code></li>
+<li><code translate="no" dir="ltr">Verify_data</code></li>
 </ul>
 
 <h3 id="km1">Keymaster 1</h3>
@@ -1565,21 +1647,23 @@ were present in Keymaster 1 struct keymaster1_device_t. However, in Keymaster
 removed in Keymaster 2, along with the Keymaster 0 functions listed above.
 </p>
 <ul>
-  <li><code>get_supported_algorithms</code></li>
-  <li><code>get_supported_block_modes</code></li>
-  <li><code>get_supported_padding_modes</code></li>
-  <li><code>get_supported_digests</code></li>
-  <li><code> get_supported_import_formats</code></li>
-  <li><code>get_supported_export_formats</code></li>
+  <li><code translate="no" dir="ltr">get_supported_algorithms</code></li>
+  <li><code translate="no" dir="ltr">get_supported_block_modes</code></li>
+  <li><code translate="no" dir="ltr">get_supported_padding_modes</code></li>
+  <li><code translate="no" dir="ltr">get_supported_digests</code></li>
+  <li><code translate="no" dir="ltr"> get_supported_import_formats</code></li>
+  <li><code translate="no" dir="ltr">get_supported_export_formats</code></li>
 </ul>
 
 <h3 id="km2">Keymaster 2</h3>
 <p>The following functions belong to the Keymaster 2 definition, but were
 removed in Keymaster 3, along with the Keymaster 1 functions listed above.
 </p>
+
 <ul>
-  <li><code>configure</code></li>
+  <li><code translate="no" dir="ltr">configure</code></li>
 </ul>
+
   
           </div>
 
@@ -1590,17 +1674,17 @@ removed in Keymaster 3, along with the Keymaster 1 functions listed above.
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1807,8 +1891,9 @@ removed in Keymaster 3, along with the Keymaster 1 functions listed above.
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1874,54 +1959,49 @@ removed in Keymaster 3, along with the Keymaster 1 functions listed above.
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/security/keystore/implementer-ref by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:28:18 GMT -->
+<!-- Mirrored from source.android.google.cn/security/keystore/implementer-ref by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:19:15 GMT -->
 </html>

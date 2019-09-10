@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/perf/boot-times by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:14:14 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/perf/boot-times by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:58:41 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Optimizing Boot Times &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Optimizing Boot Times &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="boot-times.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="boot-times.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="boot-times.html">      
+<title>Optimizing Boot Times &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Optimizing Boot Times &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="boot-times.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab active>
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
    aria-label="Configure, selected"         data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,16 +243,16 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
-   title="ART"
+   title="Overview"
            data-category="Site-Wide Custom Events"
-        data-label="Tab: ART"
+        data-label="Tab: Overview"
    >
-  ART
+  Overview
 </a>
 
         </tab>
@@ -243,7 +279,7 @@
 
         </tab>
                         <tab active>
-          <a href="../health.html"
+          <a href="../perf.html"
    class="gc-analytics-event"
    title="Performance"
    aria-label="Performance, selected"         data-category="Site-Wide Custom Events"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab >
-          <a href="../config/perms-whitelist.html"
+          <a href="../config.html"
    class="gc-analytics-event"
    title="Permissions"
            data-category="Site-Wide Custom Events"
@@ -276,6 +312,17 @@
 
         </tab>
                         <tab >
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="Runtime"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Runtime"
+   >
+  Runtime
+</a>
+
+        </tab>
+                        <tab >
           <a href="../ota.html"
    class="gc-analytics-event"
    title="Updates"
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -351,7 +414,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -361,12 +424,12 @@
   
                                             <ul class="devsite-nav-responsive-tabs">
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../dalvik.html"
+    <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
-     data-label="Responsive Tab: ART">
-      <span class="devsite-nav-text" >ART</span>
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
         </a>
   </li>
 
@@ -391,20 +454,20 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../health.html"
+    <a href="../perf.html"
      id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Performance">
       <span class="devsite-nav-text" menu="_book">Performance</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../config/perms-whitelist.html"
+    <a href="../config.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -420,6 +483,16 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Power">
       <span class="devsite-nav-text" >Power</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Runtime">
+      <span class="devsite-nav-text" >Runtime</span>
         </a>
   </li>
 
@@ -458,37 +531,43 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Health">Health</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../health.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../perf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item"><a href="apk-caching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="APK Caching">APK Caching</span></a></li>
+  <li class="devsite-nav-item"><a href="boot-times.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Boot Times">Boot Times</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Health">Health</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../health.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../health/implementation.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Implementing Health">Implementing Health</span></a></li><li class="devsite-nav-item"><a href="../health/deprecation.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Deprecating health@1.0">Deprecating health@1.0</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="apk-caching.html"
+  <li class="devsite-nav-item"><a href="cgroups.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="APK Caching">APK Caching</span></a></li>
-                          <li class="devsite-nav-item"><a href="boot-times.html"
+   ><span class="devsite-nav-text" title="Cgroup Abstraction Layer">Cgroup Abstraction Layer</span></a></li>
+  <li class="devsite-nav-item"><a href="lmkd.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Boot Times">Boot Times</span></a></li>
-                          <li class="devsite-nav-item"><a href="lmkd.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="LMKD in Userspace">LMKD in Userspace</span></a></li>
-                          <li class="devsite-nav-item"><a href="low-ram.html"
+   ><span class="devsite-nav-text" title="Low Memory Killer Daemon (LMKD)">Low Memory Killer Daemon (LMKD)</span></a></li>
+  <li class="devsite-nav-item"><a href="low-ram.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Low RAM">Low RAM</span></a></li>
-                          <li class="devsite-nav-item"><a href="pgo.html"
+  <li class="devsite-nav-item"><a href="pgo.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Profile Guided Optimization (PGO)">Profile Guided Optimization (PGO)</span></a></li>
-                          <li class="devsite-nav-item"><a href="task-snapshots-2.html"
+  <li class="devsite-nav-item"><a href="task-snapshots.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Task Snapshots">Task Snapshots</span></a></li>
-                          <li class="devsite-nav-item"><a href="compatibility-wal.html"
+  <li class="devsite-nav-item"><a href="compatibility-wal.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Write-Ahead Logging">Write-Ahead Logging</span></a></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -496,16 +575,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -515,9 +595,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -526,9 +607,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../health.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../perf.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
@@ -544,8 +626,8 @@
 
               <h1 class="devsite-page-title">Optimizing Boot Times</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -691,8 +773,8 @@ device defconfig:
 </p>
 
 <ul>
-<li><strong>Identify unused drivers</strong>. Review the <code>/dev</code> and
-<code>/sys</code> directories and look for nodes with general SELinux labels
+<li><strong>Identify unused drivers</strong>. Review the <code translate="no" dir="ltr">/dev</code> and
+<code translate="no" dir="ltr">/sys</code> directories and look for nodes with general SELinux labels
 (which indicates those nodes are not configured to be accessible by user space).
 Remove any such nodes if found.
 <li><strong>Unset unused CONFIGs</strong>. Review the .config file generated by
@@ -701,7 +783,7 @@ default. For example, we removed the following unused CONFIGs from the Google
 Pixel:
 
 <pre
-class="prettyprint">
+class="prettyprint" translate="no" dir="ltr">
 CONFIG_ANDROID_LOGGER=y
 CONFIG_IMX134=y
 CONFIG_IMX132=y
@@ -809,7 +891,7 @@ in kernel > init critical path.
 </p>
 
 <pre
-class="prettyprint">
+class="prettyprint" translate="no" dir="ltr">
 BoardConfig-common.mk:
     BOARD_KERNEL_CMDLINE += initcall_debug ignore_loglevel
 
@@ -819,7 +901,7 @@ driver:
 
 <p class="note">
 <strong>Note:</strong> Driver dependencies must be resolved carefully by adding
-<code>EPROBEDEFER</code> support.
+<code translate="no" dir="ltr">EPROBEDEFER</code> support.
 </p>
 
 <h2 id="optimizing-i-o-efficiency">Optimizing I/O efficiency</h2>
@@ -846,7 +928,7 @@ the following parameters for the Google Pixel:
 </p>
 
 <pre
-class="prettyprint">
+class="prettyprint" translate="no" dir="ltr">
 on late-fs
   # boot time fs tune
     # boot time fs tune
@@ -882,14 +964,14 @@ systrace):
 </p>
 
 <pre
-class="prettyprint">trace_event=block,ext4 in BOARD_KERNEL_CMDLINE</pre>
+class="prettyprint" translate="no" dir="ltr">trace_event=block,ext4 in BOARD_KERNEL_CMDLINE</pre>
 <p>
 To breakdown file access for each file, make the following changes to the kernel
 (development kernel only; do not use in production kernels):
 </p>
 
 <pre
-class="prettyprint">
+class="prettyprint" translate="no" dir="ltr">
 diff --git a/fs/open.c b/fs/open.c
 index 1651f35..a808093 100644
 --- a/fs/open.c
@@ -931,11 +1013,11 @@ long do_sys_open(int dfd, const char __user *filename, int flags, umode_t mode)
 Use the following scripts to help with analyzing boot performance.
 </p>
 <ul>
-<li><code>system/extras/boottime_tools/bootanalyze/bootanalyze.py</code>
+<li><code translate="no" dir="ltr">system/extras/boottime_tools/bootanalyze/bootanalyze.py</code>
 Measures boot time with a breakdown of important steps in the boot process.
-<li><code>system/extras/boottime_tools/io_analysis/check_file_read.py
+<li><code translate="no" dir="ltr">system/extras/boottime_tools/io_analysis/check_file_read.py
 boot_trace</code> Provides access information per each file.
-<li><code>system/extras/boottime_tools/io_analysis/check_io_trace_all.py
+<li><code translate="no" dir="ltr">system/extras/boottime_tools/io_analysis/check_io_trace_all.py
 boot_trace</code> Gives system-level breakdown.</li>
 </ul>
 
@@ -956,13 +1038,13 @@ can still perform some tasks in parallel.
 <ul>
 <li>Execute slow commands in a shell script service and join that later by
 waiting for specific property. Android 8.0 supports this use case with a new
-<code>wait_for_property</code> command.
+<code translate="no" dir="ltr">wait_for_property</code> command.
 <li>Identify slow operations in init. The system logs the init command
 exec/wait_for_prop or any action taking a long time (in Android 8.0, any command
 taking more than 50 ms). For example:
 
 <pre
-class="prettyprint">init: Command 'wait_for_coldboot_done' action=wait_for_coldboot_done returned 0 took 585.012ms</pre>
+class="prettyprint" translate="no" dir="ltr">init: Command 'wait_for_coldboot_done' action=wait_for_coldboot_done returned 0 took 585.012ms</pre>
 
 <p>
 Reviewing this log may indicate opportunities for improvements.
@@ -980,7 +1062,7 @@ early stage init should be deferred to boot completed.</li></ul>
 
 <p class="note">
 <strong>Note:</strong> Property service is part of init process, so calling
-<code>setproperty</code> during boot can lead a long delay if init is busy in
+<code translate="no" dir="ltr">setproperty</code> during boot can lead a long delay if init is busy in
 builtin commands.
 </p>
 
@@ -991,24 +1073,27 @@ Use scheduler tuning for early boot. Example from a Google Pixel:
 </p>
 
 <pre
-class="prettyprint">on init
-    # update cpusets now that processors are up
-    write /dev/cpuset/top-app/cpus 0-3
-    write /dev/cpuset/foreground/cpus 0-3
-    write /dev/cpuset/foreground/boost/cpus 0-3
-    write /dev/cpuset/background/cpus 0-3
-    write /dev/cpuset/system-background/cpus 0-3
-    # set default schedTune value for foreground/top-app (only affects EAS)
-    write /dev/stune/foreground/schedtune.prefer_idle 1
-    write /dev/stune/top-app/schedtune.boost 10
-    write /dev/stune/top-app/schedtune.prefer_idle 1</pre>
+class="prettyprint" translate="no" dir="ltr">on init
+    # boottime stune
+    write /dev/stune/schedtune.prefer_idle 1
+    write /dev/stune/schedtune.boost 100
+    on property:sys.boot_completed=1
+    # reset stune
+    write /dev/stune/schedtune.prefer_idle 0
+    write /dev/stune/schedtune.boost 0
+
+    # or just disable EAS during boot
+    on init
+    write /sys/kernel/debug/sched_features NO_ENERGY_AWARE
+    on property:sys.boot_completed=1
+    write /sys/kernel/debug/sched_features ENERGY_AWARE</pre>
 
 <p>
 Some services may need a priority boost during boot. Example:
 </p>
 
 <pre
-class="prettyprint">
+class="prettyprint" translate="no" dir="ltr">
 init.zygote64.rc:
 service zygote /system/bin/app_process64 -Xzygote /system/bin --zygote --start-system-server
     class main
@@ -1035,7 +1120,7 @@ governor can be disabled.
 charger mode for efficiency.</p>
 
 <pre
-class="prettyprint">
+class="prettyprint" translate="no" dir="ltr">
 on init
     # Disable UFS powersaving
     write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 0
@@ -1063,7 +1148,7 @@ Non-critical initialization such as ZRAM can be deferred to boot_complete.
 </p>
 
 <pre
-class="prettyprint">
+class="prettyprint" translate="no" dir="ltr">
 on property:sys.boot_completed=1
    # Enable ZRAM on boot_complete
    swapon_all /vendor/etc/fstab.${ro.hardware}</pre>
@@ -1089,10 +1174,10 @@ To make bootanimation start early, split the fstab mount into two phases:
 
 <ul>
   <li>In the early phase, mount only the partitions (such as
-    <code>system/</code> and <code>vendor/</code>) that don't require run
+    <code translate="no" dir="ltr">system/</code> and <code translate="no" dir="ltr">vendor/</code>) that don't require run
     checks, then start boot animation services and its dependencies (such as
     servicemanager and surfaceflinger).
-    <li>In the second phase, mount partitions (such as <code>data/</code>) that
+    <li>In the second phase, mount partitions (such as <code translate="no" dir="ltr">data/</code>) that
       do require run checks.</li>
 </ul>
 
@@ -1119,12 +1204,12 @@ Use the following tips to optimize SELinux for improved boot times.
 <ul>
 <li><strong>Use clean regular expressions (regex)</strong>. Poorly-formed regex
 can lead to a lot of overhead when matching SELinux policy for
-<code>sys/devices</code> in <code>file_contexts</code>. For example, the regex
-<code>/sys/devices/.*abc.*(/.*)?</code> mistakenly forces a scan of all
-<code>/sys/devices</code> subdirectories that contain "abc", enabling matches
-for both <code>/sys/devices/abc</code> and <code>/sys/devices/xyz/abc</code>.
-Improving this regex to <code>/sys/devices/[^/]*abc[^/]*(/.*)?</code> will
-enable a match only for <code>/sys/devices/abc</code>.
+<code translate="no" dir="ltr">sys/devices</code> in <code translate="no" dir="ltr">file_contexts</code>. For example, the regex
+<code translate="no" dir="ltr">/sys/devices/.*abc.*(/.*)?</code> mistakenly forces a scan of all
+<code translate="no" dir="ltr">/sys/devices</code> subdirectories that contain "abc", enabling matches
+for both <code translate="no" dir="ltr">/sys/devices/abc</code> and <code translate="no" dir="ltr">/sys/devices/xyz/abc</code>.
+Improving this regex to <code translate="no" dir="ltr">/sys/devices/[^/]*abc[^/]*(/.*)?</code> will
+enable a match only for <code translate="no" dir="ltr">/sys/devices/abc</code>.
 <li><strong>Move labels to </strong><a
 href="https://selinuxproject.org/page/FileStatements#genfscon">genfscon</a>.
 This existing SELinux feature passes file-matching prefixes into the kernel in
@@ -1152,9 +1237,9 @@ sanity check before diving into systrace.
 To enable bootchart:
 </p>
 
-<pre>
-<code class="devsite-terminal">adb shell 'touch /data/bootchart/enabled'</code>
-<code class="devsite-terminal">adb reboot</code>
+<pre translate="no" dir="ltr">
+<code class="devsite-terminal" translate="no" dir="ltr">adb shell 'touch /data/bootchart/enabled'</code>
+<code class="devsite-terminal" translate="no" dir="ltr">adb reboot</code>
 </pre>
 
 <p>
@@ -1162,10 +1247,10 @@ After boot up, fetch boot chart:
 </p>
 
 <pre
-class="prettyprint">$ANDROID_BUILD_TOP/system/core/init/grab-bootchart.sh</pre>
+class="prettyprint" translate="no" dir="ltr">$ANDROID_BUILD_TOP/system/core/init/grab-bootchart.sh</pre>
 
 <p>
-When finished, delete <code>/data/bootchart/enabled</code> to prevent collecting
+When finished, delete <code translate="no" dir="ltr">/data/bootchart/enabled</code> to prevent collecting
 the date every time.
 </p>
 
@@ -1183,46 +1268,49 @@ To enable systrace during boot-up:
 </p>
 
 <ul>
-  <li> In <code>frameworks/native/atrace/atrace.rc</code>, change:
+  <li> In <code translate="no" dir="ltr">frameworks/native/atrace/atrace.rc</code>, change:
 
 <pre
-class="prettyprint">write /sys/kernel/debug/tracing/tracing_on 0</pre>
+class="prettyprint" translate="no" dir="ltr">write /sys/kernel/debug/tracing/tracing_on 0</pre>
 <p>
 To:
 </p>
 
 <pre
-class="prettyprint">#write /sys/kernel/debug/tracing/tracing_on 0</pre>
+class="prettyprint" translate="no" dir="ltr">#write /sys/kernel/debug/tracing/tracing_on 0</pre>
   </li>
 
 <p>
 This enables tracing (which is disabled by default).
 </p>
 
-<li>In the <code>device.mk</code> file, add the following line:
+<li>In the <code translate="no" dir="ltr">device.mk</code> file, add the following line:
 
 <pre
-class="prettyprint">PRODUCT_PROPERTY_OVERRIDES +=    debug.atrace.tags.enableflags=802922</pre>
+class="prettyprint" translate="no" dir="ltr">
+PRODUCT_PROPERTY_OVERRIDES +=    debug.atrace.tags.enableflags=802922
+PRODUCT_PROPERTY_OVERRIDES +=    persist.traced.enable=0</pre>
 </li>
 
-<li>In the device <code>BoardConfig.mk</code> file, add the following:
+<li>In the device <code translate="no" dir="ltr">BoardConfig.mk</code> file, add the following:
 
 <pre
-class="prettyprint">BOARD_KERNEL_CMDLINE := ... trace_buf_size=64M trace_event=sched_wakeup,sched_switch,sched_blocked_reason,sched_cpu_hotplug</pre>
+class="prettyprint" translate="no" dir="ltr">BOARD_KERNEL_CMDLINE := ... trace_buf_size=64M trace_event=sched_wakeup,sched_switch,sched_blocked_reason,sched_cpu_hotplug</pre>
 </li>
 
 <p>
-For detailed I/O analysis, also add block and ext4.
+For detailed I/O analysis, also add block and ext4 and f2fs.
 </p>
 
-<li>In the device-specific <code>init.rc</code> file, make the following
+<li>In the device-specific <code translate="no" dir="ltr">init.rc</code> file, make the following
   changes:
  <ul>
- <li><code>on property:sys.boot_completed=1</code> (this stops tracing on boot
+ <li><code translate="no" dir="ltr">on property:sys.boot_completed=1</code> (this stops tracing on boot
 complete)</li>
- <li><code>write /d/tracing/tracing_on 0</code></li>
- <li><code>write /d/tracing/events/ext4/enable 0</code></li>
- <li><code>write /d/tracing/events/block/enable 0</code></li>
+ <li><code translate="no" dir="ltr">write /d/tracing/tracing_on 0</code></li>
+ <li><code translate="no" dir="ltr">write /d/tracing/events/ext4/enable 0</code></li>
+ <li><code translate="no" dir="ltr">write /d/tracing/events/f2fs/enable 0</code></li>
+ <li><code translate="no" dir="ltr">write /d/tracing/events/block/enable 0</code></li>
  </ul>
 </li>
 </ul>
@@ -1232,15 +1320,17 @@ After boot up, fetch trace:
 </p>
 
 
-<pre class="devsite-terminal">adb root && adb shell "cat /d/tracing/trace" &lt; boot_trace
-./external/chromium-trace/catapult/tracing/bin/trace2html boot_trace --output boot_trace.html
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
+<code class="devsite-terminal" translate="no" dir="ltr">adb root && adb shell atrace --async_stop -z -c -o /data/local/tmp/boot_trace</code>
+<code class="devsite-terminal" translate="no" dir="ltr">adb pull /data/local/tmp/boot_trace</code>
+<code class="devsite-terminal" translate="no" dir="ltr">$ANDROID_BUILD_TOP/external/chromium-trace/systrace.py --from-file=boot_trace</code>
 </pre>
 
 <p class="note">
 <strong>Note:</strong> Chrome cannot handle files that are too large. Consider
-cutting the <code>boot_trace</code> file using <code>tail</code>,
-<code>head</code>, or <code>grep</code> for necessary portions. And
-I/O analysis often requires analyzing the captured <code>boot_trace</code>
+cutting the <code translate="no" dir="ltr">boot_trace</code> file using <code translate="no" dir="ltr">tail</code>,
+<code translate="no" dir="ltr">head</code>, or <code translate="no" dir="ltr">grep</code> for necessary portions. And
+I/O analysis often requires analyzing the captured <code translate="no" dir="ltr">boot_trace</code>
 directly, as there are too many events.
 </p>
 
@@ -1253,17 +1343,17 @@ directly, as there are too many events.
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1470,8 +1560,9 @@ directly, as there are too many events.
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1537,54 +1628,49 @@ directly, as there are too many events.
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/perf/boot-times by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:14:14 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/perf/boot-times by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:58:41 GMT -->
 </html>

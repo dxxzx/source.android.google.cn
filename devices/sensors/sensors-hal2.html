@@ -1,0 +1,1474 @@
+<!doctype html>
+<html       lang="en"      dir="ltr">
+  
+<!-- Mirrored from source.android.google.cn/devices/sensors/sensors-hal2 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:58:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="sensors-hal2.html">      
+<title>Sensors HAL 2.0 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Sensors HAL 2.0 &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="sensors-hal2.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+
+  
+
+  
+
+    </head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        block-apix        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Develop"
+   aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search
+            enable-suggestions
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
+    <div class="devsite-search-container">
+      <div class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Develop
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Audio"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Audio"
+   >
+  Audio
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../camera.html"
+   class="gc-analytics-event"
+   title="Camera"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Camera"
+   >
+  Camera
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech/connect.html"
+   class="gc-analytics-event"
+   title="Connectivity"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Connectivity"
+   >
+  Connectivity
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../graphics.html"
+   class="gc-analytics-event"
+   title="Graphics"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Graphics"
+   >
+  Graphics
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../interaction.html"
+   class="gc-analytics-event"
+   title="Interaction"
+   aria-label="Interaction, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Interaction"
+   >
+  Interaction
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../media.html"
+   class="gc-analytics-event"
+   title="Media"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Media"
+   >
+  Media
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../storage.html"
+   class="gc-analytics-event"
+   title="Storage"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Storage"
+   >
+  Storage
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav scrollbars >
+                  
+
+
+
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Audio">
+      <span class="devsite-nav-text" >Audio</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../camera.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Camera">
+      <span class="devsite-nav-text" >Camera</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../tech/connect.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Connectivity">
+      <span class="devsite-nav-text" >Connectivity</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../graphics.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Graphics">
+      <span class="devsite-nav-text" >Graphics</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../interaction.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Interaction">
+      <span class="devsite-nav-text" menu="_book">Interaction</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../media.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Media">
+      <span class="devsite-nav-text" >Media</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../storage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Storage">
+      <span class="devsite-nav-text" >Storage</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../tech.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../interaction.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Automotive">Automotive</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../automotive.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio">Audio</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../automotive/audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/audio-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Audio HAL">Audio HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/audio-control.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AudioControl HAL">AudioControl HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/interaction-sequences.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction Sequences">Interaction Sequences</span></a></li><li class="devsite-nav-item"><a href="../automotive/audio/multi-zone.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multi-Zone">Multi-Zone</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../automotive/camera-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Camera HAL">Camera HAL</span></a></li><li class="devsite-nav-item"><a href="../automotive/ivi_connectivity.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="IVI Connectivity">IVI Connectivity</span></a></li><li class="devsite-nav-item"><a href="../automotive/properties.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Vehicle Properties">Vehicle Properties</span></a></li><li class="devsite-nav-item"><a href="../automotive/power.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Management">Power Management</span></a></li><li class="devsite-nav-item"><a href="../automotive/garage_mode.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Garage Mode">Garage Mode</span></a></li><li class="devsite-nav-item"><a href="../automotive/radio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Radio with Media">Radio with Media</span></a></li><li class="devsite-nav-item"><a href="../tech/perf/flash-wear.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Flash Wear Management">Flash Wear Management</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Input">Input</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../input.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../input/key-layout-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Key Layout Files">Key Layout Files</span></a></li><li class="devsite-nav-item"><a href="../input/key-character-map-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Key Character Map Files">Key Character Map Files</span></a></li><li class="devsite-nav-item"><a href="../input/input-device-configuration-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Input Device Configuration Files">Input Device Configuration Files</span></a></li><li class="devsite-nav-item"><a href="../input/migration-guide.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Migration Guide">Migration Guide</span></a></li><li class="devsite-nav-item"><a href="../input/keyboard-devices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Keyboard Devices">Keyboard Devices</span></a></li><li class="devsite-nav-item"><a href="../input/touch-devices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Touch Devices">Touch Devices</span></a></li><li class="devsite-nav-item"><a href="../input/getevent.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Getevent">Getevent</span></a></li><li class="devsite-nav-item"><a href="../input/validate-keymaps.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Validate Keymaps">Validate Keymaps</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Neural Networks">Neural Networks</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../neural-networks.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/ahardwarebuffer.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AHardware Buffer">AHardware Buffer</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/burst-executions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Burst Executions and Fast Message Queues">Burst Executions and Fast Message Queues</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/compilation-caching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Compilation Caching">Compilation Caching</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/device-discovery.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Discovery and Assignment">Device Discovery and Assignment</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/vendor-extensions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Vendor Extensions">Vendor Extensions</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Peripherals">Peripherals</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio Accessories">Audio Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="3.5 mm Headset">3.5 mm Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/plug-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/jack-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="USB Headset">USB Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/usb-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/usb-adapter.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Adapter Spec">Adapter Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/usb-device.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../accessories/headset/expected-behavior.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Expected Behavior">Expected Behavior</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Testing">Testing</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Custom Accessories">Custom Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/custom.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="AOA">AOA</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/protocol.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../accessories/aoa2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AOA 2.0">AOA 2.0</span></a></li><li class="devsite-nav-item"><a href="../accessories/aoa.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AOA 1.0">AOA 1.0</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../accessories/stylus.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Stylus">Stylus</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors">Sensors</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="sensor-stack.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Stack">Sensor Stack</span></a></li><li class="devsite-nav-item"><a href="sensor-types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Types">Sensor Types</span></a></li><li class="devsite-nav-item"><a href="interaction.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction">Interaction</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Power">Power</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="batching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Batching">Batching</span></a></li><li class="devsite-nav-item"><a href="power-use.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Consumption">Power Consumption</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Modes">Modes</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="report-modes.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reporting Modes">Reporting Modes</span></a></li><li class="devsite-nav-item"><a href="suspend-mode.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Suspend Mode">Suspend Mode</span></a></li><li class="devsite-nav-item"><a href="sensors-off.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensors Off">Sensors Off</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors HAL">Sensors HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="sensors-hal2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensors HAL 2.0">Sensors HAL 2.0</span></a></li><li class="devsite-nav-item"><a href="hal-interface.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensors HAL 1.0">Sensors HAL 1.0</span></a></li><li class="devsite-nav-item"><a href="versioning.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Version Deprecation">Version Deprecation</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="TV">TV</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tv.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../tv/hdmi-cec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="HDMI-CEC Control Service">HDMI-CEC Control Service</span></a></li><li class="devsite-nav-item"><a href="../tv/multimedia-tunneling.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multimedia Tunneling">Multimedia Tunneling</span></a></li><li class="devsite-nav-item"><a href="../tv/reference-tv-app.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reference TV App">Reference TV App</span></a></li><li class="devsite-nav-item"><a href="../tv/customize-tv-app.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Customize the TV App">Customize the TV App</span></a></li></ul></devsite-expandable-nav></li>
+          </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content>
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">        
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Develop
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../interaction.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Interaction
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Sensors HAL 2.0</h1>
+    
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  Copyright 2019 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+
+
+<p>The Sensors Hardware Abstraction Layer (HAL) is the interface between the
+Android Sensors Framework and a device&#39;s sensors, such as an accelerometer or
+gyroscope. The Sensors HAL defines the functions that must be implemented to
+allow the framework to control the sensors.</p>
+
+<p>Sensors HAL 2.0 is available in Android 10 and higher
+for new and upgraded devices. Sensors HAL 2.0 is based on <a href="hal-interface.html">Sensors
+HAL 1.0</a> but has several key differences, which
+prevents it from being backwards compatible. Sensors HAL 2.0 uses
+<a href="../architecture/hidl/fmq.html">Fast Message Queues</a>
+(FMQ) to send sensor events from the HAL into the Android Sensors Framework.</p>
+
+<h2 id="examples_and_source">Examples and source</h2>
+
+<p>The main source of documentation for Sensors HAL 2.0 is within the HAL
+definition at
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/master/sensors/2.0/ISensors.hal" class="external">hardware/interfaces/sensors/2.0/ISensors.hal</a>.
+If there is a conflict of requirements between this page and <code translate="no" dir="ltr">ISensors.hal</code>,
+use the requirement in <code translate="no" dir="ltr">ISensors.hal</code>.</p>
+
+<p>A default implementation is provided at
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/master/sensors/2.0/default/" class="external">hardware/interfaces/sensors/2.0/default</a>.
+Unlike previous versions of the Sensors HAL, the default implementation is
+provided only as a reference and should not be shipped on any product. This
+implementation demonstrates the concept of using two FMQs to communicate with
+the framework.</p>
+
+<h2 id="implementing_sensors_hal_20">Implementing Sensors HAL 2.0</h2>
+
+<p>To implement Sensors HAL 2.0, an object must extend the ISensors interface and
+implement all functions defined in
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/master/sensors/2.0/ISensors.hal" class="external"><code translate="no" dir="ltr">ISensors.hal</code></a>.</p>
+
+<h3 id="initializing_the_hal">Initializing the HAL</h3>
+
+<p>The Sensors HAL must be initialized by the Android Sensors Framework before it
+can be used. The framework calls the <code translate="no" dir="ltr">initialize()</code> function to provide three
+parameters to the Sensors HAL: two FMQ Descriptors and one pointer to an
+<code translate="no" dir="ltr">ISensorsCallback</code> object.</p>
+
+<p>The HAL uses the first descriptor to create the Event FMQ used to write sensor
+events to the framework. The HAL uses the second descriptor to create the Wake
+Lock FMQ used to synchronize when the HAL releases its wake lock for <code translate="no" dir="ltr">WAKE_UP</code>
+sensor events. The HAL must save a pointer to the <code translate="no" dir="ltr">ISensorsCallback</code> object so
+that any necessary callback functions may be invoked.</p>
+
+<p>The <code translate="no" dir="ltr">initialize()</code> function should be the first function called when
+initializing the Sensors HAL.</p>
+
+<h3 id="exposing_available_sensors">Exposing available sensors</h3>
+
+<p>To get a list of all of the available static sensors in the device, use the
+<code translate="no" dir="ltr">getSensorsList()</code> function. This function returns a list of sensors, each
+uniquely identified by its handle. The handle for a given sensor must not change
+when the process hosting the Sensors HAL restarts. Handles may change across
+device reboots, and across System Server restarts.</p>
+
+<p>If several sensors share the same sensor type and wake-up property, then the
+first sensor in the list is called the &quot;default&quot; sensor and is returned to
+applications that utilize the <code translate="no" dir="ltr">getDefaultSensor(int sensorType, bool wakeUp)</code>
+API.</p>
+
+<h4 id="stability_of_sensors_list">Stability of sensors list</h4>
+
+<p>After a Sensors HAL restart, if the data returned by <code translate="no" dir="ltr">getSensorsList()</code>
+indicates a significant change compared to the sensor list retrieved before the
+restart, the framework triggers a restart of the Android Runtime. Significant
+changes to the sensor list include cases where a sensor with a given handle is
+missing or has changed attributes, or where new sensors are introduced. Although
+restarting the Android Runtime is disruptive to the user, it is required because
+the Android framework can no longer meet the Android API contract that static
+(non-dynamic) sensors do not change during the lifetime of an application. This
+may also prevent the framework from re-establishing active sensor requests made
+by applications. Therefore, HAL vendors are advised to prevent avoidable sensor
+list changes.</p>
+
+<p>To ensure stable sensor handles, the HAL must deterministically map a given
+physical sensor in the device to its handle. Although no specific implementation
+is mandated by the Sensors HAL interface, developers have a number of options
+available to meet this requirement.</p>
+
+<p>For example, the sensor list can be sorted using a combination of each sensor&#39;s
+fixed attributes, such as vendor, model, and sensor type. Another option relies
+on the fact that the device&#39;s set of static sensors is fixed in hardware, so the
+HAL needs to know when all expected sensors have completed initialization before
+returning from <code translate="no" dir="ltr">getSensorsList()</code>. This list of expected sensors can be compiled
+into the HAL binary or stored in a configuration file in the filesystem, and the
+order of appearance can be used to derive stable handles. Although the best
+solution depends on your HAL&#39;s specific implementation details, the key
+requirement is that sensor handles do not change across HAL restarts.</p>
+
+<h3 id="configuring_sensors">Configuring sensors</h3>
+
+<p>Before a sensor is activated, the sensor must be configured with a sampling
+period and maximum reporting latency via the <code translate="no" dir="ltr">batch()</code> function.</p>
+
+<p>A sensor must be able to be reconfigured at any time via <code translate="no" dir="ltr">batch()</code> without the
+loss of sensor data.</p>
+
+<h4 id="sampling_period">Sampling period</h4>
+
+<p>The sampling period has a different meaning based on the sensor type that is
+being configured:</p>
+
+<ul>
+<li>Continuous: The rate at which sensor events are generated</li>
+<li>On-Change: Events are generated no faster than the sampling period and may be
+generated at a rate slower than the sampling period if the measured value does
+not change.</li>
+<li>One-shot: Sampling period is ignored</li>
+<li>Special: For more details, see
+<a href="sensor-types.html">Sensor Type descriptions</a>.</li>
+</ul>
+
+<p>To learn about the interaction between sampling period and a sensor&#39;s reporting
+mode, see <a href="report-modes.html">Reporting Modes</a>.</p>
+
+<h4 id="maximum_reporting_latency">Maximum reporting latency</h4>
+
+<p>The maximum reporting latency sets the maximum time in nanoseconds, by which
+events can be delayed and stored in the hardware FIFO before being written to
+the Event FMQ through the HAL while the SoC is awake.</p>
+
+<p>A value of zero signifies that the events must be reported as soon as they are
+measured, either skipping the FIFO altogether, or emptying the FIFO as soon as
+one event from the sensor is present in the FIFO.</p>
+
+<p>For example, an accelerometer activated at 50Hz with a maximum reporting latency
+of 0 will trigger interrupts 50 times per second when the SoC is awake.</p>
+
+<p>When the maximum reporting latency is greater than zero, sensor events do not
+need to be reported as soon as they are detected. Events can be temporarily
+stored in the hardware FIFO and reported in batches, as long as no event is
+delayed by more than the maximum reporting latency. All events since the
+previous batch are recorded and returned at once. This reduces the amount of
+interrupts sent to the SoC and allows the SoC to switch to a lower power mode
+while the sensor is capturing and batching data.</p>
+
+<p>Each event has a timestamp associated with it. Delaying the time at which an
+event is reported must not impact the event timestamp. The timestamp must be
+accurate and correspond to the time at which the event physically happened, not
+the time it was reported.</p>
+
+<p>For additional information and requirements on reporting sensor events with
+non-zero maximum reporting latency, see <a href="batching.html">Batching</a>.</p>
+
+<h3 id="activating_sensors">Activating sensors</h3>
+
+<p>The framework enables and disables sensors via the <code translate="no" dir="ltr">activate()</code> function. Prior
+to activating a sensor, the framework must first configure the sensor via
+<code translate="no" dir="ltr">batch()</code>.</p>
+
+<p>Once a sensor is deactivated, additional sensor events from that sensor must not
+be written to the Event FMQ.</p>
+
+<h3 id="flushing_sensors">Flushing sensors</h3>
+
+<p>If a sensor is configured to batch sensor data, the framework can force
+an immediate flush of batched sensor events by calling <code translate="no" dir="ltr">flush()</code>. This causes
+the batched sensor events for the specified sensor handle to be immediately
+written to the Event FMQ. The Sensors HAL must append a flush complete event
+to the end of the sensor events that are written as a result of a <code translate="no" dir="ltr">flush()</code>.</p>
+
+<p>The flush happens asynchronously (i.e.: this function must return immediately).
+If the implementation uses a single FIFO for several sensors, that FIFO is
+flushed and the flush complete event is added only for the specified sensor.</p>
+
+<p>If the specified sensor has no FIFO (no buffering possible), or if the FIFO was
+empty at the time of the call, <code translate="no" dir="ltr">flush()</code> must still succeed and send a flush
+complete event for that sensor. This applies to all sensors other than one-shot
+sensors.</p>
+
+<p>If <code translate="no" dir="ltr">flush()</code> is called for a one-shot sensor, then <code translate="no" dir="ltr">flush()</code> must return
+BAD_VALUE and not generate a flush complete event.</p>
+
+<h3 id="writing_sensor_events_to_the_fmq">Writing sensor events to the FMQ</h3>
+
+<p>The Event FMQ is used by the Sensors HAL to push sensor events into the Android
+Sensors framework.</p>
+
+<p>The Event FMQ is a synchronized FMQ, which means that any attempt to write more
+events to the FMQ than the available space allows will result in a failed
+write. In such case, the HAL should determine whether to write the current set
+of events as two smaller groups of events or to write all of the events
+together when enough space is available.</p>
+
+<p>When the Sensors HAL has written the desired number of sensor events to the
+Event FMQ, the Sensors HAL must notify the framework that events are ready by
+writing the <code translate="no" dir="ltr">EventQueueFlagBits::READ_AND_PROCESS</code> bit to the Event FMQ&#39;s
+<code translate="no" dir="ltr">EventFlag::wake</code> function. The EventFlag can be created from the Event FMQ via
+<code translate="no" dir="ltr">EventFlag::createEventFlag</code> and the Event FMQ&#39;s <code translate="no" dir="ltr">getEventFlagWord()</code> function.</p>
+
+<p>Sensors HAL 2.0 supports both <code translate="no" dir="ltr">write</code> and <code translate="no" dir="ltr">writeBlocking</code> on the Event FMQ. The
+default implementation provides a reference for using <code translate="no" dir="ltr">write</code>. If the
+<code translate="no" dir="ltr">writeBlocking</code> function is used, the <code translate="no" dir="ltr">readNotification</code> flag must be set to
+<code translate="no" dir="ltr">EventQueueFlagBits::EVENTS_READ</code>, which is set by the framework when it reads
+events from the Event FMQ. The write notification flag must be set to
+<code translate="no" dir="ltr">EventQueueFlagBits::READ_AND_PROCESS</code>, which notifies the framework that events
+have been written to the Event FMQ.</p>
+
+<h3 id="wake_up_events">WAKE_UP events</h3>
+
+<p><code translate="no" dir="ltr">WAKE_UP</code> events are sensor events that cause the application processor (AP) to
+wake up and handle the event immediately. Whenever a <code translate="no" dir="ltr">WAKE_UP</code> event is written
+to the Event FMQ, the Sensors HAL must secure a wake lock to ensure that the
+system stays awake until the framework can handle the event. Upon receiving a
+<code translate="no" dir="ltr">WAKE_UP</code> event, the framework will secure its own wake lock, allowing for the
+Sensors HAL to release its wake lock. To synchronize when the Sensors HAL
+releases its wake lock, use the Wake Lock FMQ.</p>
+
+<p>The Sensors HAL must read the Wake Lock FMQ to determine the number of <code translate="no" dir="ltr">WAKE_UP</code>
+events that the framework has handled. The HAL should only release its wake lock
+for <code translate="no" dir="ltr">WAKE_UP</code> events if the total number of unhandled <code translate="no" dir="ltr">WAKE_UP</code> events is zero.
+After handling sensor events, the framework counts the number of events that are
+marked as <code translate="no" dir="ltr">WAKE_UP</code> events and writes this number back to the Wake Lock FMQ.</p>
+
+<p>The framework will set the <code translate="no" dir="ltr">WakeLockQueueFlagBits::DATA_WRITTEN</code> write
+notification on the Wake Lock FMQ whenever it writes data to the Wake Lock FMQ.</p>
+
+<h3 id="dynamic_sensors">Dynamic sensors</h3>
+
+<p>Dynamic sensors are sensors that are not physically a part of the device but can
+be used as input to the device, such as a gamepad with an accelerometer.</p>
+
+<p>When a dynamic sensor is connected, the <code translate="no" dir="ltr">onDynamicSensorConnected</code> function in
+<code translate="no" dir="ltr">ISensorsCallback</code> must be called from the Sensors HAL. This notifies the
+framework of the new dynamic sensor and allows the sensor to be controlled via
+the framework and to have the sensor&#39;s events be consumed by clients.</p>
+
+<p>Similarly, when a dynamic sensor is disconnected, the
+<code translate="no" dir="ltr">onDynamicSensorDisconnected</code> function in <code translate="no" dir="ltr">ISensorsCallback</code> must be called so
+that the framework can remove any sensor that is no longer available.</p>
+
+<h3 id="direct_channel">Direct channel</h3>
+
+<p>Direct channel is a method of operation where sensor events are written to
+specific memory instead of to the Event FMQ bypassing the Android Sensors
+Framework. A client that registers a direct channel must read the sensor events
+directly from the memory that was used to create the direct channel and will not
+receive the sensor events via the framework. The <code translate="no" dir="ltr">configDirectReport()</code>function
+is similar to <code translate="no" dir="ltr">batch()</code> for normal operation and configures the direct report
+channel.</p>
+
+<p>The <code translate="no" dir="ltr">registerDirectChannel()</code> and <code translate="no" dir="ltr">unregisterDirectChannel()</code> functions creates
+or destroys a new direct channel.</p>
+
+<h3 id="operation_modes">Operation modes</h3>
+
+<p>The <code translate="no" dir="ltr">setOperationMode()</code>function allows for the framework to configure a sensor
+so that the framework can inject sensor data into the sensor. This is useful for
+testing, especially for algorithms that exist below the framework.</p>
+
+<p>The <code translate="no" dir="ltr">injectSensorData()</code> function is normally used to push operational
+parameters into the Sensors HAL. The function can also be used to inject sensor
+events into a specific sensor.</p>
+
+<h2 id="validation">Validation</h2>
+
+<p>To validate your implementation of the Sensors HAL, run the sensor CTS and VTS
+tests.</p>
+
+<h3 id="cts_tests">CTS Tests</h3>
+
+<p>Sensor CTS tests exist in both automated CTS tests and the manual CTS Verifier
+application.</p>
+
+<p>The automated tests are located in
+<a href="https://android.googlesource.com/platform/cts/+/master/tests/sensor/src/android/hardware/cts" class="external">cts/tests/sensor/src/android/hardware/cts</a>.
+These tests verify standard functionality of sensors, such as activating
+sensors, batching, and sensor event rates.</p>
+
+<p>The CTS Verifier tests are located in
+<a href="https://android.googlesource.com/platform/cts/+/master/apps/CtsVerifier/src/com/android/cts/verifier/sensors/" class="external">cts/apps/CtsVerifier/src/com/android/cts/verifier/sensors</a>.
+These tests require manual input from the test operator and ensure that sensors
+report accurate values.</p>
+
+<p>Passing the CTS tests is critical to ensuring that the device under test meets
+all CDD requirements.</p>
+
+<h3 id="vts_tests">VTS tests</h3>
+
+<p>VTS tests for Sensors HAL 2.0 are located in
+<a href="https://android.googlesource.com/platform/hardware/interfaces/+/master/sensors/2.0/vts/functional" class="external">hardware/interfaces/sensors/2.0/vts</a>.
+These tests ensure that the Sensors HAL is implemented properly and that all
+requirements within<code translate="no" dir="ltr">ISensors.hal</code> and <code translate="no" dir="ltr">ISensorsCallback.hal</code> are properly met.</p>
+
+<h2 id="upgrading_to_sensors_hal_20_from_10">Upgrading to Sensors HAL 2.0 from 1.0</h2>
+
+<p>When upgrading to Sensors HAL 2.0 from 1.0, ensure your HAL implementation meets
+the following requirements.</p>
+
+<h3 id="initializing_the_hal_2">Initializing the HAL</h3>
+
+<p>The <code translate="no" dir="ltr">initialize()</code> function must be supported to establish FMQs between the
+framework and HAL.</p>
+
+<h3 id="exposing_available_sensors_2">Exposing available sensors</h3>
+
+<p>In Sensors HAL 2.0, the <code translate="no" dir="ltr">getSensorsList()</code> function must return the same value
+during a single device boot, even across Sensors HAL restarts. A new requirement
+of the <code translate="no" dir="ltr">getSensorsList()</code> function is that it must return the same value during
+a single device boot, even across Sensors HAL restarts. This allows for the
+framework to attempt to re-establish sensor connections if the system server
+restarts. The value returned by <code translate="no" dir="ltr">getSensorsList()</code> can change once the device
+performs a reboot.</p>
+
+<h3 id="writing_sensor_events_to_the_fmq_2">Writing sensor events to the FMQ</h3>
+
+<p>Instead of waiting for <code translate="no" dir="ltr">poll()</code> to be called, in Sensors HAL 2.0, the Sensors
+HAL must proactively write sensor events to the Event FMQ whenever sensor events
+are available. The HAL is also responsible for writing the correct bits to the
+EventFlag to cause an FMQ read within the framework.</p>
+
+<h3 id="wake_up_events_2">WAKE_UP events</h3>
+
+<p>In Sensors HAL 1.0, the HAL was able to release its wake lock for any <code translate="no" dir="ltr">WAKE_UP</code>
+event on any subsequent call to <code translate="no" dir="ltr">poll()</code> after a <code translate="no" dir="ltr">WAKE_UP</code> was posted to
+<code translate="no" dir="ltr">poll()</code> because this indicates that the framework had processed all sensor
+events and had obtained a wake lock, if necessary. Because, in Sensors HAL 2.0,
+the HAL no longer knows when the framework has processed events written to the
+FMQ, the Wake Lock FMQ allows the framework to communicate to the HAL when it
+has handled <code translate="no" dir="ltr">WAKE_UP</code> events.</p>
+
+<p>In Sensors HAL 2.0, the wake lock secured by the Sensors HAL for <code translate="no" dir="ltr">WAKE_UP</code>
+events must start with <code translate="no" dir="ltr">SensorsHAL_WAKEUP</code>.</p>
+
+<h3 id="dynamic_sensors_2">Dynamic sensors</h3>
+
+<p>Dynamic sensors were returned via the <code translate="no" dir="ltr">poll()</code> function in Sensors HAL 1.0.
+Sensors HAL 2.0 requires that <code translate="no" dir="ltr">onDynamicSensorsConnected</code> and
+<code translate="no" dir="ltr">onDynamicSensorsDisconnected</code> in <code translate="no" dir="ltr">ISensorsCallback</code> be called whenever dynamic
+sensor connections change. These callbacks are available as part of the
+<code translate="no" dir="ltr">ISensorsCallback</code> pointer that is provided via the <code translate="no" dir="ltr">initialize()</code> function.</p>
+
+<h3 id="operation_modes_2">Operation modes</h3>
+
+<p>The <code translate="no" dir="ltr">DATA_INJECTION</code> mode for <code translate="no" dir="ltr">WAKE_UP</code> sensors must be supported in Sensors HAL
+2.0.</p>
+
+<h3 id="multi-hal_support">Multi-HAL support</h3>
+
+<p>The Android Sensors Framework does not natively support Sensors HAL 2.0 with
+multi-HAL.</p>
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/sensors/sensors-hal2 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:58:11 GMT -->
+</html>

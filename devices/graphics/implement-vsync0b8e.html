@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="zh_cn">
+<html       lang="zh-CN"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/graphics/implement-vsync.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:47:03 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/graphics/implement-vsync.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 20:59:06 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>实现 VSYNC &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="实现 VSYNC &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="implement-vsync.html">
-
-  <meta property="og:locale" content="zh_cn">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="implement-vsync.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="implement-vsync.html">      
+<title>实现 VSYNC &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="实现 VSYNC &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="implement-vsync.html">
+
+  <meta property="og:locale" content="zh_cn">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../setup0b8e.html?hl=zh-cn"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab active>
-          <a href="../audio0b8e.html?hl=zh-cn"
+          <a href="../../devices0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="Develop"
    aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../tech/dalvik0b8e.html?hl=zh-cn"
+          <a href="../tech0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results?hl=zh-cn" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="搜索"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="搜索框">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          转到源代码
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  转到源代码
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../audio0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../devices0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,9 +243,20 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
+          <a href="../../devices0b8e.html?hl=zh-cn"
+   class="gc-analytics-event"
+   title="概览"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: 概览"
+   >
+  概览
+</a>
+
+        </tab>
+                        <tab >
           <a href="../audio0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="Audio"
@@ -254,7 +301,7 @@
 
         </tab>
                         <tab >
-          <a href="../input0b8e.html?hl=zh-cn"
+          <a href="../interaction0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="Interaction"
            data-category="Site-Wide Custom Events"
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../audio.html"
+                                <a href="../../devices.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -350,6 +413,16 @@
         </a>
   
                                             <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: 概览">
+      <span class="devsite-nav-text" >概览</span>
+        </a>
+  </li>
+
                                                                                                                       <li class="devsite-nav-item">
     <a href="../audio.html"
           class="devsite-nav-title gc-analytics-event
@@ -387,14 +460,14 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Graphics">
       <span class="devsite-nav-text" menu="_book">Graphics</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../input.html"
+    <a href="../interaction.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -426,7 +499,7 @@
                                   </ul>
                           </li>
                       <li class="devsite-nav-item">
-                                <a href="../tech/dalvik.html"
+                                <a href="../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -458,66 +531,67 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../graphics.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../graphics.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Architecture">Architecture</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="architecture.html"
+  <li class="devsite-nav-item"><a href="arch-bq-gralloc.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="arch-bq-gralloc.html"
+   ><span class="devsite-nav-text" title="BufferQueue and Gralloc">BufferQueue and Gralloc</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Surface and SurfaceHolder">Surface and SurfaceHolder</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-sh.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="BufferQueue">BufferQueue</span></a></li><li class="devsite-nav-item"><a href="arch-sf-hwc.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="SurfaceFlinger and HWC">SurfaceFlinger and HWC</span></a></li><li class="devsite-nav-item"><a href="arch-sh.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Surface and SurfaceHolder">Surface and SurfaceHolder</span></a></li><li class="devsite-nav-item"><a href="arch-egl-opengl.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="OpenGL ES">OpenGL ES</span></a></li><li class="devsite-nav-item"><a href="renderer.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="OpenGLRenderer Configuration">OpenGLRenderer Configuration</span></a></li><li class="devsite-nav-item"><a href="arch-vulkan.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Vulkan">Vulkan</span></a></li><li class="devsite-nav-item"><a href="arch-sv-glsv.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="arch-sv-glsv.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="SurfaceView">SurfaceView</span></a></li><li class="devsite-nav-item"><a href="arch-st.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="SurfaceTexture">SurfaceTexture</span></a></li><li class="devsite-nav-item"><a href="arch-tv.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="TextureView">TextureView</span></a></li><li class="devsite-nav-item"><a href="arch-gameloops.html"
+   ><span class="devsite-nav-text" title="TextureView">TextureView</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="SurfaceFlinger and WindowManager">SurfaceFlinger and WindowManager</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="surfaceflinger-windowmanager.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Game Loops">Game Loops</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Implementation">Implementation</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="implement.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="tracing-win-transitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Tracing Window Transitions">Tracing Window Transitions</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Hardware Composer HAL">Hardware Composer HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="hwc.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-hwc.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Hardware Composer HAL">Hardware Composer HAL</span></a></li><li class="devsite-nav-item"><a href="implement-vsync.html"
+   ><span class="devsite-nav-text" title="Implementing the HWC">Implementing the HWC</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="layers-displays.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="VSYNC">VSYNC</span></a></li><li class="devsite-nav-item"><a href="implement-vulkan.html"
+   ><span class="devsite-nav-text" title="Layers and Displays">Layers and Displays</span></a></li>
+  <li class="devsite-nav-item"><a href="implement-vsync.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Vulkan">Vulkan</span></a></li><li class="devsite-nav-item"><a href="implement-vdisplays.html"
+   ><span class="devsite-nav-text" title="VSYNC">VSYNC</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="OpenGL ES">OpenGL ES</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-egl-opengl.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Virtual Displays">Virtual Displays</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="OpenGL ES Testing">OpenGL ES Testing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="testing.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-opengl-es.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="build-tests.html"
+   ><span class="devsite-nav-text" title="Implementing OpenGL ES">Implementing OpenGL ES</span></a></li><li class="devsite-nav-item"><a href="renderer.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Building Test Programs">Building Test Programs</span></a></li><li class="devsite-nav-item"><a href="port-tests.html"
+   ><span class="devsite-nav-text" title="OpenGLRenderer Configuration">OpenGLRenderer Configuration</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vulkan">Vulkan</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-vulkan.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Porting the Test Framework">Porting the Test Framework</span></a></li><li class="devsite-nav-item"><a href="run-tests.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-vulkan.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Running the Tests">Running the Tests</span></a></li><li class="devsite-nav-item"><a href="automate-tests.html"
+   ><span class="devsite-nav-text" title="Implementing Vulkan">Implementing Vulkan</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="sync.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Automating the Tests">Automating the Tests</span></a></li><li class="devsite-nav-item"><a href="test-groups.html"
+   ><span class="devsite-nav-text" title="Synchronization Framework">Synchronization Framework</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Testing">Testing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="implement.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Using Special Test Groups">Using Special Test Groups</span></a></li><li class="devsite-nav-item"><a href="cts-integration.html"
+   ><span class="devsite-nav-text" title="Implementation Tests">Implementation Tests</span></a></li><li class="devsite-nav-item"><a href="cts-integration.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Integrating with Android CTS">Integrating with Android CTS</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="tracing-win-transitions.html"
+   ><span class="devsite-nav-text" title="Integrating with Android CTS">Integrating with Android CTS</span></a></li><li class="devsite-nav-item"><a href="deqp-testing.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Tracing Window Transitions">Tracing Window Transitions</span></a></li>
-                      </ul>
+   ><span class="devsite-nav-text" title="deqp Testing">deqp Testing</span></a></li></ul></devsite-expandable-nav></li>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -525,16 +599,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -544,9 +619,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../audio0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../devices0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -555,8 +631,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../graphics0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -573,8 +650,8 @@
 
               <h1 class="devsite-page-title">实现 VSYNC</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -604,7 +681,7 @@
 int (waitForVsync*) (int64_t *timestamp)
 </pre>
 
-<p>在发生 VSYNC 并返回实际 VSYNC 的时间戳之前，这个函数会处于阻塞状态。每次发生 VSYNC 时，都必须发送一条消息。客户端会以指定的间隔收到 VSYNC 时间戳，或者以 1 为间隔连续收到 VSYNC 时间戳。您必须实现最大延迟时间为 1 毫秒（建议 0.5 毫秒或更短）的 VSYNC；返回的时间戳必须非常准确。</p>
+<p>在发生 VSYNC 并返回实际 VSYNC 的时间戳之前，这个函数会处于阻塞状态。每次发生 VSYNC 时，都必须发送一条消息。客户端会以指定的间隔收到 VSYNC 时间戳，或者以 1 为间隔连续收到 VSYNC 时间戳。实现 VSYNC 的最大延迟时间为 1 毫秒（建议 0.5 毫秒或更短）；返回的时间戳必须非常准确。</p>
 
 <h2 id="explicit_synchronization">显式同步</h2>
 
@@ -618,12 +695,12 @@ int (waitForVsync*) (int64_t *timestamp)
 
 <p><code>sync_timeline</code> 是一个单调递增的时间轴，应为每个驱动程序实例（如 GL 上下文、显示控制器或 2D 位块传送器）实现该时间轴。这本质上是提交到内核的针对特定硬件的作业的计数器。它为相关操作的顺序提供了保证，并允许特定于硬件的实现。</p>
 
-<p>sync_timeline 作为仅限 CPU 的参考实现进行提供（称为 <code>sw_sync</code>（软件同步））。如果可能，请使用它而不是 <code>sync_timeline</code>，以节省资源并避免复杂性。如果您没有使用硬件资源，则 <code>sw_sync</code> 应该就够了。</p>
+<p>sync_timeline 作为仅限 CPU 的参考实现（称为 <code>sw_sync</code>，即软件同步）提供。尽量避免使用 <code>sync_timeline</code>，以节省资源并避免复杂性。如果您没有使用硬件资源，则 <code>sw_sync</code> 应该就够了。</p>
 
 <p>如果必须实现 <code>sync_timeline</code>，请使用 <code>sw_sync</code> 驱动程序作为起点，并遵循以下准则：</p>
 
 <ul>
-<li>为所有驱动程序、时间轴和栅栏指定实用的名称。这可简化调试。</li>
+<li>为所有驱动程序、时间轴和栅栏指定实用的名称。这样可以简化调试。</li>
 <li>在时间轴中实现 <code>timeline_value_str</code> 和 <code>pt_value_str</code> 运算符，使调试输出更易于理解。</li>
 <li>如果您希望用户空间库（如 GL 库）可以访问时间轴的私有数据，请实现填充 driver_data 运算符。这能让您获得不可变 sync_fence 和 <code>sync_pts</code> 的相关信息，从而在其基础上构建命令行。</li>
 </ul>
@@ -631,7 +708,7 @@ int (waitForVsync*) (int64_t *timestamp)
 <p>实现 <code>sync_timeline</code> 时，<strong>请勿</strong>：</p>
 
 <ul>
-<li>使其基于任何实际的时间。例如，当一个挂钟到达某个时间点或其他工作可能结束时的时间点。最好创建一个您可以控制的抽象时间轴。</li>
+<li>使其基于任何实际的时间，例如，当一个挂钟到达某个时间点或其他工作可能结束时的时间点。最好创建一个您可以控制的抽象时间轴。</li>
 <li>允许用户空间明确创建栅栏或发出栅栏信号。这可导致用户管道组件发起可阻塞所有功能的拒绝服务攻击。这是因为用户空间不能代表内核做出承诺。</li>
 <li>明确访问 <code>sync_timeline</code>、<code>sync_pt</code> 或 <code>sync_fence</code> 元素，因为 API 应该提供所有必需的函数。</li>
 </ul>
@@ -704,7 +781,7 @@ struct sync_fence* display_buffer(struct dma_buf *buf, struct sync_fence
 
 <ul>
 <li>如果您从同步框架收到栅栏文件描述符，就必须将其关闭。</li>
-<li>如果您将栅栏文件描述符返回到同步框架，框架将关闭它。</li>
+<li>如果您将栅栏文件描述符返回到同步框架，框架会将其关闭。</li>
 <li>要继续使用栅栏文件描述符，您必须复制该描述符。</li>
 </ul>
 
@@ -812,17 +889,17 @@ struct sync_fence* display_buffer(struct dma_buf *buf, struct sync_fence
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1029,8 +1106,9 @@ struct sync_fence* display_buffer(struct dma_buf *buf, struct sync_fence
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1096,54 +1174,49 @@ struct sync_fence* display_buffer(struct dma_buf *buf, struct sync_fence
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'zh_cn',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"zh_cn",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/graphics/implement-vsync.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:47:05 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/graphics/implement-vsync.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 20:59:09 GMT -->
 </html>

@@ -1,25 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/architecture/kernel/bpf by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:09:16 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/architecture/kernel/bpf by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:55:04 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Extending the kernel with eBPF &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Extending the kernel with eBPF &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="bpf.html">
-
-  <meta property="og:locale" content="en">
-
-
-
-  
-
-  
-
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -27,26 +12,46 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="bpf.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="bpf.html">      
+<title>Extending the kernel with eBPF &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Extending the kernel with eBPF &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="bpf.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+
+  
+
+  
+
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -69,18 +74,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -116,7 +122,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -127,7 +133,7 @@
 
         </tab>
                         <tab >
-          <a href="../../tech/dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -152,12 +158,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -165,7 +171,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -181,20 +187,50 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
@@ -208,7 +244,7 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../compatibility.html"
@@ -255,7 +291,7 @@
 
         </tab>
                         <tab >
-          <a href="../../tech/settings/settings-guidelines.html"
+          <a href="../../tech/settings.html"
    class="gc-analytics-event"
    title="Settings"
            data-category="Site-Wide Custom Events"
@@ -283,8 +319,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -295,7 +334,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -337,7 +389,7 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Architecture">
       <span class="devsite-nav-text" menu="_book">Architecture</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -364,7 +416,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../../tech/settings/settings-guidelines.html"
+    <a href="../../tech/settings.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -396,7 +448,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -406,7 +458,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../tech/dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -438,12 +490,36 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../../architecture.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../../architecture.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Hardware Abstraction Layer (HAL)">Hardware Abstraction Layer (HAL)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hal.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Modular System Components">Modular System Components</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../modular-system.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../modular-system/runtime.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Android Runtime">Android Runtime</span></a></li><li class="devsite-nav-item"><a href="../modular-system/conscrypt.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Conscrypt">Conscrypt</span></a></li><li class="devsite-nav-item"><a href="../modular-system/dns-resolver.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DNS Resolver">DNS Resolver</span></a></li><li class="devsite-nav-item"><a href="../modular-system/documentsui.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DocumentsUI">DocumentsUI</span></a></li><li class="devsite-nav-item"><a href="../modular-system/extservices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="ExtServices">ExtServices</span></a></li><li class="devsite-nav-item"><a href="../modular-system/media.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Media">Media</span></a></li><li class="devsite-nav-item"><a href="../modular-system/metadata.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Metadata">Metadata</span></a></li><li class="devsite-nav-item"><a href="../modular-system/networking.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Networking">Networking</span></a></li><li class="devsite-nav-item"><a href="../modular-system/permissioncontroller.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="PermissionController">PermissionController</span></a></li><li class="devsite-nav-item"><a href="../modular-system/timezone.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Time Zone Data">Time Zone Data</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Hardware Abstraction Layer (HAL)">Hardware Abstraction Layer (HAL)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hal.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Legacy HALs">Legacy HALs</span></a></li><li class="devsite-nav-item"><a href="../hal-types.html"
      class="devsite-nav-title"
@@ -452,20 +528,33 @@
    ><span class="devsite-nav-text" title="Framework Testing">Framework Testing</span></a></li><li class="devsite-nav-item"><a href="../hal/dynamic-lifecycle.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Dynamic Lifecycle">Dynamic Lifecycle</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Kernel">Kernel</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Kernel">Kernel</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="releases.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Stable Releases &amp; Updates">Stable Releases &amp; Updates</span></a></li><li class="devsite-nav-item"><a href="android-common.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Android Common Kernels">Android Common Kernels</span></a></li><li class="devsite-nav-item"><a href="modular-kernels.html"
+   ><span class="devsite-nav-text" title="Android Common Kernels">Android Common Kernels</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Modular Kernels">Modular Kernels</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="modular-kernels.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Modular Kernel Requirements">Modular Kernel Requirements</span></a></li><li class="devsite-nav-item"><a href="reqs-interfaces.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="loadable-kernel-modules.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Loadable Kernel Modules">Loadable Kernel Modules</span></a></li><li class="devsite-nav-item"><a href="mounting-partitions-early.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Mounting Partitions Early">Mounting Partitions Early</span></a></li><li class="devsite-nav-item"><a href="dto-support.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTO Support">DTO Support</span></a></li><li class="devsite-nav-item"><a href="core-kernel-reqs.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Core Kernel Requirements">Core Kernel Requirements</span></a></li><li class="devsite-nav-item"><a href="future-versions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Future Android Versions">Future Android Versions</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="reqs-interfaces.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Interface Requirements">Interface Requirements</span></a></li><li class="devsite-nav-item"><a href="bpf.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Extending the kernel with eBPF">Extending the kernel with eBPF</span></a></li><li class="devsite-nav-item"><a href="config.html"
+   ><span class="devsite-nav-text" title="Extending the kernel with eBPF">Extending the kernel with eBPF</span></a></li><li class="devsite-nav-item"><a href="ion_abi_changes.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Ion ABI Changes">Ion ABI Changes</span></a></li><li class="devsite-nav-item"><a href="config.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Configuration">Configuration</span></a></li><li class="devsite-nav-item"><a href="hardening.html"
      class="devsite-nav-title"
@@ -476,8 +565,8 @@
    ><span class="devsite-nav-text" title="LLDB Debugging">LLDB Debugging</span></a></li><li class="devsite-nav-item"><a href="network_tests.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Network Tests">Network Tests</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (General)">HIDL (General)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (General)">HIDL (General)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl/interfaces.html"
      class="devsite-nav-title"
@@ -499,13 +588,15 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Converting Modules">Converting Modules</span></a></li><li class="devsite-nav-item"><a href="../hidl/types.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl/versioning.html"
+   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl/safe_union.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Safe Union">Safe Union</span></a></li><li class="devsite-nav-item"><a href="../hidl/versioning.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Versioning">Versioning</span></a></li><li class="devsite-nav-item"><a href="../hidl/code-style.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Code Style Guide">Code Style Guide</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (C++)">HIDL (C++)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-cpp.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (C++)">HIDL (C++)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-cpp.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/packages.html"
      class="devsite-nav-title"
@@ -516,8 +607,8 @@
    ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/functions.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Functions">Functions</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (Java)">HIDL (Java)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-java.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (Java)">HIDL (Java)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-java.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/types.html"
      class="devsite-nav-title"
@@ -526,8 +617,15 @@
    ><span class="devsite-nav-text" title="Interface Errors &amp; Methods">Interface Errors &amp; Methods</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/constants.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Exporting Constants">Exporting Constants</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="ConfigStore HAL">ConfigStore HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configstore.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Configuration">Configuration</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configuration.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../sysprops-apis.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="System Properties APIs">System Properties APIs</span></a></li><li class="devsite-nav-item"><a href="../config-file-schema-api.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Config File Schema API">Config File Schema API</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="ConfigStore HAL">ConfigStore HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configstore.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../configstore/interface.html"
      class="devsite-nav-title"
@@ -537,9 +635,12 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Client-Side Usage">Client-Side Usage</span></a></li><li class="devsite-nav-item"><a href="../configstore/add-class-item.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Adding Classes &amp; Items">Adding Classes &amp; Items</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Device Tree Overlays">Device Tree Overlays</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dto.html"
+   ><span class="devsite-nav-text" title="Adding Classes &amp; Items">Adding Classes &amp; Items</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="../systemsuspend.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="SystemSuspend Service">SystemSuspend Service</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Device Tree Overlays">Device Tree Overlays</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dto.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../dto/implement.html"
      class="devsite-nav-title"
@@ -554,8 +655,8 @@
    ><span class="devsite-nav-text" title="DTB/DTBO Partition Format">DTB/DTBO Partition Format</span></a></li><li class="devsite-nav-item"><a href="../dto/optimize.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Optimizing DTO">Optimizing DTO</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor NDK">Vendor NDK</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vndk.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor NDK">Vendor NDK</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vndk.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../vndk/enabling.html"
      class="devsite-nav-title"
@@ -577,9 +678,11 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Renderscript">Renderscript</span></a></li><li class="devsite-nav-item"><a href="../vndk/abi-stability.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="ABI Stability">ABI Stability</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor Interface Object">Vendor Interface Object</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vintf.html"
+   ><span class="devsite-nav-text" title="ABI Stability">ABI Stability</span></a></li><li class="devsite-nav-item"><a href="../vndk/abi-use-check.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Prebuilt ABI Usage Checker">Prebuilt ABI Usage Checker</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor Interface Object">Vendor Interface Object</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vintf.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../vintf/objects.html"
      class="devsite-nav-title"
@@ -594,8 +697,8 @@
    ><span class="devsite-nav-text" title="Matching Rules">Matching Rules</span></a></li><li class="devsite-nav-item"><a href="../vintf/resources.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Resources">Resources</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bootloader">Bootloader</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bootloader.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bootloader">Bootloader</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bootloader.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/boot-reason.html"
      class="devsite-nav-title"
@@ -603,18 +706,27 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Boot Image Header">Boot Image Header</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/system-as-root.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="System as Root">System as Root</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/partitions-images.html"
+   ><span class="devsite-nav-text" title="Partition Layout">Partition Layout</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/partitions-images.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Partitions and Images">Partitions and Images</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/product-partitions.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Product Partitions">Product Partitions</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/recovery-image.html"
+   ><span class="devsite-nav-text" title="Product Partitions">Product Partitions</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/odm-partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="ODM Partitions">ODM Partitions</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/recovery-image.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Recovery Image">Recovery Image</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/flashing-updating.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Flashing and Updating">Flashing and Updating</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/unlock-trusty.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Unlocking and Trusty">Unlocking and Trusty</span></a></li></ul></devsite-expandable-nav></li>
-                      </ul>
+   ><span class="devsite-nav-text" title="Unlocking and Trusty">Unlocking and Trusty</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/stable-aidl.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Stable AIDL">Stable AIDL</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/fastbootd.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Fastboot in User Space">Fastboot in User Space</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="../java-library.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Java SDK Library">Java SDK Library</span></a></li>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -622,16 +734,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -641,8 +754,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -652,8 +766,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../architecture.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -670,13 +785,14 @@
 
               <h1 class="devsite-page-title">Extending the kernel with eBPF</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
 
               
+
 
 
 
@@ -732,7 +848,7 @@ collecting statistics from the kernel, monitoring, or debugging.</p>
 <p>Extended Berkeley Packet Filter (eBPF) is an in-kernel virtual machine that
 runs user-supplied eBPF programs that can be hooked to probes or events in
 the kernel, collect useful statistics, and store the results in rich
-data structures. A program is loaded into the kernel using the <code>bpf(2)</code> syscall
+data structures. A program is loaded into the kernel using the <code translate="no" dir="ltr">bpf(2)</code> syscall
 and is provided by the user as a binary blob of eBPF machine instructions.
 The Android build system has support for compiling C programs to eBPF using
 simple build file syntax described later.</p>
@@ -742,28 +858,34 @@ Gregg&#39;s eBPF page</a>.</p>
 
 <h2 id="android_bpf_loader">Android BPF loader</h2>
 
-<p>During Android boot, all eBPF programs located at <code>/system/etc/bpf/</code> are
+<p>During Android boot, all eBPF programs located at <code translate="no" dir="ltr">/system/etc/bpf/</code> are
 loaded.  These programs are binary objects built by the Android build system
 from C programs accompanied with Android.bp files in the Android source tree.
-The build system stores the generated objects at <code>/system/etc/bpf</code>, and
+The build system stores the generated objects at <code translate="no" dir="ltr">/system/etc/bpf</code>, and
 they become part of the system image.</p>
 
 <h3 id="format_of_an_android_ebpf_c_program">Format of an Android eBPF C program</h3>
 
 <p>An eBPF C program loaded on an Android device must have the following format:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 #include &lt;bpf_helpers.h&gt;
 
-&lt;... define one or more maps in the maps section, ex:
-/* Define a map of type array, with 10 entries */
-struct bpf_map_def SEC("maps") MY_MAPNAME = {
-        .type = BPF_MAP_TYPE_ARRAY,
-        .key_size = sizeof(int),
-        .value_size = sizeof(uint32_t),
-        .max_entries = 10,
-};
-... &gt;
+/* Define one or more maps in the maps section, for example
+ * define a map of type array int -> uint32_t, with 10 entries
+ */
+DEFINE_BPF_MAP(name_of_my_map, ARRAY, int, uint32_t, 10);
+
+/* this will also define type-safe accessors:
+ *   value * bpf_name_of_my_map_lookup_elem(&key);
+ *   int bpf_name_of_my_map_update_elem(&key, &value, flags);
+ *   int bpf_name_of_my_map_delete_elem(&key);
+ * as such it is heavily suggested to use lowercase *_map names.
+ * Also note that due to compiler deficiencies you cannot use a type
+ * of 'struct foo' but must instead use just 'foo'.  As such structs
+ * must not be defined as 'struct foo {}' and must instead be
+ * 'typedef struct {} foo'.
+ */
 
 SEC("PROGTYPE/PROGNAME")
 int PROGFUNC(..args..) {
@@ -776,15 +898,14 @@ int PROGFUNC(..args..) {
 char _license[] SEC("license") = "GPL"; // or other license
 </pre>
 
-<p>Here, <code>MY_MAPNAME</code> is the name of your map variable. It&#39;s of type <code>struct
-bpf_map_def</code> and tells the BPF loader what kind of map to create with what
-parameters. This struct definition is provided by the <code>bpf_helpers.h</code> header
-that the C program includes. The above code results in a creation of an array
-map of 10 entries.</p>
+<p>Here, <code translate="no" dir="ltr">name_of_my_map</code> is the name of your map variable. It tells the BPF loader
+what kind of map to create with what parameters. This struct definition is
+provided by the <code translate="no" dir="ltr">bpf_helpers.h</code> header that the C program includes. The above
+code results in a creation of an array map of 10 entries.</p>
 
-<p>Next, the program defines a function <code>PROGFUNC</code>. When compiled, this function is
+<p>Next, the program defines a function <code translate="no" dir="ltr">PROGFUNC</code>. When compiled, this function is
 placed in a section. The section must have a name of the format
-<code>PROGTYPE/PROGNAME</code>. <code>PROGTYPE</code> can be any one of the following. More types can
+<code translate="no" dir="ltr">PROGTYPE/PROGNAME</code>. <code translate="no" dir="ltr">PROGTYPE</code> can be any one of the following. More types can
 be found in the <a href="https://android.googlesource.com/platform/system/bpf/+/4845288a6e42e13b1bb8063923b24371c9e93397/libbpf_android/Loader.cpp">Loader
 source code</a>.</p>
 
@@ -792,8 +913,8 @@ source code</a>.</p>
 <tbody>
 <tr>
 <th>kprobe</th>
-<td>Hooks <code>PROGFUNC</code> onto at a kernel instruction using the
-kprobe infrastructure. <code>PROGNAME</code> must be the name of the kernel
+<td>Hooks <code translate="no" dir="ltr">PROGFUNC</code> onto at a kernel instruction using the
+kprobe infrastructure. <code translate="no" dir="ltr">PROGNAME</code> must be the name of the kernel
 function being kprobed. Refer to the <a
 href="https://www.kernel.org/doc/Documentation/kprobes.txt"
 class="external">kprobe kernel documentation</a> for more information about
@@ -803,11 +924,11 @@ kprobes.
 
 <tr>
 <th>tracepoint</th>
-<td>Hooks <code>PROGFUNC</code> onto a tracepoint. <code>PROGNAME</code> must be of
-   the format <code>SUBSYSTEM/EVENT</code>.  For example, a tracepoint section for attaching
-functions to scheduler context switch events would be 
-  <code>SEC("tracepoint/sched/sched_switch")</code>, where <code>sched</code> is
-  the name of the trace subsystem, and <code>sched_switch</code> is the name
+<td>Hooks <code translate="no" dir="ltr">PROGFUNC</code> onto a tracepoint. <code translate="no" dir="ltr">PROGNAME</code> must be of
+   the format <code translate="no" dir="ltr">SUBSYSTEM/EVENT</code>.  For example, a tracepoint section for attaching
+functions to scheduler context switch events would be
+  <code translate="no" dir="ltr">SEC("tracepoint/sched/sched_switch")</code>, where <code translate="no" dir="ltr">sched</code> is
+  the name of the trace subsystem, and <code translate="no" dir="ltr">sched_switch</code> is the name
   of the trace event. Check the <a
 href="https://www.kernel.org/doc/Documentation/trace/events.txt" class="external">trace events kernel
 documentation</a> for more information about tracepoints.
@@ -834,26 +955,20 @@ documentation</a> for more information about tracepoints.
 </table>
 
 <p>As an example of a complete C program, the following program creates a map and
-defines a function <code>tp_sched_switch</code>, which can be attached to the
-<code>sched:sched_switch trace</code> event (<a href="bpf.html#attaching_programs_to_tracepoints_and_kprobes">see this
+defines a function <code translate="no" dir="ltr">tp_sched_switch</code>, which can be attached to the
+<code translate="no" dir="ltr">sched:sched_switch trace</code> event (<a href="bpf.html#attaching_programs_to_tracepoints_and_kprobes">see this
 section</a>
 for how to attach).
 The program adds information about the latest task PID that ran on a particular CPU.
-Name this <code>myschedtp.c</code>. We&#39;ll refer to this file later in this document.</p>
+Name this <code translate="no" dir="ltr">myschedtp.c</code>. We&#39;ll refer to this file later in this document.</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 #include &lt;linux/bpf.h&gt;
 #include &lt;stdbool.h&gt;
 #include &lt;stdint.h&gt;
 #include &lt;bpf_helpers.h&gt;
 
-struct bpf_map_def SEC("maps") cpu_pid = {
-        .type = BPF_MAP_TYPE_ARRAY,
-        .key_size = sizeof(int),
-        .value_size = sizeof(uint32_t),
-        /* Assume max of 1024 CPUs */
-        .max_entries = 1024,
-};
+DEFINE_BPF_MAP(cpu_pid_map, ARRAY, int, uint32_t, 1024);
 
 struct switch_args {
     unsigned long long ignore;
@@ -874,7 +989,7 @@ int tp_sched_switch(struct switch_args* args) {
     key = bpf_get_smp_processor_id();
     val = args-&gt;next_pid;
 
-    bpf_map_update_elem(&cpu_pid, &key, &val, BPF_ANY);
+    bpf_cpu_pid_map_update_elem(&key, &val, BPF_ANY);
     return 0;
 }
 
@@ -882,7 +997,7 @@ char _license[] SEC("license") = "GPL";
 </pre>
 
 <p>The license section is used by the kernel to verify if the program is compatible with the
-kernel&#39;s license when the program makes use of BPF helper functions provided by the kernel. Set <code>_license</code> to your
+kernel&#39;s license when the program makes use of BPF helper functions provided by the kernel. Set <code translate="no" dir="ltr">_license</code> to your
 project&#39;s license.</p>
 
 <h3 id="format_of_the_androidbp_file">Format of the Android.bp file</h3>
@@ -890,9 +1005,9 @@ project&#39;s license.</p>
 <p>In order for the Android build system to build an eBPF .c program, an entry has
 to be made in the Android.bp file of the project.</p>
 
-<p>For example, to build an eBPF C program of name <code>bpf_test.c</code>, make the following
+<p>For example, to build an eBPF C program of name <code translate="no" dir="ltr">bpf_test.c</code>, make the following
 entry in your project&#39;s Android.bp file:
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 bpf {
     name: &quot;bpf_test.o&quot;,
     srcs: [&quot;bpf_test.c&quot;],
@@ -904,12 +1019,12 @@ bpf {
 </pre></p>
 
 <p>This compiles the C program resulting in the object
-<code>/system/etc/bpf/bpf_test.o</code>. On boot, the Android system automatically loads
-the <code>bpf_test.o</code> program into the kernel.</p>
+<code translate="no" dir="ltr">/system/etc/bpf/bpf_test.o</code>. On boot, the Android system automatically loads
+the <code translate="no" dir="ltr">bpf_test.o</code> program into the kernel.</p>
 
 <h3 id="files_available_in_sysfs">Files available in sysfs</h3>
 
-<p>During boot up, the Android system automatically loads all the eBPF objects from <code>/system/etc/bpf/</code>,
+<p>During boot up, the Android system automatically loads all the eBPF objects from <code translate="no" dir="ltr">/system/etc/bpf/</code>,
 creates the maps that the program needs, and pins the loaded program with its maps to the bpf file system.
 These files can then be used for further interaction with the eBPF program or reading maps. This section
 describes the conventions used for naming these files and their locations in sysfs.</p>
@@ -917,20 +1032,20 @@ describes the conventions used for naming these files and their locations in sys
 <p>The following files are created and pinned:</p>
 
 <ul>
-<li><p>For any programs loaded, assuming <code>PROGNAME</code> is the name of the program and <code>FILENAME</code> is the name of the eBPF C file, the Android loader creates and pins each program at <code>/sys/fs/bpf/prog_FILENAME_PROGTYPE_PROGNAME</code>.</p>
+<li><p>For any programs loaded, assuming <code translate="no" dir="ltr">PROGNAME</code> is the name of the program and <code translate="no" dir="ltr">FILENAME</code> is the name of the eBPF C file, the Android loader creates and pins each program at <code translate="no" dir="ltr">/sys/fs/bpf/prog_FILENAME_PROGTYPE_PROGNAME</code>.</p>
 
-<p>For example, for the above <code>sched_switch</code> tracepoint example in <code>myschedtp.c</code>, a program file will be created and pinned to
-<code>/sys/fs/bpf/prog_myschedtp_tracepoint_sched_sched_switch</code>.</p></li>
-<li><p>For any maps created, assuming <code>MAPNAME</code> is the name of the map and <code>PROGNAME</code> is the name of the eBPF C file, the Android loader creates and pins each map to <code>/sys/fs/bpf/map_FILENAME_MAPNAME</code>.</p>
+<p>For example, for the above <code translate="no" dir="ltr">sched_switch</code> tracepoint example in <code translate="no" dir="ltr">myschedtp.c</code>, a program file will be created and pinned to
+<code translate="no" dir="ltr">/sys/fs/bpf/prog_myschedtp_tracepoint_sched_sched_switch</code>.</p></li>
+<li><p>For any maps created, assuming <code translate="no" dir="ltr">MAPNAME</code> is the name of the map and <code translate="no" dir="ltr">FILENAME</code> is the name of the eBPF C file, the Android loader creates and pins each map to <code translate="no" dir="ltr">/sys/fs/bpf/map_FILENAME_MAPNAME</code>.</p>
 
-<p>For example, for the above <code>sched_switch</code> tracepoint example in <code>myschedtp.c</code>, a map file is created and pinned to
-<code>/sys/fs/bpf/map_myschedtp_cpu_pid</code>.</p></li>
-<li><p>The <code>bpf_obj_get()</code> in the Android BPF library can be used to obtained a file descriptor from these pinned /sys/fs/bpf file. This function returns a file descriptor, which can be used for further operations, such as reading maps or attaching a program to a tracepoint.</p></li>
+<p>For example, for the above <code translate="no" dir="ltr">sched_switch</code> tracepoint example in <code translate="no" dir="ltr">myschedtp.c</code>, a map file is created and pinned to
+<code translate="no" dir="ltr">/sys/fs/bpf/map_myschedtp_cpu_pid_map</code>.</p></li>
+<li><p>The <code translate="no" dir="ltr">bpf_obj_get()</code> in the Android BPF library can be used to obtained a file descriptor from these pinned /sys/fs/bpf file. This function returns a file descriptor, which can be used for further operations, such as reading maps or attaching a program to a tracepoint.</p></li>
 </ul>
 
 <h2 id="android_bpf_library">Android BPF library</h2>
 
-<p>The Android BPF library is named <code>libbpf_android.so</code> and is part of the system
+<p>The Android BPF library is named <code translate="no" dir="ltr">libbpf_android.so</code> and is part of the system
 image. This library provides the user with low-level eBPF functionality needed
 for creating and reading maps, creating probes, tracepoints, perf buffers etc.</p>
 
@@ -938,15 +1053,15 @@ for creating and reading maps, creating probes, tracepoints, perf buffers etc.</
 
 <p>Once tracepoint and kprobe programs have been loaded (which is done automatically
 at boot up as previously described), they need to be activated. To activate them,
-first, use the <code>bpf_obj_get()</code> API to obtain the program fd from the pinned file&#39;s
+first, use the <code translate="no" dir="ltr">bpf_obj_get()</code> API to obtain the program fd from the pinned file&#39;s
 location (see the <a href="bpf.html#files_available_in_sysfs">Files available in sysfs</a>
-section). Next, call the <code>bpf_attach_tracepoint()</code>
+section). Next, call the <code translate="no" dir="ltr">bpf_attach_tracepoint()</code>
 API in the BPF library, passing it the program fd and the tracepoint name.</p>
 
-<p>For example, to attach the <code>sched_switch</code> tracepoint defined in the <code>myschedtp.c</code>
+<p>For example, to attach the <code translate="no" dir="ltr">sched_switch</code> tracepoint defined in the <code translate="no" dir="ltr">myschedtp.c</code>
 source file in the example above, do the following (error checking is not shown):</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
   char *tp_prog_path = "/sys/fs/bpf/prog_myschedtp_tracepoint_sched_sched_switch";
   char *tp_map_path = "/sys/fs/bpf/map_myschedtp_cpu_pid";
 
@@ -964,17 +1079,17 @@ source file in the example above, do the following (error checking is not shown)
 <h3 id="reading_from_the_maps">Reading from the maps</h3>
 
 <p>BPF maps support arbitrary complex key and value structures or types. The
-Android BPF library includes an <code>android::BpfMap</code> class that makes use of C++
-templates to instantiate <code>BpfMap</code> based on the key and value&#39;s type for the
-map in question. The above code shows an example of using a <code>BpfMap</code> with key and
+Android BPF library includes an <code translate="no" dir="ltr">android::BpfMap</code> class that makes use of C++
+templates to instantiate <code translate="no" dir="ltr">BpfMap</code> based on the key and value&#39;s type for the
+map in question. The above code shows an example of using a <code translate="no" dir="ltr">BpfMap</code> with key and
 value as integers. The integers can also be arbitrary structures.</p>
 
-<p>Thus the templatized <code>BpfMap</code> class makes it easy to define a custom <code>BpfMap</code>
+<p>Thus the templatized <code translate="no" dir="ltr">BpfMap</code> class makes it easy to define a custom <code translate="no" dir="ltr">BpfMap</code>
 object suitable for the particular map. The map can then be accessed using the
 custom-generated functions which are type aware, resulting in cleaner code.</p>
 
-<p class="external">For more information about <code>BpfMap</code>, refer to the
-[Android sources].(https://android.googlesource.com/platform/system/bpf/+/75b410bdf186263fa4e05e079bfba44578622c33/libbpf/include/bpf/BpfMap.h)</p>
+<p>For more information about <code translate="no" dir="ltr">BpfMap</code>, refer to the
+<a href="https://android.googlesource.com/platform/system/bpf/+/75b410bdf186263fa4e05e079bfba44578622c33/libbpf/include/bpf/BpfMap.h" class="external">Android sources</a>.</p>
 
 <h2 id="debugging_issues">Debugging issues</h2>
 
@@ -987,14 +1102,14 @@ any detailed errors during load time, such as eBPF verifier errors.</p>
 
 <p>Currently there are two eBPF C programs in Android that you can refer to for examples.</p>
 
-<p>The <code>netd</code> <a href="https://android.googlesource.com/platform/system/bpf/+/4845288a6e42e13b1bb8063923b24371c9e93397/progs/netd.c" class="external">eBPF C
+<p>The <code translate="no" dir="ltr">netd</code> <a href="https://android.googlesource.com/platform/system/bpf/+/4845288a6e42e13b1bb8063923b24371c9e93397/progs/netd.c" class="external">eBPF C
 program</a> 
 is used by the networking daemon (netd) in Android for various purposes such as
 socket filtering and statistics gathering. To see how this programs is used, check the <a href="https://www.google.com/url?sa=D&amp;q=https%3A%2F%2Fsource.android.com%2Fdevices%2Ftech%2Fdatausage%2Febpf-traffic-monitor" class="external">eBPF traffic
 monitor</a> 
 sources.</p>
 
-<p>The <code>time_in_state</code> <a href="https://android.googlesource.com/platform/system/bpfprogs/+/482dfa1ca63eb209866ff3a7b3aeb3daada7b4e1/time_in_state.c" class="external">eBPF C
+<p>The <code translate="no" dir="ltr">time_in_state</code> <a href="https://android.googlesource.com/platform/system/bpfprogs/+/482dfa1ca63eb209866ff3a7b3aeb3daada7b4e1/time_in_state.c" class="external">eBPF C
 program</a> 
 calculates the amount of time an Android app spends at different
 CPU frequencies which is used to calculate power. This program is currently under development.</p>
@@ -1003,8 +1118,8 @@ CPU frequencies which is used to calculate power. This program is currently unde
 
 <p>If you want to contribute an eBPF C program, it should be contributed to the right
 project depending on its license. A GPL licensed eBPF C program should be
-contributed to the <code>system/bpfprogs</code> AOSP project. On the other hand, if the program
-is Apache licensed, it should be contributed to <code>system/bpf</code> AOSP project.</p>
+contributed to the <code translate="no" dir="ltr">system/bpfprogs</code> AOSP project. On the other hand, if the program
+is Apache licensed, it should be contributed to <code translate="no" dir="ltr">system/bpf</code> AOSP project.</p>
 
           </div>
 
@@ -1015,17 +1130,17 @@ is Apache licensed, it should be contributed to <code>system/bpf</code> AOSP pro
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1232,8 +1347,9 @@ is Apache licensed, it should be contributed to <code>system/bpf</code> AOSP pro
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1299,54 +1415,49 @@ is Apache licensed, it should be contributed to <code>system/bpf</code> AOSP pro
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/architecture/kernel/bpf by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:09:16 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/architecture/kernel/bpf by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:55:04 GMT -->
 </html>

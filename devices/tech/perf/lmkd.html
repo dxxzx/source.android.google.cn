@@ -1,25 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/perf/lmkd by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:32:06 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/perf/lmkd by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:58:15 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>LMKD in Userspace &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="LMKD in Userspace &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="lmkd.html">
-
-  <meta property="og:locale" content="en">
-
-
-
-  
-
-  
-
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -27,26 +12,46 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="lmkd.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="lmkd.html">      
+<title>Low Memory Killer Daemon (lmkd) &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Low Memory Killer Daemon (lmkd) &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="lmkd.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+
+  
+
+  
+
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -69,18 +74,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -116,7 +122,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -127,7 +133,7 @@
 
         </tab>
                         <tab active>
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
    aria-label="Configure, selected"         data-category="Site-Wide Custom Events"
@@ -152,12 +158,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -165,7 +171,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -181,21 +187,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -208,16 +244,16 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
-   title="ART"
+   title="Overview"
            data-category="Site-Wide Custom Events"
-        data-label="Tab: ART"
+        data-label="Tab: Overview"
    >
-  ART
+  Overview
 </a>
 
         </tab>
@@ -244,7 +280,7 @@
 
         </tab>
                         <tab active>
-          <a href="../health.html"
+          <a href="../perf.html"
    class="gc-analytics-event"
    title="Performance"
    aria-label="Performance, selected"         data-category="Site-Wide Custom Events"
@@ -255,7 +291,7 @@
 
         </tab>
                         <tab >
-          <a href="../config/perms-whitelist.html"
+          <a href="../config.html"
    class="gc-analytics-event"
    title="Permissions"
            data-category="Site-Wide Custom Events"
@@ -277,6 +313,17 @@
 
         </tab>
                         <tab >
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="Runtime"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Runtime"
+   >
+  Runtime
+</a>
+
+        </tab>
+                        <tab >
           <a href="../ota.html"
    class="gc-analytics-event"
    title="Updates"
@@ -294,8 +341,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -306,7 +356,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -342,7 +405,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -352,7 +415,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -362,12 +425,12 @@
   
                                             <ul class="devsite-nav-responsive-tabs">
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../dalvik.html"
+    <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
-     data-label="Responsive Tab: ART">
-      <span class="devsite-nav-text" >ART</span>
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
         </a>
   </li>
 
@@ -392,20 +455,20 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../health.html"
+    <a href="../perf.html"
      id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Performance">
       <span class="devsite-nav-text" menu="_book">Performance</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../config/perms-whitelist.html"
+    <a href="../config.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -421,6 +484,16 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Power">
       <span class="devsite-nav-text" >Power</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Runtime">
+      <span class="devsite-nav-text" >Runtime</span>
         </a>
   </li>
 
@@ -459,37 +532,43 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Health">Health</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../health.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../perf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item"><a href="apk-caching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="APK Caching">APK Caching</span></a></li>
+  <li class="devsite-nav-item"><a href="boot-times.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Boot Times">Boot Times</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Health">Health</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../health.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../health/implementation.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Implementing Health">Implementing Health</span></a></li><li class="devsite-nav-item"><a href="../health/deprecation.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Deprecating health@1.0">Deprecating health@1.0</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="apk-caching.html"
+  <li class="devsite-nav-item"><a href="cgroups.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="APK Caching">APK Caching</span></a></li>
-                          <li class="devsite-nav-item"><a href="boot-times.html"
+   ><span class="devsite-nav-text" title="Cgroup Abstraction Layer">Cgroup Abstraction Layer</span></a></li>
+  <li class="devsite-nav-item"><a href="lmkd.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Boot Times">Boot Times</span></a></li>
-                          <li class="devsite-nav-item"><a href="lmkd.html"
-     class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="LMKD in Userspace">LMKD in Userspace</span></a></li>
-                          <li class="devsite-nav-item"><a href="low-ram.html"
+   ><span class="devsite-nav-text" title="Low Memory Killer Daemon (LMKD)">Low Memory Killer Daemon (LMKD)</span></a></li>
+  <li class="devsite-nav-item"><a href="low-ram.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Low RAM">Low RAM</span></a></li>
-                          <li class="devsite-nav-item"><a href="pgo.html"
+  <li class="devsite-nav-item"><a href="pgo.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Profile Guided Optimization (PGO)">Profile Guided Optimization (PGO)</span></a></li>
-                          <li class="devsite-nav-item"><a href="task-snapshots-2.html"
+  <li class="devsite-nav-item"><a href="task-snapshots.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Task Snapshots">Task Snapshots</span></a></li>
-                          <li class="devsite-nav-item"><a href="compatibility-wal.html"
+  <li class="devsite-nav-item"><a href="compatibility-wal.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Write-Ahead Logging">Write-Ahead Logging</span></a></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -497,16 +576,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -516,9 +596,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -527,9 +608,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../health.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../perf.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="3"
@@ -543,15 +625,16 @@
          </devsite-page-rating>
           </div>
 
-              <h1 class="devsite-page-title">LMKD in Userspace</h1>
+              <h1 class="devsite-page-title">Low Memory Killer Daemon (lmkd)</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
 
               
+
 
 
 
@@ -598,165 +681,208 @@
 
 
 
-<p>This document describes the userspace lowmemorykiller daemon (<code>lmkd</code>) features
-added in Android 9 and how to configure them.</p>
+<p>The Android low memory killer daemon (<code translate="no" dir="ltr">lmkd</code>) process monitors the memory
+state of a running Android system and reacts to high memory pressure by killing
+the least essential processes to keep system performing at acceptable levels.</p>
 
-<p>Historically, Android used in-kernel lowmemorykiller driver to handle memory
-pressure situations by killing non-essential processes. This mechanism is rigid
-and depends on hard-coded values. In addition, starting with kernel 4.12, the
-lowmemorykiller driver is excluded from the upstream kernel.</p>
+<h2 id="about_memory_pressure">About memory pressure</h2>
 
-<p>The userspace <code>lmkd</code> process implements the same functionality but with already
-existing kernel mechanisms to detect and estimate memory pressure. It uses
-vmpressure events generated by the kernel to get notifications about memory
-pressure levels.  It also can use memory cgroup features to limit memory resources
-allocated to each process based on its importance.</p>
+<p>An Android system running multiple processes in parallel may encounter
+situations when system memory is exhausted and processes that require more
+memory experience noticeable delays. <em>Memory pressure</em>, a state in which the
+system is running short on memory, requires Android to free memory (to alleviate
+the pressure) by throttling or killing unimportant processes, requesting
+processes to free non-critical cached resources, and so on.</p>
 
-<h1 id="how_to_switch_to_userspace_lmkd" class="page-title">How to switch to userspace lmkd</h1>
+<p>Historically, Android monitored system memory pressure using an in-kernel
+lowmemorykiller driver, a rigid mechanism that depends on hard-coded values. As
+of kernel 4.12, the lowmemorykiller driver has been removed from the upstream
+kernel and a userspace <code translate="no" dir="ltr">lmkd</code> performs memory monitoring and process killing
+tasks.</p>
 
-<p>Starting in Android 9, userspace <code>lmkd</code> activates if an
-in-kernel lowmemorykiller driver is not detected. Note that userspace <code>lmkd</code>
-requires kernel support for memory cgroups. Therefore, to switch to userspace
-<code>lmkd</code> the kernel should be compiled with the following configuration  settings:</p>
-<pre class="prettyprint"><code>CONFIG_ANDROID_LOW_MEMORY_KILLER=n
+<h2 id="userspace_lmkd">Userspace lmkd</h2>
+
+<p>The userspace <code translate="no" dir="ltr">lmkd</code> implements the same functionality as the in-kernel driver
+but uses existing kernel mechanisms to detect and estimate memory pressure. Such
+mechanisms include using kernel-generated <code translate="no" dir="ltr">vmpressure</code> events or pressure stall
+information (PSI) monitors to get notifications about memory pressure levels,
+and using memory cgroup features to limit the memory resources allocated to each
+process based on process importance.</p>
+
+<h3 id="kill_strategies">Kill strategies</h3>
+
+<p>Userspace <code translate="no" dir="ltr">lmkd</code> supports kill strategies based on <code translate="no" dir="ltr">vmpressure</code> events or PSI
+monitors, their severity, and other hints such as swap utilization. Kill
+strategies differ between low-memory and high-performance devices:</p>
+
+<ul>
+<li>On low-memory devices, the system should tolerate higher memory pressure as a
+normal mode of operation.</li>
+<li>On high-performance devices, memory pressure should be viewed as an abnormal
+situation and fixed before it affects overall performance.</li>
+</ul>
+
+<p>You can configure the kill strategy using the <code translate="no" dir="ltr">ro.config.low_ram</code> property
+(for details, see <a href="low-ram.html">Low RAM Configuration</a>).</p>
+
+<p>Userspace <code translate="no" dir="ltr">lmkd</code> also supports a legacy mode in which it makes kill decisions
+using the same strategies as the in-kernel lowmemorykiller driver (that is, free
+memory and file cache thresholds). To enable legacy mode, set the
+<code translate="no" dir="ltr">ro.lmk.use_minfree_levels</code> property to <code translate="no" dir="ltr">true</code>.</p>
+
+<h3 id="using_userspace_lmkd">Using userspace lmkd</h3>
+
+<p>In Android 9 and higher, userspace <code translate="no" dir="ltr">lmkd</code> activates if
+an in-kernel lowmemorykiller driver is not detected. Because userspace <code translate="no" dir="ltr">lmkd</code>
+requires kernel support for memory cgroups, the kernel must be compiled with the
+following configuration settings:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">CONFIG_ANDROID_LOW_MEMORY_KILLER=n
 CONFIG_MEMCG=y
 CONFIG_MEMCG_SWAP=y
 </code></pre>
-<h1 id="lmkd_kill_strategies" class="page-title">lmkd kill strategies</h1>
+<h2 id="pressure_stall_information_psi">Pressure stall information (PSI)</h2>
 
-<p><code>lmkd</code> supports new kill strategies based on vmpressure events, their severity,
-and other hints like swap utilization, as well as legacy mode in which <code>lmkd</code>
-makes kill decisions just as the kernel lowmemorykiller driver did.</p>
+<p>Android 10 and higher support a new <code translate="no" dir="ltr">lmkd</code> mode that
+uses kernel pressure stall information (PSI) monitors for memory pressure
+detection. The PSI patchset in the upstream kernel (backported to 4.9 and 4.14
+kernels) measures the amount of time tasks are delayed as a result of memory
+shortages. As these delays directly affect user experience, they represent a
+convenient metric for determining memory pressure severity. The upstream kernel
+also includes PSI monitors that allow privileged userspace processes (such as
+<code translate="no" dir="ltr">lmkd</code>) to specify thresholds for these delays and to subscribe to events from
+the kernel when a threshold is breached.</p>
 
-<p>New kill strategies differ for low-memory vs high-performance devices. In cases
-of low-memory devices, the system should tolerate higher memory pressure as a
-normal mode of operation; on high-performance devices, memory pressure should be
-viewed as an abnormal situation that should be fixed before it affects overall
-performance. The <code>ro.config.low_ram</code> property allows for choosing one mode over
-the other. See <a href="low-ram.html">Low RAM Configuration</a> for
-instructions on setting this property.</p>
+<h3 id="psi_monitors_versus_vmpressure_signals">PSI monitors versus vmpressure signals</h3>
 
-<p>In legacy mode, <code>lmkd</code> kill decisions are made based on free memory and file cache
-thresholds. This mode is enabled by setting the <code>ro.lmk.use_minfree_levels</code>
-property to <code>true</code>.</p>
+<p>Because the <code translate="no" dir="ltr">vmpressure</code> signals (generated by the kernel for memory
+pressure detection and used by <code translate="no" dir="ltr">lmkd</code>) often include numerous false positives,
+<code translate="no" dir="ltr">lmkd</code> must perform filtering to determine if the memory is under real pressure.
+This results in unnecessary <code translate="no" dir="ltr">lmkd</code> wakeups and use of additional computational
+resources. Using PSI monitors results in a more accurate memory pressure
+detection and minimizes filtering overhead.</p>
 
-<h1 id="configuring_lmkd_for_specific_device" class="page-title">Configuring lmkd for specific device</h1>
+<h3 id="using_psi_monitors">Using PSI monitors</h3>
 
-<p>Configure <code>lmkd</code> with the following properties:</p>
+<p>To use PSI monitors instead of <code translate="no" dir="ltr">vmpressure</code> events, configure the
+<code translate="no" dir="ltr">ro.lmk.use_psi</code> property. The default is <code translate="no" dir="ltr">true</code>, making PSI monitors the
+default mechanism of memory pressure detection for <code translate="no" dir="ltr">lmdk</code>. Because PSI monitors
+require kernel support, the kernel must include the PSI backport patches and be
+compiled with PSI support enabled (<code translate="no" dir="ltr">CONFIG_PSI=y</code>).</p>
+
+<h2 id="configuring_lmkd">Configuring lmkd</h2>
+
+<p>Configure <code translate="no" dir="ltr">lmkd</code> for a specific device using the following properties.</p>
 
 <table>
   <tr>
    <th>Property</th>
    <th>Use</th>
-   <th>Default Value</th>
+   <th>Default</th>
   </tr>
   <tr>
-   <td><code>ro.config.low_ram</code>
+   <td><code translate="no" dir="ltr">ro.config.low_ram</code>
    </td>
-   <td>Choose between low-memory vs. high-performance device.
+   <td>Choose between low-memory versus high-performance device.
    </td>
-   <td><code>false</code>
-   </td>
-  </tr>
-  <tr>
-   <td><code>ro.lmk.use_minfree_levels</code>
-   </td>
-   <td>Use free memory and file cache thresholds for making decisions when to
-   kill. This mode works the same way kernel lowmemorykiller driver used to
-   work.
-   </td>
-   <td><code>false</code>
+   <td><code translate="no" dir="ltr">false</code>
    </td>
   </tr>
   <tr>
-   <td><code>ro.lmk.low</code>
+    <td><code translate="no" dir="ltr">ro.lmk.use_psi<code translate="no" dir="ltr"></td>
+    <td>Use PSI monitors (instead of <code translate="no" dir="ltr">vmpressure</code> events).</td>
+    <td><code translate="no" dir="ltr">true</code></td>
+  </tr>
+  <tr>
+   <td><code translate="no" dir="ltr">ro.lmk.use_minfree_levels</code>
    </td>
-   <td>The minimum oom_adj score for processes eligible to be killed at low
-   vmpressure level.
+   <td>Use free memory and file cache thresholds for making process kill
+       decisions (that is, match the functionality of the in-kernel
+       lowmemorykiller driver.
    </td>
-   <td><code>1001</code><br>
-(disabled)
+   <td><code translate="no" dir="ltr">false</code>
    </td>
   </tr>
   <tr>
-   <td><code>ro.lmk.medium</code>
+   <td><code translate="no" dir="ltr">ro.lmk.low</code>
    </td>
-   <td>The minimum oom_adj score for processes eligible to be killed at medium
-   vmpressure level.
+   <td>The minimum <code translate="no" dir="ltr">oom_adj</code> score for processes eligible to be
+       killed at low <code translate="no" dir="ltr">vmpressure</code> level.
    </td>
-   <td><code>800</code><br>
-(cached or non-essential services)
-   </td>
-  </tr>
-  <tr>
-   <td><code>ro.lmk.critical</code>
-   </td>
-   <td>The minimum oom_adj score for processes eligible to be killed at critical
-   vmpressure level.
-   </td>
-   <td><code>0</code><br>
-(any process)
+   <td><code translate="no" dir="ltr">1001</code><br>(disabled)
    </td>
   </tr>
   <tr>
-   <td><code>ro.lmk.critical_upgrade</code>
+   <td><code translate="no" dir="ltr">ro.lmk.medium</code>
    </td>
-   <td>Enables upgrade to critical level.
+   <td>The minimum <code translate="no" dir="ltr">oom_adj</code> score for processes eligible to be
+       killed at medium <code translate="no" dir="ltr">vmpressure</code> level.
    </td>
-   <td><code>false</code>
-   </td>
-  </tr>
-  <tr>
-   <td><code>ro.lmk.upgrade_pressure</code>
-   </td>
-   <td>The maximum mem_pressure at which level will be upgraded because system
-   is swapping too much.
-   </td>
-   <td><code>100</code><br>
-(disabled)
+   <td><code translate="no" dir="ltr">800</code><br>(cached or non-essential services)
    </td>
   </tr>
   <tr>
-   <td><code>ro.lmk.downgrade_pressure</code>
+   <td><code translate="no" dir="ltr">ro.lmk.critical</code>
    </td>
-   <td>The minimum mem_pressure* at which vmpressure event will be ignored
-   because enough free memory is still available.
+   <td>The minimum <code translate="no" dir="ltr">oom_adj</code> score for processes eligible to be
+      killed at critical <code translate="no" dir="ltr">vmpressure</code> level.
    </td>
-   <td><code>100</code><br>
-(disabled)
-   </td>
-  </tr>
-  <tr>
-   <td><code>ro.lmk.kill_heaviest_task</code>
-   </td>
-   <td>Kill heaviest eligible task (best decision) vs. any eligible task (fast
-   decision).</td>
-   <td><code>true</code>
+   <td><code translate="no" dir="ltr">0</code><br>(any process)
    </td>
   </tr>
   <tr>
-   <td><code>ro.lmk.kill_timeout_ms</code>
+   <td><code translate="no" dir="ltr">ro.lmk.critical_upgrade</code>
+   </td>
+   <td>Enable upgrade to critical level.
+   </td>
+   <td><code translate="no" dir="ltr">false</code>
+   </td>
+  </tr>
+  <tr>
+   <td><code translate="no" dir="ltr">ro.lmk.upgrade_pressure</code>
+   </td>
+   <td>The maximum <code translate="no" dir="ltr">mem_pressure</code> at which the level is upgraded
+       because the system is swapping too much.
+   </td>
+   <td><code translate="no" dir="ltr">100</code><br>(disabled)
+   </td>
+  </tr>
+  <tr>
+   <td><code translate="no" dir="ltr">ro.lmk.downgrade_pressure</code>
+   </td>
+   <td>The minimum <code translate="no" dir="ltr">mem_pressure</code> at which a <code translate="no" dir="ltr">vmpressure</code>
+       event is ignored because enough free memory is still available.
+   </td>
+   <td><code translate="no" dir="ltr">100</code><br>(disabled)
+   </td>
+  </tr>
+  <tr>
+   <td><code translate="no" dir="ltr">ro.lmk.kill_heaviest_task</code>
+   </td>
+   <td>Kill heaviest eligible task (best decision) versus any eligible task
+       (fast decision).</td>
+   <td><code translate="no" dir="ltr">true</code>
+   </td>
+  </tr>
+  <tr>
+   <td><code translate="no" dir="ltr">ro.lmk.kill_timeout_ms</code>
    </td>
    <td>Duration in ms after a kill when no additional kill will be done.
    </td>
-   <td><code>0</code><br>
-(disabled)
+   <td><code translate="no" dir="ltr">0</code><br>(disabled)
    </td>
   </tr>
   <tr>
-   <td><code>ro.lmk.debug</code>
+   <td><code translate="no" dir="ltr">ro.lmk.debug</code>
    </td>
-   <td>Enable <code>lmkd</code> debug logs.
+   <td>Enable <code translate="no" dir="ltr">lmkd</code> debug logs.
    </td>
-   <td><code>false</code>
+   <td><code translate="no" dir="ltr">false</code>
    </td>
   </tr>
 </table>
-
-<p>*Note: *mem_pressure = RAM usage / RAM_and_swap usage in %</p>
-
-<p>Here is a device configuration example:</p>
-<pre class="prettyprint"><code>PRODUCT_PROPERTY_OVERRIDES += \
+<aside class="note"><strong>Note:</strong><span> <code translate="no" dir="ltr">mem_pressure</code> = RAM usage/RAM_and_swap usage in %.</span></aside>
+<p>Example device configuration:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">PRODUCT_PROPERTY_OVERRIDES += \
     ro.lmk.low=1001 \
     ro.lmk.medium=800 \
     ro.lmk.critical=0 \
@@ -775,17 +901,17 @@ property to <code>true</code>.</p>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -992,8 +1118,9 @@ property to <code>true</code>.</p>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1059,54 +1186,49 @@ property to <code>true</code>.</p>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/perf/lmkd by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:32:06 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/perf/lmkd by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:58:15 GMT -->
 </html>

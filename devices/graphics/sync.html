@@ -1,0 +1,1335 @@
+<!doctype html>
+<html       lang="en"      dir="ltr">
+  
+<!-- Mirrored from source.android.google.cn/devices/graphics/sync by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:20:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="sync.html">      
+<title>Synchronization Framework &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Synchronization Framework &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="sync.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        block-apix        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Develop"
+   aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search
+            enable-suggestions
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
+    <div class="devsite-search-container">
+      <div class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Develop
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Audio"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Audio"
+   >
+  Audio
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../camera.html"
+   class="gc-analytics-event"
+   title="Camera"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Camera"
+   >
+  Camera
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech/connect.html"
+   class="gc-analytics-event"
+   title="Connectivity"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Connectivity"
+   >
+  Connectivity
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../graphics.html"
+   class="gc-analytics-event"
+   title="Graphics"
+   aria-label="Graphics, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Graphics"
+   >
+  Graphics
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../interaction.html"
+   class="gc-analytics-event"
+   title="Interaction"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Interaction"
+   >
+  Interaction
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../media.html"
+   class="gc-analytics-event"
+   title="Media"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Media"
+   >
+  Media
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../storage.html"
+   class="gc-analytics-event"
+   title="Storage"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Storage"
+   >
+  Storage
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav scrollbars >
+                  
+
+
+
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Audio">
+      <span class="devsite-nav-text" >Audio</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../camera.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Camera">
+      <span class="devsite-nav-text" >Camera</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../tech/connect.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Connectivity">
+      <span class="devsite-nav-text" >Connectivity</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../graphics.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Graphics">
+      <span class="devsite-nav-text" menu="_book">Graphics</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../interaction.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Interaction">
+      <span class="devsite-nav-text" >Interaction</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../media.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Media">
+      <span class="devsite-nav-text" >Media</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../storage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Storage">
+      <span class="devsite-nav-text" >Storage</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../tech.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../graphics.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item"><a href="arch-bq-gralloc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="BufferQueue and Gralloc">BufferQueue and Gralloc</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Surface and SurfaceHolder">Surface and SurfaceHolder</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-sh.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="arch-sv-glsv.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="SurfaceView">SurfaceView</span></a></li><li class="devsite-nav-item"><a href="arch-st.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="SurfaceTexture">SurfaceTexture</span></a></li><li class="devsite-nav-item"><a href="arch-tv.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="TextureView">TextureView</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="SurfaceFlinger and WindowManager">SurfaceFlinger and WindowManager</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="surfaceflinger-windowmanager.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="tracing-win-transitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Tracing Window Transitions">Tracing Window Transitions</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Hardware Composer HAL">Hardware Composer HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="hwc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-hwc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing the HWC">Implementing the HWC</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="layers-displays.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Layers and Displays">Layers and Displays</span></a></li>
+  <li class="devsite-nav-item"><a href="implement-vsync.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="VSYNC">VSYNC</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="OpenGL ES">OpenGL ES</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-egl-opengl.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-opengl-es.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing OpenGL ES">Implementing OpenGL ES</span></a></li><li class="devsite-nav-item"><a href="renderer.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="OpenGLRenderer Configuration">OpenGLRenderer Configuration</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vulkan">Vulkan</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="arch-vulkan.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="implement-vulkan.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing Vulkan">Implementing Vulkan</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="sync.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Synchronization Framework">Synchronization Framework</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Testing">Testing</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementation Tests">Implementation Tests</span></a></li><li class="devsite-nav-item"><a href="cts-integration.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Integrating with Android CTS">Integrating with Android CTS</span></a></li><li class="devsite-nav-item"><a href="deqp-testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="deqp Testing">deqp Testing</span></a></li></ul></devsite-expandable-nav></li>
+          </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content>
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">        
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Develop
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../graphics.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Graphics
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Synchronization Framework</h1>
+    
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--
+      Copyright 2019 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>The synchronization framework explicitly describes dependencies between
+different asynchronous operations in the Android graphics system. The framework
+provides an API that enables components to indicate when buffers are released. The framework also
+allows synchronization primitives to be passed between drivers from the kernel
+to userspace and between userspace processes themselves.</p>
+
+<p>For example, an application may queue up work to be performed in the GPU.
+The GPU starts drawing that image. Although the image hasn’t been drawn
+into memory yet, the buffer pointer is passed to the window
+compositor along with a fence that indicates when the GPU work will
+finish. The window compositor starts processing ahead of time and
+passes the work to the display controller. In a similar manner, the CPU work
+is done ahead of time. Once the GPU finishes, the display controller
+immediately displays the image.</p>
+
+<p>The synchronization framework also lets implementers leverage
+synchronization resources in their own hardware components. Finally, the
+framework provides visibility into the graphics pipeline to help with
+debugging.</p>
+
+
+<h2 id="explicit_synchronization">Explicit synchronization</h2>
+
+<p>Explicit synchronization enables producers and consumers of graphics buffers
+to signal when they're finshied using a buffer. Explicit synchronization is
+implemented in kernel-space.</p>
+
+<p>The benefits of explicit synchronization include:</p>
+
+<ul>
+  <li>Less behavior variation between devices</li>
+  <li>Better debugging support</li>
+  <li>Improved testing metrics</li>
+</ul>
+
+<p>The sync framework has three object types:</p>
+
+<ul>
+  <li><code translate="no" dir="ltr">sync_timeline</code></li>
+  <li><code translate="no" dir="ltr">sync_pt</code></li>
+  <li><code translate="no" dir="ltr">sync_fence</code></li>
+</ul>
+
+<h3 id="sync_timeline">sync_timeline</h3>
+
+<p><code translate="no" dir="ltr">sync_timeline</code> is a monotonically increasing timeline that
+vendors should implement for each driver instance, such as a GL context,
+display controller, or 2D blitter. <code translate="no" dir="ltr">sync_timeline</code> counts
+jobs submitted to the kernel for a particular piece of hardware.
+<code translate="no" dir="ltr">sync_timeline</code> provides guarantees about the order of operations
+and enables hardware-specific implementations.</p>
+
+<p>One implementation of <code translate="no" dir="ltr">sync_timeline</code> is offered as a CPU-only
+reference called <code translate="no" dir="ltr">sw_sync</code> (software sync). If a vendor doesn't have
+a hardware-backed sync object resource, <code translate="no" dir="ltr">sw_sync</code>
+should be used to save resources and avoid complexity.</p>
+
+<p>Follow these guidelines when implementing <code translate="no" dir="ltr">sync_timeline</code>:</p>
+
+<ul>
+<li>Provide useful names for all drivers, timelines, and fences to simplify
+  debugging.</li>
+<li>Implement the <code translate="no" dir="ltr">timeline_value_str</code> and <code translate="no" dir="ltr">pt_value_str</code>
+  operators in timelines to make debugging output more readable.</li>
+<li>Implement the fill <code translate="no" dir="ltr">driver_data</code> to give userspace libraries,
+  such as the GL library, access to private timeline data, if desired.
+  <code translate="no" dir="ltr">data_driver</code> lets vendors pass information about the immutable
+  <code translate="no" dir="ltr">sync_fence</code> and <code translate="no" dir="ltr">sync_pts</code> to build command lines
+  based on them.</li>
+<li>Don't allow userspace to explicitly create or signal a fence. Explicitly
+  creating signals/fences results in a denial-of-service attack that
+  halts pipeline functionality.</li>
+<li>Don't access <code translate="no" dir="ltr">sync_timeline</code>, <code translate="no" dir="ltr">sync_pt</code>, or
+  <code translate="no" dir="ltr">sync_fence</code> elements explicitly. The API provides all required
+  functions.</li>
+</ul>
+
+<h3 id="sync_pt">sync_pt</h3>
+
+<p><code translate="no" dir="ltr">sync_pt</code> is a single value or point on a
+<code translate="no" dir="ltr">sync_timeline</code>. A point
+has three states: active, signaled, and error. Points start in the active state
+and transition to the signaled or error states. For example, when an image
+consumer no longer needs a buffer, a <code translate="no" dir="ltr">sync_pt</code> is signaled
+so an image producer knows that it's okay to write into the buffer again.</p>
+
+<h3 id="sync_fence">sync_fence</h3>
+
+<p><code translate="no" dir="ltr">sync_fence</code> is a collection of <code translate="no" dir="ltr">sync_pt</code> values
+that often
+have different <code translate="no" dir="ltr">sync_timeline</code> parents (such as for the display
+controller and GPU). <code translate="no" dir="ltr">sync_fence</code>, <code translate="no" dir="ltr">sync_pt</code>, and
+<code translate="no" dir="ltr">sync_timeline</code> are the main primitives that drivers and userspace
+use to communicate their dependencies. When a fence becomes signaled, all
+commands issued before the fence are guaranteed to be complete because the
+kernel driver or hardware block executes commands in order.</p>
+
+<p>The sync framework allows multiple consumers or producers to signal when they're
+using a buffer, communicating the dependency information with one function
+parameter. Fences are backed by a file descriptor and are passed from
+kernel space to userspace. For example, a fence can contain two
+<code translate="no" dir="ltr">sync_pt</code> values that signify when two separate image consumers are done
+reading a buffer. When the fence is signaled, the image producers know that both
+consumers are done consuming.</p>
+
+<p>Fences, like <code translate="no" dir="ltr">sync_pt</code> values, start active and change state based on
+the state of their points. If all <code translate="no" dir="ltr">sync_pt</code> values become signaled, the
+<code translate="no" dir="ltr">sync_fence</code> becomes signaled. If one <code translate="no" dir="ltr">sync_pt</code> falls
+into an error state, the entire <code translate="no" dir="ltr">sync_fence</code> has an error state.</p>
+
+<p>Membership in a <code translate="no" dir="ltr">sync_fence</code> is immutable after the fence is
+created. To get more than one point in a fence, a merge is
+conducted where points from two distinct fences are added to a third fence.
+If one of those points was signaled in the originating fence and the other wasn't,
+the third fence also won't be in a signaled state.</p>
+
+<p>To implement explicit synchronization, provide the following:</p>
+
+<ul>
+<li>A kernel-space subsystem that implements the sync framework
+for a particular hardware driver. Drivers that need to be fence-aware are
+generally anything that accesses or communicates with the Hardware Composer.
+Key files include:
+<ul>
+<li>Core implementation:
+<ul>
+ <li><code translate="no" dir="ltr">kernel/common/include/linux/sync.h</code></li>
+ <li><code translate="no" dir="ltr">kernel/common/drivers/base/sync.c</code></li>
+</ul></li>
+<li><code translate="no" dir="ltr">sw_sync</code>:
+<ul>
+ <li><code translate="no" dir="ltr">kernel/common/include/linux/sw_sync.h</code></li>
+ <li><code translate="no" dir="ltr">kernel/common/drivers/base/sw_sync.c</code></li>
+</ul></li>
+<li>Documentation at <code translate="no" dir="ltr">kernel/common//Documentation/sync.txt</code></li>
+<li>Library to communicate with the kernel space in
+ <code translate="no" dir="ltr">platform/system/core/libsync</code></li>
+</ul></li>
+<li>The vendor must provide the appropriate synchronization
+fences as parameters to the <code translate="no" dir="ltr">validateDisplay()</code> and
+<code translate="no" dir="ltr">presentDisplay()</code> functions in the HAL.</li>
+<li>Two fence-related GL extensions (<code translate="no" dir="ltr">EGL_ANDROID_native_fence_sync</code>
+and <code translate="no" dir="ltr">EGL_ANDROID_wait_sync</code>) and fence support in graphics
+driver.</li>
+</ul>
+
+<h3 id="case-study">Case study: Implementing a display driver</h3>
+
+<p>To use the API supporting the synchronization function,
+develop a display driver that has a display buffer function. Before the
+synchronization framework existed, this function would receive <code translate="no" dir="ltr">dma-buf</code>
+objects, put those buffers on the display, and block while the buffer was visible. For
+example:</p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+/*
+ * assumes buffer is ready to be displayed.  returns when buffer is no longer on
+ * screen.
+ */
+void display_buffer(struct dma_buf *buffer);
+</pre>
+
+<p>With the synchronization framework, the <code translate="no" dir="ltr">display_buffer</code> function
+is more complex. While putting a buffer on display, the buffer is associated
+with a fence that indicates when the buffer will be ready. You can queue up
+and initiate the work after the fence clears.</p>
+
+<p>Queuing and initiating work after the fence clears doesn't block anything.
+You immediately return your own fence, which guarantees when the buffer
+will be off of the display. As you queue up buffers, the kernel lists
+dependencies with the synchronization framework:</p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+/*
+ * displays buffer when fence is signaled.  returns immediately with a fence
+ * that signals when buffer is no longer displayed.
+ */
+struct sync_fence* display_buffer(struct dma_buf *buffer, struct sync_fence
+*fence);
+</pre>
+
+
+<h2 id="sync_integration">Sync integration</h2>
+
+<p>This section explains how to integrate the kernel-space sync framework with
+userspace parts of the Android framework and the drivers that must communicate
+with one another. Kernel-space objects are represented as file descriptors in
+userspace.</p>
+
+<h3 id="integration_conventions">Integration conventions</h3>
+
+<p>Follow the Android HAL interface conventions:</p>
+
+<ul>
+<li>If the API provides a file descriptor that refers to a <code translate="no" dir="ltr">sync_pt</code>,
+  the vendor's driver or the HAL using the API must close the file descriptor.</li>
+<li>If the vendor driver or the HAL passes a file descriptor that contains
+ a <code translate="no" dir="ltr">sync_pt</code> to an API function, the vendor driver or the HAL must not
+  close the file descriptor.</li>
+<li>To continue using the fence file descriptor, the vendor driver or the
+  HAL must duplicate the descriptor.</li>
+</ul>
+
+<p>A fence object is renamed every time it passes through BufferQueue.
+Kernel fence support allows fences to have strings for names, so the sync
+framework uses the window name and buffer index that's being queued to name
+the fence, such as <code translate="no" dir="ltr">SurfaceView:0</code>. This
+is helpful in debugging to identify the source of a deadlock as the names appear
+in the output of <code translate="no" dir="ltr">/d/sync</code> and bug reports.</p>
+
+<h3 id="anativewindow_integration">ANativeWindow integration</h3>
+
+<p>ANativeWindow is fence aware. <code translate="no" dir="ltr">dequeueBuffer</code>,
+<code translate="no" dir="ltr">queueBuffer</code>, and <code translate="no" dir="ltr">cancelBuffer</code> have fence parameters.
+</p>
+
+<h3 id="opengl_es_integration">OpenGL ES integration</h3>
+
+<p>OpenGL ES sync integration relies on two EGL extensions:</p>
+
+<ul>
+<li><code translate="no" dir="ltr">EGL_ANDROID_native_fence_sync</code> provides a way to
+  wrap or create native Android fence file descriptors in
+  <code translate="no" dir="ltr">EGLSyncKHR</code> objects.</li>
+<li><code translate="no" dir="ltr">EGL_ANDROID_wait_sync</code> allows GPU-side stalls
+rather than CPU-side, making the GPU wait for <code translate="no" dir="ltr">EGLSyncKHR</code>. The
+<code translate="no" dir="ltr">EGL_ANDROID_wait_sync</code> extension is the same as the
+<a
+href="https://www.khronos.org/registry/EGL/extensions/KHR/EGL_KHR_wait_sync.txt"
+class="external"><code translate="no" dir="ltr">EGL_KHR_wait_sync</code></a> extension.</li>
+</ul>
+
+<p>To use these extensions independently, implement the
+<code translate="no" dir="ltr">EGL_ANDROID_native_fence_sync</code> extension along with the associated
+kernel support. Next, enable the <code translate="no" dir="ltr">EGL_ANDROID_wait_sync</code>
+extension in your driver. The <code translate="no" dir="ltr">EGL_ANDROID_native_fence_sync</code>
+extension consists of a distinct native fence <code translate="no" dir="ltr">EGLSyncKHR</code> object
+type. As a result, extensions that apply to existing <code translate="no" dir="ltr">EGLSyncKHR</code>
+object types don’t necessarily apply to <code translate="no" dir="ltr">EGL_ANDROID_native_fence</code>
+objects, avoiding unwanted interactions.</p>
+
+<p>The <code translate="no" dir="ltr">EGL_ANDROID_native_fence_sync</code> extension employs a corresponding native
+fence file descriptor attribute that can be set only at creation time and
+can't be directly queried onward from an existing sync object. This attribute
+can be set to one of two modes:</p>
+
+<ul>
+<li><strong>A valid fence file descriptor</strong> wraps an existing native
+Android fence file descriptor in an <code translate="no" dir="ltr">EGLSyncKHR</code> object.</li>
+<li><strong>-1</strong> creates a native Android fence file descriptor from an
+  <code translate="no" dir="ltr">EGLSyncKHR</code> object.</li>
+</ul>
+
+<p>Use the <code translate="no" dir="ltr">DupNativeFenceFD()</code> function call to extract the
+<code translate="no" dir="ltr">EGLSyncKHR</code> object from the native Android fence file descriptor.
+This has the same result as querying the set attribute, but adheres to
+the convention that the recipient closes the fence (hence the duplicate
+operation). Finally, destroying the <code translate="no" dir="ltr">EGLSyncKHR</code> object closes
+the internal fence attribute.</p>
+
+<h3 id="hardware_composer_integration">Hardware Composer integration</h3>
+
+<p>The Hardware Composer handles three types of sync fences:</p>
+
+<ul>
+  <li><strong>Acquire fences</strong> are passed along with input buffers to
+    the <code translate="no" dir="ltr">setLayerBuffer</code> and <code translate="no" dir="ltr">setClientTarget</code> calls.
+    These represent a pending write into the buffer and must signal before the
+    SurfaceFlinger or the HWC attempts to read from the associated buffer to
+    perform composition.</li>
+<li><strong>Release fences</strong> are retrieved after the call to
+  <code translate="no" dir="ltr">presentDisplay</code> using the <code translate="no" dir="ltr">getReleaseFences</code> call.
+  These represent a pending read from the previous buffer on the same layer. A
+  release fence signals when the HWC is no longer using the previous buffer
+  because the current buffer has replaced the previous buffer on the display.
+  Release fences are passed back to the app along with the previous buffers that
+  will be replaced during the current composition. The app must wait until a
+  release fence signals before writing new contents into the buffer that
+  was returned to them.</li>
+<li><strong>Present fences</strong> are returned, one per frame, as part of
+  the call to <code translate="no" dir="ltr">presentDisplay</code>. Present fences represent when the
+  composition of this frame has completed, or alternately, when the
+  composition result of the prior frame is no longer needed. For physical
+  displays, <code translate="no" dir="ltr">presentDisplay</code> returns present fences when the
+  current frame appears on the screen. After present fences are returned,
+  it's safe to write to the SurfaceFlinger target buffer again, if
+  applicable. For virtual displays, present fences are returned when it's
+  safe to read from the output buffer.</li>
+</ul>
+
+
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/graphics/sync by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:20:57 GMT -->
+</html>

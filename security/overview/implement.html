@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/security/overview/implement by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 13:30:01 GMT -->
+<!-- Mirrored from source.android.google.cn/security/overview/implement by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:34:35 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Implementing Security &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Implementing Security &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="implement.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="implement.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="implement.html">      
+<title>Implementing Security &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Implementing Security &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="implement.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../devices/audio.html"
+          <a href="../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../../devices/tech/dalvik.html"
+          <a href="../../devices/tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,20 +186,50 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../security.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
@@ -207,7 +243,7 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab active>
           <a href="../../security.html"
@@ -232,7 +268,7 @@
 
         </tab>
                         <tab >
-          <a href="../app-sandbox.html"
+          <a href="../features.html"
    class="gc-analytics-event"
    title="Features"
            data-category="Site-Wide Custom Events"
@@ -271,8 +307,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -283,7 +322,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -325,7 +377,7 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Overview">
       <span class="devsite-nav-text" menu="_book">Overview</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -342,7 +394,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../app-sandbox.html"
+    <a href="../features.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -374,7 +426,7 @@
                                   </ul>
                           </li>
                       <li class="devsite-nav-item">
-                                <a href="../../devices/audio.html"
+                                <a href="../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -384,7 +436,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../devices/tech/dalvik.html"
+                                <a href="../../devices/tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -416,27 +468,27 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../../security.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../../security.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item"><a href="kernel-security.html"
+  <li class="devsite-nav-item"><a href="kernel-security.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Kernel Security">Kernel Security</span></a></li>
-                          <li class="devsite-nav-item"><a href="app-security.html"
+  <li class="devsite-nav-item"><a href="app-security.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="App Security">App Security</span></a></li>
-                          <li class="devsite-nav-item"><a href="implement.html"
+  <li class="devsite-nav-item"><a href="implement.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Implementing Security">Implementing Security</span></a></li>
-                          <li class="devsite-nav-item"><a href="updates-resources.html"
+  <li class="devsite-nav-item"><a href="updates-resources.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Updates and Resources">Updates and Resources</span></a></li>
-                          <li class="devsite-nav-item"><a href="reports.html"
+  <li class="devsite-nav-item"><a href="reports.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Reports">Reports</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Enhancements">Enhancements</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../enhancements.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Enhancements">Enhancements</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../enhancements.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../enhancements/enhancements9.html"
      class="devsite-nav-title"
@@ -457,10 +509,13 @@
    ><span class="devsite-nav-text" title="Android 4.2">Android 4.2</span></a></li><li class="devsite-nav-item"><a href="../enhancements/enhancements41.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Android 4.1">Android 4.1</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="acknowledgements.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Acknowledgements">Acknowledgements</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="acknowledgements.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Acknowledgements">Acknowledgements</span></a></li>
-                      </ul>
+   ><span class="devsite-nav-text" title="Acknowledgements">Acknowledgements</span></a></li><li class="devsite-nav-item"><a href="release-acknowledgements.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Release Acknowledgements">Release Acknowledgements</span></a></li></ul></devsite-expandable-nav></li>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -468,16 +523,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -487,8 +543,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../security.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -498,8 +555,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../security.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -516,8 +574,8 @@
 
               <h1 class="devsite-page-title">Implementing Security</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -558,7 +616,7 @@ Security Team incorporates tests into the
 <a href="http://tools.android.com/tips/lint">Android Lint</a>. We encourage
 device implementers to contribute tests that can help other Android users (view
 security-related tests at
-<code>root/cts/tests/tests/security/src/android/security/cts</code>).</p>
+<code translate="no" dir="ltr">root/cts/tests/tests/security/src/android/security/cts</code>).</p>
 
 <h2 id="dev-process">Development process</h2>
 <p>Use the following best practices in your development processes and
@@ -570,13 +628,15 @@ those identified in this document. Android strongly encourages both manual and
 automated source code review. Best practices:</p>
 
 <ul>
-<li>Run <a href="http://tools.android.com/tips/lint">Android Lint</a> on all
-application code using the Android SDK and correct any identified issues.</li>
-<li>Native code should be analyzed using an automated tool that can detect
-memory management issues such as buffer overflows and off-by-one errors.</li>
-<li>The Android build system has support for many of the LLVM sanitizers,
-such as AddressSanitizer and UndefinedBehaviorSanitizer which can be used
-for this purpose.</li>
+  <li>Run <a href="http://tools.android.com/tips/lint">Android Lint</a> on all
+    application code using the Android SDK and correct any identified issues.
+  </li>
+  <li>Native code should be analyzed using an automated tool that can detect
+    memory management issues such as buffer overflows and off-by-one errors.
+  </li>
+  <li>The Android build system has support for many of the LLVM sanitizers,
+    such as AddressSanitizer and UndefinedBehaviorSanitizer which can be used
+    for this purpose.</li>
 </ul>
 
 <h3 id="auto-test">Using automated testing</h3>
@@ -584,14 +644,14 @@ for this purpose.</li>
 several issues discussed below. Best practices:</p>
 
 <ul>
-<li>CTS is regularly updated with security tests; run the most recent version of
-CTS to verify compatibility.</li>
-<li>Run CTS regularly throughout the development process to detect problems
-early and reduce time to correction. Android uses CTS as part of continuous
-integration in our automated build process, which builds multiple times per day.
-</li>
-<li>Device manufacturers should automate security testing of interfaces,
-including testing with malformed inputs (fuzz testing).</li>
+  <li>CTS is regularly updated with security tests; run the most recent version
+    of CTS to verify compatibility.</li>
+  <li>Run CTS regularly throughout the development process to detect problems
+    early and reduce time to correction. Android uses CTS as part of continuous
+    integration in our automated build process, which builds multiple times per
+    day.</li>
+  <li>Device manufacturers should automate security testing of interfaces,
+    including testing with malformed inputs (fuzz testing).</li>
 </ul>
 
 <h3 id="sign-sysimg">Signing system images</h3>
@@ -599,10 +659,10 @@ including testing with malformed inputs (fuzz testing).</li>
 of the device. Best practices:</p>
 
 <ul>
-<li>Devices must not be signed with a key that is publicly known.</li>
-<li>Keys used to sign devices should be managed in a manner consistent with
-industry standard practices for handling sensitive keys, including a hardware
-security module (HSM) that provides limited, auditable access.</li>
+  <li>Devices must not be signed with a key that is publicly known.</li>
+  <li>Keys used to sign devices should be managed in a manner consistent with
+    industry standard practices for handling sensitive keys, including a
+    hardware security module (HSM) that provides limited, auditable access.</li>
 </ul>
 
 <h3 id="sign-apk">Signing applications (APKs)</h3>
@@ -613,16 +673,16 @@ will be available only on a single device or common across multiple devices.
 Best practices:</p>
 
 <ul>
-<li>Applications must not be signed with a key that is publicly known.</li>
-<li>Keys used to sign applications should be managed in a manner consistent with
-industry standard practices for handling sensitive keys, including an HSM that
-provides limited, auditable access.</li>
-<li>Applications should not be signed with the platform key.</li>
-<li>Applications with the same package name should not be signed with different
-keys. This often occurs when creating an application for different devices,
-especially when using the platform key. If the application is
-device-independent, use the same key across devices. If the application is
-device-specific, create unique package names per device and key.</li>
+  <li>Applications must not be signed with a key that is publicly known.</li>
+  <li>Keys used to sign applications should be managed in a manner consistent
+    with industry standard practices for handling sensitive keys, including an
+    HSM that provides limited, auditable access.</li>
+  <li>Applications should not be signed with the platform key.</li>
+  <li>Applications with the same package name should not be signed with
+    different keys. This often occurs when creating an application for different
+    devices, especially when using the platform key. If the application is
+    device-independent, use the same key across devices. If the application is
+    device-specific, create unique package names per device and key.</li>
 </ul>
 
 <h3 id="apps-pub">Publishing applications</h3>
@@ -632,19 +692,19 @@ security issues and delivery of new features, as well as provide a way to ensure
 your application has a unique package name. Best practices:</p>
 
 <ul>
-<li>Upload your applications to Google Play to allow automated updates without
-requiring a full over-the-air (OTA) update. Applications that are uploaded but
-unpublished are not directly downloadable by users but the applications are
-still updated. Users who have previously installed the app can re-install it
-and/or install on other devices.</li>
-<li>Create an application package name that is clearly associated with your
-company, such as by using a company trademark.</li>
-<li>Applications published by device manufacturers should be uploaded on the
-Google Play store to avoid package name impersonation by third-party users. If
-a device manufacturer installs an app on a device without publishing the app on
-the Play store, another developer could upload the same app, use the same
-package name, and change the metadata for the app. When the app is presented to
-the user, this unrelated metadata could create confusion.</li>
+  <li>Upload your applications to Google Play to allow automated updates without
+    requiring a full over-the-air (OTA) update. Applications that are uploaded
+    but unpublished are not directly downloadable by users but the applications
+    are still updated. Users who have previously installed the app can
+    re-install it and/or install on other devices.</li>
+  <li>Create an application package name that is clearly associated with your
+    company, such as by using a company trademark.</li>
+  <li>Applications published by device manufacturers should be uploaded on the
+    Google Play store to avoid package name impersonation by third-party users.
+    If a device manufacturer installs an app on a device without publishing the
+    app on the Play store, another developer could upload the same app, use the
+    same package name, and change the metadata for the app. When the app is
+    presented to the user, this unrelated metadata could create confusion.</li>
 </ul>
 
 <h3 id="incident-response">Responding to incidents</h3>
@@ -653,13 +713,14 @@ device-specific security issues. We recommend creating a publicly accessible
 email address for managing security incidents. Best practices:</p>
 
 <ul>
-<li>Create a <em>security@your-company.com</em> or similar address and publicize
-it.</li>
-<li>If you become aware of a security issue affecting Android OS or Android
-devices from multiple device manufacturers, you should contact the Android
-Security Team by filing a
-<a href="https://code.google.com/p/android/issues/entry?template=Security+bug+report">Security
-bug report</a>.</li>
+  <li>Create a <em>security@your-company.com</em> or similar address and
+    publicize it.</li>
+  <li>If you become aware of a security issue affecting Android OS or Android
+    devices from multiple device manufacturers, you should contact the Android
+    Security Team by filing a
+<a
+href="https://code.google.com/p/android/issues/entry?template=Security%20bug%20report">
+Security bug report</a>.</li>
 </ul>
 
 <h2 id="prod-implement">Product implementation</h2>
@@ -668,21 +729,22 @@ bug report</a>.</li>
 <h3 id="root-processes">Isolating root processes</h3>
 <p>Root processes are the most frequent target of privilege escalation attacks,
 so reducing the number of root processes reduces risk of privilege escalation.
-CTS includes an informational test that lists root processes. Best practices:</p>
+CTS includes an informational test that lists root processes. Best practices:
+</p>
 
 <ul>
-<li>Devices should run the minimum necessary code as root. Where possible, use a
-regular Android process rather than a root process. The ICS Galaxy Nexus has
-only six root processes: vold, inetd, zygote, tf_daemon, ueventd, and init. If a
-process must run as root on a device, document the process in an AOSP feature
-request so it can be publicly reviewed.</li>
-<li>Where possible, root code should be isolated from untrusted data and
-accessed via IPC. For example, reduce root functionality to a small Service
-accessible via Binder and expose the Service with signature permission to an
-application with low or no privileges to handle network traffic.</li>
-<li>Root processes must not listen on a network socket.</li>
-<li>Root processes must not provide a general-purpose runtime for applications
-(e.g. a Java VM).</li>
+  <li>Devices should run the minimum necessary code as root. Where possible, use
+    a regular Android process rather than a root process. The ICS Galaxy Nexus
+    has only six root processes: vold, inetd, zygote, tf_daemon, ueventd, and
+    init. If a process must run as root on a device, document the process in an
+    AOSP feature request so it can be publicly reviewed.</li>
+  <li>Where possible, root code should be isolated from untrusted data and
+    accessed via IPC. For example, reduce root functionality to a small Service
+    accessible via Binder and expose the Service with signature permission to an
+    application with low or no privileges to handle network traffic.</li>
+  <li>Root processes must not listen on a network socket.</li>
+  <li>Root processes must not provide a general-purpose runtime for applications
+    (for example, a Java VM).</li>
 </ul>
 
 <h3 id="sys-apps">Isolating system apps</h3>
@@ -693,11 +755,12 @@ broadcast receivers, or content providers that can be accessed by third-party
 apps installed by users. Best practices:</p>
 
 <ul>
-<li>Devices should run the minimum necessary code as system. Where possible, use
-an Android process with its own UID rather than reusing the system UID.</li>
-<li>Where possible, system code should be isolated from untrusted data and
-expose IPC only to other trusted processes.</li>
-<li>System processes must not listen on a network socket.</li>
+  <li>Devices should run the minimum necessary code as system. Where possible,
+    use an Android process with its own UID rather than reusing the system UID.
+  </li>
+  <li>Where possible, system code should be isolated from untrusted data and
+    expose IPC only to other trusted processes.</li>
+  <li>System processes must not listen on a network socket.</li>
 </ul>
 
 <h3 id="process-isolate">Isolating processes</h3>
@@ -707,12 +770,12 @@ debuggers. Unless debugging is specifically enabled by the application and the
 user, no application should violate that expectation. Best practices:</p>
 
 <ul>
-<li>Root processes must not access data within individual application data
-folders, unless using a documented Android debugging method.</li>
-<li>Root processes must not access memory of applications, unless using a
-documented Android debugging method.</li>
-<li>Devices must not include any application that accesses data or memory of
-other applications or processes.</li>
+  <li>Root processes must not access data within individual application data
+    folders, unless using a documented Android debugging method.</li>
+  <li>Root processes must not access memory of applications, unless using a
+    documented Android debugging method.</li>
+  <li>Devices must not include any application that accesses data or memory of
+    other applications or processes.</li>
 </ul>
 
 <h3 id="suid-files">Securing SUID files</h3>
@@ -722,15 +785,15 @@ to gain root access, so strive to minimize the availability of the setuid
 program to untrusted applications. Best practices:</p>
 
 <ul>
-<li>SUID processes must not provide a shell or backdoor that can be used to
-circumvent the Android security model.</li>
-<li>SUID programs must not be writable by any user.</li>
-<li>SUID programs should not be world readable or executable. Create a group,
-limit access to the SUID binary to members of that group, and place any
-applications that should be able to execute the SUID program into that group.
-</li>
-<li>SUID programs are a common source of user rooting of devices. To reduce
-this risk, SUID programs should not be executable by the shell user.</li>
+  <li>SUID processes must not provide a shell or backdoor that can be used to
+    circumvent the Android security model.</li>
+  <li>SUID programs must not be writable by any user.</li>
+  <li>SUID programs should not be world readable or executable. Create a group,
+    limit access to the SUID binary to members of that group, and place any
+    applications that should be able to execute the SUID program into that
+    group.</li>
+  <li>SUID programs are a common source of user rooting of devices. To reduce
+    this risk, SUID programs should not be executable by the shell user.</li>
 </ul>
 
 <p>CTS verifier includes an informational test listing SUID files; some
@@ -742,25 +805,25 @@ the event of a failure, Android verifies the following best practices are in
 use:</p>
 
 <ul>
-<li>There should be no listening ports on the device.</li>
-<li>Listening ports must be able to be disabled without an OTA. This can be
-either a server or user-device configuration change.</li>
-<li>Root processes must not listen on any port.</li>
-<li>Processes owned by the system UID must not listen on any port.</li>
-<li>For local IPC using sockets, applications must use a UNIX Domain Socket with
-access limited to a group. Create a file descriptor for the IPC and make it +RW
-for a specific UNIX group. Any client applications must be within that UNIX
-group.</li>
-<li>Some devices with multiple processors (e.g. a radio/modem separate from the
-application processor) use network sockets to communicate between processors.
-In such instances, the network socket used for inter-processor communication
-must use an isolated network interface to prevent access by unauthorized
-applications on the device (i.e. use iptables to prevent access by other
-applications on the device).</li>
-<li>Daemons that handle listening ports must be robust against malformed data.
-Google may conduct fuzz-testing against the port using an unauthorized client,
-and, where possible, authorized client. Any crashes will be filed as bugs with
-an appropriate severity.</li>
+  <li>There should be no listening ports on the device.</li>
+  <li>Listening ports must be able to be disabled without an OTA. This can be
+    either a server or user-device configuration change.</li>
+  <li>Root processes must not listen on any port.</li>
+  <li>Processes owned by the system UID must not listen on any port.</li>
+  <li>For local IPC using sockets, applications must use a UNIX Domain Socket
+    with access limited to a group. Create a file descriptor for the IPC and
+    make it +RW for a specific UNIX group. Any client applications must be
+    within that UNIX group.</li>
+  <li>Some devices with multiple processors (e.g. a radio/modem separate from
+    the application processor) use network sockets to communicate between
+    processors. In such instances, the network socket used for inter-processor
+    communication must use an isolated network interface to prevent access by
+    unauthorized applications on the device (that is, use <code translate="no" dir="ltr">iptables</code>
+    to prevent access by other applications on the device).</li>
+  <li>Daemons that handle listening ports must be robust against malformed data.
+    Google may conduct fuzz-testing against the port using an unauthorized
+    client, and, where possible, authorized client. Any crashes will be filed as
+    bugs with an appropriate severity.</li>
 </ul>
 
 <h3 id="logging">Logging data</h3>
@@ -770,10 +833,10 @@ logging sensitive user data by applications installed by default on Android
 devices. Best practices:</p>
 
 <ul>
-<li>Applications or system services should not log data provided from
-third-party applications that might include sensitive information.</li>
-<li>Applications must not log any Personally Identifiable Information (PII) as
-part of normal operation.</li>
+  <li>Applications or system services should not log data provided from
+    third-party applications that might include sensitive information.</li>
+  <li>Applications must not log any Personally Identifiable Information (PII) as
+    part of normal operation.</li>
 </ul>
 
 <p>CTS includes tests that check for the presence of potentially sensitive
@@ -793,21 +856,21 @@ known directories.</p>
 
 <h3 id="config-files">Securing configuration files</h3>
 <p>Many drivers and services rely on configuration and data files stored in
-directories such as <code>/system/etc</code> and <code>/data</code>. If these
+directories such as <code translate="no" dir="ltr">/system/etc</code> and <code translate="no" dir="ltr">/data</code>. If these
 files are processed by a privileged process and are world writable, it is
 possible for an app to exploit a vulnerability in the process by crafting
 malicious contents in the world-writable file. Best practices:</p>
 
 <ul>
-<li>Configuration files used by privileged processes should not be world
-readable.</li>
-<li>Configuration files used by privileged processes must not be world
-writable.</li>
+  <li>Configuration files used by privileged processes should not be world
+    readable.</li>
+  <li>Configuration files used by privileged processes must not be world
+    writable.</li>
 </ul>
 
 <h3 id="native-code">Storing native code libraries</h3>
 <p>Any code used by privileged device manufacturer processes must be in
-<code>/vendor</code> or <code>/system</code>; these filesystems are mounted
+<code translate="no" dir="ltr">/vendor</code> or <code translate="no" dir="ltr">/system</code>; these filesystems are mounted
 read-only on boot. As a best practice, libraries used by system or other
 highly-privileged apps installed on the phone should also be in these
 filesystems. This can prevent a security vulnerability that could allow an
@@ -827,8 +890,8 @@ is designed for use in controlled, secure environments and should not be enabled
 for general use. Best practices:</p>
 
 <ul>
-<li>ADB must be disabled by default.</li>
-<li>ADB must require the user to turn it on before accepting connections.</li>
+  <li>ADB must be disabled by default.</li>
+  <li>ADB must require the user to turn it on before accepting connections.</li>
 </ul>
 
 <h3 id="unlockable-bootloaders">Unlocking bootloaders</h3>
@@ -836,10 +899,10 @@ for general use. Best practices:</p>
 the system partition and/or install a custom operating system. Common use
 cases include installing a third-party ROM and performing systems-level
 development on the device. For example, a Google Nexus device owner can run
-<code>fastboot oem unlock</code> to start the unlocking process, which presents
+<code translate="no" dir="ltr">fastboot oem unlock</code> to start the unlocking process, which presents
 the following message to the user:</p>
 
-<div style="background-color: #B2EBF2; padding: 10px;margin-right:25px">
+<div style="background-color: #b2ebf2; padding: 10px;margin-right:25px">
 
 <p><strong>Unlock bootloader?</strong></p>
 
@@ -861,7 +924,7 @@ button to continue.</p>
 <p><strong>No</strong>: Do not unlock bootloader and restart phone.</p>
 </div>
 
-<br>
+<br />
 <p>As a best practice, unlockable Android devices must securely erase all user
 data prior to being unlocked. Failure to properly delete all data on
 unlocking may allow a physically proximate attacker to gain unauthorized access
@@ -871,26 +934,26 @@ instances where device manufacturers improperly implemented unlocking). A
 properly implemented unlocking process has the following properties:</p>
 
 <ul>
-<li>When the unlocking command is confirmed by the user, the device must start
-an immediate data wipe. The <code>unlocked</code> flag must not be set until
-after the secure deletion is complete.</li>
-<li>If a secure deletion cannot be completed, the device must stay in a locked
-state.</li>
-<li>If supported by the underlying block device,
-<code>ioctl(BLKSECDISCARD)</code> or equivalent should be used. For eMMC
-devices, this means using a Secure Erase or Secure Trim command. For eMMC 4.5
-and later, this means using a normal Erase or Trim followed by a Sanitize
-operation.</li>
-<li>If <code>BLKSECDISCARD</code> is not supported by the underlying block
-device, <code>ioctl(BLKDISCARD)</code> must be used instead. On eMMC devices,
-this is a normal Trim operation.</li>
-<li>If <code>BLKDISCARD</code> is not supported, overwriting the block devices
-with all zeros is acceptable.</li>
-<li>An end user must have the option to require that user data be wiped prior to
-flashing a partition. For example, on Nexus devices, this is done via the
-<code>fastboot oem lock</code> command.</li>
-<li>A device may record, via efuses or similar mechanism, whether a device was
-unlocked and/or relocked.</li>
+  <li>When the unlocking command is confirmed by the user, the device must start
+    an immediate data wipe. The <code translate="no" dir="ltr">unlocked</code> flag must not be set until
+    after the secure deletion is complete.</li>
+  <li>If a secure deletion cannot be completed, the device must stay in a locked
+    state.</li>
+  <li>If supported by the underlying block device,
+    <code translate="no" dir="ltr">ioctl(BLKSECDISCARD)</code> or equivalent should be used. For eMMC
+    devices, this means using a Secure Erase or Secure Trim command. For eMMC
+    4.5 and later, this means using a normal Erase or Trim followed by a
+    Sanitize operation.</li>
+  <li>If <code translate="no" dir="ltr">BLKSECDISCARD</code> is not supported by the underlying block
+    device, <code translate="no" dir="ltr">ioctl(BLKDISCARD)</code> must be used instead. On eMMC
+    devices, this is a normal Trim operation.</li>
+  <li>If <code translate="no" dir="ltr">BLKDISCARD</code> is not supported, overwriting the block devices
+    with all zeros is acceptable.</li>
+  <li>An end user must have the option to require that user data be wiped prior
+    to flashing a partition. For example, on Nexus devices, this is done via the
+    <code translate="no" dir="ltr">fastboot oem lock</code> command.</li>
+  <li>A device may record, via efuses or similar mechanism, whether a device was
+    unlocked and/or relocked.</li>
 </ul>
 
 <p>These requirements ensure that all data is destroyed upon the completion of
@@ -898,7 +961,7 @@ an unlock operation. Failure to implement these protections is considered a
 moderate level security vulnerability.</p>
 
 <p>A device that is unlocked may be subsequently relocked using the
-<code>fastboot oem lock</code> command. Locking the bootloader provides the same
+<code translate="no" dir="ltr">fastboot oem lock</code> command. Locking the bootloader provides the same
 protection of user data with the new custom OS as was available with the
 original device manufacturer OS (e.g. user data will be wiped if the device is
 unlocked again).</p>
@@ -913,17 +976,17 @@ unlocked again).</p>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1130,8 +1193,9 @@ unlocked again).</p>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1197,54 +1261,49 @@ unlocked again).</p>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/security/overview/implement by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 13:30:01 GMT -->
+<!-- Mirrored from source.android.google.cn/security/overview/implement by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:34:35 GMT -->
 </html>

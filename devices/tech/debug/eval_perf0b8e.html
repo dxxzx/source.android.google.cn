@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="zh_cn">
+<html       lang="zh-CN"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/debug/eval_perf.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:18:44 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/eval_perf?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 18:05:51 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>评估性能 &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="评估性能 &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="eval_perf.html">
-
-  <meta property="og:locale" content="zh_cn">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="eval_perf.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="eval_perf.html">      
+<title>评估性能 &nbsp;|&nbsp; Android 开源项目 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="评估性能 &nbsp;|&nbsp; Android 开源项目 &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="eval_perf.html">
+
+  <meta property="og:locale" content="zh_cn">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup0b8e.html?hl=zh-cn"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio0b8e.html?hl=zh-cn"
+          <a href="../../../devices0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="开发"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../dalvik0b8e.html?hl=zh-cn"
+          <a href="../../tech0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="配置"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+              family-name="Android 开源项目"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results?hl=zh-cn" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="搜索"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="搜索框">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,20 +186,50 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          转到源代码
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  转到源代码
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../compatibility0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
@@ -207,7 +243,7 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../compatibility0b8e.html?hl=zh-cn"
@@ -232,7 +268,7 @@
 
         </tab>
                         <tab >
-          <a href="../../../compatibility/overview0b8e.html?hl=zh-cn"
+          <a href="../../../compatibility/overview0b8e-2.html?hl=zh-cn"
    class="gc-analytics-event"
    title="兼容性"
            data-category="Site-Wide Custom Events"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab >
-          <a href="../settings/settings-guidelines0b8e.html?hl=zh-cn"
+          <a href="../settings0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="设置"
            data-category="Site-Wide Custom Events"
@@ -282,8 +318,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -294,7 +333,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -360,7 +412,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../settings/settings-guidelines.html"
+    <a href="../settings.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -376,7 +428,7 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: 测试">
       <span class="devsite-nav-text" menu="_book">测试</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -395,7 +447,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -405,7 +457,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -437,26 +489,26 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../../../compatibility/tests.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../../../compatibility/tests.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="测试开发工作流程">测试开发工作流程</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="测试开发工作流程">测试开发工作流程</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/blueprints.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="简单配置">简单配置</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/test-config.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="复杂配置">复杂配置</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="插桩测试">插桩测试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/instrumentation.html"
+   ><span class="devsite-nav-text" title="复杂配置">复杂配置</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="插桩测试">插桩测试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/instrumentation.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/instr-self-e2e.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="自插桩测试">自插桩测试</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/instr-app-e2e.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="定位应用">定位应用</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="原生测试">原生测试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/native.html"
+   ><span class="devsite-nav-text" title="定位应用">定位应用</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="原生测试">原生测试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/native.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/native-func-e2e.html"
      class="devsite-nav-title"
@@ -469,15 +521,15 @@
    ><span class="devsite-nav-text" title="映射测试">映射测试</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/tests/development/atest.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="运行测试 (Atest)">运行测试 (Atest)</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="兼容性测试套件 (CTS)">兼容性测试套件 (CTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="兼容性测试套件 (CTS)">兼容性测试套件 (CTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/setup.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="设置 CTS">设置 CTS</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/run.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="运行 CTS">运行 CTS</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="运行 CTS 验证程序">运行 CTS 验证程序</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/verifier.html"
+   ><span class="devsite-nav-text" title="运行 CTS">运行 CTS</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="运行 CTS 验证程序">运行 CTS 验证程序</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/verifier.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/audio-framework.html"
      class="devsite-nav-title"
@@ -487,39 +539,43 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="旋转矢量交叉检验">旋转矢量交叉检验</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/usb-audio.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="USB 音频 CTS 测试">USB 音频 CTS 测试</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="相机测试">相机测试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-hal.html"
+   ><span class="devsite-nav-text" title="USB 音频 CTS 测试">USB 音频 CTS 测试</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/Verifier-Pro-Audio.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="相机 HAL 测试">相机 HAL 测试</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="相机盒装 ITS">相机盒装 ITS</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-its-box.html"
+   ><span class="devsite-nav-text" title="CTS Verifier 专业音频测试">CTS Verifier 专业音频测试</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="相机测试">相机测试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="相机 HAL 测试">相机 HAL 测试</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="相机盒装 ITS">相机盒装 ITS</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-its-box.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-its-box-assembly.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="常规视野盒装 ITS">常规视野盒装 ITS</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/camera-wfov-box-assembly.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="宽视野盒装 ITS">宽视野盒装 ITS</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="传感器融合盒">传感器融合盒</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/sensor-fusion-quick-start.html"
+   ><span class="devsite-nav-text" title="宽视野盒装 ITS">宽视野盒装 ITS</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="传感器融合盒">传感器融合盒</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/cts/sensor-fusion-quick-start.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="传感器融合盒快速入门">传感器融合盒快速入门</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/sensor-fusion-box-assembly.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="传感器融合盒详细信息">传感器融合盒详细信息</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/secure-element.html"
+   ><span class="devsite-nav-text" title="传感器融合盒详细信息">传感器融合盒详细信息</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/sensor-fusion-rack-mount.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="机架式传感器融合控制器组装">机架式传感器融合控制器组装</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/secure-element.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="安全要素">安全要素</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/interpret.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="解读结果">解读结果</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/development.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="CTS 开发">CTS 开发</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/downloads-2.html"
+   ><span class="devsite-nav-text" title="CTS 开发">CTS 开发</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/cts/downloads.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="下载次数">下载次数</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="供应商测试套件 (VTS)">供应商测试套件 (VTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="供应商测试套件 (VTS)">供应商测试套件 (VTS)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/codelab-video.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Codelab 和视频教程">Codelab 和视频教程</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/systems.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="使用 VTS 进行系统测试">使用 VTS 进行系统测试</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="测试框架">测试框架</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/shell-commands.html"
+   ><span class="devsite-nav-text" title="使用 VTS 进行系统测试">使用 VTS 进行系统测试</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="测试框架">测试框架</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/shell-commands.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="设备 shell 命令">设备 shell 命令</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/test-templates.html"
      class="devsite-nav-title"
@@ -529,46 +585,156 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="HAL 可测试性检查">HAL 可测试性检查</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/multi-device-testing.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="多设备测试">多设备测试</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="VTS 信息中心">VTS 信息中心</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/setup.html"
+   ><span class="devsite-nav-text" title="多设备测试">多设备测试</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="VTS 信息中心">VTS 信息中心</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/setup.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="设置">设置</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/database.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="数据库">数据库</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/ui.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="界面">界面</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="实验室基础架构">实验室基础架构</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/automated-test-infra.html"
+   ><span class="devsite-nav-text" title="界面">界面</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="实验室基础架构">实验室基础架构</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../../compatibility/vts/automated-test-infra.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="自动化测试基础架构">自动化测试基础架构</span></a></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/host-controller.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="主机控制器架构">主机控制器架构</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../../compatibility/vts/performance.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="性能测试">性能测试</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Trade Federation 自动化测试框架">Trade Federation 自动化测试框架</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Trade Federation (TF) 自动化测试框架">Trade Federation (TF) 自动化测试框架</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="使用入门">使用入门</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="开始使用">开始使用</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/machine_setup.html"
+   ><span class="devsite-nav-text" title="开始">开始</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/machine_setup.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="机器设置">机器设置</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/devices.html"
+   ><span class="devsite-nav-text" title="创建或下载 Tradefed">创建或下载 Tradefed</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/devices.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="测试设备">测试设备</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/lifecycle.html"
+   ><span class="devsite-nav-text" title="使用设备">使用设备</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/console.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="管理中心">管理中心</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/lifecycle.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="测试生命周期">测试生命周期</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/options.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="选项处理">选项处理</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/full_example.html"
+   ><span class="devsite-nav-text" title="选项处理">选项处理</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/fundamentals/full_example.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="端到端示例">端到端示例</span></a></li><li class="devsite-nav-item"><a href="../../../reference/tradefed.html"
+   ><span class="devsite-nav-text" title="端到端示例">端到端示例</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="使用 TF 进行测试">使用 TF 进行测试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="通过 Tradefed">通过 Tradefed</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/new-test-runner.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="新的测试运行程序">新的测试运行程序</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/sharded-runner.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Shardable IRemoteTest">Shardable IRemoteTest</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/host-driven-test.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="主机驱动的测试">主机驱动的测试</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/report-metrics.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="报告指标">报告指标</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/log-on-failure.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="自动日志收集">自动日志收集</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-tf/instrumentation.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="通过 APK 进行插桩测试">通过 APK 进行插桩测试</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="通过套件">通过套件</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/setup.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="设置套件">设置套件</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/option-passing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="通过选项">通过选项</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/system-status-checker.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="检查系统状态">检查系统状态</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/android-test-structure.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="结构 AndroidTest.xml">结构 AndroidTest.xml</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/android-test-tuning.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="配置分片">配置分片</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/module-controller.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="模块控制器">模块控制器</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/testing/through-suite/suite-retry.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="套件重试">套件重试</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="开发 TF">开发 TF</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/development.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/development/eclipse.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="设置 Eclipse">设置 Eclipse</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/development/tf-unit-tests.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="包括单元测试">包括单元测试</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/development/error-prone.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="运行 Error Prone Bug 检查程序">运行 Error Prone Bug 检查程序</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/development/contribute-noncore.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="贡献非核心代码">贡献非核心代码</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="架构">架构</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="XML 配置">XML 配置</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/xml-config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="结构">结构</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/xml-config/template-include.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="模板和包含">模板和包含</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/xml-config/config-object.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="配置对象">配置对象</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="全局配置">全局配置</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/global-config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="文件选项">文件选项</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/host-setup/host-options.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="主机选项">主机选项</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="高级概念">高级概念</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/keystore.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="密钥库密钥">密钥库密钥</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/command-scheduler.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="命令调度程序">命令调度程序</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/test-runner.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="测试运行者">测试运行者</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/sharding.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="测试分片">测试分片</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/multi-device.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="多设备">多设备</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/scripting-sl4a.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="脚本层">脚本层</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/advanced/protocols-global-config.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="协议和全局配置">协议和全局配置</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="设备管理器">设备管理器</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/device-manager.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="设备状态">设备状态</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/device-manager/device-allocation.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="设备分配">设备分配</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/device-manager/device-detection.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="设备检测">设备检测</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="编译">编译</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/build-provider.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="版本提供程序">版本提供程序</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/build-provider/build-info.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="版本信息">版本信息</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="设备设置">设备设置</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/target-preparer.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="目标准备器">目标准备器</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/target-preparer/multi-target.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="多目标准备器">多目标准备器</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="结果">结果</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/result-reporter.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="结果报告程序">结果报告程序</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/result-reporter/log-reporter.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="报告程序日志">报告程序日志</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/result-reporter/summary.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="报告程序摘要">报告程序摘要</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="指标">指标</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/metrics-collector.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="指标收集器">指标收集器</span></a></li><li class="devsite-nav-item"><a href="../test_infra/tradefed/architecture/metrics-collector/device-collector.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="设备端指标">设备端指标</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../../../reference/tradefed.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="软件包索引">软件包索引</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="调试">调试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../debug.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="调试">调试</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../debug.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="native-crash.html"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../../setup/contribute/read-bug-reports.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="诊断原生代码崩溃问题">诊断原生代码崩溃问题</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="评估性能">评估性能</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="eval_perf.html"
+   ><span class="devsite-nav-text" title="阅读错误报告">阅读错误报告</span></a></li><li class="devsite-nav-item"><a href="native-crash.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="诊断原生代码崩溃问题">诊断原生代码崩溃问题</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="评估性能">评估性能</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="eval_perf.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="systrace.html"
      class="devsite-nav-title"
@@ -586,16 +752,16 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="本地内存使用情况">本地内存使用情况</span></a></li><li class="devsite-nav-item"><a href="../connect/connect_tests.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="网络连接测试">网络连接测试</span></a></li><li class="devsite-nav-item"><a href="rescue-party-2.html"
+   ><span class="devsite-nav-text" title="网络连接测试">网络连接测试</span></a></li><li class="devsite-nav-item"><a href="rescue-party.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="救援程序">救援程序</span></a></li><li class="devsite-nav-item"><a href="storaged-2.html"
+   ><span class="devsite-nav-text" title="救援程序">救援程序</span></a></li><li class="devsite-nav-item"><a href="storaged.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Storaged">Storaged</span></a></li><li class="devsite-nav-item"><a href="strace.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Strace">Strace</span></a></li><li class="devsite-nav-item"><a href="valgrind.html"
+   ><span class="devsite-nav-text" title="Strace">Strace</span></a></li><li class="devsite-nav-item"><a href="asan.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Valgrind">Valgrind</span></a></li></ul></devsite-expandable-nav></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -603,16 +769,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -622,8 +789,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../../compatibility0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -633,8 +801,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../../compatibility/tests0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -651,8 +820,8 @@
 
               <h1 class="devsite-page-title">评估性能</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -673,6 +842,8 @@
       See the License for the specific language governing permissions and
       limitations under the License.
   -->
+
+<p>使用 <a href="https://android.googlesource.com/platform/system/extras/+/master/simpleperf/doc/README.md" class="external">Simpleperf</a> 评估设备性能。Simpleperf 是一款适用于 Android 平台上的应用和本机进程的原生分析工具。<a href="https://developer.android.google.cn/studio/profile/cpu-profiler?hl=zh-cn" class="external">CPU 分析器</a>可用于实时检查应用的 CPU 使用率和线程 Activity。</p>
 
 <p>在性能方面，有两项用户可见指标：</p>
 
@@ -746,7 +917,7 @@
 <code class="devsite-terminal">adb shell "echo 1 &gt; /d/tracing/events/mdss/enable"</code>
 </pre>
 
-<p>运行 systrace 时，这些事件将保持启用状态，以便您在 <code>mdss_fb0</code> 部分的跟踪记录中查看有关显示通道 (MDSS) 的其他信息。在 Qualcomm SOC 上，您无法在 systrace 标准视图下看到有关 GPU 的其他信息，只能看到跟踪记录本身所显示的结果（如需了解详情，请参阅<a href="systrace0b8e-2.html?hl=zh-cn">了解 systrace</a> 一文）。</p>
+<p>运行 systrace 时，这些事件将保持启用状态，以便您在 <code>mdss_fb0</code> 部分的跟踪记录中查看有关显示通道 (MDSS) 的其他信息。在 Qualcomm SOC 上，您无法在 systrace 标准视图下看到有关 GPU 的其他信息，只能看到跟踪记录本身所显示的结果（如需了解详情，请参阅<a href="systrace0b8e.html?hl=zh-cn">了解 systrace</a> 一文）。</p>
 
 <p>您希望从这种显示跟踪中了解的是，直接指明某个帧已被发送至显示屏的单个事件。在这里，您可以确定是否成功满足帧时间；如果事件 Xn 的发生时间在事件 Xn-1 发生后的 16.7 毫秒内（假设为 60Hz 的显示屏），您就会知道没有卡顿。<em></em><em></em>如果您的 SOC 不提供这种信号，请与您的供应商联系以进行获取。如果没有明确的帧完成信号，很难调试抖动。</p></ul>
 
@@ -790,17 +961,17 @@
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1007,8 +1178,9 @@
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1074,54 +1246,49 @@
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'zh_cn',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"zh_cn",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/debug/eval_perf.html?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 20:18:45 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/debug/eval_perf?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 18:05:53 GMT -->
 </html>

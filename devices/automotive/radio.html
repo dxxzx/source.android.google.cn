@@ -1,0 +1,1901 @@
+<!doctype html>
+<html       lang="en"      dir="ltr">
+  
+<!-- Mirrored from source.android.google.cn/devices/automotive/radio by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:21:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="radio.html">      
+<title>Implementing Radio with Media &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Implementing Radio with Media &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="radio.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        block-apix        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Develop"
+   aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search
+            enable-suggestions
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
+    <div class="devsite-search-container">
+      <div class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Develop
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../devices.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../audio.html"
+   class="gc-analytics-event"
+   title="Audio"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Audio"
+   >
+  Audio
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../camera.html"
+   class="gc-analytics-event"
+   title="Camera"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Camera"
+   >
+  Camera
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../tech/connect.html"
+   class="gc-analytics-event"
+   title="Connectivity"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Connectivity"
+   >
+  Connectivity
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../graphics.html"
+   class="gc-analytics-event"
+   title="Graphics"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Graphics"
+   >
+  Graphics
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../interaction.html"
+   class="gc-analytics-event"
+   title="Interaction"
+   aria-label="Interaction, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Interaction"
+   >
+  Interaction
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../media.html"
+   class="gc-analytics-event"
+   title="Media"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Media"
+   >
+  Media
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../storage.html"
+   class="gc-analytics-event"
+   title="Storage"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Storage"
+   >
+  Storage
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav scrollbars >
+                  
+
+
+
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Audio">
+      <span class="devsite-nav-text" >Audio</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../camera.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Camera">
+      <span class="devsite-nav-text" >Camera</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../tech/connect.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Connectivity">
+      <span class="devsite-nav-text" >Connectivity</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../graphics.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Graphics">
+      <span class="devsite-nav-text" >Graphics</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../interaction.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Interaction">
+      <span class="devsite-nav-text" menu="_book">Interaction</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../media.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Media">
+      <span class="devsite-nav-text" >Media</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../storage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Storage">
+      <span class="devsite-nav-text" >Storage</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../tech.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../interaction.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Automotive">Automotive</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../automotive.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio">Audio</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="audio/audio-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Audio HAL">Audio HAL</span></a></li><li class="devsite-nav-item"><a href="audio/audio-control.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AudioControl HAL">AudioControl HAL</span></a></li><li class="devsite-nav-item"><a href="audio/interaction-sequences.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction Sequences">Interaction Sequences</span></a></li><li class="devsite-nav-item"><a href="audio/multi-zone.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multi-Zone">Multi-Zone</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="camera-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Camera HAL">Camera HAL</span></a></li><li class="devsite-nav-item"><a href="ivi_connectivity.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="IVI Connectivity">IVI Connectivity</span></a></li><li class="devsite-nav-item"><a href="properties.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Vehicle Properties">Vehicle Properties</span></a></li><li class="devsite-nav-item"><a href="power.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Management">Power Management</span></a></li><li class="devsite-nav-item"><a href="garage_mode.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Garage Mode">Garage Mode</span></a></li><li class="devsite-nav-item"><a href="radio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Radio with Media">Radio with Media</span></a></li><li class="devsite-nav-item"><a href="../tech/perf/flash-wear.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Flash Wear Management">Flash Wear Management</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Input">Input</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../input.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../input/key-layout-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Key Layout Files">Key Layout Files</span></a></li><li class="devsite-nav-item"><a href="../input/key-character-map-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Key Character Map Files">Key Character Map Files</span></a></li><li class="devsite-nav-item"><a href="../input/input-device-configuration-files.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Input Device Configuration Files">Input Device Configuration Files</span></a></li><li class="devsite-nav-item"><a href="../input/migration-guide.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Migration Guide">Migration Guide</span></a></li><li class="devsite-nav-item"><a href="../input/keyboard-devices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Keyboard Devices">Keyboard Devices</span></a></li><li class="devsite-nav-item"><a href="../input/touch-devices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Touch Devices">Touch Devices</span></a></li><li class="devsite-nav-item"><a href="../input/getevent.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Getevent">Getevent</span></a></li><li class="devsite-nav-item"><a href="../input/validate-keymaps.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Validate Keymaps">Validate Keymaps</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Neural Networks">Neural Networks</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../neural-networks.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/ahardwarebuffer.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AHardware Buffer">AHardware Buffer</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/burst-executions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Burst Executions and Fast Message Queues">Burst Executions and Fast Message Queues</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/compilation-caching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Compilation Caching">Compilation Caching</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/device-discovery.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Discovery and Assignment">Device Discovery and Assignment</span></a></li><li class="devsite-nav-item"><a href="../neural-networks/vendor-extensions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Vendor Extensions">Vendor Extensions</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Peripherals">Peripherals</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Audio Accessories">Audio Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/audio.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="3.5 mm Headset">3.5 mm Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/plug-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/jack-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="USB Headset">USB Headset</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/headset/usb-headset-spec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Headset Spec">Headset Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/usb-adapter.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Adapter Spec">Adapter Spec</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/usb-device.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device Spec">Device Spec</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../accessories/headset/expected-behavior.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Expected Behavior">Expected Behavior</span></a></li><li class="devsite-nav-item"><a href="../accessories/headset/testing.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Testing">Testing</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Custom Accessories">Custom Accessories</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/custom.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="AOA">AOA</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../accessories/protocol.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../accessories/aoa2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AOA 2.0">AOA 2.0</span></a></li><li class="devsite-nav-item"><a href="../accessories/aoa.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="AOA 1.0">AOA 1.0</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../accessories/stylus.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Stylus">Stylus</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors">Sensors</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../sensors/sensor-stack.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Stack">Sensor Stack</span></a></li><li class="devsite-nav-item"><a href="../sensors/sensor-types.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensor Types">Sensor Types</span></a></li><li class="devsite-nav-item"><a href="../sensors/interaction.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Interaction">Interaction</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Power">Power</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors/batching.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Batching">Batching</span></a></li><li class="devsite-nav-item"><a href="../sensors/power-use.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Power Consumption">Power Consumption</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Modes">Modes</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors/report-modes.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reporting Modes">Reporting Modes</span></a></li><li class="devsite-nav-item"><a href="../sensors/suspend-mode.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Suspend Mode">Suspend Mode</span></a></li><li class="devsite-nav-item"><a href="../sensors/sensors-off.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensors Off">Sensors Off</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Sensors HAL">Sensors HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../sensors/sensors-hal2.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensors HAL 2.0">Sensors HAL 2.0</span></a></li><li class="devsite-nav-item"><a href="../sensors/hal-interface.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Sensors HAL 1.0">Sensors HAL 1.0</span></a></li><li class="devsite-nav-item"><a href="../sensors/versioning.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Version Deprecation">Version Deprecation</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="TV">TV</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../tv.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../tv/hdmi-cec.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="HDMI-CEC Control Service">HDMI-CEC Control Service</span></a></li><li class="devsite-nav-item"><a href="../tv/multimedia-tunneling.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Multimedia Tunneling">Multimedia Tunneling</span></a></li><li class="devsite-nav-item"><a href="../tv/reference-tv-app.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Reference TV App">Reference TV App</span></a></li><li class="devsite-nav-item"><a href="../tv/customize-tv-app.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Customize the TV App">Customize the TV App</span></a></li></ul></devsite-expandable-nav></li>
+          </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content>
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">        
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Develop
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../interaction.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Interaction
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Implementing Radio with Media</h1>
+    
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+  <!--
+      Copyright 2019 The Android Open Source Project
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+<p>The Radio control implementation is based on MediaSession and MediaBrowse, which
+together enable Media and Assistant to control the Radio. For details about
+these interfaces, see
+<a href="https://developer.android.google.cn/training/auto/audio/" class="external">Build Android media apps for cars</a>.</p>
+
+<p>See the Media browse tree implementation in the <code translate="no" dir="ltr">car-broadcastradio-support</code>
+library provided in <code translate="no" dir="ltr">packages/apps/Car/libs</code>. This library also provides
+extensions of <code translate="no" dir="ltr">ProgramSelector</code> to convert to and from URI. To implement radio,
+use this library to build a browse tree.</p>
+
+<h2 id=media_source>Media Source Switcher</h2>
+
+<p>To provide a seamless transition between Radio and other apps in Media, the
+<code translate="no" dir="ltr">car-media-common</code> library contains classes to integrate into the Radio app.
+Include the <code translate="no" dir="ltr">MediaAppSelectorWidget</code> widget in the XML file of the Radio app
+(the icon or drop-down used in reference Media and Radio apps):</p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+&lt;com.android.car.media.common.MediaAppSelectorWidget
+    android:id="@+id/app_switch_container"
+    android:layout_width="@dimen/app_switch_widget_width"
+    android:layout_height="wrap_content"
+    android:background="@drawable/app_item_background"
+    android:gravity="center" /&gt;
+</pre>
+
+<p>This widget launches <code translate="no" dir="ltr">AppSelectionFragment</code>, which displays a list of Media
+sources that can be selected. If you desire a different user interface than that
+provided, create a custom widget to launch the <code translate="no" dir="ltr">AppSelectionFragment</code> when the
+switcher is to be displayed:</p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+AppSelectionFragment newFragment = AppSelectionFragment.create(widget,
+            packageName, fullScreen);
+    newFragment.show(mActivity.getSupportFragmentManager(), null);
+</pre>
+
+<p>A sample implementation is provided in the reference Radio app implementation,
+located in <code translate="no" dir="ltr">packages/apps/Car/Radio</code>.</p>
+
+<h2 id=control_specs>Detailed Control Specifications</h2>
+
+<p>The MediaSession interface (via <code translate="no" dir="ltr">MediaSession.Callback</code>) provides control
+mechanisms for the currently playing Radio app:</p>
+
+<table>
+<tr>
+  <th>Mechanism</th>
+  <th>Description</th>
+</tr>
+<tr>
+  <td width="20%"><code translate="no" dir="ltr">onPlay</code><br><code translate="no" dir="ltr">onStop</code></td>
+  <td>Time-shifted pause, if supported.</td>
+</tr>
+<tr>
+  <td width="20%"><code translate="no" dir="ltr">onPlayFromMediaId</code><br><code translate="no" dir="ltr">onPlayFromUri</code></td>
+  <td>Tune to a specific station.</td>
+</tr>
+<tr>
+  <td width="20%"><code translate="no" dir="ltr">onSkipToNext</code><br><code translate="no" dir="ltr">onSkipToPrevious</code></td>
+  <td>Tune to the next (or previous) station.</td>
+</tr>
+<tr>
+  <td width="20%"><code translate="no" dir="ltr">onSetRating</code></td>
+  <td>Add and remove to and from Favorites.</td>
+</tr>
+</table>
+
+<p>The MediaBrowser exposes these MediaItems that can be tuned to over these three
+types of top-level directories:</p>
+
+<ul>
+  <li><b>Programs (stations).</b> Radio programs that are available to listen to and
+    are in range.</li>
+
+  <li><b>Favorites.</b> Radio programs that have been added to Favorites list. Some
+    may be out of range and unavailable.</li>
+
+  <li><b>Band channels.</b> All physically possible channels in the current region
+    (for example, 87.9, 88.1, 88.3, 88.5, 88.7, 88.9, 89.1 and so on). Every
+    band has a separate top-level directory.</li>
+</ul>
+
+<p><img src="images/radio_media_01.png" alt="Broadcast radio MediaBrowserService tree structure"></p>
+
+<p><strong>Figure 1</strong>. Broadcast radio MediaBrowserService tree structure</p>
+
+<p>Every element of these lists has a <code translate="no" dir="ltr">mediaId</code> that can be used with
+<code translate="no" dir="ltr">MediaSession</code> to tune.</p>
+
+<p>Since the <code translate="no" dir="ltr">MediaBrowserService</code> implementation is non-trivial, it is highly
+recommended that you use the provided <code translate="no" dir="ltr">car-broadcastradio-support</code> library to
+delegate implementation details from the OEM Radio app. The OEM may still elect
+to implement these specifications.</p>
+
+<h3 id=media_session>MediaSession</h3>
+
+<p>The Play, Pause, and Stop actions do not perfectly apply to Radio due to the
+fact a broadcast stream cannot be paused. Instead, the Stop action can be
+regarded as *muting* a stream and Play as then *unmuting* the stream.</p>
+
+<p>Some Radio apps simulate the pause of a broadcast stream by caching content and
+then playing it back via the <code translate="no" dir="ltr">onPause</code> command. Otherwise, do not advertise that
+<code translate="no" dir="ltr">ACTION_PAUSE</code> is supported.</p>
+
+<p>Playing from <code translate="no" dir="ltr">mediaId</code> and URI actions is intended to tune to a station fetched
+from the MediaBrowser interface. The <code translate="no" dir="ltr">mediaId</code> is an arbitrary string provided
+by the Radio app to uniquely (so a given ID points to only one item) and with
+stability (so a given item has the same ID through the whole session) identify a
+given station. In this case, the URI will be of a well-defined schema, a form of
+ProgramSelector made to perform like a URI. The uniquity attribute is preserved
+though it need not be stable. (The attribute may change if the station moves to
+a different frequency).</p>
+
+<p><code translate="no" dir="ltr">onPlayFromSearch</code> is not used. It is the client's responsibility (Google
+Assistant or companion app) to select a search result from the MediaBrowser
+tree. Shifting that responsibility to the Radio app increases complexity,
+requires formal contracts on the appearance of string queries, and results in an
+unpredictable user experience across different hardware platforms.</p>
+
+<aside class="note">
+  <strong>Note:</strong> The Radio app does not provide any additional information useful for
+  station name searching that's not already exposed to the client via the
+  MediaBrowser interface.
+</aside>
+
+<p>Skipping to the next or previous stations depends on the current context:</p>
+
+<ul>
+  <li>When an application is tuned to a station from the Favorites list, the Radio
+  app can move to the next station from the list of Favorites.</li>
+  <li>Listening to a station from a program list may result in tuning to the next
+  available station, sorted according to station.</li>
+  <li>Listening to a random station may result in tuning to the next physical
+  station, perhaps without detecting a valid broadcast.</li>
+</ul>
+
+<aside class="note">
+  <strong>Note:</strong> The Radio app must handle these scenarios.
+</aside>
+
+<h4 id=errors>Handling errors</h4>
+
+<p>TransportControls actions (Play, Stop, and Next) don't provide any feedback as
+to success or failure. To indicate an error requires that the MediaSession state
+be to <code translate="no" dir="ltr">STATE_ERROR</code> with an error message.</p>
+
+<p>The Radio app <em>must</em> either execute these actions or set the error state. If
+execution of the Play command is not immediate, change the playback state to
+<code translate="no" dir="ltr">STATE_CONNECTING</code> (in the case of a direct tune) or
+<code translate="no" dir="ltr">STATE_SKIPPING_TO_PREVIOUS</code> or <code translate="no" dir="ltr">STATE_SKIPPING_TO_NEXT</code> while
+the command executes.</p>
+
+<p>To verify that the session changed the current program to what was requested or
+was placed into the error state. the client should watch the PlaybackState.
+While <code translate="no" dir="ltr">STATE_CONNECTING</code> should require no more than 30 seconds, directly tuning
+to a specific AM/FM frequency should occur much more quickly.</p>
+
+<h4>Adding and removing favorites</h4>
+
+<p>MediaSession has rating support, which can be used to control Favorites.
+<code translate="no" dir="ltr">onSetRating</code> called with a rating of the type <code translate="no" dir="ltr">RATING_HEART</code> adds
+or removes the currently tuned station to and from the Favorites list.</p>
+
+<p>This model assumes an unordered and unbounded Favoritea list, contrary to legacy
+<em>presets</em>,in which each saved favorite was allocated to a numerical slot
+(usually 1 through 6). As a result, preset-based systems are incompatible with
+<code translate="no" dir="ltr">onSetRating</code>.</p>
+
+<p>The MediaSession API is limited in that it can only add and remove the currently
+tuned station. For example, an item can't be removed from the list without it
+first being selected. This is a limitation of the MediaBrowser client (such as
+Assistant or Companion app). The Radio app is not restricted.</p>
+
+<strong>Important:</strong> If an app doesn't support Favorites, the following content is
+optional.
+
+<h3 id=media_browser>MediaBrowser</h3>
+
+<p>To specify what frequencies or physical channel names (when tuning to an
+arbitrary channel is suitable for a given radio technology) are valid for a
+given region, all valid channels (frequencies) are listed for each band. The US
+region provides:</p>
+
+<table>
+<tr>
+  <th>Band</th>
+  <th>Channels</th>
+</tr>
+<tr>
+<td width="30%">FM</td>
+<td>101 channels in the 87.8 to 108.0 MHz range, with 0.2 MHz spacing.</td>
+</tr>
+<tr>
+<td width="30%">AM</td>
+<td>117 channels in the 530 to 1700 kHz range, with 10 kHz spacing.</td>
+</tr>
+</table>
+
+<aside class="note">
+  <strong>Note:</strong> HD radio uses the same channel space and is therefore not presented
+  separately.
+</aside>
+
+<p>The list of currently available radio programs is flat, which doesn't enable
+display schemes such as grouping by Digital Audio Broadcasting (DAB) ensemble.</p>
+
+<p>Entries in a Favorites list may sometimes be out of range. The Radio app may (or
+may not) detect that an entry can be tuned to beforehand. If so, the Radio app
+may not mark the entry as playable.</p>
+
+<p>To identify the top level folders, use the same mechanism as is used by
+Bluetooth.</p>
+
+<p>The Extras bundle of the <code translate="no" dir="ltr">MediaDescription</code> object will contain a tuner-specific
+field, which is what Bluetooth does with <code translate="no" dir="ltr">EXTRA_BT_FOLDER_TYPE</code>. In the case of
+broadcast radio, this requires the following new fields be defined in the public
+API.</p>
+
+<p><code translate="no" dir="ltr">EXTRA_BCRADIO_FOLDER_TYPE</code> = <code translate="no" dir="ltr">android.media.extra.EXTRA_BCRADIO_FOLDER_TYPE</code>,
+one of the following values:</p>
+
+<table>
+<tr>
+  <th>Field</th>
+  <th>Value</th>
+</tr>
+<tr>
+<td width="20%"><code translate="no" dir="ltr">BCRADIO_FOLDER_TYPE_PROGRAMS</code></td>
+<td>1. Currently available programs.</td>
+</tr>
+<tr>
+<td width="20%"><code translate="no" dir="ltr">BCRADIO_FOLDER_TYPE_FAVORITES</code></td>
+<td>2. Favorites.</td>
+</tr>
+<tr>
+<td width="20%"><code translate="no" dir="ltr">BCRADIO_FOLDER_TYPE_BAND</code></td>
+<td>3. All physical channels for a given band.</td>
+</tr>
+</table>
+
+<p>Radio-specific custom metadata fields need not be set as all relevant data can
+be accommodated in the existing <code translate="no" dir="ltr">MediaBrowser.MediaItem</code> scheme:</p>
+
+<ul>
+  <li><strong>Program name (RDS PS, DAB service name).</strong> <code translate="no" dir="ltr">MediaDescription.getTitle</code></li>
+
+  <li><strong>FM frequency.</strong> URI (see ProgramSelector section) or
+  <code translate="no" dir="ltr">MediaDescription.getTitle</code>. If the <code translate="no" dir="ltr">BROADCASTRADIO_FOLDER_TYPE_BAND</code>
+    folder contains an entry.</li>
+
+  <li><strong>Radio-specific identifiers (RDS PI, DAB SId).</strong>
+    <code translate="no" dir="ltr">MediaDescription.getMediaUri</code> parsed to ProgramSelector.</li>
+</ul>
+
+<p>Typically, you need not fetch the FM frequency for the entry on the current
+program or Favorites list (as the client should operate on media IDs). However,
+if such a need exists (perhaps for display purposes), the entry is present in
+the URI, which can be parsed to ProgramSelector.</p>
+
+<p>The use of a URI for item selection within the current session is not
+recommended. For details, see ProgramSelector.</p>
+
+<p>To avoid performance and binder-related issues, the MediaBrowser service must
+support pagination. Use the <code translate="no" dir="ltr">EXTRA_PAGE</code> and <code translate="no" dir="ltr">EXTRA_PAGE_SIZE</code> parameters for
+<code translate="no" dir="ltr">subscribe()</code>.</p>
+
+<aside class="note">
+  <strong>Note:</strong> The <code translate="no" dir="ltr">onLoadChildren()</code> variant (without options handling)
+  implements pagination by default.
+</aside>
+
+<p>Related entries from all list types (raw channels, programs found, and
+Favorites) may have different media IDs, as determined by the Radio app. The
+support library will differ. The URIs (in <code translate="no" dir="ltr">ProgramSelector</code> form) differs
+between raw channels and programs found in most cases, except for FM without
+RDS). For the most part, the same is true between programs found and Favorites
+(except, when AF got updated).</p>
+
+<aside class="note">
+<strong>Important:</strong> Entries from the frequency list have <code translate="no" dir="ltr">AMFM_FREQUENCY</code> as their
+primary identifier, while entries from the program list most likely have
+<code translate="no" dir="ltr">RDS_PI</code> (or another digital radio identifier type) as the primary identifier.
+</aside>
+
+<p>Having different media IDs for entries from different types of lists makes it
+possible to take different actions on them: traverse either favorites list or
+all programs list on onSkipToNext depending on what was the folder of recently
+selected MediaItem (see MediaSession section). It would also mean that assistant
+will unintentionally switch these contexts depending on where it finds the
+matching entry (in the favorite list or all available programs list). It's up to
+the app how to handle such cases.</p>
+
+<h4 id=tune>Special tune actions</h4>
+
+<p>Program list allows to tune to a specific station, but does not allow to make
+general requests like "tune to FM", which might result in tuning to a recently
+listened station on the FM band.</p>
+
+<p>To support such actions, some top-level directories have the <code translate="no" dir="ltr">FLAG_PLAYABLE</code>
+flag set, as well as the obligatory <code translate="no" dir="ltr">FLAG_BROWSABLE</code> for folders.</p>
+
+<table>
+<tr>
+  <th>Action</th>
+  <th>Tunes to</th>
+  <th>How to issue</th>
+</tr>
+<tr>
+<td>Play Radio</td>
+<td>Any</td>
+<td><code translate="no" dir="ltr">startService(ACTION_PLAY_BROADCASTRADIO)</code> or, <br>
+<code translate="no" dir="ltr">playFromMediaId(MediaBrowser.getRoot())</code></td>
+</tr>
+<tr>
+<td>Play Favorites</td>
+<td>Any Favorite</td>
+<td>Play from the <code translate="no" dir="ltr">mediaId</code> in the <code translate="no" dir="ltr">favorites</code> folder </td>
+</tr>
+<tr>
+<td>Play FM</td>
+<td>Any FM channel</td>
+<td>Play from the <code translate="no" dir="ltr">mediaId</code> of the FM band</td>
+</tr>
+</table>
+
+<p>The decision as to which exact program to tune to is determined by the
+application. It's usually the recently tuned channel from the given list.</p>
+
+<p>For more details on <code translate="no" dir="ltr">ACTION_PLAY_BROADCASTRADIO</code>, see the General play intents
+section.</p>
+
+<h4 id=discovery>Discovery and service connection</h4>
+
+<p><code translate="no" dir="ltr">PackageManager</code> can directly find <code translate="no" dir="ltr">MediaBrowserService</code> serving the broadcast
+radio tree. Just call <code translate="no" dir="ltr">resolveService</code> with <code translate="no" dir="ltr">ACTION_PLAY_BROADCASTRADIO</code> intent
+(see General play intents section) and the <code translate="no" dir="ltr">MATCH_SYSTEM_ONLY</code> flag. To find all
+services that serve Radio (there may be more than one, for example separate
+AM/FM and satellite), use <code translate="no" dir="ltr">queryIntentServices</code>. The resolved service will
+handle <code translate="no" dir="ltr">android.media.browse.MediaBrowserService</code> bind intent, too, as it is
+verified with GTS.</p>
+
+<p>To connect to the selected MediaBrowserService, create MediaBrowser instance for
+a given service component and connect. After establishing the connection, a
+handle to MediaSession can be obtained via <code translate="no" dir="ltr">getSessionToken</code>.</p>
+
+<p>The Radio app can restrict client packages allowed to connect in onGetRoot
+implementation of their service. The app should allow system apps to connect
+without whitelisting.</p>
+
+<p>If the source-specific application (for example, a Radion app) is installed on a
+device without such source support, it would still advertise itself as handling
+<code translate="no" dir="ltr">ACTION_PLAY_BROADCASTRADIO</code> intent while the respective MediaBrowser tree would
+not contain radio-specific tags (which could be true should the same system
+image be flashed across different hardware devices).</p>
+
+<p>A client can check that a given source is available on a device as follows:</p>
+
+<ol>
+  <li>To discover the Radio service, call <code translate="no" dir="ltr">resolveService</code> for
+  <code translate="no" dir="ltr">ACTION_PLAY_BROADCASTRADIO)</code>.</li>
+
+  <li>Create and connect to a MediaBrowser for the Radio service.</li>
+
+  <li>Confirm any MediaItem with <code translate="no" dir="ltr">EXTRA_BCRADIO_FOLDER_TYPE</code> extra.</li>
+</ol>
+
+<aside class="note">
+  <strong>Note:</strong> In most cases, the client must review the available MediaBrowser
+  trees to identify all available sources for a given device.
+</aside>
+
+<h4 id=band>Band names</h4>
+
+<p><em>Band list</em> is represented by a set of top-level directories with a folder type
+tag set to <code translate="no" dir="ltr">BCRADIO_FOLDER_TYPE_BAND</code>. The titles of the respective MediaItem
+are localized strings representing band names. In most cases, the strings are
+the same as for the English translation. However, the client should assume so.</p>
+
+<p>To provide a stable mechanism for looking up specific bands, an extra tag is
+added for band folders. <code translate="no" dir="ltr">EXTRA_BCRADIO_BAND_NAME_EN</code> is the non-localized name
+of the band, which takes <em>one</em> predefined value:</p>
+
+<li><code translate="no" dir="ltr">TAM</code></li>
+<li><code translate="no" dir="ltr">FM</code></li>
+<li><code translate="no" dir="ltr">DAB</code></li>
+<li><code translate="no" dir="ltr">SXM</code></li>
+
+<p>If the band is not on this list, it should not have a band name tag set.
+However, if the band is on the list, a tag must be set. HD Radio doesn't
+enumerate separate bands because HD Radio uses the same underlying medium as
+AM/FM.</p>
+
+<h2 id=play_intent>General Play intents</h2>
+
+<p>Each app dedicated to playing a specific source (such as Radio or CD) must
+handle a general play intent to start playing content, possibly from aninactive
+state. For example, after a boot). It's up to the app how to select content to
+play, but it's usually the recently played Radio app or CD track.</p>
+
+<p>A separate intent is defined for each audio source:</p>
+
+<table>
+<tr>
+  <th>Intent</th>
+  <th>Description</th>
+</tr>
+<tr>
+  <td><code translate="no" dir="ltr">android.car.intent.action.PLAY_BROADCASTRADIO</code></td>
+  <td></td>
+  </tr>
+  <tr>
+  <td><code translate="no" dir="ltr">android.car.intent.action.PLAY_AUDIOCD</code></td>
+  <td>CD-DA or CD-Text.</td>
+  </tr>
+  <tr>
+  <td><code translate="no" dir="ltr">android.car.intent.action.PLAY_DATADISC</code></td>
+  <td>Optical data disc such as CD and DVD, but not CD-DA.<br>This may be Mixed Mode CD.</td>
+  <tr>
+  </tr>
+  <tr>
+  <td><code translate="no" dir="ltr">android.car.intent.action.PLAY_AUX</code></td>
+  <td>Without specifying an AUX port.</td>
+  </tr>
+  <tr>
+  <td><code translate="no" dir="ltr">android.car.intent.action.PLAY_BLUETOOTH</code></td>
+  <td></td>
+  </tr>
+  <tr>
+  <td><code translate="no" dir="ltr">android.car.intent.action.PLAY_USB</code></td>
+  <td>Without specifying a USB device.</td>
+  </tr>
+  <tr>
+  <td><code translate="no" dir="ltr">android.car.intent.action.PLAY_LOCAL</code></td>
+  <td>Local media storage, such as a built-in Flash drive.</td>
+</tr>
+  </table>
+
+<p>Intents were selected for use with the Play command, because intents solve
+performs two purposes:</p>
+
+<h3 id=play_command>Play command Service discovery</h3>
+
+<p>An additional benefit is that an intent can execute a simple action without
+opening a MediaBrowser session. That stated, service discovery is the more
+valuable purpose addressed by intents. The procedure for service discovery thus
+becomes straight-forward and unequivocal. For details, see "Discovery and
+service connection".</p>
+
+<p>To simplify client implementations, an alternative to the issuing of the Play
+command (that also has to be implemented by the Radio app) is to issue
+<code translate="no" dir="ltr">playFromMediaId1</code> with the<code translate="no" dir="ltr">rootId</code>of the root node (used as<code translate="no" dir="ltr">mediaId</code>). While the
+root node is not meant to be playable, its<code translate="no" dir="ltr">rootId</code>is an arbitrary string that
+can be designated as <i>consumable</i> as a <code translate="no" dir="ltr">mediaId</code>.</p>
+
+<aside class="note">
+  <strong>Note:</strong> Clients need not understand this nuance.
+</aside>
+
+<h2 id=program_selector>ProgramSelector</h2>
+
+<p>While <code translate="no" dir="ltr">mediaId</code> is sufficient to select a channel from the MediaBrowserService,
+it's bound to a session and not consistent between providers. In some cases, the
+client may need an absolute pointer (like an absolute frequency) to maintain it
+between sessions and devices.</p>
+
+<p>In this era of DABs, a bare frequency is not enough to tune to a specific
+station. To provide an entity that can be used to tune to either an analog or
+digital channel, <code translate="no" dir="ltr">ProgramSelector</code> was designed. (design doc, HAL sources, Java
+sources). This entity consists of two parts:</p>
+
+<ul>
+  <li><strong>Primary identifier.</strong> A unique and stable identifier for a given radio
+    station that doesn't change, but may not be enough to tune to that station.
+    For example, an RDS PI code, which may be translated to the call sign in the
+    US.</li>
+
+  <li><strong>Secondary identifiers.</strong> Any additional identifiers useful for tuning to
+    the station. For example, frequency, possibly including identifiers from
+    other radio technologies. A DAB station may fallback on analog broadcasting.</li>
+</ul>
+
+<p>To make ProgramSelector fit into this MediaBrowser/MediaSession-based solution,
+define a URI schema to serialize it. The schema is defined as follows:</p>
+
+<pre class="prettyprint" translate="no" dir="ltr">
+broadcastradio://program/&lt;primary ID type&gt;/&lt;primary ID&gt;?
+&lt;secondary ID type&gt;=&lt;secondary ID&gt;&lt;secondary ID type&gt;=&lt;secondary ID&gt;
+</pre>
+
+<p>Where the secondary identifiers (which appear after the <code translate="no" dir="ltr">?</code> character) are
+optional and can be removed to provide a stable identifier for use as a mediaId.
+For example:</p>
+
+<ul>
+<li><code translate="no" dir="ltr">broadcastradio://program/RDS_PI/1234?<br>AMFM_FREQUENCY=88500&AMFM_FREQUENCY=103300</code></li>
+
+<li><code translate="no" dir="ltr">broadcastradio://program/AMFM_FREQUENCY/102100</code></li>
+
+<li><code translate="no" dir="ltr">broadcastradio://program/DAB_SID_EXT/14895264?RDS_PI=1234</code></li>
+</ul>
+
+<p>The authority part (AKA <code translate="no" dir="ltr">host</code>) of the program provides some room to extend the
+scheme in the future.</p>
+
+<p>Identifier <code translate="no" dir="ltr">type</code> strings are precisely specified since the names in the HAL 2.x
+definition of <code translate="no" dir="ltr">IdentifierType</code> and the <code translate="no" dir="ltr">value</code> format is a decimal or
+hexadecimal (with a 0x prefix) number.</p>
+
+<p>All vendor-specific identifiers are represented with a <code translate="no" dir="ltr">VENDOR_</code> prefix. For
+example,<code translate="no" dir="ltr">VENDOR_0</code> for <code translate="no" dir="ltr">VENDOR_START</code> and <code translate="no" dir="ltr">VENDOR_1</code> for
+<code translate="no" dir="ltr">VENDOR_START</code> + 1.</p>
+
+<aside class="note">
+<strong>Important:</strong> Such URIs are specific to the radio hardware on which they are
+generated and cannot be transferred between devices made by different OEMs.
+These URIs must be assigned to each MediaItem under the top-level radio folders
+and the MediaSession must support <code translate="no" dir="ltr">playFromMediaId</code> and <code translate="no" dir="ltr">playFromUri</code>.
+However, the URI is primarily intended for radio metadata extraction (such as an FM
+frequency) and persistent storage. There is no guarantee the URI will be
+available for all media items. For example, when the primary ID type is not yet
+supported by the framework. MediaID, on the other hand, is always guaranteed to
+work. It is not recommended that clients use the URI to select items from the
+current MediaBrowser session. Instead, use <code translate="no" dir="ltr">playFromMediaId</code>. However, it's not
+optional for the serving app and missing URIs are reserved for well justified
+cases.
+</aside>
+
+<p>The initial design used a single colon (:) instead of the <code translate="no" dir="ltr">://</code> sequence after
+the scheme part. However, the <code translate="no" dir="ltr">android.net.Uri</code> does not support absolute
+hierarchical URI references.</p>
+
+<h2 id=other_sources>Other source types</h2>
+
+<p>Other audio sources can be managed similarly to radio. For example, auxiliary
+input and Audio CD player.</p>
+
+<p>A single application may serve several types of sources. In such cases, it's
+highly recommended that a separate MediaBrowserService be created for each kind
+of source. Even in a set-up with multiple served sources or
+MediaBrowserServices, it's highly recommended you have a single MediaSession
+within a single application.</p>
+
+<h3 id=audiocd>Audio CD</h3>
+
+<p>The application that serves such disks exposes the MediaBrowser with a single
+browsable entry (or more, if the system has a CD changer), which in turn contains
+all tracks of a given CD. If the system does not have the knowledge about the
+tracks on every CD (for example, when all disks are inserted in a cartridge at one
+time and they have not all been read), then MediaItem for the entire disk is just
+PLAYABLE, and not BROWSABLE and PLAYABLE. If no disk occupies a given slot, the item
+is neither PLAYABLE nor BROWSABLE, although each slot must always be present in
+the tree).</p>
+
+<p><img src="images/radio_media_02.png" alt="Audio CD MediaBrowser tree structure"></p>
+
+<p><strong>Figure 2.</strong> Audio CD MediaBrowser tree structure</p>
+
+<p>These entries would be marked in a similar way that broadcast radio folders are
+– they would contain additional extra fields defined in MediaDescription API:</p>
+
+<table>
+<tr>
+  <th>Field</th>
+  <th>Value</th>
+</tr>
+<tr>
+  <td width="30%"><code translate="no" dir="ltr">EXTRA_CD_TRACK</code></td>
+  <td>For every MediaItem on Audio CD, 1-based track number.</td>
+</tr>
+<tr>
+  <td width="30%"><code translate="no" dir="ltr">EXTRA_CD_DISK</code></td>
+  <td>1-based disk number.</td>
+</tr>
+</table>
+
+<p>For a CD-Text enabled system and compatible disk, the top-level MediaItem has
+the title of the disk. Similarly, MediaItems for tracks have the title of the
+track.</p>
+
+<h3 id=auxinput>Auxiliary input</h3>
+
+<p>The application that serves auxiliary input exposes a MediaBrowser tree with a
+single entry (or more, if there are multiple ports) to represent the AUX In
+port. The respective MediaSession takes its <code translate="no" dir="ltr">mediaId</code> and switches to that
+source after receicing a <code translate="no" dir="ltr">playFromMediaId</code> request.</p>
+
+<p><img src="images/radio_media_03.png" alt="AUX MediaBrowser tree structure"></p>
+
+<p><strong>Figure 3.</strong> AUX MediaBrowser tree structure</p>
+
+<p>Each AUX MediaItem entry has an extra field <code translate="no" dir="ltr">EXTRA_AUX_PORT_NAME</code> set to the
+non-localized name of the port without the "AUX" phrase. For example "AUX 1"
+would be set to "1", "AUX front" to "front", and "AUX" to an empty string. In
+non-English locales, the name tag remains the same as the English string. This
+is unlikely for <code translate="no" dir="ltr">EXTRA_BCRADIO_BAND_NAME_EN</code>, for which values are OEM-defined
+and not constrained to a predefined list.</p>
+
+<p>If the hardware can check if a device is connected to the AUX port, the hardware
+should mark the MediaItem as <code translate="no" dir="ltr">PLAYABLE</code> only when an input is connected. The
+hardware must still enumerate (though not <code translate="no" dir="ltr">PLAYABLE</code>) if nothing sis connected
+to this port. If the hardware has no such capability, the MediaItem must always
+be <code translate="no" dir="ltr">PLAYABLE</code>.</p>
+
+<h3 id=extra>Extra fields</h3>
+
+<p>The following extra keys can be defined:</p>
+
+<table>
+<tr>
+  <th>Field</th>
+  <th>Value</th>
+</tr>
+<tr>
+  <td width="30%"><code translate="no" dir="ltr">EXTRA_CD_TRACK</code></td>
+  <td><code translate="no" dir="ltr">android.media.extra.CD_TRACK</code></td>
+</tr>
+<tr>
+  <td width="30%"><code translate="no" dir="ltr">EXTRA_CD_DISK</code></td>
+  <td><code translate="no" dir="ltr">android.media.extra.CD_DISK</code></td>
+</tr>
+<tr>
+  <td width="30%"><code translate="no" dir="ltr">EXTRA_AUX_PORT_NAME</code></td>
+  <td><code translate="no" dir="ltr">android.media.extra.AUX_PORT_NAME</code></td>
+</tr>
+</table>
+
+<p>The client must look up the top-level MediaItems for those elements with values
+set for <code translate="no" dir="ltr">EXTRA_CD_DISK</code> and <code translate="no" dir="ltr">EXTRA_AUX_PORT_NAME</code>.</p>
+
+<h2 id=examples>Detailed Examples</h2>
+
+<p>The following examples address the MediaBrowser tree structure for those source
+types included in this design.</p>
+
+<p>Broadcast radio <code translate="no" dir="ltr">MediaBrowserService</code> handles <code translate="no" dir="ltr">ACTION_PLAY_BROADCASTRADIO</code>.</p>
+
+<table>
+<tr>
+  <th>Stations&nbsp;(<em>browsable</em>)</th>
+  <th>URI</th>
+</tr>
+<tr>
+  <td colspan="2"><code translate="no" dir="ltr">EXTRA_BCRADIO_FOLDER_TYPE=BCRADIO_FOLDER_TYPE_PROGRAMS</code></td>
+  <td></td>
+</tr>
+<tr>
+  <td width="30%">BBC&nbsp;One&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/RDS_PI/1234?AMFM_FREQUENCY=90500</code></td>
+</tr>
+<tr>
+  <td width="30%">ABC&nbsp;88.1&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/RDS_PI/5678?AMFM_FREQUENCY=88100</code></td>
+</tr>
+<tr>
+  <td width="30%">ABC&nbsp;88.1&nbsp;HD1&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/HD_STATION_ID_EXT/158241DEADBEEF?AMFM_FREQUENCY=88100&RDS_PI=5678</code></td>
+</tr>
+<tr>
+  <td width="30%">ABC&nbsp;88.1&nbsp;HD2&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/HD_STATION_ID_EXT/158242DEADBEFE</code></td>
+</tr>
+<tr>
+  <td width="30%">90.5&nbsp;FM&nbsp;(<em>playable</em>)<br>FM without RDS</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/AMFM_FREQUENCY/90500</code></td>
+</tr>
+<tr>
+  <td width="30%">620&nbsp;AM&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/AMFM_FREQUENCY/620</code></td>
+</tr>
+<tr>
+  <td width="30%">BBC&nbsp;One&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/DAB_SID_EXT/1E24102?RDS_PI=1234</code></td>
+</tr>
+</table>
+
+<table>
+<tr>
+  <th>Favorites&nbsp;(<em>browsable</em>, <em>playable</em>)</th>
+  <th>URI</th>
+</tr>
+<tr>
+  <td colspan="2"><code translate="no" dir="ltr">EXTRA_BCRADIO_FOLDER_TYPE=BCRADIO_FOLDER_TYPE_FAVORITES</code></td>
+  <td></td>
+</tr>
+<tr>
+  <td width="30%">BBC&nbsp;One&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/RDS_PI/1234?AMFM_FREQUENCY=101300</code></td>
+</tr>
+<tr>
+  <td width="30%">BBC&nbsp;Two&nbsp;(<em>not playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/RDS_PI/1300?AMFM_FREQUENCY=102100</code></td>
+</tr>
+<tr>
+  <td width="30%">AM&nbsp;(<em>browsable</em>, <em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">EXTRA_BCRADIO_FOLDER_TYPE=BCRADIO_FOLDER_TYPE_BAND</code></td>
+</tr>
+</table>
+
+<table>
+<tr>
+  <th>AM (<em>browsable</em>, <em>playable</em>)</th>
+  <th>URI</th>
+</tr>
+<tr>
+  <td colspan="2"><code translate="no" dir="ltr">EXTRA_BCRADIO_FOLDER_TYPE=BCRADIO_FOLDER_TYPE_BAND</code><br><code translate="no" dir="ltr">EXTRA_BCRADIO_BAND_NAME_EN="AM"</code></td>
+  <td></td>
+</tr>
+<tr>
+  <td width="30%">530&nbsp;AM&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/AMFM_FREQUENCY/530</code></td>
+</tr>
+<tr>
+  <td width="30%">540&nbsp;AM&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/AMFM_FREQUENCY/540</code></td>
+</tr>
+<tr>
+  <td width="30%">550&nbsp;AM&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/AMFM_FREQUENCY/550</code></td>
+</tr>
+</table>
+
+<table>
+<tr>
+  <th>FM&nbsp;(<em>browsable</em>, <em>playable</em>)</th>
+  <th>URI</th>
+</tr>
+<tr>
+  <td colspan="2"><code translate="no" dir="ltr">EXTRA_BCRADIO_FOLDER_TYPE=BCRADIO_FOLDER_TYPE_BAND</code> <br> <code translate="no" dir="ltr">EXTRA_BCRADIO_BAND_NAME_EN="FM"</code></td>
+  <td></td>
+</tr>
+<tr>
+  <td width="30%">87.7&nbsp;FM&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/AMFM_FREQUENCY/87700</code></td>
+</tr>
+<tr>
+  <td width="30%">87.9&nbsp;FM&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/AMFM_FREQUENCY/87900</code></td>
+</tr>
+<tr>
+  <td width="30%">88.1&nbsp;FM&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">broadcastradio://program/AMFM_FREQUENCY/88100</code></td>
+</tr>
+<tr>
+  <td width="30%">DAB&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">EXTRA_BCRADIO_FOLDER_TYPE=BCRADIO_FOLDER_TYPE_BAND</code><br>
+  <code translate="no" dir="ltr">EXTRA_BCRADIO_BAND_NAME_EN="DAB"</code></td>
+</tr>
+</table>
+
+<table>
+<tr>
+  <th>Audio CD MediaBrowserService</th>
+  <th>URI</th>
+</tr>
+<tr>
+  <td width="30%">Handles <code translate="no" dir="ltr">ACTION_PLAY_AUDIOCD</code></td>
+  <td></td>
+</tr>
+<tr>
+  <td width="30%">Disc&nbsp;1&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">EXTRA_CD_DISK=1</code></td>
+</tr>
+<tr>
+  <td width="30%">Disc&nbsp;2&nbsp;(<em>browsable</em>, <em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">EXTRA_CD_DISK=2</code><br>
+    <li>Track 1 (<em>playable</em>) <code translate="no" dir="ltr">EXTRA_CD_TRACK=1</code></li>
+    <li>Track 2 (<em>playable</em>) <code translate="no" dir="ltr">EXTRA_CD_TRACK=2</code></li>
+  </td>
+</tr>
+<tr>
+  <td width="30%">My&nbsp;music&nbsp;CD&nbsp;(<em>browsable</em>, <em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">EXTRA_CD_DISK=3</code><br>
+    <li>All By Myself (<em>playable</em>) <code translate="no" dir="ltr">EXTRA_CD_TRACK=1</code></li>
+    <li>Reise, Reise (<em>playable</em>) <code translate="no" dir="ltr">EXTRA_CD_TRACK=2</code></li>
+  </td>
+</tr>
+<tr>
+  <td width="30%">Empty&nbsp;slot 4&nbsp;(<em>not playable</em>)</td>
+  <td><code translate="no" dir="ltr">EXTRA_CD_DISK=4</code></td>
+</tr>
+</table>
+
+<table>
+<tr>
+  <th>AUX&nbsp;MediaBrowserService</th>
+  <th>URI</th>
+</tr>
+<tr>
+  <td width="30%">Handles <code translate="no" dir="ltr">ACTION_PLAY_AUX</code></td>
+  <td></td>
+</tr>
+<tr>
+  <td width="30%">AUX&nbsp;front&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">EXTRA_AUX_PORT_NAME="front"</code></td>
+</tr>
+<tr>
+  <td width="30%">AUX&nbsp;rear&nbsp;(<em>playable</em>)</td>
+  <td><code translate="no" dir="ltr">EXTRA_AUX_PORT_NAME="rear"</code></td>
+</tr>
+</table>
+
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/automotive/radio by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:21:21 GMT -->
+</html>

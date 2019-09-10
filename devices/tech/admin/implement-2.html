@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/admin/implement.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 15:09:28 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/admin/implement.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:57:40 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Implementing Device Administration &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Implementing Device Administration &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="implement.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="implement.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="implement.html">      
+<title>Implementing Device Administration &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Implementing Device Administration &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="implement.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab active>
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
    aria-label="Configure, selected"         data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,16 +243,16 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
-          <a href="../dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
-   title="ART"
+   title="Overview"
            data-category="Site-Wide Custom Events"
-        data-label="Tab: ART"
+        data-label="Tab: Overview"
    >
-  ART
+  Overview
 </a>
 
         </tab>
@@ -243,7 +279,7 @@
 
         </tab>
                         <tab >
-          <a href="../health.html"
+          <a href="../perf.html"
    class="gc-analytics-event"
    title="Performance"
            data-category="Site-Wide Custom Events"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab >
-          <a href="../config/perms-whitelist.html"
+          <a href="../config.html"
    class="gc-analytics-event"
    title="Permissions"
            data-category="Site-Wide Custom Events"
@@ -276,6 +312,17 @@
 
         </tab>
                         <tab >
+          <a href="../dalvik.html"
+   class="gc-analytics-event"
+   title="Runtime"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Runtime"
+   >
+  Runtime
+</a>
+
+        </tab>
+                        <tab >
           <a href="../ota.html"
    class="gc-analytics-event"
    title="Updates"
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -351,7 +414,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -361,12 +424,12 @@
   
                                             <ul class="devsite-nav-responsive-tabs">
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../dalvik.html"
+    <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
-     data-label="Responsive Tab: ART">
-      <span class="devsite-nav-text" >ART</span>
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
         </a>
   </li>
 
@@ -387,14 +450,14 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Enterprise">
       <span class="devsite-nav-text" menu="_book">Enterprise</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../health.html"
+    <a href="../perf.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -404,7 +467,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../config/perms-whitelist.html"
+    <a href="../config.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -420,6 +483,16 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Power">
       <span class="devsite-nav-text" >Power</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Runtime">
+      <span class="devsite-nav-text" >Runtime</span>
         </a>
   </li>
 
@@ -458,38 +531,38 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../admin.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../admin.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item"><a href="implement.html"
+  <li class="devsite-nav-item"><a href="implement.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Implementation">Implementation</span></a></li>
-                          <li class="devsite-nav-item"><a href="multi-user.html"
+   ><span class="devsite-nav-text" title="Device Administration">Device Administration</span></a></li>
+  <li class="devsite-nav-item"><a href="multi-user.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Multiple Users">Multiple Users</span></a></li>
-                          <li class="devsite-nav-item"><a href="managed-profiles.html"
+  <li class="devsite-nav-item"><a href="managed-profiles.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Managed Profiles">Managed Profiles</span></a></li>
-                          <li class="devsite-nav-item"><a href="provision.html"
+  <li class="devsite-nav-item"><a href="provision.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Provisioning">Provisioning</span></a></li>
-                          <li class="devsite-nav-item"><a href="multiuser-apps.html"
+  <li class="devsite-nav-item"><a href="multiuser-apps.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Multiuser Apps">Multiuser Apps</span></a></li>
-                          <li class="devsite-nav-item"><a href="enterprise-telephony.html"
+  <li class="devsite-nav-item"><a href="enterprise-telephony.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Enterprise Telephony">Enterprise Telephony</span></a></li>
-                          <li class="devsite-nav-item"><a href="testing-provision.html"
+  <li class="devsite-nav-item"><a href="testing-provision.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Testing Device Provisioning">Testing Device Provisioning</span></a></li>
-                          <li class="devsite-nav-item"><a href="testing-setup.html"
+  <li class="devsite-nav-item"><a href="testing-setup.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Testing Device Administration">Testing Device Administration</span></a></li>
-                          <li class="devsite-nav-item"><a href="ota-updates.html"
+  <li class="devsite-nav-item"><a href="ota-updates.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Enterprise OTA Updates">Enterprise OTA Updates</span></a></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -497,16 +570,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -516,9 +590,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -527,8 +602,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../admin.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -545,8 +621,8 @@
 
               <h1 class="devsite-page-title">Implementing Device Administration</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -585,11 +661,11 @@ general requirements.</p>
 <p>Android 7.0 and later includes support for HardwarePropertiesManager API, a device
 monitoring and health reporting API that enables applications to query the state
 of device hardware. This API is exposed via
-<code>android.os.HardwarePropertiesManager</code> and makes calls through
-<code>HardwarePropertiesManagerService</code> to the hardware thermal HAL
-(<code>hardware/libhardware/include/hardware/thermal.h</code>). It is a
+<code translate="no" dir="ltr">android.os.HardwarePropertiesManager</code> and makes calls through
+<code translate="no" dir="ltr">HardwarePropertiesManagerService</code> to the hardware thermal HAL
+(<code translate="no" dir="ltr">hardware/libhardware/include/hardware/thermal.h</code>). It is a
 protected API, meaning only device/profile owner Device Policy Controller (DPC)
-applications and the current <code>VrListenerService</code> can call it.</p>
+applications and the current <code translate="no" dir="ltr">VrListenerService</code> can call it.</p>
 
 <p>To support the HardwarePropertiesManager API, the device thermal HAL
 implementation must be able to report the following values:</p>
@@ -627,27 +703,27 @@ core (or GPU, battery, fan) goes offline or is plugged/unplugged.</p>
 
 
 <h3 id=low_ram>No low-RAM</h3>
-<p>Device should not be a low-RAM device, meaning <code>ro.config.low_ram</code>
+<p>Device should not be a low-RAM device, meaning <code translate="no" dir="ltr">ro.config.low_ram</code>
 should not be defined. The framework automatically limits the number of users
-to 1 when the <code>low_ram</code> flag is defined.</p>
+to 1 when the <code translate="no" dir="ltr">low_ram</code> flag is defined.</p>
 
 <h3 id=uses-feature>Uses-feature</h3>
-<p>Devices must define the following <code>uses-feature</code>:</p>
+<p>Devices must define the following <code translate="no" dir="ltr">uses-feature</code>:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 android.software.managed_users
 android.software.device_admin
 </pre>
 
-<p>To confirm these <code>uses-feature</code> values have been defined on a
-device, run: <code>adb shell pm list features</code>.</p>
+<p>To confirm these <code translate="no" dir="ltr">uses-feature</code> values have been defined on a
+device, run: <code translate="no" dir="ltr">adb shell pm list features</code>.</p>
 
 <h3 id=required_apps>Essential apps only</h3>
 <p>By default, only applications essential for correct operation of the profile
 should be enabled as part of provisioning a managed device. OEMs must ensure the
 managed profile or device has all required applications by modifying:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 vendor_required_apps_managed_profile.xml
 vendor_required_apps_managed_device.xml
 vendor_disallowed_apps_managed_profile.xml
@@ -661,22 +737,22 @@ vendor_disallowed_apps_managed_user.xml
 
 <p>
 Required and disallowed apps for managed users are applied to secondary users
-created via <code>DevicePolicyManager#createAndManageUser</code>.
+created via <code translate="no" dir="ltr">DevicePolicyManager#createAndManageUser</code>.
 </p>
 
 <p>Examples from a Nexus device:</p>
 
 <p>Android 8.x and earlier</p>
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 pacakages/apps/ManagedProvisioning/res/values/vendor_required_apps_managed_device.xml
 </pre>
 
 <p>Android 9 and higher</p>
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 frameworks/base/core/res/res/values/vendor_required_apps_managed_device.xml
 </pre>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 &lt;resources&gt;
   &lt;!-- A list of apps to be retained on the managed device --&gt;
   &lt;string-array name="vendor_required_apps_managed_device"&gt;
@@ -691,16 +767,16 @@ frameworks/base/core/res/res/values/vendor_required_apps_managed_device.xml
 </pre>
 
 <p>Android 8.x and earlier</p>
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 packages/apps/ManagedProvisioning/res/values/vendor_required_apps_managed_profile.xml
 </pre>
 
 <p>Android 9 and higher</p>
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 frameworks/base/core/res/res/values/vendor_required_apps_managed_profile.xml
 </pre>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 &lt;resources&gt;
     &lt;!-- A list of apps to be retained in the managed profile. This includes any Google experience apps required. --&gt;
     &lt;string-array name="vendor_required_apps_managed_profile"&gt;
@@ -725,11 +801,11 @@ feature.</p>
 <p>Devices with NFC must enable NFC during the out-of-the-box experience (i.e.,
 setup wizard) and be configured to accept managed provisioning intents:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 packages/apps/Nfc/res/values/provisioning.xml
 </pre>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 &lt;bool name="enable_nfc_provisioning"&gt;true&lt;/bool&gt;
 &lt;item>application/com.android.managedprovisioning&lt;/item&gt;
 </pre>
@@ -746,7 +822,7 @@ which then hands control to the newly-set device owner.</p>
 <p>To meet setup requirements, add the following code to the device setup's main
 activity:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 &#64;Override
    protected void onStart() {
         super.onStart();
@@ -778,17 +854,17 @@ activity:</p>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -995,8 +1071,9 @@ activity:</p>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1062,54 +1139,49 @@ activity:</p>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/admin/implement.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 15:09:28 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/admin/implement.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:57:40 GMT -->
 </html>

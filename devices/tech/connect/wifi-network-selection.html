@@ -1,0 +1,1315 @@
+<!doctype html>
+<html       lang="en"      dir="ltr">
+  
+<!-- Mirrored from source.android.google.cn/devices/tech/connect/wifi-network-selection by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:58:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:type" content="website">
+    
+          <meta name="theme-color" content="#78c257">
+    
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
+    <noscript>
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
+    </noscript>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="wifi-network-selection.html">      
+<title>Android Wi-Fi Network Selection &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Android Wi-Fi Network Selection &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="wifi-network-selection.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+
+  
+
+  
+
+    </head>
+  <body type="article"
+        theme="androidsource-theme"
+        class=""
+        
+        layout="docs"
+        block-apix        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
+      
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Close menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+            <span class="devsite-product-name">
+            <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+          </span>
+        
+</div>        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+                          <devsite-tabs class="upper-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../setup.html"
+   class="gc-analytics-event"
+   title="Set up"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Set up"
+   >
+  Set up
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../compatibility.html"
+   class="gc-analytics-event"
+   title="Design"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Design"
+   >
+  Design
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../security.html"
+   class="gc-analytics-event"
+   title="Secure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Secure"
+   >
+  Secure
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../../../devices.html"
+   class="gc-analytics-event"
+   title="Develop"
+   aria-label="Develop, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Develop"
+   >
+  Develop
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../tech.html"
+   class="gc-analytics-event"
+   title="Configure"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Configure"
+   >
+  Configure
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../../reference.html"
+   class="gc-analytics-event"
+   title="Reference"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Reference"
+   >
+  Reference
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+                       </div>
+          <devsite-search
+            enable-suggestions
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
+    <div class="devsite-search-container">
+      <div class="devsite-searchbox">
+                <input placeholder="Search"
+          type="text"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          value=""
+          autocomplete="off"
+                    aria-label="Search box">
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              aria-label="Open search box"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          aria-label="Close search box"></button>
+</devsite-search>
+
+        </div>
+
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+                        <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+                              <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Lower Header"
+              data-value="1"
+          >
+            Develop
+      
+  </a>
+        </li>
+  </ul>
+                                        </div>
+                                                                                    </div>
+                                      <div class="devsite-doc-set-nav-row">
+                              <devsite-tabs class="lower-tabs">
+  <div class="devsite-tabs-wrapper">
+                  <tab >
+          <a href="../../../devices.html"
+   class="gc-analytics-event"
+   title="Overview"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Overview"
+   >
+  Overview
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../audio.html"
+   class="gc-analytics-event"
+   title="Audio"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Audio"
+   >
+  Audio
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../camera.html"
+   class="gc-analytics-event"
+   title="Camera"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Camera"
+   >
+  Camera
+</a>
+
+        </tab>
+                        <tab active>
+          <a href="../connect.html"
+   class="gc-analytics-event"
+   title="Connectivity"
+   aria-label="Connectivity, selected"         data-category="Site-Wide Custom Events"
+        data-label="Tab: Connectivity"
+   >
+  Connectivity
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../graphics.html"
+   class="gc-analytics-event"
+   title="Graphics"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Graphics"
+   >
+  Graphics
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../interaction.html"
+   class="gc-analytics-event"
+   title="Interaction"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Interaction"
+   >
+  Interaction
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../media.html"
+   class="gc-analytics-event"
+   title="Media"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Media"
+   >
+  Media
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../storage.html"
+   class="gc-analytics-event"
+   title="Storage"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Storage"
+   >
+  Storage
+</a>
+
+        </tab>
+            </div>
+</devsite-tabs>
+
+        </div>
+          </div>  </div></div>
+  
+
+  </devsite-header>      <devsite-book-nav scrollbars >
+                  
+
+
+
+
+<nav class="devsite-book-nav devsite-nav nocontent">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+              <ul class="devsite-nav-list">
+                      <li class="devsite-nav-item">
+                                <a href="../../../setup.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Set up">
+      <span class="devsite-nav-text" >Set up</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../compatibility.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Design">
+      <span class="devsite-nav-text" >Design</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../security.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Secure">
+      <span class="devsite-nav-text" >Secure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            devsite-nav-active"
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Develop">
+      <span class="devsite-nav-text" >Develop</span>
+        </a>
+  
+                                            <ul class="devsite-nav-responsive-tabs">
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../../devices.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../audio.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Audio">
+      <span class="devsite-nav-text" >Audio</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../camera.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Camera">
+      <span class="devsite-nav-text" >Camera</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../connect.html"
+     id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Connectivity">
+      <span class="devsite-nav-text" menu="_book">Connectivity</span>
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
+          menu="_book">
+    </span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../graphics.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Graphics">
+      <span class="devsite-nav-text" >Graphics</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../interaction.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Interaction">
+      <span class="devsite-nav-text" >Interaction</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../media.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Media">
+      <span class="devsite-nav-text" >Media</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
+    <a href="../../storage.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Storage">
+      <span class="devsite-nav-text" >Storage</span>
+        </a>
+  </li>
+
+                                  </ul>
+                          </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../tech.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Configure">
+      <span class="devsite-nav-text" >Configure</span>
+        </a>
+  
+                                        </li>
+                      <li class="devsite-nav-item">
+                                <a href="../../../reference.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference">
+      <span class="devsite-nav-text" >Reference</span>
+        </a>
+  
+                                        </li>
+                                <li class="devsite-nav-item">
+    <a href="http://android-review.googlesource.com/"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Go to code">
+      <span class="devsite-nav-text" >Go to code</span>
+        </a>
+  </li>
+
+                  </ul>
+          </div>
+          <div class="devsite-mobile-nav-bottom">
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../connect.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bluetooth and NFC">Bluetooth and NFC</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bluetooth.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/services.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Bluetooth Services">Bluetooth Services</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/ble.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Bluetooth Low Energy">Bluetooth Low Energy</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/asha.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Hearing Aids over BLE">Hearing Aids over BLE</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/ble_advertising.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="BLE Advertising">BLE Advertising</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/verifying_debugging.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Verifying and Debugging Bluetooth">Verifying and Debugging Bluetooth</span></a></li><li class="devsite-nav-item"><a href="../../bluetooth/hci_requirements.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Bluetooth HCI Requirements">Bluetooth HCI Requirements</span></a></li><li class="devsite-nav-item"><a href="felica.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="NFC Host Card Emulation of FeliCa">NFC Host Card Emulation of FeliCa</span></a></li><li class="devsite-nav-item"><a href="secure-nfc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Secure NFC">Secure NFC</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Calling and Messaging">Calling and Messaging</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="5g-nsa.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="5G Non-Standalone (NSA)">5G Non-Standalone (NSA)</span></a></li><li class="devsite-nav-item"><a href="block-numbers.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Block Phone Numbers">Block Phone Numbers</span></a></li><li class="devsite-nav-item"><a href="call-notification.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Call Notifications">Call Notifications</span></a></li><li class="devsite-nav-item"><a href="emergency-affordance.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Emergency Affordance">Emergency Affordance</span></a></li><li class="devsite-nav-item"><a href="emergency-call.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Emergency Numbers and Emergency Calling">Emergency Numbers and Emergency Calling</span></a></li><li class="devsite-nav-item"><a href="ims.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="IP Multimedia Subsystem (IMS)">IP Multimedia Subsystem (IMS)</span></a></li><li class="devsite-nav-item"><a href="phone-account-suggestion.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Phone Account Suggestion">Phone Account Suggestion</span></a></li><li class="devsite-nav-item"><a href="rtt.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Real-Time Text (RTT)">Real-Time Text (RTT)</span></a></li><li class="devsite-nav-item"><a href="third-party-call-apps.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Third-Party Calling Apps">Third-Party Calling Apps</span></a></li><li class="devsite-nav-item"><a href="../config/voicemail.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Visual Voicemail">Visual Voicemail</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Carrier">Carrier</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../config/carrier.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../config/update.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="APN and CarrierConfig">APN and CarrierConfig</span></a></li><li class="devsite-nav-item"><a href="../config/carrierid.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Carrier Identification">Carrier Identification</span></a></li><li class="devsite-nav-item"><a href="data-plans.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Data Plans">Data Plans</span></a></li><li class="devsite-nav-item"><a href="../config/device-identifiers.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Device identifiers">Device identifiers</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="eSIM">eSIM</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="esim-overview.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing eSIM">Implementing eSIM</span></a></li><li class="devsite-nav-item"><a href="esim-modem-requirements.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Modem Requirements">Modem Requirements</span></a></li><li class="devsite-nav-item"><a href="esim-euicc-api.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="eUICC APIs">eUICC APIs</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="oob-users.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Out-of-Balance Users">Out-of-Balance Users</span></a></li><li class="devsite-nav-item"><a href="ril.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Radio Interface Layer (RIL)">Radio Interface Layer (RIL)</span></a></li><li class="devsite-nav-item"><a href="../config/uicc.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="UICC">UICC</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Wi-Fi">Wi-Fi</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="wifi-overview.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="wifi-hal.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi HAL">Wi-Fi HAL</span></a></li><li class="devsite-nav-item"><a href="wifi-infrastructure.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Infrastructure Features">Wi-Fi Infrastructure Features</span></a></li><li class="devsite-nav-item"><a href="wifi-debug.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Testing, Debugging, and Tuning Wi-Fi">Testing, Debugging, and Tuning Wi-Fi</span></a></li><li class="devsite-nav-item"><a href="carrier-wifi.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Carrier Wi-Fi">Carrier Wi-Fi</span></a></li><li class="devsite-nav-item"><a href="wifi-mac-randomization.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="MAC Randomization">MAC Randomization</span></a></li><li class="devsite-nav-item"><a href="wifi-passpoint.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Passpoint (Hotspot 2.0)">Passpoint (Hotspot 2.0)</span></a></li><li class="devsite-nav-item"><a href="wifi-sta-ap-concurrency.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="STA/AP Concurrency">STA/AP Concurrency</span></a></li><li class="devsite-nav-item"><a href="wifi-aware.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Aware">Wi-Fi Aware</span></a></li><li class="devsite-nav-item"><a href="wifi-direct.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Direct">Wi-Fi Direct</span></a></li><li class="devsite-nav-item"><a href="wifi-easy-connect.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Easy Connect">Wi-Fi Easy Connect</span></a></li><li class="devsite-nav-item"><a href="wifi-low-latency.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Low Latency Mode">Wi-Fi Low Latency Mode</span></a></li><li class="devsite-nav-item"><a href="wifi-network-selection.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Network Selection">Wi-Fi Network Selection</span></a></li><li class="devsite-nav-item"><a href="wifi-scan.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Preferred Network Offload Scanning">Wi-Fi Preferred Network Offload Scanning</span></a></li><li class="devsite-nav-item"><a href="wifi-rtt.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Wi-Fi Round Trip Time (RTT)">Wi-Fi Round Trip Time (RTT)</span></a></li><li class="devsite-nav-item"><a href="wifi-wpa3-owe.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="WPA3 and Wi-Fi Enhanced Open">WPA3 and Wi-Fi Enhanced Open</span></a></li></ul></devsite-expandable-nav></li>
+          </ul>
+                                                                                                                                                                            </div>
+      </div>
+</nav>
+              </devsite-book-nav>
+      <div id="gc-wrapper">
+        <div class="devsite-main-content"
+            has-book-nav            has-toc>
+          <devsite-toc class="devsite-nav"
+            ></devsite-toc>
+          <devsite-content>
+                          
+
+<article class="devsite-article">
+  <article class="devsite-article-inner">        
+    <div class="devsite-article-meta">
+      <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="1"
+          >
+            AOSP
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../../devices.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="2"
+          >
+            Develop
+      
+  </a>
+        </li>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../connect.html"              class="devsite-breadcrumb-link gc-analytics-event"
+              data-category="Site-Wide Custom Events"
+              data-label="Breadcrumbs"
+              data-value="3"
+          >
+            Connectivity
+      
+  </a>
+        </li>
+  </ul>
+               <devsite-page-rating position="header" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+          </div>
+
+              <h1 class="devsite-page-title">Android Wi-Fi Network Selection</h1>
+    
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
+
+    <div class="devsite-article-body clearfix
+      ">
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  Copyright 2019 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+
+
+<p>This page outlines the algorithms and procedures used in
+Android 10 for selecting
+and switching between Wi-Fi networks. Android continuously evaluates the quality
+of the connected network and assesses the quality of available networks.</p>
+<aside class="note"><strong>Note:</strong><span> The details provided on this page aren&#39;t comprehensive and may change in
+future Android releases. The Android source code is the final <em>source of
+truth</em>.</span></aside>
+<h2 id="process">Life of an automatic connection</h2>
+
+<p>This describes the process of how an Android device assesses and
+connects to available Wi-Fi networks.</p>
+
+<ol>
+<li><p>The device scans for available networks in one of the following ways
+depending on whether the screen is on or off.</p>
+
+<ul>
+<li><strong>Screen on:</strong> The Android connectivity subsystem triggers
+regular <a href="#scans">scans</a> to detect available networks
+(connectivity scans). These scans can also be triggered by other system
+components such as the location system or an app (including the Settings app).</li>
+<li><strong>Screen off:</strong> The host CPU programs the firmware with a list of
+preferred networks using preferred network offload scans (PNO) before
+the host CPU goes to sleep. The firmware wakes the host if it finds any
+of the preferred networks.</li>
+</ul></li>
+<li><p>Scan results are evaluated.</p>
+
+<ul>
+<li>If the device is connected to a Wi-Fi network, the framework
+evaluates whether the network is good enough, meaning that the
+received signal strength indicator (RSSI) is
+above
+<a href="wifi-debug.html#configuration_tuning">tunable</a>
+thresholds, isn&#39;t an open network, and uses the 5&nbsp;GHz band. If the
+network is good, no further action is taken.</li>
+<li>If the connected Wi-Fi network isn&#39;t good enough or if the
+device isn&#39;t connected to a network, the framework calls
+<a href="#network-evaluators">network evaluators</a> to generate a list of
+candidate Wi-Fi networks to connect to based on the scan results. The
+network evaluators find existing Wi-Fi configurations or create new
+configurations for the candidate networks.</li>
+</ul></li>
+<li><p>The framework runs the
+<a href="#candidate-scorers">candidate scorer</a>
+to generate a score for each service set identifier (SSID) candidate. The
+SSID candidates can
+include multiple basic service set identifier (BSSID) candidates
+(generated by the network evaluators).
+The candidate with the highest score is the <em>winning candidate</em>.</p></li>
+<li><p>The framework executes the
+<a href="#user-connect-choice">user connect choice</a>
+algorithm, which may make the user-selected network the new winning
+candidate.</p></li>
+<li><p>The framework determines whether the winning candidate matches the
+currently connected network. To be considered a match, one of the following
+must be met:</p>
+
+<ul>
+<li>The winning candidate and the connected Wi-Fi network have
+the same BSSID.</li>
+<li>If firmware roaming is available (including BSSID blacklist
+capability), the winning candidate and the connected network have the
+same SSID and security type.</li>
+</ul>
+
+<p>If the winning candidate matches the currently connected network, no
+further action is taken. If the winning candidate doesn&#39;t match the
+network, the device is associated to the winning candidate.</p></li>
+</ol>
+
+<h2 id="network-eval">Evaluation of a connected network</h2>
+
+<p>The Android framework or firmware periodically evaluates the quality of the
+connected network. This describes how the connected network is evaluated when
+the screen is on or off.</p>
+
+<h3 id="eval-on">Screen on</h3>
+
+<p>The Android framework evaluates the connected network in the following way:</p>
+
+<ol>
+<li>The Wi-Fi service polls RSSI and link-layer stats every 3 seconds.</li>
+<li>The Wi-Fi service calculates a connected score based on the RSSI and
+link-layer stats.</li>
+<li>The Wi-Fi service passes the score to the connectivity service, which
+uses the score to determine whether to connect to a Wi-Fi network or to
+another available network type, such as a cellular network.</li>
+</ol>
+
+<h3 id="eval-off">Screen off</h3>
+
+<p>The framework doesn&#39;t perform any evaluation on the connected network. The
+firmware evaluates the network quality and if the network quality is bad, the
+firmware may roam or (eventually) disassociate from the network and wake up the
+host.</p>
+
+<h2 id="scans">Connectivity scans</h2>
+
+<p>Scans are performed automatically based on whether the device has the screen on,
+has the screen off and is connected to Wi-Fi, or has the screen off and isn&#39;t
+connected to Wi-Fi.</p>
+
+<h3 id="scans-on">Screen on</h3>
+
+<p>The framework triggers exponential backoff scans at 20, 40, 80, and 160 seconds
+when the screen is turned on. Subsequent scans are performed at 160 second
+intervals.</p>
+
+<p>The exponential backoff scans are reset and restart at 20 seconds whenever the
+screen state changes, that is, when the screen is toggled on or off.</p>
+
+<h3 id="scans-on-connected">Screen off and connected to Wi-Fi</h3>
+
+<p>When the screen is off and the device is connected to a Wi-Fi network, the
+firmware performs roaming scans. The framework doesn&#39;t perform any scans
+when the screen is off.</p>
+
+<h3 id="scans-on-disconnected">Screen off and not connected to Wi-Fi (disconnected state)</h3>
+
+<p>When the screen is off and Wi-Fi is disconnected, scanning behavior depends on
+whether the device supports
+<a href="wifi-scan.html">preferred network offload (PNO)</a>. The
+framework doesn&#39;t perform any scans when the screen is off.</p>
+
+<p>If PNO is supported, the firmware performs scans for SSIDs. The framework
+configures the firmware with a list of SSIDs to scan for and a list of channels
+on which to scan. If a configured SSID is found, the firmware wakes the
+framework.</p>
+
+<p>If PNO isn&#39;t supported, the device remains unassociated with any network until
+the screen is turned on.</p>
+
+<h2 id="network-evaluators">Network evaluators</h2>
+
+<p>Network evaluators find or create configurations
+(<a href="https://developer.android.google.cn/reference/android/net/wifi/WifiConfiguration" class="external"><code translate="no" dir="ltr">WifiConfiguration</code></a>)
+for networks that are currently available (based on scan results) and that can
+be associated to with the information (for example, credentials) available to
+the device.</p>
+
+<p>The following network evaluators are available.</p>
+
+<ul>
+<li><strong>Saved network evaluator:</strong> Evaluates all saved networks.</li>
+<li><strong>Suggested network evaluator:</strong> Evaluates all networks provided by apps
+using the
+<a href="https://developer.android.google.cn/guide/topics/connectivity/wifi-suggest.md" class="external">Suggestion API</a>.</li>
+<li><strong>Passpoint network evaluator:</strong> Using the scan results and the ANQP
+cache, evaluates all installed Passpoint profiles. Also automatically
+generates Passpoint profiles for any observed EAP-SIM, EAP-AKA, or EAP-AKA&#39;
+networks that match the installed SIM. Auto generation only considers
+EAP-SIM/AKA/AKA&#39; networks for which encrypted IMSI is possible (where an
+encryption configuration is available).</li>
+<li><strong>Carrier Wi-Fi network evaluator:</strong> Evaluates all
+<a href="carrier-wifi.html">carrier Wi-Fi</a> configurations. Only
+considers EAP-SIM/AKA/AKA&#39; networks for which encrypted IMSI is possible
+(where an encryption configuration is available).</li>
+<li><strong>Externally scored network evaluator:</strong> OEM mechanism to provide network
+connectivity options to the
+device. For more information, see
+<a href="wifi-infrastructure.html#external_network_rating_provider">External network rating provider</a>.</li>
+</ul>
+
+<p>Each network evaluator normally generates only one candidate network per BSSID
+but can generate multiple candidate networks. A single configuration
+(<code translate="no" dir="ltr">WifiConfiguration</code>) can be associated with multiple candidate networks, for
+example, multiple evaluators may generate a candidate for the same network.</p>
+
+<h2 id="candidate-scorers">Candidate scorers</h2>
+
+<p>Candidate scorers evaluate and provide a score for each network candidate. The
+score is based on the following:</p>
+
+<ul>
+<li>An RSSI above
+<a href="https://android.googlesource.com/platform/frameworks/opt/net/wifi/+/refs/heads/master/service/java/com/android/server/wifi/ScoringParams.java#335" class="external"><code translate="no" dir="ltr">ScoringParams#getGoodRssi()</code></a> 
+gets a minimal score boost.</li>
+<li>A candidate that matches the current network gets a score boost. A
+candidate that also matches the current network&#39;s BSSID gets a larger score
+boost.</li>
+<li>A secure network is scored higher than an open network.</li>
+<li>A 5&nbsp;GHz candidate is scored higher than 2.4&nbsp;GHz candidates.</li>
+<li>A candidate network that was recently selected by the user or by an app
+gets a score boost. The score boost starts out large and fades to zero over
+a duration of eight hours.</li>
+<li>The network evaluator that nominated the candidate. Certain evaluators
+score higher than others. For example, the saved network evaluator is
+scored higher than the externally scored network evaluator.</li>
+</ul>
+
+<p>The framework may have several candidate scorers installed but only one
+can be active at a time. The other scorers can be used for metrics (to
+investigate alternative algorithms). In Android 10,
+the default is
+<a href="https://android.googlesource.com/platform/frameworks/opt/net/wifi/+/refs/heads/master/service/java/com/android/server/wifi/CompatibilityScorer.java" class="external"><code translate="no" dir="ltr">CompatibilityScorer</code></a>,
+which closely matches the behavior of the Android 9 (Pie) scoring algorithm.</p>
+
+<h2 id="score-cards">Score cards</h2>
+
+<p>Score cards, introduced in Android 10, record on-device
+statistics about BSSIDs. Score cards are persisted using the
+<a href="https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/services/net/java/android/net/IpMemoryStore.java" class="external"><code translate="no" dir="ltr">IpMemoryStore</code></a> 
+service.</p>
+
+<p>Score cards aren&#39;t used in Android 10 network
+selection.</p>
+
+<h2 id="user-connect-choice">User connect choice</h2>
+
+<p>Android has a user connect choice algorithm that allows the selection process
+to prefer Wi-Fi networks that a user has explicitly connected to. For example,
+this can be a home network that the user has connected to. Users may prefer such
+networks over public networks even when the performance is lower than a public
+network because they provide additional services such as the ability to control
+home devices.</p>
+
+<p>The user&#39;s preference for a network is captured by marking all the visible Wi-Fi
+configurations at the time the user selects a network. If one of the marked
+Wi-Fi configurations is selected during the automatic selection process and a
+user-selected network is available, the user connect choice algorithm overrides
+the selection with the user-selected network.</p>
+
+          </div>
+
+    
+                   <devsite-page-rating position="footer" selected-rating="0" hover-rating-star="0">
+         </devsite-page-rating>
+                   
+          </article>
+</article>
+
+<devsite-content-footer class="nocontent">
+  <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+</devsite-content-footer>
+
+
+                      </devsite-content>
+        </div>
+        <devsite-footer-promos class="devsite-footer">
+                      
+                  </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+                      <nav class="devsite-footer-linkboxes nocontent">
+  <ul class="devsite-footer-linkboxes-list">
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Build</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.googlesource.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android repository
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/requirements.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Requirements
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="../../../setup/build/downloading.html"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Downloading
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/blobs-preview/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Preview binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/images/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Factory images
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://developers.google.com/android/drivers/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Driver binaries
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://android.github.io/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            GitHub
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Connect</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/Android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            @Android on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://twitter.com/AndroidDev/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            @AndroidDev on Twitter
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://blog.google/products/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Android Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://security.googleblog.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            Google Security Blog
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-platform/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Platform on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-building/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Building on Google Groups
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://groups.google.com/forum/?fromgroups#!forum/android-porting/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Porting on Google Groups
+          </a>
+        </li>
+              </ul>
+    </li>
+        <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading">Get help</h3>      <ul class="devsite-footer-linkbox-list">
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/android/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 1)"           >
+            Android Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/pixelphone/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 2)"           >
+            Pixel Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://support.google.com/nexus/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 3)"           >
+            Nexus Help Center
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 4)"           >
+            www.android.com
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://www.android.com/gms/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 5)"           >
+            Google Mobile Services
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://stackoverflow.com/questions/tagged/android-source/"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 6)"           >
+            Stack Overflow
+          </a>
+        </li>
+                <li class="devsite-footer-linkbox-item">
+          <a href="http://issuetracker.google.com/issues?q=status:open%20componentid:190923"
+             class="devsite-footer-linkbox-link
+                    gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+                        data-label="Footer Link (index 7)"           >
+            Issue Tracker
+          </a>
+        </li>
+              </ul>
+    </li>
+      </ul>
+</nav>
+                  </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
+  
+  <nav class="devsite-nav">
+        <ul class="devsite-footer-utility-list">
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../source/index.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer About Android link">
+          About Android
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../setup/community.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Community link">
+          Community
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../legal.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Legal link">
+          Legal
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="../../../license.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link">
+          License
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link">
+          Privacy
+        </a>
+              </li>
+            <li class="devsite-footer-utility-item
+                 ">
+                        <a class="devsite-footer-utility-link
+                  gc-analytics-event"
+           href="http://issuetracker.google.com/issues/new?component=191476"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Site feedback link">
+          Site feedback
+        </a>
+              </li>
+          </ul>
+    
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
+</div>
+                  </devsite-footer-utility>
+      </div></div>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
+              <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
+<script type="application/json" gtm>[]</script>
+          </devsite-analytics>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
+
+<!-- Mirrored from source.android.google.cn/devices/tech/connect/wifi-network-selection by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 14:58:00 GMT -->
+</html>

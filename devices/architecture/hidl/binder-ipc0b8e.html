@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="zh_cn">
+<html       lang="zh-CN"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/architecture/hidl/binder-ipc?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:45:59 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/architecture/hidl/binder-ipc?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 20:58:17 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>使用 Binder IPC &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="使用 Binder IPC &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="binder-ipc.html">
-
-  <meta property="og:locale" content="zh_cn">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="binder-ipc.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="binder-ipc.html">      
+<title>使用 Binder IPC &nbsp;|&nbsp; Android 开源项目 &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="使用 Binder IPC &nbsp;|&nbsp; Android 开源项目 &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="binder-ipc.html">
+
+  <meta property="og:locale" content="zh_cn">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index0b8e.html?hl=zh-cn" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup0b8e.html?hl=zh-cn"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio0b8e.html?hl=zh-cn"
+          <a href="../../../devices0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="开发"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../../tech/dalvik0b8e.html?hl=zh-cn"
+          <a href="../../tech0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="配置"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/?hl=zh-cn" method="GET">
+              family-name="Android 开源项目"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results?hl=zh-cn" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="搜索"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="搜索框">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,20 +186,50 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          转到源代码
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  转到源代码
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../compatibility0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
@@ -207,7 +243,7 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../compatibility0b8e.html?hl=zh-cn"
@@ -232,7 +268,7 @@
 
         </tab>
                         <tab >
-          <a href="../../../compatibility/overview0b8e.html?hl=zh-cn"
+          <a href="../../../compatibility/overview0b8e-2.html?hl=zh-cn"
    class="gc-analytics-event"
    title="兼容性"
            data-category="Site-Wide Custom Events"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab >
-          <a href="../../tech/settings/settings-guidelines0b8e.html?hl=zh-cn"
+          <a href="../../tech/settings0b8e.html?hl=zh-cn"
    class="gc-analytics-event"
    title="设置"
            data-category="Site-Wide Custom Events"
@@ -282,8 +318,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -294,7 +333,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -336,7 +388,7 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: 架构">
       <span class="devsite-nav-text" menu="_book">架构</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -363,7 +415,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../../tech/settings/settings-guidelines.html"
+    <a href="../../tech/settings.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -395,7 +447,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -405,7 +457,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../tech/dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -437,12 +489,12 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../../architecture.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../../architecture.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="硬件抽象层 (HAL)">硬件抽象层 (HAL)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hal.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="硬件抽象层 (HAL)">硬件抽象层 (HAL)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hal.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="旧版 HAL">旧版 HAL</span></a></li><li class="devsite-nav-item"><a href="../hal-types.html"
      class="devsite-nav-title"
@@ -451,18 +503,31 @@
    ><span class="devsite-nav-text" title="框架测试">框架测试</span></a></li><li class="devsite-nav-item"><a href="../hal/dynamic-lifecycle.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="动态生命周期">动态生命周期</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="内核">内核</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="内核">内核</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../kernel/releases.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="稳定版本和更新">稳定版本和更新</span></a></li><li class="devsite-nav-item"><a href="../kernel/android-common.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Android 通用内核">Android 通用内核</span></a></li><li class="devsite-nav-item"><a href="../kernel/modular-kernels.html"
+   ><span class="devsite-nav-text" title="Android 通用内核">Android 通用内核</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="模块化内核">模块化内核</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel/modular-kernels.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="模块化内核要求">模块化内核要求</span></a></li><li class="devsite-nav-item"><a href="../kernel/reqs-interfaces.html"
+   ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../kernel/loadable-kernel-modules.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="接口要求">接口要求</span></a></li><li class="devsite-nav-item"><a href="../kernel/config.html"
+   ><span class="devsite-nav-text" title="可加载的内核模块">可加载的内核模块</span></a></li><li class="devsite-nav-item"><a href="../kernel/mounting-partitions-early.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="提前装载分区">提前装载分区</span></a></li><li class="devsite-nav-item"><a href="../kernel/dto-support.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTO 支持">DTO 支持</span></a></li><li class="devsite-nav-item"><a href="../kernel/core-kernel-reqs.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="核心内核要求">核心内核要求</span></a></li><li class="devsite-nav-item"><a href="../kernel/future-versions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="未来的 Android 版本">未来的 Android 版本</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../kernel/reqs-interfaces.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="接口要求">接口要求</span></a></li><li class="devsite-nav-item"><a href="../kernel/bpf.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="使用 eBPF 扩展内核">使用 eBPF 扩展内核</span></a></li><li class="devsite-nav-item"><a href="../kernel/config.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="配置">配置</span></a></li><li class="devsite-nav-item"><a href="../kernel/hardening.html"
      class="devsite-nav-title"
@@ -473,8 +538,8 @@
    ><span class="devsite-nav-text" title="LLDB 调试">LLDB 调试</span></a></li><li class="devsite-nav-item"><a href="../kernel/network_tests.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="网络测试">网络测试</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL（一般信息）">HIDL（一般信息）</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL（一般信息）">HIDL（一般信息）</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="interfaces.html"
      class="devsite-nav-title"
@@ -501,8 +566,8 @@
    ><span class="devsite-nav-text" title="版本控制">版本控制</span></a></li><li class="devsite-nav-item"><a href="code-style.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="代码样式指南">代码样式指南</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (C++)">HIDL (C++)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-cpp.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (C++)">HIDL (C++)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-cpp.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/packages.html"
      class="devsite-nav-title"
@@ -513,8 +578,8 @@
    ><span class="devsite-nav-text" title="数据类型">数据类型</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/functions.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="函数">函数</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (Java)">HIDL (Java)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-java.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (Java)">HIDL (Java)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-java.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/types.html"
      class="devsite-nav-title"
@@ -523,8 +588,8 @@
    ><span class="devsite-nav-text" title="接口错误和方法">接口错误和方法</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/constants.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="导出常量">导出常量</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="ConfigStore HAL">ConfigStore HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configstore.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="ConfigStore HAL">ConfigStore HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configstore.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../configstore/interface.html"
      class="devsite-nav-title"
@@ -535,8 +600,8 @@
    ><span class="devsite-nav-text" title="客户端使用情况">客户端使用情况</span></a></li><li class="devsite-nav-item"><a href="../configstore/add-class-item.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="添加类和项">添加类和项</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="设备树叠加层">设备树叠加层</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dto.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="设备树叠加层">设备树叠加层</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dto.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../dto/implement.html"
      class="devsite-nav-title"
@@ -551,8 +616,8 @@
    ><span class="devsite-nav-text" title="DTB/DTBO 分区格式">DTB/DTBO 分区格式</span></a></li><li class="devsite-nav-item"><a href="../dto/optimize.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="优化 DTO">优化 DTO</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="供应商 NDK">供应商 NDK</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vndk.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="供应商 NDK">供应商 NDK</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vndk.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../vndk/enabling.html"
      class="devsite-nav-title"
@@ -575,8 +640,8 @@
    ><span class="devsite-nav-text" title="Renderscript">Renderscript</span></a></li><li class="devsite-nav-item"><a href="../vndk/abi-stability.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="ABI 稳定性">ABI 稳定性</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="供应商接口对象">供应商接口对象</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vintf.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="供应商接口对象">供应商接口对象</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vintf.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../vintf/objects.html"
      class="devsite-nav-title"
@@ -591,8 +656,8 @@
    ><span class="devsite-nav-text" title="匹配规则">匹配规则</span></a></li><li class="devsite-nav-item"><a href="../vintf/resources.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="资源">资源</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="引导加载程序">引导加载程序</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bootloader.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="引导加载程序">引导加载程序</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bootloader.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="概览">概览</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/boot-reason.html"
      class="devsite-nav-title"
@@ -600,18 +665,18 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="启动映像标头">启动映像标头</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/system-as-root.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="system-as-root">system-as-root</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/partitions-images.html"
+   ><span class="devsite-nav-text" title="系统作为 Root">系统作为 Root</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/partitions-images.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="分区和映像">分区和映像</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/product-partitions.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="/product 分区">/product 分区</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/recovery-image.html"
+   ><span class="devsite-nav-text" title="产品分区">产品分区</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/recovery-image.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="恢复映像">恢复映像</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/flashing-updating.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="刷写和更新">刷写和更新</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/unlock-trusty.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="解锁和 Trusty">解锁和 Trusty</span></a></li></ul></devsite-expandable-nav></li>
-                      </ul>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -619,16 +684,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -638,8 +704,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../../compatibility0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -649,8 +716,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../architecture0b8e.html?hl=zh-cn"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -667,13 +735,14 @@
 
               <h1 class="devsite-page-title">使用 Binder IPC</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
 
               
+
   <!--
       Copyright 2017 The Android Open Source Project
 
@@ -690,77 +759,72 @@
       limitations under the License.
   -->
 
-<p>本页介绍了 Android O 中对 Binder 驱动程序进行的更改、提供了有关使用 Binder IPC 的详细信息，并列出了必需的 SELinux 政策。</p>
+<p>本页介绍了 Android 8 中对 Binder 驱动程序进行的更改、提供了有关使用 Binder IPC 的详细信息，并列出了必需的 SELinux 政策。</p>
 
 <h2 id="binder-changes">对 Binder 驱动程序进行的更改</h2>
 
-<p>从 Android O 开始，Android 框架和 HAL 现在使用 Binder 互相通信。由于这种通信方式极大地增加了 Binder 流量，因此 Android O 包含了几项改进，旨在确保 Binder IPC 的速度。集成最新版 Binder 驱动程序的 SoC 供应商和原始设备制造商 (OEM) 应该查看这些改进的列表、用于 3.18、4.4 和 4.9 版内核的相关 SHA，以及所需的用户空间更改。</p>
+<p>从 Android 8 开始，Android 框架和 HAL 现在使用 Binder 互相通信。由于这种通信方式极大地增加了 Binder 流量，因此 Android 8 包含了几项改进，旨在使 Binder IPC 速度很快。SoC 供应商和 OEM 应直接从 android-4.4、android-4.9 和更高版本<a href="https://android.googlesource.com/kernel/common/" class="external">内核/通用</a>项目的相关分支进行合并。</p>
 
 <h3 id="contexts">多个 Binder 域（上下文）</h3>
-<em>在通用 3.10、3.18、4.4、4.9 版内核和上游中</em>
-<p>
-为了明确地拆分框架（与设备无关）和供应商（与具体设备相关）代码之间的 Binder 流量，Android O 引入了“Binder 上下文”这一概念。<em></em>每个 Binder 上下文都有自己的设备节点和上下文（服务）管理器。您只能通过上下文管理器所属的设备节点对其进行访问，并且在通过特定上下文传递 Binder 节点时，只能由另一个进程从相同的上下文访问上下文管理器，从而确保这些域完全互相隔离。如需使用方法的详细信息，请参阅 <a href="#vndbinder">vndbinder</a> 和 <a href="#vndservicemanager">vndservicemanager</a>。
+<em>通用 4.4 及更高版本，包括上游</em>
+<p>为了在框架（独立于设备）和供应商（特定于设备）代码之间彻底拆分 Binder 流量，Android 8 引入了“Binder 上下文”的概念。<em></em>每个 Binder 上下文都有自己的设备节点和上下文（服务）管理器。您只能通过上下文管理器所属的设备节点对其进行访问，并且在通过特定上下文传递 Binder 节点时，只能由另一个进程从相同的上下文访问上下文管理器，从而确保这些域完全互相隔离。如需使用方法的详细信息，请参阅 <a href="#vndbinder">vndbinder</a> 和 <a href="#vndservicemanager">vndservicemanager</a>。
 </p>
 
 <h3 id="scatter">分散-集中</h3>
-<em>在通用 3.10、3.18、4.4、4.9 版内核和上游中</em>
-<p>在之前的 Android 版本中，Binder 调用中的每条数据都会被复制 3 次：
+<em>通用 4.4 及更高版本，包括上游</em>
+<p>
+在之前的 Android 版本中，Binder 调用中的每条数据都会被复制 3 次：
 </p>
 <ul>
 <li>一次是在调用进程中将数据序列化为 <code><a href="https://developer.android.google.cn/reference/android/os/Parcel.html?hl=zh-cn">Parcel</a></code></li>
 <li>一次是在内核驱动程序中将 <code>Parcel</code> 复制到目标进程</li>
-<li>一次是在目标进程中对 <code>Parcel</code> 进行反序列化</li>
+<li>一次是在目标进程中反序列化 <code>Parcel</code></li>
 </ul>
 
-<p>
-Android O 使用<a href="https://en.wikipedia.org/wiki/Vectored_I/O">分散-集中优化</a>机制将复制次数从 3 次减少到了 1 次。数据保留其原始结构和内存布局，且 Binder 驱动程序会立即将数据复制到目标进程中，而不是先在 <code>Parcel</code> 中对数据进行序列化。在目标进程中，这些数据的结构和内存布局保持不变，并且，在无需再次复制的情况下即可读取这些数据。
+<p>Android 8 使用<a href="https://en.wikipedia.org/wiki/Vectored_I/O">分散-集中优化</a>将副本数量从 3 减少到 1。数据保留其原始结构和内存布局，且 Binder 驱动程序会立即将数据复制到目标进程中，而不是先在 <code>Parcel</code> 中序列化数据。在目标进程中，这些数据的结构和内存布局保持不变，并且，在无需再次复制的情况下即可读取这些数据。
 </p>
 
 <h3 id="locking">精细锁定</h3>
-<em>在通用 3.18、4.4、4.9 版内核和上游中</em>
+<em>通用 4.4 及更高版本，包括上游</em>
 
-<p>在之前的 Android 版本中，Binder 驱动程序使用全局锁来防范对重要数据结构的并发访问。虽然采用全局锁时出现争用的可能性极低，但主要的问题是，如果低优先级线程获得该锁，然后实现了抢占，则会导致同样需要获得该锁的优先级较高的线程出现严重的延迟。这会导致平台卡顿。
+<p>
+在之前的 Android 版本中，Binder 驱动程序使用全局锁来防范对重要数据结构的并发访问。虽然采用全局锁时出现争用的可能性极低，但主要的问题是，如果低优先级线程获得该锁，然后实现了抢占，则会导致同样需要获得该锁的优先级较高的线程出现严重的延迟。这会导致平台卡顿。
 </p>
-<p>原先尝试解决此问题的方法是在保留全局锁的同时禁止抢占。但是，这更像是一种临时应对手段而非真正的解决方案，最终被上游拒绝并舍弃。后来尝试的解决方法侧重于提升锁定的精细程度，自 2017 年 1 月以来，Pixel 设备上一直采用的是更加精细的锁定。虽然这些更改大部分已公开，但未来版本中还会有一些重大的改进。
+<p>原先尝试解决此问题的方法是在保留全局锁的同时禁止抢占。但是，这更像是一种临时应对手段而非真正的解决方案，最终被上游拒绝并舍弃。后来尝试的解决方法侧重于提升锁定的精细程度，自 2017 年 1 月以来，Pixel 设备上一直采用的是更加精细的锁定。虽然这些更改大部分已公开，但后续版本中还会有一些重大的改进。
 </p>
-<p>在确定了精细锁定实现中的一些小问题后，我们使用不同的锁定架构设计了一种改进的解决方案，并在 3.18、4.4, 和 4.9 版通用分支中提交了相关更改。我们会继续在大量不同的设备上测试这种实现方式；由于目前看来这个方案不存在什么问题，因此建议搭载 Android O 的设备都使用这种实现方式。</p>
-<p class="note"><strong>注意</strong>：我们强烈建议针对精细锁定安排充足的测试时间。
+<p>
+在确定了精细锁定实现中的一些小问题后，我们使用不同的锁定架构设计了一种改进的解决方案，并在所有通用内核分支中提交了更改。我们会继续在大量不同的设备上测试这种实现；由于目前我们没有发现这个方案存在什么突出问题，因此建议搭载 Android 8 的设备都使用这种实现。
+</p>
+<p class="note"><strong>注意</strong>：我们强烈建议为精细锁定安排充足的测试时间。
 </p>
 <h3 id="rt-priority">实时优先级继承</h3>
-<em>在通用 3.18、4.4、4.9 版内核中（即将针对上游推出）</em>
+<em>通用 4.4 和通用 4.9（即将推送到上游）</em>
 
-<p>Binder 驱动程序一直支持 nice 优先级继承。随着 Android 中以实时优先级运行的进程日益增加，现在出现以下这种情形也属正常：如果实时线程进行 Binder 调用，则处理该调用的进程中的线程同样会以实时优先级运行。为了支持这些使用情景，Android O 现在在 Binder 驱动程序中实现了实时优先级继承。
+<p>
+Binder 驱动程序一直支持 nice 优先级继承。随着 Android 中以实时优先级运行的进程日益增加，现在出现以下这种情形也属正常：如果实时线程发出 Binder 调用，则处理该调用的进程中的线程同样会以实时优先级运行。为了支持这些使用情景，Android 8 现在在 Binder 驱动程序中实现了实时优先级继承。
 </p>
 <p>
-除了事务级优先级继承之外，“节点优先级继承”允许节点（Binder 服务对象）指定对该节点执行调用操作所需的最低优先级。<em></em>之前版本的 Android 已经通过 nice 值支持节点优先级继承，但 Android O 增加了对实时调度政策节点继承的支持。
+除了事务级优先级继承之外，“节点优先级继承”允许节点（Binder 服务对象）指定执行对该节点的调用所需的最低优先级。<em></em>之前版本的 Android 已经通过 nice 值支持节点优先级继承，但 Android 8 增加了对实时调度政策节点继承的支持。
 </p>
-<p class="note"><strong>注意</strong>：Android 性能团队发现，实时优先级继承会对框架 Binder 域 (<code>/dev/binder</code>) 造成不必要的负面影响，因此已对该域<strong>停用</strong>实时优先级继承。
+<p class="note"><strong>注意</strong>：Android 性能团队发现，实时优先级继承会对框架 Binder 域 (<code>/dev/binder</code>) 造成负面影响，因此已针对该域<strong>停用</strong>实时优先级继承。
 </p>
 
-<h3 id="userspace">用户空间更改</h3>
-<p>
-Android O 纳入了在通用内核中使用现有 Binder 驱动程序所需的所有用户空间更改，但有一个例外：针对 <code>/dev/binder</code> 停用实时优先级继承的原始实现使用的是 <a href="https://android.googlesource.com/kernel/msm/+/868f6ee048c6ff51dbd92353dd5c68bea4419c78" class="external">ioctl</a>。由于后续开发将优先级继承的控制方法改为了更加精细的方法（根据 Binder 模式，而非上下文），因此，ioctl 不存于 Android 通用分支中，而是<a href="https://android-review.googlesource.com/#/c/421861/" class="external">提交到了我们的通用内核中</a>。
+<h3 id="userspace">userspace 更改</h3>
+<p>Android 8 包含在通用内核中使用当前 Binder 驱动程序所需的所有 userspace 更改，但有一个例外：针对 <code>/dev/binder</code> 停用实时优先级继承的原始实现使用了 <a href="https://android.googlesource.com/kernel/msm/+/868f6ee048c6ff51dbd92353dd5c68bea4419c78" class="external">ioctl</a>。由于后续开发将优先级继承的控制方法改为了更加精细的方法（根据 Binder 模式，而非上下文），因此，ioctl 不存于 Android 通用分支中，而是<a href="https://android-review.googlesource.com/#/c/421861/" class="external">提交到了我们的通用内核中</a>。
 </p>
 <p>
 此项更改的影响是，所有节点均默认停用实时优先级继承。<em></em>Android 性能团队发现，为 <code>hwbinder</code> 域中的所有节点启用实时优先级继承会有一定好处。要达到同样的效果，请在用户空间中择优实施<a href="https://android-review.googlesource.com/#/c/440359/" class="external">此更改</a>。
 </p>
 <h3 id="shas">通用内核的 SHA</h3>
-<p>要获取对 Binder 驱动程序所做的必要更改，请同步到下列 SHA（或更高版本）：
+<p>
+要获取对 Binder 驱动程序所做的必要更改，请同步到下列 SHA（或更高版本）：
 </p>
-<ul>
-<li>通用 3.18 版<br />
-cc8b90c121de ANDROID: Binder：请勿在还原时检查优先级权限。</li>
-<li>通用 4.4 版<br />
-76b376eac7a2 ANDROID: Binder：请勿在还原时检查优先级权限。</li>
-<li>通用 4.9 版<br />
-ecd972d4f9b5 ANDROID: Binder：请勿在还原时检查优先级权限。</li>
-</ul>
 
 <h2 id="ipc">使用 Binder IPC</h2>
-<p>一直以来，供应商进程都使用 Binder 进程间通信 (IPC) 技术进行通信。在 Android O 中，<code>/dev/binder</code> 设备节点成为了框架进程的专属节点，这意味着供应商进程将无法再访问该节点。供应商进程可以访问 <code>/dev/hwbinder</code>，但必须将其 AIDL 接口转为使用 HIDL。对于想要继续在供应商进程之间使用 AIDL 接口的供应商，Android 会按以下方式支持 Binder IPC。</p>
+<p>一直以来，供应商进程都使用 Binder 进程间通信 (IPC) 技术进行通信。在 Android 8 中，<code>/dev/binder</code> 设备节点成为框架进程的专有节点，这意味着供应商进程无法再访问此节点。供应商进程可以访问 <code>/dev/hwbinder</code>，但必须将其 AIDL 接口转为使用 HIDL。对于想要继续在供应商进程之间使用 AIDL 接口的供应商，Android 会按以下方式支持 Binder IPC。</p>
 
 <h3 id="vndbinder">vndbinder</h3>
-<p>Android O 支持供应商服务使用新的 Binder 域，这可通过使用 <code>/dev/vndbinder</code>（而非 <code>/dev/binder</code>）进行访问。添加 <code>/dev/vndbinder</code> 后，Android 现在拥有以下 3 个 IPC 域：</p>
+<p>Android 8 支持供供应商服务使用的新 Binder 域，访问此域需要使用 <code>/dev/vndbinder</code>（而非 <code>/dev/binder</code>）。添加 <code>/dev/vndbinder</code> 后，Android 现在拥有以下 3 个 IPC 域：</p>
 
 <table>
   <tbody><tr>
@@ -789,9 +853,9 @@ ecd972d4f9b5 ANDROID: Binder：请勿在还原时检查优先级权限。</li>
 <pre class="prettyprint">ProcessState::initWithDriver("/dev/vndbinder");</pre>
 
 <h3 id="vndservicemanager">vndservicemanager</h3>
-<p>以前，Binder 服务通过 <code>servicemanager</code> 注册，其他进程可从中检索这些服务。在 Android O 中，<code>servicemanager</code> 现在专用于框架和应用进程，供应商进程无法再对其进行访问。</p>
+<p>以前，Binder 服务通过 <code>servicemanager</code> 注册，其他进程可从中检索这些服务。在 Android 8 中，<code>servicemanager</code> 现在专供框架使用，而应用进程和供应商进程无法再对其进行访问。</p>
 
-<p>不过，供应商服务现在可以使用 <code>vndservicemanager</code>，这是一个使用 <code>/dev/vndbinder</code>（作为构建基础的源代码与框架 <code>servicemanager</code> 相同）而非 <code>/dev/binder</code> 的 <code>servicemanager</code> 的新实例。供应商进程无需更改即可与 <code>vndservicemanager</code> 通信；当供应商进程打开 /<code>dev/vndbinder</code> 时，服务查询会自动转至 <code>vndservicemanager</code>。</p>
+<p>不过，供应商服务现在可以使用 <code>vndservicemanager</code>，这是一个使用 <code>/dev/vndbinder</code>（作为编译基础的源代码与框架 <code>servicemanager</code> 的相同）而非 <code>/dev/binder</code> 的 <code>servicemanager</code> 的新实例。供应商进程无需更改即可与 <code>vndservicemanager</code> 通信；当供应商进程打开 /<code>dev/vndbinder</code> 时，服务查询会自动转至 <code>vndservicemanager</code>。</p>
 
 <p><code>vndservicemanager</code> 二进制文件包含在 Android 的默认设备 Makefile 中。</p>
 
@@ -826,14 +890,14 @@ uce                                   u:object_r:uce_service:s0
 vendor.qcom.PeripheralManager         u:object_r:per_mgr_service:s0
 </pre>
 
-<p>而在 Android O 中，<code>vndservicemanager</code> 会加载 <code>vndservice_contexts</code> 文件。迁移到 <code>vndservicemanager</code>（且已经在旧的 <code>service_contexts</code> 文件中）的供应商服务应该添加到新的 <code>vndservice_contexts</code> 文件中。</p>
+<p>在 Android 8 中，<code>vndservicemanager</code> 会改为加载 <code>vndservice_contexts</code> 文件。迁移到 <code>vndservicemanager</code>（且已经在旧的 <code>service_contexts</code> 文件中）的供应商服务应该添加到新的 <code>vndservice_contexts</code> 文件中。</p>
 
 <h3 id="labels">服务标签</h3>
 <p>以前，服务标签（例如 <code>u:object_r:atfwd_service:s0</code>）在 <code>service.te</code> 文件中定义。例如：</p>
 
 <pre class="prettyprint">type atfwd_service,      service_manager_type;</pre>
 
-<p>在 Android O 中，您必须将类型更改为 <code>vndservice_manager_type</code> 并将规则移动到 <code>vndservice.te</code> 文件中。例如：</p>
+<p>在 Android 8 中，您必须将类型更改为 <code>vndservice_manager_type</code>，并将规则移至 <code>vndservice.te</code> 文件。例如：</p>
 
 <pre class="prettyprint">type atfwd_service,      vndservice_manager_type;</pre>
 
@@ -845,7 +909,7 @@ allow atfwd atfwd_service:service_manager find;
 allow some_vendor_app atfwd_service:service_manager add;
 </pre>
 
-<p>在 Android O 中，这样的规则可继续存在并使用相同的类。例如：</p>
+<p>在 Android 8 中，这样的规则可继续存在并使用相同的类。示例：</p>
 
 <pre class="prettyprint">
 allow atfwd atfwd_service:service_manager find;
@@ -862,17 +926,17 @@ allow some_vendor_app atfwd_service:service_manager add;
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license0b8e.html?hl=zh-cn">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1079,8 +1143,9 @@ allow some_vendor_app atfwd_service:service_manager add;
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1146,54 +1211,49 @@ allow some_vendor_app atfwd_service:service_manager add;
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="zh_cn"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="zh_cn"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'zh_cn',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"zh_cn",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/architecture/hidl/binder-ipc?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 19:45:59 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/architecture/hidl/binder-ipc?hl=zh-cn by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 20:58:17 GMT -->
 </html>

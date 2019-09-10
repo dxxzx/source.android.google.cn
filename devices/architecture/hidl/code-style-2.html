@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/architecture/hidl/code-style.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:23:54 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/architecture/hidl/code-style.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:08:06 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Code Style Guide &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Code Style Guide &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="code-style.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="code-style.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="code-style.html">      
+<title>Code Style Guide &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Code Style Guide &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="code-style.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../audio.html"
+          <a href="../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab >
-          <a href="../../tech/dalvik.html"
+          <a href="../../tech.html"
    class="gc-analytics-event"
    title="Configure"
            data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,20 +186,50 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
@@ -207,7 +243,7 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../compatibility.html"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab >
-          <a href="../../tech/settings/settings-guidelines.html"
+          <a href="../../tech/settings.html"
    class="gc-analytics-event"
    title="Settings"
            data-category="Site-Wide Custom Events"
@@ -282,8 +318,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -294,7 +333,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -336,7 +388,7 @@
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Architecture">
       <span class="devsite-nav-text" menu="_book">Architecture</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -363,7 +415,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../../tech/settings/settings-guidelines.html"
+    <a href="../../tech/settings.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -395,7 +447,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../audio.html"
+                                <a href="../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -405,7 +457,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../tech/dalvik.html"
+                                <a href="../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -437,12 +489,36 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../../architecture.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../../architecture.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Hardware Abstraction Layer (HAL)">Hardware Abstraction Layer (HAL)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hal.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Modular System Components">Modular System Components</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../modular-system.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../modular-system/runtime.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Android Runtime">Android Runtime</span></a></li><li class="devsite-nav-item"><a href="../modular-system/conscrypt.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Conscrypt">Conscrypt</span></a></li><li class="devsite-nav-item"><a href="../modular-system/dns-resolver.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DNS Resolver">DNS Resolver</span></a></li><li class="devsite-nav-item"><a href="../modular-system/documentsui.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DocumentsUI">DocumentsUI</span></a></li><li class="devsite-nav-item"><a href="../modular-system/extservices.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="ExtServices">ExtServices</span></a></li><li class="devsite-nav-item"><a href="../modular-system/media.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Media">Media</span></a></li><li class="devsite-nav-item"><a href="../modular-system/metadata.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Metadata">Metadata</span></a></li><li class="devsite-nav-item"><a href="../modular-system/networking.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Networking">Networking</span></a></li><li class="devsite-nav-item"><a href="../modular-system/permissioncontroller.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="PermissionController">PermissionController</span></a></li><li class="devsite-nav-item"><a href="../modular-system/timezone.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Time Zone Data">Time Zone Data</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Hardware Abstraction Layer (HAL)">Hardware Abstraction Layer (HAL)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hal.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Legacy HALs">Legacy HALs</span></a></li><li class="devsite-nav-item"><a href="../hal-types.html"
      class="devsite-nav-title"
@@ -451,20 +527,33 @@
    ><span class="devsite-nav-text" title="Framework Testing">Framework Testing</span></a></li><li class="devsite-nav-item"><a href="../hal/dynamic-lifecycle.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Dynamic Lifecycle">Dynamic Lifecycle</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Kernel">Kernel</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Kernel">Kernel</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../kernel/releases.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Stable Releases &amp; Updates">Stable Releases &amp; Updates</span></a></li><li class="devsite-nav-item"><a href="../kernel/android-common.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Android Common Kernels">Android Common Kernels</span></a></li><li class="devsite-nav-item"><a href="../kernel/modular-kernels.html"
+   ><span class="devsite-nav-text" title="Android Common Kernels">Android Common Kernels</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Modular Kernels">Modular Kernels</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../kernel/modular-kernels.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Modular Kernel Requirements">Modular Kernel Requirements</span></a></li><li class="devsite-nav-item"><a href="../kernel/reqs-interfaces.html"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../kernel/loadable-kernel-modules.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Loadable Kernel Modules">Loadable Kernel Modules</span></a></li><li class="devsite-nav-item"><a href="../kernel/mounting-partitions-early.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Mounting Partitions Early">Mounting Partitions Early</span></a></li><li class="devsite-nav-item"><a href="../kernel/dto-support.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="DTO Support">DTO Support</span></a></li><li class="devsite-nav-item"><a href="../kernel/core-kernel-reqs.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Core Kernel Requirements">Core Kernel Requirements</span></a></li><li class="devsite-nav-item"><a href="../kernel/future-versions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Future Android Versions">Future Android Versions</span></a></li></ul></devsite-expandable-nav></li><li class="devsite-nav-item"><a href="../kernel/reqs-interfaces.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Interface Requirements">Interface Requirements</span></a></li><li class="devsite-nav-item"><a href="../kernel/bpf.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Extending the kernel with eBPF">Extending the kernel with eBPF</span></a></li><li class="devsite-nav-item"><a href="../kernel/config.html"
+   ><span class="devsite-nav-text" title="Extending the kernel with eBPF">Extending the kernel with eBPF</span></a></li><li class="devsite-nav-item"><a href="../kernel/ion_abi_changes.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Ion ABI Changes">Ion ABI Changes</span></a></li><li class="devsite-nav-item"><a href="../kernel/config.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Configuration">Configuration</span></a></li><li class="devsite-nav-item"><a href="../kernel/hardening.html"
      class="devsite-nav-title"
@@ -475,8 +564,8 @@
    ><span class="devsite-nav-text" title="LLDB Debugging">LLDB Debugging</span></a></li><li class="devsite-nav-item"><a href="../kernel/network_tests.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Network Tests">Network Tests</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (General)">HIDL (General)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (General)">HIDL (General)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="interfaces.html"
      class="devsite-nav-title"
@@ -498,13 +587,15 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Converting Modules">Converting Modules</span></a></li><li class="devsite-nav-item"><a href="types.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="versioning.html"
+   ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="safe_union.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Safe Union">Safe Union</span></a></li><li class="devsite-nav-item"><a href="versioning.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Versioning">Versioning</span></a></li><li class="devsite-nav-item"><a href="code-style.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Code Style Guide">Code Style Guide</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (C++)">HIDL (C++)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-cpp.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (C++)">HIDL (C++)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-cpp.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/packages.html"
      class="devsite-nav-title"
@@ -515,8 +606,8 @@
    ><span class="devsite-nav-text" title="Data Types">Data Types</span></a></li><li class="devsite-nav-item"><a href="../hidl-cpp/functions.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Functions">Functions</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (Java)">HIDL (Java)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-java.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="HIDL (Java)">HIDL (Java)</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../hidl-java.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/types.html"
      class="devsite-nav-title"
@@ -525,8 +616,15 @@
    ><span class="devsite-nav-text" title="Interface Errors &amp; Methods">Interface Errors &amp; Methods</span></a></li><li class="devsite-nav-item"><a href="../hidl-java/constants.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Exporting Constants">Exporting Constants</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="ConfigStore HAL">ConfigStore HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configstore.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Configuration">Configuration</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configuration.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../sysprops-apis.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="System Properties APIs">System Properties APIs</span></a></li><li class="devsite-nav-item"><a href="../config-file-schema-api.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Config File Schema API">Config File Schema API</span></a></li><li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="ConfigStore HAL">ConfigStore HAL</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../configstore.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../configstore/interface.html"
      class="devsite-nav-title"
@@ -536,9 +634,12 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Client-Side Usage">Client-Side Usage</span></a></li><li class="devsite-nav-item"><a href="../configstore/add-class-item.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Adding Classes &amp; Items">Adding Classes &amp; Items</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Device Tree Overlays">Device Tree Overlays</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dto.html"
+   ><span class="devsite-nav-text" title="Adding Classes &amp; Items">Adding Classes &amp; Items</span></a></li></ul></devsite-expandable-nav></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="../systemsuspend.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="SystemSuspend Service">SystemSuspend Service</span></a></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Device Tree Overlays">Device Tree Overlays</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dto.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../dto/implement.html"
      class="devsite-nav-title"
@@ -553,8 +654,8 @@
    ><span class="devsite-nav-text" title="DTB/DTBO Partition Format">DTB/DTBO Partition Format</span></a></li><li class="devsite-nav-item"><a href="../dto/optimize.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Optimizing DTO">Optimizing DTO</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor NDK">Vendor NDK</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vndk.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor NDK">Vendor NDK</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vndk.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../vndk/enabling.html"
      class="devsite-nav-title"
@@ -576,9 +677,11 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Renderscript">Renderscript</span></a></li><li class="devsite-nav-item"><a href="../vndk/abi-stability.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="ABI Stability">ABI Stability</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor Interface Object">Vendor Interface Object</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vintf.html"
+   ><span class="devsite-nav-text" title="ABI Stability">ABI Stability</span></a></li><li class="devsite-nav-item"><a href="../vndk/abi-use-check.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Prebuilt ABI Usage Checker">Prebuilt ABI Usage Checker</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Vendor Interface Object">Vendor Interface Object</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../vintf.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../vintf/objects.html"
      class="devsite-nav-title"
@@ -593,8 +696,8 @@
    ><span class="devsite-nav-text" title="Matching Rules">Matching Rules</span></a></li><li class="devsite-nav-item"><a href="../vintf/resources.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Resources">Resources</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bootloader">Bootloader</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bootloader.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Bootloader">Bootloader</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../../bootloader.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/boot-reason.html"
      class="devsite-nav-title"
@@ -602,18 +705,27 @@
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Boot Image Header">Boot Image Header</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/system-as-root.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="System as Root">System as Root</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/partitions-images.html"
+   ><span class="devsite-nav-text" title="Partition Layout">Partition Layout</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/partitions-images.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Partitions and Images">Partitions and Images</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/product-partitions.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Product Partitions">Product Partitions</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/recovery-image.html"
+   ><span class="devsite-nav-text" title="Product Partitions">Product Partitions</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/odm-partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="ODM Partitions">ODM Partitions</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/recovery-image.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Recovery Image">Recovery Image</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/flashing-updating.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Flashing and Updating">Flashing and Updating</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/unlock-trusty.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Unlocking and Trusty">Unlocking and Trusty</span></a></li></ul></devsite-expandable-nav></li>
-                      </ul>
+   ><span class="devsite-nav-text" title="Unlocking and Trusty">Unlocking and Trusty</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/stable-aidl.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Stable AIDL">Stable AIDL</span></a></li><li class="devsite-nav-item"><a href="../../bootloader/fastbootd.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Fastboot in User Space">Fastboot in User Space</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="../java-library.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Java SDK Library">Java SDK Library</span></a></li>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -621,16 +733,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -640,8 +753,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../../compatibility.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -651,8 +765,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../architecture.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -669,8 +784,8 @@
 
               <h1 class="devsite-page-title">Code Style Guide</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -697,14 +812,14 @@
 indents and mixed-case filenames. Package declarations, imports, and docstrings
 are similar to those in Java, with slight modifications.</p>
 
-<p>The following examples for <code>IFoo.hal</code> and <code>types.hal</code>
+<p>The following examples for <code translate="no" dir="ltr">IFoo.hal</code> and <code translate="no" dir="ltr">types.hal</code>
 illustrate HIDL code styles and provide quick links to details on each style
-(<code>IFooClientCallback.hal</code>, <code>IBar.hal</code>, and
-<code>IBaz.hal</code> have been omitted).</p>
+(<code translate="no" dir="ltr">IFooClientCallback.hal</code>, <code translate="no" dir="ltr">IBar.hal</code>, and
+<code translate="no" dir="ltr">IBaz.hal</code> have been omitted).</p>
 
 <table>
-<tr><th><code>hardware/interfaces/foo/1.0/IFoo.hal</code></th></tr>
-<tr><td><pre class="prettyprint">
+<tr><th><code translate="no" dir="ltr">hardware/interfaces/foo/1.0/IFoo.hal</code></th></tr>
+<tr><td><pre class="prettyprint" translate="no" dir="ltr">
 /*
  * (License Notice)
  */
@@ -756,8 +871,8 @@ interface <a href="#interface-names">IFoo</a> {
 </td></tr></table>
 
 <table>
-<tr><th><code>hardware/interfaces/foo/1.0/types.hal</code></th></tr>
-<tr><td><pre class="prettyprint">
+<tr><th><code translate="no" dir="ltr">hardware/interfaces/foo/1.0/types.hal</code></th></tr>
+<tr><td><pre class="prettyprint" translate="no" dir="ltr">
 /*
  * (License Notice)
  */
@@ -767,8 +882,10 @@ package android.hardware.foo@1.0;
 <a href="#comments">/** Replied status. */</a>
 <a href="#enum-declarations">enum Status : int32_t</a> {
     <a href="#enum-values">OK</a>,
-    ERR_ARG, <a href="#comments">// invalid arguments</a>
-    ERR_UNKNOWN = -1, // note, no transport related errors
+    <a href="#comments">/* invalid arguments */</a>
+    ERR_ARG,
+    /* note, no transport related errors */
+    ERR_UNKNOWN = -1,
 };
 
 <a href="#struct-declarations">struct ArgData</a> {
@@ -780,27 +897,27 @@ package android.hardware.foo@1.0;
 
 <h2 id=naming>Naming conventions</h2>
 <p>Function names, variable names, and filenames should be descriptive; avoid
-over-abbreviation. Treat acronyms as words (e.g., use <code>INfc</code> instead
-of <code>INFC</code>).</p>
+over-abbreviation. Treat acronyms as words (e.g., use <code translate="no" dir="ltr">INfc</code> instead
+of <code translate="no" dir="ltr">INFC</code>).</p>
 
 <h3 id=dir-structure>Directory structure and file naming</h3>
 <p>The directory structure should appear as follows:</p>
 <ul>
-<li><code><var>ROOT-DIRECTORY</var></code>
+<li><code translate="no" dir="ltr"><var>ROOT-DIRECTORY</var></code>
   <ul>
-  <li><code><var>MODULE</var></code>
+  <li><code translate="no" dir="ltr"><var>MODULE</var></code>
     <ul>
-    <li><code><var>SUBMODULE</var></code> (optional, could be more than one
+    <li><code translate="no" dir="ltr"><var>SUBMODULE</var></code> (optional, could be more than one
     level)
       <ul>
-      <li><code><var>VERSION</var></code>
+      <li><code translate="no" dir="ltr"><var>VERSION</var></code>
         <ul>
-        <li><code>Android.mk</code></li>
-        <li><code>I<var>INTERFACE_1</var>.hal</code></li>
-        <li><code>I<var>INTERFACE_2</var>.hal</code></li>
-        <li><code>&#8230;</code></li>
-        <li><code>I<var>INTERFACE_N</var>.hal</code></li>
-        <li><code>types.hal</code> (optional)</li>
+        <li><code translate="no" dir="ltr">Android.mk</code></li>
+        <li><code translate="no" dir="ltr">I<var>INTERFACE_1</var>.hal</code></li>
+        <li><code translate="no" dir="ltr">I<var>INTERFACE_2</var>.hal</code></li>
+        <li><code translate="no" dir="ltr">&#8230;</code></li>
+        <li><code translate="no" dir="ltr">I<var>INTERFACE_N</var>.hal</code></li>
+        <li><code translate="no" dir="ltr">types.hal</code> (optional)</li>
         </ul>
       </li>
       </ul>
@@ -813,37 +930,37 @@ of <code>INFC</code>).</p>
 
 <p>Where:</p>
 <ul>
-<li><code><var>ROOT-DIRECTORY</var></code> is:
+<li><code translate="no" dir="ltr"><var>ROOT-DIRECTORY</var></code> is:
   <ul>
-  <li><code>hardware/interfaces</code> for core HIDL packages.</li>
-  <li><code>vendor/<var>VENDOR</var>/interfaces</code> for vendor packages,
-  where <code><var>VENDOR</var></code> refers to an SoC vendor or an
+  <li><code translate="no" dir="ltr">hardware/interfaces</code> for core HIDL packages.</li>
+  <li><code translate="no" dir="ltr">vendor/<var>VENDOR</var>/interfaces</code> for vendor packages,
+  where <code translate="no" dir="ltr"><var>VENDOR</var></code> refers to an SoC vendor or an
   OEM/ODM.</li>
   </ul>
   </li>
-<li><code><var>MODULE</var></code> should be one lowercase word that describes
-the subsystem (e.g. <code>nfc</code>). If more than one word is needed, use
-nested <code><var>SUBMODULE</var></code>. There can be more than one level of
+<li><code translate="no" dir="ltr"><var>MODULE</var></code> should be one lowercase word that describes
+the subsystem (e.g. <code translate="no" dir="ltr">nfc</code>). If more than one word is needed, use
+nested <code translate="no" dir="ltr"><var>SUBMODULE</var></code>. There can be more than one level of
 nesting.</li>
-<li><code><var>VERSION</var></code> should be the exact same version
+<li><code translate="no" dir="ltr"><var>VERSION</var></code> should be the exact same version
 (major.minor) as described in <a href="#versions">Versions</a>.</li>
-<li><code>I<var>INTERFACE_X</var></code> should be the interface name with
-<code>UpperCamelCase</code>/<code>PascalCase</code> (e.g. <code>INfc</code>)
+<li><code translate="no" dir="ltr">I<var>INTERFACE_X</var></code> should be the interface name with
+<code translate="no" dir="ltr">UpperCamelCase</code>/<code translate="no" dir="ltr">PascalCase</code> (e.g. <code translate="no" dir="ltr">INfc</code>)
 as described in <a href="#interface-names">Interface names</a>.</li>
 </ul>
 
 <p>Example:</p>
 <ul>
-<li><code>hardware/interfaces</code>
+<li><code translate="no" dir="ltr">hardware/interfaces</code>
   <ul>
-  <li><code>nfc</code>
+  <li><code translate="no" dir="ltr">nfc</code>
     <ul>
-    <li><code>1.0</code>
+    <li><code translate="no" dir="ltr">1.0</code>
       <ul>
-      <li><code>Android.mk</code></li>
-      <li><code>INfc.hal</code></li>
-      <li><code>INfcClientCallback.hal</code></li>
-      <li><code>types.hal</code></li>
+      <li><code translate="no" dir="ltr">Android.mk</code></li>
+      <li><code translate="no" dir="ltr">INfc.hal</code></li>
+      <li><code translate="no" dir="ltr">INfcClientCallback.hal</code></li>
+      <li><code translate="no" dir="ltr">types.hal</code></li>
       </ul>
     </li>
     </ul>
@@ -857,29 +974,29 @@ permissions (in Git).
 
 <h3 id=package-names>Package names</h3>
 <p>Package names must use the following <a href="#fqn">fully-qualified name
-(FQN)</a> format (referred to as <code><var>PACKAGE-NAME</var></code>):</p>
+(FQN)</a> format (referred to as <code translate="no" dir="ltr"><var>PACKAGE-NAME</var></code>):</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 <var>PACKAGE</var>.<var>MODULE</var>[.<var>SUBMODULE</var>[.<var>SUBMODULE</var>[&#8230;]]]@<var>VERSION</var>
 </pre>
 
 <p>Where:</p>
 <ul>
-<li><code><var>PACKAGE</var></code> is the package that maps to the
-<code><var>ROOT-DIRECTORY</var></code>. In particular,
-<code><var>PACKAGE</var></code> is:
+<li><code translate="no" dir="ltr"><var>PACKAGE</var></code> is the package that maps to the
+<code translate="no" dir="ltr"><var>ROOT-DIRECTORY</var></code>. In particular,
+<code translate="no" dir="ltr"><var>PACKAGE</var></code> is:
   <ul>
-  <li><code>android.hardware</code> for core HIDL packages (mapping to
-  <code>hardware/interfaces</code>).</li>
-  <li><code>vendor.<var>VENDOR</var>.hardware</code> for vendor packages, where
-  <code><var>VENDOR</var></code> refers to an SoC vendor or an OEM/ODM (mapping
-  to <code>vendor/<var>VENDOR</var>/interfaces</code>).</li>
+  <li><code translate="no" dir="ltr">android.hardware</code> for core HIDL packages (mapping to
+  <code translate="no" dir="ltr">hardware/interfaces</code>).</li>
+  <li><code translate="no" dir="ltr">vendor.<var>VENDOR</var>.hardware</code> for vendor packages, where
+  <code translate="no" dir="ltr"><var>VENDOR</var></code> refers to an SoC vendor or an OEM/ODM (mapping
+  to <code translate="no" dir="ltr">vendor/<var>VENDOR</var>/interfaces</code>).</li>
   </ul>
-<li><code><var>MODULE</var>[.<var>SUBMODULE</var>[.<var>SUBMODULE</var>[&#8230;]]]@<var>VERSION</var></code>
+<li><code translate="no" dir="ltr"><var>MODULE</var>[.<var>SUBMODULE</var>[.<var>SUBMODULE</var>[&#8230;]]]@<var>VERSION</var></code>
 are the exact same folder names in the structure described in
 <a href="#dir-structure">Directory structure</a>.</li>
 <li>Package names should be lowercase. If they are more than one word long, the
-words should either be used as submodules or written in <code>snake_case</code>.
+words should either be used as submodules or written in <code translate="no" dir="ltr">snake_case</code>.
 </li>
 <li>No spaces are allowed.</li>
 </ul>
@@ -891,7 +1008,7 @@ words should either be used as submodules or written in <code>snake_case</code>.
 Versions should have the following format:
 </p>
 
-<pre class="prettyprint"><var>MAJOR</var>.<var>MINOR</var></pre>
+<pre class="prettyprint" translate="no" dir="ltr"><var>MAJOR</var>.<var>MINOR</var></pre>
 
 <p>Both the <var>MAJOR</var> and the <var>MINOR</var> version should be a single
 integer. HIDL uses <a href="http://semver.org/" class="external">semantic
@@ -900,27 +1017,27 @@ versioning</a> rules.</p>
 <h3 id=imports>Imports</h3>
 <p>An import has one of the following three formats:</p>
 <ul>
-<li>Whole-package imports: <code>import <var>PACKAGE-NAME</var>;</code></li>
-<li>Partial imports: <code>import
+<li>Whole-package imports: <code translate="no" dir="ltr">import <var>PACKAGE-NAME</var>;</code></li>
+<li>Partial imports: <code translate="no" dir="ltr">import
 <var>PACKAGE-NAME</var>::<var>UDT</var>;</code> (or, if the imported
-type is in the same package,<code>import <var>UDT</var>;</code></li>
-<li>Types-only imports: <code>import <var>PACKAGE-NAME</var>::types;</code></li>
+type is in the same package,<code translate="no" dir="ltr">import <var>UDT</var>;</code></li>
+<li>Types-only imports: <code translate="no" dir="ltr">import <var>PACKAGE-NAME</var>::types;</code></li>
 </ul>
 
-<p>The <code><var>PACKAGE-NAME</var></code> follows the format in
+<p>The <code translate="no" dir="ltr"><var>PACKAGE-NAME</var></code> follows the format in
 <a href="#package-names">Package names</a>. The current package's
-<code>types.hal</code> (if it exists) is automatically imported (do not import
+<code translate="no" dir="ltr">types.hal</code> (if it exists) is automatically imported (do not import
 it explicitly).</p>
 
 <h4 id=fqn>Fully qualified names (FQNs)</h4>
 <p>Use fully qualified names for a user-defined type import only when necessary.
-Omit <code><var>PACKAGE-NAME</var></code> if the import type is in the same
+Omit <code translate="no" dir="ltr"><var>PACKAGE-NAME</var></code> if the import type is in the same
 package. An FQN must not contain spaces. Example of a fully qualified name:</p>
 
-<pre class="prettyprint">android.hardware.nfc@1.0::INfcClientCallback</pre>
+<pre class="prettyprint" translate="no" dir="ltr">android.hardware.nfc@1.0::INfcClientCallback</pre>
 
-<p>In another file under <code>android.hardware.nfc@1.0</code>, refer to the
-above interface as <code>INfcClientCallback</code>. Otherwise, use only the
+<p>In another file under <code translate="no" dir="ltr">android.hardware.nfc@1.0</code>, refer to the
+above interface as <code translate="no" dir="ltr">INfcClientCallback</code>. Otherwise, use only the
 fully qualified name.</p>
 
 <h4 id=grouping>Grouping and ordering imports</h4>
@@ -929,9 +1046,9 @@ should occupy a single line and should not be indented. Group imports in the
 following order:</p>
 
 <ol>
-<li>Other <code>android.hardware</code> packages (use fully qualified names).
+<li>Other <code translate="no" dir="ltr">android.hardware</code> packages (use fully qualified names).
 </li>
-<li>Other <code>vendor.<var>VENDOR</var></code> packages (use fully qualified
+<li>Other <code translate="no" dir="ltr">vendor.<var>VENDOR</var></code> packages (use fully qualified
 names).
   <ul>
   <li>Each vendor should be a group.</li>
@@ -944,11 +1061,11 @@ names).
 <p>Use an empty line between groups. Inside each group, sort imports
 alphabetically. Example:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 import android.hardware.nfc@1.0::INfc;
 import android.hardware.nfc@1.0::INfcClientCallback;
 
-// Importing the whole module.
+/* Importing the whole module. */
 import vendor.barvendor.bar@3.1;
 
 import vendor.foovendor.foo@2.2::IFooBar;
@@ -959,26 +1076,26 @@ import IFoo;
 </pre>
 
 <h3 id=interface-names>Interface names</h3>
-<p>Interface names must start with an <code>I</code>, followed by an
-<code>UpperCamelCase</code>/<code>PascalCase</code> name. An interface with name
-<code>IFoo</code> must be defined in the file <code>IFoo.hal</code>. This file
-can contain definitions only for the <code>IFoo</code> interface (the interface
-<code>I<var>NAME</var></code> should be in <code>I<var>NAME</var>.hal</code> ).
+<p>Interface names must start with an <code translate="no" dir="ltr">I</code>, followed by an
+<code translate="no" dir="ltr">UpperCamelCase</code>/<code translate="no" dir="ltr">PascalCase</code> name. An interface with name
+<code translate="no" dir="ltr">IFoo</code> must be defined in the file <code translate="no" dir="ltr">IFoo.hal</code>. This file
+can contain definitions only for the <code translate="no" dir="ltr">IFoo</code> interface (the interface
+<code translate="no" dir="ltr">I<var>NAME</var></code> should be in <code translate="no" dir="ltr">I<var>NAME</var>.hal</code> ).
 </p>
 
 <h3 id=functions>Functions</h3>
 <p>For function names, arguments, and return variable names, use
-<code>lowerCamelCase</code>. Example:</p>
+<code translate="no" dir="ltr">lowerCamelCase</code>. Example:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 open(INfcClientCallback clientCallback) generates (int32_t retVal);
 oneway pingAlive(IFooCallback cb);
 </pre>
 
 <h3 id=struct-union>Struct/union field names</h3>
-<p>For struct/union field names, use <code>lowerCamelCase</code>. Example:</p>
+<p>For struct/union field names, use <code translate="no" dir="ltr">lowerCamelCase</code>. Example:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 struct FooReply {
     vec&lt;uint8_t&gt; replyData;
 }
@@ -986,10 +1103,10 @@ struct FooReply {
 
 <h3 id=type-names>Type names</h3>
 <p>Type names refer to struct/union definitions, enum type definitions, and
-<code>typedef</code>s. For these name, use
-<code>UpperCamelCase</code>/<code>PascalCase</code>. Examples:</p>
+<code translate="no" dir="ltr">typedef</code>s. For these name, use
+<code translate="no" dir="ltr">UpperCamelCase</code>/<code translate="no" dir="ltr">PascalCase</code>. Examples:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 enum NfcStatus : int32_t {
     /*...*/
 };
@@ -999,11 +1116,11 @@ struct NfcData {
 </pre>
 
 <h3 id=enum-values>Enum values</h3>
-<p>Enum values should be <code>UPPER_CASE_WITH_UNDERSCORES</code>. When passing
+<p>Enum values should be <code translate="no" dir="ltr">UPPER_CASE_WITH_UNDERSCORES</code>. When passing
 enum values as function arguments and returning them as function returns, use
 the actual enum type (not the underlying integer type). Example:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 enum NfcStatus : int32_t {
     HAL_NFC_STATUS_OK               = 0,
     HAL_NFC_STATUS_FAILED           = 1,
@@ -1020,37 +1137,34 @@ actual enum type is clearer.</p>
 <p>For fully qualified names for enum values, a <strong>colon</strong> is used
 between the enum type name and the enum value name:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 <var>PACKAGE-NAME</var>::<var>UDT</var>[.<var>UDT</var>[.<var>UDT</var>[&#8230;]]:<var>ENUM_VALUE_NAME</var>
 </pre>
 
 <p>There must not be spaces inside a fully qualified name. Use a fully qualified
 name only when necessary and omit unnecessary parts. Example:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 android.hardware.foo@1.0::IFoo.IFooInternal.FooEnum:ENUM_OK
 </pre>
 
 <h2 id=comments>Comments</h2>
-<p>For a single line comment, both <code>// </code>and <code>/** */</code> are
-fine.</p>
-<pre class="prettyprint">
+<p>For a single line comment, <code translate="no" dir="ltr">//</code>, <code translate="no" dir="ltr">/* */</code>, and <code translate="no" dir="ltr">/** */</code>
+are fine.</p>
+<pre class="prettyprint" translate="no" dir="ltr">
 // This is a single line comment
 /* This is also single line comment */
 /** This is documentation comment */
 </pre>
 
 <ul>
-<li>Use <code>//</code> mainly for:
-  <ul>
-  <li>trailing comments</li>
-  <li>Comments that will not be used for generated documentation</li>
-  <li>TODOs</li>
-  </ul>
+<li>
+Use <code translate="no" dir="ltr">/* */</code> for comments. While HIDL supports <code translate="no" dir="ltr">//</code> for comments,
+they are discouraged because they do not appear in generated output.
 </li>
-<li>Use <code>/** */</code> for generated documentation. These can be applied
+<li>Use <code translate="no" dir="ltr">/** */</code> for generated documentation. These can be applied
 only to type, method, field, and enum value declarations. Example:
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 /** Replied status */
 enum TeleportStatus {
     /** Object entirely teleported. */
@@ -1065,21 +1179,22 @@ enum TeleportStatus {
     ...
 }
 </pre>
-<li>Multi-line comments should start a new line with <code>/**</code>, use
-<code>*</code> at the beginning of each line, and place <code>*/</code> on the
-last line all on its own (asterisks should align). Example:
-<pre class="prettyprint">
+<li>Start multi-line comments with <code translate="no" dir="ltr">/**</code> on a separate line.
+Use <code translate="no" dir="ltr">*</code> at the start of each line.
+End the comment with <code translate="no" dir="ltr">*/</code> on a separate line, aligning the asterisks.
+Example:
+<pre class="prettyprint" translate="no" dir="ltr">
 /**
  * My multi-line
  * comment
  */
 </pre>
 </li>
-<li>Licensing notice and changelogs should start a new line with <code>/*</code>
-(a single asterisk), use <code>*</code> at the beginning of each line, and place
-<code>*/</code> on the last line all on its own (asterisks should align).
+<li>Licensing notice and changelogs should start a new line with <code translate="no" dir="ltr">/*</code>
+(a single asterisk), use <code translate="no" dir="ltr">*</code> at the beginning of each line, and place
+<code translate="no" dir="ltr">*/</code> on the last line all on its own (asterisks should align).
 Example:
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 /*
  * Copyright (C) 2017 The Android Open Source Project
  * ...
@@ -1096,33 +1211,33 @@ Example:
 <h3 id=file-comments>File comments</h3>
 <p>Start each file with the appropriate licensing notice. For core HALs, this
 should be the AOSP Apache license in
-<a href="https://android.googlesource.com/platform/development/+/master/docs/copyright-templates/c.txt" class="external"><code>development/docs/copyright-templates/c.txt</code></a>.
-Remember to update the year and use <code>/* */</code> style multi-line comments
+<a href="https://android.googlesource.com/platform/development/+/master/docs/copyright-templates/c.txt" class="external"><code translate="no" dir="ltr">development/docs/copyright-templates/c.txt</code></a>.
+Remember to update the year and use <code translate="no" dir="ltr">/* */</code> style multi-line comments
 as explained above.</p>
 
 <p>You can optionally place an empty line after the license notice, followed
-by a changelog/versioning information. Use <code>/* */</code> style
+by a changelog/versioning information. Use <code translate="no" dir="ltr">/* */</code> style
 multi-line comments as explained above, place the empty line after the
 changelog, then follow with the package declaration.</p>
 
 <h3 id=todo-comments>TODO comments</h3>
-<p>TODOs should include the string <code>TODO</code> in all caps followed by a
+<p>TODOs should include the string <code translate="no" dir="ltr">TODO</code> in all caps followed by a
 colon. Example:</p>
-<pre>// TODO: remove this code before foo is checked in.</pre>
+<pre translate="no" dir="ltr">// TODO: remove this code before foo is checked in.</pre>
 
 <p class="alert">TODO comments are allowed only during development; they must
 not exist in published interfaces.</p>
 
 <h3 id=docstrings>Interface/Function comments (docstrings)</h3>
-<p>Use <code>/** */</code> for multi-line and single line docstrings. Do not use
-<code>//</code> for docstrings.</p>
+<p>Use <code translate="no" dir="ltr">/** */</code> for multi-line and single line docstrings. Do not use
+<code translate="no" dir="ltr">//</code> for docstrings.</p>
 
 <p>Docstrings for interfaces should describe general mechanisms of the
 interface, design rationale, purpose, etc. Docstrings for functions should be
 specific to the function (package-level documentation goes in a README file in
 the package directory).</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 /**
  * IFooController is the controller for foos.
  */
@@ -1139,18 +1254,18 @@ interface IFooController {
 };
 </pre>
 
-<p>You must add <code>@param</code>s and <code>@return</code>s for each
+<p>You must add <code translate="no" dir="ltr">@param</code>s and <code translate="no" dir="ltr">@return</code>s for each
 parameter/return value:</p>
 
 <ul>
-<li id=param><code>@param</code> must be added for each parameter. It should be
+<li id=param><code translate="no" dir="ltr">@param</code> must be added for each parameter. It should be
 followed by the name of the parameter then the docstring.</li>
-<li id=return><code>@return</code> must be added for each return value. It
+<li id=return><code translate="no" dir="ltr">@return</code> must be added for each return value. It
 should be followed by the name of the return value then the docstring.</li>
 </ul>
 <p>Example:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 /**
  * Explain what foo does.
  *
@@ -1166,7 +1281,7 @@ foo(T arg1, T arg2) generates (S ret1, S ret2);
 <p>General formatting rules include:</p>
 <ul>
 <li><strong>Line length</strong>. Each line of text should be at most
-<strong>80</strong> columns long.</li>
+<strong>100</strong> columns long.</li>
 <li><strong>Whitespaces</strong>. No trailing whitespace on lines; empty lines
 must not contain whitespaces.</li>
 <li><strong>Spaces vs. tabs</strong>. Use only spaces.</li>
@@ -1176,7 +1291,7 @@ must not contain whitespaces.</li>
 values</a>, an <strong>open</strong> brace goes on the same line as preceding
 code but a <strong>close</strong> brace and the following semicolon occupies
 the entire line. Example:
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 interface INfc {
     close();
 };
@@ -1190,20 +1305,20 @@ notice, should occupy the entire line, and should not be indented. Packages are
 declared using the following format (for name formatting, see
 <a href="#package-names">Package names</a>):</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 package <var>PACKAGE-NAME</var>;
 </pre>
 
 <p>Example:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 package android.hardware.nfc@1.0;
 </pre>
 
 <h3 id=function-declarations>Function declarations</h3>
-<p>Function name, parameters, <code>generates</code>, and return values should
+<p>Function name, parameters, <code translate="no" dir="ltr">generates</code>, and return values should
 be on the same line if they fit. Example:</p>
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 interface IFoo {
     /** ... */
     easyMethod(int32_t data) generates (int32_t result);
@@ -1211,10 +1326,10 @@ interface IFoo {
 </pre>
 
 <p>If they don't fit on the same line, attempt to put parameters and return
-values in the same indent level and distinguish <code>generate</code> to help
+values in the same indent level and distinguish <code translate="no" dir="ltr">generate</code> to help
 the reader quickly see the parameters and return values. Example:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 interface IFoo {
     suchALongMethodThatCannotFitInOneLine(int32_t theFirstVeryLongParameter,
                                           int32_t anotherVeryLongParameter);
@@ -1229,7 +1344,7 @@ interface IFoo {
             int32_t theFirstReturnValue,
             int32_t anotherReturnValue
         );
-    // method name is even shorter than 'generates'
+    /* method name is even shorter than 'generates' */
     foobar(AReallyReallyLongType aReallyReallyLongParameter,
            AReallyReallyLongType anotherReallyReallyLongParameter)
         generates (ASuperLongType aSuperLongReturnValue, // 4 spaces
@@ -1243,8 +1358,8 @@ interface IFoo {
 <li>No spaces between the function name and the open parenthesis.</li>
 <li>No spaces between the parentheses and parameters <em>except</em> when there
 are line feeds between them.</li>
-<li>If <code>generates</code> is on the same line as the previous closing
-parenthesis, use a preceding space. If <code>generates</code> is on the same
+<li>If <code translate="no" dir="ltr">generates</code> is on the same line as the previous closing
+parenthesis, use a preceding space. If <code translate="no" dir="ltr">generates</code> is on the same
 line as the next open parenthesis, follow with a space.</li>
 <li>Align all parameters and return values (if possible).</li>
 <li>Default indentation is 4 spaces.</li>
@@ -1255,33 +1370,33 @@ otherwise they have an 8-space indent.</li>
 <h3 id=annotations>Annotations</h3>
 <p>Use the following format for annotations:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 @annotate(keyword = value, keyword = {value, value, value})
 </pre>
 
 <p>Sort annotations in alphabetical order, and use spaces around equal signs.
 Example:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 @callflow(key = value)
 @entry
 @exit
 </pre>
 
 <p>Ensure an annotation occupies the entire line. Examples:</p>
-<pre class="prettyprint">
-// Good
+<pre class="prettyprint" translate="no" dir="ltr">
+/* Good */
 @entry
 @exit
 
-// Bad
+/* Bad */
 @entry @exit
 </pre>
 
 <p>If annotations cannot fit on the same line, indent with 8 spaces.
 Example:</p>
 
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 @annotate(
         keyword = value,
         keyword = {
@@ -1292,7 +1407,7 @@ Example:</p>
 </pre>
 
 <p>If the entire value array cannot fit in the same line, put line breaks after
-open braces <code>{</code> and after each comma inside the array. Place closing
+open braces <code translate="no" dir="ltr">{</code> and after each comma inside the array. Place closing
 parenthesis immediately after the last value. Do not put the braces if there is
 only one value.</p>
 
@@ -1300,22 +1415,22 @@ only one value.</p>
 open braces and before closing braces and use one space after each comma.
 Examples:</p>
 
-<pre class="prettyprint">
-// Good
+<pre class="prettyprint" translate="no" dir="ltr">
+/* Good */
 @callflow(key = {"val", "val"})
 
-// Bad
+/* Bad */
 @callflow(key = { "val","val" })
 </pre>
 
 <p>There must NOT be empty lines between annotations and the function
 declaration. Examples:</p>
-<pre class="prettyprint">
-// Good
+<pre class="prettyprint" translate="no" dir="ltr">
+/* Good */
 @entry
 foo();
 
-// Bad
+/* Bad */
 @entry
 
 foo();
@@ -1325,7 +1440,7 @@ foo();
 <p>Use the following rules for enum declarations:</p>
 <ul>
 <li>If enum declarations are shared with another package, put the declarations
-in <code>types.hal</code> rather than embedding inside an interface.</li>
+in <code translate="no" dir="ltr">types.hal</code> rather than embedding inside an interface.</li>
 <li>Use a space before and after the colon, and space after the underlying type
 before the open brace.</li>
 <li>The last enum value may or may not have an extra comma.</li>
@@ -1335,10 +1450,10 @@ before the open brace.</li>
 <p>Use the following rules for struct declarations:</p>
 <ul>
 <li>If struct declarations are shared with another package, put the declarations
-in <code>types.hal</code> rather than embedding inside an interface.</li>
+in <code translate="no" dir="ltr">types.hal</code> rather than embedding inside an interface.</li>
 <li>Use a space after the struct type name before the open brace.</li>
 <li>Align field names (optional). Example:
-<pre class="prettyprint">
+<pre class="prettyprint" translate="no" dir="ltr">
 struct MyStruct {
     vec&lt;uint8_t&gt;   data;
     int32_t        someInt;
@@ -1358,42 +1473,42 @@ dimension exists.</li>
 </ul>
 
 <p>Examples:</p>
-<pre class="prettyprint">
-// Good
+<pre class="prettyprint" translate="no" dir="ltr">
+/* Good */
 int32_t[5] array;
 
-// Good
+/* Good */
 int32_t[5][6] multiDimArray;
 
-// Bad
+/* Bad */
 int32_t [ 5 ] [ 6 ] array;
 </pre>
 
 <h3 id=vectors>Vectors</h3>
 <p>Do not put spaces between the following:</p>
 <ul>
-<li><code>vec</code> and open angle bracket.</li>
+<li><code translate="no" dir="ltr">vec</code> and open angle bracket.</li>
 <li>Open angle bracket and element type (<em>Exception: element type is also a
-<code>vec</code></em>).</li>
+<code translate="no" dir="ltr">vec</code></em>).</li>
 <li>Element type and close angle bracket (<em>Exception: element type is also a
-<code>vec</code>)</em>.</li>
+<code translate="no" dir="ltr">vec</code>)</em>.</li>
 </ul>
 
 <p>Examples:</p>
-<pre class="prettyprint">
-// Good
+<pre class="prettyprint" translate="no" dir="ltr">
+/* Good */
 vec&lt;int32_t&gt; array;
 
-// Good
+/* Good */
 vec&lt;vec&lt;int32_t&gt;&gt; array;
 
-// Good
+/* Good */
 vec&lt; vec&lt;int32_t&gt; &gt; array;
 
-// Bad
+/* Bad */
 vec &lt; int32_t &gt; array;
 
-// Bad
+/* Bad */
 vec &lt; vec &lt; int32_t &gt; &gt; array;
 </pre>
 
@@ -1407,17 +1522,17 @@ vec &lt; vec &lt; int32_t &gt; &gt; array;
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1624,8 +1739,9 @@ vec &lt; vec &lt; int32_t &gt; &gt; array;
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1691,54 +1807,49 @@ vec &lt; vec &lt; int32_t &gt; &gt; array;
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/architecture/hidl/code-style.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:23:54 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/architecture/hidl/code-style.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:08:06 GMT -->
 </html>

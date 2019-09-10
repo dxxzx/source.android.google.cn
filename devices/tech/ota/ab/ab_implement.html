@@ -1,24 +1,10 @@
 <!doctype html>
-<html  lang="en">
+<html       lang="en"      dir="ltr">
   
-<!-- Mirrored from source.android.google.cn/devices/tech/ota/ab/ab_implement by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:32:17 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/ota/ab/ab_implement by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:23:05 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-          
-<title>Implementing A/B Updates &nbsp;|&nbsp; Android Open Source Project</title>
-
-<meta property="og:title" content="Implementing A/B Updates &nbsp;|&nbsp; Android Open Source Project">
-
-  <meta property="og:url" content="ab_implement.html">
-
-  <meta property="og:locale" content="en">
-
-
-    
-    
-    
-  
-        <meta property="og:site_name" content="Android Open Source Project">
+    <meta property="og:site_name" content="Android Open Source Project">
     <meta property="og:type" content="website">
     
           <meta name="theme-color" content="#78c257">
@@ -26,26 +12,45 @@
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="../../../../_pwa/androidsource/manifest.json">
+    <link rel="manifest" href="../../../../_pwa/androidsource/manifest.json"
+          crossorigin="use-credentials">
     <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/app.css">
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/rebrand-app.css">
     <noscript>
-      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/css/ce_bundle.css">
+      <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/css/ce_bundle.css">
     </noscript>
-    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png">
-    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/touchicon-180.png"><link rel="canonical" href="ab_implement.html"></head>
+    <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/touchicon-180.png"><link rel="canonical" href="ab_implement.html">      
+<title>Implementing A/B Updates &nbsp;|&nbsp; Android Open Source Project</title>
+
+<meta property="og:title" content="Implementing A/B Updates &nbsp;|&nbsp; Android Open Source Project">
+
+
+  <meta property="og:url" content="ab_implement.html">
+
+  <meta property="og:locale" content="en">
+
+
+
+
+    
+    
+    
+  
+    </head>
   <body type="article"
         theme="androidsource-theme"
         class=""
         
         layout="docs"
-        pending>
+        block-apix        pending>
     <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
-    <div class="devsite-wrapper"><devsite-header ds-is="header" keep-tabs-visible>
+    <div class="devsite-wrapper"><devsite-header keep-tabs-visible>
       
+
 
 
 
@@ -68,18 +73,19 @@
         <div class="devsite-product-name-wrapper">
   <a href="../../../../index.html" class="devsite-site-logo-link gc-analytics-event"
    data-category="Site-Wide Custom Events" data-label="Site logo">
-  <img src="https://www.gstatic.cn/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+  <img src="https://www.gstatic.cn/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
 </a>
             <span class="devsite-product-name">
             <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                               </li>
   </ul>
           </span>
         
 </div>        <div class="devsite-top-logo-row-middle">
           <div class="devsite-header-upper-tabs">
-                          <devsite-tabs ds-is="tabs" class="upper-tabs">
+                          <devsite-tabs class="upper-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
           <a href="../../../../setup.html"
@@ -115,7 +121,7 @@
 
         </tab>
                         <tab >
-          <a href="../../../audio.html"
+          <a href="../../../../devices.html"
    class="gc-analytics-event"
    title="Develop"
            data-category="Site-Wide Custom Events"
@@ -126,7 +132,7 @@
 
         </tab>
                         <tab active>
-          <a href="../../dalvik.html"
+          <a href="../../../tech.html"
    class="gc-analytics-event"
    title="Configure"
    aria-label="Configure, selected"         data-category="Site-Wide Custom Events"
@@ -151,12 +157,12 @@
 </devsite-tabs>
 
                        </div>
-          <devsite-search ds-is="search"
+          <devsite-search
             enable-suggestions
-                  project-path="">
-  <form class="devsite-search-form" action="https://source.android.google.cn/s/results/" method="GET">
+              family-name="Android Open Source Project"    tenant-name="Android Open Source Project"            >
+  <form class="devsite-search-form" action="https://source.android.google.cn/s/results" method="GET">
     <div class="devsite-search-container">
-      <div id="searchbox" class="devsite-searchbox">
+      <div class="devsite-searchbox">
                 <input placeholder="Search"
           type="text"
           class="devsite-search-field devsite-search-query"
@@ -164,7 +170,7 @@
           value=""
           autocomplete="off"
                     aria-label="Search box">
-        <div class="devsite-search-image material-icons"></div>
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
       </div>
       <button type="button"
               search-open
@@ -180,21 +186,51 @@
 
         </div>
 
-                <a class="devsite-header-link devsite-top-button button gc-analytics-event"
-           href="http://android-review.googlesource.com/"
-           data-category="Site-Wide Custom Events"
-           data-label="Site header link">
-          Go to code
-        </a>
-                      </div>    </div>  </div>
+        <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+                  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+   href="http://android-review.googlesource.com/"
+   data-category="Site-Wide Custom Events"
+   data-label="Site header link">
+  Go to code
+</a>
+        
+              </div>    </div>  </div>
   <div class="devsite-collapsible-section
     ">
     <div class="devsite-header-background">
                         <div class="devsite-product-id-row">
             <div class="devsite-product-description-row">
                               <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
-                    <a href="../../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                    <a href="../../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Lower Header"
               data-value="1"
@@ -207,16 +243,16 @@
                                         </div>
                                                                                     </div>
                                       <div class="devsite-doc-set-nav-row">
-                              <devsite-tabs ds-is="tabs" class="lower-tabs">
+                              <devsite-tabs class="lower-tabs">
   <div class="devsite-tabs-wrapper">
                   <tab >
-          <a href="../../dalvik.html"
+          <a href="../../../tech.html"
    class="gc-analytics-event"
-   title="ART"
+   title="Overview"
            data-category="Site-Wide Custom Events"
-        data-label="Tab: ART"
+        data-label="Tab: Overview"
    >
-  ART
+  Overview
 </a>
 
         </tab>
@@ -243,7 +279,7 @@
 
         </tab>
                         <tab >
-          <a href="../../health.html"
+          <a href="../../perf.html"
    class="gc-analytics-event"
    title="Performance"
            data-category="Site-Wide Custom Events"
@@ -254,7 +290,7 @@
 
         </tab>
                         <tab >
-          <a href="../../config/perms-whitelist.html"
+          <a href="../../config.html"
    class="gc-analytics-event"
    title="Permissions"
            data-category="Site-Wide Custom Events"
@@ -272,6 +308,17 @@
         data-label="Tab: Power"
    >
   Power
+</a>
+
+        </tab>
+                        <tab >
+          <a href="../../dalvik.html"
+   class="gc-analytics-event"
+   title="Runtime"
+           data-category="Site-Wide Custom Events"
+        data-label="Tab: Runtime"
+   >
+  Runtime
 </a>
 
         </tab>
@@ -293,8 +340,11 @@
           </div>  </div></div>
   
 
-  </devsite-header>      <devsite-book-nav ds-is="book-nav" scrollbars >
+  </devsite-header>      <devsite-book-nav scrollbars >
                   
+
+
+
 
 <nav class="devsite-book-nav devsite-nav nocontent">
   <div class="devsite-mobile-header">
@@ -305,7 +355,20 @@
             data-label="Close navigation"
             aria-label="Close navigation">
     </button>
-  </div>
+    <div class="devsite-product-name-wrapper">
+  <a href="../../../../index.html" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo">
+  <img src="https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg" class="devsite-site-logo" alt="Android Open Source Project">
+</a>
+        <span class="devsite-product-name">
+        <ul class="devsite-breadcrumb-list">
+    <li class="devsite-breadcrumb-item
+             ">
+                              </li>
+  </ul>
+      </span>
+    
+</div>  </div>
 
   <div class="devsite-book-nav-wrapper">
     <div class="devsite-mobile-nav-top">
@@ -341,7 +404,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../../audio.html"
+                                <a href="../../../../devices.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -351,7 +414,7 @@
   
                                         </li>
                       <li class="devsite-nav-item">
-                                <a href="../../dalvik.html"
+                                <a href="../../../tech.html"
           class="devsite-nav-title gc-analytics-event
             devsite-nav-active"
      data-category="Site-Wide Custom Events"
@@ -361,12 +424,12 @@
   
                                             <ul class="devsite-nav-responsive-tabs">
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../../dalvik.html"
+    <a href="../../../tech.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
-     data-label="Responsive Tab: ART">
-      <span class="devsite-nav-text" >ART</span>
+     data-label="Responsive Tab: Overview">
+      <span class="devsite-nav-text" >Overview</span>
         </a>
   </li>
 
@@ -391,7 +454,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../../health.html"
+    <a href="../../perf.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -401,7 +464,7 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
-    <a href="../../config/perms-whitelist.html"
+    <a href="../../config.html"
           class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
@@ -421,13 +484,23 @@
   </li>
 
                                                                                                                       <li class="devsite-nav-item">
+    <a href="../../dalvik.html"
+          class="devsite-nav-title gc-analytics-event
+            "
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Runtime">
+      <span class="devsite-nav-text" >Runtime</span>
+        </a>
+  </li>
+
+                                                                                                                      <li class="devsite-nav-item">
     <a href="../../ota.html"
      id="devsite-nav-forward"     class="devsite-nav-title gc-analytics-event
             "
      data-category="Site-Wide Custom Events"
      data-label="Responsive Tab: Updates">
       <span class="devsite-nav-text" menu="_book">Updates</span>
-        <span class="devsite-nav-icon material-icons" data-icon="forward"
+        <span class="devsite-nav-icon material-icons" data-icon="forward" aria-hidden="true"
           menu="_book">
     </span>
         </a>
@@ -458,29 +531,32 @@
                   </ul>
           </div>
           <div class="devsite-mobile-nav-bottom">
-                                      <ul class="devsite-nav-list" menu="_book">
-                                    <li class="devsite-nav-item"><a href="../../ota.html"
+                            <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="../../ota.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li>
-                          <li class="devsite-nav-item"><a href="../tools.html"
+  <li class="devsite-nav-item"><a href="../apex.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="APEX File Format">APEX File Format</span></a></li>
+  <li class="devsite-nav-item"><a href="../tools.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="OTA Tools">OTA Tools</span></a></li>
-                          <li class="devsite-nav-item"><a href="../sign_builds.html"
+  <li class="devsite-nav-item"><a href="../sign_builds.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Signing Builds for Release">Signing Builds for Release</span></a></li>
-                          <li class="devsite-nav-item"><a href="../reduce_size.html"
+  <li class="devsite-nav-item"><a href="../reduce_size.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Reducing OTA Size">Reducing OTA Size</span></a></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="A/B System Updates">A/B System Updates</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../ab.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="A/B System Updates">A/B System Updates</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../ab.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="ab_implement.html"
      class="devsite-nav-title"
-   ><span class="devsite-nav-text" title="Implementing A/B Updates">Implementing A/B Updates</span></a></li><li class="devsite-nav-item"><a href="ab_faqs-2.html"
+   ><span class="devsite-nav-text" title="Implementing A/B Updates">Implementing A/B Updates</span></a></li><li class="devsite-nav-item"><a href="ab_faqs.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Frequently Asked Questions">Frequently Asked Questions</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav ds-is="expandable-nav" collapsed>
-    <a class="devsite-nav-toggle"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Non-A/B System Updates">Non-A/B System Updates</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../nonab.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Non-A/B System Updates">Non-A/B System Updates</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../nonab.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../nonab/block.html"
      class="devsite-nav-title"
@@ -489,10 +565,28 @@
    ><span class="devsite-nav-text" title="Inside OTA Packages">Inside OTA Packages</span></a></li><li class="devsite-nav-item"><a href="../nonab/device_code.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Device-Specific Code">Device-Specific Code</span></a></li></ul></devsite-expandable-nav></li>
-                          <li class="devsite-nav-item"><a href="../../config/timezone-rules.html"
+  <li class="devsite-nav-item           devsite-nav-expandable"><devsite-expandable-nav collapsed>
+    <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0"><span class="devsite-nav-text" title="Dynamic Partitions">Dynamic Partitions</span></div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="../dynamic_partitions.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Overview">Overview</span></a></li><li class="devsite-nav-item"><a href="../dynamic_partitions/implement.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Implementing Dynamic Partitions">Implementing Dynamic Partitions</span></a></li><li class="devsite-nav-item"><a href="../dynamic_partitions/ab_launch.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="OTA for A/B Devices">OTA for A/B Devices</span></a></li><li class="devsite-nav-item"><a href="../dynamic_partitions/ab_legacy.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="OTA for Legacy A/B Devices">OTA for Legacy A/B Devices</span></a></li><li class="devsite-nav-item"><a href="../dynamic_partitions/nonab.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="OTA for non-A/B Devices">OTA for non-A/B Devices</span></a></li></ul></devsite-expandable-nav></li>
+  <li class="devsite-nav-item"><a href="../../config/timezone-rules.html"
      class="devsite-nav-title"
    ><span class="devsite-nav-text" title="Time Zone Rules">Time Zone Rules</span></a></li>
-                      </ul>
+  <li class="devsite-nav-item"><a href="../user-data-checkpoint.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="User Data Checkpoint">User Data Checkpoint</span></a></li>
+  <li class="devsite-nav-item"><a href="../dynamic-system-updates.html"
+     class="devsite-nav-title"
+   ><span class="devsite-nav-text" title="Dynamic System Updates">Dynamic System Updates</span></a></li>
+          </ul>
                                                                                                                                                                             </div>
       </div>
 </nav>
@@ -500,16 +594,17 @@
       <div id="gc-wrapper">
         <div class="devsite-main-content"
             has-book-nav            has-toc>
-          <devsite-toc ds-is="toc" class="devsite-nav"
+          <devsite-toc class="devsite-nav"
             ></devsite-toc>
-          <devsite-content ds-is="content">
+          <devsite-content>
                           
 
 <article class="devsite-article">
-  <article class="devsite-article-inner">    
+  <article class="devsite-article-inner">        
     <div class="devsite-article-meta">
       <ul class="devsite-breadcrumb-list">
-    <li class="devsite-breadcrumb-item">
+    <li class="devsite-breadcrumb-item
+             ">
                     <a href="../../../../index.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -519,9 +614,10 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
-                    <a href="../../dalvik.html"              class="devsite-breadcrumb-link gc-analytics-event"
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+                    <a href="../../../tech.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
               data-value="2"
@@ -530,8 +626,9 @@
       
   </a>
         </li>
-    <li class="devsite-breadcrumb-item">
-                <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    <li class="devsite-breadcrumb-item
+             ">
+                <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
                     <a href="../../ota.html"              class="devsite-breadcrumb-link gc-analytics-event"
               data-category="Site-Wide Custom Events"
               data-label="Breadcrumbs"
@@ -548,8 +645,8 @@
 
               <h1 class="devsite-page-title">Implementing A/B Updates</h1>
     
-    <devsite-toc ds-is="toc" class="devsite-nav" devsite-toc-embedded
-                 ></devsite-toc>
+    <devsite-toc class="devsite-nav" devsite-toc-embedded >
+    </devsite-toc>
 
     <div class="devsite-article-body clearfix
       ">
@@ -578,11 +675,11 @@ their bootloader implements the boot_control HAL and passes the
 
 
 <h2 id="bootcontrol">Implementing the boot control HAL</h2>
-<p>A/B-capable bootloaders must implement the <code>boot_control</code> HAL at
-<code><a href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/boot_control.h" class="external">hardware/libhardware/include/hardware/boot_control.h</a></code>.
+<p>A/B-capable bootloaders must implement the <code translate="no" dir="ltr">boot_control</code> HAL at
+<code translate="no" dir="ltr"><a href="https://android.googlesource.com/platform/hardware/libhardware/+/master/include/hardware/boot_control.h" class="external">hardware/libhardware/include/hardware/boot_control.h</a></code>.
 You can test implementations using the
-<code><a href="https://android.googlesource.com/platform/system/extras/+/master/bootctl/" class="external">system/extras/bootctl</a></code> utility and
-<code><a href="https://android.googlesource.com/platform/system/extras/+/refs/heads/master/tests/bootloader/" class="external">system/extras/tests/bootloader/</a></code>.
+<code translate="no" dir="ltr"><a href="https://android.googlesource.com/platform/system/extras/+/master/bootctl/" class="external">system/extras/bootctl</a></code> utility and
+<code translate="no" dir="ltr"><a href="https://android.googlesource.com/platform/system/extras/+/refs/heads/master/tests/bootloader/" class="external">system/extras/tests/bootloader/</a></code>.
 </p>
 
 <p>You must also implement the state machine shown below:</p>
@@ -601,24 +698,24 @@ You can test implementations using the
  </ul>
 </li>
 <li>Ensure kernel command line arguments contain the following extra arguments:
-<pre class="devsite-click-to-copy">
-<code class="devsite-terminal">skip_initramfs rootwait ro init=/init root="/dev/dm-0 dm=system none ro,0 1 android-verity &lt;public-key-id&gt; &lt;path-to-system-partition&gt;"</code></pre>
-... where the <code>&lt;public-key-id&gt;</code> value is the ID of the public
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
+<code class="devsite-terminal" translate="no" dir="ltr">skip_initramfs rootwait ro init=/init root="/dev/dm-0 dm=system none ro,0 1 android-verity &lt;public-key-id&gt; &lt;path-to-system-partition&gt;"</code></pre>
+... where the <code translate="no" dir="ltr">&lt;public-key-id&gt;</code> value is the ID of the public
 key used to verify the verity table signature (for details, see
 <a href="../../../../security/verifiedboot/dm-verity-2.html">dm-verity</a>).</li>
 <li>Add the .X509 certificate containing the public key to the system keyring:
  <ol>
- <li>Copy the .X509 certificate formatted in the <code>.der</code> format to the
- root of the <code>kernel</code> directory. If the .X509 certificate is
- formatted as a <code>.pem</code> file, use the following <code>openssl</code>
- command to convert from <code>.pem</code> to <code>.der</code> format:
- <pre class="devsite-terminal devsite-click-to-copy">
+ <li>Copy the .X509 certificate formatted in the <code translate="no" dir="ltr">.der</code> format to the
+ root of the <code translate="no" dir="ltr">kernel</code> directory. If the .X509 certificate is
+ formatted as a <code translate="no" dir="ltr">.pem</code> file, use the following <code translate="no" dir="ltr">openssl</code>
+ command to convert from <code translate="no" dir="ltr">.pem</code> to <code translate="no" dir="ltr">.der</code> format:
+ <pre class="devsite-terminal devsite-click-to-copy" translate="no" dir="ltr">
 openssl x509 -in &lt;x509-pem-certificate&gt; -outform der -out &lt;x509-der-certificate&gt;</pre>
  </li>
- <li>Build the <code>zImage</code> to include the certificate as part of the
- system keyring. To verify,check the <code>procfs</code> entry (requires
- <code>KEYS_CONFIG_DEBUG_PROC_KEYS</code> to be enabled):
-<pre class="devsite-click-to-copy">
+ <li>Build the <code translate="no" dir="ltr">zImage</code> to include the certificate as part of the
+ system keyring. To verify,check the <code translate="no" dir="ltr">procfs</code> entry (requires
+ <code translate="no" dir="ltr">KEYS_CONFIG_DEBUG_PROC_KEYS</code> to be enabled):
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 angler:/# cat /proc/keys
 
 1c8a217e I------     1 perm 1f010000     0     0 asymmetri
@@ -627,10 +724,10 @@ Android: 7e4333f9bba00adfe0ede979e28ed1920492b40f: X509.RSA 0492b40f []
 .system_keyring: 1/4</pre>
  Successful inclusion of the .X509 certificate indicates the presence of the
  public key in the system keyring (highlight denotes the public key ID).</li>
- <li>Replace the space with <code>#</code> and pass it as
- <code>&lt;public-key-id&gt;</code> in the kernel command line. For example,
- pass <code>Android:#7e4333f9bba00adfe0ede979e28ed1920492b40f</code> in place of
- <code>&lt;public-key-id&gt;</code>.</li>
+ <li>Replace the space with <code translate="no" dir="ltr">#</code> and pass it as
+ <code translate="no" dir="ltr">&lt;public-key-id&gt;</code> in the kernel command line. For example,
+ pass <code translate="no" dir="ltr">Android:#7e4333f9bba00adfe0ede979e28ed1920492b40f</code> in place of
+ <code translate="no" dir="ltr">&lt;public-key-id&gt;</code>.</li>
  </ol>
 </li>
 </ol>
@@ -644,23 +741,23 @@ Android: 7e4333f9bba00adfe0ede979e28ed1920492b40f: X509.RSA 0492b40f []
 <th>Must define for A/B target</th>
 <td>
 <ul>
-<li><code>AB_OTA_UPDATER := true</code></li>
-<li><code>AB_OTA_PARTITIONS := \</code><br/>
-<code>&nbsp; boot \</code><br/>
-<code>&nbsp; system \</code><br/>
-<code>&nbsp; vendor</code><br/>
-and other partitions updated through <code>update_engine</code> (radio,
+<li><code translate="no" dir="ltr">AB_OTA_UPDATER := true</code></li>
+<li><code translate="no" dir="ltr">AB_OTA_PARTITIONS := \</code><br/>
+<code translate="no" dir="ltr">&nbsp; boot \</code><br/>
+<code translate="no" dir="ltr">&nbsp; system \</code><br/>
+<code translate="no" dir="ltr">&nbsp; vendor</code><br/>
+and other partitions updated through <code translate="no" dir="ltr">update_engine</code> (radio,
 bootloader, etc.)</li>
-<li><code>BOARD_BUILD_SYSTEM_ROOT_IMAGE := true</code></li>
-<li><code>TARGET_NO_RECOVERY := true</code></li>
-<li><code>BOARD_USES_RECOVERY_AS_BOOT := true</code></li>
-<li><code>PRODUCT_PACKAGES += \</code><br/>
-<code>&nbsp; update_engine \</code><br/>
-<code>&nbsp; update_verifier</code></li>
+<li><code translate="no" dir="ltr">BOARD_BUILD_SYSTEM_ROOT_IMAGE := true</code></li>
+<li><code translate="no" dir="ltr">TARGET_NO_RECOVERY := true</code></li>
+<li><code translate="no" dir="ltr">BOARD_USES_RECOVERY_AS_BOOT := true</code></li>
+<li><code translate="no" dir="ltr">PRODUCT_PACKAGES += \</code><br/>
+<code translate="no" dir="ltr">&nbsp; update_engine \</code><br/>
+<code translate="no" dir="ltr">&nbsp; update_verifier</code></li>
 </ul>
 
 For an example, refer to
-<code><a href="https://android.googlesource.com/device/google/marlin/+/android-7.1.0_r1/device-common.mk" class="external">/device/google/marlin/+/android-7.1.0_r1/device-common.mk</a></code>.
+<code translate="no" dir="ltr"><a href="https://android.googlesource.com/device/google/marlin/+/android-7.1.0_r1/device-common.mk" class="external">/device/google/marlin/+/android-7.1.0_r1/device-common.mk</a></code>.
 You can optionally conduct the post-install (but pre-reboot) dex2oat step
 described in <a href="#compilation">Compiling</a>.
 </td>
@@ -668,15 +765,15 @@ described in <a href="#compilation">Compiling</a>.
 <th>Cannot define for A/B target</th>
 <td>
 <ul>
-<li><code>BOARD_RECOVERYIMAGE_PARTITION_SIZE</code></li>
-<li><code>BOARD_CACHEIMAGE_PARTITION_SIZE</code></li>
-<li><code>BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE</code></li>
+<li><code translate="no" dir="ltr">BOARD_RECOVERYIMAGE_PARTITION_SIZE</code></li>
+<li><code translate="no" dir="ltr">BOARD_CACHEIMAGE_PARTITION_SIZE</code></li>
+<li><code translate="no" dir="ltr">BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE</code></li>
 </ul>
 </td>
 </tr>
 <tr>
 <th>Optional for debug builds</th>
-<td><code>PRODUCT_PACKAGES_DEBUG += update_engine_client</code></td>
+<td><code translate="no" dir="ltr">PRODUCT_PACKAGES_DEBUG += update_engine_client</code></td>
 </tr>
 <tr>
 </table>
@@ -686,9 +783,9 @@ described in <a href="#compilation">Compiling</a>.
 Android no longer uses these partitions. The data partition is now used for the
 downloaded OTA package, and the recovery image code is on the boot partition.
 All partitions that are A/B-ed should be named as follows (slots are always
-named <code>a</code>, <code>b</code>, etc.): <code>boot_a</code>,
-<code>boot_b</code>, <code>system_a</code>, <code>system_b</code>,
-<code>vendor_a</code>, <code>vendor_b</code>.</p>
+named <code translate="no" dir="ltr">a</code>, <code translate="no" dir="ltr">b</code>, etc.): <code translate="no" dir="ltr">boot_a</code>,
+<code translate="no" dir="ltr">boot_b</code>, <code translate="no" dir="ltr">system_a</code>, <code translate="no" dir="ltr">system_b</code>,
+<code translate="no" dir="ltr">vendor_a</code>, <code translate="no" dir="ltr">vendor_b</code>.</p>
 
 <h3 id="cache">Cache</h3>
 
@@ -703,12 +800,12 @@ before applying it.</p>
 
 <h3 id="recovery">Recovery</h3>
 
-<p>The recovery RAM disk is now contained in the <code>boot.img</code> file.
+<p>The recovery RAM disk is now contained in the <code translate="no" dir="ltr">boot.img</code> file.
 When going into recovery, the bootloader <strong>cannot</strong> put the
-<code>skip_initramfs</code> option on the kernel command line.</p>
+<code translate="no" dir="ltr">skip_initramfs</code> option on the kernel command line.</p>
 
 <p>For non-A/B updates, the recovery partition contains the code used to apply
-updates. A/B updates are applied by <code>update_engine</code> running in the
+updates. A/B updates are applied by <code translate="no" dir="ltr">update_engine</code> running in the
 regular booted system image. There is still a recovery mode used to implement
 factory data reset and sideloading of update packages (which is where the name
 "recovery" came from). The code and data for recovery mode is stored in the
@@ -719,80 +816,80 @@ partition), so the boot partition doesn't increase in size.</p>
 
 <h3 id="fstab">Fstab</h3>
 
-<p>The <code>slotselect</code> argument <strong>must</strong> be on the line for
+<p>The <code translate="no" dir="ltr">slotselect</code> argument <strong>must</strong> be on the line for
 the A/B-ed partitions. For example:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 &lt;path-to-block-device&gt;/vendor  /vendor  ext4  ro
 wait,verify=&lt;path-to-block-device&gt;/metadata,slotselect
 </pre>
 
-<p>No partition should be named <code>vendor</code>. Instead, partition
-<code>vendor_a</code> or <code>vendor_b</code> will be selected and mounted on
-the <code>/vendor</code> mount point.</p>
+<p>No partition should be named <code translate="no" dir="ltr">vendor</code>. Instead, partition
+<code translate="no" dir="ltr">vendor_a</code> or <code translate="no" dir="ltr">vendor_b</code> will be selected and mounted on
+the <code translate="no" dir="ltr">/vendor</code> mount point.</p>
 
 <h3 id="kernel-slot-arguments">Kernel slot arguments</h3>
 
 <p>The current slot suffix should be passed either through a specific device
-tree (DT) node (<code>/firmware/android/slot_suffix</code>) or through the
-<code>androidboot.slot_suffix</code> command line argument.</p>
+tree (DT) node (<code translate="no" dir="ltr">/firmware/android/slot_suffix</code>) or through the
+<code translate="no" dir="ltr">androidboot.slot_suffix</code> command line argument.</p>
 
 <p>By default, fastboot flashes the current slot on an A/B device. If the update
   package also contains images for the other, non-current slot, fastboot flashes those
   images as well. Available options include:</p>
 
 <ul>
-  <li><code>--slot <var>SLOT</var></code>. Override the default behavior and
+  <li><code translate="no" dir="ltr">--slot <var>SLOT</var></code>. Override the default behavior and
     prompt fastboot to flash the slot that is passed in as an argument.</li>
-  <li><code>--set-active [<var>SLOT</var>]</code>. Set the slot as active. If
+  <li><code translate="no" dir="ltr">--set-active [<var>SLOT</var>]</code>. Set the slot as active. If
   no optional argument is specified, then the current slot is set as active.</li>
-<li><code>fastboot --help</code>. Get details on commands.</li>
+<li><code translate="no" dir="ltr">fastboot --help</code>. Get details on commands.</li>
 </ul>
 
 <p>If the bootloader implements fastboot, it should support the command
-<code>set_active &lt;slot&gt;</code> that sets the current active slot
+<code translate="no" dir="ltr">set_active &lt;slot&gt;</code> that sets the current active slot
 to the given slot (this must also clear the unbootable flag for that slot and
 reset the retry count to default values). The bootloader should also support the
 following variables:</p>
 
 <ul>
-<li><code>has-slot:&lt;partition-base-name-without-suffix&gt;</code>. Returns
+<li><code translate="no" dir="ltr">has-slot:&lt;partition-base-name-without-suffix&gt;</code>. Returns
 “yes” if the given partition supports slots, “no” otherwise.</li>
-<li><code>current-slot</code>. Returns the slot suffix that will be booted from
+<li><code translate="no" dir="ltr">current-slot</code>. Returns the slot suffix that will be booted from
 next.</li>
-<li><code>slot-count</code>. Returns an integer representing the number of
+<li><code translate="no" dir="ltr">slot-count</code>. Returns an integer representing the number of
 available slots. Currently, two slots are supported so this value is
-<code>2</code>.</li>
-<li><code>slot-successful:&lt;slot-suffix&gt;</code>. Returns "yes" if the given
+<code translate="no" dir="ltr">2</code>.</li>
+<li><code translate="no" dir="ltr">slot-successful:&lt;slot-suffix&gt;</code>. Returns "yes" if the given
 slot has been marked as successfully booting, "no" otherwise.</li>
-<li><code>slot-unbootable:&lt;slot-suffix&gt;</code>. Returns “yes” if the given
+<li><code translate="no" dir="ltr">slot-unbootable:&lt;slot-suffix&gt;</code>. Returns “yes” if the given
 slot is marked as unbootable, "no" otherwise.</li>
-<li><code>slot-retry-count<slot suffix></code>. Number of retries remaining to
+<li><code translate="no" dir="ltr">slot-retry-count<slot suffix></code>. Number of retries remaining to
 attempt to boot the given slot.</li>
 </ul>
 
 <p>To view all variables, run
-<code class="devsite-terminal devsite-click-to-copy">fastboot getvar all</code>.
+<code class="devsite-terminal devsite-click-to-copy" translate="no" dir="ltr">fastboot getvar all</code>.
 </p>
 
 <h2 id="ota-package-generation">Generating OTA packages</h2>
 
 <p>The <a href="../tools-2.html">OTA package tools</a> follow the
 same commands as the commands for non-A/B devices. The
-<code>target_files.zip</code> file must be generated by defining the build
+<code translate="no" dir="ltr">target_files.zip</code> file must be generated by defining the build
 variables for the A/B target. The OTA package tools automatically identify and
 generate packages in the format for the A/B updater.</p>
 
 <p>Examples:</p>
 <ul>
 <li>To generate a full OTA:
-<pre class="devsite-terminal devsite-click-to-copy">
+<pre class="devsite-terminal devsite-click-to-copy" translate="no" dir="ltr">
 ./build/tools/releasetools/ota_from_target_files \
   dist_output/tardis-target_files.zip ota_update.zip
 </pre>
 </li>
 <li>To generate an incremental OTA:
-<pre class="devsite-terminal devsite-click-to-copy">
+<pre class="devsite-terminal devsite-click-to-copy" translate="no" dir="ltr">
 ./build/tools/releasetools/ota_from_target_files \
   -i PREVIOUS-tardis-target_files.zip \
   dist_output/tardis-target_files.zip incremental_ota_update.zip
@@ -802,25 +899,25 @@ generate packages in the format for the A/B updater.</p>
 
 <h2 id="configuration">Configuring partitions</h2>
 
-<p>The <code>update_engine</code> can update any pair of A/B partitions defined
+<p>The <code translate="no" dir="ltr">update_engine</code> can update any pair of A/B partitions defined
 in the same disk. A pair of partitions has a common prefix (such as
-<code>system</code> or <code>boot</code>) and per-slot suffix (such as
-<code>_a</code>). The list of partitions for which the payload generator defines
-an update is configured by the <code>AB_OTA_PARTITIONS</code> make variable.</p>
+<code translate="no" dir="ltr">system</code> or <code translate="no" dir="ltr">boot</code>) and per-slot suffix (such as
+<code translate="no" dir="ltr">_a</code>). The list of partitions for which the payload generator defines
+an update is configured by the <code translate="no" dir="ltr">AB_OTA_PARTITIONS</code> make variable.</p>
 
-<p>For example, if a pair of partitions <code>bootloader_a</code> and
-<code>booloader_b</code> are included (<code>_a</code> and <code>_b</code> are
+<p>For example, if a pair of partitions <code translate="no" dir="ltr">bootloader_a</code> and
+<code translate="no" dir="ltr">booloader_b</code> are included (<code translate="no" dir="ltr">_a</code> and <code translate="no" dir="ltr">_b</code> are
 the slot suffixes), you can update these partitions by specifying the following
 on the product or board configuration:</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 AB_OTA_PARTITIONS := \
   boot \
   system \
   bootloader
 </pre>
 
-<p>All partitions updated by <code>update_engine</code> must not be modified by
+<p>All partitions updated by <code translate="no" dir="ltr">update_engine</code> must not be modified by
 the rest of the system. During incremental or <em>delta</em> updates, the binary
 data from the current slot is used to generate the data in the new slot. Any
 modification may cause the new slot data to fail verification during the update
@@ -830,16 +927,16 @@ process, and therefore fail the update.</p>
 
 <p>You can configure the post-install step differently for each updated
 partition using a set of key-value pairs. To run a program located at
-<code>/system/usr/bin/postinst</code> in a new image, specify the path relative
+<code translate="no" dir="ltr">/system/usr/bin/postinst</code> in a new image, specify the path relative
 to the root of the filesystem in the system partition.</p>
 
-<p>For example, <code>usr/bin/postinst</code> is
-<code>system/usr/bin/postinst</code> (if not using a RAM disk). Additionally,
-specify the filesystem type to pass to the <code>mount(2)</code> system call.
-Add the following to the product or device <code>.mk</code> files (if
+<p>For example, <code translate="no" dir="ltr">usr/bin/postinst</code> is
+<code translate="no" dir="ltr">system/usr/bin/postinst</code> (if not using a RAM disk). Additionally,
+specify the filesystem type to pass to the <code translate="no" dir="ltr">mount(2)</code> system call.
+Add the following to the product or device <code translate="no" dir="ltr">.mk</code> files (if
 applicable):</p>
 
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
 AB_OTA_POSTINSTALL_CONFIG += \
   RUN_POSTINSTALL_system=true \
   POSTINSTALL_PATH_system=usr/bin/postinst \
@@ -847,10 +944,10 @@ AB_OTA_POSTINSTALL_CONFIG += \
 </pre>
 
 <h2 id="compilation">Compiling</h2>
-<p>For security reasons, <code>system_server</code> cannot use
+<p>For security reasons, <code translate="no" dir="ltr">system_server</code> cannot use
 <a href="../../dalvik/jit-compiler.html">just-in-time (JIT)</a> compilation.
 This means you must compile ahead of time odex files for
-<code>system_server</code> and its dependencies at a minimum; anything else is
+<code translate="no" dir="ltr">system_server</code> and its dependencies at a minimum; anything else is
 optional.</p>
 
 <p>To compile apps in the background, you must add the following to the
@@ -859,13 +956,13 @@ product's device configuration (in the product's device.mk):</p>
 <ol>
 <li>Include the native components in the build to ensure compilation script and
 binaries are compiled and included in the system image.
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
   # A/B OTA dexopt package
   PRODUCT_PACKAGES += otapreopt_script
 </pre></li>
-<li>Connect the compilation script to <code>update_engine</code> such that runs
+<li>Connect the compilation script to <code translate="no" dir="ltr">update_engine</code> such that runs
 as a post-install step.
-<pre class="devsite-click-to-copy">
+<pre class="devsite-click-to-copy" translate="no" dir="ltr">
   # A/B OTA dexopt update_engine hookup
   AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -890,17 +987,17 @@ installation of DEX_PREOPT files</a>.</p>
           </article>
 </article>
 
-<devsite-content-footer ds-is="content-footer" class="nocontent">
+<devsite-content-footer class="nocontent">
   <p>Content and code samples on this page are subject to the licenses described in the <a href="../../../../license.html">Content License</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
 </devsite-content-footer>
 
 
                       </devsite-content>
         </div>
-        <devsite-footer-promos ds-is="footer-promos" class="devsite-footer">
+        <devsite-footer-promos class="devsite-footer">
                       
                   </devsite-footer-promos>
-        <devsite-footer-linkboxes ds-is="footer-linkboxes" class="devsite-footer">
+        <devsite-footer-linkboxes class="devsite-footer">
                       <nav class="devsite-footer-linkboxes nocontent">
   <ul class="devsite-footer-linkboxes-list">
         <li class="devsite-footer-linkbox ">
@@ -1107,8 +1204,9 @@ installation of DEX_PREOPT files</a>.</p>
       </ul>
 </nav>
                   </devsite-footer-linkboxes>
-        <devsite-footer-utility ds-is="footer-utility" class="devsite-footer">
-                      <div class="devsite-footer-utility">
+        <devsite-footer-utility class="devsite-footer">
+                      
+<div class="devsite-footer-utility">
   
   <nav class="devsite-nav">
         <ul class="devsite-footer-utility-list">
@@ -1174,54 +1272,49 @@ installation of DEX_PREOPT files</a>.</p>
               </li>
           </ul>
     
-        <form class="devsite-footer-utility-language">
-      <select class="devsite-footer-utility-language-select"
-              name="language"
-              track-name="click"
-              track-type="languageSelector">
-                  <option value="en"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="en"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  selected="selected">
-            English
-          </option>
-                  <option value="zh_cn"
-                  track-metadata-original-language="en"
-                  track-metadata-selected-language="zh_cn"
-                  track-name="changed"
-                  track-type="languageSelector"
-                  >
-            简体中文
-          </option>
-              </select>
-    </form>
-      </nav>
+    <devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    <select class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+                <option>Language</option>
+              <option value="en"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="en"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        English
+      </option>
+          <option value="zh_cn"
+              track-metadata-original-language="en"
+              track-metadata-selected-language="zh_cn"
+              track-name="changed"
+              track-type="languageSelector"
+            >
+        中文 – 简体
+      </option>
+        </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
 </div>
                   </devsite-footer-utility>
       </div></div>
-    <devsite-sitemask ds-is="site-mask"></devsite-sitemask>
-    <devsite-snackbar ds-is="snackbar"                       ></devsite-snackbar>    <devsite-tooltip ds-is="tooltip"
-                     blocked-link></devsite-tooltip>
-    <devsite-analytics ds-is="analytics">
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar                   ></devsite-snackbar>    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-analytics>
               <script type="application/json" analytics>[{"metrics": {"ratings_value": "metric1", "ratings_count": "metric2"}, "dimensions": {}, "gaid": "UA-45455297-4"}]</script>
 <script type="application/json" gtm>[]</script>
           </devsite-analytics>
-    <script>
-    (function(d,e,v,E,l,o,p,r,s,_,__){d['GoogleDevelopersObject']=[!0,l,o,p,r,s];
-    _=e.createElement(v);_.async=1;_.src=E;__=e.getElementsByTagName(v)[0];
-    __.parentNode.insertBefore(_,__);})(window, document, 'script',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/app_loader.js',
-      'en',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/js/devsite_app.js',
-      'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource',
-      !1,
-      ['/_pwa/androidsource/manifest.json',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/images/video-placeholder.svg',
-       'https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/favicon.png','https://www.gstatic.com/devrel-devsite/v804714fbf31610f6bd494c83c2b0ed270c7475db2947bab1f550f430dad1ed36/androidsource/images/lockup.svg','https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons'],
-       'https://androidsource-dot-google-developers.gonglchuangl.net/')
-   </script>  </body>
+        <script>
+    (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/js/app_loader.js', '[7,"en",null,"../../../../js/devsite_app.html","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource","https://androidsource-dot-google-developers.gonglchuangl.net/",null,null,["/_pwa/androidsource/manifest.json","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/favicon.png","https://www.gstatic.com/devrel-devsite/vbb62cc5a3e8f17e37bae4792b437f28f787df3f9cf9732cbfcc99b4f4ff41a54/androidsource/images/rebrand/lockup.svg","https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"]]')
+  </script>  </body>
 
-<!-- Mirrored from source.android.google.cn/devices/tech/ota/ab/ab_implement by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Mar 2019 14:32:19 GMT -->
+<!-- Mirrored from source.android.google.cn/devices/tech/ota/ab/ab_implement by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Sep 2019 15:23:07 GMT -->
 </html>
